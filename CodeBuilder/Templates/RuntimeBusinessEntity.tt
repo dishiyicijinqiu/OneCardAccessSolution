@@ -21,16 +21,18 @@ namespace <#=NameSpace#>
 		{
 <# foreach(DbColumn column in dbhost.DbColumns){if(column.CSharpType.ToLower()=="string"){#>
 			<#=column.ColumnName#>=string.Empty;
-<#}}#> 
+<#}
+}#>
 		}
-	<# foreach(DbColumn column in dbhost.DbColumns){
-	if(column.ColumnName.ToLower()!="deleted"){#>
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()!="deleted"){#>
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
 		[DataMember]
 		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
-	<#}}#> 
+<#}
+}#>
 	}
 }
 <#}#>

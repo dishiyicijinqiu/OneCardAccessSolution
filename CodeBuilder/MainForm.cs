@@ -13,6 +13,8 @@ namespace FengSharp.OneCardAccess.CodeBuilder
 {
     public partial class MainForm : Form
     {
+        string datapath = Path.GetFullPath("data.txt");
+        string historydatapath = Path.GetFullPath("historydata.txt");
         public MainForm()
         {
             InitializeComponent();
@@ -21,6 +23,27 @@ namespace FengSharp.OneCardAccess.CodeBuilder
         private void MainForm_Load(object sender, EventArgs e)
         {
             this.comboBox1.SelectedIndex = 0;
+            if (File.Exists(datapath))
+            {
+                var lines = File.ReadAllLines(datapath);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    this.textBox1.AppendText(lines[i]);
+                    if (i!=lines.Length-1)
+                        this.textBox1.AppendText(Environment.NewLine);
+                }
+            }
+
+            if (File.Exists(historydatapath))
+            {
+                var lines = File.ReadAllLines(historydatapath);
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    this.textBox3.AppendText(lines[i]);
+                    if (i != lines.Length - 1)
+                        this.textBox3.AppendText(Environment.NewLine);
+                }
+            }
         }
 
         private void btnBuildCode_Click(object sender, EventArgs e)
@@ -83,6 +106,23 @@ namespace FengSharp.OneCardAccess.CodeBuilder
                 }
                 RuntimeTableEntity.GeneCodeToPath(buildpath, tablename, _namespace);
             }
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (File.Exists(datapath))
+            {
+                File.Delete(datapath);
+            }
+            var lines = this.textBox1.Lines;
+            File.WriteAllLines(datapath, lines);
+
+            if (File.Exists(historydatapath))
+            {
+                File.Delete(historydatapath);
+            }
+            var historylines = this.textBox3.Lines;
+            File.WriteAllLines(historydatapath, historylines);
         }
     }
 }

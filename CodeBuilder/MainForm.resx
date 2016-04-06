@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="textBox1.Text" xml:space="preserve">
+  <data name="textBox2.Text" xml:space="preserve">
     <value>FengSharp.OneCardAccess.TEntity.RBAC,T_UserInfo,D:\Work\Project\Company\OneCardAccess\Services\TableEntitys\RBAC\T_UserInfo_Auto.cs
 FengSharp.OneCardAccess.BusinessEntity.RBAC,T_UserInfo,D:\Work\Project\Company\OneCardAccess\BusinessEntity\RBAC\UserInfoEntity_Auto.cs</value>
   </data>

@@ -18,9 +18,12 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
-		<#=column.IsPrimaryKey?"[Key]":string.Empty#>
+<# if(column.IsPrimaryKey) {#>
+		[Key]
+<#}#>
 		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
-<#}}#> 
+<#}
+}#>
 	}
 }
 <#}#>

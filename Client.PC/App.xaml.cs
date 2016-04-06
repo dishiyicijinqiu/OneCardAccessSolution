@@ -18,7 +18,7 @@ namespace FengSharp.OneCardAccess.Client.PC
             {
                 Shutdown();
             };
-            //ThemeManager.ApplicationThemeName = "Office2010Blue";
+            //ThemeManager.ApplicationThemeName = "Office2010Blue";//111
             ThemeManager.ApplicationThemeName = DevExpress.Xpf.Core.Theme.Office2010BlueName;
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-cn");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-cn");

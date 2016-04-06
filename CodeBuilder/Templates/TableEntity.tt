@@ -1,0 +1,40 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Configuration.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
+using System;
+using System.ComponentModel.DataAnnotations;
+namespace <#=NameSpace#>
+{
+	/// <summary>
+	/// <#=dbhost.DbTable.Remark#>
+	/// </summary>
+	public class <#=TableName#>
+	{
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()!="deleted"){#>
+		/// <summary>
+		/// <#=column.Remark#>
+		/// </summary>
+<# if(column.IsPrimaryKey) {#>
+		[Key]
+<#}#>
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
+<#}
+}#>
+	}
+}
+<#}#>
+<#+
+public static readonly string TableName="T_UserInfo";
+public static readonly bool IsBuilder= true;
+public static readonly string NameSpace="FengSharp.OneCardAccess.TEntity.RBAC";
+#>

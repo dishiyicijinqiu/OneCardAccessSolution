@@ -1,0 +1,12 @@
+﻿<dxr:DXRibbonWindow
+    x:Class="FengSharp.OneCardAccess.Client.PC.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
+    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+    WindowStartupLocation="CenterScreen"
+    Title="{x:Static res:Resources.MainWindow_Title}" Height="350" Width="525"
+    >
+    <View:MainView />
+</dxr:DXRibbonWindow>

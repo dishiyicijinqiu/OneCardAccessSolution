@@ -1,0 +1,78 @@
+﻿<UserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.MainView"
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+             >
+    <!--<x:Arguments>
+        <x:String>Apple</x:String>
+    </x:Arguments>-->
+    <!--DataContext="{dxmvvm:ViewModelSource Type=viewmodel:MainViewModel}"-->
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
+        <dx:DXMessageBoxService/>
+        <dx:DialogService Name="LoginWindowService">
+                <dx:DialogService.DialogStyle>
+                <Style TargetType="dx:DXDialogWindow">
+                    <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/logo.ico"/>
+                    <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+                    </Style>
+                </dx:DialogService.DialogStyle>
+            </dx:DialogService>
+    </dxmvvm:Interaction.Behaviors>
+    <UserControl.DataContext>
+        <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
+        </dxmvvm:ViewModelSourceExtension>
+    </UserControl.DataContext>
+    <dxb:BarManager x:Name="barManager">
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem x:Name="bCateInfo" Content="产品类目" 
+                               Command="{Binding ShowDocumentCommand}" 
+                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品类目,DocumentType=FormP_CateManage}"  
+                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
+            <dxb:BarButtonItem x:Name="bProductInfo" Content="产品信息" 
+                               Command="{Binding ShowDocumentCommand}"
+                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品信息,DocumentType=FormP_CateManage}"
+                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
+        </dxb:BarManager.Items>
+        <DockPanel>
+            <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top" Style="{StaticResource ResourceKey=RibbonControlStyle}">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Name="Home" Caption="导航">
+                        <dxr:RibbonPageGroup Caption="栏目1">
+                            <dxr:RibbonPageGroup.ItemLinks>
+                                <dxb:BarButtonItemLink BarItemName="bCateInfo" />
+                                <dxb:BarButtonItemLink BarItemName="bProductInfo" />
+                            </dxr:RibbonPageGroup.ItemLinks>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
+                <dxd:DockLayoutManager.Resources>
+                    <Style x:Key="DocumentPanelStyle" TargetType="dxd:DocumentPanel">
+                        <Setter Property="BindableName" Value="{Binding Path=Content.DataContext.DocumentName,
+                        RelativeSource={RelativeSource Mode=Self}}"/>
+                    </Style>
+                </dxd:DockLayoutManager.Resources>
+                <dxd:LayoutGroup >
+                    <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxd:TabbedDocumentUIService DocumentPanelStyle="{StaticResource DocumentPanelStyle}" 
+                                                      DocumentGroup="{Binding ElementName=documentGroup}"/>
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxd:DocumentGroup>
+                </dxd:LayoutGroup>
+            </dxd:DockLayoutManager>
+        </DockPanel>
+    </dxb:BarManager>
+</UserControl>

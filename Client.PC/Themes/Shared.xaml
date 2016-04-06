@@ -40,7 +40,7 @@
     <Style TargetType="dxb:BarButtonItem" x:Key="barReturn">
         <Setter Property="Content" Value="{x:Static res:Resources.ReturnBarContent}"/>
         <Setter Property="Command" Value="{Binding ReturnCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
     </Style>
 </ResourceDictionary>

@@ -10,6 +10,7 @@
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
+             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
     <!--<x:Arguments>
@@ -34,9 +35,9 @@
     </UserControl.DataContext>
     <dxb:BarManager x:Name="barManager">
         <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="bCateInfo" Content="产品类目" 
+            <dxb:BarButtonItem x:Name="bCateInfo" Content="{x:Static res:Resources.Menu_Register}" 
                                Command="{Binding ShowDocumentCommand}" 
-                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品类目,DocumentType=RegisterCollectionView}"  
+                               CommandParameter="{viewmodel:DocumentInfoExtension Name=x:Static res:Resources.RegiRegisterCollectionView_Title,DocumentType=RegisterCollectionView}"  
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
             <dxb:BarButtonItem x:Name="bProductInfo" Content="产品信息" 
@@ -47,9 +48,33 @@
         </dxb:BarManager.Items>
         <DockPanel>
             <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top" Style="{StaticResource ResourceKey=RibbonControlStyle}">
+                <dxr:RibbonControl.Resources>
+                    <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
+                    <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="IsTabStop" Value="False"/>
+                        <Setter Property="IsHitTestVisible" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
+                        <Setter Property="Opacity" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource opacityConverter}}"/>
+                        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}}"/>
+                        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlTemplate}}"/>
+                    </Style>
+                    <Style TargetType="{x:Type dxr:RibbonPagesControl}">
+                        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}}"/>
+                        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlTemplate}}"/>
+                        <Setter Property="Focusable" Value="False"/>
+                        <Setter Property="IsTabStop" Value="False"/>
+                    </Style>
+                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}">
+                        <local:MyRibbonPageGroupsItemsPanel />
+                    </ItemsPanelTemplate>
+                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
+                        <local:MyRibbonPagesItemsPanel />
+                    </ItemsPanelTemplate>
+
+                </dxr:RibbonControl.Resources>
                 <dxr:RibbonDefaultPageCategory>
-                    <dxr:RibbonPage Name="Home" Caption="导航">
-                        <dxr:RibbonPageGroup Caption="栏目1" >
+                    <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
                             <dxr:RibbonPageGroup.ItemLinks>
                                 <dxb:BarButtonItemLink BarItemName="bCateInfo" />
                                 <dxb:BarButtonItemLink BarItemName="bProductInfo" />

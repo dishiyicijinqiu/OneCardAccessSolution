@@ -156,11 +156,23 @@
   <data name="MainWindow_Title" xml:space="preserve">
     <value>一卡通管理系统</value>
   </data>
+  <data name="Menu_Register" xml:space="preserve">
+    <value>注册证信息</value>
+  </data>
+  <data name="Menu_RibbonPageGroup_BasicInfo" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="Menu_RibbonPage_Navigate" xml:space="preserve">
+    <value>导航</value>
+  </data>
   <data name="MessageBoxError" xml:space="preserve">
     <value>错误提示</value>
   </data>
   <data name="PassWord" xml:space="preserve">
     <value>密码：</value>
+  </data>
+  <data name="RegisterCollectionView_Title" xml:space="preserve">
+    <value>注册证信息</value>
   </data>
   <data name="ReturnBarContent" xml:space="preserve">
     <value>返回</value>

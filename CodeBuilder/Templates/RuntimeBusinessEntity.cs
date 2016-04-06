@@ -80,62 +80,64 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             this.Write("=string.Empty;\r\n");
             
             #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
-}}
+}
+}
             
             #line default
             #line hidden
-            this.Write(" \r\n\t\t}\r\n\t");
+            this.Write("\t\t}\r\n");
             
-            #line 26 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
  foreach(DbColumn column in dbhost.DbColumns){
-	if(column.ColumnName.ToLower()!="deleted"){
+if(column.ColumnName.ToLower()!="deleted"){
             
             #line default
             #line hidden
             this.Write("\t\t/// <summary>\r\n\t\t/// ");
             
-            #line 29 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 30 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.Remark));
             
             #line default
             #line hidden
             this.Write("\r\n\t\t/// </summary>\r\n\t\t[DataMember]\r\n\t\tpublic ");
             
-            #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.CSharpType));
             
             #line default
             #line hidden
             
-            #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
  if(column.CommonType.IsValueType && column.IsNullable){
             
             #line default
             #line hidden
             this.Write("?");
             
-            #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n\t");
+            this.Write(" { get; set; }\r\n");
             
-            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
-}}
+            #line 34 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+}
+}
             
             #line default
             #line hidden
-            this.Write(" \r\n\t}\r\n}\r\n");
+            this.Write("\t}\r\n}\r\n");
             
-            #line 36 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+            #line 38 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
 }
             
             #line default
@@ -143,7 +145,7 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 37 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
+        #line 39 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
 
 public string TableName="T_UserInfo";
 public bool IsBuilder= true;

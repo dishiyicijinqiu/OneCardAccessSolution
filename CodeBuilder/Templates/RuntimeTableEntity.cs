@@ -70,50 +70,58 @@ if(column.ColumnName.ToLower()!="deleted"){
             
             #line default
             #line hidden
-            this.Write("\r\n\t\t/// </summary>\r\n\t\t");
+            this.Write("\r\n\t\t/// </summary>\r\n");
             
             #line 21 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(column.IsPrimaryKey?"[Key]":string.Empty));
+ if(column.IsPrimaryKey) {
             
             #line default
             #line hidden
-            this.Write("\r\n\t\tpublic ");
+            this.Write("\t\t[Key]\r\n");
             
-            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("\t\tpublic ");
+            
+            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.CSharpType));
             
             #line default
             #line hidden
             
-            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
  if(column.CommonType.IsValueType && column.IsNullable){
             
             #line default
             #line hidden
             this.Write("?");
             
-            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-}}
+            #line 25 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+}
+}
             
             #line default
             #line hidden
-            this.Write(" \r\n\t}\r\n}\r\n");
+            this.Write("\t}\r\n}\r\n");
             
-            #line 26 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 29 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
@@ -121,7 +129,7 @@ if(column.ColumnName.ToLower()!="deleted"){
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+        #line 30 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 
 public string TableName="T_UserInfo";
 public bool IsBuilder= true;

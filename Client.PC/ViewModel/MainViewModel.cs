@@ -11,6 +11,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
+            //DevExpress.Xpf.Core.ThemeManager.ApplicationThemeName = DevExpress.Xpf.Core.Theme.Office2010BlueName;
             var idialogservice = this.GetService<IDialogService>("LoginWindowService");
             var loginvm = new LoginViewModel();
             DevExpress.Xpf.Core.DXSplashScreen.Close();

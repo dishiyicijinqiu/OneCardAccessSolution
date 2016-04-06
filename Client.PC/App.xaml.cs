@@ -1,4 +1,5 @@
 ﻿using DevExpress.Xpf.Core;
+using FengSharp.OneCardAccess.Client.PC.Helpers;
 using FengSharp.OneCardAccess.Client.PC.UI;
 using System.Windows;
 
@@ -19,10 +20,11 @@ namespace FengSharp.OneCardAccess.Client.PC
                 Shutdown();
             };
             //ThemeManager.ApplicationThemeName = "Office2010Blue";//111
+            ExceptionHelper.Initialize();
             ThemeManager.ApplicationThemeName = DevExpress.Xpf.Core.Theme.Office2010BlueName;
+            DXSplashScreen.Show<SplashScreenView>();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-cn");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-cn");
-            DXSplashScreen.Show<SplashScreenView>();
             base.OnStartup(e);
         }
     }

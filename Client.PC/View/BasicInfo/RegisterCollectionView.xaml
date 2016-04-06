@@ -1,12 +1,61 @@
 ﻿<UserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterCollectionView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.BasicInfo"
-             mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-            
-    </Grid>
+            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
+            xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+            xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
+            mc:Ignorable="d" 
+            DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
+            d:DesignHeight="300" d:DesignWidth="300">
+    <dxb:BarManager Name="barManager">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" Style="{StaticResource ResourceKey=RibbonControlStyle}" RibbonTitleBarVisibility="Auto">
+                <dxr:RibbonControl.Resources>
+                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}">
+                        <local:MyRibbonPageGroupsItemsPanel />
+                    </ItemsPanelTemplate>
+                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
+                        <local:MyRibbonPagesItemsPanel />
+                    </ItemsPanelTemplate>
+                </dxr:RibbonControl.Resources>
+                <dxr:RibbonDefaultPageCategory Caption="类目管理" x:Name="ribbonDefaultPageCategory1">
+                    <dxr:RibbonPage Caption="类目管理" x:Name="ribbonPage1">
+                        <dxr:RibbonPageGroup Caption="操作" x:Name="ribbonPageGroup1">
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCate}"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="操作" local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barReturn}"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <dxg:GridControl x:Name="gridcontrol" 
+				AutoGenerateColumns="AddNew" 
+				SelectionMode="Row" 
+                SelectedItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
+                CurrentItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
+				ItemsSource="{Binding Items}" Grid.Row="1" 
+                         >
+                <dxg:GridControl.View>
+                    <dxg:TableView x:Name="myview" ShowGroupPanel="False" IndicatorWidth="40" />
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </dxb:BarManager>
 </UserControl>

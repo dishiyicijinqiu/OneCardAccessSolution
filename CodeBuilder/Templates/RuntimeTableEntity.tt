@@ -13,8 +13,7 @@ namespace <#=NameSpace#>
 	/// </summary>
 	public class <#=TableName#>
 	{
-<# foreach(DbColumn column in dbhost.DbColumns){
-if(column.ColumnName.ToLower()!="deleted"){#>
+<# foreach(DbColumn column in dbhost.DbColumns){#>
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
@@ -22,8 +21,7 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 		[Key]
 <#}#>
 		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
-<#}
-}#>
+<#}#>
 	}
 }
 <#}#>

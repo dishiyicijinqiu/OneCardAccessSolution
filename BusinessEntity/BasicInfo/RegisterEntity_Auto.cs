@@ -22,8 +22,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 			RegisterFile=string.Empty;
 			StartDate=string.Empty;
 			EndDate=string.Empty;
-			CreateId=string.Empty;
-			LastModifyId=string.Empty;
 			Remark=string.Empty;
 		}
 		/// <summary>
@@ -80,7 +78,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 		/// 创建人Id
 		/// </summary>
 		[DataMember]
-		public string CreateId { get; set; }
+		public int CreateId { get; set; }
 		/// <summary>
 		/// 创建日期
 		/// </summary>
@@ -90,7 +88,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 		/// 最后更改人Id
 		/// </summary>
 		[DataMember]
-		public string LastModifyId { get; set; }
+		public int LastModifyId { get; set; }
 		/// <summary>
 		/// 最后更改日期
 		/// </summary>

@@ -1,4 +1,7 @@
 ﻿using DevExpress.Xpf.Ribbon;
+using System;
+using System.Windows;
+
 namespace FengSharp.OneCardAccess.Client.PC
 {
     /// <summary>

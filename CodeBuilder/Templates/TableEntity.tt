@@ -19,8 +19,7 @@ namespace <#=NameSpace#>
 	/// </summary>
 	public class <#=TableName#>
 	{
-<# foreach(DbColumn column in dbhost.DbColumns){
-if(column.ColumnName.ToLower()!="deleted"){#>
+<# foreach(DbColumn column in dbhost.DbColumns){#>
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
@@ -28,13 +27,12 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 		[Key]
 <#}#>
 		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
-<#}
-}#>
+<#}#>
 	}
 }
 <#}#>
 <#+
-public static readonly string TableName="T_UserInfo";
+public static readonly string TableName="T_Register";
 public static readonly bool IsBuilder= true;
-public static readonly string NameSpace="FengSharp.OneCardAccess.TEntity.RBAC";
+public static readonly string NameSpace="FengSharp.OneCardAccess.BusinessEntity.BasicInfo";
 #>

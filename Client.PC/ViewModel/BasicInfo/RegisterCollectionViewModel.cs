@@ -5,7 +5,7 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    class RegisterCollectionViewModel
+    public class RegisterCollectionViewModel
     {
     }
 }

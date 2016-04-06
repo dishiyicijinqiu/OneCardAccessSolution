@@ -178,6 +178,33 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 注册证信息 的本地化字符串。
+        /// </summary>
+        public static string Menu_Register {
+            get {
+                return ResourceManager.GetString("Menu_Register", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 导航 的本地化字符串。
+        /// </summary>
+        public static string Menu_RibbonPage_Navigate {
+            get {
+                return ResourceManager.GetString("Menu_RibbonPage_Navigate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 基本信息 的本地化字符串。
+        /// </summary>
+        public static string Menu_RibbonPageGroup_BasicInfo {
+            get {
+                return ResourceManager.GetString("Menu_RibbonPageGroup_BasicInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 错误提示 的本地化字符串。
         /// </summary>
         public static string MessageBoxError {
@@ -192,6 +219,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string PassWord {
             get {
                 return ResourceManager.GetString("PassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证信息 的本地化字符串。
+        /// </summary>
+        public static string RegisterCollectionView_Title {
+            get {
+                return ResourceManager.GetString("RegisterCollectionView_Title", resourceCulture);
             }
         }
         

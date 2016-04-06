@@ -61,6 +61,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 新增 的本地化字符串。
+        /// </summary>
+        public static string AddBarContent {
+            get {
+                return ResourceManager.GetString("AddBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 分类 的本地化字符串。
+        /// </summary>
+        public static string CateBarContent {
+            get {
+                return ResourceManager.GetString("CateBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 苏州康力骨科器械有限公公司 的本地化字符串。
         /// </summary>
         public static string CompanyRight_ComanyName {
@@ -106,6 +124,33 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 复制新增 的本地化字符串。
+        /// </summary>
+        public static string CopyAddBarContent {
+            get {
+                return ResourceManager.GetString("CopyAddBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 删除 的本地化字符串。
+        /// </summary>
+        public static string DeleteBarContent {
+            get {
+                return ResourceManager.GetString("DeleteBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编辑 的本地化字符串。
+        /// </summary>
+        public static string EditBarContent {
+            get {
+                return ResourceManager.GetString("EditBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 密码错误 的本地化字符串。
         /// </summary>
         public static string ErrorPassWord {
@@ -147,6 +192,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string PassWord {
             get {
                 return ResourceManager.GetString("PassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 返回 的本地化字符串。
+        /// </summary>
+        public static string ReturnBarContent {
+            get {
+                return ResourceManager.GetString("ReturnBarContent", resourceCulture);
             }
         }
         

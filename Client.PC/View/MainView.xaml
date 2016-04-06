@@ -6,11 +6,12 @@
             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
             xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"
+             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
-            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
-             >
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
     <!--<x:Arguments>
         <x:String>Apple</x:String>
     </x:Arguments>-->
@@ -35,12 +36,12 @@
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="bCateInfo" Content="产品类目" 
                                Command="{Binding ShowDocumentCommand}" 
-                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品类目,DocumentType=FormP_CateManage}"  
+                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品类目,DocumentType=RegisterCollectionView}"  
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
             <dxb:BarButtonItem x:Name="bProductInfo" Content="产品信息" 
                                Command="{Binding ShowDocumentCommand}"
-                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品信息,DocumentType=FormP_CateManage}"
+                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品信息,DocumentType=RegisterCollectionView}"
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
         </dxb:BarManager.Items>
@@ -48,7 +49,7 @@
             <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top" Style="{StaticResource ResourceKey=RibbonControlStyle}">
                 <dxr:RibbonDefaultPageCategory>
                     <dxr:RibbonPage Name="Home" Caption="导航">
-                        <dxr:RibbonPageGroup Caption="栏目1">
+                        <dxr:RibbonPageGroup Caption="栏目1" >
                             <dxr:RibbonPageGroup.ItemLinks>
                                 <dxb:BarButtonItemLink BarItemName="bCateInfo" />
                                 <dxb:BarButtonItemLink BarItemName="bProductInfo" />

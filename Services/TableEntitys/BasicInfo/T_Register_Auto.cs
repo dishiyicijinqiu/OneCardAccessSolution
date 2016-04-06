@@ -51,7 +51,7 @@ namespace FengSharp.OneCardAccess.TEntity.BasicInfo
 		/// <summary>
 		/// 创建人Id
 		/// </summary>
-		public string CreateId { get; set; }
+		public int CreateId { get; set; }
 		/// <summary>
 		/// 创建日期
 		/// </summary>
@@ -59,7 +59,7 @@ namespace FengSharp.OneCardAccess.TEntity.BasicInfo
 		/// <summary>
 		/// 最后更改人Id
 		/// </summary>
-		public string LastModifyId { get; set; }
+		public int LastModifyId { get; set; }
 		/// <summary>
 		/// 最后更改日期
 		/// </summary>
@@ -68,5 +68,9 @@ namespace FengSharp.OneCardAccess.TEntity.BasicInfo
 		/// 备注
 		/// </summary>
 		public string Remark { get; set; }
+		/// <summary>
+		/// 删除标识
+		/// </summary>
+		public bool Deleted { get; set; }
 	}
 }

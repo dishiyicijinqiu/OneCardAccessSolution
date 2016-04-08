@@ -1,46 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-                    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
-    <Style x:Key="RibbonControlStyle" TargetType="dxr:RibbonControl">
+    <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
-        <Setter Property="Content" Value="{x:Static res:Resources.AddBarContent}"/>
-        <Setter Property="Command" Value="{Binding AddCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new-16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new-32x32.png"/>
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barCopyAdd">
-        <Setter Property="Content" Value="{x:Static res:Resources.CopyAddBarContent}"/>
-        <Setter Property="Command" Value="{Binding CopyAddCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/copy-16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/copy-32x32.png"/>
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barEdit">
-        <Setter Property="Content" Value="{x:Static res:Resources.EditBarContent}"/>
-        <Setter Property="Command" Value="{Binding EditCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/edit_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/edit_32x32.png"/>
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barDelete">
-        <Setter Property="Content" Value="{x:Static res:Resources.DeleteBarContent}"/>
-        <Setter Property="Command" Value="{Binding DeleteCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/delete_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/delete_32x32.png"/>
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barCate">
-        <Setter Property="Content" Value="{x:Static res:Resources.CateBarContent}"/>
-        <Setter Property="Command" Value="{Binding CateCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_32x32.png"/>
-    </Style>
-    <Style TargetType="dxb:BarButtonItem" x:Key="barReturn">
-        <Setter Property="Content" Value="{x:Static res:Resources.ReturnBarContent}"/>
-        <Setter Property="Command" Value="{Binding ReturnCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
     </Style>
 </ResourceDictionary>

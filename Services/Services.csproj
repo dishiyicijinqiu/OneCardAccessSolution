@@ -75,6 +75,10 @@
       <Project>{56440098-2131-465c-87b9-6c10d2985759}</Project>
       <Name>BusinessEntity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{89dd6b99-d85b-4d96-8cf6-2a7044c87d1e}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ServiceInterfaces\ServiceInterfaces.csproj">
       <Project>{3e38a4b0-af86-479a-9fcf-8c2c3c8958d2}</Project>
       <Name>ServiceInterfaces</Name>

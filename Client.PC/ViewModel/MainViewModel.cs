@@ -26,26 +26,27 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             var DocumentManager = GetService<IDocumentManagerService>();
             IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
             doc.DestroyOnClose = true;
-            doc.Title = docInfo.Name;
+            doc.Title = docInfo.DocumentName;
             doc.Show();
         }
         #endregion
     }
     public class DocumentInfo
     {
-        public string Name { get; set; }
+        public string DocumentName { get; set; }
         public string DocumentType { get; set; }
     }
+    [MarkupExtensionReturnType(typeof(System.Windows.PropertyPath))]
     public class DocumentInfoExtension : MarkupExtension
     {
-        public string Name { get; set; }
+        public string DocumentName { get; set; }
         public string DocumentType { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             return new DocumentInfo()
             {
-                Name = this.Name,
+                DocumentName = this.DocumentName,
                 DocumentType = this.DocumentType
             };
         }

@@ -1,0 +1,51 @@
+﻿public static UserACPrivilege DataRowToEntity(DataRow dr)
+{
+    if (dr == null)
+        return null;
+    var result = new UserACPrivilege();
+	result.UserID = (int)dr["UserID"];
+	result.DeviceID = (int)dr["DeviceID"];
+	result.ACGroupID = (int)dr["ACGroupID"];
+	result.IsUseGroup = (bool)dr["IsUseGroup"];
+	result.TimeZone1 = (int)dr["TimeZone1"];
+	result.TimeZone2 = (int)dr["TimeZone2"];
+	result.TimeZone3 = (int)dr["TimeZone3"];
+	result.verifystyle = (int)dr["verifystyle"];
+	result.ACGroupID1 = (string)dr["ACGroupID1"];
+	result.TimeZone11 = (string)dr["TimeZone11"];
+	result.TimeZone21 = (string)dr["TimeZone21"];
+	result.TimeZone31 = (string)dr["TimeZone31"];
+    return result;
+}
+
+UserID,DeviceID,ACGroupID,IsUseGroup,TimeZone1,TimeZone2,TimeZone3,verifystyle,ACGroupID1,TimeZone11,TimeZone21,TimeZone31,
+@UserID,@DeviceID,@ACGroupID,@IsUseGroup,@TimeZone1,@TimeZone2,@TimeZone3,@verifystyle,@ACGroupID1,@TimeZone11,@TimeZone21,@TimeZone31,
+
+
+sbSql.Append("UserID=@UserID, ");
+sbSql.Append("DeviceID=@DeviceID, ");
+sbSql.Append("ACGroupID=@ACGroupID, ");
+sbSql.Append("IsUseGroup=@IsUseGroup, ");
+sbSql.Append("TimeZone1=@TimeZone1, ");
+sbSql.Append("TimeZone2=@TimeZone2, ");
+sbSql.Append("TimeZone3=@TimeZone3, ");
+sbSql.Append("verifystyle=@verifystyle, ");
+sbSql.Append("ACGroupID1=@ACGroupID1, ");
+sbSql.Append("TimeZone11=@TimeZone11, ");
+sbSql.Append("TimeZone21=@TimeZone21, ");
+sbSql.Append("TimeZone31=@TimeZone31, ");
+
+Database.AddInParameter(cmd, "UserID", DbType.int, model.UserID);
+Database.AddInParameter(cmd, "DeviceID", DbType.int, model.DeviceID);
+Database.AddInParameter(cmd, "ACGroupID", DbType.int, model.ACGroupID);
+Database.AddInParameter(cmd, "IsUseGroup", DbType.bool, model.IsUseGroup);
+Database.AddInParameter(cmd, "TimeZone1", DbType.int, model.TimeZone1);
+Database.AddInParameter(cmd, "TimeZone2", DbType.int, model.TimeZone2);
+Database.AddInParameter(cmd, "TimeZone3", DbType.int, model.TimeZone3);
+Database.AddInParameter(cmd, "verifystyle", DbType.int, model.verifystyle);
+Database.AddInParameter(cmd, "ACGroupID1", DbType.string, model.ACGroupID1);
+Database.AddInParameter(cmd, "TimeZone11", DbType.string, model.TimeZone11);
+Database.AddInParameter(cmd, "TimeZone21", DbType.string, model.TimeZone21);
+Database.AddInParameter(cmd, "TimeZone31", DbType.string, model.TimeZone31);
+
+

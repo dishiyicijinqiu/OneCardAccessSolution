@@ -6,7 +6,7 @@
             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
-        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
@@ -14,26 +14,34 @@
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
             mc:Ignorable="d" 
             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
-            d:DesignHeight="300" d:DesignWidth="300">
+            d:DesignHeight="300" d:DesignWidth="300"
+            Style="{DynamicResource ResourceKey=usercontrolstyle}"
+             >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" Style="{StaticResource ResourceKey=RibbonControlStyle}" RibbonTitleBarVisibility="Auto">
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory Caption="类目管理" x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage Caption="类目管理" x:Name="ribbonPage1">
-                        <dxr:RibbonPageGroup Caption="操作" x:Name="ribbonPageGroup1">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="产品注册证信息">
+                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCate}"/>
                         </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup Caption="操作" local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                        <!--<dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barReturn}"/>
-                        </dxr:RibbonPageGroup>
+                        </dxr:RibbonPageGroup>-->
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>

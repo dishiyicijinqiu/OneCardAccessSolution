@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflect\ClassValueCopier.cs" />
     <Compile Include="ServiceProxy Factory\ChannelFactoryCreator.cs" />
     <Compile Include="ServiceProxy Factory\ServiceProxyFactory.cs" />
     <Compile Include="ServiceProxy Factory\ServiceRealProxy.cs" />

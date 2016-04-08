@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Configuration.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
+public static <#=TableName#> DataRowToEntity(DataRow dr)
+{
+    if (dr == null)
+        return null;
+    var result = new <#=TableName#>();
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+	result.<#=column.ColumnName#> = (<#= column.CSharpType#>)dr["<#=column.ColumnName#>"];
+<#}#>
+    return result;
+}
+
+<# foreach(DbColumn column in dbhost.DbColumns){#><#=column.ColumnName#>,<#}#>
+
+<# foreach(DbColumn column in dbhost.DbColumns){#>@<#=column.ColumnName#>,<#}#>
+
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+sbSql.Append("<#=column.ColumnName#>=@<#=column.ColumnName#>, ");
+<#}#>
+
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+Database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CSharpType#>, model.<#=column.ColumnName#>);
+<#}#>
+
+
+<#}#>
+<#+
+public static readonly string TableName="UserACPrivilege";
+public static readonly bool IsBuilder= true;
+#>

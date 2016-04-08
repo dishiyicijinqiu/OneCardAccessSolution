@@ -21,13 +21,13 @@
         <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
         <dx:DXMessageBoxService/>
         <dx:DialogService Name="LoginWindowService">
-                <dx:DialogService.DialogStyle>
+            <dx:DialogService.DialogStyle>
                 <Style TargetType="dx:DXDialogWindow">
                     <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/logo.ico"/>
                     <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-                    </Style>
-                </dx:DialogService.DialogStyle>
-            </dx:DialogService>
+                </Style>
+            </dx:DialogService.DialogStyle>
+        </dx:DialogService>
     </dxmvvm:Interaction.Behaviors>
     <UserControl.DataContext>
         <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
@@ -37,17 +37,23 @@
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="bCateInfo" Content="{x:Static res:Resources.Menu_Register}" 
                                Command="{Binding ShowDocumentCommand}" 
-                               CommandParameter="{viewmodel:DocumentInfoExtension Name=x:Static res:Resources.RegiRegisterCollectionView_Title,DocumentType=RegisterCollectionView}"  
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
-            <dxb:BarButtonItem x:Name="bProductInfo" Content="产品信息" 
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
+            <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_Register}" 
                                Command="{Binding ShowDocumentCommand}"
-                               CommandParameter="{viewmodel:DocumentInfoExtension Name=产品信息,DocumentType=RegisterCollectionView}"
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" />
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
         </dxb:BarManager.Items>
         <DockPanel>
-            <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top" Style="{StaticResource ResourceKey=RibbonControlStyle}">
+            <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
                 <dxr:RibbonControl.Resources>
                     <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
                     <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">

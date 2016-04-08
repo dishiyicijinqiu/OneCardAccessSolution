@@ -44,12 +44,16 @@
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
     </Style>
 
-    <Style TargetType="UserControl" x:Key="usercontrolstyle">
+    <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="EditWindowStyle">
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="WindowStyle" Value="None"/>
+    </Style>
+    <Style TargetType="UserControl" x:Key="EditUserControlStyle">
         <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">
             <Setter.Value>
                 <DataTemplate>
                     <ContentControl>
-                        <dxmvvm:WindowService WindowType="{x:Type dxr:DXRibbonWindow}" WindowStartupLocation="CenterOwner" WindowShowMode="Dialog"/>
+                        <dxmvvm:WindowService WindowType="{x:Type dxr:DXRibbonWindow}" WindowStyle="{DynamicResource ResourceKey=EditWindowStyle}"  WindowStartupLocation="CenterOwner" WindowShowMode="Dialog"/>
                     </ContentControl>
                 </DataTemplate>
             </Setter.Value>

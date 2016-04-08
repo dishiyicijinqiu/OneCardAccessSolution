@@ -29,7 +29,7 @@ namespace FengSharp.OneCardAccess.CodeBuilder
                 for (int i = 0; i < lines.Length; i++)
                 {
                     this.textBox1.AppendText(lines[i]);
-                    if (i!=lines.Length-1)
+                    if (i != lines.Length - 1)
                         this.textBox1.AppendText(Environment.NewLine);
                 }
             }
@@ -123,6 +123,11 @@ namespace FengSharp.OneCardAccess.CodeBuilder
             }
             var historylines = this.textBox3.Lines;
             File.WriteAllLines(historydatapath, historylines);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var result = DbHelper.GetDbColumns("HR_Employee");
         }
     }
 }

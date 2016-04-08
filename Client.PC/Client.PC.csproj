@@ -66,6 +66,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\DefaultViewModelBase.cs" />
+    <Compile Include="Core\EditMessage.cs" />
+    <Compile Include="Core\EntityEditMode.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

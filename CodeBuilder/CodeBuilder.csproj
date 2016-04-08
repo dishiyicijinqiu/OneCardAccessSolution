@@ -62,6 +62,11 @@
       <DependentUpon>RuntimeBusinessEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Templates\RuntimeBusinessEntityCode.cs" />
+    <Compile Include="Templates\RuntimeMethodBuild.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RuntimeMethodBuild.tt</DependentUpon>
+    </Compile>
     <Compile Include="Templates\RuntimeTableEntity.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -105,9 +110,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BusinessEntity.tt</DependentUpon>
     </Content>
+    <Content Include="Templates\MethodBuild.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MethodBuild.txt</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MethodBuild.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MethodBuild.tt</DependentUpon>
+    </Content>
     <Content Include="Templates\RuntimeBusinessEntity.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>RuntimeBusinessEntity.cs</LastGenOutput>
+    </Content>
+    <Content Include="Templates\RuntimeMethodBuild.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>RuntimeMethodBuild.cs</LastGenOutput>
     </Content>
     <Content Include="Templates\RuntimeTableEntity.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

@@ -9,5 +9,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     {
         [OperationContract]
         List<RegisterEntity> GetRegisterList();
+        [OperationContract]
+        RegisterEntity GetRegisterEntityById(int RegisterId);
     }
 }

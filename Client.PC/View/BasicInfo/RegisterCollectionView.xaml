@@ -15,7 +15,7 @@
             mc:Ignorable="d" 
             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
             d:DesignHeight="300" d:DesignWidth="300"
-            Style="{DynamicResource ResourceKey=usercontrolstyle}"
+            Style="{DynamicResource ResourceKey=EditUserControlStyle}"
              >
     <UserControl.Resources>
         <ResourceDictionary>

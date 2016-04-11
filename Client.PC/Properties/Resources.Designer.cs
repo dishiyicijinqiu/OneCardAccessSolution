@@ -70,11 +70,38 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        public static string btnCancel {
+            get {
+                return ResourceManager.GetString("btnCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 登录 的本地化字符串。
+        /// </summary>
+        public static string btnLogin {
+            get {
+                return ResourceManager.GetString("btnLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 分类 的本地化字符串。
         /// </summary>
         public static string CateBarContent {
             get {
                 return ResourceManager.GetString("CateBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 关闭 的本地化字符串。
+        /// </summary>
+        public static string CloseBarContent {
+            get {
+                return ResourceManager.GetString("CloseBarContent", resourceCulture);
             }
         }
         
@@ -124,6 +151,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 确实要退出吗？ 的本地化字符串。
+        /// </summary>
+        public static string ConfirmToExit {
+            get {
+                return ResourceManager.GetString("ConfirmToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 复制新增 的本地化字符串。
         /// </summary>
         public static string CopyAddBarContent {
@@ -160,11 +196,11 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 欢迎登录 的本地化字符串。
+        ///   查找类似 欢迎登录-一卡通系统 的本地化字符串。
         /// </summary>
-        public static string LoginFormTItle {
+        public static string LoginView_Title {
             get {
-                return ResourceManager.GetString("LoginFormTItle", resourceCulture);
+                return ResourceManager.GetString("LoginView_Title", resourceCulture);
             }
         }
         
@@ -214,6 +250,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 提示 的本地化字符串。
+        /// </summary>
+        public static string MessageBoxTip {
+            get {
+                return ResourceManager.GetString("MessageBoxTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 参数错误 的本地化字符串。
+        /// </summary>
+        public static string ParaMeterIsError {
+            get {
+                return ResourceManager.GetString("ParaMeterIsError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 密码： 的本地化字符串。
         /// </summary>
         public static string PassWord {
@@ -232,11 +286,38 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 产品注册证编辑 的本地化字符串。
+        /// </summary>
+        public static string RegisterView_Title {
+            get {
+                return ResourceManager.GetString("RegisterView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 返回 的本地化字符串。
         /// </summary>
         public static string ReturnBarContent {
             get {
                 return ResourceManager.GetString("ReturnBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存并继续 的本地化字符串。
+        /// </summary>
+        public static string SaveAndNewBarContent {
+            get {
+                return ResourceManager.GetString("SaveAndNewBarContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存 的本地化字符串。
+        /// </summary>
+        public static string SaveBarContent {
+            get {
+                return ResourceManager.GetString("SaveBarContent", resourceCulture);
             }
         }
         

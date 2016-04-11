@@ -47,6 +47,8 @@
     <Reference Include="DevExpress.Xpf.Docking.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Grid.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Grid.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.Layout.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.LayoutControl.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Ribbon.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -68,6 +70,7 @@
     </Compile>
     <Compile Include="Core\DefaultViewModelBase.cs" />
     <Compile Include="Core\EditMessage.cs" />
+    <Compile Include="Core\EditModeVisibleConverter.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -160,6 +163,7 @@
     <Resource Include="logo.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.zh-Hans.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.zh-Hans.Designer.cs</LastGenOutput>
@@ -209,6 +213,18 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Bar\moveup_16x16.png" />
     <Resource Include="Resources\Images\Bar\moveup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Bar\save_16x16.png" />
+    <Resource Include="Resources\Images\Bar\save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Bar\close_16x16.png" />
+    <Resource Include="Resources\Images\Bar\close_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Bar\saveandnew_16x16.png" />
+    <Resource Include="Resources\Images\Bar\saveandnew_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

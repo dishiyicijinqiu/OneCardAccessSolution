@@ -13,22 +13,30 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
-    <!--<x:Arguments>
-        <x:String>Apple</x:String>
-    </x:Arguments>-->
-    <!--DataContext="{dxmvvm:ViewModelSource Type=viewmodel:MainViewModel}"-->
+    <UserControl.Resources>
+        <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="LoginWindowStyle">
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/logo.ico"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        </Style>
+        <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="ResizeMode" Value="NoResize"/>
+            <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        </Style>
+    </UserControl.Resources>
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
         <dx:DXMessageBoxService/>
-        <dx:DialogService Name="LoginWindowService">
-            <dx:DialogService.DialogStyle>
-                <Style TargetType="dx:DXDialogWindow">
-                    <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/logo.ico"/>
-                    <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-                </Style>
-            </dx:DialogService.DialogStyle>
-        </dx:DialogService>
+        <dxmvvm:WindowService Name="LoginWindowService" WindowType="{x:Type dxr:DXRibbonWindow}" 
+                              WindowStyle="{StaticResource LoginWindowStyle}" 
+                              Title="{x:Static res:Resources.LoginView_Title}"
+                              WindowStartupLocation="CenterOwner" WindowShowMode="Dialog">
+        </dxmvvm:WindowService>
+        <dxmvvm:WindowService WindowType="{x:Type dxr:DXRibbonWindow}" WindowStyle="{DynamicResource ResourceKey=DialogWindowStyle}"  WindowStartupLocation="CenterOwner" WindowShowMode="Dialog"/>
+        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
     </dxmvvm:Interaction.Behaviors>
+
     <UserControl.DataContext>
         <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
         </dxmvvm:ViewModelSourceExtension>
@@ -55,27 +63,6 @@
         <DockPanel>
             <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
                 <dxr:RibbonControl.Resources>
-                    <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
-                    <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">
-                        <Setter Property="Focusable" Value="False"/>
-                        <Setter Property="IsTabStop" Value="False"/>
-                        <Setter Property="IsHitTestVisible" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
-                        <Setter Property="Opacity" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource opacityConverter}}"/>
-                        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}}"/>
-                        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlTemplate}}"/>
-                    </Style>
-                    <Style TargetType="{x:Type dxr:RibbonPagesControl}">
-                        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}}"/>
-                        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlTemplate}}"/>
-                        <Setter Property="Focusable" Value="False"/>
-                        <Setter Property="IsTabStop" Value="False"/>
-                    </Style>
-                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}">
-                        <local:MyRibbonPageGroupsItemsPanel />
-                    </ItemsPanelTemplate>
-                    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
-                        <local:MyRibbonPagesItemsPanel />
-                    </ItemsPanelTemplate>
 
                 </dxr:RibbonControl.Resources>
                 <dxr:RibbonDefaultPageCategory>

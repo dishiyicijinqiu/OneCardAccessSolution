@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Xpf.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,16 +12,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
-            //DevExpress.Xpf.Core.ThemeManager.ApplicationThemeName = DevExpress.Xpf.Core.Theme.Office2010BlueName;
-            var idialogservice = this.GetService<IDialogService>("LoginWindowService");
-            var loginvm = new LoginViewModel();
-            DevExpress.Xpf.Core.DXSplashScreen.Close();
-            UICommand result = idialogservice.ShowDialog(loginvm.DialogCommands, Properties.Resources.LoginFormTItle, "LoginView", loginvm);
-            if (result == loginvm.CancelUICommand)
-            {
-                System.Windows.Application.Current.Shutdown();
-            }
+            var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
+            Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
+            DXSplashScreen.Close();
+            loginwindowservice.Show("LoginView", null, null, this);
         }
+
+        private void OnLogined(LoginFormResult msg)
+        {
+            Messenger.Default.Unregister<LoginFormResult>(this);
+            if (msg == LoginFormResult.Failed)
+                System.Windows.Application.Current.Shutdown();
+        }
+
         public void ShowDocument(DocumentInfo docInfo)
         {
             var DocumentManager = GetService<IDocumentManagerService>();
@@ -30,6 +34,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             doc.Show();
         }
         #endregion
+        public void Closing(object obj)
+        {
+            CancelEventArgs args = obj as CancelEventArgs;
+            var result = MessageBoxService.ShowMessage(Properties.Resources.ConfirmToExit, Properties.Resources.MessageBoxTip, MessageButton.YesNo, MessageIcon.Information);
+            if (result != MessageResult.Yes)
+                args.Cancel = true;
+        }
+
+        protected virtual IMessageBoxService MessageBoxService { get { return null; } }
     }
     public class DocumentInfo
     {

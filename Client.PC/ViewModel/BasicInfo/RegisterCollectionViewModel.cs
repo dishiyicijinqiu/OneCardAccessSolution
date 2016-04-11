@@ -1,53 +1,42 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.DataAnnotations;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Client.PC.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : ViewModelBase
+    [POCOViewModel]
+    public class RegisterCollectionViewModel : BaseDocumentContent
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
         public RegisterCollectionViewModel()
         {
-            if (!IsInDesignMode)
+            if (!ViewModelBase.IsInDesignMode)
             {
                 var list = basicinfoservice.GetRegisterList();
                 Items = new ObservableCollection<RegisterEntity>(list);
             }
         }
         #region propertys
-        private ObservableCollection<RegisterEntity> _Items;
-        public ObservableCollection<RegisterEntity> Items
+        public IList<RegisterEntity> Items
         {
-            get
-            {
-                return _Items;
-            }
-            private set
-            {
-                _Items = value;
-                RaisePropertyChanged("Items");
-            }
+            get; protected set;
         }
         #endregion
         #region commandmethods
         public void Add()
         {
-            var iwindowservice = this.GetService<IWindowService>();
-            iwindowservice.Show("RegisterView",
-                new RegisterViewModel(
-                    new RegisterEditMessage()
-                    {
-                        Key = 0,
-                        EntityEditMode = EntityEditMode.Add,
-                        IsContinue = false,
-                        CopyKey = 0,
-                    }
-                    ), null, this);
-
+            DialogWindowService.Show("RegisterView", new RegisterEditMessage()
+            {
+                Key = 0,
+                EntityEditMode = EntityEditMode.Add,
+                IsContinue = false,
+                CopyKey = 0,
+            }, this);
         }
         public void CopyAdd()
         {
@@ -62,6 +51,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 
         }
         #endregion
+
+        public void Close()
+        {
+            if (DocumentManagerService != null)
+            {
+                IDocument document = DocumentManagerService.FindDocument(this);
+                if (document != null)
+                    document.Close();
+            };
+        }
     }
     public class RegisterEditMessage : EditMessage<int>
     {

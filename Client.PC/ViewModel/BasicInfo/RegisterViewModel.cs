@@ -1,56 +1,66 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+﻿using DevExpress.Mvvm;
+using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Client.PC.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.ComponentModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterViewModel : DefaultViewModelBase
+    public class RegisterViewModel : DefaultViewModel
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
-        public RegisterViewModel(RegisterEditMessage paramsg)
+        #region propertys
+        public RegisterEntity Entity { get; set; }
+        #endregion
+        protected override void OnParameterChanged(object parameter)
         {
-            if (!IsInDesignMode)
+            base.OnParameterChanged(parameter);
+            RegisterEditMessage paramsg = parameter as RegisterEditMessage;
+            if (!ViewModelBase.IsInDesignMode)
             {
-                this.Parameter = paramsg;
                 if (paramsg == null)
-                    throw new Exception("传入参数为空");
+                    throw new Exception(Properties.Resources.ParaMeterIsError);
                 switch (paramsg.EntityEditMode)
                 {
                     case EntityEditMode.Add:
                         break;
                     case EntityEditMode.CopyAdd:
                     case EntityEditMode.Edit:
-                        _Entity = basicinfoservice.GetRegisterEntityById(paramsg.Key);
+                        Entity = basicinfoservice.GetRegisterEntityById(paramsg.Key);
                         break;
                     default:
-                        throw new Exception("传入参数错误");
+                        throw new Exception(Properties.Resources.ParaMeterIsError);
                 }
-                if (_Entity == null)
-                    _Entity = RegisterEntity.CreateEntity();
+                if (Entity == null)
+                    Entity = RegisterEntity.CreateEntity();
             }
         }
-        #region propertys
-        RegisterEntity _Entity;
-        public RegisterEntity Entity
+        public void Close()
+        {
+            if (CurrentWindowService != null)
+                CurrentWindowService.Close();
+        }
+        EntityEditMode _EntityEditMode = EntityEditMode.Add;
+
+        public EntityEditMode EntityEditMode
         {
             get
             {
-                return _Entity;
+                return _EntityEditMode;
             }
-            set
+            private set
             {
-                if (_Entity != value)
-                {
-                    _Entity = value;
-                    RaisePropertyChanged("Entity");
-                }
+                if (_EntityEditMode == value) return;
+                _EntityEditMode = value;
+                RaisePropertyChanged("EntityEditMode");
             }
         }
-        #endregion
+
+        protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
+        public void Add()
+        {
+        }
     }
 }

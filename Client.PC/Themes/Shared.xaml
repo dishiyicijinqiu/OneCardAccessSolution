@@ -2,6 +2,8 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
+            xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
@@ -18,4 +20,30 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+
+
+
+    <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
+    <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="IsHitTestVisible" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
+        <Setter Property="Opacity" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource opacityConverter}}"/>
+        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}}"/>
+        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlTemplate}}"/>
+    </Style>
+    <Style TargetType="{x:Type dxr:RibbonPagesControl}">
+        <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}}"/>
+        <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PagesControlTemplate}}"/>
+        <Setter Property="Focusable" Value="False"/>
+        <Setter Property="IsTabStop" Value="False"/>
+    </Style>
+    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}">
+        <local:MyRibbonPageGroupsItemsPanel />
+    </ItemsPanelTemplate>
+    <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
+        <local:MyRibbonPagesItemsPanel />
+    </ItemsPanelTemplate>
+
 </ResourceDictionary>

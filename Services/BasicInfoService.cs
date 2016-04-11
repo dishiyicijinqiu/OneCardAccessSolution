@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
-using FengSharp.OneCardAccess.TEntity.BasicInfo;
 
 namespace FengSharp.OneCardAccess.Services
 {

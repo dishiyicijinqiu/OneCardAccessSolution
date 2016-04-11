@@ -1,5 +1,4 @@
-﻿using FengSharp.OneCardAccess.TEntity.RBAC;
-using FengSharp.OneCardAccess.TEntity.BasicInfo;
+﻿using FengSharp.OneCardAccess.TEntity;
 using System.Data.Entity;
 
 namespace FengSharp.OneCardAccess.Services

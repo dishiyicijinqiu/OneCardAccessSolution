@@ -4,9 +4,10 @@
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
                     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+                    xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
-
+    <local:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.AddBarContent}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>
@@ -43,8 +44,26 @@
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
     </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barSave">
+        <Setter Property="Content" Value="{x:Static res:Resources.SaveBarContent}"/>
+        <Setter Property="Command" Value="{Binding SaveCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/save_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/save_32x32.png"/>
+    </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barSaveAndNew">
+        <Setter Property="Content" Value="{x:Static res:Resources.SaveAndNewBarContent}"/>
+        <Setter Property="Command" Value="{Binding barSaveAndNewCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_32x32.png"/>
+    </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barClose">
+        <Setter Property="Content" Value="{x:Static res:Resources.CloseBarContent}"/>
+        <Setter Property="Command" Value="{Binding CloseCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
+    </Style>
 
-    <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="EditWindowStyle">
+    <!--<Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="EditWindowStyle">
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="WindowStyle" Value="None"/>
     </Style>
@@ -58,7 +77,7 @@
                 </DataTemplate>
             </Setter.Value>
         </Setter>
-    </Style>
+    </Style>-->
     <!--<ControlTemplate x:Key="mymvvm">
         <UserControl>
             <dxmvvm:Interaction.Behaviors>

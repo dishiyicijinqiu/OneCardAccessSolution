@@ -16,8 +16,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         }
     }
 
-
-
     public enum GroupAlignment { Left, Right }
     public class MyRibbonPageGroupsItemsPanel : RibbonPageGroupsItemsPanel
     {

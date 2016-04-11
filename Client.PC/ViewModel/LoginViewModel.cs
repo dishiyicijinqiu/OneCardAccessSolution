@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.DataAnnotations;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -9,13 +10,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
-        public IMessageBoxService MessageBoxService
-        {
-            get
-            {
-                return GetService<IMessageBoxService>();
-            }
-        }
+        [ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
+        protected virtual IMessageBoxService MessageBoxService { get { return null; } }
+        protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
         #region Propertys
         public string _UserNo;
         public string UserNo
@@ -48,34 +45,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
         }
         #endregion
-        public LoginViewModel()
-        {
-            DialogCommands = new List<UICommand>();
-            LoginUICommand = new UICommand()
-            {
-                Caption = "登录",
-                IsCancel = false,
-                IsDefault = true,
-                Command = new DelegateCommand<CancelEventArgs>(OnLogin)
-            };
-            DialogCommands.Add(LoginUICommand);
-            CancelUICommand = new UICommand()
-            {
-                Id = System.Windows.MessageBoxResult.Cancel,
-                Caption = "取消",
-                IsCancel = true,
-                IsDefault = false,
-            };
-            DialogCommands.Add(CancelUICommand);
-        }
-
-        #region UICommands
-        public List<UICommand> DialogCommands { get; private set; }
-        public UICommand LoginUICommand { get; private set; }
-        public UICommand CancelUICommand { get; private set; }
-        #endregion
+        
         #region  methods
-        private void OnLogin(CancelEventArgs e)
+        public void Login()
         {
             IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
             LoginResult loginresult = irbacservice.Login(this.UserNo, this.Password);
@@ -83,21 +55,34 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 case LoginMessage.UserNotExist:
                     MessageBoxService.ShowMessage(Properties.Resources.UserNotExist, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
-                    e.Cancel = true;
                     return;
                 case LoginMessage.UserIsLocked:
                     MessageBoxService.ShowMessage(Properties.Resources.UserIsLocked, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
-                    e.Cancel = true;
                     return;
                 case LoginMessage.ErrorPassWord:
                     MessageBoxService.ShowMessage(Properties.Resources.ErrorPassWord, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
-                    e.Cancel = true;
                     return;
                 default:
                     UserIdentity.Current = loginresult.UserIdentity;
+                    Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
+                    CurrentWindowService.Close();
                     break;
             }
         }
+        public void Closing(object obj)
+        {
+            Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
+        }
+
+        public void Cancel()
+        {
+            CurrentWindowService.Close();
+        }
         #endregion
+    }
+    public enum LoginFormResult
+    {
+        Success,
+        Failed
     }
 }

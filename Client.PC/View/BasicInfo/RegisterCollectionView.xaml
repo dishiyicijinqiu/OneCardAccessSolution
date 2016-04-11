@@ -12,10 +12,10 @@
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
+            xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             mc:Ignorable="d" 
             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
             d:DesignHeight="300" d:DesignWidth="300"
-            Style="{DynamicResource ResourceKey=EditUserControlStyle}"
              >
     <UserControl.Resources>
         <ResourceDictionary>
@@ -31,17 +31,17 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
-                <dxr:RibbonDefaultPageCategory Caption="类目管理" x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="产品注册证信息">
+                <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
                         </dxr:RibbonPageGroup>
-                        <!--<dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <dxb:BarButtonItem Style="{StaticResource barReturn}"/>
-                        </dxr:RibbonPageGroup>-->
+                        <dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
+                        </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>

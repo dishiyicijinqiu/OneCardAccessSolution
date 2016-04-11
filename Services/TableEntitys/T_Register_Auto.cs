@@ -1,6 +1,6 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-namespace FengSharp.OneCardAccess.TEntity.BasicInfo
+namespace FengSharp.OneCardAccess.TEntity
 {
 	/// <summary>
 	/// 注册证信息

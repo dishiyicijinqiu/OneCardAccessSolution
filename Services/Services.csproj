@@ -55,17 +55,10 @@
     <Compile Include="OneCardAccessDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBACService.cs" />
-    <Compile Include="TableEntitys\BasicInfo\T_Register_Auto.cs" />
-    <Compile Include="TableEntitys\RBAC\T_UserInfo_Auto.cs" />
+    <Compile Include="TableEntitys\T_Register_Auto.cs" />
+    <Compile Include="TableEntitys\T_UserInfo_Auto.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TableEntitys\BSS\" />
-    <Folder Include="TableEntitys\CRM\" />
-    <Folder Include="TableEntitys\Hr\" />
-    <Folder Include="TableEntitys\OrderModule\" />
-    <Folder Include="TableEntitys\ProduceModule\" />
-    <Folder Include="TableEntitys\SMS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

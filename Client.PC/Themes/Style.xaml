@@ -7,9 +7,12 @@
                     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+                    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
     <local:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
+    <dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.AddBarContent}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>
@@ -65,14 +68,14 @@
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
     </Style>
 
-    <DataTemplate x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate, IsThemeIndependent=True}" >
+    <DataTemplate x:Key="CateRowIndicatorThemeKey" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>
                 <ContentPresenter x:Name="iconPresenter" Content="{x:Null}"
                                   DockPanel.Dock="Right" Width="auto" 
                                   />
                 <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" Text="{Binding Path=RowHandle.Value}"
+                           VerticalAlignment="Center" Text="88"
                            >
                 </TextBlock>
             </DockPanel>
@@ -112,7 +115,24 @@
 
         </DataTemplate.Triggers>
     </DataTemplate>
+    <!--<Setter Property="RowIndicatorContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate}}" />-->
 
+
+    <!--<Style TargetType="dxg:GridControl" x:Key="GridControlDoubleClickStyle">
+        <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentControl>
+                        <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding MouseDoubleClickCommand}" EventName="MouseDoubleClick">
+                            <dxmvvm:EventToCommand.EventArgsConverter>
+                                <dxc:EventArgsToDataRowConverter/>
+                            </dxmvvm:EventToCommand.EventArgsConverter>
+                        </dxmvvm:EventToCommand>
+                    </ContentControl>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>-->
     <!--<Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="EditWindowStyle">
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="WindowStyle" Value="None"/>

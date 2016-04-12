@@ -49,10 +49,13 @@
             <dxg:GridControl x:Name="gridcontrol" 
                 SelectedItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
                 CurrentItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
-				ItemsSource="{Binding Items}" Grid.Row="1" 
-                         >
+				ItemsSource="{Binding Items}" Grid.Row="1">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding MouseDoubleClickCommand}" EventName="MouseDoubleClick" 
+                                           EventArgsConverter="{StaticResource eventArgsToDataRowConverter}"/>
+                </dxmvvm:Interaction.Behaviors>
                 <dxg:GridControl.View>
-                    <dxg:TableView x:Name="myview" />
+                    <dxg:TableView x:Name="myview" RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" />
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>

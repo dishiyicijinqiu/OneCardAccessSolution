@@ -27,8 +27,8 @@ namespace FengSharp.OneCardAccess.Services
             using (OneCardAccessDbContext db = new OneCardAccessDbContext())
             {
                 var datalist = db.T_Registers.Where(t => !t.Deleted).ToList();
-                var results = new List<RegisterEntity>(datalist.Count);
-                ClassValueCopier.CopyArray(results, datalist);
+                var results = new List<RegisterEntity>(new RegisterEntity[datalist.Count]);
+               ClassValueCopier.CopyArray(results, datalist);
                 return results;
             }
         }

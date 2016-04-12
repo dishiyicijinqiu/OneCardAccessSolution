@@ -26,6 +26,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             get; protected set;
         }
+        public RegisterEntity SelectedEntity { get; set; }
         #endregion
         #region commandmethods
         public void Add()
@@ -44,7 +45,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void Edit()
         {
-
+            if (SelectedEntity == null)
+            {
+                MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                return;
+            }
         }
         public void Delete()
         {
@@ -52,20 +57,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void MouseDoubleClick(RegisterEntity entity)
         {
-
+            Edit();
         }
-        
         #endregion
-
-        public void Close()
-        {
-            if (DocumentManagerService != null)
-            {
-                IDocument document = DocumentManagerService.FindDocument(this);
-                if (document != null)
-                    document.Close();
-            };
-        }
     }
     public class RegisterEditMessage : EditMessage<int>
     {

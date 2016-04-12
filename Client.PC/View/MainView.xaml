@@ -30,7 +30,7 @@
         <dx:DXMessageBoxService/>
         <dxmvvm:WindowService Name="LoginWindowService" WindowType="{x:Type dxr:DXRibbonWindow}" 
                               WindowStyle="{StaticResource LoginWindowStyle}" 
-                              Title="{x:Static res:Resources.LoginView_Title}"
+                              Title="{x:Static res:Resources.View_LoginView_Title}"
                               WindowStartupLocation="CenterOwner" WindowShowMode="Dialog">
         </dxmvvm:WindowService>
         <dxmvvm:WindowService WindowType="{x:Type dxr:DXRibbonWindow}" WindowStyle="{DynamicResource ResourceKey=DialogWindowStyle}"  WindowStartupLocation="CenterOwner" WindowShowMode="Dialog"/>
@@ -48,7 +48,7 @@
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
             <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_Register}" 
@@ -56,7 +56,7 @@
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>

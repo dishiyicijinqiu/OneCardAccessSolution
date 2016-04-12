@@ -60,11 +60,19 @@ namespace FengSharp.OneCardAccess.Client.PC.Core
         protected virtual IWindowService DialogWindowService { get { return null; } }
         [ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
         protected virtual IDocumentManagerService DocumentManagerService { get { return null; } }
-        
 
         public virtual void OnParameterChanged(object parameter)
         {
 
+        }
+        public virtual void Close()
+        {
+            if (DocumentManagerService != null)
+            {
+                IDocument document = DocumentManagerService.FindDocument(this);
+                if (document != null)
+                    document.Close();
+            };
         }
     }
 }

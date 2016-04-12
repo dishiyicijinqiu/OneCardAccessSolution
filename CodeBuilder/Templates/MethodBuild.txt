@@ -1,51 +1,79 @@
-﻿public static UserACPrivilege DataRowToEntity(DataRow dr)
+﻿public static T_Register DataRowToEntity(DataRow dr)
 {
     if (dr == null)
         return null;
-    var result = new UserACPrivilege();
-	result.UserID = (int)dr["UserID"];
-	result.DeviceID = (int)dr["DeviceID"];
-	result.ACGroupID = (int)dr["ACGroupID"];
-	result.IsUseGroup = (bool)dr["IsUseGroup"];
-	result.TimeZone1 = (int)dr["TimeZone1"];
-	result.TimeZone2 = (int)dr["TimeZone2"];
-	result.TimeZone3 = (int)dr["TimeZone3"];
-	result.verifystyle = (int)dr["verifystyle"];
-	result.ACGroupID1 = (string)dr["ACGroupID1"];
-	result.TimeZone11 = (string)dr["TimeZone11"];
-	result.TimeZone21 = (string)dr["TimeZone21"];
-	result.TimeZone31 = (string)dr["TimeZone31"];
+    var result = new T_Register();
+	result.RegisterId = (int)dr["RegisterId"];
+	result.RegisterNo = (string)dr["RegisterNo"];
+	result.RegisterProductName = (string)dr["RegisterProductName"];
+	result.StandardCode = (string)dr["StandardCode"];
+	result.RegisterNo1 = (string)dr["RegisterNo1"];
+	result.RegisterProductName1 = (string)dr["RegisterProductName1"];
+	result.StandardCode1 = (string)dr["StandardCode1"];
+	result.RegisterFile = (string)dr["RegisterFile"];
+	result.StartDate = (string)dr["StartDate"];
+	result.EndDate = (string)dr["EndDate"];
+	result.CreateId = (int)dr["CreateId"];
+	result.CreateDate = (DateTime)dr["CreateDate"];
+	result.LastModifyId = (int)dr["LastModifyId"];
+	result.LastModifyDate = (DateTime)dr["LastModifyDate"];
+	result.Remark = (string)dr["Remark"];
+	result.Deleted = (bool)dr["Deleted"];
     return result;
 }
 
-UserID,DeviceID,ACGroupID,IsUseGroup,TimeZone1,TimeZone2,TimeZone3,verifystyle,ACGroupID1,TimeZone11,TimeZone21,TimeZone31,
-@UserID,@DeviceID,@ACGroupID,@IsUseGroup,@TimeZone1,@TimeZone2,@TimeZone3,@verifystyle,@ACGroupID1,@TimeZone11,@TimeZone21,@TimeZone31,
+RegisterId,RegisterNo,RegisterProductName,StandardCode,RegisterNo1,RegisterProductName1,StandardCode1,RegisterFile,StartDate,EndDate,CreateId,CreateDate,LastModifyId,LastModifyDate,Remark,Deleted,
+@RegisterId,@RegisterNo,@RegisterProductName,@StandardCode,@RegisterNo1,@RegisterProductName1,@StandardCode1,@RegisterFile,@StartDate,@EndDate,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Remark,@Deleted,
 
 
-sbSql.Append("UserID=@UserID, ");
-sbSql.Append("DeviceID=@DeviceID, ");
-sbSql.Append("ACGroupID=@ACGroupID, ");
-sbSql.Append("IsUseGroup=@IsUseGroup, ");
-sbSql.Append("TimeZone1=@TimeZone1, ");
-sbSql.Append("TimeZone2=@TimeZone2, ");
-sbSql.Append("TimeZone3=@TimeZone3, ");
-sbSql.Append("verifystyle=@verifystyle, ");
-sbSql.Append("ACGroupID1=@ACGroupID1, ");
-sbSql.Append("TimeZone11=@TimeZone11, ");
-sbSql.Append("TimeZone21=@TimeZone21, ");
-sbSql.Append("TimeZone31=@TimeZone31, ");
+sbSql.Append("RegisterId=@RegisterId, ");
+sbSql.Append("RegisterNo=@RegisterNo, ");
+sbSql.Append("RegisterProductName=@RegisterProductName, ");
+sbSql.Append("StandardCode=@StandardCode, ");
+sbSql.Append("RegisterNo1=@RegisterNo1, ");
+sbSql.Append("RegisterProductName1=@RegisterProductName1, ");
+sbSql.Append("StandardCode1=@StandardCode1, ");
+sbSql.Append("RegisterFile=@RegisterFile, ");
+sbSql.Append("StartDate=@StartDate, ");
+sbSql.Append("EndDate=@EndDate, ");
+sbSql.Append("CreateId=@CreateId, ");
+sbSql.Append("CreateDate=@CreateDate, ");
+sbSql.Append("LastModifyId=@LastModifyId, ");
+sbSql.Append("LastModifyDate=@LastModifyDate, ");
+sbSql.Append("Remark=@Remark, ");
+sbSql.Append("Deleted=@Deleted, ");
 
-Database.AddInParameter(cmd, "UserID", DbType.int, model.UserID);
-Database.AddInParameter(cmd, "DeviceID", DbType.int, model.DeviceID);
-Database.AddInParameter(cmd, "ACGroupID", DbType.int, model.ACGroupID);
-Database.AddInParameter(cmd, "IsUseGroup", DbType.bool, model.IsUseGroup);
-Database.AddInParameter(cmd, "TimeZone1", DbType.int, model.TimeZone1);
-Database.AddInParameter(cmd, "TimeZone2", DbType.int, model.TimeZone2);
-Database.AddInParameter(cmd, "TimeZone3", DbType.int, model.TimeZone3);
-Database.AddInParameter(cmd, "verifystyle", DbType.int, model.verifystyle);
-Database.AddInParameter(cmd, "ACGroupID1", DbType.string, model.ACGroupID1);
-Database.AddInParameter(cmd, "TimeZone11", DbType.string, model.TimeZone11);
-Database.AddInParameter(cmd, "TimeZone21", DbType.string, model.TimeZone21);
-Database.AddInParameter(cmd, "TimeZone31", DbType.string, model.TimeZone31);
+Database.AddInParameter(cmd, "RegisterId", DbType.int, model.RegisterId);
+Database.AddInParameter(cmd, "RegisterNo", DbType.string, model.RegisterNo);
+Database.AddInParameter(cmd, "RegisterProductName", DbType.string, model.RegisterProductName);
+Database.AddInParameter(cmd, "StandardCode", DbType.string, model.StandardCode);
+Database.AddInParameter(cmd, "RegisterNo1", DbType.string, model.RegisterNo1);
+Database.AddInParameter(cmd, "RegisterProductName1", DbType.string, model.RegisterProductName1);
+Database.AddInParameter(cmd, "StandardCode1", DbType.string, model.StandardCode1);
+Database.AddInParameter(cmd, "RegisterFile", DbType.string, model.RegisterFile);
+Database.AddInParameter(cmd, "StartDate", DbType.string, model.StartDate);
+Database.AddInParameter(cmd, "EndDate", DbType.string, model.EndDate);
+Database.AddInParameter(cmd, "CreateId", DbType.int, model.CreateId);
+Database.AddInParameter(cmd, "CreateDate", DbType.DateTime, model.CreateDate);
+Database.AddInParameter(cmd, "LastModifyId", DbType.int, model.LastModifyId);
+Database.AddInParameter(cmd, "LastModifyDate", DbType.DateTime, model.LastModifyDate);
+Database.AddInParameter(cmd, "Remark", DbType.string, model.Remark);
+Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
 
+<dxg:GridColumn FieldName="RegisterId" Header="主键Id"/>
+<dxg:GridColumn FieldName="RegisterNo" Header="注册证编号"/>
+<dxg:GridColumn FieldName="RegisterProductName" Header="注册证名称"/>
+<dxg:GridColumn FieldName="StandardCode" Header="标准号"/>
+<dxg:GridColumn FieldName="RegisterNo1" Header="注册证编号(英文)"/>
+<dxg:GridColumn FieldName="RegisterProductName1" Header="注册证名称(英文)"/>
+<dxg:GridColumn FieldName="StandardCode1" Header="标准号(英文)"/>
+<dxg:GridColumn FieldName="RegisterFile" Header="注册证文件"/>
+<dxg:GridColumn FieldName="StartDate" Header="启用日期"/>
+<dxg:GridColumn FieldName="EndDate" Header="停用日期"/>
+<dxg:GridColumn FieldName="CreateId" Header="创建人Id"/>
+<dxg:GridColumn FieldName="CreateDate" Header="创建日期"/>
+<dxg:GridColumn FieldName="LastModifyId" Header="最后更改人Id"/>
+<dxg:GridColumn FieldName="LastModifyDate" Header="最后更改日期"/>
+<dxg:GridColumn FieldName="Remark" Header="备注"/>
+<dxg:GridColumn FieldName="Deleted" Header="删除标识"/>
 

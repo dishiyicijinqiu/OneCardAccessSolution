@@ -35,9 +35,12 @@ sbSql.Append("<#=column.ColumnName#>=@<#=column.ColumnName#>, ");
 Database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CSharpType#>, model.<#=column.ColumnName#>);
 <#}#>
 
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+<dxg:GridColumn FieldName="<#=column.ColumnName#>" Header="<#=column.Remark#>"/>
+<#}#>
 
 <#}#>
 <#+
-public static readonly string TableName="UserACPrivilege";
+public static readonly string TableName="T_Register";
 public static readonly bool IsBuilder= true;
 #>

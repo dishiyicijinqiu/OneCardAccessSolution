@@ -54,13 +54,13 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             switch (loginresult.LoginMessage)
             {
                 case LoginMessage.UserNotExist:
-                    MessageBoxService.ShowMessage(Properties.Resources.UserNotExist, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
+                    MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                     return;
                 case LoginMessage.UserIsLocked:
-                    MessageBoxService.ShowMessage(Properties.Resources.UserIsLocked, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
+                    MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsLocked, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                     return;
                 case LoginMessage.ErrorPassWord:
-                    MessageBoxService.ShowMessage(Properties.Resources.ErrorPassWord, Properties.Resources.MessageBoxError, MessageButton.OK, MessageIcon.Error);
+                    MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                     return;
                 default:
                     UserIdentity.Current = loginresult.UserIdentity;

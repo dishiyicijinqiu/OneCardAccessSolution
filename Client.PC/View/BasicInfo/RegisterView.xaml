@@ -37,7 +37,7 @@
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.RegisterView_Title}">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barSave}"/>
                             <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"

@@ -37,7 +37,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         public void Closing(object obj)
         {
             CancelEventArgs args = obj as CancelEventArgs;
-            var result = MessageBoxService.ShowMessage(Properties.Resources.ConfirmToExit, Properties.Resources.MessageBoxTip, MessageButton.YesNo, MessageIcon.Information);
+            var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
             if (result != MessageResult.Yes)
                 args.Cancel = true;
         }

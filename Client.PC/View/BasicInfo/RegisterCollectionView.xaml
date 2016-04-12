@@ -32,7 +32,7 @@
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.RegisterCollectionView_Title}">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}"/>
@@ -54,8 +54,24 @@
                     <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding MouseDoubleClickCommand}" EventName="MouseDoubleClick" 
                                            EventArgsConverter="{StaticResource eventArgsToDataRowConverter}"/>
                 </dxmvvm:Interaction.Behaviors>
+                <dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="RegisterNo" Header="注册证编号"/>
+                    <dxg:GridColumn FieldName="RegisterProductName" Header="注册证名称"/>
+                    <dxg:GridColumn FieldName="StandardCode" Header="标准号"/>
+                    <dxg:GridColumn FieldName="RegisterNo1" Header="注册证编号(英文)"/>
+                    <dxg:GridColumn FieldName="RegisterProductName1" Header="注册证名称(英文)"/>
+                    <dxg:GridColumn FieldName="StandardCode1" Header="标准号(英文)"/>
+                    <dxg:GridColumn FieldName="StartDate" Header="启用日期"/>
+                    <dxg:GridColumn FieldName="EndDate" Header="停用日期"/>
+                    <dxg:GridColumn FieldName="Creater" Header="创建人"/>
+                    <dxg:GridColumn FieldName="CreateDate" Header="创建日期"/>
+                    <dxg:GridColumn FieldName="LastModifyer" Header="最后更改人"/>
+                    <dxg:GridColumn FieldName="LastModifyDate" Header="最后更改日期"/>
+                    <dxg:GridColumn FieldName="Remark" Header="备注"/>
+                </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
-                    <dxg:TableView x:Name="myview" RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" />
+                    <dxg:TableView x:Name="myview" />
+                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>

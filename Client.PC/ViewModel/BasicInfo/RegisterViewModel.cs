@@ -21,7 +21,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             if (!ViewModelBase.IsInDesignMode)
             {
                 if (paramsg == null)
-                    throw new Exception(Properties.Resources.ParaMeterIsError);
+                    throw new Exception(Properties.Resources.Error_ParameterIsError);
                 switch (paramsg.EntityEditMode)
                 {
                     case EntityEditMode.Add:
@@ -31,7 +31,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         Entity = basicinfoservice.GetRegisterEntityById(paramsg.Key);
                         break;
                     default:
-                        throw new Exception(Properties.Resources.ParaMeterIsError);
+                        throw new Exception(Properties.Resources.Error_ParameterIsError);
                 }
                 if (Entity == null)
                     Entity = RegisterEntity.CreateEntity();

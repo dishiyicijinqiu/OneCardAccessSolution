@@ -37,10 +37,6 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public string StandardCode1 { get; set; }
 		/// <summary>
-		/// 注册证文件
-		/// </summary>
-		public string RegisterFile { get; set; }
-		/// <summary>
 		/// 启用日期
 		/// </summary>
 		public string StartDate { get; set; }

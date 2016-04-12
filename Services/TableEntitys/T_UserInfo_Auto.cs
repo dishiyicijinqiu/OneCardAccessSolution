@@ -1,3 +1,4 @@
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.ComponentModel.DataAnnotations;
 namespace FengSharp.OneCardAccess.TEntity
@@ -7,11 +8,11 @@ namespace FengSharp.OneCardAccess.TEntity
 	/// </summary>
 	public class T_UserInfo
 	{
-		/// <summary>
-		/// 用户Id
-		/// </summary>
-		[Key]
-		public int UserId { get; set; }
+        /// <summary>
+        /// 用户Id
+        /// </summary>
+        [DataBaseKey]
+        public int UserId { get; set; }
 		/// <summary>
 		/// 用户账号
 		/// </summary>

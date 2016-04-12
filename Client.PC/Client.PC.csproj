@@ -72,6 +72,7 @@
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\EditModeVisibleConverter.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
+    <Compile Include="Core\RowHandleConverter.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

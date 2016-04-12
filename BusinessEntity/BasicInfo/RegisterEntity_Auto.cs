@@ -1,3 +1,4 @@
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.Runtime.Serialization;
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
@@ -27,6 +28,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         /// 主键Id
         /// </summary>
         [DataMember]
+        [DataBaseKey]
         public int RegisterId { get; set; }
         /// <summary>
         /// 注册证编号

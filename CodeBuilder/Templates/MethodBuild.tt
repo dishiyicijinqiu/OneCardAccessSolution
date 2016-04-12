@@ -49,22 +49,77 @@ Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=colum
 if(column.ColumnName.ToLower()=="createid"){
 #>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}">
-		<dxe:TextEdit EditValue="{Binding Entity.Creater}"/>
+		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
 	</dxlc:LayoutItem>
 <#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}">
-		<dxe:TextEdit EditValue="{Binding Entity.LastModifyer}"/>
+		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
 	</dxlc:LayoutItem>
 <#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}">
-		<dxe:TextEdit EditValue="{Binding Entity.<#=column.ColumnName#>, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+		<dxe:TextEdit EditValue="{Binding <#=column.ColumnName#>, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
+<#}
+}#>
+
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()=="createid"){
+#>
+		public string Creater
+        {
+            get
+            {
+                return Entity.Creater;
+            }
+            set
+            {
+                if (Entity.Creater != value)
+                {
+                    Entity.Creater = value;
+                    RaisePropertyChanged("Creater");
+                }
+            }
+        }
+<#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
+		public string LastModifyer
+        {
+            get
+            {
+                return Entity.LastModifyer;
+            }
+            set
+            {
+                if (Entity.LastModifyer != value)
+                {
+                    Entity.LastModifyer = value;
+                    RaisePropertyChanged("LastModifyer");
+                }
+            }
+        }
+<#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
+		public <#= column.CSharpType#> <#=column.ColumnName#>
+        {
+            get
+            {
+                return Entity.<#=column.ColumnName#>;
+            }
+            set
+            {
+                if (Entity.<#=column.ColumnName#> != value)
+                {
+                    Entity.<#=column.ColumnName#> = value;
+                    RaisePropertyChanged("<#=column.ColumnName#>");
+                }
+            }
+        }
 <#}
 }#>
 
 
 <#}#>
 <#+
-public static readonly string TableName="T_Register";
+public static readonly string TableName="T_Register_File";
 public static readonly bool IsBuilder= true;
 #>

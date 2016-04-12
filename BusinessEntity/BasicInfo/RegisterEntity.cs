@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
@@ -6,7 +7,14 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
     {
         public static RegisterEntity CreateEntity()
         {
-            return new RegisterEntity()
+            return new RegisterEntity();
+        }
+    }
+    public class FirstRegisterEntity : RegisterEntity
+    {
+        public new static FirstRegisterEntity CreateEntity()
+        {
+            return new FirstRegisterEntity()
             {
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
@@ -16,5 +24,18 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         public string Creater { get; set; }
         [DataMember]
         public string LastModifyer { get; set; }
+    }
+
+    public class SecondRegisterEntity : FirstRegisterEntity
+    {
+        public new static SecondRegisterEntity CreateEntity()
+        {
+            return new SecondRegisterEntity()
+            {
+                Creater = string.Empty,
+                LastModifyer = string.Empty,
+            };
+        }
+        public List<Register_FileEntity> Register_FileEntitys { get; set; }
     }
 }

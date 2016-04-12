@@ -74,6 +74,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\DataBaseKeyAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionExtractionMessageInspector.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehavior.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs" />

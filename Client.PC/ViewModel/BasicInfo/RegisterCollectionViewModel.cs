@@ -17,16 +17,17 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             if (!ViewModelBase.IsInDesignMode)
             {
-                var list = basicinfoservice.GetRegisterList();
-                Items = new ObservableCollection<RegisterEntity>(list);
+                var list = basicinfoservice.GetFirstRegisterList();
+                //Items = new ObservableCollection<RegisterEntity>(list);
+                Items = list;
             }
         }
         #region propertys
-        public IList<RegisterEntity> Items
+        public IList<FirstRegisterEntity> Items
         {
             get; protected set;
         }
-        public RegisterEntity SelectedEntity { get; set; }
+        public FirstRegisterEntity SelectedEntity { get; set; }
         #endregion
         #region commandmethods
         public void Add()

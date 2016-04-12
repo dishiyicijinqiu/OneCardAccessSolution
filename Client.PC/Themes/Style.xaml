@@ -67,6 +67,18 @@
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
     </Style>
+    <Style TargetType="dxe:TextEdit" x:Key="teCreateDate">
+        <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="MaskType" Value="DateTime"/>
+        <Setter Property="Mask" Value="yyyy年MM月dd日 HH:mm:ss"/>
+    </Style>
+    <Style TargetType="dxe:TextEdit" x:Key="teLastModifyDate">
+        <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="MaskType" Value="DateTime"/>
+        <Setter Property="Mask" Value="yyyy年MM月dd日 HH:mm:ss"/>
+    </Style>
 
     <DataTemplate x:Key="CateRowIndicatorThemeKey" >
         <Grid x:Name="rootOfRowIndicator">

@@ -8,8 +8,10 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     public interface IBasicInfoService
     {
         [OperationContract]
-        List<RegisterEntity> GetRegisterList();
+        List<FirstRegisterEntity> GetFirstRegisterList();
         [OperationContract]
-        RegisterEntity GetRegisterEntityById(int RegisterId);
+        SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId);
+        [OperationContract]
+        int Save(SecondRegisterEntity entity);
     }
 }

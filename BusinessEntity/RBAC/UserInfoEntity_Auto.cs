@@ -1,3 +1,4 @@
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.Runtime.Serialization;
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
@@ -22,6 +23,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
         /// 用户Id
         /// </summary>
         [DataMember]
+        [DataBaseKey]
         public int UserId { get; set; }
         /// <summary>
         /// 用户账号

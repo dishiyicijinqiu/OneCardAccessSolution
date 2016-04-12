@@ -1,3 +1,4 @@
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.Runtime.Serialization;
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
@@ -6,7 +7,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 	/// 注册证附件表
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public class Register_FileEntity
+	public partial class Register_FileEntity
 	{
 		/// <summary>
 		/// 构造函数
@@ -21,7 +22,8 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 		/// 注册证附件Id
 		/// </summary>
 		[DataMember]
-		public string Id { get; set; }
+        [DataBaseKey(DataBaseKeyType.Guid)]
+        public string Id { get; set; }
 		/// <summary>
 		/// 注册证Id
 		/// </summary>

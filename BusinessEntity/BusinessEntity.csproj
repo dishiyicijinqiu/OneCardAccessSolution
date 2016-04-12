@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BasicInfo\RegisterEntity.cs" />
     <Compile Include="BasicInfo\RegisterEntity_Auto.cs" />
+    <Compile Include="BasicInfo\Register_FileEntity.cs" />
     <Compile Include="BasicInfo\Register_FileEntity_Auto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBAC\LoginResult.cs" />
@@ -55,6 +56,12 @@
     <Folder Include="OrderModule\" />
     <Folder Include="ProduceModule\" />
     <Folder Include="SMS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{89DD6B99-D85B-4D96-8CF6-2A7044C87D1E}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

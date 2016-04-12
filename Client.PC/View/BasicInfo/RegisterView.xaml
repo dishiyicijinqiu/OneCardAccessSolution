@@ -17,7 +17,7 @@
     mc:Ignorable="d"
     x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterView"
     DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"
-    Width="666" Height="553"
+    Width="829" Height="542"
     >
     <UserControl.Resources>
         <ResourceDictionary>
@@ -50,44 +50,76 @@
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-            <dxlc:LayoutControl Grid.Row="1">
-                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
-                    <dxlc:LayoutItem Label="注册证编号">
-                        <dxe:TextEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="注册证名称">
-                        <dxe:TextEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="标准号">
-                        <dxe:TextEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="启用日期">
-                        <dxe:DateEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutGroup Header="附件" View="GroupBox">
-                        <dxlc:LayoutItem>
-                            <dxg:GridControl EnableSmartColumnsGeneration="True">
-                                <dxg:GridControl.View>
-                                    <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
-                                </dxg:GridControl.View>
-                            </dxg:GridControl>
+            <dxlc:LayoutControl Grid.Row="1" Orientation="Vertical">
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo}">
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName}">
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
+                            <dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StartDate}">
+                            <dxe:DateEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutGroup Header="附件" View="GroupBox">
+                            <dxlc:LayoutItem>
+                                <dxg:GridControl>
+                                    <dxg:GridControl.View>
+                                        <dxg:TableView />
+                                    </dxg:GridControl.View>
+                                </dxg:GridControl>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo1}">
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName1}">
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">
+                            <dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
+                            <dxe:DateEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                        <dxlc:LayoutGroup Header="检验报告模板" View="GroupBox">
+                            <dxlc:LayoutItem>
+                                <dxg:GridControl>
+                                    <dxg:GridControl.Columns>
+                                        <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}"/>
+                                        <dxg:GridColumn FieldName="FilePath" Header="{x:Static res:Resources.Entity_Register_File_FilePath}"/>
+                                        <dxg:GridColumn FieldName="SortNo" Header="{x:Static res:Resources.Entity_Register_File_SortNo}"/>
+                                    </dxg:GridControl.Columns>
+                                    <dxg:GridControl.View>
+                                        <dxg:TableView />
+                                    </dxg:GridControl.View>
+                                </dxg:GridControl>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>
-                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
-                    <dxlc:LayoutItem Label="英文注册证编号">
-                        <dxe:TextEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="英文注册证名称">
-                        <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="英文标准号">
-                        <dxe:TextEdit/>
-                    </dxlc:LayoutItem>
-                    <dxlc:LayoutItem Label="停用日期">
-                        <dxe:DateEdit/>
-                    </dxlc:LayoutItem>
-                </dxlc:LayoutGroup>
+
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Creater}">
+                    <dxe:TextEdit EditValue="{Binding Entity.Creater}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_CreateDate}">
+                    <dxe:TextEdit EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyer}">
+                    <dxe:TextEdit EditValue="{Binding Entity.LastModifyer}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyDate}">
+                    <dxe:TextEdit EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Remark}">
+                    <dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
             </dxlc:LayoutControl>
         </Grid>
     </dxb:BarManager>

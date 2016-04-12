@@ -36,8 +36,32 @@ Database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CSharpT
 <#}#>
 
 <# foreach(DbColumn column in dbhost.DbColumns){#>
-<dxg:GridColumn FieldName="<#=column.ColumnName#>" Header="<#=column.Remark#>"/>
+<dxg:GridColumn FieldName="<#=column.ColumnName#>" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}"/>
 <#}#>
+
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=column.Remark#>
+<#}#>
+
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()=="createid"){
+#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}">
+		<dxe:TextEdit EditValue="{Binding Entity.Creater}"/>
+	</dxlc:LayoutItem>
+<#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}">
+		<dxe:TextEdit EditValue="{Binding Entity.LastModifyer}"/>
+	</dxlc:LayoutItem>
+<#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}">
+		<dxe:TextEdit EditValue="{Binding Entity.<#=column.ColumnName#>, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+<#}
+}#>
+
 
 <#}#>
 <#+

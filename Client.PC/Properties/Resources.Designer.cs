@@ -187,6 +187,150 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_Register_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_Creater {
+            get {
+                return ResourceManager.GetString("Entity_Register_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 停用日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_EndDate {
+            get {
+                return ResourceManager.GetString("Entity_Register_EndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文件名 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_File_FileName {
+            get {
+                return ResourceManager.GetString("Entity_Register_File_FileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存路径 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_File_FilePath {
+            get {
+                return ResourceManager.GetString("Entity_Register_File_FilePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 序号 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_File_SortNo {
+            get {
+                return ResourceManager.GetString("Entity_Register_File_SortNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_Register_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_Register_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证编号 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterNo {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证编号(英文) 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterNo1 {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterNo1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterProductName {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterProductName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证名称(英文) 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterProductName1 {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterProductName1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_Remark {
+            get {
+                return ResourceManager.GetString("Entity_Register_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 标准号 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_StandardCode {
+            get {
+                return ResourceManager.GetString("Entity_Register_StandardCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 标准号(英文) 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_StandardCode1 {
+            get {
+                return ResourceManager.GetString("Entity_Register_StandardCode1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 启用日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_StartDate {
+            get {
+                return ResourceManager.GetString("Entity_Register_StartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 参数错误 的本地化字符串。
         /// </summary>
         public static string Error_ParameterIsError {

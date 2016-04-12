@@ -31,13 +31,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region commandmethods
         public void Add()
         {
-            DialogWindowService.Show("RegisterView", new RegisterEditMessage()
-            {
-                Key = 0,
-                EntityEditMode = EntityEditMode.Add,
-                IsContinue = false,
-                CopyKey = 0,
-            }, this);
+            DialogWindowService.Show("RegisterView", new RegisterEditMessage(), this);
         }
         public void CopyAdd()
         {
@@ -50,6 +44,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                 return;
             }
+            DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
         }
         public void Delete()
         {
@@ -63,6 +58,13 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
     }
     public class RegisterEditMessage : EditMessage<int>
     {
+        public RegisterEditMessage(int _Key = 0, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, int _CopyKey = 0)
+        {
+            Key = _Key;
+            EntityEditMode = _EntityEditMode;
+            IsContinue = _IsContinue;
+            CopyKey = _CopyKey;
+        }
         public int CopyKey { get; set; }
     }
 }

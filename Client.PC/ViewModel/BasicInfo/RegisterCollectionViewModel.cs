@@ -50,6 +50,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
 
         }
+        public void MouseDoubleClick(RegisterEntity entity)
+        {
+
+        }
+        
         #endregion
 
         public void Close()

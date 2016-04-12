@@ -216,4 +216,52 @@
   <data name="Info_SelectAtLeastOne" xml:space="preserve">
     <value>至少选择一项</value>
   </data>
+  <data name="Entity_Register_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Register_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Register_EndDate" xml:space="preserve">
+    <value>停用日期</value>
+  </data>
+  <data name="Entity_Register_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Register_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Register_RegisterNo" xml:space="preserve">
+    <value>注册证编号</value>
+  </data>
+  <data name="Entity_Register_RegisterNo1" xml:space="preserve">
+    <value>注册证编号(英文)</value>
+  </data>
+  <data name="Entity_Register_RegisterProductName" xml:space="preserve">
+    <value>注册证名称</value>
+  </data>
+  <data name="Entity_Register_RegisterProductName1" xml:space="preserve">
+    <value>注册证名称(英文)</value>
+  </data>
+  <data name="Entity_Register_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_Register_StandardCode" xml:space="preserve">
+    <value>标准号</value>
+  </data>
+  <data name="Entity_Register_StandardCode1" xml:space="preserve">
+    <value>标准号(英文)</value>
+  </data>
+  <data name="Entity_Register_StartDate" xml:space="preserve">
+    <value>启用日期</value>
+  </data>
+  <data name="Entity_Register_File_FileName" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="Entity_Register_File_FilePath" xml:space="preserve">
+    <value>保存路径</value>
+  </data>
+  <data name="Entity_Register_File_SortNo" xml:space="preserve">
+    <value>序号</value>
+  </data>
 </root>

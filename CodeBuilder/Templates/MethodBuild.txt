@@ -10,7 +10,6 @@
 	result.RegisterNo1 = (string)dr["RegisterNo1"];
 	result.RegisterProductName1 = (string)dr["RegisterProductName1"];
 	result.StandardCode1 = (string)dr["StandardCode1"];
-	result.RegisterFile = (string)dr["RegisterFile"];
 	result.StartDate = (string)dr["StartDate"];
 	result.EndDate = (string)dr["EndDate"];
 	result.CreateId = (int)dr["CreateId"];
@@ -22,8 +21,8 @@
     return result;
 }
 
-RegisterId,RegisterNo,RegisterProductName,StandardCode,RegisterNo1,RegisterProductName1,StandardCode1,RegisterFile,StartDate,EndDate,CreateId,CreateDate,LastModifyId,LastModifyDate,Remark,Deleted,
-@RegisterId,@RegisterNo,@RegisterProductName,@StandardCode,@RegisterNo1,@RegisterProductName1,@StandardCode1,@RegisterFile,@StartDate,@EndDate,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Remark,@Deleted,
+RegisterId,RegisterNo,RegisterProductName,StandardCode,RegisterNo1,RegisterProductName1,StandardCode1,StartDate,EndDate,CreateId,CreateDate,LastModifyId,LastModifyDate,Remark,Deleted,
+@RegisterId,@RegisterNo,@RegisterProductName,@StandardCode,@RegisterNo1,@RegisterProductName1,@StandardCode1,@StartDate,@EndDate,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Remark,@Deleted,
 
 
 sbSql.Append("RegisterId=@RegisterId, ");
@@ -33,7 +32,6 @@ sbSql.Append("StandardCode=@StandardCode, ");
 sbSql.Append("RegisterNo1=@RegisterNo1, ");
 sbSql.Append("RegisterProductName1=@RegisterProductName1, ");
 sbSql.Append("StandardCode1=@StandardCode1, ");
-sbSql.Append("RegisterFile=@RegisterFile, ");
 sbSql.Append("StartDate=@StartDate, ");
 sbSql.Append("EndDate=@EndDate, ");
 sbSql.Append("CreateId=@CreateId, ");
@@ -50,7 +48,6 @@ Database.AddInParameter(cmd, "StandardCode", DbType.string, model.StandardCode);
 Database.AddInParameter(cmd, "RegisterNo1", DbType.string, model.RegisterNo1);
 Database.AddInParameter(cmd, "RegisterProductName1", DbType.string, model.RegisterProductName1);
 Database.AddInParameter(cmd, "StandardCode1", DbType.string, model.StandardCode1);
-Database.AddInParameter(cmd, "RegisterFile", DbType.string, model.RegisterFile);
 Database.AddInParameter(cmd, "StartDate", DbType.string, model.StartDate);
 Database.AddInParameter(cmd, "EndDate", DbType.string, model.EndDate);
 Database.AddInParameter(cmd, "CreateId", DbType.int, model.CreateId);
@@ -60,20 +57,78 @@ Database.AddInParameter(cmd, "LastModifyDate", DbType.DateTime, model.LastModify
 Database.AddInParameter(cmd, "Remark", DbType.string, model.Remark);
 Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
 
-<dxg:GridColumn FieldName="RegisterId" Header="主键Id"/>
-<dxg:GridColumn FieldName="RegisterNo" Header="注册证编号"/>
-<dxg:GridColumn FieldName="RegisterProductName" Header="注册证名称"/>
-<dxg:GridColumn FieldName="StandardCode" Header="标准号"/>
-<dxg:GridColumn FieldName="RegisterNo1" Header="注册证编号(英文)"/>
-<dxg:GridColumn FieldName="RegisterProductName1" Header="注册证名称(英文)"/>
-<dxg:GridColumn FieldName="StandardCode1" Header="标准号(英文)"/>
-<dxg:GridColumn FieldName="RegisterFile" Header="注册证文件"/>
-<dxg:GridColumn FieldName="StartDate" Header="启用日期"/>
-<dxg:GridColumn FieldName="EndDate" Header="停用日期"/>
-<dxg:GridColumn FieldName="CreateId" Header="创建人Id"/>
-<dxg:GridColumn FieldName="CreateDate" Header="创建日期"/>
-<dxg:GridColumn FieldName="LastModifyId" Header="最后更改人Id"/>
-<dxg:GridColumn FieldName="LastModifyDate" Header="最后更改日期"/>
-<dxg:GridColumn FieldName="Remark" Header="备注"/>
-<dxg:GridColumn FieldName="Deleted" Header="删除标识"/>
+<dxg:GridColumn FieldName="RegisterId" Header="{x:Static res:Resources.Entity_Register_RegisterId}"/>
+<dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
+<dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterProductName}"/>
+<dxg:GridColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}"/>
+<dxg:GridColumn FieldName="RegisterNo1" Header="{x:Static res:Resources.Entity_Register_RegisterNo1}"/>
+<dxg:GridColumn FieldName="RegisterProductName1" Header="{x:Static res:Resources.Entity_Register_RegisterProductName1}"/>
+<dxg:GridColumn FieldName="StandardCode1" Header="{x:Static res:Resources.Entity_Register_StandardCode1}"/>
+<dxg:GridColumn FieldName="StartDate" Header="{x:Static res:Resources.Entity_Register_StartDate}"/>
+<dxg:GridColumn FieldName="EndDate" Header="{x:Static res:Resources.Entity_Register_EndDate}"/>
+<dxg:GridColumn FieldName="CreateId" Header="{x:Static res:Resources.Entity_Register_CreateId}"/>
+<dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_Register_CreateDate}"/>
+<dxg:GridColumn FieldName="LastModifyId" Header="{x:Static res:Resources.Entity_Register_LastModifyId}"/>
+<dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Register_LastModifyDate}"/>
+<dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
+<dxg:GridColumn FieldName="Deleted" Header="{x:Static res:Resources.Entity_Register_Deleted}"/>
+
+
+
+Entity_Register_RegisterId	主键Id
+Entity_Register_RegisterNo	注册证编号
+Entity_Register_RegisterProductName	注册证名称
+Entity_Register_StandardCode	标准号
+Entity_Register_RegisterNo1	注册证编号(英文)
+Entity_Register_RegisterProductName1	注册证名称(英文)
+Entity_Register_StandardCode1	标准号(英文)
+Entity_Register_StartDate	启用日期
+Entity_Register_EndDate	停用日期
+Entity_Register_CreateId	创建人Id
+Entity_Register_CreateDate	创建日期
+Entity_Register_LastModifyId	最后更改人Id
+Entity_Register_LastModifyDate	最后更改日期
+Entity_Register_Remark	备注
+Entity_Register_Deleted	删除标识
+
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo}">
+		<dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName}">
+		<dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
+		<dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo1}">
+		<dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName1}">
+		<dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">
+		<dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StartDate}">
+		<dxe:TextEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
+		<dxe:TextEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Creater}">
+		<dxe:TextEdit EditValue="{Binding Entity.Creater}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_CreateDate}">
+		<dxe:TextEdit EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyer}">
+		<dxe:TextEdit EditValue="{Binding Entity.LastModifyer}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyDate}">
+		<dxe:TextEdit EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Remark}">
+		<dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+
 

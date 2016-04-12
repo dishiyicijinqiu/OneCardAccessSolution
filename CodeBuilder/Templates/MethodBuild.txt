@@ -1,134 +1,120 @@
-﻿public static T_Register DataRowToEntity(DataRow dr)
+﻿public static T_Register_File DataRowToEntity(DataRow dr)
 {
     if (dr == null)
         return null;
-    var result = new T_Register();
+    var result = new T_Register_File();
+	result.Id = (string)dr["Id"];
 	result.RegisterId = (int)dr["RegisterId"];
-	result.RegisterNo = (string)dr["RegisterNo"];
-	result.RegisterProductName = (string)dr["RegisterProductName"];
-	result.StandardCode = (string)dr["StandardCode"];
-	result.RegisterNo1 = (string)dr["RegisterNo1"];
-	result.RegisterProductName1 = (string)dr["RegisterProductName1"];
-	result.StandardCode1 = (string)dr["StandardCode1"];
-	result.StartDate = (string)dr["StartDate"];
-	result.EndDate = (string)dr["EndDate"];
-	result.CreateId = (int)dr["CreateId"];
-	result.CreateDate = (DateTime)dr["CreateDate"];
-	result.LastModifyId = (int)dr["LastModifyId"];
-	result.LastModifyDate = (DateTime)dr["LastModifyDate"];
-	result.Remark = (string)dr["Remark"];
-	result.Deleted = (bool)dr["Deleted"];
+	result.FileName = (string)dr["FileName"];
+	result.FilePath = (string)dr["FilePath"];
+	result.SortNo = (int)dr["SortNo"];
     return result;
 }
 
-RegisterId,RegisterNo,RegisterProductName,StandardCode,RegisterNo1,RegisterProductName1,StandardCode1,StartDate,EndDate,CreateId,CreateDate,LastModifyId,LastModifyDate,Remark,Deleted,
-@RegisterId,@RegisterNo,@RegisterProductName,@StandardCode,@RegisterNo1,@RegisterProductName1,@StandardCode1,@StartDate,@EndDate,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Remark,@Deleted,
+Id,RegisterId,FileName,FilePath,SortNo,
+@Id,@RegisterId,@FileName,@FilePath,@SortNo,
 
 
+sbSql.Append("Id=@Id, ");
 sbSql.Append("RegisterId=@RegisterId, ");
-sbSql.Append("RegisterNo=@RegisterNo, ");
-sbSql.Append("RegisterProductName=@RegisterProductName, ");
-sbSql.Append("StandardCode=@StandardCode, ");
-sbSql.Append("RegisterNo1=@RegisterNo1, ");
-sbSql.Append("RegisterProductName1=@RegisterProductName1, ");
-sbSql.Append("StandardCode1=@StandardCode1, ");
-sbSql.Append("StartDate=@StartDate, ");
-sbSql.Append("EndDate=@EndDate, ");
-sbSql.Append("CreateId=@CreateId, ");
-sbSql.Append("CreateDate=@CreateDate, ");
-sbSql.Append("LastModifyId=@LastModifyId, ");
-sbSql.Append("LastModifyDate=@LastModifyDate, ");
-sbSql.Append("Remark=@Remark, ");
-sbSql.Append("Deleted=@Deleted, ");
+sbSql.Append("FileName=@FileName, ");
+sbSql.Append("FilePath=@FilePath, ");
+sbSql.Append("SortNo=@SortNo, ");
 
+Database.AddInParameter(cmd, "Id", DbType.string, model.Id);
 Database.AddInParameter(cmd, "RegisterId", DbType.int, model.RegisterId);
-Database.AddInParameter(cmd, "RegisterNo", DbType.string, model.RegisterNo);
-Database.AddInParameter(cmd, "RegisterProductName", DbType.string, model.RegisterProductName);
-Database.AddInParameter(cmd, "StandardCode", DbType.string, model.StandardCode);
-Database.AddInParameter(cmd, "RegisterNo1", DbType.string, model.RegisterNo1);
-Database.AddInParameter(cmd, "RegisterProductName1", DbType.string, model.RegisterProductName1);
-Database.AddInParameter(cmd, "StandardCode1", DbType.string, model.StandardCode1);
-Database.AddInParameter(cmd, "StartDate", DbType.string, model.StartDate);
-Database.AddInParameter(cmd, "EndDate", DbType.string, model.EndDate);
-Database.AddInParameter(cmd, "CreateId", DbType.int, model.CreateId);
-Database.AddInParameter(cmd, "CreateDate", DbType.DateTime, model.CreateDate);
-Database.AddInParameter(cmd, "LastModifyId", DbType.int, model.LastModifyId);
-Database.AddInParameter(cmd, "LastModifyDate", DbType.DateTime, model.LastModifyDate);
-Database.AddInParameter(cmd, "Remark", DbType.string, model.Remark);
-Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
+Database.AddInParameter(cmd, "FileName", DbType.string, model.FileName);
+Database.AddInParameter(cmd, "FilePath", DbType.string, model.FilePath);
+Database.AddInParameter(cmd, "SortNo", DbType.int, model.SortNo);
 
-<dxg:GridColumn FieldName="RegisterId" Header="{x:Static res:Resources.Entity_Register_RegisterId}"/>
-<dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
-<dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterProductName}"/>
-<dxg:GridColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}"/>
-<dxg:GridColumn FieldName="RegisterNo1" Header="{x:Static res:Resources.Entity_Register_RegisterNo1}"/>
-<dxg:GridColumn FieldName="RegisterProductName1" Header="{x:Static res:Resources.Entity_Register_RegisterProductName1}"/>
-<dxg:GridColumn FieldName="StandardCode1" Header="{x:Static res:Resources.Entity_Register_StandardCode1}"/>
-<dxg:GridColumn FieldName="StartDate" Header="{x:Static res:Resources.Entity_Register_StartDate}"/>
-<dxg:GridColumn FieldName="EndDate" Header="{x:Static res:Resources.Entity_Register_EndDate}"/>
-<dxg:GridColumn FieldName="CreateId" Header="{x:Static res:Resources.Entity_Register_CreateId}"/>
-<dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_Register_CreateDate}"/>
-<dxg:GridColumn FieldName="LastModifyId" Header="{x:Static res:Resources.Entity_Register_LastModifyId}"/>
-<dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Register_LastModifyDate}"/>
-<dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
-<dxg:GridColumn FieldName="Deleted" Header="{x:Static res:Resources.Entity_Register_Deleted}"/>
+<dxg:GridColumn FieldName="Id" Header="{x:Static res:Resources.Entity_Register_File_Id}"/>
+<dxg:GridColumn FieldName="RegisterId" Header="{x:Static res:Resources.Entity_Register_File_RegisterId}"/>
+<dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}"/>
+<dxg:GridColumn FieldName="FilePath" Header="{x:Static res:Resources.Entity_Register_File_FilePath}"/>
+<dxg:GridColumn FieldName="SortNo" Header="{x:Static res:Resources.Entity_Register_File_SortNo}"/>
 
 
 
-Entity_Register_RegisterId	主键Id
-Entity_Register_RegisterNo	注册证编号
-Entity_Register_RegisterProductName	注册证名称
-Entity_Register_StandardCode	标准号
-Entity_Register_RegisterNo1	注册证编号(英文)
-Entity_Register_RegisterProductName1	注册证名称(英文)
-Entity_Register_StandardCode1	标准号(英文)
-Entity_Register_StartDate	启用日期
-Entity_Register_EndDate	停用日期
-Entity_Register_CreateId	创建人Id
-Entity_Register_CreateDate	创建日期
-Entity_Register_LastModifyId	最后更改人Id
-Entity_Register_LastModifyDate	最后更改日期
-Entity_Register_Remark	备注
-Entity_Register_Deleted	删除标识
+Entity_Register_File_Id	注册证附件Id
+Entity_Register_File_RegisterId	注册证Id
+Entity_Register_File_FileName	文件名
+Entity_Register_File_FilePath	保存路径
+Entity_Register_File_SortNo	序号
 
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo}">
-		<dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_RegisterId}">
+		<dxe:TextEdit EditValue="{Binding RegisterId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName}">
-		<dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_FileName}">
+		<dxe:TextEdit EditValue="{Binding FileName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
-		<dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_FilePath}">
+		<dxe:TextEdit EditValue="{Binding FilePath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo1}">
-		<dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_SortNo}">
+		<dxe:TextEdit EditValue="{Binding SortNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName1}">
-		<dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">
-		<dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StartDate}">
-		<dxe:TextEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
-		<dxe:TextEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Creater}">
-		<dxe:TextEdit EditValue="{Binding Entity.Creater}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_CreateDate}">
-		<dxe:TextEdit EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyer}">
-		<dxe:TextEdit EditValue="{Binding Entity.LastModifyer}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyDate}">
-		<dxe:TextEdit EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Remark}">
-		<dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
+
+
+
+		public int RegisterId
+        {
+            get
+            {
+                return Entity.RegisterId;
+            }
+            set
+            {
+                if (Entity.RegisterId != value)
+                {
+                    Entity.RegisterId = value;
+                    RaisePropertyChanged("RegisterId");
+                }
+            }
+        }
+		public string FileName
+        {
+            get
+            {
+                return Entity.FileName;
+            }
+            set
+            {
+                if (Entity.FileName != value)
+                {
+                    Entity.FileName = value;
+                    RaisePropertyChanged("FileName");
+                }
+            }
+        }
+		public string FilePath
+        {
+            get
+            {
+                return Entity.FilePath;
+            }
+            set
+            {
+                if (Entity.FilePath != value)
+                {
+                    Entity.FilePath = value;
+                    RaisePropertyChanged("FilePath");
+                }
+            }
+        }
+		public int SortNo
+        {
+            get
+            {
+                return Entity.SortNo;
+            }
+            set
+            {
+                if (Entity.SortNo != value)
+                {
+                    Entity.SortNo = value;
+                    RaisePropertyChanged("SortNo");
+                }
+            }
+        }
 
 

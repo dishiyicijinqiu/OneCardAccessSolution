@@ -18,7 +18,7 @@ namespace <#=NameSpace#>
 	/// <#=dbhost.DbTable.Remark#>
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public class <#=TableName.Replace("T_",string.Empty)#>Entity
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity
 	{
 		/// <summary>
 		/// 构造函数

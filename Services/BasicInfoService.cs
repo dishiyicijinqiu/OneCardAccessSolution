@@ -1,73 +1,61 @@
-﻿using FengSharp.OneCardAccess.ServiceInterfaces;
-using System;
+﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.ServiceInterfaces;
+using FengSharp.OneCardAccess.TEntity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
-using FengSharp.OneCardAccess.Common;
 
 namespace FengSharp.OneCardAccess.Services
 {
-    public class BasicInfoService : IBasicInfoService
+    public class BasicInfoService : ServiceBase, IBasicInfoService
     {
-        public RegisterEntity GetRegisterEntityById(int RegisterId)
+        #region Register
+        public List<FirstRegisterEntity> GetFirstRegisterList()
         {
-            using (OneCardAccessDbContext db = new OneCardAccessDbContext())
-            {
-                var list = from r in db.T_Registers
-                           join cu in db.T_UserInfos on r.CreateId equals cu.UserId
-                           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId
-                           where r.RegisterId == RegisterId
-                           select new { r = r, Creater = cu.UserName, LastModifyer = mu.UserName };
-                var item = list.FirstOrDefault();
-                if (item == null) return null;
-                var result = RegisterEntity.CreateEntity();
-                result.CopyValueFrom(item.r);
-                result.Creater = item.Creater;
-                result.LastModifyer = item.LastModifyer;
-                return result;
-            }
+            return this.GetEntitys<FirstRegisterEntity>();
         }
-
-        public List<RegisterEntity> GetRegisterList()
+        public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)
         {
-            using (OneCardAccessDbContext db = new OneCardAccessDbContext())
+            return this.FindById<SecondRegisterEntity>(new SecondRegisterEntity()
             {
-                var list = from r in db.T_Registers
-                           join cu in db.T_UserInfos on r.CreateId equals cu.UserId
-                           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId
-                           where !r.Deleted
-                           select new { r = r, Creater = cu.UserName, LastModifyer = mu.UserName };
-                var results = new List<RegisterEntity>();
-                foreach (var item in list)
+                RegisterId = RegisterId
+            });
+        }
+        public int Save(SecondRegisterEntity entity)
+        {
+            return UseTran((tran) =>
+            {
+                var dbregisterentity = new T_Register();
+                dbregisterentity.CopyValueFrom(entity);
+                if (entity.RegisterId <= 0)
                 {
-                    var result = RegisterEntity.CreateEntity();
-                    result.CopyValueFrom(item.r);
-                    result.Creater = item.Creater;
-                    result.LastModifyer = item.LastModifyer;
-                    results.Add(result);
+                    dbregisterentity = CreateEntity(dbregisterentity, tran);
+                    foreach (var item in entity.Register_FileEntitys)
+                    {
+                        var dbregisterfileentity = new T_Register_File();
+                        dbregisterfileentity.CopyValueFrom(item);
+                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
+                        CreateEntity(dbregisterfileentity, tran);
+                    }
                 }
-                return results;
-
-                //var list = from r in db.T_Registers
-                //           join cu in db.T_UserInfos on r.CreateId equals cu.UserId into cujoin
-                //           from _cu in cujoin.DefaultIfEmpty()
-                //           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId into mujoin
-                //           from _mu in mujoin.DefaultIfEmpty()
-                //           where !r.Deleted
-                //           select new { r = r, Creater = _cu.UserName, LastModifyer = _mu.UserName };
-                //var results = new List<RegisterEntity>();
-                //foreach (var item in list)
-                //{
-                //    var result = RegisterEntity.CreateEntity();
-                //    result.CopyValueFrom(item.r);
-                //    result.Creater = item.Creater;
-                //    result.LastModifyer = item.LastModifyer;
-                //    results.Add(result);
-                //}
-                //return results;
-
-            }
+                else
+                {
+                    if (!ModifyEntity(dbregisterentity, tran))
+                    {
+                        throw new BusinessException("保存失败");
+                    }
+                    DeleteRelationEntitys<T_Register, T_Register_File>(dbregisterentity, tran);
+                    foreach (var item in entity.Register_FileEntitys)
+                    {
+                        var dbregisterfileentity = new T_Register_File();
+                        dbregisterfileentity.CopyValueFrom(item);
+                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
+                        CreateEntity(dbregisterfileentity, tran);
+                    }
+                }
+                return 0;
+            });
         }
+        #endregion
     }
 }

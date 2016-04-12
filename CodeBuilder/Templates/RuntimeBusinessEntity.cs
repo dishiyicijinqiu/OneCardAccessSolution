@@ -56,7 +56,7 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             
             #line default
             #line hidden
-            this.Write("Entity\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic ");
+            this.Write("Entity\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic partial ");
             
             #line 20 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));

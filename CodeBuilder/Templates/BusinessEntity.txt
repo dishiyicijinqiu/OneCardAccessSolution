@@ -6,7 +6,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 	/// 用户表
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public class UserInfoEntity
+	public partial class UserInfoEntity
 	{
 		/// <summary>
 		/// 构造函数

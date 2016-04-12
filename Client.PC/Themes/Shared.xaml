@@ -14,12 +14,13 @@
     </Style>
     <Style TargetType="dxg:GridControl">
         <Setter Property="SelectionMode" Value="Row"/>
-        <Setter Property="AutoGenerateColumns" Value="AddNew"/>
+        <Setter Property="AutoGenerateColumns" Value="KeepOld"/>
     </Style>
     <Style TargetType="dxg:TableView">
         <Setter Property="ShowGroupPanel" Value="False"/>
         <Setter Property="IndicatorWidth" Value="40"/>
         <Setter Property="AllowEditing" Value="False"/>
+        <Setter Property="AllowGrouping" Value="False"/>
     </Style>
     <!--ribonpage放在右侧-->
     <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
@@ -93,4 +94,7 @@
 
         </DataTemplate.Triggers>
     </DataTemplate>
+    <Style TargetType="dxe:TextEdit">
+        <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
+    </Style>
 </ResourceDictionary>

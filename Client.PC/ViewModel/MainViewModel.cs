@@ -15,7 +15,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
             DXSplashScreen.Close();
-            loginwindowservice.Show("LoginView", null, null, this);
+            loginwindowservice.Show("LoginView", null, this);
         }
 
         private void OnLogined(LoginFormResult msg)

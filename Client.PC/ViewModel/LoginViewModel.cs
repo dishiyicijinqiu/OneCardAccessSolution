@@ -1,5 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
+using DevExpress.Xpf.Core;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -68,6 +69,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                     CurrentWindowService.Close();
                     break;
             }
+        }
+
+        public void OnLoaded()
+        {
         }
         public void Closing(object obj)
         {

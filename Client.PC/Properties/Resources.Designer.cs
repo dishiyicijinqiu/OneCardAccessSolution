@@ -349,6 +349,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 保存失败 的本地化字符串。
+        /// </summary>
+        public static string Error_SaveFiled {
+            get {
+                return ResourceManager.GetString("Error_SaveFiled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 错误提示 的本地化字符串。
         /// </summary>
         public static string Error_Title {
@@ -381,6 +390,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Info_ConfirmToExit {
             get {
                 return ResourceManager.GetString("Info_ConfirmToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存成功 的本地化字符串。
+        /// </summary>
+        public static string Info_SaveSuccess {
+            get {
+                return ResourceManager.GetString("Info_SaveSuccess", resourceCulture);
             }
         }
         

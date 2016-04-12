@@ -264,4 +264,10 @@
   <data name="Entity_Register_File_SortNo" xml:space="preserve">
     <value>序号</value>
   </data>
+  <data name="Error_SaveFiled" xml:space="preserve">
+    <value>保存失败</value>
+  </data>
+  <data name="Info_SaveSuccess" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
 </root>

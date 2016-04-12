@@ -17,7 +17,7 @@ namespace <#=NameSpace#>
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public <#=TableName.Replace("T_",string.Empty)#>Entity()
+		public partial <#=TableName.Replace("T_",string.Empty)#>Entity()
 		{
 <# foreach(DbColumn column in dbhost.DbColumns){if(column.CSharpType.ToLower()=="string"){#>
 			<#=column.ColumnName#>=string.Empty;

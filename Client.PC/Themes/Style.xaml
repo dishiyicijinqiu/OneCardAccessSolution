@@ -3,8 +3,10 @@
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+                    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
+	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
     <local:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
@@ -62,6 +64,54 @@
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
     </Style>
+
+    <DataTemplate x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate, IsThemeIndependent=True}" >
+        <Grid x:Name="rootOfRowIndicator">
+            <DockPanel>
+                <ContentPresenter x:Name="iconPresenter" Content="{x:Null}"
+                                  DockPanel.Dock="Right" Width="auto" 
+                                  />
+                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" Text="{Binding Path=RowHandle.Value}"
+                           >
+                </TextBlock>
+            </DockPanel>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Focused">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=FocusedIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Changed">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=ChangedIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="NewItemRow">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=NewItemRowIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Editing">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=EditingIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Error">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=ErrorIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="FocusedError">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=FocusedErrorIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="AutoFilterRow">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=AutoFilterRowIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(dxe:BaseEdit.HasValidationError)}" Value="True">
+                <Setter Property="ToolTip" TargetName="rootOfRowIndicator">
+                    <Setter.Value>
+                        <DockPanel>
+                            <dxe:ErrorControl Content="{Binding Path=(dxe:BaseEdit.ValidationError)}"/>
+                            <ContentPresenter VerticalAlignment="Center" Content="{Binding Path=(dxe:BaseEdit.ValidationError).ErrorContent}" />
+                        </DockPanel>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+
+        </DataTemplate.Triggers>
+    </DataTemplate>
 
     <!--<Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="EditWindowStyle">
         <Setter Property="ResizeMode" Value="NoResize"/>

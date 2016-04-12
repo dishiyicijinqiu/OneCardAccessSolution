@@ -9,17 +9,16 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
-    x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterView" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
-    DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterViewModel}"
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-    Width="346" Height="264"
-    d:DesignWidth="346.333" d:DesignHeight="264"
+    xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    mc:Ignorable="d"
+    x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterView"
+    DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"
+    Width="666" Height="553"
     >
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
-    </dxmvvm:Interaction.Behaviors>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,6 +26,9 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
+    </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager>
         <Grid>
             <Grid.RowDefinitions>
@@ -39,7 +41,7 @@
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barSave}"/>
                             <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"
-								IsVisible="{Binding Path=EntityEditMode, Converter={StaticResource editModeVisibleConverter}}"
+								IsVisible="{Binding EntityEditMode, Converter={StaticResource editModeVisibleConverter}}"
                                                />
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
@@ -48,16 +50,42 @@
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-            <dxlc:LayoutControl  Orientation="Vertical" Grid.Row="1">
-                <dxlc:LayoutGroup Header="LayoutGroup" View="GroupBox" Orientation="Vertical">
-                    <dxlc:LayoutItem Label="LayoutItem">
-                        <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}" />
-                        <!--<dxe:TextEdit EditValue="{Binding CateName,Mode=TwoWay}"/>-->
-
-                        <!--<Grid>
-                            <TextBox Text="{Binding Entity.RegisterProductName, UpdateSourceTrigger=PropertyChanged}"></TextBox>
-                        </Grid>-->
-
+            <dxlc:LayoutControl Grid.Row="1">
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="注册证编号">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="注册证名称">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="标准号">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="启用日期">
+                        <dxe:DateEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutGroup Header="附件" View="GroupBox">
+                        <dxlc:LayoutItem>
+                            <dxg:GridControl EnableSmartColumnsGeneration="True">
+                                <dxg:GridControl.View>
+                                    <dxg:TableView AllowPerPixelScrolling="True" ShowTotalSummary="True"/>
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="英文注册证编号">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="英文注册证名称">
+                        <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="英文标准号">
+                        <dxe:TextEdit/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="停用日期">
+                        <dxe:DateEdit/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
             </dxlc:LayoutControl>

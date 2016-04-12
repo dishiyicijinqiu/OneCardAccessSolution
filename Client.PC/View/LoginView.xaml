@@ -36,8 +36,7 @@
                             <ContentControl Height="10"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.PassWord}" Height="25">
-                            <PasswordBox Name="tbPwd" Helper:PasswordBoxHelper.Attach="True" 
-                     Helper:PasswordBoxHelper.Password="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  />
+                            <dxe:PasswordBoxEdit x:Name="tbPwd" EditValue="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>

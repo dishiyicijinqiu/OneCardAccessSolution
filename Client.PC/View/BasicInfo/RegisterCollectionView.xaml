@@ -47,14 +47,12 @@
             </dxr:RibbonControl>
 
             <dxg:GridControl x:Name="gridcontrol" 
-				AutoGenerateColumns="AddNew" 
-				SelectionMode="Row" 
                 SelectedItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
                 CurrentItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
 				ItemsSource="{Binding Items}" Grid.Row="1" 
                          >
                 <dxg:GridControl.View>
-                    <dxg:TableView x:Name="myview" ShowGroupPanel="False" IndicatorWidth="40" />
+                    <dxg:TableView x:Name="myview" />
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>

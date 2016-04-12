@@ -4,26 +4,22 @@
                     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+                    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
     </Style>
-    <Style TargetType="UserControl">
-        <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">
-            <Setter.Value>
-                <DataTemplate>
-                    <ContentControl>
-                        <dx:DXMessageBoxService/>
-                    </ContentControl>
-                </DataTemplate>
-            </Setter.Value>
-        </Setter>
+    <Style TargetType="dxg:GridControl">
+        <Setter Property="SelectionMode" Value="Row"/>
+        <Setter Property="AutoGenerateColumns" Value="AddNew"/>
     </Style>
-
-
-
-
+    <Style TargetType="dxg:TableView">
+        <Setter Property="ShowGroupPanel" Value="False"/>
+        <Setter Property="IndicatorWidth" Value="40"/>
+        <Setter Property="AllowEditing" Value="False"/>
+    </Style>
+    <!--ribonpage放在右侧-->
     <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
     <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">
         <Setter Property="Focusable" Value="False"/>
@@ -45,5 +41,6 @@
     <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
         <local:MyRibbonPagesItemsPanel />
     </ItemsPanelTemplate>
+    <!--ribonpage放在右侧-->
 
 </ResourceDictionary>

@@ -12,12 +12,19 @@ namespace FengSharp.OneCardAccess.Services
     {
         public RegisterEntity GetRegisterEntityById(int RegisterId)
         {
-            using (OneCardAccessDbContext dc = new OneCardAccessDbContext())
+            using (OneCardAccessDbContext db = new OneCardAccessDbContext())
             {
-                var dbentity = dc.T_Registers.FirstOrDefault(t => t.RegisterId == RegisterId);
-                if (dbentity == null) return null;
-                var result = new RegisterEntity();
-                result.CopyValueFrom(dbentity, new string[] { "Deleted" });
+                var list = from r in db.T_Registers
+                           join cu in db.T_UserInfos on r.CreateId equals cu.UserId
+                           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId
+                           where r.RegisterId == RegisterId
+                           select new { r = r, Creater = cu.UserName, LastModifyer = mu.UserName };
+                var item = list.FirstOrDefault();
+                if (item == null) return null;
+                var result = RegisterEntity.CreateEntity();
+                result.CopyValueFrom(item.r);
+                result.Creater = item.Creater;
+                result.LastModifyer = item.LastModifyer;
                 return result;
             }
         }
@@ -26,10 +33,40 @@ namespace FengSharp.OneCardAccess.Services
         {
             using (OneCardAccessDbContext db = new OneCardAccessDbContext())
             {
-                var datalist = db.T_Registers.Where(t => !t.Deleted).ToList();
-                var results = new List<RegisterEntity>(new RegisterEntity[datalist.Count]);
-               ClassValueCopier.CopyArray(results, datalist);
+                var list = from r in db.T_Registers
+                           join cu in db.T_UserInfos on r.CreateId equals cu.UserId
+                           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId
+                           where !r.Deleted
+                           select new { r = r, Creater = cu.UserName, LastModifyer = mu.UserName };
+                var results = new List<RegisterEntity>();
+                foreach (var item in list)
+                {
+                    var result = RegisterEntity.CreateEntity();
+                    result.CopyValueFrom(item.r);
+                    result.Creater = item.Creater;
+                    result.LastModifyer = item.LastModifyer;
+                    results.Add(result);
+                }
                 return results;
+
+                //var list = from r in db.T_Registers
+                //           join cu in db.T_UserInfos on r.CreateId equals cu.UserId into cujoin
+                //           from _cu in cujoin.DefaultIfEmpty()
+                //           join mu in db.T_UserInfos on r.LastModifyId equals mu.UserId into mujoin
+                //           from _mu in mujoin.DefaultIfEmpty()
+                //           where !r.Deleted
+                //           select new { r = r, Creater = _cu.UserName, LastModifyer = _mu.UserName };
+                //var results = new List<RegisterEntity>();
+                //foreach (var item in list)
+                //{
+                //    var result = RegisterEntity.CreateEntity();
+                //    result.CopyValueFrom(item.r);
+                //    result.Creater = item.Creater;
+                //    result.LastModifyer = item.LastModifyer;
+                //    results.Add(result);
+                //}
+                //return results;
+
             }
         }
     }

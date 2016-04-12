@@ -6,6 +6,6 @@
     xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     WindowStartupLocation="CenterScreen"
-    Title="{x:Static res:Resources.MainWindow_Title}" Height="350" Width="525">
+    Title="{x:Static res:Resources.View_MainWindow_Title}" Height="350" Width="525">
     <View:MainView />
 </dxr:DXRibbonWindow>

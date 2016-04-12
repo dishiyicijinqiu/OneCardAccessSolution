@@ -19,7 +19,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
             RegisterNo1 = string.Empty;
             RegisterProductName1 = string.Empty;
             StandardCode1 = string.Empty;
-            RegisterFile = string.Empty;
             StartDate = string.Empty;
             EndDate = string.Empty;
             Remark = string.Empty;
@@ -59,11 +58,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         /// </summary>
         [DataMember]
         public string StandardCode1 { get; set; }
-        /// <summary>
-        /// 注册证文件
-        /// </summary>
-        [DataMember]
-        public string RegisterFile { get; set; }
         /// <summary>
         /// 启用日期
         /// </summary>

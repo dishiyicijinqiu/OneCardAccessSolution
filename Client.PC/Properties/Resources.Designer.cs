@@ -63,45 +63,81 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         /// <summary>
         ///   查找类似 新增 的本地化字符串。
         /// </summary>
-        public static string AddBarContent {
+        public static string BarContent_Add {
             get {
-                return ResourceManager.GetString("AddBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 取消 的本地化字符串。
-        /// </summary>
-        public static string btnCancel {
-            get {
-                return ResourceManager.GetString("btnCancel", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 登录 的本地化字符串。
-        /// </summary>
-        public static string btnLogin {
-            get {
-                return ResourceManager.GetString("btnLogin", resourceCulture);
+                return ResourceManager.GetString("BarContent_Add", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 分类 的本地化字符串。
         /// </summary>
-        public static string CateBarContent {
+        public static string BarContent_Cate {
             get {
-                return ResourceManager.GetString("CateBarContent", resourceCulture);
+                return ResourceManager.GetString("BarContent_Cate", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 关闭 的本地化字符串。
         /// </summary>
-        public static string CloseBarContent {
+        public static string BarContent_Close {
             get {
-                return ResourceManager.GetString("CloseBarContent", resourceCulture);
+                return ResourceManager.GetString("BarContent_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 复制新增 的本地化字符串。
+        /// </summary>
+        public static string BarContent_CopyAdd {
+            get {
+                return ResourceManager.GetString("BarContent_CopyAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 删除 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Delete {
+            get {
+                return ResourceManager.GetString("BarContent_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编辑 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Edit {
+            get {
+                return ResourceManager.GetString("BarContent_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 返回 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Return {
+            get {
+                return ResourceManager.GetString("BarContent_Return", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Save {
+            get {
+                return ResourceManager.GetString("BarContent_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存并继续 的本地化字符串。
+        /// </summary>
+        public static string BarContent_SaveAndNew {
+            get {
+                return ResourceManager.GetString("BarContent_SaveAndNew", resourceCulture);
             }
         }
         
@@ -151,65 +187,74 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 确实要退出吗？ 的本地化字符串。
+        ///   查找类似 参数错误 的本地化字符串。
         /// </summary>
-        public static string ConfirmToExit {
+        public static string Error_ParameterIsError {
             get {
-                return ResourceManager.GetString("ConfirmToExit", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 复制新增 的本地化字符串。
-        /// </summary>
-        public static string CopyAddBarContent {
-            get {
-                return ResourceManager.GetString("CopyAddBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 删除 的本地化字符串。
-        /// </summary>
-        public static string DeleteBarContent {
-            get {
-                return ResourceManager.GetString("DeleteBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 编辑 的本地化字符串。
-        /// </summary>
-        public static string EditBarContent {
-            get {
-                return ResourceManager.GetString("EditBarContent", resourceCulture);
+                return ResourceManager.GetString("Error_ParameterIsError", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 密码错误 的本地化字符串。
         /// </summary>
-        public static string ErrorPassWord {
+        public static string Error_PassWordIsError {
             get {
-                return ResourceManager.GetString("ErrorPassWord", resourceCulture);
+                return ResourceManager.GetString("Error_PassWordIsError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 欢迎登录-一卡通系统 的本地化字符串。
+        ///   查找类似 错误提示 的本地化字符串。
         /// </summary>
-        public static string LoginView_Title {
+        public static string Error_Title {
             get {
-                return ResourceManager.GetString("LoginView_Title", resourceCulture);
+                return ResourceManager.GetString("Error_Title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 一卡通管理系统 的本地化字符串。
+        ///   查找类似 用户被锁定 的本地化字符串。
         /// </summary>
-        public static string MainWindow_Title {
+        public static string Error_UserIsLocked {
             get {
-                return ResourceManager.GetString("MainWindow_Title", resourceCulture);
+                return ResourceManager.GetString("Error_UserIsLocked", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户不存在 的本地化字符串。
+        /// </summary>
+        public static string Error_UserNotExist {
+            get {
+                return ResourceManager.GetString("Error_UserNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 确实要退出吗？ 的本地化字符串。
+        /// </summary>
+        public static string Info_ConfirmToExit {
+            get {
+                return ResourceManager.GetString("Info_ConfirmToExit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 至少选择一项 的本地化字符串。
+        /// </summary>
+        public static string Info_SelectAtLeastOne {
+            get {
+                return ResourceManager.GetString("Info_SelectAtLeastOne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 提示 的本地化字符串。
+        /// </summary>
+        public static string Info_Title {
+            get {
+                return ResourceManager.GetString("Info_Title", resourceCulture);
             }
         }
         
@@ -241,110 +286,74 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 错误提示 的本地化字符串。
+        ///   查找类似 取消 的本地化字符串。
         /// </summary>
-        public static string MessageBoxError {
+        public static string View_LoginView_btnCancel_Content {
             get {
-                return ResourceManager.GetString("MessageBoxError", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_btnCancel_Content", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 提示 的本地化字符串。
+        ///   查找类似 登录 的本地化字符串。
         /// </summary>
-        public static string MessageBoxTip {
+        public static string View_LoginView_btnLogin_Content {
             get {
-                return ResourceManager.GetString("MessageBoxTip", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 参数错误 的本地化字符串。
-        /// </summary>
-        public static string ParaMeterIsError {
-            get {
-                return ResourceManager.GetString("ParaMeterIsError", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_btnLogin_Content", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 密码： 的本地化字符串。
         /// </summary>
-        public static string PassWord {
+        public static string View_LoginView_lblPassWord {
             get {
-                return ResourceManager.GetString("PassWord", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 注册证信息 的本地化字符串。
-        /// </summary>
-        public static string RegisterCollectionView_Title {
-            get {
-                return ResourceManager.GetString("RegisterCollectionView_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 产品注册证编辑 的本地化字符串。
-        /// </summary>
-        public static string RegisterView_Title {
-            get {
-                return ResourceManager.GetString("RegisterView_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 返回 的本地化字符串。
-        /// </summary>
-        public static string ReturnBarContent {
-            get {
-                return ResourceManager.GetString("ReturnBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 保存并继续 的本地化字符串。
-        /// </summary>
-        public static string SaveAndNewBarContent {
-            get {
-                return ResourceManager.GetString("SaveAndNewBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 保存 的本地化字符串。
-        /// </summary>
-        public static string SaveBarContent {
-            get {
-                return ResourceManager.GetString("SaveBarContent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 用户被锁定 的本地化字符串。
-        /// </summary>
-        public static string UserIsLocked {
-            get {
-                return ResourceManager.GetString("UserIsLocked", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_lblPassWord", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 用户名： 的本地化字符串。
         /// </summary>
-        public static string UserNo {
+        public static string View_LoginView_lblUserNo {
             get {
-                return ResourceManager.GetString("UserNo", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_lblUserNo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 用户不存在 的本地化字符串。
+        ///   查找类似 欢迎登录-一卡通系统 的本地化字符串。
         /// </summary>
-        public static string UserNotExist {
+        public static string View_LoginView_Title {
             get {
-                return ResourceManager.GetString("UserNotExist", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 一卡通管理系统 的本地化字符串。
+        /// </summary>
+        public static string View_MainWindow_Title {
+            get {
+                return ResourceManager.GetString("View_MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证信息 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterCollectionView_Title {
+            get {
+                return ResourceManager.GetString("View_RegisterCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品注册证编辑 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterView_Title {
+            get {
+                return ResourceManager.GetString("View_RegisterView_Title", resourceCulture);
             }
         }
     }

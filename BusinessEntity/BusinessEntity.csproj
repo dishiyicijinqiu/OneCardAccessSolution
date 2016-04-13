@@ -40,13 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicInfo\CheckReportTempEntity_Auto.cs" />
     <Compile Include="BasicInfo\RegisterEntity.cs" />
     <Compile Include="BasicInfo\RegisterEntity_Auto.cs" />
     <Compile Include="BasicInfo\Register_FileEntity.cs" />
     <Compile Include="BasicInfo\Register_FileEntity_Auto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBAC\LoginResult.cs" />
-    <Compile Include="RBAC\UserIdentity.cs" />
+    <Compile Include="UserIdentity.cs" />
     <Compile Include="RBAC\UserInfoEntity_Auto.cs" />
   </ItemGroup>
   <ItemGroup>

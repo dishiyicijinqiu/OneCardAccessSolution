@@ -1,10 +1,9 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
-using DevExpress.Xpf.Core;
+using FengSharp.OneCardAccess.BusinessEntity;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
@@ -46,7 +45,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
         }
         #endregion
-        
         #region  methods
         public void Login()
         {
@@ -74,9 +72,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         public void OnLoaded()
         {
         }
-        public void Closing(object obj)
+        public void Closing(CancelEventArgs args)
         {
-            Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
+            if (UserIdentity.Current == null)
+                Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
         }
 
         public void Cancel()

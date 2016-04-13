@@ -12,7 +12,11 @@
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
+
+    <!--<dxe:TextEdit EditValue="{Binding RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
+
     <UserControl.Resources>
         <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="LoginWindowStyle">
             <Setter Property="ResizeMode" Value="NoResize"/>

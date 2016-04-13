@@ -6,6 +6,7 @@
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+                    xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
@@ -40,10 +41,10 @@
         <Setter Property="IsTabStop" Value="False"/>
     </Style>
     <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}">
-        <local:MyRibbonPageGroupsItemsPanel />
+        <ui:MyRibbonPageGroupsItemsPanel />
     </ItemsPanelTemplate>
     <ItemsPanelTemplate x:Key="{dxrt:RibbonThemeKey ResourceKey=PagesControlItemsPanelTemplate}">
-        <local:MyRibbonPagesItemsPanel />
+        <ui:MyRibbonPagesItemsPanel />
     </ItemsPanelTemplate>
     <!--ribonpage放在右侧-->
 

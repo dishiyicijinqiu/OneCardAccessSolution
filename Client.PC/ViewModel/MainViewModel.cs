@@ -1,7 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
+using FengSharp.OneCardAccess.BusinessEntity;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Markup;
 
@@ -22,7 +22,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             Messenger.Default.Unregister<LoginFormResult>(this);
             if (msg == LoginFormResult.Failed)
+            {
                 System.Windows.Application.Current.Shutdown();
+            }
         }
 
         public void ShowDocument(DocumentInfo docInfo)
@@ -34,12 +36,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             doc.Show();
         }
         #endregion
-        public void Closing(object obj)
+        public void Closing(CancelEventArgs args)
         {
-            CancelEventArgs args = obj as CancelEventArgs;
-            var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
-            if (result != MessageResult.Yes)
-                args.Cancel = true;
+            if (UserIdentity.Current != null)
+            {
+                var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
+                if (result != MessageResult.Yes)
+                    args.Cancel = true;
+            }
         }
 
         protected virtual IMessageBoxService MessageBoxService { get { return null; } }

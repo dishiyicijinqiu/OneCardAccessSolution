@@ -125,9 +125,5 @@ namespace FengSharp.OneCardAccess.CodeBuilder
             File.WriteAllLines(historydatapath, historylines);
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            var result = DbHelper.GetDbColumns("HR_Employee");
-        }
     }
 }

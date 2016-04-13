@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using FengSharp.OneCardAccess.Common;
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
 	/// <summary>
@@ -21,6 +22,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 		/// <summary>
 		/// 用户Id
 		/// </summary>
+		[DataBaseKey]
 		[DataMember]
 		public int UserId { get; set; }
 		/// <summary>

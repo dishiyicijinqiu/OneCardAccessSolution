@@ -1,15 +1,8 @@
-﻿public static T_Register_File DataRowToEntity(DataRow dr)
-{
-    if (dr == null)
-        return null;
-    var result = new T_Register_File();
-	result.Id = (string)dr["Id"];
-	result.RegisterId = (int)dr["RegisterId"];
-	result.FileName = (string)dr["FileName"];
-	result.FilePath = (string)dr["FilePath"];
-	result.SortNo = (int)dr["SortNo"];
-    return result;
-}
+﻿
+--注册证附件表
+select Id,RegisterId,FileName,FilePath,SortNo
+from T_Register_File 
+where Id=Id
 
 Id,RegisterId,FileName,FilePath,SortNo,
 @Id,@RegisterId,@FileName,@FilePath,@SortNo,

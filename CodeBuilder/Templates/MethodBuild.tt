@@ -10,16 +10,14 @@
 <#@ output extension=".txt" #>
 <#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
 <#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
-public static <#=TableName#> DataRowToEntity(DataRow dr)
-{
-    if (dr == null)
-        return null;
-    var result = new <#=TableName#>();
-<# foreach(DbColumn column in dbhost.DbColumns){#>
-	result.<#=column.ColumnName#> = (<#= column.CSharpType#>)dr["<#=column.ColumnName#>"];
-<#}#>
-    return result;
-}
+
+--<#=dbhost.DbTable.Remark#>
+select <# int totallen=0;string prestring="";for(int i=0;i<dbhost.DbColumns.Count;i++){
+var column=dbhost.DbColumns[i];
+totallen+=column.ColumnName.Length;
+#><#if(!string.IsNullOrWhiteSpace(prestring)){#><#=prestring#>.<#}#><#=column.ColumnName#><#if(i!=dbhost.DbColumns.Count-1){#>,<#}if(totallen>80){totallen=0;#><#="\r\n\t"#> <#}}#>
+<#="\r\n"#>from <#=TableName#> <#=prestring#>
+where <#=dbhost.DbTable.PrimaryColumn.ColumnName#>=<#=dbhost.DbTable.PrimaryColumn.ColumnName#>
 
 <# foreach(DbColumn column in dbhost.DbColumns){#><#=column.ColumnName#>,<#}#>
 

@@ -34,8 +34,8 @@ namespace FengSharp.OneCardAccess.Services
         }
         public virtual bool DeleteEntity<T>(T entity, DbTransaction transaction = null, string cMode = null)
         {
-            var KeyProperty = entity.GetKeyProperty();
-            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.Name);
+            var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
+            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
             string ProcudeName = "P_Glo_Delete";
             switch (keyDbType)
             {
@@ -57,9 +57,9 @@ namespace FengSharp.OneCardAccess.Services
         }
         public virtual void DeleteRelationEntitys<Primary, Foreign>(Primary primary, DbTransaction transaction = null, string cMode = null)
         {
-            var KeyProperty = primary.GetKeyProperty();
-            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.Name);
-            string ProcudeName = "P_Glo_DeleteRelationEntitys";
+            var KeyProperty = DataBaseExtend.GetKeyProperty<Primary>();
+            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
+            string ProcudeName = "P_Glo_Delete";
             switch (keyDbType)
             {
                 default:
@@ -67,7 +67,7 @@ namespace FengSharp.OneCardAccess.Services
                 case DbType.Int32:
                     break;
                 case DbType.String:
-                    ProcudeName = "P_Glo_DeleteRelationEntitys;2";
+                    ProcudeName = "P_Glo_Delete;2";
                     break;
             }
             DbCommand cmd = Database.GetStoredProcCommand(ProcudeName);
@@ -88,9 +88,9 @@ namespace FengSharp.OneCardAccess.Services
         public virtual T FindById<T>(T t, string cMode = null)
         {
             if (cMode == null)
-                cMode = t.GetType().Name;
-            var KeyProperty = t.GetKeyProperty();
-            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.Name);
+                cMode = typeof(T).Name;
+            var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
+            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
             string ProcudeName = "P_Glo_FindById";
             switch (keyDbType)
             {
@@ -111,10 +111,11 @@ namespace FengSharp.OneCardAccess.Services
             if (ds == null || ds.Tables.Count <= 0 || ds.Tables[0].Rows.Count <= 0)
                 return default(T);
             var dr = ds.Tables[0].Rows[0];
-            var ps = t.GetType().GetProperties();
+            var ps = typeof(T).GetProperties();
             foreach (var p in ps)
             {
-                p.SetValue(t, dr[p.Name], null);
+                if (ds.Tables[0].Columns.Contains(p.Name))
+                    p.SetValue(t, dr[p.Name], null);
             }
             return t;
         }
@@ -131,7 +132,7 @@ namespace FengSharp.OneCardAccess.Services
                 return default(T);
             T t = Activator.CreateInstance<T>();
             var dr = ds.Tables[0].Rows[0];
-            var ps = typeof(T).GetType().GetProperties();
+            var ps = typeof(T).GetProperties();
             foreach (var p in ps)
             {
                 p.SetValue(t, dr[p.Name], null);
@@ -141,47 +142,34 @@ namespace FengSharp.OneCardAccess.Services
         public virtual List<T> GetEntitys<T>(string cMode = null)
         {
             if (cMode == null)
-                cMode = typeof(T).GetType().Name;
-            var KeyProperty = typeof(T).GetKeyProperty();
-            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.Name);
-            string ProcudeName = "P_Glo_GetEntitys";
-            switch (keyDbType)
-            {
-                default:
-                    throw new Exception("不支持的类型");
-                case DbType.Int32:
-                    break;
-                case DbType.String:
-                    ProcudeName = "P_Glo_GetEntitys;2";
-                    break;
-            }
-
-            DbCommand cmd = Database.GetStoredProcCommand(ProcudeName);
+                cMode = typeof(T).Name;
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetEntitys");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "UserId", DbType.Int32, 0);
             DataSet ds = Database.ExecuteDataSet(cmd);
             var results = new List<T>();
             if (ds == null || ds.Tables.Count <= 0)
                 return results;
+            var ps = typeof(T).GetProperties();
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 var dr = ds.Tables[0].Rows[i];
                 T t = (T)Activator.CreateInstance(typeof(T));
-                var ps = t.GetType().GetProperties();
                 foreach (var p in ps)
                 {
-                    p.SetValue(t, dr[p.Name], null);
+                    if (ds.Tables[0].Columns.Contains(p.Name))
+                        p.SetValue(t, dr[p.Name], null);
                 }
                 results.Add(t);
             }
             return results;
 
         }
-        public virtual List<Foreign> GetRelationData<Primary, Foreign>(Primary primary, DbTransaction transaction = null, string cMode = null)
+        public virtual List<Foreign> GetForeignEntitys<Primary, Foreign>(Primary primary, DbTransaction transaction = null, string cMode = null)
         {
-            var KeyProperty = primary.GetKeyProperty();
-            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.Name);
-            string ProcudeName = "P_Glo_GetRelationData";
+            var KeyProperty = DataBaseExtend.GetKeyProperty<Primary>();
+            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
+            string ProcudeName = "GetForeignEntitys";
             switch (keyDbType)
             {
                 default:
@@ -189,7 +177,7 @@ namespace FengSharp.OneCardAccess.Services
                 case DbType.Int32:
                     break;
                 case DbType.String:
-                    ProcudeName = "P_Glo_GetRelationData;2";
+                    ProcudeName = "GetForeignEntitys;2";
                     break;
             }
             DbCommand cmd = Database.GetStoredProcCommand(ProcudeName);
@@ -202,14 +190,15 @@ namespace FengSharp.OneCardAccess.Services
             var results = new List<Foreign>();
             if (ds == null || ds.Tables.Count <= 0)
                 return results;
+            var ps = typeof(Foreign).GetProperties();
             for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
             {
                 var dr = ds.Tables[0].Rows[i];
                 Foreign t = (Foreign)Activator.CreateInstance(typeof(Foreign));
-                var ps = t.GetType().GetProperties();
                 foreach (var p in ps)
                 {
-                    p.SetValue(t, dr[p.Name], null);
+                    if (ds.Tables[0].Columns.Contains(p.Name))
+                        p.SetValue(t, dr[p.Name], null);
                 }
                 results.Add(t);
             }
@@ -261,7 +250,7 @@ namespace FengSharp.OneCardAccess.Services
         }
         public static string GetKeyFiledName<T>(this T t)
         {
-            var Propertys = t.GetType().GetProperties();
+            var Propertys = typeof(T).GetProperties();
             foreach (var property in Propertys)
             {
                 if (property.GetCustomAttributes(typeof(DataBaseKeyAttribute), true).Length > 0)
@@ -271,9 +260,9 @@ namespace FengSharp.OneCardAccess.Services
             }
             return null;
         }
-        public static PropertyInfo GetKeyProperty<T>(this T t)
+        public static PropertyInfo GetKeyProperty<T>()
         {
-            var Propertys = t.GetType().GetProperties();
+            var Propertys = typeof(T).GetProperties();
             foreach (var property in Propertys)
             {
                 if (property.GetCustomAttributes(typeof(DataBaseKeyAttribute), true).Length > 0)
@@ -285,7 +274,7 @@ namespace FengSharp.OneCardAccess.Services
         }
         public static DataBaseKeyType GetKeyFiledKeyType<T>(this T t)
         {
-            var Propertys = t.GetType().GetProperties();
+            var Propertys = typeof(T).GetProperties();
             foreach (var property in Propertys)
             {
                 var databasekey = property.GetCustomAttributes(typeof(DataBaseKeyAttribute), true).FirstOrDefault() as DataBaseKeyAttribute;
@@ -299,7 +288,7 @@ namespace FengSharp.OneCardAccess.Services
 
         public static object GetKeyFiledValue<T>(this T t)
         {
-            var Propertys = t.GetType().GetProperties();
+            var Propertys = typeof(T).GetProperties();
             foreach (var property in Propertys)
             {
                 var databasekey = property.GetCustomAttributes(typeof(DataBaseKeyAttribute), true).FirstOrDefault() as DataBaseKeyAttribute;
@@ -378,8 +367,8 @@ namespace FengSharp.OneCardAccess.Services
             DataBaseKeyType databasekeytype = entity.GetKeyFiledKeyType();
             if (databasekeytype == DataBaseKeyType.UnKnown)
                 throw new Exception("不支持的主键类型");
-            var type = entity.GetType();
-            var Propertys = entity.GetType().GetProperties();
+            var type = typeof(T);
+            var Propertys = type.GetProperties();
             var allfileds = Propertys.Select(t => t.Name).ToList();
             var genefileds = new List<string>();
             foreach (var field in allfileds)
@@ -451,18 +440,19 @@ namespace FengSharp.OneCardAccess.Services
             {
                 _Database.AddInParameter(cmd, property.Name, DataBaseExtend.GetDbTypeByPropertyTypeName(property.PropertyType.Name), property.GetValue(entity, null));
             }
-            _Database.AddParameter(cmd, keyfiled, DataBaseExtend.GetDbTypeByPropertyTypeName(keyfiled), ParameterDirection.Output, keyfiled, DataRowVersion.Default, null);
+            var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
+            _Database.AddParameter(cmd, keyfiled, DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name), ParameterDirection.Output, keyfiled, DataRowVersion.Default, null);
             return cmd;
         }
 
-        internal static DbCommand GetModifyCommand<Entity>(Entity entity, Database _Database, string[] uncreatefileds = null, string[] createfileds = null)
+        internal static DbCommand GetModifyCommand<T>(T entity, Database _Database, string[] uncreatefileds = null, string[] createfileds = null)
         {
             string keyfiled = entity.GetKeyFiledName();
             DataBaseKeyType databasekeytype = entity.GetKeyFiledKeyType();
             if (databasekeytype == DataBaseKeyType.UnKnown)
                 throw new Exception("不支持的主键类型");
-            var type = entity.GetType();
-            var Propertys = entity.GetType().GetProperties();
+            var type = typeof(T);
+            var Propertys = type.GetProperties();
             var allfileds = Propertys.Select(t => t.Name).ToList();
             var genefileds = new List<string>();
             foreach (var field in allfileds)
@@ -510,7 +500,8 @@ namespace FengSharp.OneCardAccess.Services
             {
                 _Database.AddInParameter(cmd, property.Name, GetDbTypeByPropertyTypeName(property.PropertyType.Name), property.GetValue(entity, null));
             }
-            _Database.AddInParameter(cmd, keyfiled, GetDbTypeByPropertyTypeName(keyfiled), entity.GetKeyFiledValue());
+            var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
+            _Database.AddInParameter(cmd, keyfiled, GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name), entity.GetKeyFiledValue());
             return cmd;
         }
     }

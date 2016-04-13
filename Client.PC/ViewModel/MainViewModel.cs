@@ -3,6 +3,9 @@ using DevExpress.Xpf.Core;
 using FengSharp.OneCardAccess.BusinessEntity;
 using System;
 using System.ComponentModel;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
@@ -12,14 +15,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
-            var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
+            App.Current.MainWindow.Visibility = System.Windows.Visibility.Collapsed;
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
+            var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
             DXSplashScreen.Close();
             loginwindowservice.Show("LoginView", null, this);
         }
 
         private void OnLogined(LoginFormResult msg)
         {
+            App.Current.MainWindow.Visibility = System.Windows.Visibility.Visible;
             Messenger.Default.Unregister<LoginFormResult>(this);
             if (msg == LoginFormResult.Failed)
             {
@@ -45,7 +50,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                     args.Cancel = true;
             }
         }
-
         protected virtual IMessageBoxService MessageBoxService { get { return null; } }
     }
     public class DocumentInfo

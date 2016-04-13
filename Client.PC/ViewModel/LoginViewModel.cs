@@ -4,6 +4,8 @@ using FengSharp.OneCardAccess.BusinessEntity;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
+using System;
 using System.ComponentModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
@@ -48,24 +50,44 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region  methods
         public void Login()
         {
-            IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
-            LoginResult loginresult = irbacservice.Login(this.UserNo, this.Password);
-            switch (loginresult.LoginMessage)
+            try
             {
-                case LoginMessage.UserNotExist:
-                    MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                    return;
-                case LoginMessage.UserIsLocked:
-                    MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsLocked, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                    return;
-                case LoginMessage.ErrorPassWord:
-                    MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                    return;
-                default:
-                    UserIdentity.Current = loginresult.UserIdentity;
-                    Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
-                    CurrentWindowService.Close();
-                    break;
+                IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
+                LoginResult loginresult = irbacservice.Login(this.UserNo, this.Password);
+                switch (loginresult.LoginMessage)
+                {
+                    case LoginMessage.UserNotExist:
+                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        return;
+                    case LoginMessage.UserIsLocked:
+                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsLocked, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        return;
+                    case LoginMessage.ErrorPassWord:
+                        MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        return;
+                    default:
+                        UserIdentity.Current = loginresult.UserIdentity;
+                        Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
+                        CurrentWindowService.Close();
+                        break;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Exception exceptionToRethrow;
+                if (ExceptionPolicy.HandleException(ex, "ErrorPolicy", out exceptionToRethrow))
+                {
+                    if (exceptionToRethrow != null)
+                        MessageBoxService.ShowMessage(exceptionToRethrow.Message);
+                    else
+                    {
+                        MessageBoxService.ShowMessage(ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBoxService.ShowMessage(ex.Message);
+                }
             }
         }
 

@@ -6,6 +6,7 @@
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
     <Style TargetType="dxr:RibbonControl">
@@ -47,15 +48,20 @@
     <!--ribonpage放在右侧-->
 
 
+    <core:RowHandleConverter x:Key="rowHandleConverter" />
     <DataTemplate x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate, IsThemeIndependent=True}" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>
                 <ContentPresenter x:Name="iconPresenter" Content="{x:Null}"
                                   DockPanel.Dock="Right" Width="auto" 
                                   />
-                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" Text="{Binding Path=RowHandle.Value}"
-                           >
+                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Mode="OneWay" Converter="{StaticResource rowHandleConverter}">
+                            <Binding Path="View.DataControl" />
+                            <Binding Path="RowHandle.Value" />
+                        </MultiBinding>
+                    </TextBlock.Text>
                 </TextBlock>
             </DockPanel>
         </Grid>

@@ -36,13 +36,22 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
-                <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
+                <dxr:RibbonDefaultPageCategory>
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterView_Title}">
-                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
+                        <dxr:RibbonPageGroup>
                             <dxb:BarButtonItem Style="{StaticResource barSave}"/>
                             <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"
 								IsVisible="{Binding EntityEditMode, Converter={StaticResource editModeVisibleConverter}}"
                                                />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgRegisterFile_Caption}">
+                            <dxb:BarButtonItem Style="{StaticResource barUpLoad}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgTemplate_Caption}">
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
@@ -66,10 +75,10 @@
                             <dxe:DateEdit EditValue="{Binding StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
                         </dxlc:LayoutItem>
 
-                        <dxlc:LayoutGroup Header="附件">
+                        <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
                             <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
-                                    <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}"/>
+                                    <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
                                 <dxg:GridControl.View>
                                     <dxg:TableView />
@@ -91,6 +100,18 @@
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
                             <dxe:DateEdit EditValue="{Binding EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
                         </dxlc:LayoutItem>
+
+                        <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
+                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
+                                <dxg:GridControl.Columns>
+                                    <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
+                                </dxg:GridControl.Columns>
+                                <dxg:GridControl.View>
+                                    <dxg:TableView />
+                                </dxg:GridControl.View>
+                            </dxg:GridControl>
+                        </dxlc:LayoutGroup>
+
                     </dxlc:LayoutGroup>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">

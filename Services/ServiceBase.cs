@@ -169,7 +169,7 @@ namespace FengSharp.OneCardAccess.Services
         {
             var KeyProperty = DataBaseExtend.GetKeyProperty<Primary>();
             var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
-            string ProcudeName = "GetForeignEntitys";
+            string ProcudeName = "P_Glo_GetForeignEntitys";
             switch (keyDbType)
             {
                 default:
@@ -177,7 +177,7 @@ namespace FengSharp.OneCardAccess.Services
                 case DbType.Int32:
                     break;
                 case DbType.String:
-                    ProcudeName = "GetForeignEntitys;2";
+                    ProcudeName = "P_Glo_GetForeignEntitys;2";
                     break;
             }
             DbCommand cmd = Database.GetStoredProcCommand(ProcudeName);

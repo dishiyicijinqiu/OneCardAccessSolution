@@ -51,7 +51,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
 
         }
-        public void MouseDoubleClick(RegisterEntity entity)
+        public void RowDoubleClick()
         {
             Edit();
         }

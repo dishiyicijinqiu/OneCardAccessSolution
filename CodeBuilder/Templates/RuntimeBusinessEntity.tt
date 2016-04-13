@@ -6,6 +6,7 @@
 <#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
 using System;
 using System.Runtime.Serialization;
+using FengSharp.OneCardAccess.Common;
 namespace <#=NameSpace#>
 {
 	/// <summary>
@@ -29,6 +30,13 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
+<# if(column.IsPrimaryKey) {#>
+<#if(column.CSharpType=="string"){#>
+		[DataBaseKey(DataBaseKeyType.Guid)]
+<#}else if(column.CSharpType=="int"){#>
+		[DataBaseKey]
+<#}#>
+<#}#>
 		[DataMember]
 		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
 <#}

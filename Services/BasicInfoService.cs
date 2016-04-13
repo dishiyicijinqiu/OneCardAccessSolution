@@ -16,10 +16,16 @@ namespace FengSharp.OneCardAccess.Services
         }
         public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)
         {
-            return this.FindById<SecondRegisterEntity>(new SecondRegisterEntity()
+            var firstEntity = this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
             {
                 RegisterId = RegisterId
             });
+            var secondentity = new SecondRegisterEntity();
+            secondentity.CopyValueFrom(firstEntity);
+            var dbRegister_FileList = this.GetForeignEntitys<T_Register, T_Register_File>(new T_Register() { RegisterId = secondentity.RegisterId });
+            secondentity.Register_FileEntitys = new Register_FileEntity[dbRegister_FileList.Count].ToList();
+            ClassValueCopier.CopyArray(secondentity.Register_FileEntitys, dbRegister_FileList);
+            return secondentity;
         }
         public int Save(SecondRegisterEntity entity)
         {

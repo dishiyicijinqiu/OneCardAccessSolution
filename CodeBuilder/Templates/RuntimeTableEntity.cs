@@ -34,7 +34,7 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             
             #line default
             #line hidden
-            this.Write("using System;\r\nusing System.ComponentModel.DataAnnotations;\r\nnamespace ");
+            this.Write("using System;\r\nusing FengSharp.OneCardAccess.Common;\r\nnamespace ");
             
             #line 9 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NameSpace));
@@ -76,50 +76,69 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             
             #line default
             #line hidden
-            this.Write("\t\t[Key]\r\n");
             
-            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 21 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+if(column.CSharpType=="string"){
+            
+            #line default
+            #line hidden
+            this.Write("\t\t[DataBaseKey(DataBaseKeyType.Guid)]\r\n");
+            
+            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+}else if(column.CSharpType=="int"){
+            
+            #line default
+            #line hidden
+            this.Write("\t\t[DataBaseKey]\r\n");
+            
+            #line 25 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 26 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write("\t\tpublic ");
             
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.CSharpType));
             
             #line default
             #line hidden
             
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
  if(column.CommonType.IsValueType && column.IsNullable){
             
             #line default
             #line hidden
             this.Write("?");
             
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 28 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write("\t}\r\n}\r\n");
             
-            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 }
             
             #line default
@@ -127,7 +146,7 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 28 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+        #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
 
 public string TableName="T_UserInfo";
 public bool IsBuilder= true;

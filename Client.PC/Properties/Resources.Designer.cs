@@ -115,6 +115,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 下移 的本地化字符串。
+        /// </summary>
+        public static string BarContent_MoveDown {
+            get {
+                return ResourceManager.GetString("BarContent_MoveDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上移 的本地化字符串。
+        /// </summary>
+        public static string BarContent_MoveUp {
+            get {
+                return ResourceManager.GetString("BarContent_MoveUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 返回 的本地化字符串。
         /// </summary>
         public static string BarContent_Return {
@@ -138,6 +156,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string BarContent_SaveAndNew {
             get {
                 return ResourceManager.GetString("BarContent_SaveAndNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上传 的本地化字符串。
+        /// </summary>
+        public static string BarContent_UpLoad {
+            get {
+                return ResourceManager.GetString("BarContent_UpLoad", resourceCulture);
             }
         }
         
@@ -468,18 +495,18 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         /// <summary>
         ///   查找类似 密码： 的本地化字符串。
         /// </summary>
-        public static string View_LoginView_lblPassWord {
+        public static string View_LoginView_lblPassWord_Label {
             get {
-                return ResourceManager.GetString("View_LoginView_lblPassWord", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_lblPassWord_Label", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 用户名： 的本地化字符串。
         /// </summary>
-        public static string View_LoginView_lblUserNo {
+        public static string View_LoginView_lblUserNo_Label {
             get {
-                return ResourceManager.GetString("View_LoginView_lblUserNo", resourceCulture);
+                return ResourceManager.GetString("View_LoginView_lblUserNo_Label", resourceCulture);
             }
         }
         
@@ -507,6 +534,42 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_RegisterCollectionView_Title {
             get {
                 return ResourceManager.GetString("View_RegisterCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterView_lgRegisterFile_Header {
+            get {
+                return ResourceManager.GetString("View_RegisterView_lgRegisterFile_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 检验报告模板 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterView_lgTemplate_Header {
+            get {
+                return ResourceManager.GetString("View_RegisterView_lgTemplate_Header", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证附件操作 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterView_rpgRegisterFile_Caption {
+            get {
+                return ResourceManager.GetString("View_RegisterView_rpgRegisterFile_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 检验报告模板操作 的本地化字符串。
+        /// </summary>
+        public static string View_RegisterView_rpgTemplate_Caption {
+            get {
+                return ResourceManager.GetString("View_RegisterView_rpgTemplate_Caption", resourceCulture);
             }
         }
         

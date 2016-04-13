@@ -5,19 +5,19 @@
                     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-                    xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
+                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
                     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
-    <local:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
+    <core:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
     <dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Add}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new-16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new-32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barCopyAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_CopyAdd}"/>
@@ -67,6 +67,24 @@
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
     </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barUpLoad">
+        <Setter Property="Content" Value="{x:Static res:Resources.BarContent_UpLoad}"/>
+        <Setter Property="Command" Value="{Binding UpLoadCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/up_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/up_32x32.png"/>
+    </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barMoveUp">
+        <Setter Property="Content" Value="{x:Static res:Resources.BarContent_MoveUp}"/>
+        <Setter Property="Command" Value="{Binding MoveUpCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
+    </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barMoveDown">
+        <Setter Property="Content" Value="{x:Static res:Resources.BarContent_MoveDown}"/>
+        <Setter Property="Command" Value="{Binding MoveDownCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/movedown_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/movedown_32x32.png"/>
+    </Style>
     <Style TargetType="dxe:TextEdit" x:Key="teCreateDate">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
         <Setter Property="IsReadOnly" Value="True"/>
@@ -80,15 +98,20 @@
         <Setter Property="Mask" Value="yyyy年MM月dd日 HH:mm:ss"/>
     </Style>
 
+    <core:CateRowHandleConverter x:Key="cateRowHandleConverter" />
     <DataTemplate x:Key="CateRowIndicatorThemeKey" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>
                 <ContentPresenter x:Name="iconPresenter" Content="{x:Null}"
                                   DockPanel.Dock="Right" Width="auto" 
                                   />
-                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" 
-                           VerticalAlignment="Center" Text="88"
-                           >
+                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Mode="OneWay" Converter="{StaticResource cateRowHandleConverter}">
+                            <Binding Path="View.DataControl" />
+                            <Binding Path="RowHandle.Value" />
+                        </MultiBinding>
+                    </TextBlock.Text>
                 </TextBlock>
             </DockPanel>
         </Grid>
@@ -128,7 +151,6 @@
         </DataTemplate.Triggers>
     </DataTemplate>
     <!--<Setter Property="RowIndicatorContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate}}" />-->
-
 
     <!--<Style TargetType="dxg:GridControl" x:Key="GridControlDoubleClickStyle">
         <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">

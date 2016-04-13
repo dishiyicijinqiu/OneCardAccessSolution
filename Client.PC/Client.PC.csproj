@@ -70,9 +70,9 @@
     </Compile>
     <Compile Include="Core\DefaultViewModelBase.cs" />
     <Compile Include="Core\EditMessage.cs" />
-    <Compile Include="Core\EditModeVisibleConverter.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
-    <Compile Include="Core\RowHandleConverter.cs" />
+    <Compile Include="Core\EventConverter.cs" />
+    <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -192,8 +192,8 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\new-16x16.png" />
-    <Resource Include="Resources\Images\Bar\new-32x32.png" />
+    <Resource Include="Resources\Images\Bar\new_16x16.png" />
+    <Resource Include="Resources\Images\Bar\new_32x32.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\Bar\copy-16x16.png" />
@@ -226,6 +226,14 @@
   <ItemGroup>
     <Resource Include="Resources\Images\Bar\saveandnew_16x16.png" />
     <Resource Include="Resources\Images\Bar\saveandnew_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Bar\up_16x16.png" />
+    <Resource Include="Resources\Images\Bar\up_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\Bar\movedown_16x16.png" />
+    <Resource Include="Resources\Images\Bar\movedown_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

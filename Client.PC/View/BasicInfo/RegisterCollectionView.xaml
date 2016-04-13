@@ -11,6 +11,7 @@
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             mc:Ignorable="d" 
@@ -50,10 +51,6 @@
                 SelectedItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
                 CurrentItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
 				ItemsSource="{Binding Items}" Grid.Row="1">
-                <dxmvvm:Interaction.Behaviors>
-                    <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding MouseDoubleClickCommand}" EventName="MouseDoubleClick" 
-                                           EventArgsConverter="{StaticResource eventArgsToDataRowConverter}"/>
-                </dxmvvm:Interaction.Behaviors>
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
                     <dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterProductName}"/>
@@ -70,10 +67,17 @@
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
                 </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
-                    <dxg:TableView />
+                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}">
+                        <dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding RowDoubleClickCommand}" EventName="RowDoubleClick" />
+                        </dxmvvm:Interaction.Behaviors>
+                    </dxg:TableView>
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>
     </dxb:BarManager>
 </UserControl>
+
+
+<!--<TextBox x:Name="textBox1" FontSize="24" Margin="10" Text="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=Name}"/>-->  

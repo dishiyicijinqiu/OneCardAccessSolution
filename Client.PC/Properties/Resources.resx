@@ -168,7 +168,7 @@
   <data name="Error_ParameterIsError" xml:space="preserve">
     <value>参数错误</value>
   </data>
-  <data name="View_LoginView_lblPassWord" xml:space="preserve">
+  <data name="View_LoginView_lblPassWord_Label" xml:space="preserve">
     <value>密码：</value>
   </data>
   <data name="View_RegisterCollectionView_Title" xml:space="preserve">
@@ -180,7 +180,7 @@
   <data name="Error_UserIsLocked" xml:space="preserve">
     <value>用户被锁定</value>
   </data>
-  <data name="View_LoginView_lblUserNo" xml:space="preserve">
+  <data name="View_LoginView_lblUserNo_Label" xml:space="preserve">
     <value>用户名：</value>
   </data>
   <data name="Error_UserNotExist" xml:space="preserve">
@@ -269,5 +269,26 @@
   </data>
   <data name="Info_SaveSuccess" xml:space="preserve">
     <value>保存成功</value>
+  </data>
+  <data name="BarContent_UpLoad" xml:space="preserve">
+    <value>上传</value>
+  </data>
+  <data name="View_RegisterView_rpgRegisterFile_Caption" xml:space="preserve">
+    <value>注册证附件操作</value>
+  </data>
+  <data name="BarContent_MoveDown" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="BarContent_MoveUp" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="View_RegisterView_lgRegisterFile_Header" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="View_RegisterView_lgTemplate_Header" xml:space="preserve">
+    <value>检验报告模板</value>
+  </data>
+  <data name="View_RegisterView_rpgTemplate_Caption" xml:space="preserve">
+    <value>检验报告模板操作</value>
   </data>
 </root>

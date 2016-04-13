@@ -11,6 +11,7 @@
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
@@ -40,7 +41,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barEdit}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
                         </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>

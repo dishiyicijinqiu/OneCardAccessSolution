@@ -50,14 +50,14 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             #line default
             #line hidden
             this.Write("\r\n\t/// </summary>\r\n\t[DataContract(Namespace = \"http://www.fengsharp.com/onecardac" +
-                    "cess/\")]\r\n\tpublic class ");
+                    "cess/\")]\r\n\tpublic partial class ");
             
             #line 16 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));
             
             #line default
             #line hidden
-            this.Write("Entity\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic partial ");
+            this.Write("Entity\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic ");
             
             #line 21 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));

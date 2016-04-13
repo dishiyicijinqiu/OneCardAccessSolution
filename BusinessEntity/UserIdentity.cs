@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
+namespace FengSharp.OneCardAccess.BusinessEntity
 {
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
     public class UserIdentity

@@ -13,12 +13,12 @@ namespace <#=NameSpace#>
 	/// <#=dbhost.DbTable.Remark#>
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public class <#=TableName.Replace("T_",string.Empty)#>Entity
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public partial <#=TableName.Replace("T_",string.Empty)#>Entity()
+		public <#=TableName.Replace("T_",string.Empty)#>Entity()
 		{
 <# foreach(DbColumn column in dbhost.DbColumns){if(column.CSharpType.ToLower()=="string"){#>
 			<#=column.ColumnName#>=string.Empty;

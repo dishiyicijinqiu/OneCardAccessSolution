@@ -1,4 +1,5 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+﻿using FengSharp.OneCardAccess.BusinessEntity;
+using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using FengSharp.OneCardAccess.TEntity;
 using System;

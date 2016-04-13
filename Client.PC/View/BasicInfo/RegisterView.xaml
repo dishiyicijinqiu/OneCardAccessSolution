@@ -11,6 +11,7 @@
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+    xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
@@ -53,7 +54,7 @@
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgTemplate_Caption}">
                             <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
                         </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup local:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>

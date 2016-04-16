@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Practices.EnterpriseLibrary.Logging;
+using System;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.Web;
 
 namespace FengSharp.OneCardAccess.Server
 {

@@ -32,6 +32,30 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.PC", "Client.PC\Client.PC.csproj", "{4539B7AB-AB2F-49C7-A44E-E7F3F80BA250}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EnterpriseLibrarys", "EnterpriseLibrarys", "{DE61001C-F0E8-426D-A27C-EA3CB583AC76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity", "EnterpriseLibrarys\Unitys\Unity\Src\Unity.csproj", "{EE1F752C-1FAB-41AD-AD63-857D0E62AB6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Configuration", "EnterpriseLibrarys\Unitys\Unity.Configuration\Src\Unity.Configuration.csproj", "{AEF45ED2-3E7F-4AA5-9001-A4D1BAC12EBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Interception", "EnterpriseLibrarys\Unitys\Unity.Interception\Src\Unity.Interception.csproj", "{F8186B23-B0E1-4646-B5F3-14357841E2BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Interception.Configuration", "EnterpriseLibrarys\Unitys\Unity.Interception.Configuration\Src\Unity.Interception.Configuration.csproj", "{80F7399F-B221-465F-97C9-4B9FC0E2F67F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common.2010", "EnterpriseLibrarys\Common\Src\Common.2010.csproj", "{A09297C8-2C40-470B-8856-D856676DDFFA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.2010", "EnterpriseLibrarys\Data\Src\Data\Data.2010.csproj", "{D349B6D8-992F-443F-BB57-57E50DD98794}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling.2010", "EnterpriseLibrarys\ExceptionHandling\Src\ExceptionHandling\ExceptionHandling.2010.csproj", "{2DB0AD6D-BF59-4EBB-9F99-49ABD8539FD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling.Logging.2010", "EnterpriseLibrarys\ExceptionHandling\Src\Logging\ExceptionHandling.Logging.2010.csproj", "{EC311AD3-0A26-4808-901B-A983E97E5790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionHandling.WCF.2010", "EnterpriseLibrarys\ExceptionHandling\Src\WCF\ExceptionHandling.WCF.2010.csproj", "{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logging.2010", "EnterpriseLibrarys\Logging\Src\Logging\Logging.2010.csproj", "{6AC97717-899D-4F72-BC5B-2C37959CD4FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyInjection.2010", "EnterpriseLibrarys\PolicyInjection\Src\PolicyInjection\PolicyInjection.2010.csproj", "{3E6129C8-18E4-410D-89FC-0DBBE6009FC5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +90,39 @@ Global
 		{4539B7AB-AB2F-49C7-A44E-E7F3F80BA250}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4539B7AB-AB2F-49C7-A44E-E7F3F80BA250}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4539B7AB-AB2F-49C7-A44E-E7F3F80BA250}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE1F752C-1FAB-41AD-AD63-857D0E62AB6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE1F752C-1FAB-41AD-AD63-857D0E62AB6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE1F752C-1FAB-41AD-AD63-857D0E62AB6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEF45ED2-3E7F-4AA5-9001-A4D1BAC12EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEF45ED2-3E7F-4AA5-9001-A4D1BAC12EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEF45ED2-3E7F-4AA5-9001-A4D1BAC12EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8186B23-B0E1-4646-B5F3-14357841E2BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8186B23-B0E1-4646-B5F3-14357841E2BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8186B23-B0E1-4646-B5F3-14357841E2BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80F7399F-B221-465F-97C9-4B9FC0E2F67F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80F7399F-B221-465F-97C9-4B9FC0E2F67F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80F7399F-B221-465F-97C9-4B9FC0E2F67F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A09297C8-2C40-470B-8856-D856676DDFFA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A09297C8-2C40-470B-8856-D856676DDFFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A09297C8-2C40-470B-8856-D856676DDFFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D349B6D8-992F-443F-BB57-57E50DD98794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DB0AD6D-BF59-4EBB-9F99-49ABD8539FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DB0AD6D-BF59-4EBB-9F99-49ABD8539FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DB0AD6D-BF59-4EBB-9F99-49ABD8539FD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC311AD3-0A26-4808-901B-A983E97E5790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC311AD3-0A26-4808-901B-A983E97E5790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC311AD3-0A26-4808-901B-A983E97E5790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AC97717-899D-4F72-BC5B-2C37959CD4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AC97717-899D-4F72-BC5B-2C37959CD4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AC97717-899D-4F72-BC5B-2C37959CD4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E6129C8-18E4-410D-89FC-0DBBE6009FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E6129C8-18E4-410D-89FC-0DBBE6009FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E6129C8-18E4-410D-89FC-0DBBE6009FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -78,8 +135,19 @@ Global
 		{51E868C3-0F07-4BDD-A47D-C5EEE6543166} = {A246CCBB-3CAE-42F3-A652-3545B6589AAC}
 		{89DD6B99-D85B-4D96-8CF6-2A7044C87D1E} = {4774B128-6F67-46FB-87B3-50139572B45B}
 		{4539B7AB-AB2F-49C7-A44E-E7F3F80BA250} = {A246CCBB-3CAE-42F3-A652-3545B6589AAC}
+		{EE1F752C-1FAB-41AD-AD63-857D0E62AB6B} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{AEF45ED2-3E7F-4AA5-9001-A4D1BAC12EBE} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{F8186B23-B0E1-4646-B5F3-14357841E2BA} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{80F7399F-B221-465F-97C9-4B9FC0E2F67F} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{A09297C8-2C40-470B-8856-D856676DDFFA} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{D349B6D8-992F-443F-BB57-57E50DD98794} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{2DB0AD6D-BF59-4EBB-9F99-49ABD8539FD2} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{EC311AD3-0A26-4808-901B-A983E97E5790} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{6AC97717-899D-4F72-BC5B-2C37959CD4FF} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{3E6129C8-18E4-410D-89FC-0DBBE6009FC5} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35
+		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.PolicyInjection.5.0.505.0\lib\NET35
 	EndGlobalSection
 EndGlobal

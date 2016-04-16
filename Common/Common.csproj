@@ -30,38 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -89,12 +58,38 @@
     <Compile Include="ServiceProxy Factory\ChannelFactoryCreator.cs" />
     <Compile Include="ServiceProxy Factory\ServiceProxyFactory.cs" />
     <Compile Include="ServiceProxy Factory\ServiceRealProxy.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Unity Integration\Policy Injection Integration\IPolicyInjectionPolicy.cs" />
+    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionExtension.cs" />
+    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionPolicy.cs" />
+    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionStrategy.cs" />
+    <Compile Include="Unity Integration\UnityBehaviorAttribute.cs" />
+    <Compile Include="Unity Integration\UnityBehaviorElement.cs" />
+    <Compile Include="Unity Integration\UnityInstanceProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extends\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EnterpriseLibrarys\Common\Src\Common.2010.csproj">
+      <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
+      <Name>Common.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\ExceptionHandling\ExceptionHandling.2010.csproj">
+      <Project>{2db0ad6d-bf59-4ebb-9f99-49abd8539fd2}</Project>
+      <Name>ExceptionHandling.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\PolicyInjection\Src\PolicyInjection\PolicyInjection.2010.csproj">
+      <Project>{3e6129c8-18e4-410d-89fc-0dbbe6009fc5}</Project>
+      <Name>PolicyInjection.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Configuration\Src\Unity.Configuration.csproj">
+      <Project>{aef45ed2-3e7f-4aa5-9001-a4d1bac12ebe}</Project>
+      <Name>Unity.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity\Src\Unity.csproj">
+      <Project>{ee1f752c-1fab-41ad-ad63-857d0e62ab6b}</Project>
+      <Name>Unity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

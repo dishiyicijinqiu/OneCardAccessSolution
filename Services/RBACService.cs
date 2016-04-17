@@ -13,7 +13,6 @@ namespace FengSharp.OneCardAccess.Services
     {
         public LoginResult Login(string UserNo, string PassWord)
         {
-            throw new Exception("nihaos");
             var dbentity = this.FindByNo<T_UserInfo>(UserNo);
             if (dbentity == null)
                 return new LoginResult() { LoginMessage = LoginMessage.UserNotExist };

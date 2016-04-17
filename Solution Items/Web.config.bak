@@ -21,7 +21,107 @@
       </add>
     </policies>
   </policyInjection>-->
-  <policyInjection />
+  <exceptionHandling>
+    <exceptionPolicies>
+      <add name="ErrorPolicy">
+        <exceptionTypes>
+          <!--<add name="Exception" type="System.Exception, mscorlib" postHandlingAction="None">
+            <exceptionHandlers>
+              <add name="Logging Exception Handler" type="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.LoggingExceptionHandler, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
+         logCategory="WCFMethodLog" eventId="100" severity="Error" title="服务调用失败"
+         formatterType="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.TextExceptionFormatter, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling"
+         priority="0" />
+              <add name="Replace Handler" type="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.ReplaceHandler, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
+                 exceptionMessage="服务调用失败" replaceExceptionType="System.Exception, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+              -->
+          <!--<add type="FengSharp.OneCardAccess.Common.CustomerExceptionHandler, FengSharp.OneCardAccess.Common"
+                name="Custom Handler" />-->
+          <!--
+            </exceptionHandlers>
+          </add>-->
+          <add name="Exception" type="System.Exception, mscorlib" postHandlingAction="None">
+            <exceptionHandlers>
+              <add name="Logging Exception Handler"
+                   type="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.LoggingExceptionHandler, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
+                  formatterType="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.TextExceptionFormatter, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling"
+                  logCategory="ServiceMethod" eventId="100" severity="Error" title="ServiceMethodError" priority="0" />
+              <add name="Replace Handler" 
+                   type="FengSharp.OneCardAccess.Common.ResourceReplaceHandler, FengSharp.OneCardAccess.Common"
+                   exceptionMessageKey="ReplaceExceptionMessage"
+                  exceptionMessageType="FengSharp.OneCardAccess.Server.Properties, FengSharp.OneCardAccess.Server" 
+                   replaceExceptionType="System.Exception, mscorlib" />
+              <!--<add type="FengSharp.OneCardAccess.Common.CustomerExceptionHandler, FengSharp.OneCardAccess.Common" name="Custom Handler" />-->
+            </exceptionHandlers>
+          </add>
+          <add name="BusinessException" type="FengSharp.OneCardAccess.Infrastructure.Exceptions.BusinessException, FengSharp.OneCardAccess.Infrastructure"
+            postHandlingAction="None"/>
+          <add name="LoginTimeOutException" type="FengSharp.OneCardAccess.Infrastructure.Exceptions.LoginTimeOutException, FengSharp.OneCardAccess.Infrastructure"
+            postHandlingAction="None"/>
+        </exceptionTypes>
+      </add>
+    </exceptionPolicies>
+  </exceptionHandling>
+
+
+  <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+    <sectionExtension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension,Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=null" />
+    <container name="ServicesContainer">
+      <extension type="Interception" />
+      <register type="FengSharp.OneCardAccess.ServiceInterfaces.IBasicInfoService,FengSharp.OneCardAccess.ServiceInterfaces"
+                mapTo="FengSharp.OneCardAccess.Services.BasicInfoService,FengSharp.OneCardAccess.Services">
+        <interceptor isDefaultForType="true" type="InterfaceInterceptor"/>
+        <policyInjection/>
+      </register>
+      <register type="FengSharp.OneCardAccess.ServiceInterfaces.IRBACService,FengSharp.OneCardAccess.ServiceInterfaces"
+                mapTo="FengSharp.OneCardAccess.Services.RBACService,FengSharp.OneCardAccess.Services">
+        <interceptor isDefaultForType="true" type="InterfaceInterceptor"/>
+        <policyInjection/>
+      </register>
+      <!--<extension type="FengSharp.OneCardAccess.Common.PolicyInjectionExtension,FengSharp.OneCardAccess.Common"/>-->
+    </container>
+  </unity>
+
+  <dataConfiguration defaultDatabase="DefaultConnectionString" />
+  <connectionStrings>
+    <add name="DefaultConnectionString" connectionString="data source=.;initial catalog=OneCardAccessDataBase;User Id = sa;Password=111111"
+      providerName="System.Data.SqlClient" />
+  </connectionStrings>
+  <system.web>
+    <compilation debug="true" targetFramework="4.0" />
+  </system.web>
+  <system.serviceModel>
+    <behaviors>
+      <serviceBehaviors>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="false" httpsGetEnabled="false" />
+          <unity containerName="ServicesContainer" />
+          <ExceptionHandling exceptionPolicyName="ErrorPolicy" />
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>
+    <extensions>
+      <behaviorExtensions>
+        <add name="unity" type="FengSharp.OneCardAccess.Common.UnityBehaviorElement, FengSharp.OneCardAccess.Common" />
+        <add name="ExceptionHandling" type="FengSharp.OneCardAccess.Common.ExceptionHandlingBehaviorElement, FengSharp.OneCardAccess.Common" />
+      </behaviorExtensions>
+    </extensions>
+    <services>
+      <service name="FengSharp.OneCardAccess.Services.RBACService">
+        <endpoint address="net.tcp://127.0.0.1/OneCardAccessServer/RBACService.svc"
+          binding="netTcpBinding" bindingConfiguration="" name="RBACServiceEndPoint"
+          contract="FengSharp.OneCardAccess.ServiceInterfaces.IRBACService" />
+        <endpoint address="mex" binding="mexTcpBinding" bindingConfiguration=""
+          contract="IMetadataExchange" />
+      </service>
+      <service name="FengSharp.OneCardAccess.Services.BasicInfoService">
+        <endpoint address="net.tcp://127.0.0.1/OneCardAccessServer/BasicInfoService.svc"
+          binding="netTcpBinding" bindingConfiguration="" name="BasicInfoServiceEndPoint"
+          contract="FengSharp.OneCardAccess.ServiceInterfaces.IBasicInfoService" />
+        <endpoint address="mex" binding="mexTcpBinding" bindingConfiguration=""
+          name="" contract="IMetadataExchange" />
+      </service>
+    </services>
+  </system.serviceModel>
   <loggingConfiguration name="Logging Application Block" tracingEnabled="true"
     defaultCategory="General" logWarningsWhenNoCategoriesMatch="true">
     <listeners>
@@ -68,86 +168,4 @@
       </errors>
     </specialSources>
   </loggingConfiguration>
-  <exceptionHandling>
-    <exceptionPolicies>
-      <add name="ErrorPolicy">
-        <exceptionTypes>
-          <add name="Exception" type="System.Exception, mscorlib" postHandlingAction="ThrowNewException">
-            <exceptionHandlers>
-              <add name="Logging Exception Handler" type="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.LoggingExceptionHandler, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
-                logCategory="ServiceMethod" eventId="100" severity="Error" title="ServiceMethodError"
-                formatterType="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.TextExceptionFormatter, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling"
-                priority="0" />
-              <add exceptionMessageKey="ReplaceExceptionMessage" exceptionMessageType="FengSharp.OneCardAccess.Server.Properties.Resources, FengSharp.OneCardAccess.Server"
-                replaceExceptionType="System.Exception, mscorlib" type="FengSharp.OneCardAccess.Common.ResourceReplaceHandler, FengSharp.OneCardAccess.Common"
-                name="Replace Handler" />
-            </exceptionHandlers>
-          </add>
-          <add name="BusinessException" type="FengSharp.OneCardAccess.Common.BusinessException, FengSharp.OneCardAccess.Common"
-            postHandlingAction="None" />
-          <add name="LoginTimeOutException" type="FengSharp.OneCardAccess.Common.LoginTimeOutException, FengSharp.OneCardAccess.Common"
-            postHandlingAction="None" />
-        </exceptionTypes>
-      </add>
-    </exceptionPolicies>
-  </exceptionHandling>
-  <dataConfiguration defaultDatabase="DefaultConnectionString" />
-  <connectionStrings>
-    <add name="DefaultConnectionString" connectionString="data source=.;initial catalog=OneCardAccessDataBase;User Id = sa;Password=111111"
-      providerName="System.Data.SqlClient" />
-  </connectionStrings>
-  <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
-    <sectionExtension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension,Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=null" />
-    <container name="ServicesContainer">
-      <extension type="Interception" />
-      <register type="FengSharp.OneCardAccess.ServiceInterfaces.IBasicInfoService,FengSharp.OneCardAccess.ServiceInterfaces"
-                mapTo="FengSharp.OneCardAccess.Services.BasicInfoService,FengSharp.OneCardAccess.Services">
-        <interceptor isDefaultForType="true" type="InterfaceInterceptor"/>
-        <policyInjection/>
-      </register>
-      <register type="FengSharp.OneCardAccess.ServiceInterfaces.IRBACService,FengSharp.OneCardAccess.ServiceInterfaces"
-                mapTo="FengSharp.OneCardAccess.Services.RBACService,FengSharp.OneCardAccess.Services">
-        <interceptor isDefaultForType="true" type="InterfaceInterceptor"/>
-        <policyInjection/>
-      </register>
-      <!--<extension type="FengSharp.OneCardAccess.Common.PolicyInjectionExtension,FengSharp.OneCardAccess.Common"/>-->
-    </container>
-  </unity>
-
-  <system.web>
-    <compilation debug="true" targetFramework="4.0" />
-  </system.web>
-  <system.serviceModel>
-    <behaviors>
-      <serviceBehaviors>
-        <behavior name="">
-          <serviceMetadata httpGetEnabled="false" httpsGetEnabled="false" />
-          <unity containerName="ServicesContainer" />
-          <ExceptionHandling exceptionPolicyName="ErrorPolicy" />
-        </behavior>
-      </serviceBehaviors>
-    </behaviors>
-    <extensions>
-      <behaviorExtensions>
-        <add name="unity" type="FengSharp.OneCardAccess.Common.UnityBehaviorElement, FengSharp.OneCardAccess.Common" />
-        <add name="ExceptionHandling" type="FengSharp.OneCardAccess.Common.ExceptionHandlingBehaviorElement, FengSharp.OneCardAccess.Common" />
-      </behaviorExtensions>
-    </extensions>
-    <services>
-      <service name="FengSharp.OneCardAccess.Services.RBACService">
-        <endpoint address="net.tcp://127.0.0.1/OneCardAccessServer/RBACService.svc"
-          binding="netTcpBinding" bindingConfiguration="" name="RBACServiceEndPoint"
-          contract="FengSharp.OneCardAccess.ServiceInterfaces.IRBACService" />
-        <endpoint address="mex" binding="mexTcpBinding" bindingConfiguration=""
-          contract="IMetadataExchange" />
-      </service>
-      <service name="FengSharp.OneCardAccess.Services.BasicInfoService">
-        <endpoint address="net.tcp://127.0.0.1/OneCardAccessServer/BasicInfoService.svc"
-          binding="netTcpBinding" bindingConfiguration="" name="BasicInfoServiceEndPoint"
-          contract="FengSharp.OneCardAccess.ServiceInterfaces.IBasicInfoService" />
-        <endpoint address="mex" binding="mexTcpBinding" bindingConfiguration=""
-          name="" contract="IMetadataExchange" />
-      </service>
-    </services>
-  </system.serviceModel>
 </configuration>

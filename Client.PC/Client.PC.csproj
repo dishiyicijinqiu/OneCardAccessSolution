@@ -82,6 +82,7 @@
     <Compile Include="Core\EntityEditMode.cs" />
     <Compile Include="Core\EventConverter.cs" />
     <Compile Include="Core\ExceptionPolicyTest.cs" />
+    <Compile Include="Core\ServiceLoader.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">

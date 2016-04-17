@@ -43,7 +43,8 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRules>
     </CodeAnalysisRules>
-    <DocumentationFile>..\..\bin\Desktop\Debug\Microsoft.Practices.Unity.Interception.Configuration.xml</DocumentationFile>
+    <DocumentationFile>
+    </DocumentationFile>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CodeAnalysisRuleSet>Migrated rules for Unity.Interception.Configuration.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>

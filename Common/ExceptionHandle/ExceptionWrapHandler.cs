@@ -1,43 +1,11 @@
-﻿using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
-using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
-using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration;
+﻿using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using System;
-using System.Collections.Specialized;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Dispatcher;
 
 namespace FengSharp.OneCardAccess.Common
 {
-    [ConfigurationElementType(typeof(CustomHandlerData))]
-    public class CustomerExceptionHandler : IExceptionHandler
-    {
-        public CustomerExceptionHandler()
-        {
-
-        }
-        public CustomerExceptionHandler(NameValueCollection namevalue)
-        {
-
-        }
-
-        public Exception HandleException(Exception exception, Guid handlingInstanceId)
-        {
-            if (exception is System.Data.SqlClient.SqlException)
-            {
-                var sqlerror = exception as System.Data.SqlClient.SqlException;
-                if (sqlerror.Class != 11 || sqlerror.State != 1)
-                {
-                    object[] args = new object[] { ExceptionUtility.FormatExceptionMessage("服务调用出错", handlingInstanceId) };
-                    return (Exception)Activator.CreateInstance(typeof(Exception), args);
-                }
-            }
-            return exception;
-        }
-
-    }
-
-
     public class ExceptionWrapHandler : IErrorHandler
     {
         public string ExceptionPolicyName

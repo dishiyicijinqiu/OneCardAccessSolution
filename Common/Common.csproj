@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Attributes\DataBaseKeyAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionExtractionMessageInspector.cs" />
+    <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
+    <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceLoggingExceptionHandler.cs" />
+    <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceReplaceHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehavior.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs" />
     <Compile Include="ExceptionHandle\ExceptionWrapHandler.cs" />
@@ -77,6 +80,14 @@
     <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\ExceptionHandling\ExceptionHandling.2010.csproj">
       <Project>{2db0ad6d-bf59-4ebb-9f99-49abd8539fd2}</Project>
       <Name>ExceptionHandling.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\Logging\ExceptionHandling.Logging.2010.csproj">
+      <Project>{EC311AD3-0A26-4808-901B-A983E97E5790}</Project>
+      <Name>ExceptionHandling.Logging.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Logging\Src\Logging\Logging.2010.csproj">
+      <Project>{6AC97717-899D-4F72-BC5B-2C37959CD4FF}</Project>
+      <Name>Logging.2010</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\PolicyInjection\Src\PolicyInjection\PolicyInjection.2010.csproj">
       <Project>{3e6129c8-18e4-410d-89fc-0dbbe6009fc5}</Project>

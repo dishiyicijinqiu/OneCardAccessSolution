@@ -34,11 +34,11 @@ namespace FengSharp.OneCardAccess.Client.PC.Helpers
         static void ShowWindow()
         {
             string message = GetMessage();
-            var window = new Window() { Width = 600, Height = 400, WindowStyle = WindowStyle.ToolWindow, ShowActivated = true, Title = "未处理的异常" };
+            var window = new Window() { Width = 600, Height = 400, WindowStyle = WindowStyle.ToolWindow, ShowActivated = true, Title = Properties.Resources.Error_UnHandler };
             var grid = new Grid() { Margin = new Thickness(5) };
-            var closeButton = new Button() { Content = "关闭", Margin = new Thickness(3) };
+            var closeButton = new Button() { Content = Properties.Resources.btn_Close , Margin = new Thickness(3) };
             closeButton.Click += button_Click;
-            var copyButton = new Button() { Content = "复制错误", Margin = new Thickness(3) };
+            var copyButton = new Button() { Content = Properties.Resources.btn_CopyError, Margin = new Thickness(3) };
             copyButton.Click += copyButton_Click;
             var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
             Grid.SetRow(stackPanel, 1);

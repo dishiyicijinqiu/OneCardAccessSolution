@@ -11,41 +11,23 @@ namespace FengSharp.OneCardAccess.Core
             try
             {
                 Exception exceptionToRethrow;
-                if (ExceptionPolicy.HandleException(ex, policyName ?? "ErrorPolicy", out exceptionToRethrow))
+                if (!string.IsNullOrWhiteSpace(policyName))
                 {
-                    if (exceptionToRethrow != null)
-                        MessageBoxService.ShowMessage(exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                    else
-                        MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                    if (ExceptionPolicy.HandleException(ex, policyName, out exceptionToRethrow))
+                    {
+                        if (exceptionToRethrow != null)
+                            MessageBoxService.ShowMessage(exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        else
+                            MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        return;
+                    }
                 }
-                else
-                    MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
             }
             catch (Exception exception)
             {
                 MessageBoxService.ShowMessage(exception.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
             }
         }
-
-        //public static void HandleException(Exception ex, string policyName = null)
-        //{
-        //    try
-        //    {
-        //        Exception exceptionToRethrow;
-        //        if (ExceptionPolicy.HandleException(ex, policyName ?? "ErrorPolicy", out exceptionToRethrow))
-        //        {
-        //            if (exceptionToRethrow != null)
-        //                MessageBoxService.ShowMessage(exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-        //            else
-        //                MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-        //        }
-        //        else
-        //            MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        MessageBoxService.ShowMessage(exception.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-        //    }
-        //}
     }
 }

@@ -19,7 +19,6 @@ namespace FengSharp.OneCardAccess.Client.PC
             {
                 Shutdown();
             };
-            //ThemeManager.ApplicationThemeName = "Office2010Blue";//111
             ThemeManager.ApplicationThemeName = DevExpress.Xpf.Core.Theme.Office2010BlueName;
             ExceptionHelper.Initialize();
             DXSplashScreen.Show<SplashScreenView>();

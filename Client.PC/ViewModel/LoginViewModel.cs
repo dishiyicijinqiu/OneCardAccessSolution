@@ -66,7 +66,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                     default:
                         if (Session.Current == null)
                         {
-                            throw new BusinessException("无效的会话");
+                            throw new BusinessException(Properties.Resources.Error_UnableSession);
                         }
                         MessageBoxService.ShowMessage(Session.Current.SessionClientName);
                         Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);

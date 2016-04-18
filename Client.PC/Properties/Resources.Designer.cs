@@ -169,6 +169,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 关闭 的本地化字符串。
+        /// </summary>
+        public static string btn_Close {
+            get {
+                return ResourceManager.GetString("btn_Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 复制错误 的本地化字符串。
+        /// </summary>
+        public static string btn_CopyError {
+            get {
+                return ResourceManager.GetString("btn_CopyError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 苏州康力骨科器械有限公公司 的本地化字符串。
         /// </summary>
         public static string CompanyRight_ComanyName {
@@ -394,6 +412,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 无效的会话 的本地化字符串。
+        /// </summary>
+        public static string Error_UnableSession {
+            get {
+                return ResourceManager.GetString("Error_UnableSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未经处理的异常 的本地化字符串。
+        /// </summary>
+        public static string Error_UnHandler {
+            get {
+                return ResourceManager.GetString("Error_UnHandler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户被锁定 的本地化字符串。
         /// </summary>
         public static string Error_UserIsLocked {
@@ -477,9 +513,9 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         /// <summary>
         ///   查找类似 服务内部出错 的本地化字符串。
         /// </summary>
-        public static string ServerExceptionMessage {
+        public static string Server_ExceptionMessage {
             get {
-                return ResourceManager.GetString("ServerExceptionMessage", resourceCulture);
+                return ResourceManager.GetString("Server_ExceptionMessage", resourceCulture);
             }
         }
         

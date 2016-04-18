@@ -1,28 +1,25 @@
 ﻿using System;
 using System.Configuration;
 using System.ServiceModel.Configuration;
-
 namespace FengSharp.OneCardAccess.Common
 {
-    public class ExceptionHandlingBehaviorElement: BehaviorExtensionElement
+    public class ExceptionHandlingBehaviorElement:BehaviorExtensionElement
     {
-        public override Type BehaviorType
-        {
-            get { return typeof(ExceptionHandlingBehavior); }
-        }
-
-        protected override object CreateBehavior()
-        {
-            return new ExceptionHandlingBehavior(this.ExceptionPolicyName);
-        }
-
-        [ConfigurationProperty("exceptionPolicyName", IsRequired = false, DefaultValue = "")]
-        public string ExceptionPolicyName
+        [ConfigurationProperty("exceptionPolicy")]
+        public string ExceptionPolicy
         {
             get
-            {
-                return (string)this["exceptionPolicyName"];
-            }
+            {return this["exceptionPolicy"] as string;}
+            set
+            { this["exceptionPolicy"] = value; }
+        }
+        public override Type BehaviorType
+        {
+            get { return typeof(ExceptionHandlingBehaviorAttribute); }
+        }
+        protected override object CreateBehavior()
+        {
+            return new ExceptionHandlingBehaviorAttribute(this.ExceptionPolicy);
         }
     }
 }

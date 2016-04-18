@@ -291,7 +291,19 @@
   <data name="View_RegisterView_rpgTemplate_Caption" xml:space="preserve">
     <value>检验报告模板操作</value>
   </data>
-  <data name="ServerExceptionMessage" xml:space="preserve">
+  <data name="Server_ExceptionMessage" xml:space="preserve">
     <value>服务内部出错</value>
+  </data>
+  <data name="Error_UnHandler" xml:space="preserve">
+    <value>未经处理的异常</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="btn_CopyError" xml:space="preserve">
+    <value>复制错误</value>
+  </data>
+  <data name="Error_UnableSession" xml:space="preserve">
+    <value>无效的会话</value>
   </data>
 </root>

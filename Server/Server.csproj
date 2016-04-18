@@ -117,6 +117,10 @@
       <Project>{ec311ad3-0a26-4808-901b-a983e97e5790}</Project>
       <Name>ExceptionHandling.Logging.2010</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\WCF\ExceptionHandling.WCF.2010.csproj">
+      <Project>{90cbf2d3-767e-4e3c-af8c-ab3e5f17be18}</Project>
+      <Name>ExceptionHandling.WCF.2010</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Logging\Src\Logging\Logging.2010.csproj">
       <Project>{6ac97717-899d-4f72-bc5b-2c37959cd4ff}</Project>
       <Name>Logging.2010</Name>

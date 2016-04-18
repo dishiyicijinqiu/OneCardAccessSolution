@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -205,6 +206,10 @@
     <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\Logging\ExceptionHandling.Logging.2010.csproj">
       <Project>{ec311ad3-0a26-4808-901b-a983e97e5790}</Project>
       <Name>ExceptionHandling.Logging.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\WCF\ExceptionHandling.WCF.2010.csproj">
+      <Project>{90cbf2d3-767e-4e3c-af8c-ab3e5f17be18}</Project>
+      <Name>ExceptionHandling.WCF.2010</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\PolicyInjection\Src\PolicyInjection\PolicyInjection.2010.csproj">
       <Project>{3e6129c8-18e4-410d-89fc-0dbbe6009fc5}</Project>

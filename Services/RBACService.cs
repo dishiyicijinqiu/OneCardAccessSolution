@@ -1,12 +1,9 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity;
-using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using FengSharp.OneCardAccess.TEntity;
+using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.WCF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace FengSharp.OneCardAccess.Services
 {
@@ -14,6 +11,7 @@ namespace FengSharp.OneCardAccess.Services
     {
         public LoginResult Login(string UserNo, string PassWord)
         {
+            throw new BusinessException("你好");
             var dbentity = this.FindByNo<T_UserInfo>(UserNo);
             if (dbentity == null)
                 return LoginResult.UserNotExist;

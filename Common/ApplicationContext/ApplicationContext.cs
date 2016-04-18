@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.Remoting.Messaging;
-using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.Common
 {
     [Serializable]
-    //[KnownType(typeof(Session))]
     public class ApplicationContext : Dictionary<string, object>
     {
         private const string CallContextKey = "__ApplicationContext";
@@ -35,18 +32,8 @@ namespace FengSharp.OneCardAccess.Common
                 base[key] = value;
             }
         }
-        public string Ticket
-        {
-            get
-            {
-                return (string)this["Ticket"];
-            }
-            set
-            {
-                this["Ticket"] = value;
-            }
-        }
-        private static ApplicationContext _Current;
+        [ThreadStatic]
+        static ApplicationContext _Current;
         public static ApplicationContext Current
         {
             get

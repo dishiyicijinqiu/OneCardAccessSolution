@@ -475,6 +475,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 服务内部出错 的本地化字符串。
+        /// </summary>
+        public static string ServerExceptionMessage {
+            get {
+                return ResourceManager.GetString("ServerExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         public static string View_LoginView_btnCancel_Content {

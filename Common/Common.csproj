@@ -52,7 +52,6 @@
     <Compile Include="DataBase\DataBaseKeyAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionExtractionMessageInspector.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
-    <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceLoggingExceptionHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceReplaceHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehavior.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs" />

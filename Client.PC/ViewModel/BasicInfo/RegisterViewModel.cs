@@ -1,6 +1,6 @@
 ﻿using DevExpress.Mvvm;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
-using FengSharp.OneCardAccess.Client.PC.Core;
+using FengSharp.OneCardAccess.Client.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;

@@ -291,4 +291,7 @@
   <data name="View_RegisterView_rpgTemplate_Caption" xml:space="preserve">
     <value>检验报告模板操作</value>
   </data>
+  <data name="ServerExceptionMessage" xml:space="preserve">
+    <value>服务内部出错</value>
+  </data>
 </root>

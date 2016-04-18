@@ -63,9 +63,9 @@ namespace FengSharp.OneCardAccess.Server.Properties {
         /// <summary>
         ///   查找类似 服务内部出错 的本地化字符串。
         /// </summary>
-        public static string ReplaceExceptionMessage {
+        public static string ServerExceptionMessage {
             get {
-                return ResourceManager.GetString("ReplaceExceptionMessage", resourceCulture);
+                return ResourceManager.GetString("ServerExceptionMessage", resourceCulture);
             }
         }
     }

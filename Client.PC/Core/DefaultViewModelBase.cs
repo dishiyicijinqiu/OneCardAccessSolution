@@ -2,7 +2,7 @@
 using DevExpress.Mvvm.DataAnnotations;
 using System.ComponentModel;
 
-namespace FengSharp.OneCardAccess.Client.PC.Core
+namespace FengSharp.OneCardAccess.Client.Core
 {
     public class DefaultViewModel : ViewModelBase
     {

@@ -30,19 +30,7 @@ namespace FengSharp.OneCardAccess.Common
         public object BeforeInvoke(InstanceContext instanceContext, IClientChannel channel, Message message)
         {
             ApplicationContext context = message.Headers.GetHeader<ApplicationContext>(ApplicationContext.ContextHeaderLocalName, ApplicationContext.ContextHeaderNamespace);
-            //if (context == null)
-            //{
-            //}
-            //if (this.SessionCheck)
-            //{
-            //    if (string.IsNullOrWhiteSpace(context.Ticket))
-            //        throw new BusinessException("无效的会话");
-            //    var sessionInfo = SessionState.GetSession(context.Ticket);
-            //    if (sessionInfo == null)
-            //    {
-            //        throw new LoginTimeOutException();
-            //    }
-            //}
+            if (context == null) return null;
             ApplicationContext.Current = context;
             return ApplicationContext.Current;
         }

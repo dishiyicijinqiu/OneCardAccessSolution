@@ -37,6 +37,10 @@ namespace FengSharp.OneCardAccess.Common
 
         public object BeforeSendRequest(ref Message request, IClientChannel channel)
         {
+            if (!this.IsBidirectional)
+            {
+                return null;
+            }
             MessageHeader<ApplicationContext> contextHeader = new MessageHeader<ApplicationContext>(ApplicationContext.Current);
             request.Headers.Add(contextHeader.GetUntypedHeader(ApplicationContext.ContextHeaderLocalName, ApplicationContext.ContextHeaderNamespace));
             return null;

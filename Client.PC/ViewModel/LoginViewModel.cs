@@ -66,8 +66,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                         MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                         return;
                     default:
-                        var ticket = ApplicationContext.Current.Ticket;
-                        var session = ApplicationContext.Current["Session"];
+                        if (Session.Current == null)
+                        {
+                            throw new BusinessException("无效的会话");
+                        }
+                        MessageBoxService.ShowMessage(Session.Current.SessionClientName);
                         Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
                         CurrentWindowService.Close();
                         break;

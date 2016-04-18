@@ -9,7 +9,6 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     public interface IRBACService
     {
         [OperationContract]
-        [ApplicationContextBehavior(false)]
         LoginResult Login(string UserNo, string PassWord);
     }
 }

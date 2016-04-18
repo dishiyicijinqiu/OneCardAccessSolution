@@ -97,6 +97,14 @@
       <Project>{89dd6b99-d85b-4d96-8cf6-2a7044c87d1e}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Caching\Src\Caching\Caching.2010.csproj">
+      <Project>{e725a5b4-a379-492f-89e3-3d8021376c3f}</Project>
+      <Name>Caching.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Caching\Src\Database\Caching.Database.2010.csproj">
+      <Project>{674b06a5-a61c-4546-8475-90d4a7fe31d8}</Project>
+      <Name>Caching.Database.2010</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Common\Src\Common.2010.csproj">
       <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
       <Name>Common.2010</Name>

@@ -6,16 +6,16 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
+    //[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    //public class LoginResult
+    //{
+    //    [DataMember]
+    //    public LoginMessage LoginMessage { get; set; }
+    //    [DataMember]
+    //    public UserIdentity UserIdentity { get; set; }
+    //}
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public class LoginResult
-    {
-        [DataMember]
-        public LoginMessage LoginMessage { get; set; }
-        [DataMember]
-        public UserIdentity UserIdentity { get; set; }
-    }
-    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public enum LoginMessage
+    public enum LoginResult
     {
         [EnumMember]
         Success = 0,

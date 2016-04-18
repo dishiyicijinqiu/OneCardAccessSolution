@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using FengSharp.OneCardAccess.BusinessEntity;
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.ComponentModel;
 using System.Threading;
@@ -43,7 +44,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #endregion
         public void Closing(CancelEventArgs args)
         {
-            if (UserIdentity.Current != null)
+            if (ApplicationContext.Current.Count > 0)
             {
                 var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
                 if (result != MessageResult.Yes)

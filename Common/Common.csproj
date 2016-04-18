@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\DataBaseKeyAttribute.cs" />
+    <Compile Include="DataBase\DataBaseKeyAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionExtractionMessageInspector.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceLoggingExceptionHandler.cs" />
@@ -61,6 +61,12 @@
     <Compile Include="ServiceProxy Factory\ChannelFactoryCreator.cs" />
     <Compile Include="ServiceProxy Factory\ServiceProxyFactory.cs" />
     <Compile Include="ServiceProxy Factory\ServiceRealProxy.cs" />
+    <Compile Include="SessionState\SessionBehaviorAttribute.cs" />
+    <Compile Include="SessionState\SessionBehaviorElement.cs" />
+    <Compile Include="SessionState\SessionCallContextInitializer.cs" />
+    <Compile Include="SessionState\SessionBehavior.cs" />
+    <Compile Include="SessionState\Session.cs" />
+    <Compile Include="SessionState\SessionClientMessageInspector.cs" />
     <Compile Include="Unity Integration\Policy Injection Integration\IPolicyInjectionPolicy.cs" />
     <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionExtension.cs" />
     <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionPolicy.cs" />
@@ -68,11 +74,21 @@
     <Compile Include="Unity Integration\UnityBehaviorAttribute.cs" />
     <Compile Include="Unity Integration\UnityBehaviorElement.cs" />
     <Compile Include="Unity Integration\UnityInstanceProvider.cs" />
+    <Compile Include="SessionState\SessionState.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ApplicationContext\" />
     <Folder Include="Extends\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\EnterpriseLibrarys\Caching\Src\Caching\Caching.2010.csproj">
+      <Project>{E725A5B4-A379-492F-89E3-3D8021376C3F}</Project>
+      <Name>Caching.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Caching\Src\Database\Caching.Database.2010.csproj">
+      <Project>{674b06a5-a61c-4546-8475-90d4a7fe31d8}</Project>
+      <Name>Caching.Database.2010</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Common\Src\Common.2010.csproj">
       <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
       <Name>Common.2010</Name>

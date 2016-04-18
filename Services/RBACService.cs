@@ -1,5 +1,6 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using FengSharp.OneCardAccess.TEntity;
 using System;
@@ -15,21 +16,15 @@ namespace FengSharp.OneCardAccess.Services
         {
             var dbentity = this.FindByNo<T_UserInfo>(UserNo);
             if (dbentity == null)
-                return new LoginResult() { LoginMessage = LoginMessage.UserNotExist };
+                return LoginResult.UserNotExist;
             if (dbentity.PassWord != PassWord)
-                return new LoginResult() { LoginMessage = LoginMessage.ErrorPassWord };
+                return LoginResult.ErrorPassWord;
             if (dbentity.IsLock)
-                return new LoginResult() { LoginMessage = LoginMessage.UserIsLocked };
-            return new LoginResult()
-            {
-                LoginMessage = LoginMessage.Success,
-                UserIdentity = new UserIdentity()
-                {
-                    UserId = dbentity.UserId,
-                    UserNo = dbentity.UserNo,
-                    UserName = dbentity.UserName
-                }
-            };
+                return LoginResult.UserIsLocked;
+            var session = new Session(Guid.NewGuid().ToString(), dbentity.UserId, dbentity.UserNo, dbentity.UserName);
+            SessionState.JoinSession(session.Ticket, session);
+            Session.Current = session;
+            return LoginResult.Success;
         }
     }
 }

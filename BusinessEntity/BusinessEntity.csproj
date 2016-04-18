@@ -47,7 +47,6 @@
     <Compile Include="BasicInfo\Register_FileEntity_Auto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBAC\LoginResult.cs" />
-    <Compile Include="UserIdentity.cs" />
     <Compile Include="RBAC\UserInfoEntity_Auto.cs" />
   </ItemGroup>
   <ItemGroup>

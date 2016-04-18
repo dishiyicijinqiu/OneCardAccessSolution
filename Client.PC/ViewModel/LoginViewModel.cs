@@ -54,19 +54,20 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
                 LoginResult loginresult = irbacservice.Login(this.UserNo, this.Password);
-                switch (loginresult.LoginMessage)
+                switch (loginresult)
                 {
-                    case LoginMessage.UserNotExist:
+                    case LoginResult.UserNotExist:
                         MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                         return;
-                    case LoginMessage.UserIsLocked:
+                    case LoginResult.UserIsLocked:
                         MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsLocked, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                         return;
-                    case LoginMessage.ErrorPassWord:
+                    case LoginResult.ErrorPassWord:
                         MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                         return;
                     default:
-                        UserIdentity.Current = loginresult.UserIdentity;
+                        var ticket = ApplicationContext.Current.Ticket;
+                        var session = ApplicationContext.Current["Session"];
                         Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
                         CurrentWindowService.Close();
                         break;
@@ -74,20 +75,21 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
             catch (System.Exception ex)
             {
-                Exception exceptionToRethrow;
-                if (ExceptionPolicy.HandleException(ex, "ErrorPolicy", out exceptionToRethrow))
-                {
-                    if (exceptionToRethrow != null)
-                        MessageBoxService.ShowMessage(exceptionToRethrow.Message);
-                    else
-                    {
-                        MessageBoxService.ShowMessage(ex.Message);
-                    }
-                }
-                else
-                {
-                    MessageBoxService.ShowMessage(ex.Message);
-                }
+                MessageBoxService.ShowMessage(ex.Message);
+                //Exception exceptionToRethrow;
+                //if (ExceptionPolicy.HandleException(ex, "ErrorPolicy", out exceptionToRethrow))
+                //{
+                //    if (exceptionToRethrow != null)
+                //        MessageBoxService.ShowMessage(exceptionToRethrow.Message);
+                //    else
+                //    {
+                //        MessageBoxService.ShowMessage(ex.Message);
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBoxService.ShowMessage(ex.Message);
+                //}
             }
         }
 
@@ -96,7 +98,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         public void Closing(CancelEventArgs args)
         {
-            if (UserIdentity.Current == null)
+            if (ApplicationContext.Current.Count <= 0)
                 Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
         }
 

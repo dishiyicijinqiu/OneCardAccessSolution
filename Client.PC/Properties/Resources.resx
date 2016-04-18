@@ -291,7 +291,7 @@
   <data name="View_RegisterView_rpgTemplate_Caption" xml:space="preserve">
     <value>检验报告模板操作</value>
   </data>
-  <data name="Server_ExceptionMessage" xml:space="preserve">
+  <data name="Error_ServerException" xml:space="preserve">
     <value>服务内部出错</value>
   </data>
   <data name="Error_UnHandler" xml:space="preserve">
@@ -305,5 +305,8 @@
   </data>
   <data name="Error_UnableSession" xml:space="preserve">
     <value>无效的会话</value>
+  </data>
+  <data name="Error_ConnectionServerFailed" xml:space="preserve">
+    <value>连接服务器失败</value>
   </data>
 </root>

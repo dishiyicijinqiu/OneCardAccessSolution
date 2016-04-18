@@ -376,6 +376,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 连接服务器失败 的本地化字符串。
+        /// </summary>
+        public static string Error_ConnectionServerFailed {
+            get {
+                return ResourceManager.GetString("Error_ConnectionServerFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 参数错误 的本地化字符串。
         /// </summary>
         public static string Error_ParameterIsError {
@@ -399,6 +408,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Error_SaveFiled {
             get {
                 return ResourceManager.GetString("Error_SaveFiled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 服务内部出错 的本地化字符串。
+        /// </summary>
+        public static string Error_ServerException {
+            get {
+                return ResourceManager.GetString("Error_ServerException", resourceCulture);
             }
         }
         
@@ -507,15 +525,6 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Menu_RibbonPageGroup_BasicInfo {
             get {
                 return ResourceManager.GetString("Menu_RibbonPageGroup_BasicInfo", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 服务内部出错 的本地化字符串。
-        /// </summary>
-        public static string Server_ExceptionMessage {
-            get {
-                return ResourceManager.GetString("Server_ExceptionMessage", resourceCulture);
             }
         }
         

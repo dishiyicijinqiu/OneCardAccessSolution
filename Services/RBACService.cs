@@ -11,7 +11,6 @@ namespace FengSharp.OneCardAccess.Services
     {
         public LoginResult Login(string UserNo, string PassWord)
         {
-            throw new BusinessException("你好");
             var dbentity = this.FindByNo<T_UserInfo>(UserNo);
             if (dbentity == null)
                 return LoginResult.UserNotExist;

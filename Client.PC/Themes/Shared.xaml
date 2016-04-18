@@ -7,7 +7,7 @@
                     xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
                     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
-                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.PC.Core"
+                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
     <Style TargetType="dxr:RibbonControl">

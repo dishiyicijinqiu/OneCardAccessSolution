@@ -1,12 +1,10 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
-using FengSharp.OneCardAccess.BusinessEntity;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
-using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
-using System;
 using System.ComponentModel;
+using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
@@ -78,21 +76,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
             catch (System.Exception ex)
             {
-                MessageBoxService.ShowMessage(ex.Message);
-                //Exception exceptionToRethrow;
-                //if (ExceptionPolicy.HandleException(ex, "ErrorPolicy", out exceptionToRethrow))
-                //{
-                //    if (exceptionToRethrow != null)
-                //        MessageBoxService.ShowMessage(exceptionToRethrow.Message);
-                //    else
-                //    {
-                //        MessageBoxService.ShowMessage(ex.Message);
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBoxService.ShowMessage(ex.Message);
-                //}
+                MessageBoxService.HandleException(ex);
             }
         }
 

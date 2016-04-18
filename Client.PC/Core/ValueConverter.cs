@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace FengSharp.OneCardAccess.Client.PC.Core
+namespace FengSharp.OneCardAccess.Client.Core
 {
 
     public class RowHandleConverter : MarkupExtension, IMultiValueConverter

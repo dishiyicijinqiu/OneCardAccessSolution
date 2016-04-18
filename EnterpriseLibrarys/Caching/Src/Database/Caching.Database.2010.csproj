@@ -7,10 +7,13 @@
     <ProjectGuid>{674B06A5-A61C-4546-8475-90D4A7FE31D8}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon></ApplicationIcon>
-    <AssemblyKeyContainerName></AssemblyKeyContainerName>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
     <AssemblyName>Microsoft.Practices.EnterpriseLibrary.Caching.Database</AssemblyName>
-    <AssemblyOriginatorKeyFile></AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
@@ -18,17 +21,21 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Microsoft.Practices.EnterpriseLibrary.Caching.Database</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
-    <StartupObject></StartupObject>
-    <FileUpgradeFlags></FileUpgradeFlags>
-    <UpgradeBackupLocation></UpgradeBackupLocation>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>..\..\..\bin\Debug\</OutputPath>
+    <OutputPath>..\..\..\..\Debug\EnterpriseLibrarys\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile></ConfigurationOverrideFile>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
     <DefineConstants>DEBUG;TRACE;WMINET10</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -42,11 +49,12 @@
     <DebugType>full</DebugType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>..\..\..\bin\Release\</OutputPath>
+    <OutputPath>..\..\..\..\Publish\EnterpriseLibrarys\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
-    <ConfigurationOverrideFile></ConfigurationOverrideFile>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
     <DefineConstants>TRACE;WMINET10</DefineConstants>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -74,21 +82,6 @@
       <Name>System.Data</Name>
     </Reference>
     <Reference Include="System.XML" />
-    <ProjectReference Include="..\..\..\Common\Src\Common.csproj">
-      <Name>Common</Name>
-      <Project>{A09297C8-2C40-470B-8856-D856676DDFFA}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Data\Src\Data\Data.csproj">
-      <Name>Data</Name>
-      <Project>{D349B6D8-992F-443F-BB57-57E50DD98794}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\Caching\Caching.csproj">
-      <Name>Caching</Name>
-      <Project>{E725A5B4-A379-492F-89E3-3D8021376C3F}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\..\GlobalAssemblyInfo.cs">
@@ -137,9 +130,25 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Src\Common.2010.csproj">
+      <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
+      <Name>Common.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Data\Src\Data\Data.2010.csproj">
+      <Project>{d349b6d8-992f-443f-bb57-57e50dd98794}</Project>
+      <Name>Data.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Caching\Caching.2010.csproj">
+      <Project>{e725a5b4-a379-492f-89e3-3d8021376c3f}</Project>
+      <Name>Caching.2010</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent></PreBuildEvent>
-    <PostBuildEvent></PostBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

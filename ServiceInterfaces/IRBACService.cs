@@ -1,4 +1,5 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+using FengSharp.OneCardAccess.Common;
 using System.ServiceModel;
 
 namespace FengSharp.OneCardAccess.ServiceInterfaces
@@ -8,6 +9,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     public interface IRBACService
     {
         [OperationContract]
+        [ApplicationContextBehavior(false)]
         LoginResult Login(string UserNo, string PassWord);
     }
 }

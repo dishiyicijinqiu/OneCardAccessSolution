@@ -59,6 +59,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolicyInjection.2010", "Ent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.2010", "EnterpriseLibrarys\Caching\Src\Caching\Caching.2010.csproj", "{E725A5B4-A379-492F-89E3-3D8021376C3F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.Database.2010", "EnterpriseLibrarys\Caching\Src\Database\Caching.Database.2010.csproj", "{674B06A5-A61C-4546-8475-90D4A7FE31D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Caching.Cryptography.2010", "EnterpriseLibrarys\Caching\Src\Cryptography\Caching.Cryptography.2010.csproj", "{A03EA97B-97CB-41EF-A55D-15C6496D8943}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.2010", "EnterpriseLibrarys\Security\Src\Security\Security.2010.csproj", "{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security.Cryptography.2010", "EnterpriseLibrarys\Security.Cryptography\Src\Cryptography\Security.Cryptography.2010.csproj", "{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -141,6 +149,22 @@ Global
 		{E725A5B4-A379-492F-89E3-3D8021376C3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E725A5B4-A379-492F-89E3-3D8021376C3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E725A5B4-A379-492F-89E3-3D8021376C3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{674B06A5-A61C-4546-8475-90D4A7FE31D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{674B06A5-A61C-4546-8475-90D4A7FE31D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{674B06A5-A61C-4546-8475-90D4A7FE31D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{674B06A5-A61C-4546-8475-90D4A7FE31D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A03EA97B-97CB-41EF-A55D-15C6496D8943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A03EA97B-97CB-41EF-A55D-15C6496D8943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A03EA97B-97CB-41EF-A55D-15C6496D8943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A03EA97B-97CB-41EF-A55D-15C6496D8943}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -165,6 +189,10 @@ Global
 		{6AC97717-899D-4F72-BC5B-2C37959CD4FF} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
 		{3E6129C8-18E4-410D-89FC-0DBBE6009FC5} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
 		{E725A5B4-A379-492F-89E3-3D8021376C3F} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{674B06A5-A61C-4546-8475-90D4A7FE31D8} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{A03EA97B-97CB-41EF-A55D-15C6496D8943} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{CF2CBDAD-4D43-45EA-9D40-4CD9CC7EE744} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
+		{6A4E6A8A-A39F-4643-BA9B-87AED00BB03E} = {DE61001C-F0E8-426D-A27C-EA3CB583AC76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.PolicyInjection.5.0.505.0\lib\NET35

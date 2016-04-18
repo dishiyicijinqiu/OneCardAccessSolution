@@ -22,6 +22,16 @@ namespace FengSharp.OneCardAccess.Core
                         return;
                     }
                 }
+                if (ExceptionPolicy.HandleException(ex, "ExceptionPolicy", out exceptionToRethrow))
+                {
+                    if (exceptionToRethrow != null)
+                        MessageBoxService.ShowMessage(exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                    else
+                        MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                    return;
+                }
+                
+
                 MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
             }
             catch (Exception exception)

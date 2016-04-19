@@ -21,7 +21,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
-            //App.Current.MainWindow.Visibility = System.Windows.Visibility.Collapsed;
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
             var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
             DXSplashScreen.Close();
@@ -30,12 +29,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 
         private void OnLogined(LoginFormResult msg)
         {
-            App.Current.MainWindow.Visibility = System.Windows.Visibility.Visible;
             Messenger.Default.Unregister<LoginFormResult>(this);
             if (msg == LoginFormResult.Failed)
             {
                 System.Windows.Application.Current.Shutdown();
             }
+            App.Current.MainWindow.Opacity = 100;
         }
 
         public void ShowDocument(DocumentInfo docInfo)
@@ -49,7 +48,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #endregion
         public void Closing(CancelEventArgs args)
         {
-            if (ApplicationContext.Current.Count > 0)
+            if (Session.Current != null)
             {
                 var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
                 if (result != MessageResult.Yes)

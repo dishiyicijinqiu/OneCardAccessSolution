@@ -50,10 +50,13 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
-                IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
-                LoginResult loginresult = irbacservice.Login(this.UserNo, this.Password);
+                IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
+                LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
                 switch (loginresult)
                 {
+                    case LoginResult.UserIsEmpty:
+                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsEmpty, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        return;
                     case LoginResult.UserNotExist:
                         MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
                         return;

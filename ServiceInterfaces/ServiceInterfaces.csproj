@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBasicInfoService.cs" />
+    <Compile Include="IConnectService.cs" />
     <Compile Include="IRBACService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

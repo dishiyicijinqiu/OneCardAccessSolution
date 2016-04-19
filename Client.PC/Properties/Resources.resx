@@ -309,4 +309,7 @@
   <data name="Error_ConnectionServerFailed" xml:space="preserve">
     <value>连接服务器失败</value>
   </data>
+  <data name="Error_UserIsEmpty" xml:space="preserve">
+    <value>用户名为空</value>
+  </data>
 </root>

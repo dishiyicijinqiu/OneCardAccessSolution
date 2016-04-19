@@ -448,6 +448,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 用户名为空 的本地化字符串。
+        /// </summary>
+        public static string Error_UserIsEmpty {
+            get {
+                return ResourceManager.GetString("Error_UserIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户被锁定 的本地化字符串。
         /// </summary>
         public static string Error_UserIsLocked {

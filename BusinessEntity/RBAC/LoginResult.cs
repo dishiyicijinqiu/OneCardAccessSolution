@@ -25,5 +25,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
         UserIsLocked = 2,
         [EnumMember]
         ErrorPassWord = 3,
+        [EnumMember]
+        UserIsEmpty = 4,
     }
 }

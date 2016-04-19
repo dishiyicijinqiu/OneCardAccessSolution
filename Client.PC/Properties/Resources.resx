@@ -312,4 +312,7 @@
   <data name="Error_UserIsEmpty" xml:space="preserve">
     <value>用户名为空</value>
   </data>
+  <data name="Error_LoginTimeOut" xml:space="preserve">
+    <value>登录超时</value>
+  </data>
 </root>

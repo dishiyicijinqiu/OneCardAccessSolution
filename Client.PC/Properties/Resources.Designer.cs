@@ -385,6 +385,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 登录超时 的本地化字符串。
+        /// </summary>
+        public static string Error_LoginTimeOut {
+            get {
+                return ResourceManager.GetString("Error_LoginTimeOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 参数错误 的本地化字符串。
         /// </summary>
         public static string Error_ParameterIsError {

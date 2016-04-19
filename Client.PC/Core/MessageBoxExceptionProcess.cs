@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using FengSharp.OneCardAccess.Common;
 using Microsoft.Practices.EnterpriseLibrary.ExceptionHandling;
 using System;
 
@@ -25,16 +26,24 @@ namespace FengSharp.OneCardAccess.Core
                 if (ExceptionPolicy.HandleException(ex, "ExceptionPolicy", out exceptionToRethrow))
                 {
                     if (exceptionToRethrow != null)
+                    {
                         MessageBoxService.ShowMessage(exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        if (exceptionToRethrow is LoginTimeOutException)
+                        {
+                            Messenger.Default.Send(exceptionToRethrow as LoginTimeOutException);
+                        }
+                    }
                     else
+                    {
                         MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                        if (ex is LoginTimeOutException)
+                        {
+                            Messenger.Default.Send(ex as LoginTimeOutException);
+                        }
+                    }
                     return;
                 }
                 MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                if (ex is TimeoutException)
-                {
-                    Messenger.Default.Send(ex as TimeoutException);
-                }
             }
             catch (Exception exception)
             {

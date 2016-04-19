@@ -19,6 +19,9 @@
             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
             d:DesignHeight="300" d:DesignWidth="300"
              >
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
+    </dxmvvm:Interaction.Behaviors>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

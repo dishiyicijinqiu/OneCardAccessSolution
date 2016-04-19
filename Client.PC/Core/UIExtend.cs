@@ -1,4 +1,5 @@
 ﻿using DevExpress.Mvvm;
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.Windows;
 
@@ -25,9 +26,9 @@ namespace FengSharp.OneCardAccess.Core
                     return;
                 }
                 MessageBoxService.ShowMessage(exception.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                if (exception is TimeoutException)
+                if (exception is LoginTimeOutException)
                 {
-                    Messenger.Default.Send(exception as TimeoutException);
+                    Messenger.Default.Send(exception as LoginTimeOutException);
                 }
             }
             catch (Exception ex)

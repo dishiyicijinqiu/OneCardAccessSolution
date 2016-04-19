@@ -5,8 +5,11 @@
     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
     xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-    WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"  Opacity="0" AllowsTransparency="True" WindowStyle="None"
-    Title="{x:Static res:Resources.View_MainWindow_Title}" Height="651" Width="994">
+    WindowStartupLocation="CenterScreen" WindowState="Maximized" Topmost="True"
+    Opacity="0" AllowsTransparency="True" WindowStyle="None"
+    Title="{x:Static res:Resources.View_MainWindow_Title}" 
+    MinWidth="800"
+    MinHeight="600"
+    >
     <View:MainView />
 </dxr:DXRibbonWindow>

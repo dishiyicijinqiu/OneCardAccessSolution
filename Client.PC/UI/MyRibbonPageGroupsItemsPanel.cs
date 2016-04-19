@@ -18,6 +18,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             target.SetValue(GroupAlignmentProperty, value);
         }
 
+        [System.Diagnostics.DebuggerStepThrough]
         protected override Size ArrangeOrderedChildren(RibbonOrderedItemInfo[] items, Size finalSize)
         {
             Rect rect = new Rect();
@@ -47,6 +48,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
     }
     public class MyRibbonPagesItemsPanel : RibbonPagesItemsPanel
     {
+        [System.Diagnostics.DebuggerStepThrough]
         protected override Size ArrangeOverride(Size finalSize)
         {
             foreach (UIElement child in Children)

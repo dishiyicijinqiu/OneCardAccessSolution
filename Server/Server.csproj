@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BasicInfoService.svc" />
+    <Content Include="ConnectService.svc" />
     <Content Include="Index.html" />
     <Content Include="RBACService.svc" />
     <Content Include="Web.config">

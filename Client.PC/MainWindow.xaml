@@ -6,7 +6,7 @@
     xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     WindowStartupLocation="CenterScreen"
-    WindowState="Maximized"
+    WindowState="Maximized"  Opacity="0" AllowsTransparency="True" WindowStyle="None"
     Title="{x:Static res:Resources.View_MainWindow_Title}" Height="651" Width="994">
     <View:MainView />
 </dxr:DXRibbonWindow>

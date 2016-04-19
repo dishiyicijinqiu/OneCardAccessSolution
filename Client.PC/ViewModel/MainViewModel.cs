@@ -1,6 +1,7 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Xpf.Core;
 using FengSharp.OneCardAccess.BusinessEntity;
+using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Common;
 using System;
 using System.ComponentModel;
@@ -13,10 +14,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
+        public MainViewModel()
+        {
+
+        }
         #region command
         public void OnLoaded()
         {
-            App.Current.MainWindow.Visibility = System.Windows.Visibility.Collapsed;
+            //App.Current.MainWindow.Visibility = System.Windows.Visibility.Collapsed;
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
             var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
             DXSplashScreen.Close();

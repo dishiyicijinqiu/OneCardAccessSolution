@@ -5,15 +5,15 @@ namespace FengSharp.OneCardAccess.Common
 {
     public class SessionBehavior : IEndpointBehavior
     {
-        public bool IsBidirectional
+        public bool SessionCheck
         { get; set; }
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="isBidirectional">是否为双向传递</param>
-        public SessionBehavior(bool isBidirectional = true)
+        /// <param name="sessionCheck">是否检测会话</param>
+        public SessionBehavior(bool sessionCheck = true)
         {
-            IsBidirectional = isBidirectional; 
+            SessionCheck = sessionCheck; 
         }
 
         public void AddBindingParameters(ServiceEndpoint endpoint, BindingParameterCollection bindingParameters)
@@ -29,7 +29,7 @@ namespace FengSharp.OneCardAccess.Common
         {
             foreach (var operation in endpointDispatcher.DispatchRuntime.Operations)
             {
-                operation.CallContextInitializers.Add(new SessionCallContextInitializer());
+                operation.CallContextInitializers.Add(new SessionCallContextInitializer(this.SessionCheck));
             }
         }
 

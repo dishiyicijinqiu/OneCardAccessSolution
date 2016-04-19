@@ -9,19 +9,15 @@ namespace FengSharp.OneCardAccess.Services
 {
     public class RBACService : ServiceBase, IRBACService
     {
-        public LoginResult Login(string UserNo, string PassWord)
+        public UserInfoEntity GetUserById(int UserId)
         {
-            var dbentity = this.FindByNo<T_UserInfo>(UserNo);
-            if (dbentity == null)
-                return LoginResult.UserNotExist;
-            if (dbentity.PassWord != PassWord)
-                return LoginResult.ErrorPassWord;
-            if (dbentity.IsLock)
-                return LoginResult.UserIsLocked;
-            var session = new Session(Guid.NewGuid().ToString(), dbentity.UserId, dbentity.UserNo, dbentity.UserName);
-            SessionState.JoinSession(session.Ticket, session);
-            Session.Current = session;
-            return LoginResult.Success;
+            var dbentity = this.FindById<T_UserInfo>(new T_UserInfo()
+            {
+                UserId = UserId,
+            });
+            UserInfoEntity result = new UserInfoEntity();
+            result.CopyValueFrom(dbentity);
+            return result;
         }
     }
 }

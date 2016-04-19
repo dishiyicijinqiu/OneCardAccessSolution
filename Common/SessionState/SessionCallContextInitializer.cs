@@ -6,8 +6,19 @@ namespace FengSharp.OneCardAccess.Common
 {
     public class SessionCallContextInitializer : ICallContextInitializer
     {
+        public bool SessionCheck
+        { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sessionCheck">是否检测会话的有效性</param>
+        public SessionCallContextInitializer(bool sessionCheck = true)
+        {
+            SessionCheck = sessionCheck;
+        }
         public void AfterInvoke(object correlationState)
         {
+            if (correlationState == null) correlationState = Session.Current;
             Session context = correlationState as Session;
             MessageHeader<Session> contextHeader = new MessageHeader<Session>(context);
             var header = contextHeader.GetUntypedHeader(Session.ContextHeaderLocalName, Session.ContextHeaderNamespace);
@@ -17,14 +28,17 @@ namespace FengSharp.OneCardAccess.Common
         public object BeforeInvoke(InstanceContext instanceContext, IClientChannel channel, Message message)
         {
             Session context = message.Headers.GetHeader<Session>(Session.ContextHeaderLocalName, Session.ContextHeaderNamespace);
-            if (context == null)
-                throw new BusinessException("无效的会话");
-            if (string.IsNullOrWhiteSpace(context.Ticket))
-                throw new BusinessException("无效的会话");
-            var sessionInfo = SessionState.GetSession(context.Ticket);
-            if (sessionInfo == null)
-                throw new LoginTimeOutException();
-            return sessionInfo;
+            if (SessionCheck)
+            {
+                if (context == null)
+                    throw new BusinessException(Properties.Resources.Error_UnableSession);
+                if (string.IsNullOrWhiteSpace(context.Ticket))
+                    throw new BusinessException(Properties.Resources.Error_UnableSession);
+                Session.Current = SessionState.GetSession(context.Ticket);
+                if (Session.Current == null)
+                    throw new LoginTimeOutException();
+            }
+            return Session.Current;
         }
     }
 }

@@ -13,12 +13,12 @@ namespace ConsoleApplication1
         {
             try
             {
-                IRBACService irbacservice = ServiceProxyFactory.Create<IRBACService>();
-                using (irbacservice as IDisposable)
+                IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
+                using (ConnectService as IDisposable)
                 {
                     try
                     {
-                        var result = irbacservice.Login(string.Empty, string.Empty);
+                        var result = ConnectService.Login(string.Empty, string.Empty);
                     }
                     catch (Exception ex)
                     {

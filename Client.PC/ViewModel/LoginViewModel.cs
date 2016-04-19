@@ -5,6 +5,7 @@ using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System.ComponentModel;
 using FengSharp.OneCardAccess.Core;
+using DevExpress.Xpf.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
@@ -42,6 +43,21 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 if (_Password == value) return;
                 _Password = value;
                 RaisePropertyChanged("Password");
+            }
+        }
+        public bool _IsReLogin;
+        public bool IsReLogin
+        {
+            get
+            {
+                return _IsReLogin;
+            }
+            set
+            {
+
+                if (_IsReLogin == value) return;
+                _IsReLogin = value;
+                RaisePropertyChanged("IsReLogin");
             }
         }
         #endregion
@@ -85,16 +101,38 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 
         public void OnLoaded()
         {
+            if (DXSplashScreen.IsActive)
+                DXSplashScreen.Close();
+            if (Session.Current != null)
+            {
+                IsReLogin = true;
+                this.UserNo = Session.Current.SessionClientNo;
+            }
+            else
+            {
+                IsReLogin = false;
+                this.UserNo = string.Empty;
+            }
         }
         public void Closing(CancelEventArgs args)
         {
-            if (ApplicationContext.Current.Count <= 0)
+            if (Session.Current == null)
                 Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
         }
 
         public void Cancel()
         {
-            CurrentWindowService.Close();
+            if (Session.Current != null)
+            {
+                var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
+                if (result == MessageResult.Yes)
+                {
+                    Session.Current = null;
+                    CurrentWindowService.Close();
+                }
+            }
+            else
+                CurrentWindowService.Close();
         }
         #endregion
     }

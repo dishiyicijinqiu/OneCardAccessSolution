@@ -5,7 +5,7 @@ using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -267,15 +267,22 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region methods
         public void Save()
         {
-            RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
-            paramsg.Key = basicinfoservice.Save(this.Entity);
-            if (paramsg.Key <= 0)
+            try
             {
-                MessageBoxService.ShowMessage(Properties.Resources.Error_SaveFiled, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
+                paramsg.Key = basicinfoservice.Save(this.Entity);
+                if (paramsg.Key <= 0)
+                {
+                    MessageBoxService.ShowMessage(Properties.Resources.Error_SaveFiled, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                }
+                MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
+                Messenger.Default.Send(paramsg);
+                Close();
             }
-            MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
-            Messenger.Default.Send(paramsg);
-            Close();
+            catch (Exception ex)
+            {
+                this.MessageBoxService.HandleException(ex);
+            }
         }
         public void Close()
         {

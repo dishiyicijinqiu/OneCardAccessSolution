@@ -30,7 +30,9 @@
                             <ContentControl Height="10"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.View_LoginView_lblUserNo_Label}" Height="25">
-                            <dxe:TextEdit EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                          IsReadOnly="{Binding IsReLogin, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                          />
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem>
                             <ContentControl Height="10"/>

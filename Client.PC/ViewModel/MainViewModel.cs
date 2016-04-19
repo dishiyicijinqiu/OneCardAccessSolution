@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Markup;
+using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
@@ -21,23 +22,30 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
-            Messenger.Default.Register<TimeoutException>(this, x => TryLogin(x));
+            Messenger.Default.Register<LoginTimeOutException>(this, x => TryLogin(x));
+            App.Current.MainWindow.ShowInTaskbar = false;
             TryLogin(null);
-            if (DXSplashScreen.IsActive)
-                DXSplashScreen.Close();
+            App.Current.MainWindow.ShowInTaskbar = true;
         }
 
         public void ShowDocument(DocumentInfo docInfo)
         {
-            var DocumentManager = GetService<IDocumentManagerService>();
-            IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
-            doc.DestroyOnClose = true;
-            doc.Title = docInfo.DocumentName;
-            doc.Show();
+            try
+            {
+                var DocumentManager = GetService<IDocumentManagerService>();
+                IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
+                doc.DestroyOnClose = true;
+                doc.Title = docInfo.DocumentName;
+                doc.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
         }
         #endregion
         #region Methods
-        public void TryLogin(TimeoutException para)
+        public void TryLogin(LoginTimeOutException para)
         {
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
             var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");

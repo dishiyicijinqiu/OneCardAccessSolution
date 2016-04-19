@@ -10,6 +10,13 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         public LoginView()
         {
             InitializeComponent();
+            this.Loaded += LoginView_Loaded;
+        }
+
+        private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            App.Current.MainWindow.Topmost = true;
+            App.Current.MainWindow.Topmost = false;
         }
     }
 }

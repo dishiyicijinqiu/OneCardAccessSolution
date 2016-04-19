@@ -4,9 +4,10 @@ using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Client.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using FengSharp.OneCardAccess.Core;
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
     [POCOViewModel]
@@ -15,12 +16,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
         public RegisterCollectionViewModel()
         {
-            if (!ViewModelBase.IsInDesignMode)
-            {
-                var list = basicinfoservice.GetFirstRegisterList();
-                //Items = new ObservableCollection<RegisterEntity>(list);
-                Items = list;
-            }
         }
         #region propertys
         public IList<FirstRegisterEntity> Items
@@ -40,12 +35,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void Edit()
         {
-            if (SelectedEntity == null)
+            try
             {
-                MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
-                return;
+                if (SelectedEntity == null)
+                {
+                    MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
             }
-            DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
         }
         public void Delete()
         {
@@ -54,6 +56,23 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public void RowDoubleClick()
         {
             Edit();
+        }
+        public void OnLoaded()
+        {
+            if (!ViewModelBase.IsInDesignMode)
+            {
+                try
+                {
+                    var list = basicinfoservice.GetFirstRegisterList();
+                    //Items = new ObservableCollection<RegisterEntity>(list);
+                    Items = list;
+                }
+                catch (Exception ex)
+                {
+                    Close();
+                    MessageBoxService.HandleException(ex);
+                }
+            }
         }
         #endregion
     }

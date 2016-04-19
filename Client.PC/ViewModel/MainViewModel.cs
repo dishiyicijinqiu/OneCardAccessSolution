@@ -21,9 +21,26 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #region command
         public void OnLoaded()
         {
+            Messenger.Default.Register<TimeoutException>(this, x => TryLogin(x));
+            TryLogin(null);
+            if (DXSplashScreen.IsActive)
+                DXSplashScreen.Close();
+        }
+
+        public void ShowDocument(DocumentInfo docInfo)
+        {
+            var DocumentManager = GetService<IDocumentManagerService>();
+            IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
+            doc.DestroyOnClose = true;
+            doc.Title = docInfo.DocumentName;
+            doc.Show();
+        }
+        #endregion
+        #region Methods
+        public void TryLogin(TimeoutException para)
+        {
             Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
             var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
-            DXSplashScreen.Close();
             loginwindowservice.Show("LoginView", null, this);
         }
 
@@ -35,15 +52,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 System.Windows.Application.Current.Shutdown();
             }
             App.Current.MainWindow.Opacity = 100;
-        }
-
-        public void ShowDocument(DocumentInfo docInfo)
-        {
-            var DocumentManager = GetService<IDocumentManagerService>();
-            IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
-            doc.DestroyOnClose = true;
-            doc.Title = docInfo.DocumentName;
-            doc.Show();
         }
         #endregion
         public void Closing(CancelEventArgs args)

@@ -25,6 +25,10 @@ namespace FengSharp.OneCardAccess.Core
                     return;
                 }
                 MessageBoxService.ShowMessage(exception.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                if (exception is TimeoutException)
+                {
+                    Messenger.Default.Send(exception as TimeoutException);
+                }
             }
             catch (Exception ex)
             {

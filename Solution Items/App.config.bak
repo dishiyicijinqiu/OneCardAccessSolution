@@ -1,8 +1,34 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
   <configSections>
+    <section name="policyInjection" type="Microsoft.Practices.EnterpriseLibrary.PolicyInjection.Configuration.PolicyInjectionSettings, Microsoft.Practices.EnterpriseLibrary.PolicyInjection, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
     <section name="exceptionHandling" type="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Configuration.ExceptionHandlingSettings, Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null" requirePermission="true" />
+    <section name="unity" type="Microsoft.Practices.Unity.Configuration.UnityConfigurationSection, Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=null" />
   </configSections>
+  <policyInjection>
+    <policies>
+      <add name="loadingpolicy">
+        <matchingRules>
+          <add type="Microsoft.Practices.EnterpriseLibrary.PolicyInjection.MatchingRules.TypeMatchingRule, Microsoft.Practices.EnterpriseLibrary.PolicyInjection, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
+            name="Type Matching Rule">
+            <matches>
+              <add match="System.Runtime.Remoting.Proxies.RealProxy, mscorlib" />
+            </matches>
+          </add>
+          <add type="Microsoft.Practices.EnterpriseLibrary.PolicyInjection.MatchingRules.MethodSignatureMatchingRule, Microsoft.Practices.EnterpriseLibrary.PolicyInjection, Version=5.0.505.0, Culture=neutral, PublicKeyToken=null"
+            match="Invoke" name="Method Signature Matching Rule">
+            <parameters>
+              <parameter name="IMessage" typeName="System.Runtime.Remoting.Messaging.IMessage, mscorlib" />
+            </parameters>
+          </add>
+        </matchingRules>
+        <handlers>
+          <add type="FengSharp.OneCardAccess.Common.LoadingCallHandler, FengSharp.OneCardAccess.Common"
+            name="LoadingCallHandler" />
+        </handlers>
+      </add>
+    </policies>
+  </policyInjection>
   <exceptionHandling>
     <exceptionPolicies>
       <add name="WCFExceptionPolicy">
@@ -83,5 +109,16 @@
         name="ConnectService" />
     </client>
   </system.serviceModel>
+  <unity xmlns="http://schemas.microsoft.com/practices/2010/unity">
+    <sectionExtension type="Microsoft.Practices.Unity.InterceptionExtension.Configuration.InterceptionConfigurationExtension,Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=null" />
+    <container name="ServicesContainer">
+      <extension type="Interception" />
+      <register type="FengSharp.OneCardAccess.Common.IServiceRealProxy[FengSharp.OneCardAccess.ServiceInterfaces.IConnectService, FengSharp.OneCardAccess.ServiceInterfaces],FengSharp.OneCardAccess.Common"
+        mapTo="FengSharp.OneCardAccess.Common.ServiceRealProxy[FengSharp.OneCardAccess.ServiceInterfaces.IConnectService, FengSharp.OneCardAccess.ServiceInterfaces],FengSharp.OneCardAccess.Common">
+        <interceptor isDefaultForType="true" type="InterfaceInterceptor"/>
+        <policyInjection/>
+      </register>
+    </container>
+  </unity>
 </configuration>
 

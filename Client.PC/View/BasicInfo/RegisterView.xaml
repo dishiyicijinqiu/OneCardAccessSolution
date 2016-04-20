@@ -15,11 +15,11 @@
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"
     mc:Ignorable="d"
     x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterView"
     Width="658" Height="544"
     >
-    <!--DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"-->
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,8 +28,8 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
-        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
+        <dxmvvm:EventToCommand Command="{Binding LoadedCommand}" EventName="Loaded" />
+        <dxmvvm:EventToCommand Command="{Binding CloseCommand}" EventName="Close" />
     </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager>
         <Grid>

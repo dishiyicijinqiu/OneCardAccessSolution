@@ -1,11 +1,13 @@
 ﻿using DevExpress.Mvvm;
+using DevExpress.Xpf.Core;
+using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Common;
 using System;
 using System.Windows;
 
 namespace FengSharp.OneCardAccess.Core
 {
-    public static class UIExtend
+    public static class Extend
     {
         public static void HandleException(this IMessageBoxService MessageBoxService, Exception exception, string policyName = null)
         {
@@ -40,6 +42,21 @@ namespace FengSharp.OneCardAccess.Core
                 }
                 MessageBoxService.ShowMessage(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
             }
+        }
+    }
+    public class LoadingCallHandler : IRealProxyCallHandler
+    {
+        public void AfterInvoke()
+        {
+            if (DXSplashScreen.IsActive)
+                DXSplashScreen.Close();
+        }
+
+        public void BeforeInvoke()
+        {
+            if (DXSplashScreen.IsActive)
+                DXSplashScreen.Close();
+            DXSplashScreen.Show<SplashScreenView>();
         }
     }
 }

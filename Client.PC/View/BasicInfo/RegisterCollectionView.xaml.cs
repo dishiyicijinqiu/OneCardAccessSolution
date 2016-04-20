@@ -1,4 +1,6 @@
-﻿using DevExpress.Xpf.Ribbon;
+﻿using DevExpress.Mvvm;
+using DevExpress.Mvvm.UI;
+using DevExpress.Xpf.Ribbon;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,6 +15,13 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public RegisterCollectionView()
         {
             InitializeComponent();
+        }
+
+        private void BarButtonItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
+        {
+            //WindowService windowService = new WindowService();
+            //windowService.WindowStyle = Resources["DialogWindowStyle"] as Style;
+            //windowService.Show(null, null);
         }
     }
 }

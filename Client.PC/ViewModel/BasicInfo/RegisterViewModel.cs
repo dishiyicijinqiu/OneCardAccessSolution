@@ -5,16 +5,18 @@ using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
+using DevExpress.Mvvm.DataAnnotations;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
     public class RegisterViewModel : DefaultViewModel
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
-        public RegisterViewModel(RegisterEditMessage paramsg) : base(paramsg)
+        public RegisterViewModel()
         {
+            Entity = SecondRegisterEntity.CreateEntity();
         }
-        public override void LoadData()
+        public void Loaded()
         {
             if (!ViewModelBase.IsInDesignMode)
             {
@@ -34,8 +36,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 }
                 if (Entity == null)
                     Entity = SecondRegisterEntity.CreateEntity();
+                this.RaisePropertiesChanged();
+                RaisePropertyChanged("RegisterNo");
             }
         }
+
         #region propertys
         public SecondRegisterEntity Entity { get; set; }
         EntityEditMode _EntityEditMode = EntityEditMode.Add;
@@ -261,7 +266,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #endregion
         #endregion
-        //protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
         #region methods
         public void Save()
         {
@@ -275,17 +279,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 }
                 MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
                 Messenger.Default.Send(paramsg);
-                Close();
             }
             catch (Exception ex)
             {
                 this.MessageBoxService.HandleException(ex);
             }
-        }
-        public void Close()
-        {
-            if (CurrentWindowService != null)
-                CurrentWindowService.Close();
         }
         #endregion
     }

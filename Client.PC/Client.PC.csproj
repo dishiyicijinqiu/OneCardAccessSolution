@@ -78,9 +78,10 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\DefaultViewModelBase.cs" />
+    <Compile Include="Core\BaseViewModel.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
+    <Compile Include="Core\ILoadDataExceptionSupport.cs" />
     <Compile Include="Core\MessageBoxExceptionProcess.cs" />
     <Compile Include="Core\UIExtend.cs" />
     <Compile Include="Core\ValueConverter.cs" />
@@ -98,6 +99,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UI\BaseUserControl.cs" />
     <Compile Include="UI\MaximizedNoCoverTaskInfoHelper.cs" />
     <Compile Include="UI\MyRibbonPageGroupsItemsPanel.cs" />
     <Compile Include="UI\SplashScreenView.xaml.cs">

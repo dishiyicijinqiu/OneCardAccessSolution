@@ -17,9 +17,9 @@
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
     mc:Ignorable="d"
     x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterView"
-    DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"
     Width="658" Height="544"
     >
+    <!--DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"-->
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -28,6 +28,7 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
         <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
     </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager>

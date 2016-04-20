@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace FengSharp.OneCardAccess.Client.Core
+namespace FengSharp.OneCardAccess.Core
 {
     public abstract class EditMessage<T>
     {

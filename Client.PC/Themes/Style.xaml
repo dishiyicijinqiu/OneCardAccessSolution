@@ -5,7 +5,7 @@
                     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
                     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Client.Core"
+                    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
                     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"

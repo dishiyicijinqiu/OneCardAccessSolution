@@ -1,12 +1,10 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.DataAnnotations;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
-using FengSharp.OneCardAccess.Client.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using FengSharp.OneCardAccess.Core;
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -18,9 +16,18 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
         }
         #region propertys
+        IList<FirstRegisterEntity> _Items;
         public IList<FirstRegisterEntity> Items
         {
-            get; protected set;
+            get
+            {
+                return _Items;
+            }
+            protected set
+            {
+                _Items = value;
+                RaisePropertyChanged("Items");
+            }
         }
         public FirstRegisterEntity SelectedEntity { get; set; }
         #endregion
@@ -42,7 +49,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
+                DialogWindowService.Show("RegisterView",
+                    new RegisterViewModel(new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit))
+                    , null, this);
             }
             catch (Exception ex)
             {
@@ -59,6 +68,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void OnLoaded()
         {
+            if (this.IsLoaded)
+                return;
             if (!ViewModelBase.IsInDesignMode)
             {
                 try
@@ -73,6 +84,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     MessageBoxService.HandleException(ex);
                 }
             }
+            this.IsLoaded = true;
         }
         #endregion
     }

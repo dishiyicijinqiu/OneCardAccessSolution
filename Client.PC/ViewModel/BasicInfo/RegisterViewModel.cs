@@ -1,24 +1,24 @@
 ﻿using DevExpress.Mvvm;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
-using FengSharp.OneCardAccess.Client.Core;
+using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
-using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
     public class RegisterViewModel : DefaultViewModel
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
-
-        protected override void OnParameterChanged(object parameter)
+        public RegisterViewModel(RegisterEditMessage paramsg) : base(paramsg)
         {
-            base.OnParameterChanged(parameter);
-            RegisterEditMessage paramsg = parameter as RegisterEditMessage;
+        }
+        public override void LoadData()
+        {
             if (!ViewModelBase.IsInDesignMode)
             {
+                RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
                 if (paramsg == null)
                     throw new Exception(Properties.Resources.Error_ParameterIsError);
                 switch (paramsg.EntityEditMode)
@@ -35,11 +35,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 if (Entity == null)
                     Entity = SecondRegisterEntity.CreateEntity();
             }
-            RaisePropertyChanged();
         }
         #region propertys
-        SecondRegisterEntity _Entity = SecondRegisterEntity.CreateEntity();
-        public SecondRegisterEntity Entity { get { return _Entity; } set { _Entity = value; } }
+        public SecondRegisterEntity Entity { get; set; }
         EntityEditMode _EntityEditMode = EntityEditMode.Add;
         public EntityEditMode EntityEditMode
         {
@@ -263,7 +261,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #endregion
         #endregion
-        protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
+        //protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
         #region methods
         public void Save()
         {

@@ -87,7 +87,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                         {
                             throw new BusinessException(Properties.Resources.Error_UnableSession);
                         }
-                        MessageBoxService.ShowMessage(Session.Current.SessionClientName);
                         Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
                         CurrentWindowService.Close();
                         break;

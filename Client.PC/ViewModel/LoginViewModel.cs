@@ -11,9 +11,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class LoginViewModel : ViewModelBase
     {
+        #region Services
         [ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
         protected virtual IMessageBoxService MessageBoxService { get { return null; } }
         protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
+        #endregion
         #region Propertys
         public string _UserNo;
         public string UserNo
@@ -67,6 +69,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             try
             {
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
+
+
+                //IConnectService ConnectService = ServiceLoader.LoadService<IConnectService>();
                 LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
                 switch (loginresult)
                 {

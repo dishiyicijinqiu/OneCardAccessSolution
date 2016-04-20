@@ -1,15 +1,9 @@
 ﻿using DevExpress.Mvvm;
-using DevExpress.Xpf.Core;
-using FengSharp.OneCardAccess.BusinessEntity;
-using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.Core;
 using System;
 using System.ComponentModel;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Markup;
-using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
@@ -40,7 +34,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                this.GetService<IMessageBoxService>().HandleException(ex);
             }
         }
         #endregion
@@ -66,12 +60,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             if (Session.Current != null)
             {
-                var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
+                var result = this.GetService<IMessageBoxService>().ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
                 if (result != MessageResult.Yes)
                     args.Cancel = true;
             }
         }
-        protected virtual IMessageBoxService MessageBoxService { get { return null; } }
     }
     public class DocumentInfo
     {

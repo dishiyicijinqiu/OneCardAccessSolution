@@ -17,11 +17,8 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             mc:Ignorable="d" 
             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
-            d:DesignHeight="300" d:DesignWidth="300"
+            d:DesignHeight="416" d:DesignWidth="634"
              >
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
-    </dxmvvm:Interaction.Behaviors>
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -29,6 +26,11 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
+        <dxmvvm:EventToCommand Command="{Binding CloseCommand}" EventName="Close" />
+
+    </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>
@@ -39,10 +41,10 @@
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" ItemClick="BarButtonItem_ItemClick"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
@@ -73,7 +75,7 @@
                 <dxg:GridControl.View>
                     <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}">
                         <dxmvvm:Interaction.Behaviors>
-                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding RowDoubleClickCommand}" EventName="RowDoubleClick" />
+                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" />
                         </dxmvvm:Interaction.Behaviors>
                     </dxg:TableView>
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->

@@ -81,9 +81,8 @@
     <Compile Include="Core\BaseViewModel.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
-    <Compile Include="Core\ILoadDataExceptionSupport.cs" />
     <Compile Include="Core\MessageBoxExceptionProcess.cs" />
-    <Compile Include="Core\UIExtend.cs" />
+    <Compile Include="Core\Extend.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -221,6 +220,14 @@
     <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Configuration\Src\Unity.Configuration.csproj">
       <Project>{aef45ed2-3e7f-4aa5-9001-a4d1bac12ebe}</Project>
       <Name>Unity.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Interception.Configuration\Src\Unity.Interception.Configuration.csproj">
+      <Project>{80f7399f-b221-465f-97c9-4b9fc0e2f67f}</Project>
+      <Name>Unity.Interception.Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Interception\Src\Unity.Interception.csproj">
+      <Project>{F8186B23-B0E1-4646-B5F3-14357841E2BA}</Project>
+      <Name>Unity.Interception</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity\Src\Unity.csproj">
       <Project>{ee1f752c-1fab-41ad-ad63-857d0e62ab6b}</Project>

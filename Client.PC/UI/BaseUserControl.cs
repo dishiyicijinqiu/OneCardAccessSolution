@@ -1,5 +1,4 @@
-﻿using FengSharp.OneCardAccess.Client.PC.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

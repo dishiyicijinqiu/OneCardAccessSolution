@@ -1,20 +1,26 @@
 ﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
+using DevExpress.Mvvm.POCO;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
-using FengSharp.OneCardAccess.Core;
+
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    [POCOViewModel]
-    public class RegisterCollectionViewModel : BaseDocumentContent
+    public class RegisterCollectionViewModel : DefaultViewModel
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
         public RegisterCollectionViewModel()
         {
         }
+        #region Services
+        IDocumentManagerService GetDialogWindowService()
+        {
+            return this.GetService<IDocumentManagerService>("DialogWindowService", ServiceSearchMode.PreferParents);
+        }
+        #endregion
         #region propertys
         IList<FirstRegisterEntity> _Items;
         public IList<FirstRegisterEntity> Items
@@ -34,7 +40,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region commandmethods
         public void Add()
         {
-            DialogWindowService.Show("RegisterView", new RegisterEditMessage(), this);
+            IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(), this);
+            document.Show();
         }
         public void CopyAdd()
         {
@@ -49,9 +56,18 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DialogWindowService.Show("RegisterView",
-                    new RegisterViewModel(new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit))
-                    , null, this);
+
+                //IDocumentManagerService service = this.GetService<IDocumentManagerService>("SignleObjectDocumentManagerService");
+                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
+
+                //IDocument document = GetDocumentManagerService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
+                document.Show();
+
+
+                //DialogWindowService.Show("RegisterView",
+                //    new RegisterViewModel(new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit))
+                //    , null, this);
+                //DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
             }
             catch (Exception ex)
             {
@@ -62,14 +78,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
 
         }
-        public void RowDoubleClick()
-        {
-            Edit();
-        }
         public void OnLoaded()
         {
-            if (this.IsLoaded)
-                return;
             if (!ViewModelBase.IsInDesignMode)
             {
                 try
@@ -80,11 +90,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 }
                 catch (Exception ex)
                 {
-                    Close();
                     MessageBoxService.HandleException(ex);
                 }
             }
-            this.IsLoaded = true;
         }
         #endregion
     }

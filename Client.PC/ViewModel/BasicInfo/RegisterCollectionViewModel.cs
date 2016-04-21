@@ -84,12 +84,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             {
                 try
                 {
+
                     var list = basicinfoservice.GetFirstRegisterList();
                     //Items = new ObservableCollection<RegisterEntity>(list);
                     Items = list;
                 }
                 catch (Exception ex)
                 {
+                    this.Close();
                     MessageBoxService.HandleException(ex);
                 }
             }

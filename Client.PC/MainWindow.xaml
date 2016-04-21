@@ -7,7 +7,7 @@
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     WindowStartupLocation="CenterScreen" WindowState="Maximized"
     Opacity="0" AllowsTransparency="True" WindowStyle="None"
-    Title="{x:Static res:Resources.View_MainWindow_Title}" 
+    Title="{x:Static res:Resources.View_MainWindow_Title}" Background="Transparent"
     MinWidth="800" ShowInTaskbar="False"
     MinHeight="600"
     >

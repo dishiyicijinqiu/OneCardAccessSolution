@@ -12,6 +12,22 @@ namespace FengSharp.OneCardAccess.Core
         {
             this.PropertyChanged += DefaultViewModelBase_PropertyChanged;
         }
+        protected override void OnParameterChanged(object parameter)
+        {
+            base.OnParameterChanged(parameter);
+        }
+        protected override void OnInitializeInDesignMode()
+        {
+            base.OnInitializeInDesignMode();
+        }
+        protected override void OnInitializeInRuntime()
+        {
+            base.OnInitializeInRuntime();
+        }
+        protected override void OnParentViewModelChanged(object parentViewModel)
+        {
+            base.OnParentViewModelChanged(parentViewModel);
+        }
 
         protected bool HasPropertyChanged { get; set; }
 

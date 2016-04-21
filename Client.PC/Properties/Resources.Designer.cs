@@ -493,6 +493,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 加载中... 的本地化字符串。
+        /// </summary>
+        public static string Info_Loading {
+            get {
+                return ResourceManager.GetString("Info_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 请稍后 的本地化字符串。
+        /// </summary>
+        public static string Info_PleaseWait {
+            get {
+                return ResourceManager.GetString("Info_PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 保存成功 的本地化字符串。
         /// </summary>
         public static string Info_SaveSuccess {

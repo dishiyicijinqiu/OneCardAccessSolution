@@ -65,20 +65,20 @@
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo}">
-                            <dxe:TextEdit EditValue="{Binding RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName}">
-                            <dxe:TextEdit EditValue="{Binding RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
-                            <dxe:TextEdit EditValue="{Binding StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StartDate}">
-                            <dxe:DateEdit EditValue="{Binding StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
+                            <dxe:DateEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
+                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
@@ -91,20 +91,20 @@
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo1}">
-                            <dxe:TextEdit EditValue="{Binding RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName1}">
-                            <dxe:TextEdit EditValue="{Binding RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">
-                            <dxe:TextEdit EditValue="{Binding StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
-                            <dxe:DateEdit EditValue="{Binding EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
+                            <dxe:DateEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
+                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
@@ -119,22 +119,22 @@
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
 
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Creater}">
-                        <dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.Creater}" IsReadOnly="True"/>
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_CreateDate}">
-                        <dxe:TextEdit EditValue="{Binding CreateDate}" Style="{StaticResource teCreateDate}" />
+                        <dxe:TextEdit EditValue="{Binding Entity.CreateDate}" Style="{StaticResource teCreateDate}" />
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyer}">
-                        <dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.LastModifyer}" IsReadOnly="True"/>
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_LastModifyDate}">
-                        <dxe:TextEdit EditValue="{Binding LastModifyDate}" Style="{StaticResource teLastModifyDate}"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.LastModifyDate}" Style="{StaticResource teLastModifyDate}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_Remark}">
-                    <dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                 </dxlc:LayoutItem>
             </dxlc:LayoutControl>
         </Grid>

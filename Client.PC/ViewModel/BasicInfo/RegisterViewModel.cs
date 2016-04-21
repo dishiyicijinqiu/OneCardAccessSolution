@@ -28,6 +28,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     case EntityEditMode.Add:
                         break;
                     case EntityEditMode.CopyAdd:
+                        var copyEntity = basicinfoservice.GetSecondRegisterEntityById(paramsg.CopyKey);
+                        Entity = SecondRegisterEntity.CreateEntity();
+                        Entity.CopyValueFrom(copyEntity, new string[] {
+                            "RegisterId","Register_FileEntitys"
+                        });
+                        break;
                     case EntityEditMode.Edit:
                         Entity = basicinfoservice.GetSecondRegisterEntityById(paramsg.Key);
                         break;
@@ -36,13 +42,24 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 }
                 if (Entity == null)
                     Entity = SecondRegisterEntity.CreateEntity();
-                this.RaisePropertiesChanged();
-                RaisePropertyChanged("RegisterNo");
+                EntityEditMode = paramsg.EntityEditMode;
             }
         }
 
         #region propertys
-        public SecondRegisterEntity Entity { get; set; }
+        private SecondRegisterEntity _Entity;
+
+        public SecondRegisterEntity Entity
+        {
+            get { return _Entity; }
+            set
+            {
+                _Entity = value;
+                RaisePropertyChanged("Entity");
+            }
+        }
+
+
         EntityEditMode _EntityEditMode = EntityEditMode.Add;
         public EntityEditMode EntityEditMode
         {
@@ -57,228 +74,29 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("EntityEditMode");
             }
         }
-        public List<Register_FileEntity> Register_FileEntitys
-        {
-            get
-            {
-                return Entity.Register_FileEntitys;
-            }
-            set
-            {
-                Entity.Register_FileEntitys = value;
-            }
-        }
-        #region RegisterEntity
-        public string RegisterNo
-        {
-            get
-            {
-                return Entity.RegisterNo;
-            }
-            set
-            {
-                if (Entity.RegisterNo != value)
-                {
-                    Entity.RegisterNo = value;
-                    RaisePropertyChanged("RegisterNo");
-                }
-            }
-        }
-        public string RegisterProductName
-        {
-            get
-            {
-                return Entity.RegisterProductName;
-            }
-            set
-            {
-                if (Entity.RegisterProductName != value)
-                {
-                    Entity.RegisterProductName = value;
-                    RaisePropertyChanged("RegisterProductName");
-                }
-            }
-        }
-        public string StandardCode
-        {
-            get
-            {
-                return Entity.StandardCode;
-            }
-            set
-            {
-                if (Entity.StandardCode != value)
-                {
-                    Entity.StandardCode = value;
-                    RaisePropertyChanged("StandardCode");
-                }
-            }
-        }
-        public string RegisterNo1
-        {
-            get
-            {
-                return Entity.RegisterNo1;
-            }
-            set
-            {
-                if (Entity.RegisterNo1 != value)
-                {
-                    Entity.RegisterNo1 = value;
-                    RaisePropertyChanged("RegisterNo1");
-                }
-            }
-        }
-        public string RegisterProductName1
-        {
-            get
-            {
-                return Entity.RegisterProductName1;
-            }
-            set
-            {
-                if (Entity.RegisterProductName1 != value)
-                {
-                    Entity.RegisterProductName1 = value;
-                    RaisePropertyChanged("RegisterProductName1");
-                }
-            }
-        }
-        public string StandardCode1
-        {
-            get
-            {
-                return Entity.StandardCode1;
-            }
-            set
-            {
-                if (Entity.StandardCode1 != value)
-                {
-                    Entity.StandardCode1 = value;
-                    RaisePropertyChanged("StandardCode1");
-                }
-            }
-        }
-        public string StartDate
-        {
-            get
-            {
-                return Entity.StartDate;
-            }
-            set
-            {
-                if (Entity.StartDate != value)
-                {
-                    Entity.StartDate = value;
-                    RaisePropertyChanged("StartDate");
-                }
-            }
-        }
-        public string EndDate
-        {
-            get
-            {
-                return Entity.EndDate;
-            }
-            set
-            {
-                if (Entity.EndDate != value)
-                {
-                    Entity.EndDate = value;
-                    RaisePropertyChanged("EndDate");
-                }
-            }
-        }
-        public string Creater
-        {
-            get
-            {
-                return Entity.Creater;
-            }
-            set
-            {
-                if (Entity.Creater != value)
-                {
-                    Entity.Creater = value;
-                    RaisePropertyChanged("Creater");
-                }
-            }
-        }
-        public DateTime CreateDate
-        {
-            get
-            {
-                return Entity.CreateDate;
-            }
-            set
-            {
-                if (Entity.CreateDate != value)
-                {
-                    Entity.CreateDate = value;
-                    RaisePropertyChanged("CreateDate");
-                }
-            }
-        }
-        public string LastModifyer
-        {
-            get
-            {
-                return Entity.LastModifyer;
-            }
-            set
-            {
-                if (Entity.LastModifyer != value)
-                {
-                    Entity.LastModifyer = value;
-                    RaisePropertyChanged("LastModifyer");
-                }
-            }
-        }
-        public DateTime LastModifyDate
-        {
-            get
-            {
-                return Entity.LastModifyDate;
-            }
-            set
-            {
-                if (Entity.LastModifyDate != value)
-                {
-                    Entity.LastModifyDate = value;
-                    RaisePropertyChanged("LastModifyDate");
-                }
-            }
-        }
-        public string Remark
-        {
-            get
-            {
-                return Entity.Remark;
-            }
-            set
-            {
-                if (Entity.Remark != value)
-                {
-                    Entity.Remark = value;
-                    RaisePropertyChanged("Remark");
-                }
-            }
-        }
-        #endregion
         #endregion
         #region methods
+        public void SaveAndNew()
+        {
+            RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
+            paramsg.IsContinue = true;
+            this.Save();
+
+        }
         public void Save()
         {
             try
             {
                 RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
-                paramsg.Key = basicinfoservice.Save(this.Entity);
+                paramsg.Key = basicinfoservice.SaveRegisterEntity(this.Entity);
                 if (paramsg.Key <= 0)
                 {
                     MessageBoxService.ShowMessage(Properties.Resources.Error_SaveFiled, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+                    return;
                 }
                 MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
-                Messenger.Default.Send(paramsg);
+                this.Close();
+                Messenger.Default.Send<RegisterEditMessage>(paramsg, (this as ISupportParentViewModel).ParentViewModel);
             }
             catch (Exception ex)
             {

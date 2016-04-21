@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using DevExpress.Mvvm;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
@@ -20,10 +21,28 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 LastModifyer = string.Empty,
             };
         }
+        private string _Creater;
         [DataMember]
-        public string Creater { get; set; }
+        public string Creater
+        {
+            get { return _Creater; }
+            set
+            {
+                _Creater = value;
+                RaisePropertyChanged("Creater");
+            }
+        }
+        private string _LastModifyer;
         [DataMember]
-        public string LastModifyer { get; set; }
+        public string LastModifyer
+        {
+            get { return _LastModifyer; }
+            set
+            {
+                _LastModifyer = value;
+                RaisePropertyChanged("LastModifyer");
+            }
+        }
     }
 
     public class SecondRegisterEntity : FirstRegisterEntity
@@ -36,6 +55,17 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 LastModifyer = string.Empty,
             };
         }
-        public List<Register_FileEntity> Register_FileEntitys { get; set; }
+        private List<Register_FileEntity> _Register_FileEntitys;
+
+        [DataMember]
+        public List<Register_FileEntity> Register_FileEntitys
+        {
+            get { return _Register_FileEntitys; }
+            set
+            {
+                _Register_FileEntitys = value;
+                RaisePropertyChanged("Register_FileEntitys");
+            }
+        }
     }
 }

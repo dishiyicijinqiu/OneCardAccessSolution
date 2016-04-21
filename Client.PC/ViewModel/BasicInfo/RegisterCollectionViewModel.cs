@@ -1,11 +1,12 @@
 ﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.POCO;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.ComponentModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -14,6 +15,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
         public RegisterCollectionViewModel()
         {
+            Messenger.Default.Register<RegisterEditMessage>(this, this, OnEdited);
         }
         #region Services
         IDocumentManagerService GetDialogWindowService()
@@ -22,8 +24,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #endregion
         #region propertys
-        IList<FirstRegisterEntity> _Items;
-        public IList<FirstRegisterEntity> Items
+
+        ObservableCollection<FirstRegisterEntity> _Items;
+        public ObservableCollection<FirstRegisterEntity> Items
         {
             get
             {
@@ -35,19 +38,36 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
-        public FirstRegisterEntity SelectedEntity { get; set; }
+
         #endregion
         #region commandmethods
         public void Add()
         {
-            IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(), this);
-            document.Show();
+            try
+            {
+                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(), this);
+                document.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
         }
-        public void CopyAdd()
+        public void CopyAdd(FirstRegisterEntity SelectedEntity)
         {
-
+            try
+            {
+                IDocument document = GetDialogWindowService().CreateDocument("RegisterView",
+                    new RegisterEditMessage(_CopyKey: SelectedEntity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)
+                    , this);
+                document.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
         }
-        public void Edit()
+        public void Edit(FirstRegisterEntity SelectedEntity)
         {
             try
             {
@@ -56,47 +76,96 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-
-                //IDocumentManagerService service = this.GetService<IDocumentManagerService>("SignleObjectDocumentManagerService");
                 IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
-
-                //IDocument document = GetDocumentManagerService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
                 document.Show();
-
-
-                //DialogWindowService.Show("RegisterView",
-                //    new RegisterViewModel(new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit))
-                //    , null, this);
-                //DialogWindowService.Show("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
             }
             catch (Exception ex)
             {
                 MessageBoxService.HandleException(ex);
             }
         }
-        public void Delete()
+        public void Delete(System.Collections.IList SelectedEntitys)
         {
-
+            try
+            {
+                //System.Collections.Generic.IList<FirstRegisterEntity>
+            }
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
         }
+        private bool IsLoaded = false;
         public void OnLoaded()
         {
             if (!ViewModelBase.IsInDesignMode)
             {
+                if (IsLoaded) return;
                 try
                 {
-
                     var list = basicinfoservice.GetFirstRegisterList();
-                    //Items = new ObservableCollection<RegisterEntity>(list);
-                    Items = list;
+                    Items = new ObservableCollection<FirstRegisterEntity>(list);
                 }
                 catch (Exception ex)
                 {
                     this.Close();
                     MessageBoxService.HandleException(ex);
                 }
+                finally
+                {
+                    IsLoaded = true;
+                }
             }
         }
         #endregion
+        public void OnEdited(RegisterEditMessage message)
+        {
+            try
+            {
+                switch (message.EntityEditMode)
+                {
+                    case EntityEditMode.Add:
+                        {
+                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            Items.Add(newItem);
+                            if (message.IsContinue)
+                                Add();
+                        }
+                        break;
+                    case EntityEditMode.CopyAdd:
+                        {
+                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            Items.Add(newItem);
+                            if (message.IsContinue)
+                            {
+                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == message.CopyKey);
+                                CopyAdd(copyItem);
+                            }
+                        }
+                        break;
+                    case EntityEditMode.Edit:
+                        {
+                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == message.Key);
+                            if (oldItem == null) return;
+                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var itemIndex = Items.IndexOf(oldItem);
+                            Items[itemIndex] = newItem;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBoxService.HandleException(ex);
+            }
+        }
+        public override void OnClose(CancelEventArgs e)
+        {
+            Messenger.Default.Unregister<RegisterEditMessage>(this);
+            base.OnClose(e);
+        }
     }
     public class RegisterEditMessage : EditMessage<int>
     {

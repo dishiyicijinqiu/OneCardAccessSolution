@@ -12,6 +12,8 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId);
         [OperationContract]
-        int Save(SecondRegisterEntity entity);
+        FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId);
+        [OperationContract]
+        int SaveRegisterEntity(SecondRegisterEntity entity);
     }
 }

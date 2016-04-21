@@ -22,6 +22,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             //WindowService windowService = new WindowService();
             //windowService.WindowStyle = Resources["DialogWindowStyle"] as Style;
             //windowService.Show(null, null);
+            //this.grid.GetFocusedValue();
+            //this.tableview.FocusedRowHandle;
+            //this.tableview.SetCurrentValue();
+            //this.tableview.FocusedRowData;
+            //this.tableview.FocusedRow
         }
     }
 }

@@ -65,7 +65,7 @@
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barSaveAndNew">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_SaveAndNew}"/>
-        <Setter Property="Command" Value="{Binding barSaveAndNewCommand}"/>
+        <Setter Property="Command" Value="{Binding SaveAndNewCommand}"/>
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_32x32.png"/>
     </Style>

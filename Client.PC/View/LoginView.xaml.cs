@@ -17,6 +17,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         {
             App.Current.MainWindow.Topmost = true;
             App.Current.MainWindow.Topmost = false;
+            this.tbUserName.Focus();
         }
     }
 }

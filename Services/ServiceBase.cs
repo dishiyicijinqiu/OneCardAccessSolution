@@ -30,7 +30,10 @@ namespace FengSharp.OneCardAccess.Services
                 _Database = this.Database;
             var cmd = DataBaseExtend.GetCreateCommand(t, _Database);
             _Database.ExecuteNonQuery(cmd, tran);
-            return (T)_Database.GetParameterValue(cmd, t.GetKeyFiledName());
+            var keyvalue = _Database.GetParameterValue(cmd, t.GetKeyFiledName());
+            var p = t.GetType().GetProperty(t.GetKeyFiledName());
+            p.SetValue(t, keyvalue, null);
+            return t;
         }
         public virtual bool DeleteEntity<T>(T entity, DbTransaction transaction = null, string cMode = null)
         {
@@ -402,12 +405,7 @@ namespace FengSharp.OneCardAccess.Services
             }
             var genePropertys = Propertys.Where(t => genefileds.Contains(t.Name)).ToList();
             StringBuilder sbsql = new StringBuilder();
-            if (databasekeytype == DataBaseKeyType.Guid)
-            {
-                sbsql.AppendFormat("declare @{0} varchar(36) ", keyfiled);
-                sbsql.AppendFormat("select @{0}=newid() ", keyfiled);
-            }
-            sbsql.AppendFormat("INSERT INTO [dbo].[{0}]", type);
+            sbsql.AppendFormat("INSERT INTO [dbo].[{0}]", type.Name);
             sbsql.AppendFormat("           (");
             if (databasekeytype == DataBaseKeyType.Guid)
             {
@@ -418,7 +416,8 @@ namespace FengSharp.OneCardAccess.Services
                 var field = genefileds[i];
                 if (i == (genefileds.Count - 1))
                     sbsql.AppendFormat("{0}", field);
-                sbsql.AppendFormat("{0},", field);
+                else
+                    sbsql.AppendFormat("{0},", field);
             }
             sbsql.AppendFormat("		   )");
             sbsql.AppendFormat("     VALUES");
@@ -432,16 +431,30 @@ namespace FengSharp.OneCardAccess.Services
                 var field = genefileds[i];
                 if (i == (genefileds.Count - 1))
                     sbsql.AppendFormat("@{0}", field);
-                sbsql.AppendFormat("@{0},", field);
+                else
+                    sbsql.AppendFormat("@{0},", field);
             }
-            sbsql.AppendFormat("		   )");
+            sbsql.AppendFormat("		   ) ");
+            if (databasekeytype == DataBaseKeyType.Int)
+            {
+                sbsql.AppendFormat("select @{0}=@@IDENTITY ", keyfiled);
+            }
             DbCommand cmd = _Database.GetSqlStringCommand(sbsql.ToString());
             foreach (var property in genePropertys)
             {
                 _Database.AddInParameter(cmd, property.Name, DataBaseExtend.GetDbTypeByPropertyTypeName(property.PropertyType.Name), property.GetValue(entity, null));
             }
             var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
-            _Database.AddParameter(cmd, keyfiled, DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name), ParameterDirection.Output, keyfiled, DataRowVersion.Default, null);
+
+            if (databasekeytype == DataBaseKeyType.Guid)
+            {
+                _Database.AddParameter(cmd, keyfiled, DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name),
+                    ParameterDirection.InputOutput, keyfiled, DataRowVersion.Default, Guid.NewGuid().ToString());
+            }
+            else
+            {
+                _Database.AddOutParameter(cmd, keyfiled, DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name), 4);
+            }
             return cmd;
         }
 
@@ -486,13 +499,15 @@ namespace FengSharp.OneCardAccess.Services
             }
             var genePropertys = Propertys.Where(t => genefileds.Contains(t.Name)).ToList();
             StringBuilder sbsql = new StringBuilder();
-            sbsql.AppendFormat("UPDATE [dbo].[{0}] set ", type);
+            sbsql.AppendFormat("UPDATE [dbo].[{0}] set ", type.Name);
             for (int i = 0; i < genefileds.Count; i++)
             {
                 var field = genefileds[i];
                 if (i == (genefileds.Count - 1))
                     sbsql.AppendFormat("{0}=@{0} ", field);
-                sbsql.AppendFormat("{0}=@{0}, ", field);
+                else
+                    sbsql.AppendFormat("{0}=@{0}, ", field);
+
             }
             sbsql.AppendFormat("where {0}=@{0}", keyfiled);
             DbCommand cmd = _Database.GetSqlStringCommand(sbsql.ToString());

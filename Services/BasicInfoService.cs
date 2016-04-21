@@ -1,4 +1,5 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+﻿using DevExpress.Mvvm;
+using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using FengSharp.OneCardAccess.TEntity;
@@ -14,6 +15,14 @@ namespace FengSharp.OneCardAccess.Services
         {
             return this.GetEntitys<FirstRegisterEntity>();
         }
+        public FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId)
+        {
+            var firstEntity = this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
+            {
+                RegisterId = RegisterId
+            });
+            return firstEntity;
+        }
         public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)
         {
             var firstEntity = this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
@@ -27,7 +36,7 @@ namespace FengSharp.OneCardAccess.Services
             ClassValueCopier.CopyArray(secondentity.Register_FileEntitys, dbRegister_FileList);
             return secondentity;
         }
-        public int Save(SecondRegisterEntity entity)
+        public int SaveRegisterEntity(SecondRegisterEntity entity)
         {
             return UseTran((tran) =>
             {
@@ -48,7 +57,7 @@ namespace FengSharp.OneCardAccess.Services
                 {
                     if (!ModifyEntity(dbregisterentity, tran))
                     {
-                        throw new BusinessException("保存失败");
+                        throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
                     }
                     DeleteRelationEntitys<T_Register, T_Register_File>(dbregisterentity, tran);
                     foreach (var item in entity.Register_FileEntitys)
@@ -59,7 +68,7 @@ namespace FengSharp.OneCardAccess.Services
                         CreateEntity(dbregisterfileentity, tran);
                     }
                 }
-                return 0;
+                return dbregisterentity.RegisterId;
             });
         }
         #endregion

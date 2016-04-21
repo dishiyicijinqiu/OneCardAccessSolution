@@ -13,13 +13,14 @@
 using System;
 using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
+using DevExpress.Mvvm;
 namespace <#=NameSpace#>
 {
 	/// <summary>
 	/// <#=dbhost.DbTable.Remark#>
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: BindableBase
 	{
 		/// <summary>
 		/// 构造函数
@@ -34,6 +35,7 @@ if(column.CSharpType.ToLower()=="string"){#>
 		}
 <# foreach(DbColumn column in dbhost.DbColumns){
 if(column.ColumnName.ToLower()!="deleted"){#>
+		private <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> _<#=column.ColumnName#>;
 		/// <summary>
 		/// <#=column.Remark#>
 		/// </summary>
@@ -45,14 +47,24 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 <#}#>
 <#}#>
 		[DataMember]
-		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> { get; set; }
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#> 
+		{
+            get { return _<#=column.ColumnName#>; }
+            set
+            {
+				if(_<#=column.ColumnName#> == value)
+					return;
+                _<#=column.ColumnName#> = value;
+                RaisePropertyChanged("<#=column.ColumnName#>");
+            }
+        }
 <#}
 }#>
 	}
 }
 <#}#>
 <#+
-public static readonly string TableName="T_UserInfo";
+public static readonly string TableName="T_CheckReportTemp";
 public static readonly bool IsBuilder= true;
 public static readonly string NameSpace="FengSharp.OneCardAccess.BusinessEntity.RBAC";
 #>

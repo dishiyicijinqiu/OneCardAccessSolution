@@ -21,21 +21,21 @@
                 <dxlc:LayoutGroup Orientation="Horizontal" Width="120">
                     <dxlc:LayoutItem>
                         <Image Name="image" Width="100" Height="100"
-               Source ="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Login.png" />
+               Source ="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Login.png" Focusable="False" />
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup Orientation="Vertical">
                     <dxlc:LayoutGroup Orientation="Vertical">
                         <dxlc:LayoutItem>
-                            <ContentControl Height="10"/>
+                            <ContentControl Height="10" Focusable="False"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.View_LoginView_lblUserNo_Label}" Height="25">
-                            <dxe:TextEdit EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            <dxe:TextEdit x:Name="tbUserName" EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                           IsReadOnly="{Binding IsReLogin, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                           />
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem>
-                            <ContentControl Height="10"/>
+                            <ContentControl Height="10" Focusable="False"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.View_LoginView_lblPassWord_Label}" Height="25">
                             <dxe:PasswordBoxEdit x:Name="tbPwd" EditValue="{Binding Path=Password,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
@@ -45,10 +45,10 @@
             </dxlc:LayoutGroup>
             <dxlc:LayoutGroup Orientation="Horizontal">
                 <dxlc:LayoutItem>
-                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnLogin_Content}" Command="{Binding LoginCommand}" />
+                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnLogin_Content}" Command="{Binding LoginCommand}" IsDefault="True" />
                 </dxlc:LayoutItem>
                 <dxlc:LayoutItem>
-                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CancelCommand}" />
+                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CancelCommand}" IsCancel="True" />
                 </dxlc:LayoutItem>
             </dxlc:LayoutGroup>
         </dxlc:LayoutGroup>

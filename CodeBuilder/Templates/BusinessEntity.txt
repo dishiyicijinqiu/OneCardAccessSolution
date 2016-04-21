@@ -1,59 +1,138 @@
 ﻿using System;
 using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
+using DevExpress.Mvvm;
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
 	/// <summary>
-	/// 用户表
+	/// 检验报告模板
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class UserInfoEntity
+	public partial class CheckReportTempEntity: BindableBase
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public UserInfoEntity()
+		public CheckReportTempEntity()
 		{
-			UserNo=string.Empty;
-			UserName=string.Empty;
-			PassWord=string.Empty;
+			TemplateName=string.Empty;
+			TemplatePath=string.Empty;
+			MaterIden=string.Empty;
 			Remark=string.Empty;
+			CateNo=string.Empty;
 		}
+		private int _Id;
 		/// <summary>
-		/// 用户Id
+		/// Id
 		/// </summary>
 		[DataBaseKey]
 		[DataMember]
-		public int UserId { get; set; }
+		public int Id 
+		{
+            get { return _Id; }
+            set
+            {
+				if(_Id == value)
+					return;
+                _Id = value;
+                RaisePropertyChanged("Id");
+            }
+        }
+		private string _TemplateName;
 		/// <summary>
-		/// 用户账号
+		/// 模板名称
 		/// </summary>
 		[DataMember]
-		public string UserNo { get; set; }
+		public string TemplateName 
+		{
+            get { return _TemplateName; }
+            set
+            {
+				if(_TemplateName == value)
+					return;
+                _TemplateName = value;
+                RaisePropertyChanged("TemplateName");
+            }
+        }
+		private string _TemplatePath;
 		/// <summary>
-		/// 用户姓名
+		/// 路径
 		/// </summary>
 		[DataMember]
-		public string UserName { get; set; }
+		public string TemplatePath 
+		{
+            get { return _TemplatePath; }
+            set
+            {
+				if(_TemplatePath == value)
+					return;
+                _TemplatePath = value;
+                RaisePropertyChanged("TemplatePath");
+            }
+        }
+		private string _MaterIden;
 		/// <summary>
-		/// 密码
+		/// 材料标识
 		/// </summary>
 		[DataMember]
-		public string PassWord { get; set; }
+		public string MaterIden 
+		{
+            get { return _MaterIden; }
+            set
+            {
+				if(_MaterIden == value)
+					return;
+                _MaterIden = value;
+                RaisePropertyChanged("MaterIden");
+            }
+        }
+		private bool _IsLock;
 		/// <summary>
-		/// 锁定标识
+		/// 是否锁定
 		/// </summary>
 		[DataMember]
-		public bool IsLock { get; set; }
+		public bool IsLock 
+		{
+            get { return _IsLock; }
+            set
+            {
+				if(_IsLock == value)
+					return;
+                _IsLock = value;
+                RaisePropertyChanged("IsLock");
+            }
+        }
+		private string _Remark;
 		/// <summary>
 		/// 备注
 		/// </summary>
 		[DataMember]
-		public string Remark { get; set; }
+		public string Remark 
+		{
+            get { return _Remark; }
+            set
+            {
+				if(_Remark == value)
+					return;
+                _Remark = value;
+                RaisePropertyChanged("Remark");
+            }
+        }
+		private string _CateNo;
 		/// <summary>
-		/// 是否为超级管理员
+		/// 类别号
 		/// </summary>
 		[DataMember]
-		public bool IsSuper { get; set; }
+		public string CateNo 
+		{
+            get { return _CateNo; }
+            set
+            {
+				if(_CateNo == value)
+					return;
+                _CateNo = value;
+                RaisePropertyChanged("CateNo");
+            }
+        }
 	}
 }

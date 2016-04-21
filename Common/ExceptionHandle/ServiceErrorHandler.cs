@@ -29,16 +29,20 @@ namespace FengSharp.OneCardAccess.Common
 
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
-            if(typeof(FaultException).IsInstanceOfType(error))
+            if (typeof(FaultException).IsInstanceOfType(error))
             {
                 return;
             }
 
             try
             {
-                if (ExceptionPolicy.HandleException(error, this.ExceptionPolicyName))
+                Exception newException = null;
+                if (ExceptionPolicy.HandleException(error, this.ExceptionPolicyName, out newException))
                 {
-                    fault = Message.CreateMessage(version, BuildFault(error), ServiceExceptionDetail.FaultAction);
+                    if (newException != null)
+                        fault = Message.CreateMessage(version, BuildFault(newException), ServiceExceptionDetail.FaultAction);
+                    else
+                        fault = Message.CreateMessage(version, BuildFault(error), ServiceExceptionDetail.FaultAction);
                 }
             }
             catch (Exception ex)
@@ -48,7 +52,7 @@ namespace FengSharp.OneCardAccess.Common
         }
 
         private MessageFault BuildFault(Exception error)
-        {           
+        {
             ServiceExceptionDetail exceptionDetail = new ServiceExceptionDetail(error);
             return MessageFault.CreateFault(FaultCode.CreateReceiverFaultCode(ServiceExceptionDetail.FaultSubCodeName, ServiceExceptionDetail.FaultSubCodeNamespace),
                 new FaultReason(error.Message), exceptionDetail);

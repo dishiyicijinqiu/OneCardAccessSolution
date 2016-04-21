@@ -42,9 +42,9 @@
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarButtonItem_ItemClick"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarButtonItem_ItemClick"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarButtonItem_ItemClick"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" ItemClick="BarButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
@@ -53,10 +53,7 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl 
-                SelectedItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
-                CurrentItem="{Binding SelectedEntity, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnSourceUpdated=True}"
-				ItemsSource="{Binding Items}" Grid.Row="1">
+            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid">
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
                     <dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterProductName}"/>
@@ -73,9 +70,10 @@
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
                 </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
-                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}">
+                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" Name="tableview">
                         <dxmvvm:Interaction.Behaviors>
-                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" />
+                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" 
+                                                   CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}" />
                         </dxmvvm:Interaction.Behaviors>
                     </dxg:TableView>
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->

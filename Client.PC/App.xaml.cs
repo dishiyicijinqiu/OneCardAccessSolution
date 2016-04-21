@@ -27,7 +27,7 @@ namespace FengSharp.OneCardAccess.Client.PC
             Helpers.ExceptionHelper.Initialize();
             //Test1();
             //RegisterServices();
-            RealProxyCallHandlerManager.AddCallHandler(new Core.LoadingCallHandler());
+            //RealProxyCallHandlerManager.AddCallHandler(new Core.LoadingCallHandler());
             if (DXSplashScreen.IsActive)
                 DXSplashScreen.Close();
             DXSplashScreen.Show<SplashScreenView>();

@@ -12,7 +12,6 @@ namespace FengSharp.OneCardAccess.Services
         #region Register
         public List<FirstRegisterEntity> GetFirstRegisterList()
         {
-            //throw new LoginTimeOutException();
             return this.GetEntitys<FirstRegisterEntity>();
         }
         public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)

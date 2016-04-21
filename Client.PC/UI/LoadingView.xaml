@@ -1,0 +1,23 @@
+﻿<Window x:Class="FengSharp.OneCardAccess.Client.PC.UI.LoadingView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        mc:Ignorable="d"
+    WindowStyle="None" ResizeMode="NoResize" Width="200" Height="150"
+    AllowsTransparency="True" Background="Transparent" ShowInTaskbar="False" Topmost="True">
+
+    <dx:WaitIndicator DeferedVisibility="True" Content="{x:Static res:Resources.Info_Loading}">
+        <dx:WaitIndicator.ContentTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{x:Static res:Resources.Info_PleaseWait}" FontSize="20"/>
+                    <TextBlock Text="{Binding}"/>
+                </StackPanel>
+            </DataTemplate>
+        </dx:WaitIndicator.ContentTemplate>
+    </dx:WaitIndicator>
+</Window>

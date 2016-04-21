@@ -81,6 +81,7 @@
     <Compile Include="Core\BaseViewModel.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
+    <Compile Include="Core\LoadingCallHandler.cs" />
     <Compile Include="Core\MessageBoxExceptionProcess.cs" />
     <Compile Include="Core\Extend.cs" />
     <Compile Include="Core\ValueConverter.cs" />
@@ -99,6 +100,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="UI\BaseUserControl.cs" />
+    <Compile Include="UI\LoadingView.xaml.cs">
+      <DependentUpon>LoadingView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\MaximizedNoCoverTaskInfoHelper.cs" />
     <Compile Include="UI\MyRibbonPageGroupsItemsPanel.cs" />
     <Compile Include="UI\SplashScreenView.xaml.cs">
@@ -136,6 +140,10 @@
     <Page Include="Themes\Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UI\LoadingView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SplashScreenView.xaml">
       <SubType>Designer</SubType>

@@ -15,14 +15,13 @@
 <# foreach(DbColumn column in dbhost.DbColumns){
 if(column.ColumnName.ToLower()=="createid"){
 #>
-Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater	<#="创建人"#>
+<dxg:GridColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}"/>
 <#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
-Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer	<#="最后更改人"#>
+<dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}"/>
 <#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
-Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=column.Remark#>
+<dxg:GridColumn FieldName="<#=column.ColumnName#>" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}"/>
 <#}
 }#>
-
 
 
 

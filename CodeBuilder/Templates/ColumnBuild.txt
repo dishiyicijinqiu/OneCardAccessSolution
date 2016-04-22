@@ -1,0 +1,15 @@
+﻿
+
+<dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}"/>
+<dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}"/>
+<dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
+<dxg:GridColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}"/>
+<dxg:GridColumn FieldName="CateNo" Header="{x:Static res:Resources.Entity_P_CRTemp_CateNo}"/>
+<dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_Remark}"/>
+<dxg:GridColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_P_CRTemp_Creater}"/>
+<dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}"/>
+<dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
+<dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
+
+
+

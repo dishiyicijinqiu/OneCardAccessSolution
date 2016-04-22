@@ -19,11 +19,11 @@
 if(column.ColumnName.ToLower()=="createid"){
 #>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}">
-		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
+		<dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
 <#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}">
-		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
+		<dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
 <#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}">

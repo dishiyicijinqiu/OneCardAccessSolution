@@ -22,13 +22,13 @@
 		<dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Creater}">
-		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
+		<dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}">
 		<dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}">
-		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
+		<dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}">
 		<dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>

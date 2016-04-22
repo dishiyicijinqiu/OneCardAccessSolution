@@ -20,12 +20,6 @@ Database.AddInParameter(cmd, "FileName", DbType.string, model.FileName);
 Database.AddInParameter(cmd, "FilePath", DbType.string, model.FilePath);
 Database.AddInParameter(cmd, "SortNo", DbType.int, model.SortNo);
 
-<dxg:GridColumn FieldName="Id" Header="{x:Static res:Resources.Entity_Register_File_Id}"/>
-<dxg:GridColumn FieldName="RegisterId" Header="{x:Static res:Resources.Entity_Register_File_RegisterId}"/>
-<dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}"/>
-<dxg:GridColumn FieldName="FilePath" Header="{x:Static res:Resources.Entity_Register_File_FilePath}"/>
-<dxg:GridColumn FieldName="SortNo" Header="{x:Static res:Resources.Entity_Register_File_SortNo}"/>
-
 
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_RegisterId}">
 		<dxe:TextEdit EditValue="{Binding RegisterId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>

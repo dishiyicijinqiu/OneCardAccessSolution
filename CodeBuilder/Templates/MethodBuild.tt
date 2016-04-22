@@ -33,10 +33,6 @@ sbSql.Append("<#=column.ColumnName#>=@<#=column.ColumnName#>, ");
 Database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CSharpType#>, model.<#=column.ColumnName#>);
 <#}#>
 
-<# foreach(DbColumn column in dbhost.DbColumns){#>
-<dxg:GridColumn FieldName="<#=column.ColumnName#>" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}"/>
-<#}#>
-
 
 <# foreach(DbColumn column in dbhost.DbColumns){
 if(column.ColumnName.ToLower()=="createid"){

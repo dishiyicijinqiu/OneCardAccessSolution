@@ -20,7 +20,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// <summary>
         /// 注册证名称
         /// </summary>
-        public string RegisterProductName { get; set; }
+        public string RegisterName { get; set; }
         /// <summary>
         /// 标准号
         /// </summary>
@@ -32,7 +32,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// <summary>
         /// 注册证名称(英文)
         /// </summary>
-        public string RegisterProductName1 { get; set; }
+        public string RegisterName1 { get; set; }
         /// <summary>
         /// 标准号(英文)
         /// </summary>

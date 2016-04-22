@@ -84,6 +84,7 @@
     <Compile Include="Core\LoadingCallHandler.cs" />
     <Compile Include="Core\MessageBoxExceptionProcess.cs" />
     <Compile Include="Core\Extend.cs" />
+    <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">

@@ -7,6 +7,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -88,7 +89,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                //System.Collections.Generic.IList<FirstRegisterEntity>
+                if (SelectedEntitys == null && SelectedEntitys.Count <= 0)
+                {
+                    MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                var listToDelete = SelectedEntitys.Cast<RegisterEntity>().ToList();
+                basicinfoservice.DeleteRegisterEntitys(listToDelete);
+                MessageBoxService.ShowMessage(Properties.Resources.Info_DeleteSuccess);
             }
             catch (Exception ex)
             {

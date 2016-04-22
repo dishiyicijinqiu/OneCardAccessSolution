@@ -5,12 +5,13 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using FengSharp.OneCardAccess.TEntity;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace FengSharp.OneCardAccess.Services
 {
     public class BasicInfoService : ServiceBase, IBasicInfoService
     {
-        #region Register
+        #region Register注册证
         public List<FirstRegisterEntity> GetFirstRegisterList()
         {
             return this.GetEntitys<FirstRegisterEntity>();
@@ -44,33 +45,55 @@ namespace FengSharp.OneCardAccess.Services
                 dbregisterentity.CopyValueFrom(entity);
                 if (entity.RegisterId <= 0)
                 {
+                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
                     dbregisterentity = CreateEntity(dbregisterentity, tran);
-                    foreach (var item in entity.Register_FileEntitys)
-                    {
-                        var dbregisterfileentity = new T_Register_File();
-                        dbregisterfileentity.CopyValueFrom(item);
-                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
-                        CreateEntity(dbregisterfileentity, tran);
-                    }
+                    if (entity.Register_FileEntitys != null)
+                        foreach (var item in entity.Register_FileEntitys)
+                        {
+                            var dbregisterfileentity = new T_Register_File();
+                            dbregisterfileentity.CopyValueFrom(item);
+                            dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
+                            CreateEntity(dbregisterfileentity, tran);
+                        }
                 }
                 else
                 {
+                    dbregisterentity.LastModifyId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyDate = System.DateTime.Now;
                     if (!ModifyEntity(dbregisterentity, tran))
                     {
                         throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
                     }
                     DeleteRelationEntitys<T_Register, T_Register_File>(dbregisterentity, tran);
-                    foreach (var item in entity.Register_FileEntitys)
-                    {
-                        var dbregisterfileentity = new T_Register_File();
-                        dbregisterfileentity.CopyValueFrom(item);
-                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
-                        CreateEntity(dbregisterfileentity, tran);
-                    }
+                    if (entity.Register_FileEntitys != null)
+                        foreach (var item in entity.Register_FileEntitys)
+                        {
+                            var dbregisterfileentity = new T_Register_File();
+                            dbregisterfileentity.CopyValueFrom(item);
+                            dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
+                            CreateEntity(dbregisterfileentity, tran);
+                        }
                 }
                 return dbregisterentity.RegisterId;
             });
         }
+        public void DeleteRegisterEntitys(List<RegisterEntity> RegisterEntitys)
+        {
+            UseTran((tran) =>
+            {
+                foreach (var entity in RegisterEntitys)
+                {
+                    if (!base.DeleteEntity<RegisterEntity>(entity, tran))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_DeleteFailed);
+                    }
+                    base.DeleteRelationEntitys<int, int>(entity.RegisterId, tran);
+                }
+            });
+        }
+        #endregion
+        #region P_CRTemp产品检验报告
         #endregion
     }
 }

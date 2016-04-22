@@ -321,4 +321,7 @@
   <data name="Info_PleaseWait" xml:space="preserve">
     <value>请稍后</value>
   </data>
+  <data name="Info_DeleteSuccess" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
 </root>

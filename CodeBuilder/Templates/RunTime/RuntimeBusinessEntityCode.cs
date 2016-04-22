@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FengSharp.OneCardAccess.CodeBuilder.Templates
+namespace FengSharp.OneCardAccess.CodeBuilder.Templates.RunTime
 {
     public partial class RuntimeBusinessEntity
     {

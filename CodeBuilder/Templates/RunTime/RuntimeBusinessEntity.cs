@@ -7,7 +7,7 @@
 //     重新生成代码，则所做更改将丢失。
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace FengSharp.OneCardAccess.CodeBuilder.Templates
+namespace FengSharp.OneCardAccess.CodeBuilder.Templates.RunTime
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace FengSharp.OneCardAccess.CodeBuilder.Templates
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+    #line 1 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class RuntimeTableEntity : RuntimeTableEntityBase
+    public partial class RuntimeBusinessEntity : RuntimeBusinessEntityBase
     {
 #line hidden
         /// <summary>
@@ -29,116 +29,205 @@ namespace FengSharp.OneCardAccess.CodeBuilder.Templates
         public virtual string TransformText()
         {
             
-            #line 6 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 6 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
 DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             
             #line default
             #line hidden
-            this.Write("using System;\r\nusing FengSharp.OneCardAccess.Common;\r\nnamespace ");
+            this.Write("using System;\r\nusing System.Runtime.Serialization;\r\nusing FengSharp.OneCardAccess" +
+                    ".Common;\r\nusing DevExpress.Mvvm;\r\nnamespace ");
             
-            #line 9 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 11 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NameSpace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t/// <summary>\r\n\t/// ");
             
-            #line 12 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 14 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(dbhost.DbTable.Remark));
             
             #line default
             #line hidden
-            this.Write("\r\n\t/// </summary>\r\n\tpublic class ");
+            this.Write("\r\n\t/// </summary>\r\n\t[DataContract(Namespace = \"http://www.fengsharp.com/onecardac" +
+                    "cess/\")]\r\n\tpublic partial class ");
             
-            #line 14 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TableName));
+            #line 17 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));
             
             #line default
             #line hidden
-            this.Write("\r\n\t{\r\n");
+            this.Write("Entity: BindableBase\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic" +
+                    " ");
             
-            #line 16 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));
+            
+            #line default
+            #line hidden
+            this.Write("Entity()\r\n\t\t{\r\n");
+            
+            #line 24 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+ foreach(DbColumn column in dbhost.DbColumns){if(column.CSharpType.ToLower()=="string"){
+            
+            #line default
+            #line hidden
+            this.Write("\t\t\t");
+            
+            #line 25 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("=string.Empty;\r\n");
+            
+            #line 26 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}
+}
+            
+            #line default
+            #line hidden
+            this.Write("\t\t}\r\n");
+            
+            #line 29 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
  foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()!="deleted"){
             
             #line default
             #line hidden
-            this.Write("\t\t/// <summary>\r\n\t\t/// ");
+            this.Write("\t\tprivate ");
             
-            #line 18 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(column.Remark));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\t\t/// </summary>\r\n");
-            
-            #line 20 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
- if(column.IsPrimaryKey) {
-            
-            #line default
-            #line hidden
-            
-            #line 21 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-if(column.CSharpType=="string"){
-            
-            #line default
-            #line hidden
-            this.Write("\t\t[DataBaseKey(DataBaseKeyType.Guid)]\r\n");
-            
-            #line 23 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-}else if(column.CSharpType=="int"){
-            
-            #line default
-            #line hidden
-            this.Write("\t\t[DataBaseKey]\r\n");
-            
-            #line 25 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-}
-            
-            #line default
-            #line hidden
-            
-            #line 26 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
-}
-            
-            #line default
-            #line hidden
-            this.Write("\t\tpublic ");
-            
-            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.CSharpType));
             
             #line default
             #line hidden
             
-            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
  if(column.CommonType.IsValueType && column.IsNullable){
             
             #line default
             #line hidden
             this.Write("?");
             
-            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write(" _");
+            
+            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n\t\t/// <summary>\r\n\t\t/// ");
+            
+            #line 33 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.Remark));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\t\t/// </summary>\r\n");
+            
+            #line 35 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+ if(column.IsPrimaryKey) {
+            
+            #line default
+            #line hidden
+            
+            #line 36 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+if(column.CSharpType=="string"){
+            
+            #line default
+            #line hidden
+            this.Write("\t\t[DataBaseKey(DataBaseKeyType.Guid)]\r\n");
+            
+            #line 38 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}else if(column.CSharpType=="int"){
+            
+            #line default
+            #line hidden
+            this.Write("\t\t[DataBaseKey]\r\n");
+            
+            #line 40 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}
+            
+            #line default
+            #line hidden
+            
+            #line 41 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}
+            
+            #line default
+            #line hidden
+            this.Write("\t\t[DataMember]\r\n\t\tpublic ");
+            
+            #line 43 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.CSharpType));
+            
+            #line default
+            #line hidden
+            
+            #line 43 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+ if(column.CommonType.IsValueType && column.IsNullable){
+            
+            #line default
+            #line hidden
+            this.Write("?");
+            
+            #line 43 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
 }
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 27 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 43 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
             
             #line default
             #line hidden
-            this.Write(" { get; set; }\r\n");
+            this.Write("\r\n\t\t{\r\n            get { return _");
             
-            #line 28 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 45 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("; }\r\n            set\r\n            {\r\n\t\t\t\tif(_");
+            
+            #line 48 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write(" == value)\r\n\t\t\t\t\treturn;\r\n                _");
+            
+            #line 50 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write(" = value;\r\n                RaisePropertyChanged(\"");
+            
+            #line 51 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(column.ColumnName));
+            
+            #line default
+            #line hidden
+            this.Write("\");\r\n            }\r\n        }\r\n");
+            
+            #line 54 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
+}
 }
             
             #line default
             #line hidden
             this.Write("\t}\r\n}\r\n");
             
-            #line 31 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+            #line 58 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
 }
             
             #line default
@@ -146,7 +235,7 @@ if(column.CSharpType=="string"){
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 32 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RuntimeTableEntity.tt"
+        #line 59 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
 
 public string TableName="T_UserInfo";
 public bool IsBuilder= true;
@@ -164,7 +253,7 @@ public string NameSpace="FengSharp.OneCardAccess.BusinessEntity.Entity";
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class RuntimeTableEntityBase
+    public class RuntimeBusinessEntityBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

@@ -1,0 +1,16 @@
+﻿
+
+Entity_P_CRTemp_CRTempName	模板名称
+Entity_P_CRTemp_CRTempPath	路径
+Entity_P_CRTemp_MaterIden	材料标识
+Entity_P_CRTemp_IsEnable	是否启用
+Entity_P_CRTemp_CateNo	类别号
+Entity_P_CRTemp_Remark	备注
+Entity_P_CRTemp_Creater	创建人
+Entity_P_CRTemp_CreateDate	创建日期
+Entity_P_CRTemp_LastModifyer	最后更改人
+Entity_P_CRTemp_LastModifyDate	最后更改日期
+
+
+
+

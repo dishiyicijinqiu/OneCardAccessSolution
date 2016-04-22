@@ -117,6 +117,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
+      <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
+      <DependentUpon>P_CRTempView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
       <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
     </Compile>
@@ -147,6 +153,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SplashScreenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\P_CRTempCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\P_CRTempView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

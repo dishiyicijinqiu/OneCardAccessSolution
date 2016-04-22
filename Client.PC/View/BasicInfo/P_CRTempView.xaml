@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.P_CRTempView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.BasicInfo"
+             mc:Ignorable="d" 
+             
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
+             
+    xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+    xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
+    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+             d:DesignHeight="300" d:DesignWidth="300">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand Command="{Binding LoadedCommand}" EventName="Loaded" />
+        <dxmvvm:EventToCommand Command="{Binding CloseCommand}" EventName="Close" />
+    </dxmvvm:Interaction.Behaviors>
+    <dxb:BarManager>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_P_CRTempView_Title}">
+                        <dxr:RibbonPageGroup>
+                            <dxb:BarButtonItem Style="{StaticResource barSave}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"
+								IsVisible="{Binding EntityEditMode, Converter={StaticResource editModeVisibleConverter}}"
+                                               />
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barClose}" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxlc:LayoutControl Grid.Row="1" Orientation="Vertical">
+
+
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}">
+                    <dxe:TextEdit EditValue="{Binding CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}">
+                    <dxe:TextEdit EditValue="{Binding CRTempPath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}">
+                    <dxe:TextEdit EditValue="{Binding MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}">
+                    <dxe:TextEdit EditValue="{Binding IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CateNo}">
+                    <dxe:TextEdit EditValue="{Binding CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}">
+                    <dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Creater}">
+                    <dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}">
+                    <dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}">
+                    <dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
+                </dxlc:LayoutItem>
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}">
+                    <dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                </dxlc:LayoutItem>
+
+            </dxlc:LayoutControl>
+        </Grid>
+    </dxb:BarManager>
+</UserControl>

@@ -1,0 +1,44 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Configuration.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
+
+
+
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()=="createid"){
+#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}">
+		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
+	</dxlc:LayoutItem>
+<#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}">
+		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
+	</dxlc:LayoutItem>
+<#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}">
+		<dxe:TextEdit EditValue="{Binding <#=column.ColumnName#>, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+<#}
+}#>
+
+
+
+
+
+
+<#}#>
+<#+
+public static readonly string TableName="T_P_CRTemp";
+public static readonly bool IsBuilder= true;
+#>

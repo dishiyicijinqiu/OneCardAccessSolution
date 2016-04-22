@@ -86,20 +86,20 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("MaterIden");
             }
         }
-		private bool _IsLock;
+		private bool _IsEnable;
 		/// <summary>
-		/// 是否锁定
+		/// 是否启用
 		/// </summary>
 		[DataMember]
-		public bool IsLock
+		public bool IsEnable
 		{
-            get { return _IsLock; }
+            get { return _IsEnable; }
             set
             {
-				if(_IsLock == value)
+				if(_IsEnable == value)
 					return;
-                _IsLock = value;
-                RaisePropertyChanged("IsLock");
+                _IsEnable = value;
+                RaisePropertyChanged("IsEnable");
             }
         }
 		private string _CateNo;

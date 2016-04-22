@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace FengSharp.OneCardAccess.Client.PC.View
 {
@@ -15,9 +16,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View
 
         private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            App.Current.MainWindow.Topmost = true;
-            App.Current.MainWindow.Topmost = false;
-            this.tbUserName.Focus();
+            Window loginWindow = Window.GetWindow(this);
+            System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
+            loginWindow.Activate();
         }
     }
 }

@@ -55,7 +55,7 @@
     </Compile>
     <Compile Include="RBACService.cs" />
     <Compile Include="ServiceBase.cs" />
-    <Compile Include="TableEntitys\T_CheckReportTemp_Auto.cs" />
+    <Compile Include="TableEntitys\T_P_CRTemp_Auto.cs" />
     <Compile Include="TableEntitys\T_Register_Auto.cs" />
     <Compile Include="TableEntitys\T_Register_File_Auto.cs" />
     <Compile Include="TableEntitys\T_UserInfo_Auto.cs" />

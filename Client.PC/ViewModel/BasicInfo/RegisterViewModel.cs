@@ -30,7 +30,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     case EntityEditMode.CopyAdd:
                         var copyEntity = basicinfoservice.GetSecondRegisterEntityById(paramsg.CopyKey);
                         Entity = SecondRegisterEntity.CreateEntity();
-                        Entity.CopyValueFrom(copyEntity, new string[] {
+                        Entity.CopyValueFrom(copyEntity,
+                            new List<string>(PCConfig.CreateAndModifyInfoColNames)
+                        {
                             "RegisterId","Register_FileEntitys"
                         });
                         break;

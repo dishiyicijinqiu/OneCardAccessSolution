@@ -61,6 +61,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除失败 的本地化字符串。
+        /// </summary>
+        internal static string Error_DeleteFailed {
+            get {
+                return ResourceManager.GetString("Error_DeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 保存失败 的本地化字符串。
         /// </summary>
         internal static string Error_SaveFailed {

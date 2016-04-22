@@ -54,23 +54,23 @@ namespace FengSharp.OneCardAccess.Common
         /// <param name="destination">目标</param>
         /// <param name="source">来源</param>
         /// <param name="type">复制的属性字段模板</param>
-        /// <param name="excludeName">排除下列名称的属性不要复制</param>
+        /// <param name="excludeNames">排除下列名称的属性不要复制</param>
         /// <returns>成功复制的值个数</returns>
-        public static int Copy(object destination, object source, Type type, IEnumerable<string> excludeName)
+        public static int Copy(object destination, object source, Type type, IEnumerable<string> excludeNames)
         {
             if (destination == null || source == null)
             {
                 return 0;
             }
-            if (excludeName == null)
+            if (excludeNames == null)
             {
-                excludeName = new List<string>();
+                excludeNames = new List<string>();
             }
             int i = 0;
             Type desType = destination.GetType();
             foreach (FieldInfo mi in type.GetFields())
             {
-                if (excludeName.Contains(mi.Name))
+                if (excludeNames.Contains(mi.Name))
                 {
                     continue;
                 }
@@ -91,7 +91,7 @@ namespace FengSharp.OneCardAccess.Common
 
             foreach (PropertyInfo pi in type.GetProperties())
             {
-                if (excludeName.Contains(pi.Name))
+                if (excludeNames.Contains(pi.Name))
                 {
                     continue;
                 }

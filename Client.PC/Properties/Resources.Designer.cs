@@ -493,6 +493,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 删除成功 的本地化字符串。
+        /// </summary>
+        public static string Info_DeleteSuccess {
+            get {
+                return ResourceManager.GetString("Info_DeleteSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 加载中... 的本地化字符串。
         /// </summary>
         public static string Info_Loading {

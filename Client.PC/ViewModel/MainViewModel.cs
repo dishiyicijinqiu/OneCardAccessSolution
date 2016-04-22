@@ -17,9 +17,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         public void OnLoaded()
         {
             Messenger.Default.Register<LoginTimeOutException>(this, x => TryLogin(x));
-            App.Current.MainWindow.ShowInTaskbar = false;
             TryLogin(null);
-            App.Current.MainWindow.ShowInTaskbar = true;
         }
 
         public void ShowDocument(DocumentInfo docInfo)
@@ -53,7 +51,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 System.Windows.Application.Current.Shutdown();
             }
-            App.Current.MainWindow.Opacity = 100;
         }
         #endregion
         public void Closing(CancelEventArgs args)

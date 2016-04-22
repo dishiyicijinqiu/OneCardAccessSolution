@@ -9,7 +9,7 @@
             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel" 
             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="FengSharp.OneCardAccess.Client.PC.View.LoginView" 
-            mc:Ignorable="d" 
+            mc:Ignorable="d"
             DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:LoginViewModel}}" Height="160" Width="380">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
@@ -30,7 +30,7 @@
                             <ContentControl Height="10" Focusable="False"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.View_LoginView_lblUserNo_Label}" Height="25">
-                            <dxe:TextEdit x:Name="tbUserName" EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                            <dxe:TextEdit x:Name="tbUserNo" EditValue="{Binding UserNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                           IsReadOnly="{Binding IsReLogin, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                           />
                         </dxlc:LayoutItem>

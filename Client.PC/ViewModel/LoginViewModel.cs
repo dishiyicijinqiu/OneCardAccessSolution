@@ -93,6 +93,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                             throw new BusinessException(Properties.Resources.Error_UnableSession);
                         }
                         Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
+                        App.Current.MainWindow.Opacity = 100;
                         CurrentWindowService.Close();
                         break;
                 }

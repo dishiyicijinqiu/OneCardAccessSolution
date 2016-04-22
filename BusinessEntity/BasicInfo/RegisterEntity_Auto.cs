@@ -16,10 +16,10 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         public RegisterEntity()
         {
             RegisterNo = string.Empty;
-            RegisterProductName = string.Empty;
+            RegisterName = string.Empty;
             StandardCode = string.Empty;
             RegisterNo1 = string.Empty;
-            RegisterProductName1 = string.Empty;
+            RegisterName1 = string.Empty;
             StandardCode1 = string.Empty;
             StartDate = string.Empty;
             EndDate = string.Empty;
@@ -58,20 +58,20 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("RegisterNo");
             }
         }
-        private string _RegisterProductName;
+        private string _RegisterName;
         /// <summary>
         /// 注册证名称
         /// </summary>
         [DataMember]
-        public string RegisterProductName
+        public string RegisterName
         {
-            get { return _RegisterProductName; }
+            get { return _RegisterName; }
             set
             {
-                if (_RegisterProductName == value)
+                if (_RegisterName == value)
                     return;
-                _RegisterProductName = value;
-                RaisePropertyChanged("RegisterProductName");
+                _RegisterName = value;
+                RaisePropertyChanged("RegisterName");
             }
         }
         private string _StandardCode;
@@ -106,20 +106,20 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("RegisterNo1");
             }
         }
-        private string _RegisterProductName1;
+        private string _RegisterName1;
         /// <summary>
         /// 注册证名称(英文)
         /// </summary>
         [DataMember]
-        public string RegisterProductName1
+        public string RegisterName1
         {
-            get { return _RegisterProductName1; }
+            get { return _RegisterName1; }
             set
             {
-                if (_RegisterProductName1 == value)
+                if (_RegisterName1 == value)
                     return;
-                _RegisterProductName1 = value;
-                RaisePropertyChanged("RegisterProductName1");
+                _RegisterName1 = value;
+                RaisePropertyChanged("RegisterName1");
             }
         }
         private string _StandardCode1;

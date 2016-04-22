@@ -15,5 +15,6 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId);
         [OperationContract]
         int SaveRegisterEntity(SecondRegisterEntity entity);
+        void DeleteRegisterEntitys(List<RegisterEntity> RegisterEntitys);
     }
 }

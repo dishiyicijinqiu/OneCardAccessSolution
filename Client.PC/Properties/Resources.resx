@@ -237,10 +237,10 @@
   <data name="Entity_Register_RegisterNo1" xml:space="preserve">
     <value>注册证编号(英文)</value>
   </data>
-  <data name="Entity_Register_RegisterProductName" xml:space="preserve">
+  <data name="Entity_Register_RegisterName" xml:space="preserve">
     <value>注册证名称</value>
   </data>
-  <data name="Entity_Register_RegisterProductName1" xml:space="preserve">
+  <data name="Entity_Register_RegisterName1" xml:space="preserve">
     <value>注册证名称(英文)</value>
   </data>
   <data name="Entity_Register_Remark" xml:space="preserve">

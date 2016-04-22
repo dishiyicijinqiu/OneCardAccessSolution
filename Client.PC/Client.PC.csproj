@@ -109,6 +109,8 @@
     <Compile Include="UI\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />

@@ -59,7 +59,7 @@
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_P_CRTempView_Title}" DocumentType="P_CRTempCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>

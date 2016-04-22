@@ -45,10 +45,10 @@
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarButtonItem_ItemClick"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
@@ -60,10 +60,10 @@
             <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid">
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
-                    <dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterProductName}"/>
+                    <dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
                     <dxg:GridColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}"/>
                     <dxg:GridColumn FieldName="RegisterNo1" Header="{x:Static res:Resources.Entity_Register_RegisterNo1}"/>
-                    <dxg:GridColumn FieldName="RegisterProductName1" Header="{x:Static res:Resources.Entity_Register_RegisterProductName1}"/>
+                    <dxg:GridColumn FieldName="RegisterProductName1" Header="{x:Static res:Resources.Entity_Register_RegisterName1}"/>
                     <dxg:GridColumn FieldName="StandardCode1" Header="{x:Static res:Resources.Entity_Register_StandardCode1}"/>
                     <dxg:GridColumn FieldName="StartDate" Header="{x:Static res:Resources.Entity_Register_StartDate}"/>
                     <dxg:GridColumn FieldName="EndDate" Header="{x:Static res:Resources.Entity_Register_EndDate}"/>

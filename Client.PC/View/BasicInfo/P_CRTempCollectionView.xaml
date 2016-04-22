@@ -21,6 +21,7 @@
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+             DataContext="{dxmvvm:ViewModelSource Type=viewmodel:P_CRTempCollectionViewModel}"
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -43,10 +44,10 @@
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_P_CRTempView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarButtonItem_ItemClick"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" ItemClick="BarButtonItem_ItemClick" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>

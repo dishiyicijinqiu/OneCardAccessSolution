@@ -394,6 +394,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 注册证名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterName {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证名称(英文) 的本地化字符串。
+        /// </summary>
+        public static string Entity_Register_RegisterName1 {
+            get {
+                return ResourceManager.GetString("Entity_Register_RegisterName1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 注册证编号 的本地化字符串。
         /// </summary>
         public static string Entity_Register_RegisterNo {
@@ -408,24 +426,6 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Entity_Register_RegisterNo1 {
             get {
                 return ResourceManager.GetString("Entity_Register_RegisterNo1", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 注册证名称 的本地化字符串。
-        /// </summary>
-        public static string Entity_Register_RegisterProductName {
-            get {
-                return ResourceManager.GetString("Entity_Register_RegisterProductName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 注册证名称(英文) 的本地化字符串。
-        /// </summary>
-        public static string Entity_Register_RegisterProductName1 {
-            get {
-                return ResourceManager.GetString("Entity_Register_RegisterProductName1", resourceCulture);
             }
         }
         

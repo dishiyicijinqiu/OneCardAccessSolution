@@ -118,6 +118,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ColumnBuild.tt</DependentUpon>
     </Content>
+    <Content Include="Templates\EntitysSqlBuild.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntitysSqlBuild.txt</LastGenOutput>
+    </Content>
+    <Content Include="Templates\EntitysSqlBuild.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntitysSqlBuild.tt</DependentUpon>
+    </Content>
     <Content Include="Templates\MethodBuild.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MethodBuild.txt</LastGenOutput>

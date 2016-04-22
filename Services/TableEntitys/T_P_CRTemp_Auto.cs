@@ -7,11 +7,11 @@ namespace FengSharp.OneCardAccess.TEntity
 	/// </summary>
 	public class T_P_CRTemp
 	{
-		/// <summary>
-		/// Id
-		/// </summary>
-		[DataBaseKey]
-		public int Id { get; set; }
+        /// <summary>
+        /// P_CRTempId
+        /// </summary>
+        [DataBaseKey]
+		public int P_CRTempId { get; set; }
 		/// <summary>
 		/// 模板名称
 		/// </summary>

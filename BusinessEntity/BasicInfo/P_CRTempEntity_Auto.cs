@@ -21,21 +21,21 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 			CateNo=string.Empty;
 			Remark=string.Empty;
 		}
-		private int _Id;
+		private int _P_CRTempId;
 		/// <summary>
 		/// Id
 		/// </summary>
 		[DataBaseKey]
 		[DataMember]
-		public int Id
-		{
-            get { return _Id; }
+		public int P_CRTempId
+        {
+            get { return _P_CRTempId; }
             set
             {
-				if(_Id == value)
+				if(_P_CRTempId == value)
 					return;
-                _Id = value;
-                RaisePropertyChanged("Id");
+                _P_CRTempId = value;
+                RaisePropertyChanged("P_CRTempId");
             }
         }
 		private string _CRTempName;

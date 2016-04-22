@@ -324,4 +324,37 @@
   <data name="Info_DeleteSuccess" xml:space="preserve">
     <value>删除成功</value>
   </data>
+  <data name="View_P_CRTempView_Title" xml:space="preserve">
+    <value>产品检验报告模板</value>
+  </data>
+  <data name="Entity_P_CRTemp_CateNo" xml:space="preserve">
+    <value>类别号</value>
+  </data>
+  <data name="Entity_P_CRTemp_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_P_CRTemp_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_P_CRTemp_CRTempName" xml:space="preserve">
+    <value>模板名称</value>
+  </data>
+  <data name="Entity_P_CRTemp_CRTempPath" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="Entity_P_CRTemp_IsEnable" xml:space="preserve">
+    <value>是否启用</value>
+  </data>
+  <data name="Entity_P_CRTemp_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_P_CRTemp_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_P_CRTemp_MaterIden" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_P_CRTemp_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
 </root>

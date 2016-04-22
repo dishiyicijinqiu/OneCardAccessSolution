@@ -1,0 +1,41 @@
+﻿
+
+
+
+
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}">
+		<dxe:TextEdit EditValue="{Binding CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}">
+		<dxe:TextEdit EditValue="{Binding CRTempPath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}">
+		<dxe:TextEdit EditValue="{Binding MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}">
+		<dxe:TextEdit EditValue="{Binding IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CateNo}">
+		<dxe:TextEdit EditValue="{Binding CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}">
+		<dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Creater}">
+		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}">
+		<dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}">
+		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}">
+		<dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+
+
+
+
+
+

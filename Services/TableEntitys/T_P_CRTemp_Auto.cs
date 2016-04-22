@@ -25,9 +25,9 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public string MaterIden { get; set; }
 		/// <summary>
-		/// 是否锁定
+		/// 是否启用
 		/// </summary>
-		public bool IsLock { get; set; }
+		public bool IsEnable { get; set; }
 		/// <summary>
 		/// 类别号
 		/// </summary>

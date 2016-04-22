@@ -1,0 +1,33 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Configuration.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()=="createid"){
+#>
+Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName.Replace("CreateId","Creater")#>	<#="创建人"#>
+<#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
+Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName.Replace("LastModifyId","LastModifyer")#>	<#="最后更改人"#>
+<#} else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
+Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=column.Remark#>
+<#}
+}#>
+
+
+
+
+<#}#>
+<#+
+public static readonly string TableName="T_P_CRTemp";
+public static readonly bool IsBuilder= true;
+#>

@@ -38,11 +38,6 @@ Database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CSharpT
 <#}#>
 
 
-
-<# foreach(DbColumn column in dbhost.DbColumns){#>
-Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=column.Remark#>
-<#}#>
-
 <# foreach(DbColumn column in dbhost.DbColumns){
 if(column.ColumnName.ToLower()=="createid"){
 #>

@@ -27,13 +27,6 @@ Database.AddInParameter(cmd, "SortNo", DbType.int, model.SortNo);
 <dxg:GridColumn FieldName="SortNo" Header="{x:Static res:Resources.Entity_Register_File_SortNo}"/>
 
 
-
-Entity_Register_File_Id	注册证附件Id
-Entity_Register_File_RegisterId	注册证Id
-Entity_Register_File_FileName	文件名
-Entity_Register_File_FilePath	保存路径
-Entity_Register_File_SortNo	序号
-
 	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_File_RegisterId}">
 		<dxe:TextEdit EditValue="{Binding RegisterId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>

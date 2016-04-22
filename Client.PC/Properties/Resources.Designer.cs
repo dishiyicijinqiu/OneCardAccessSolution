@@ -232,6 +232,96 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 类别号 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_CateNo {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_CateNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_Creater {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 模板名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_CRTempName {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_CRTempName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 路径 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_CRTempPath {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_CRTempPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 是否启用 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_IsEnable {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_IsEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 材料标识 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_MaterIden {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_MaterIden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_Remark {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 创建日期 的本地化字符串。
         /// </summary>
         public static string Entity_Register_CreateDate {
@@ -624,6 +714,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_MainWindow_Title {
             get {
                 return ResourceManager.GetString("View_MainWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品检验报告模板 的本地化字符串。
+        /// </summary>
+        public static string View_P_CRTempView_Title {
+            get {
+                return ResourceManager.GetString("View_P_CRTempView_Title", resourceCulture);
             }
         }
         

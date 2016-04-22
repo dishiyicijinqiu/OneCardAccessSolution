@@ -10,12 +10,12 @@ using System.Linq;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : DefaultViewModel
+    public class P_CRTempCollectionViewModel : DefaultViewModel
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
-        public RegisterCollectionViewModel()
+        public P_CRTempCollectionViewModel()
         {
-            Messenger.Default.Register<RegisterEditMessage>(this, this, OnEdited);
+            Messenger.Default.Register<P_CRTempEditMessage>(this, this, OnEdited);
         }
         #region Services
         IDocumentManagerService GetDialogWindowService()
@@ -25,8 +25,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #endregion
         #region propertys
 
-        ObservableCollection<FirstRegisterEntity> _Items;
-        public ObservableCollection<FirstRegisterEntity> Items
+        ObservableCollection<P_CRTempEntity> _Items;
+        public ObservableCollection<P_CRTempEntity> Items
         {
             get
             {
@@ -38,14 +38,13 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
-
         #endregion
         #region commandmethods
         public void Add()
         {
             try
             {
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(), this);
+                IDocument document = GetDialogWindowService().CreateDocument("P_CRTempView", new RegisterEditMessage(), this);
                 document.Show();
             }
             catch (Exception ex)
@@ -53,12 +52,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 MessageBoxService.HandleException(ex);
             }
         }
-        public void CopyAdd(FirstRegisterEntity SelectedEntity)
+        public void CopyAdd(P_CRTempEntity SelectedEntity)
         {
             try
             {
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView",
-                    new RegisterEditMessage(_CopyKey: SelectedEntity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)
+                IDocument document = GetDialogWindowService().CreateDocument("P_CRTempView",
+                    new RegisterEditMessage(_CopyKey: SelectedEntity.P_CRTempId, _EntityEditMode: EntityEditMode.CopyAdd)
                     , this);
                 document.Show();
             }
@@ -67,7 +66,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 MessageBoxService.HandleException(ex);
             }
         }
-        public void Edit(FirstRegisterEntity SelectedEntity)
+        public void Edit(P_CRTempEntity SelectedEntity)
         {
             try
             {
@@ -76,7 +75,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
+                IDocument document = GetDialogWindowService().CreateDocument("P_CRTempView", new RegisterEditMessage(SelectedEntity.P_CRTempId, EntityEditMode.Edit), this);
                 document.Show();
             }
             catch (Exception ex)
@@ -110,8 +109,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 if (IsLoaded) return;
                 try
                 {
-                    var list = basicinfoservice.GetFirstRegisterEntitys();
-                    Items = new ObservableCollection<FirstRegisterEntity>(list);
+                    var list = basicinfoservice.GetP_CRTempEntitys();
+                    Items = new ObservableCollection<P_CRTempEntity>(list);
                 }
                 catch (Exception ex)
                 {
@@ -126,7 +125,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #endregion
         #region methods
-        public void OnEdited(RegisterEditMessage message)
+        public void OnEdited(P_CRTempEditMessage message)
         {
             try
             {
@@ -134,7 +133,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 {
                     case EntityEditMode.Add:
                         {
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = basicinfoservice.GetP_CRTempEntityById(message.Key);
                             Items.Add(newItem);
                             if (message.IsContinue)
                                 Add();
@@ -142,20 +141,20 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         break;
                     case EntityEditMode.CopyAdd:
                         {
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = basicinfoservice.GetP_CRTempEntityById(message.Key);
                             Items.Add(newItem);
                             if (message.IsContinue)
                             {
-                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == message.CopyKey);
+                                var copyItem = Items.FirstOrDefault(t => t.P_CRTempId == message.CopyKey);
                                 CopyAdd(copyItem);
                             }
                         }
                         break;
                     case EntityEditMode.Edit:
                         {
-                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == message.Key);
+                            var oldItem = Items.FirstOrDefault(t => t.P_CRTempId == message.Key);
                             if (oldItem == null) return;
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = basicinfoservice.GetP_CRTempEntityById(message.Key);
                             var itemIndex = Items.IndexOf(oldItem);
                             Items[itemIndex] = newItem;
                         }
@@ -173,15 +172,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region Events
         public override void OnClose(CancelEventArgs e)
         {
-            Messenger.Default.Unregister<RegisterEditMessage>(this);
+            Messenger.Default.Unregister<P_CRTempEditMessage>(this);
             base.OnClose(e);
         }
         #endregion
     }
     #region message
-    public class RegisterEditMessage : EditMessage<int>
+    public class P_CRTempEditMessage : EditMessage<int>
     {
-        public RegisterEditMessage(int _Key = 0, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, int _CopyKey = 0)
+        public P_CRTempEditMessage(int _Key = 0, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, int _CopyKey = 0)
         {
             Key = _Key;
             EntityEditMode = _EntityEditMode;

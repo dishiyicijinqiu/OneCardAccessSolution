@@ -69,7 +69,7 @@
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo}">
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName}">
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterName}">
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
@@ -95,7 +95,7 @@
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterNo1}">
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
-                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterProductName1}">
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterName1}">
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">

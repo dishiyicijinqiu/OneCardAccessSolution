@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Windows;
 
-namespace FengSharp.OneCardAccess.Client.PC.UI
+namespace FengSharp.OneCardAccess.Core
 {
     public class MaximizedNoCoverTaskInfoHelper
     {

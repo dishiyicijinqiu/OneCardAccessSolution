@@ -5,16 +5,11 @@
             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-            xmlns:Helper="clr-namespace:FengSharp.OneCardAccess.Client.PC.Helpers"
-            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel" 
             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="FengSharp.OneCardAccess.Client.PC.View.LoginView" 
             mc:Ignorable="d"
-            DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:LoginViewModel}}" Height="160" Width="380">
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
-        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
-    </dxmvvm:Interaction.Behaviors>
+            Height="160" Width="380">
     <dxlc:LayoutControl >
         <dxlc:LayoutGroup Orientation="Vertical">
             <dxlc:LayoutGroup Orientation="Horizontal">

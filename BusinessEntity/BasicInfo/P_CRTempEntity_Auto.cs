@@ -1,19 +1,20 @@
+using FengSharp.OneCardAccess.Common;
+using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Runtime.Serialization;
-using FengSharp.OneCardAccess.Common;
-using DevExpress.Mvvm;
+
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
-	/// <summary>
-	/// 产品检验报告模板
-	/// </summary>
-	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class P_CRTempEntity: BindableBase
-	{
-		/// <summary>
-		/// 构造函数
-		/// </summary>
-		public P_CRTempEntity()
+    /// <summary>
+    /// 产品检验报告模板
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+	public partial class P_CRTempEntity: NotificationObject
+    {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public P_CRTempEntity()
 		{
 			CRTempName=string.Empty;
 			CRTempPath=string.Empty;

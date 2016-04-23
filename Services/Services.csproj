@@ -31,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -97,6 +96,10 @@
     <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\WCF\ExceptionHandling.WCF.2010.csproj">
       <Project>{90CBF2D3-767E-4E3C-AF8C-AB3E5F17BE18}</Project>
       <Name>ExceptionHandling.WCF.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Prism\Prism.Desktop.csproj">
+      <Project>{77138947-1d13-4e22-aee0-5d0dd046ca34}</Project>
+      <Name>Prism.Desktop</Name>
     </ProjectReference>
     <ProjectReference Include="..\ServiceInterfaces\ServiceInterfaces.csproj">
       <Project>{3e38a4b0-af86-479a-9fcf-8c2c3c8958d2}</Project>

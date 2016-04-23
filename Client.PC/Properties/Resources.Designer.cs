@@ -637,6 +637,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 产品检验报告模板 的本地化字符串。
+        /// </summary>
+        public static string Menu_P_CRTemp {
+            get {
+                return ResourceManager.GetString("Menu_P_CRTemp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 注册证信息 的本地化字符串。
         /// </summary>
         public static string Menu_Register {

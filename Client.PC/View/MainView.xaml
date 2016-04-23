@@ -13,8 +13,8 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
-
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -27,23 +27,11 @@
             </Style>
         </ResourceDictionary>
     </UserControl.Resources>
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
-        <dx:DXMessageBoxService/>
-        <dxmvvm:WindowService Name="LoginWindowService" WindowType="{x:Type dxr:DXRibbonWindow}" 
-                              WindowStyle="{StaticResource LoginWindowStyle}" 
-                              Title="{x:Static res:Resources.View_LoginView_Title}"
-                              WindowStartupLocation="CenterOwner" WindowShowMode="Dialog">
-        </dxmvvm:WindowService>
-        <dx:WindowedDocumentUIService Name="DialogWindowService" DocumentShowMode="Dialog" WindowType="{x:Type dxr:DXRibbonWindow}"
-                                      WindowStartupLocation="CenterOwner"  WindowStyle="{StaticResource DialogWindowStyle}"/>
-        <dxmvvm:CurrentWindowService ClosingCommand="{Binding ClosingCommand}"/>
-    </dxmvvm:Interaction.Behaviors>
-
-    <UserControl.DataContext>
-        <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
-        </dxmvvm:ViewModelSourceExtension>
-    </UserControl.DataContext>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding OnLoadedCommand, Mode=OneWay}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <dxb:BarManager x:Name="barManager">
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="bCateInfo" Content="{x:Static res:Resources.Menu_Register}" 
@@ -54,7 +42,7 @@
                     <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
-            <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_Register}" 
+            <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_P_CRTemp}" 
                                Command="{Binding ShowDocumentCommand}"
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >

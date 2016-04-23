@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -52,6 +53,14 @@
     <ProjectReference Include="..\EnterpriseLibrarys\PolicyInjection\Src\PolicyInjection\PolicyInjection.2010.csproj">
       <Project>{3e6129c8-18e4-410d-89fc-0dbbe6009fc5}</Project>
       <Name>PolicyInjection.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Prism.Interactivity\Prism.Interactivity.csproj">
+      <Project>{de856812-a32c-4866-801e-af396d711942}</Project>
+      <Name>Prism.Interactivity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Prism\Prism.Desktop.csproj">
+      <Project>{77138947-1d13-4e22-aee0-5d0dd046ca34}</Project>
+      <Name>Prism.Desktop</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Configuration\Src\Unity.Configuration.csproj">
       <Project>{aef45ed2-3e7f-4aa5-9001-a4d1bac12ebe}</Project>

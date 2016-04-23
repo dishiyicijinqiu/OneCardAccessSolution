@@ -1,21 +1,32 @@
-﻿using DevExpress.Mvvm;
-using DevExpress.Mvvm.DataAnnotations;
-using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System.ComponentModel;
 using FengSharp.OneCardAccess.Core;
 using DevExpress.Xpf.Core;
+using Microsoft.Practices.Prism.ViewModel;
+using System;
+using Microsoft.Practices.Prism.Events;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class LoginViewModel : ViewModelBase
+    public class LoginViewModel : NotificationObject
     {
-        #region Services
-        [ServiceProperty(SearchMode = ServiceSearchMode.PreferParents)]
-        protected virtual IMessageBoxService MessageBoxService { get { return null; } }
-        protected virtual ICurrentWindowService CurrentWindowService { get { return null; } }
-        #endregion
+        public LoginViewModel()
+        {
+        }
+        public LoginViewModel(bool isReLogin)
+        {
+            if (Session.Current != null)
+            {
+                this.UserNo = Session.Current.SessionClientNo;
+            }
+            else
+            {
+                this.UserNo = string.Empty;
+            }
+            this.IsReLogin = isReLogin;
+        }
         #region Propertys
         public string _UserNo;
         public string UserNo
@@ -69,81 +80,42 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             try
             {
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
-
-
-                //IConnectService ConnectService = ServiceLoader.LoadService<IConnectService>();
                 LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
-                switch (loginresult)
-                {
-                    case LoginResult.UserIsEmpty:
-                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsEmpty, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                        return;
-                    case LoginResult.UserNotExist:
-                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserNotExist, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                        return;
-                    case LoginResult.UserIsLocked:
-                        MessageBoxService.ShowMessage(Properties.Resources.Error_UserIsLocked, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                        return;
-                    case LoginResult.ErrorPassWord:
-                        MessageBoxService.ShowMessage(Properties.Resources.Error_PassWordIsError, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                        return;
-                    default:
-                        if (Session.Current == null)
-                        {
-                            throw new BusinessException(Properties.Resources.Error_UnableSession);
-                        }
-                        Messenger.Default.Send<LoginFormResult>(LoginFormResult.Success);
-                        App.Current.MainWindow.Opacity = 100;
-                        CurrentWindowService.Close();
-                        break;
-                }
+                DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Publish(new LoginedEventArgs(loginresult));
             }
             catch (System.Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                ex.HandleException();
             }
-        }
-
-        public void OnLoaded()
-        {
-            if (DXSplashScreen.IsActive)
-                DXSplashScreen.Close();
-            if (Session.Current != null)
-            {
-                IsReLogin = true;
-                this.UserNo = Session.Current.SessionClientNo;
-            }
-            else
-            {
-                IsReLogin = false;
-                this.UserNo = string.Empty;
-            }
-        }
-        public void Closing(CancelEventArgs args)
-        {
-            if (Session.Current == null)
-                Messenger.Default.Send<LoginFormResult>(LoginFormResult.Failed);
-        }
-
-        public void Cancel()
-        {
-            if (Session.Current != null)
-            {
-                var result = MessageBoxService.ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
-                if (result == MessageResult.Yes)
-                {
-                    Session.Current = null;
-                    CurrentWindowService.Close();
-                }
-            }
-            else
-                CurrentWindowService.Close();
         }
         #endregion
     }
-    public enum LoginFormResult
+    public class LoginEvent : CompositePresentationEvent<LoginEventArgs> { }
+    public class LoginEventArgs
     {
-        Success,
-        Failed
+        public LoginEventArgs(LoginState LoginState)
+        {
+            this.LoginState = LoginState;
+        }
+        public LoginState LoginState { get; set; }
+    }
+    public enum LoginState
+    {
+        NewLogin = 0,
+        ReLogin = 1,
+        TimeOutLogin = 2
+    }
+    public class LoginedEvent : CompositePresentationEvent<LoginedEventArgs> { }
+    public class LoginedEventArgs
+    {
+        public LoginedEventArgs(LoginResult loginResult)
+        {
+            this.LoginResult = loginResult;
+        }
+        public LoginResult LoginResult { get; set; }
+    }
+    public class LoginSuccessEvent : NullEvent
+    {
+
     }
 }

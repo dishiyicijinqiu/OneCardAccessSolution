@@ -357,4 +357,7 @@
   <data name="Entity_P_CRTemp_Remark" xml:space="preserve">
     <value>备注</value>
   </data>
+  <data name="Menu_P_CRTemp" xml:space="preserve">
+    <value>产品检验报告模板</value>
+  </data>
 </root>

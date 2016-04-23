@@ -1,67 +1,49 @@
-﻿using DevExpress.Mvvm;
-using FengSharp.OneCardAccess.Common;
+﻿using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using Microsoft.Practices.Prism.Events;
 using System;
-using System.ComponentModel;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel
     {
         public MainViewModel()
         {
-
-        }
-        #region command
-        public void OnLoaded()
-        {
-            Messenger.Default.Register<LoginTimeOutException>(this, x => TryLogin(x));
+            DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Subscribe(TryLogin);
             TryLogin(null);
         }
-
+        #region commandMethods
         public void ShowDocument(DocumentInfo docInfo)
         {
             try
             {
-                var DocumentManager = GetService<IDocumentManagerService>();
-                IDocument doc = DocumentManager.CreateDocument(docInfo.DocumentType, null, this);
-                doc.DestroyOnClose = true;
-                doc.Title = docInfo.DocumentName;
-                doc.Show();
+                //var DocumentManager = ServiceLoader.LoadService<IDocManagerService>();
+                //IDoc doc = DocumentManager.CreateDoc(docInfo.DocumentType, this);
+                //doc.DestroyOnClose = true;
+                //doc.Title = docInfo.DocumentName;
+                //doc.Show();
             }
             catch (Exception ex)
             {
-                this.GetService<IMessageBoxService>().HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<MainViewModel>>().
+                    Publish(this, new ExceptionEventArgs(ex));
             }
         }
         #endregion
-        #region Methods
-        public void TryLogin(LoginTimeOutException para)
+        #region Events and Methods
+        public void TryLogin(LoginTimeOutEventArgs para)
         {
-            Messenger.Default.Register<LoginFormResult>(this, x => OnLogined(x));
-            var loginwindowservice = this.GetService<IWindowService>("LoginWindowService");
-            loginwindowservice.Show("LoginView", null, this);
-        }
-
-        private void OnLogined(LoginFormResult msg)
-        {
-            Messenger.Default.Unregister<LoginFormResult>(this);
-            if (msg == LoginFormResult.Failed)
+            if (para == null || para.LoginTimeOutException == null)
             {
-                System.Windows.Application.Current.Shutdown();
+                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
+            }
+            else
+            {
+                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.TimeOutLogin));
             }
         }
         #endregion
-        public void Closing(CancelEventArgs args)
-        {
-            if (Session.Current != null)
-            {
-                var result = this.GetService<IMessageBoxService>().ShowMessage(Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageButton.YesNo, MessageIcon.Information);
-                if (result != MessageResult.Yes)
-                    args.Cancel = true;
-            }
-        }
     }
     public class DocumentInfo
     {

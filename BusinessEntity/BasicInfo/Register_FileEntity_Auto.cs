@@ -1,14 +1,14 @@
-using System;
-using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
-using DevExpress.Mvvm;
+using Microsoft.Practices.Prism.ViewModel;
+using System.Runtime.Serialization;
+
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
     /// <summary>
     /// 注册证附件表
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public partial class Register_FileEntity : BindableBase
+    public partial class Register_FileEntity : NotificationObject
     {
         /// <summary>
         /// 构造函数

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace FengSharp.OneCardAccess.Client.PC.Helpers
+namespace FengSharp.OneCardAccess.Core
 {
     public class ExceptionHelper
     {
@@ -34,11 +34,11 @@ namespace FengSharp.OneCardAccess.Client.PC.Helpers
         static void ShowWindow()
         {
             string message = GetMessage();
-            var window = new Window() { Width = 600, Height = 400, WindowStyle = WindowStyle.ToolWindow, ShowActivated = true, Title = Properties.Resources.Error_UnHandler };
+            var window = new Window() { Width = 600, Height = 400, WindowStyle = WindowStyle.ToolWindow, ShowActivated = true, Title = Client.PC.Properties.Resources.Error_UnHandler };
             var grid = new Grid() { Margin = new Thickness(5) };
-            var closeButton = new Button() { Content = Properties.Resources.btn_Close , Margin = new Thickness(3) };
+            var closeButton = new Button() { Content = Client.PC.Properties.Resources.btn_Close , Margin = new Thickness(3) };
             closeButton.Click += button_Click;
-            var copyButton = new Button() { Content = Properties.Resources.btn_CopyError, Margin = new Thickness(3) };
+            var copyButton = new Button() { Content = Client.PC.Properties.Resources.btn_CopyError, Margin = new Thickness(3) };
             copyButton.Click += copyButton_Click;
             var stackPanel = new StackPanel() { Orientation = Orientation.Horizontal, HorizontalAlignment = HorizontalAlignment.Center };
             Grid.SetRow(stackPanel, 1);

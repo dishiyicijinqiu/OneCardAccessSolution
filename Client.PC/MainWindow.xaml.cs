@@ -1,5 +1,6 @@
-﻿using DevExpress.Xpf.Ribbon;
-using FengSharp.OneCardAccess.Client.PC.UI;
+﻿using DevExpress.Xpf.Docking;
+using DevExpress.Xpf.Ribbon;
+using FengSharp.OneCardAccess.Core;
 using System;
 
 namespace FengSharp.OneCardAccess.Client.PC

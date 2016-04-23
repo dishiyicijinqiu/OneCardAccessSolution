@@ -1,5 +1,4 @@
-﻿using DevExpress.Mvvm;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo

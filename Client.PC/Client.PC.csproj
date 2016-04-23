@@ -37,7 +37,7 @@
     <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>FengSharp.OneCardAccess.Client.PC.App</StartupObject>
+    <StartupObject>FengSharp.OneCardAccess.Client.PC.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -55,7 +55,13 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\External\NET4\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,18 +84,18 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\BaseViewModel.cs" />
+    <Compile Include="Core\Events\BaseSenderEvent.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\EntityEditMode.cs" />
+    <Compile Include="Core\Events\Events.cs" />
     <Compile Include="Core\LoadingCallHandler.cs" />
-    <Compile Include="Core\MessageBoxExceptionProcess.cs" />
     <Compile Include="Core\Extend.cs" />
     <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\ValueConverter.cs" />
-    <Compile Include="Helpers\PasswordBoxHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\Resources.zh-Hans.Designer.cs">
       <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -100,39 +106,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UI\BaseUserControl.cs" />
     <Compile Include="UI\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UI\MaximizedNoCoverTaskInfoHelper.cs" />
+    <Compile Include="Core\Helpers\MaximizedNoCoverTaskInfoHelper.cs" />
     <Compile Include="UI\MyRibbonPageGroupsItemsPanel.cs" />
     <Compile Include="UI\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
-    <ApplicationDefinition Include="App.xaml">
+    <Page Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
-      <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
-      <DependentUpon>P_CRTempView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
-      <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterView.xaml.cs">
-      <DependentUpon>RegisterView.xaml</DependentUpon>
-    </Compile>
+    </Page>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
@@ -141,7 +133,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Compile Include="Helpers\ExceptionHelper.cs" />
+    <Compile Include="Core\Helpers\ExceptionHelper.cs" />
     <Page Include="Themes\Shared.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,23 +150,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\BasicInfo\P_CRTempCollectionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\BasicInfo\P_CRTempView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -218,6 +198,10 @@
       <Project>{56440098-2131-465c-87b9-6c10d2985759}</Project>
       <Name>BusinessEntity</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Client.PC.Interfaces\Client.PC.Interfaces.csproj">
+      <Project>{f43e16e8-9c28-4720-a8c4-46bf52f410cc}</Project>
+      <Name>Client.PC.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{89dd6b99-d85b-4d96-8cf6-2a7044c87d1e}</Project>
       <Name>Common</Name>
@@ -242,6 +226,10 @@
       <Project>{3e6129c8-18e4-410d-89fc-0dbbe6009fc5}</Project>
       <Name>PolicyInjection.2010</Name>
     </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Prism\Prism.Desktop.csproj">
+      <Project>{77138947-1d13-4e22-aee0-5d0dd046ca34}</Project>
+      <Name>Prism.Desktop</Name>
+    </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Unitys\Unity.Configuration\Src\Unity.Configuration.csproj">
       <Project>{aef45ed2-3e7f-4aa5-9001-a4d1bac12ebe}</Project>
       <Name>Unity.Configuration</Name>
@@ -261,6 +249,10 @@
     <ProjectReference Include="..\ServiceInterfaces\ServiceInterfaces.csproj">
       <Project>{3e38a4b0-af86-479a-9fcf-8c2c3c8958d2}</Project>
       <Name>ServiceInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{8cf73142-b534-4f09-a9c8-ed59460cd849}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +304,7 @@
     <Resource Include="Resources\Images\Bar\movedown_16x16.png" />
     <Resource Include="Resources\Images\Bar\movedown_32x32.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

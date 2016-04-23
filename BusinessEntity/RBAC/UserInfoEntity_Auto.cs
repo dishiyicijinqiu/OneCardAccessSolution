@@ -1,14 +1,14 @@
-using System;
-using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
-using DevExpress.Mvvm;
+using Microsoft.Practices.Prism.ViewModel;
+using System.Runtime.Serialization;
+
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
     /// <summary>
     /// 用户表
     /// </summary>
     [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-    public partial class UserInfoEntity : BindableBase
+    public partial class UserInfoEntity : NotificationObject
     {
         /// <summary>
         /// 构造函数

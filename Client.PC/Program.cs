@@ -13,7 +13,7 @@ namespace FengSharp.OneCardAccess.Client.PC
             RunMutex = new System.Threading.Mutex(true, "OneCardAccess.Client.PC", out isNotRun);
             if (!isNotRun) return;
             App app = new App();
-            app.Run(new MainWindow());
+            app.Run();
         }
     }
 }

@@ -53,9 +53,6 @@
         </dxb:BarManager.Items>
         <DockPanel>
             <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
-                <dxr:RibbonControl.Resources>
-
-                </dxr:RibbonControl.Resources>
                 <dxr:RibbonDefaultPageCategory>
                     <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
@@ -76,10 +73,9 @@
                 </dxd:DockLayoutManager.Resources>
                 <dxd:LayoutGroup >
                     <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
-                        <dxmvvm:Interaction.Behaviors>
-                            <dxd:TabbedDocumentUIService DocumentPanelStyle="{StaticResource DocumentPanelStyle}" 
-                                                      DocumentGroup="{Binding ElementName=documentGroup}"/>
-                        </dxmvvm:Interaction.Behaviors>
+                        <dxd:DocumentPanel>
+                            
+                        </dxd:DocumentPanel>
                     </dxd:DocumentGroup>
                 </dxd:LayoutGroup>
             </dxd:DockLayoutManager>

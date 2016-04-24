@@ -1,5 +1,6 @@
 ﻿using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
 using System;
 using System.Windows.Markup;
@@ -8,21 +9,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class MainViewModel
     {
+        DelegateCommand<DocumentInfo> ShowDocumentCommand;
         public MainViewModel()
         {
             DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Subscribe(TryLogin);
-            TryLogin(null);
+            ShowDocumentCommand = new DelegateCommand<DocumentInfo>(ShowDocument);
         }
         #region commandMethods
         public void ShowDocument(DocumentInfo docInfo)
         {
             try
             {
-                //var DocumentManager = ServiceLoader.LoadService<IDocManagerService>();
-                //IDoc doc = DocumentManager.CreateDoc(docInfo.DocumentType, this);
-                //doc.DestroyOnClose = true;
-                //doc.Title = docInfo.DocumentName;
-                //doc.Show();
+                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().
+                    Publish(this, new ShowDocumentEventArgs(docInfo));
             }
             catch (Exception ex)
             {
@@ -31,7 +30,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
         }
         #endregion
-        #region Events and Methods
+        #region Events
         public void TryLogin(LoginTimeOutEventArgs para)
         {
             if (para == null || para.LoginTimeOutException == null)
@@ -64,5 +63,18 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 DocumentType = this.DocumentType
             };
         }
+    }
+
+    public class ShowDocumentEvent : BaseSenderEvent<MainViewModel, ShowDocumentEventArgs>
+    {
+
+    }
+    public class ShowDocumentEventArgs : NullEventArgs
+    {
+        public ShowDocumentEventArgs(DocumentInfo documentInfo)
+        {
+            this.DocumentInfo = documentInfo;
+        }
+        public DocumentInfo DocumentInfo { get; set; }
     }
 }

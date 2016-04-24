@@ -17,6 +17,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         public LoginView()
         {
             InitializeComponent();
+            Init();
         }
         void Init()
         {

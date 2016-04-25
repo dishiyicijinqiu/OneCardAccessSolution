@@ -1,8 +1,7 @@
-﻿using DevExpress.Xpf.Core;
-using DevExpress.Xpf.Docking;
-using DevExpress.Xpf.Ribbon;
+﻿using DevExpress.Xpf.Ribbon;
 using FengSharp.OneCardAccess.Core;
 using System;
+using System.Windows;
 
 namespace FengSharp.OneCardAccess.Client.PC
 {
@@ -22,8 +21,8 @@ namespace FengSharp.OneCardAccess.Client.PC
             System.IntPtr handle = (new System.Windows.Interop.WindowInteropHelper(this)).Handle;
             System.Windows.Interop.HwndSource.FromHwnd(handle).AddHook(new System.Windows.Interop.HwndSourceHook(new MaximizedNoCoverTaskInfoHelper()
             {
-                //MinWidth = (int)this.MinWidth,
-                //MinHeight = (int)this.MinHeight
+                MinWidth = (int)this.MinWidth,
+                MinHeight = (int)this.MinHeight
             }.WindowProc));
         }
     }

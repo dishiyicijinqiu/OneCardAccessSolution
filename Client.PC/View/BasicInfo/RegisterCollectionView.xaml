@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterCollectionView"
+﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterCollectionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,14 +7,13 @@
              mc:Ignorable="d" 
              
              
-            xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
-             
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              
              
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
@@ -22,17 +21,13 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             d:DesignHeight="416" d:DesignWidth="634"
              >
-    <UserControl.Resources>
+    <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </UserControl.Resources>
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding OnLoadedCommand}" />
-        <dxmvvm:EventToCommand Command="{Binding CloseCommand}" EventName="Close" />
-    </dxmvvm:Interaction.Behaviors>
+    </ui:BaseUserControl.Resources>
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>
@@ -73,17 +68,19 @@
                 </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
                     <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" Name="tableview">
-                        <dxmvvm:Interaction.Behaviors>
-                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" 
-                                                   CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}" />
-                        </dxmvvm:Interaction.Behaviors>
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="RowDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}"
+                                   CommandParameter="{Binding FocusedRow,ElementName=tableview}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
                     </dxg:TableView>
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>
     </dxb:BarManager>
-</UserControl>
+</ui:BaseUserControl>
 
 
 <!--<TextBox x:Name="textBox1" FontSize="24" Margin="10" Text="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=Name}"/>-->  

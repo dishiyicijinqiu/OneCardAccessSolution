@@ -81,4 +81,17 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         public DocumentInfo DocumentInfo { get; set; }
     }
+    public class UICloseDocumentEvent : CompositePresentationEvent<UICloseDocumentEventArgs>
+    {
+
+    }
+
+    public class UICloseDocumentEventArgs : NullEventArgs
+    {
+        public UICloseDocumentEventArgs(object document)
+        {
+            this.Document = document;
+        }
+        public object Document { get; set; }
+    }
 }

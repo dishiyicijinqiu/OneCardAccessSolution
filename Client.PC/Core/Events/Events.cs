@@ -17,6 +17,8 @@ namespace FengSharp.OneCardAccess.Core
         public LoginTimeOutException LoginTimeOutException { get; set; }
     }
     public class ExceptionEvent<Sender> : BaseSenderEvent<Sender, ExceptionEventArgs> { }
+    public class CloseEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
+    public class CloseDocumentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
     public class ExceptionEventArgs
     {
         public ExceptionEventArgs(Exception exception)
@@ -29,7 +31,7 @@ namespace FengSharp.OneCardAccess.Core
     public class MessageBoxEvent<Sender> : BaseSenderEvent<Sender, MessageBoxEventArgs> { }
     public class MessageBoxEventArgs
     {
-        public MessageBoxEventArgs(string messageText, string caption)
+        public MessageBoxEventArgs(string messageText, string caption = null)
         {
             this.MessageText = messageText;
             this.Caption = caption;

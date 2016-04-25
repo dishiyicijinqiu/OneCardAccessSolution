@@ -106,6 +106,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="UI\BaseRibbonWindow.xaml.cs">
+      <DependentUpon>BaseRibbonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\BaseUserControl.cs" />
     <Compile Include="UI\BaseWindow.xaml.cs">
       <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
@@ -117,12 +121,20 @@
     <Compile Include="UI\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
+      <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
@@ -142,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\BaseRibbonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\BaseWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +169,14 @@
     <Page Include="UI\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BasicInfo\RegisterView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginView.xaml">
       <SubType>Designer</SubType>
@@ -248,10 +272,7 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\BasicInfo\" />
-    <Folder Include="View\BasicInfo\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Bars\add_16x16.png" />
   </ItemGroup>

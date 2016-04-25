@@ -1,20 +1,15 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
-using FengSharp.OneCardAccess.ServiceInterfaces;
-using System.ComponentModel;
 using FengSharp.OneCardAccess.Core;
-using DevExpress.Xpf.Core;
-using Microsoft.Practices.Prism.ViewModel;
-using System;
+using FengSharp.OneCardAccess.ServiceInterfaces;
+using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
+using Microsoft.Practices.Prism.ViewModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class LoginViewModel : NotificationObject
     {
-        public LoginViewModel()
-        {
-        }
         public LoginViewModel(bool isReLogin)
         {
             if (Session.Current != null)
@@ -26,7 +21,17 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 this.UserNo = string.Empty;
             }
             this.IsReLogin = isReLogin;
+            LoginCommand = new DelegateCommand(Login);
         }
+
+        #region Commands
+        public DelegateCommand LoginCommand
+        {
+            get;
+            private set;
+        }
+        #endregion
+
         #region Propertys
         public string _UserNo;
         public string UserNo
@@ -79,13 +84,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
+                throw new System.Exception("juset a test");
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
                 LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
                 DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Publish(new LoginedEventArgs(loginresult));
             }
             catch (System.Exception ex)
             {
-                ex.HandleException();
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().
+                    Publish(this, new ExceptionEventArgs(ex));
             }
         }
         #endregion

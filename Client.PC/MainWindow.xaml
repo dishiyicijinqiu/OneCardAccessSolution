@@ -1,4 +1,4 @@
-﻿<dx:DXWindow
+﻿<dxr:DXRibbonWindow
     x:Class="FengSharp.OneCardAccess.Client.PC.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -7,17 +7,12 @@
     xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     
-    WindowStartupLocation="CenterScreen" 
-    WindowState="Maximized"
-    SizeToContent="WidthAndHeight"
-    Opacity="100" 
-    AllowsTransparency="True" 
-    WindowStyle="None"
     Title="{x:Static res:Resources.View_MainWindow_Title}" 
+  SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen" 
+    Opacity="100" 
     Background="Transparent"
-    MinWidth="800" ShowInTaskbar="False"
-    MinHeight="600"
     >
         <View:MainView x:Name="mainview"/>
 
-</dx:DXWindow>
+</dxr:DXRibbonWindow>

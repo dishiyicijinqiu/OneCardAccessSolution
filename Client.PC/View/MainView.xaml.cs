@@ -6,6 +6,8 @@ using System.Windows.Controls;
 using FengSharp.OneCardAccess.Core;
 using DevExpress.Xpf.Core;
 using System;
+using DevExpress.Xpf.Docking;
+using System.ComponentModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.View
 {
@@ -17,27 +19,44 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         public MainView()
         {
             InitializeComponent();
-            DefaultEventAggregator.Current.GetEvent<ExceptionEvent<MainViewModel>>().Subscribe(OnException, ThreadOption.UIThread);
-            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
-            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginSuccess);
-            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
-            this.Unloaded += MainView_Unloaded;
-            this.Loaded += MainView_Loaded;
-            this.DataContext = new MainViewModel();
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<MainViewModel>>().Subscribe(OnException, ThreadOption.UIThread);
+                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
+                DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginSuccess);
+                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
+                this.Unloaded += MainView_Unloaded;
+                this.Loaded += MainView_Loaded;
+                this.DataContext = new MainViewModel();
+            }
         }
 
         private void OnShowDocument(MainViewModel sender, ShowDocumentEventArgs args)
         {
             if (sender == this.DataContext)
             {
-                var doc = args.DocumentInfo;
-                mdiContainer.Add();
+                var docInfo = args.DocumentInfo;
+                var doc = new DocumentPanel();
+                doc.AllowDrag = false;
+                doc.IsActive = true;
+                doc.FloatOnDoubleClick = false;
+                doc.Caption = docInfo.DocumentTitle;
+                var type = System.Type.GetType(docInfo.DocumentType);
+                doc.Content = Activator.CreateInstance(type);
+                mdiContainer.Add(doc);
             }
         }
+        bool isfirstlogin = true;
         #region Events
         private void MainView_Loaded(object sender, RoutedEventArgs e)
         {
-            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
+            if (!isfirstlogin)
+                return;
+            if (isfirstlogin)
+            {
+                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
+                isfirstlogin = false;
+            }
         }
         private void MainView_Unloaded(object sender, RoutedEventArgs e)
         {
@@ -61,7 +80,10 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         }
         public void OnLogin(LoginEventArgs args)
         {
-            var window = new LoginWindow();
+            var window = new UI.BaseWindow();
+            window.Title = Properties.Resources.View_LoginView_Title;
+            window.Style = FindResource("LoginWindowStyle") as Style;
+            window.Content = new LoginView();
             window.Owner = Window.GetWindow(this);
             window.ShowDialog();
         }

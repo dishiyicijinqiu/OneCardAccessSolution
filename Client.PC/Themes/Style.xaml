@@ -19,79 +19,88 @@
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
         <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico" />
+    </Style>
+
+
+    <Style TargetType="{x:Type dx:DXWindow}" x:Key="LoginWindowStyle">
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        <Setter Property="ShowInTaskbar" Value="False"/>
+        <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico" />
     </Style>
 
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Add}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/new_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/new_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/new_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barCopyAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_CopyAdd}"/>
         <Setter Property="Command" Value="{Binding CopyAddCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/copy-16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/copy-32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/copy-16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/copy-32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barEdit">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Edit}"/>
         <Setter Property="Command" Value="{Binding EditCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/edit_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/edit_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/edit_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/edit_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barDelete">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Delete}"/>
         <Setter Property="Command" Value="{Binding DeleteCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/delete_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/delete_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/delete_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/delete_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barCate">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Cate}"/>
         <Setter Property="Command" Value="{Binding CateCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/cards_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/cards_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/cards_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barReturn">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Return}"/>
         <Setter Property="Command" Value="{Binding ReturnCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/moveup_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/moveup_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barSave">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Save}"/>
         <Setter Property="Command" Value="{Binding SaveCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/save_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/save_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/save_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/save_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barSaveAndNew">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_SaveAndNew}"/>
         <Setter Property="Command" Value="{Binding SaveAndNewCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/saveandnew_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/saveandnew_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/saveandnew_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barClose">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Close}"/>
         <Setter Property="Command" Value="{Binding CloseCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/close_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/close_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/close_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barUpLoad">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_UpLoad}"/>
         <Setter Property="Command" Value="{Binding UpLoadCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/up_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/up_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/up_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/up_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barMoveUp">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_MoveUp}"/>
         <Setter Property="Command" Value="{Binding MoveUpCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/moveup_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/moveup_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/moveup_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barMoveDown">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_MoveDown}"/>
         <Setter Property="Command" Value="{Binding MoveDownCommand}"/>
-        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/movedown_16x16.png"/>
-        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/movedown_32x32.png"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/movedown_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/movedown_32x32.png"/>
     </Style>
     <Style TargetType="dxe:TextEdit" x:Key="teCreateDate">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>

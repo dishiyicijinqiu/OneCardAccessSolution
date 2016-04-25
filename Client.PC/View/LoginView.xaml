@@ -7,7 +7,9 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel" 
-            xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" x:Class="FengSharp.OneCardAccess.Client.PC.View.LoginView" 
+            xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
+    x:Class="FengSharp.OneCardAccess.Client.PC.View.LoginView" 
             mc:Ignorable="d"
             Height="160" Width="380">
     <dxlc:LayoutControl >
@@ -16,7 +18,7 @@
                 <dxlc:LayoutGroup Orientation="Horizontal" Width="120">
                     <dxlc:LayoutItem>
                         <Image Name="image" Width="100" Height="100"
-               Source ="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Login.png" Focusable="False" />
+               Source ="/FengSharp.OneCardAccess.Client.PC;component/Resources/Login.png" Focusable="False" />
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup Orientation="Vertical">

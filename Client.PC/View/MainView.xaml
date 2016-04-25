@@ -14,17 +14,12 @@
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI" Height="276.24" Width="616">
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="LoginWindowStyle">
-                <Setter Property="ResizeMode" Value="NoResize"/>
-                <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/logo.ico"/>
-                <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-            </Style>
         </ResourceDictionary>
     </UserControl.Resources>
     <i:Interaction.Triggers>
@@ -36,18 +31,18 @@
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="bCateInfo" Content="{x:Static res:Resources.Menu_Register}" 
                                Command="{Binding ShowDocumentCommand}" 
-                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
+                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="RegisterCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
             <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_P_CRTemp}" 
                                Command="{Binding ShowDocumentCommand}"
-                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Images/Bar/add_32x32.png" >
+                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
+                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentName="{x:Static res:Resources.View_P_CRTempView_Title}" DocumentType="P_CRTempCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}" DocumentType="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.P_CRTempCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>
@@ -65,16 +60,16 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
             <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
-                <dxd:DockLayoutManager.Resources>
+                <!--<dxd:DockLayoutManager.Resources>
                     <Style x:Key="DocumentPanelStyle" TargetType="dxd:DocumentPanel">
                         <Setter Property="BindableName" Value="{Binding Path=Content.DataContext.DocumentName,
                         RelativeSource={RelativeSource Mode=Self}}"/>
                     </Style>
-                </dxd:DockLayoutManager.Resources>
+                </dxd:DockLayoutManager.Resources>-->
                 <dxd:LayoutGroup >
                     <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
-                        <dxd:DocumentPanel>
-                            
+                        <dxd:DocumentPanel ShowCloseButton="False" ShowCollapseButton="True" FloatOnDoubleClick="False" ClosingBehavior="ImmediatelyRemove">
+
                         </dxd:DocumentPanel>
                     </dxd:DocumentGroup>
                 </dxd:LayoutGroup>

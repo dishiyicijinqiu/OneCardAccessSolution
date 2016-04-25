@@ -19,9 +19,7 @@
              
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
-            xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-            DataContext="{dxmvvm:ViewModelSource Type=viewmodel:RegisterCollectionViewModel}"
             d:DesignHeight="416" d:DesignWidth="634"
              >
     <UserControl.Resources>

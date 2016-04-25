@@ -9,7 +9,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class MainViewModel
     {
-        DelegateCommand<DocumentInfo> ShowDocumentCommand;
+        public DelegateCommand<DocumentInfo> ShowDocumentCommand
+        {
+            get;
+            private set;
+        }
         public MainViewModel()
         {
             DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Subscribe(TryLogin);
@@ -46,20 +50,20 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     }
     public class DocumentInfo
     {
-        public string DocumentName { get; set; }
+        public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
     }
     [MarkupExtensionReturnType(typeof(System.Windows.PropertyPath))]
     public class DocumentInfoExtension : MarkupExtension
     {
-        public string DocumentName { get; set; }
+        public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             return new DocumentInfo()
             {
-                DocumentName = this.DocumentName,
+                DocumentTitle = this.DocumentTitle,
                 DocumentType = this.DocumentType
             };
         }

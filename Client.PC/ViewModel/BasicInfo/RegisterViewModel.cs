@@ -1,34 +1,31 @@
-﻿using DevExpress.Mvvm;
-using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using System;
 using System.Collections.Generic;
-using DevExpress.Mvvm.DataAnnotations;
+using Microsoft.Practices.Prism.ViewModel;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterViewModel : DefaultViewModel
+    public class RegisterViewModel : NotificationObject
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
-        public RegisterViewModel()
+        RegisterEditMessage Parameter;
+        public RegisterViewModel(RegisterEditMessage parameter)
         {
-            Entity = SecondRegisterEntity.CreateEntity();
-        }
-        public void Loaded()
-        {
-            if (!ViewModelBase.IsInDesignMode)
+            try
             {
-                RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
-                if (paramsg == null)
+                Parameter = parameter;
+                Entity = SecondRegisterEntity.CreateEntity();
+                if (Parameter == null)
                     throw new Exception(Properties.Resources.Error_ParameterIsError);
-                switch (paramsg.EntityEditMode)
+                switch (Parameter.EntityEditMode)
                 {
                     case EntityEditMode.Add:
                         break;
                     case EntityEditMode.CopyAdd:
-                        var copyEntity = basicinfoservice.GetSecondRegisterEntityById(paramsg.CopyKey);
+                        var copyEntity = basicinfoservice.GetSecondRegisterEntityById(Parameter.CopyKey);
                         Entity = SecondRegisterEntity.CreateEntity();
                         Entity.CopyValueFrom(copyEntity,
                             new List<string>(PCConfig.CreateAndModifyInfoColNames)
@@ -37,14 +34,21 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         });
                         break;
                     case EntityEditMode.Edit:
-                        Entity = basicinfoservice.GetSecondRegisterEntityById(paramsg.Key);
+                        Entity = basicinfoservice.GetSecondRegisterEntityById(Parameter.Key);
                         break;
                     default:
                         throw new Exception(Properties.Resources.Error_ParameterIsError);
                 }
                 if (Entity == null)
                     Entity = SecondRegisterEntity.CreateEntity();
-                EntityEditMode = paramsg.EntityEditMode;
+                EntityEditMode = Parameter.EntityEditMode;
+            }
+            catch (Exception ex)
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<RegisterViewModel>>().
+             Publish(this, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<CloseEvent<RegisterViewModel>>().
+                    Publish(this, new NullEventArgs());
             }
         }
 
@@ -87,23 +91,23 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void Save()
         {
-            try
-            {
-                RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
-                paramsg.Key = basicinfoservice.SaveRegisterEntity(this.Entity);
-                if (paramsg.Key <= 0)
-                {
-                    MessageBoxService.ShowMessage(Properties.Resources.Error_SaveFiled, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
-                    return;
-                }
-                MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
-                this.Close();
-                Messenger.Default.Send<RegisterEditMessage>(paramsg, (this as ISupportParentViewModel).ParentViewModel);
-            }
-            catch (Exception ex)
-            {
-                this.MessageBoxService.HandleException(ex);
-            }
+            //try
+            //{
+            //    RegisterEditMessage paramsg = this.Parameter as RegisterEditMessage;
+            //    paramsg.Key = basicinfoservice.SaveRegisterEntity(this.Entity);
+            //    if (paramsg.Key <= 0)
+            //    {
+            //        MessageBoxService.ShowMessage(Properties.Resources.Error_SaveFiled, Properties.Resources.Error_Title, MessageButton.OK, MessageIcon.Error);
+            //        return;
+            //    }
+            //    MessageBoxService.ShowMessage(Properties.Resources.Info_SaveSuccess, Properties.Resources.Info_Title, MessageButton.OK, MessageIcon.Information);
+            //    this.Close();
+            //    Messenger.Default.Send<RegisterEditMessage>(paramsg, (this as ISupportParentViewModel).ParentViewModel);
+            //}
+            //catch (Exception ex)
+            //{
+            //    this.MessageBoxService.HandleException(ex);
+            //}
         }
         #endregion
     }

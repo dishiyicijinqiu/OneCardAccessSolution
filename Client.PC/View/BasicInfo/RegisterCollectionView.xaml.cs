@@ -1,9 +1,14 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;
+using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Ribbon;
+using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel;
+using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.Core;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -12,32 +17,32 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// <summary>
     /// RegisterCollectionView.xaml 的交互逻辑
     /// </summary>
-    public partial class RegisterCollectionView : UserControl
+    public partial class RegisterCollectionView : BaseUserControl
     {
         public RegisterCollectionView()
         {
             InitializeComponent();
-            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
-            this.DataContext = new RegisterCollectionView();
-        }
-
-        private void OnShowDocument(MainViewModel sender, ShowDocumentEventArgs args)
-        {
-            if (sender == this.DataContext)
+            if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                var docInfo = args.DocumentInfo;
-
-                var doc = new DocumentPanel();
-                doc.AllowDrag = false;
-                doc.IsActive = true;
-                doc.FloatOnDoubleClick = false;
-                doc.Caption = docInfo.DocumentTitle;
-                var type = System.Type.GetType(docInfo.DocumentType);
-                doc.Content = Activator.CreateInstance(type);
-                mdiContainer.Add(doc);
+                DefaultEventAggregator.Current.GetEvent<ViewRegisterEvent<RegisterCollectionViewModel>>().
+                    Subscribe(OnViewRegister);
+                this.DataContext = new RegisterCollectionViewModel();
             }
         }
 
+        private void OnViewRegister(RegisterCollectionViewModel sender, ViewRegisterEventArgs args)
+        {
+            if (sender == this.DataContext)
+            {
+                var window = new UI.BaseRibbonWindow();
+                window.Title = Properties.Resources.View_RegisterView_Title;
+                window.Style = FindResource("DialogWindowStyle") as Style;
+                window.Content = new RegisterView(args.RegisterEditMessage);
+                window.Owner = Window.GetWindow(this);
+                window.ShowDialog();
+
+            }
+        }
         private void BarButtonItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
         {
             //WindowService windowService = new WindowService();

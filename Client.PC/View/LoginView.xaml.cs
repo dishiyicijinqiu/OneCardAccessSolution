@@ -6,33 +6,28 @@ using Microsoft.Practices.Prism.Events;
 using System.Windows;
 using System.Windows.Controls;
 using System;
+using FengSharp.OneCardAccess.Client.PC.UI;
 
 namespace FengSharp.OneCardAccess.Client.PC.View
 {
     /// <summary>
     /// LoginView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView : UserControl
+    public partial class LoginView : BaseUserControl
     {
-        public LoginView()
+        public LoginView(bool isReLogin)
         {
             InitializeComponent();
-            Init();
-        }
-        void Init()
-        {
-            DefaultEventAggregator.Current.GetEvent<ExceptionEvent<LoginViewModel>>().Subscribe(OnException);
+
             DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Subscribe(OnLogined);
-            this.DataContext = new LoginViewModel();
+            this.DataContext = new LoginViewModel(isReLogin);
             this.Loaded += LoginView_Loaded;
+            this.Unloaded += LoginView_Unloaded;
         }
 
-        private void OnException(LoginViewModel sender, ExceptionEventArgs args)
+        private void LoginView_Unloaded(object sender, RoutedEventArgs e)
         {
-            if (sender == this.DataContext)
-            {
-                args.Exception.HandleException(this);
-            }
+            DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Unsubscribe(OnLogined);
         }
         public void OnLogined(LoginedEventArgs args)
         {
@@ -64,6 +59,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             Window loginWindow = Window.GetWindow(this);
             System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
             loginWindow.Activate();
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }

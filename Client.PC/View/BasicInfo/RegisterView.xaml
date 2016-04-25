@@ -19,7 +19,6 @@
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-    DataContext="{dxmvvm:ViewModelSource Type={x:Type viewmodel:RegisterViewModel}}"
     Width="658" Height="544"
     >
     <UserControl.Resources>
@@ -29,10 +28,6 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <dxmvvm:Interaction.Behaviors>
-        <dxmvvm:EventToCommand Command="{Binding LoadedCommand}" EventName="Loaded" />
-        <dxmvvm:EventToCommand Command="{Binding CloseCommand}" EventName="Close" />
-    </dxmvvm:Interaction.Behaviors>
     <dxb:BarManager>
         <Grid>
             <Grid.RowDefinitions>
@@ -70,7 +65,7 @@
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterName}">
-                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode}">
                             <dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
@@ -96,7 +91,7 @@
                             <dxe:TextEdit EditValue="{Binding Entity.RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_RegisterName1}">
-                            <dxe:TextEdit EditValue="{Binding Entity.RegisterProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.RegisterName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StandardCode1}">
                             <dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>

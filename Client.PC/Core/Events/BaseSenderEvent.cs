@@ -76,6 +76,10 @@ namespace FengSharp.OneCardAccess.Core
         {
             base.InternalPublish(sender, args);
         }
+        public virtual void Publish(Sender sender)
+        {
+            base.InternalPublish(sender, null);
+        }
         public virtual void Unsubscribe(Action<Sender, Args> subscriber)
         {
             lock (Subscriptions)

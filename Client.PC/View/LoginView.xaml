@@ -1,4 +1,4 @@
-﻿<UserControl
+﻿<ui:BaseUserControl
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -11,7 +11,8 @@
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
     x:Class="FengSharp.OneCardAccess.Client.PC.View.LoginView" 
             mc:Ignorable="d"
-            Height="160" Width="380">
+            Height="160" Width="380"
+    xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
     <dxlc:LayoutControl >
         <dxlc:LayoutGroup Orientation="Vertical">
             <dxlc:LayoutGroup Orientation="Horizontal">
@@ -45,9 +46,9 @@
                     <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnLogin_Content}" Command="{Binding LoginCommand}" IsDefault="True" />
                 </dxlc:LayoutItem>
                 <dxlc:LayoutItem>
-                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CancelCommand}" IsCancel="True" />
+                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CancelCommand}" IsCancel="True" Click="btnCancel_Click" />
                 </dxlc:LayoutItem>
             </dxlc:LayoutGroup>
         </dxlc:LayoutGroup>
     </dxlc:LayoutControl>
-</UserControl>
+</ui:BaseUserControl>

@@ -3,19 +3,41 @@ using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
     public class RegisterCollectionViewModel : NotificationObject
     {
-        IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
+        public ICommand AddCommand { get; private set; }
+        public ICommand CopyAddCommand { get; private set; }
+        public ICommand EditCommand { get; private set; }
+        public ICommand DeleteCommand { get; private set; }
+        public ICommand CloseCommand { get; private set; }
         public RegisterCollectionViewModel()
         {
+            try
+            {
+                AddCommand = new DelegateCommand(Add);
+                CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
+                EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
+                DeleteCommand = new DelegateCommand<System.Collections.IList>(Delete);
+                CloseCommand = new DelegateCommand(Close);
+                var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
+                Items = new ObservableCollection<FirstRegisterEntity>(list);
+            }
+            catch (Exception ex)
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
+            }
         }
         #region propertys
 
@@ -39,26 +61,23 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(), this);
-                document.Show();
+                DefaultEventAggregator.Current.GetEvent<ViewRegisterEvent<RegisterCollectionViewModel>>().Publish(this, new ViewRegisterEventArgs(new RegisterEditMessage()));
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
         public void CopyAdd(FirstRegisterEntity SelectedEntity)
         {
             try
             {
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView",
-                    new RegisterEditMessage(_CopyKey: SelectedEntity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)
-                    , this);
-                document.Show();
+                DefaultEventAggregator.Current.GetEvent<ViewRegisterEvent<RegisterCollectionViewModel>>().
+                    Publish(this, new ViewRegisterEventArgs(new RegisterEditMessage(_CopyKey: SelectedEntity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
         public void Edit(FirstRegisterEntity SelectedEntity)
@@ -67,15 +86,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             {
                 if (SelectedEntity == null)
                 {
-                    MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_SelectAtLeastOne));
                     return;
                 }
-                IDocument document = GetDialogWindowService().CreateDocument("RegisterView", new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit), this);
-                document.Show();
+                DefaultEventAggregator.Current.GetEvent<ViewRegisterEvent<RegisterCollectionViewModel>>().
+                    Publish(this, new ViewRegisterEventArgs(new RegisterEditMessage(SelectedEntity.RegisterId, EntityEditMode.Edit)));
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
         public void Delete(System.Collections.IList SelectedEntitys)
@@ -84,39 +103,23 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             {
                 if (SelectedEntitys == null && SelectedEntitys.Count <= 0)
                 {
-                    MessageBoxService.ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
+                        Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_SelectAtLeastOne));
                     return;
                 }
                 var listToDelete = SelectedEntitys.Cast<RegisterEntity>().ToList();
-                basicinfoservice.DeleteRegisterEntitys(listToDelete);
-                MessageBoxService.ShowMessage(Properties.Resources.Info_DeleteSuccess);
+                ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(listToDelete);
+                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
+                    Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_DeleteSuccess));
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
-        private bool IsLoaded = false;
-        public void OnLoaded()
+        public void Close()
         {
-            if (!ViewModelBase.IsInDesignMode)
-            {
-                if (IsLoaded) return;
-                try
-                {
-                    var list = basicinfoservice.GetFirstRegisterEntitys();
-                    Items = new ObservableCollection<FirstRegisterEntity>(list);
-                }
-                catch (Exception ex)
-                {
-                    this.Close();
-                    MessageBoxService.HandleException(ex);
-                }
-                finally
-                {
-                    IsLoaded = true;
-                }
-            }
+            DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
         }
         #endregion
         #region methods
@@ -128,7 +131,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 {
                     case EntityEditMode.Add:
                         {
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(message.Key);
                             Items.Add(newItem);
                             if (message.IsContinue)
                                 Add();
@@ -136,7 +139,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         break;
                     case EntityEditMode.CopyAdd:
                         {
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(message.Key);
                             Items.Add(newItem);
                             if (message.IsContinue)
                             {
@@ -149,7 +152,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         {
                             var oldItem = Items.FirstOrDefault(t => t.RegisterId == message.Key);
                             if (oldItem == null) return;
-                            var newItem = basicinfoservice.GetFirstRegisterEntityById(message.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(message.Key);
                             var itemIndex = Items.IndexOf(oldItem);
                             Items[itemIndex] = newItem;
                         }
@@ -160,15 +163,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             catch (Exception ex)
             {
-                MessageBoxService.HandleException(ex);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
-        }
-        #endregion
-        #region Events
-        public override void OnClose(CancelEventArgs e)
-        {
-            Messenger.Default.Unregister<RegisterEditMessage>(this);
-            base.OnClose(e);
         }
         #endregion
     }
@@ -183,6 +179,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             CopyKey = _CopyKey;
         }
         public int CopyKey { get; set; }
+    }
+
+    public class ViewRegisterEvent<Sender> : BaseSenderEvent<Sender, ViewRegisterEventArgs> { }
+    public class ViewRegisterEventArgs
+    {
+        public ViewRegisterEventArgs(RegisterEditMessage RegisterEditMessage)
+        {
+            this.RegisterEditMessage = RegisterEditMessage;
+        }
+        public RegisterEditMessage RegisterEditMessage { get; set; }
     }
     #endregion
 }

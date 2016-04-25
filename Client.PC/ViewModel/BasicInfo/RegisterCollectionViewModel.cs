@@ -3,6 +3,7 @@ using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -10,19 +11,12 @@ using System.Linq;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : DefaultViewModel
+    public class RegisterCollectionViewModel : NotificationObject
     {
         IBasicInfoService basicinfoservice = ServiceProxyFactory.Create<IBasicInfoService>();
         public RegisterCollectionViewModel()
         {
-            Messenger.Default.Register<RegisterEditMessage>(this, this, OnEdited);
         }
-        #region Services
-        IDocumentManagerService GetDialogWindowService()
-        {
-            return this.GetService<IDocumentManagerService>("DialogWindowService", ServiceSearchMode.PreferParents);
-        }
-        #endregion
         #region propertys
 
         ObservableCollection<FirstRegisterEntity> _Items;

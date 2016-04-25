@@ -197,7 +197,7 @@ namespace FengSharp.OneCardAccess.Core
         {
             if (Application.Current != null)
             {
-                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, method, arg);
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Normal, method, sender, arg);
             }
         }
     }

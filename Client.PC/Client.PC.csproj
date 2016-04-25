@@ -34,14 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>FengSharp.OneCardAccess.Client.PC.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Core.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Docking.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -55,6 +55,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Windows.Forms" />
@@ -95,15 +96,18 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.zh-Hans.Designer.cs">
       <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+    <Compile Include="UI\BaseWindow.xaml.cs">
+      <DependentUpon>BaseWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\LoadingView.xaml.cs">
       <DependentUpon>LoadingView.xaml</DependentUpon>
@@ -122,9 +126,6 @@
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
     </Compile>
@@ -141,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="UI\BaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\LoadingView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -150,10 +155,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,19 +170,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\add_16x16.png" />
-    <Resource Include="Resources\Images\Bar\add_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Images\Login.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="logo.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.zh-Hans.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -189,6 +177,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
@@ -260,50 +249,87 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\new_16x16.png" />
-    <Resource Include="Resources\Images\Bar\new_32x32.png" />
+    <Folder Include="ViewModel\BasicInfo\" />
+    <Folder Include="View\BasicInfo\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\copy-16x16.png" />
-    <Resource Include="Resources\Images\Bar\copy-32x32.png" />
+    <Resource Include="Resources\Bars\add_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\edit_16x16.png" />
-    <Resource Include="Resources\Images\Bar\edit_32x32.png" />
+    <Resource Include="Resources\Bars\add_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\delete_16x16.png" />
-    <Resource Include="Resources\Images\Bar\delete_32x32.png" />
+    <Resource Include="Resources\Bars\cards_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\cards_16x16.png" />
-    <Resource Include="Resources\Images\Bar\cards_32x32.png" />
+    <Resource Include="Resources\Bars\cards_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\moveup_16x16.png" />
-    <Resource Include="Resources\Images\Bar\moveup_32x32.png" />
+    <Resource Include="Resources\Bars\close_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\save_16x16.png" />
-    <Resource Include="Resources\Images\Bar\save_32x32.png" />
+    <Resource Include="Resources\Bars\close_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\close_16x16.png" />
-    <Resource Include="Resources\Images\Bar\close_32x32.png" />
+    <Resource Include="Resources\Bars\copy-16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\saveandnew_16x16.png" />
-    <Resource Include="Resources\Images\Bar\saveandnew_32x32.png" />
+    <Resource Include="Resources\Bars\copy-32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\up_16x16.png" />
-    <Resource Include="Resources\Images\Bar\up_32x32.png" />
+    <Resource Include="Resources\Bars\delete_16x16.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Images\Bar\movedown_16x16.png" />
-    <Resource Include="Resources\Images\Bar\movedown_32x32.png" />
+    <Resource Include="Resources\Bars\delete_32x32.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Bars\edit_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\edit_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\movedown_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\movedown_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\moveup_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\moveup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\new_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\new_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\save_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\saveandnew_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\saveandnew_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\up_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\up_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\logo.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

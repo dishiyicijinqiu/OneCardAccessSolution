@@ -1,6 +1,8 @@
 ﻿using DevExpress.Mvvm;
 using DevExpress.Mvvm.UI;
 using DevExpress.Xpf.Ribbon;
+using FengSharp.OneCardAccess.Client.PC.ViewModel;
+using FengSharp.OneCardAccess.Common;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +17,25 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public RegisterCollectionView()
         {
             InitializeComponent();
+            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
+            this.DataContext = new RegisterCollectionView();
+        }
+
+        private void OnShowDocument(MainViewModel sender, ShowDocumentEventArgs args)
+        {
+            if (sender == this.DataContext)
+            {
+                var docInfo = args.DocumentInfo;
+
+                var doc = new DocumentPanel();
+                doc.AllowDrag = false;
+                doc.IsActive = true;
+                doc.FloatOnDoubleClick = false;
+                doc.Caption = docInfo.DocumentTitle;
+                var type = System.Type.GetType(docInfo.DocumentType);
+                doc.Content = Activator.CreateInstance(type);
+                mdiContainer.Add(doc);
+            }
         }
 
         private void BarButtonItem_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)

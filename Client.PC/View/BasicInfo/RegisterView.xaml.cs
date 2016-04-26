@@ -28,7 +28,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public RegisterView(object ParentViewModel, RegisterEditMessage registerEditMessage)
         {
             InitializeComponent();
-            this.DataContext = new RegisterViewModel(ParentViewModel, registerEditMessage);
+            var vm = new RegisterViewModel(ParentViewModel, registerEditMessage);
+            this.DataContext = vm;
+            vm.Init();
         }
     }
 }

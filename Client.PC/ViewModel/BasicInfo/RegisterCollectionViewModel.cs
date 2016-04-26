@@ -17,10 +17,13 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand CloseCommand { get; private set; }
         public RegisterCollectionViewModel()
         {
+            DeleteCommand = new DelegateCommand<System.Collections.IList>(DeleteWithConfirm);
+            CloseCommand = new DelegateCommand(Close);
+        }
+        public void Init()
+        {
             try
             {
-                DeleteCommand = new DelegateCommand<System.Collections.IList>(Delete);
-                CloseCommand = new DelegateCommand(Close);
                 var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
                 Items = new ObservableCollection<FirstRegisterEntity>(list);
                 DefaultEventAggregator.Current.GetEvent<RegisterViewEditedEvent<object>>().Subscribe(OnRegisterViewEdited);
@@ -31,10 +34,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
             }
         }
-        public void Delete(System.Collections.IList SelectedEntitys)
+
+        private void DeleteCore(MsgResult msgResult, object[] param)
         {
             try
             {
+                if (msgResult != MsgResult.Yes)
+                    return;
+                var SelectedEntitys = param[0] as System.Collections.IList;
                 if (SelectedEntitys == null || SelectedEntitys.Count <= 0)
                 {
                     DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
@@ -45,11 +52,22 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(listToDelete);
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
                     Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_DeleteSuccess));
+                foreach (var item in listToDelete)
+                {
+                    this.Items.Remove(item as FirstRegisterEntity);
+                }
             }
             catch (Exception ex)
             {
                 DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
+        }
+
+        public void DeleteWithConfirm(System.Collections.IList SelectedEntitys)
+        {
+            var deleteArgs =
+                new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, null, MsgButton.YesNo, MsgImage.Information, DeleteCore, SelectedEntitys);
+            DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, deleteArgs);
         }
 
         #region propertys
@@ -67,6 +85,20 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
+        //FirstRegisterEntity
+        //SelectedEntity
+
+        private FirstRegisterEntity _SelectedEntity;
+        public FirstRegisterEntity SelectedEntity
+        {
+            get { return _SelectedEntity; }
+            set
+            {
+                _SelectedEntity = value;
+                RaisePropertyChanged("SelectedEntity");
+            }
+        }
+
         #endregion
         #region commandmethods
         public void Close()
@@ -100,9 +132,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                             if (args.RegisterEditMessage.IsContinue)
                             {
                                 var copyItem = Items.FirstOrDefault(t => t.RegisterId == args.RegisterEditMessage.CopyKey);
+                                SelectedEntity = copyItem;
                                 DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
                                     Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage(_CopyKey: copyItem.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
-
                             }
                         }
                         break;
@@ -113,18 +145,24 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                             var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.RegisterEditMessage.Key);
                             var itemIndex = Items.IndexOf(oldItem);
                             Items[itemIndex] = newItem;
-                            int nextIndex = itemIndex + 1;
-                            if (Items.Count > nextIndex)
+                            if (args.RegisterEditMessage.IsContinue)
                             {
-                                var nextItem = Items[nextIndex];
-                                DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                    Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
+                                int nextIndex = itemIndex + 1;
+                                if (Items.Count > nextIndex)
+                                {
+                                    var nextItem = Items[nextIndex];
+                                    SelectedEntity = nextItem;
+                                    DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
+                                        Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
+                                }
+                                else
+                                {
+                                    SelectedEntity = Items[itemIndex];
+                                    DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
+                                        Publish(this, new RegisterViewDataContextChangeEventArgs(null));
+                                }
                             }
-                            else
-                            {
-                                DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                    Publish(this, new RegisterViewDataContextChangeEventArgs(null));
-                            }
+                            SelectedEntity = Items[itemIndex];
                         }
                         break;
                     default:

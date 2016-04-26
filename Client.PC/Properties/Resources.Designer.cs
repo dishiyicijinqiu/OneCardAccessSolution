@@ -583,6 +583,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 确实要删除吗？ 的本地化字符串。
+        /// </summary>
+        public static string Info_ConfirmToDelete {
+            get {
+                return ResourceManager.GetString("Info_ConfirmToDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 确实要退出吗？ 的本地化字符串。
         /// </summary>
         public static string Info_ConfirmToExit {

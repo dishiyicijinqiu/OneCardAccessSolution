@@ -17,6 +17,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         #endregion
         public LoginViewModel(bool isReLogin)
         {
+            this.IsReLogin = isReLogin;
+            LoginCommand = new DelegateCommand(Login);
+        }
+        public void Init()
+        {
             if (Session.Current != null)
             {
                 this.UserNo = Session.Current.SessionClientNo;
@@ -25,8 +30,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 this.UserNo = string.Empty;
             }
-            this.IsReLogin = isReLogin;
-            LoginCommand = new DelegateCommand(Login);
         }
 
         #region Propertys

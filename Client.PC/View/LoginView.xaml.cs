@@ -18,7 +18,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         public LoginView(bool isReLogin)
         {
             InitializeComponent();
-            this.DataContext = new LoginViewModel(isReLogin);
+            var vm = new LoginViewModel(isReLogin);
+            this.DataContext = vm;
+            vm.Init();
             this.Loaded += LoginView_Loaded;
         }
         protected override void Init()

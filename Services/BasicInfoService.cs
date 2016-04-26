@@ -167,7 +167,9 @@ namespace FengSharp.OneCardAccess.Services
             {
                 foreach (var entity in RegisterEntitys)
                 {
-                    if (!base.DeleteEntity<RegisterEntity>(entity, tran))
+                    var dbentity = new T_Register();
+                    dbentity.CopyValueFrom(entity);
+                    if (!base.DeleteEntity<T_Register>(dbentity, tran))
                     {
                         throw new BusinessException(Properties.Resources.Error_DeleteFailed);
                     }

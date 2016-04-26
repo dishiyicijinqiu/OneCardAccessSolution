@@ -17,7 +17,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         public BaseUserControl()
         {
             Init();
-            
+
         }
 
         protected virtual void Init()
@@ -46,7 +46,11 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         {
             if (sender == this.DataContext)
             {
-                DXMessageBox.Show(this, args.MessageText, args.Caption ?? Properties.Resources.Info_Title);
+                var diaresult = DXMessageBox.Show(this, args.MessageText,
+                    args.Caption ?? Properties.Resources.Info_Title,
+                    (MessageBoxButton)args.MsgButton, (MessageBoxImage)args.MsgImage
+                    );
+                args.CallBack?.Invoke((MsgResult)diaresult, args.Paras);
             }
         }
 

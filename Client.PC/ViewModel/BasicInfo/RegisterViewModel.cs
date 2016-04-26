@@ -22,24 +22,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         object ParentViewModel;
         public RegisterViewModel(object ParentViewModel, RegisterEditMessage parameter)
         {
-            try
-            {
-                this.ParentViewModel = ParentViewModel;
-                Parameter = parameter;
-                Init();
-                SaveAndNewCommand = new DelegateCommand(SaveAndNew);
-                SaveCommand = new DelegateCommand(Save);
-                CloseCommand = new DelegateCommand(Close);
-
-                DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                    Subscribe(OnRegisterViewDataContextChange);
-            }
-            catch (Exception ex)
-            {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().
-             Publish(this, new ExceptionEventArgs(ex));
-                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
-            }
+            this.ParentViewModel = ParentViewModel;
+            Parameter = parameter;
+            SaveAndNewCommand = new DelegateCommand(SaveAndNew);
+            SaveCommand = new DelegateCommand(Save);
+            CloseCommand = new DelegateCommand(Close);
+            DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().Subscribe(OnRegisterViewDataContextChange);
         }
 
         private void OnRegisterViewDataContextChange(object sender, RegisterViewDataContextChangeEventArgs args)
@@ -57,39 +45,48 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 this.Init();
             }
         }
-        private void Init()
+        public void Init()
         {
-            Entity = SecondRegisterEntity.CreateEntity();
-            if (Parameter == null)
-                throw new Exception(Properties.Resources.Error_ParameterIsError);
-            switch (Parameter.EntityEditMode)
+            try
             {
-                case EntityEditMode.Add:
-                    {
-                        var newEntity = SecondRegisterEntity.CreateEntity();
-                        Entity.CopyValueFrom(newEntity);
-                    }
-                    break;
-                case EntityEditMode.CopyAdd:
-                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(Parameter.CopyKey);
-                    Entity = SecondRegisterEntity.CreateEntity();
-                    Entity.CopyValueFrom(copyEntity,
-                        new List<string>(PCConfig.CreateAndModifyInfoColNames)
-                    {
-                            "RegisterId","Register_FileEntitys"
-                    });
-                    break;
-                case EntityEditMode.Edit:
-                    {
-                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(Parameter.Key);
-                        Entity.CopyValueFrom(newEntity);
-                    }
-                    break;
-                default:
-                    throw new Exception(Properties.Resources.Error_ParameterIsError);
-            }
-            if (Entity == null)
                 Entity = SecondRegisterEntity.CreateEntity();
+                if (Parameter == null)
+                    throw new Exception(Properties.Resources.Error_ParameterIsError);
+                switch (Parameter.EntityEditMode)
+                {
+                    case EntityEditMode.Add:
+                        {
+                            var newEntity = SecondRegisterEntity.CreateEntity();
+                            Entity.CopyValueFrom(newEntity);
+                        }
+                        break;
+                    case EntityEditMode.CopyAdd:
+                        var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(Parameter.CopyKey);
+                        Entity = SecondRegisterEntity.CreateEntity();
+                        Entity.CopyValueFrom(copyEntity,
+                            new List<string>(PCConfig.CreateAndModifyInfoColNames)
+                        {
+                            "RegisterId","Register_FileEntitys"
+                        });
+                        break;
+                    case EntityEditMode.Edit:
+                        {
+                            var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(Parameter.Key);
+                            Entity.CopyValueFrom(newEntity);
+                        }
+                        break;
+                    default:
+                        throw new Exception(Properties.Resources.Error_ParameterIsError);
+                }
+                if (Entity == null)
+                    Entity = SecondRegisterEntity.CreateEntity();
+            }
+            catch (Exception ex)
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().
+             Publish(this, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
+            }
         }
         #region propertys
         private SecondRegisterEntity _Entity;

@@ -54,7 +54,7 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" 
+            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}"
                              >
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>

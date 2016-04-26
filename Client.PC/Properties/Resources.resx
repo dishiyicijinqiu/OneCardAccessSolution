@@ -366,4 +366,7 @@
   <data name="Error_CommunicationException" xml:space="preserve">
     <value>服务或客户端应用程序中的通信错误</value>
   </data>
+  <data name="Info_ConfirmToDelete" xml:space="preserve">
+    <value>确实要删除吗？</value>
+  </data>
 </root>

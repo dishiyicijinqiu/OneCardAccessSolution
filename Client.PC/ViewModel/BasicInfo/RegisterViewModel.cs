@@ -1,14 +1,12 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
-using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
+using Microsoft.Practices.Prism.Commands;
+using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.Generic;
-using Microsoft.Practices.Prism.ViewModel;
 using System.Windows.Input;
-using DevExpress.Xpf.Core.Commands;
-using Microsoft.Practices.Prism.Commands;
-using DevExpress.Xpf.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {

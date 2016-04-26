@@ -125,6 +125,8 @@
     <Compile Include="UI\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
@@ -133,6 +135,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
+      <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
+      <DependentUpon>P_CRTempView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
       <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
     </Compile>
@@ -173,6 +181,14 @@
     <Page Include="UI\SplashScreenView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\P_CRTempCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BasicInfo\P_CRTempView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
       <Generator>MSBuild:Compile</Generator>

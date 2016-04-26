@@ -1,27 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using FengSharp.OneCardAccess.Client.PC.UI;
+using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
     /// <summary>
     /// P_CRTempView.xaml 的交互逻辑
     /// </summary>
-    public partial class P_CRTempView : UserControl
+    public partial class P_CRTempView : BaseUserControl
     {
-        public P_CRTempView()
+        public P_CRTempView(object ParentViewModel, P_CRTempEditMessage p_crTempEditMessage)
         {
             InitializeComponent();
+            var vm = new P_CRTempViewModel(ParentViewModel, p_crTempEditMessage);
+            this.DataContext = vm;
+            vm.Init();
         }
     }
 }

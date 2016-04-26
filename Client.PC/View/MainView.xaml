@@ -13,7 +13,8 @@
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+                    >
     <!--<UserControl.DataContext>
         <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
         </dxmvvm:ViewModelSourceExtension>
@@ -66,7 +67,7 @@
             <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
                 <dxd:LayoutGroup >
                     <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
-                        <dxd:DocumentPanel>
+                        <dxd:DocumentPanel ShowCloseButton="False" AllowClose="False">
 
                         </dxd:DocumentPanel>
                     </dxd:DocumentGroup>

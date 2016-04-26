@@ -11,7 +11,7 @@
                     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
-    <core:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>
+    <!--<core:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>-->
     <dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
 
     <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">

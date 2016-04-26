@@ -1,6 +1,8 @@
-﻿using DevExpress.Xpf.Ribbon;
+﻿using DevExpress.Xpf.Core;
+using DevExpress.Xpf.Ribbon;
 using FengSharp.OneCardAccess.Core;
 using System;
+using System.ComponentModel;
 using System.Windows;
 
 namespace FengSharp.OneCardAccess.Client.PC
@@ -15,6 +17,8 @@ namespace FengSharp.OneCardAccess.Client.PC
             InitializeComponent();
             this.SourceInitialized += MainWindow_SourceInitialized;
         }
+
+
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)
         {

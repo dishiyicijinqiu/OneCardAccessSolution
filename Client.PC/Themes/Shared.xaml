@@ -104,4 +104,7 @@
     <Style TargetType="dxe:TextEdit">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
     </Style>
+
+
+    <core:ViewSelectedRowsConverter x:Key="viewSelectedRowsConverter" />
 </ResourceDictionary>

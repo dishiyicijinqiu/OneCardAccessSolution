@@ -17,12 +17,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         public BaseUserControl()
         {
             Init();
-            this.Unloaded += BaseUserControl_Unloaded;
-        }
-
-        private void BaseUserControl_Unloaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            UnInit();
+            
         }
 
         protected virtual void Init()
@@ -32,7 +27,6 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Subscribe(OnException);
                 DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Subscribe(OnClose);
                 DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Subscribe(OnCloseDocument);
-                
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Subscribe(OnMessage);
             }
         }
@@ -43,6 +37,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             {
                 DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Unsubscribe(OnException);
                 DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Unsubscribe(OnClose);
+                DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Unsubscribe(OnCloseDocument);
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Unsubscribe(OnMessage);
             }
         }
@@ -60,14 +55,16 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             if (sender == this.DataContext)
             {
                 Window.GetWindow(this).Close();
+                UnInit();
             }
         }
 
-        private void OnCloseDocument(object sender, NullEventArgs args)
+        protected virtual void OnCloseDocument(object sender, NullEventArgs args)
         {
             if (sender == this.DataContext)
             {
-                DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Publish(this);
+                DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(new UICloseDocumentEventArgs(this));
+                UnInit();
             }
         }
 

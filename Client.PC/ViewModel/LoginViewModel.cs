@@ -5,11 +5,16 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.ViewModel;
+using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class LoginViewModel : NotificationObject
     {
+
+        #region Commands
+        public ICommand LoginCommand { get; private set; }
+        #endregion
         public LoginViewModel(bool isReLogin)
         {
             if (Session.Current != null)
@@ -23,14 +28,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             this.IsReLogin = isReLogin;
             LoginCommand = new DelegateCommand(Login);
         }
-
-        #region Commands
-        public DelegateCommand LoginCommand
-        {
-            get;
-            private set;
-        }
-        #endregion
 
         #region Propertys
         public string _UserNo;
@@ -84,19 +81,18 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
-                throw new System.Exception("juset a test");
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
                 LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
                 DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Publish(new LoginedEventArgs(loginresult));
             }
             catch (System.Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().
-                    Publish(this, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
         #endregion
     }
+    #region EventsDef
     public class LoginEvent : CompositePresentationEvent<LoginEventArgs> { }
     public class LoginEventArgs
     {
@@ -125,4 +121,5 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     {
 
     }
+    #endregion
 }

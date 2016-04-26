@@ -3,17 +3,14 @@ using FengSharp.OneCardAccess.Core;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
 using System;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
     public class MainViewModel
     {
-        public DelegateCommand<DocumentInfo> ShowDocumentCommand
-        {
-            get;
-            private set;
-        }
+        public ICommand ShowDocumentCommand { get; private set; }
         public MainViewModel()
         {
             DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Subscribe(TryLogin);
@@ -24,13 +21,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
-                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().
-                    Publish(this, new ShowDocumentEventArgs(docInfo));
+                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(this, new ShowDocumentEventArgs(docInfo));
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<MainViewModel>>().
-                    Publish(this, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
         #endregion
@@ -48,6 +43,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         #endregion
     }
+    #region Defs
     public class DocumentInfo
     {
         public string DocumentTitle { get; set; }
@@ -88,10 +84,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 
     public class UICloseDocumentEventArgs : NullEventArgs
     {
-        public UICloseDocumentEventArgs(object document)
+        public UICloseDocumentEventArgs(object panelContent)
         {
-            this.Document = document;
+            this.PanelContent = panelContent;
         }
-        public object Document { get; set; }
+        public object PanelContent { get; set; }
     }
+    #endregion
 }

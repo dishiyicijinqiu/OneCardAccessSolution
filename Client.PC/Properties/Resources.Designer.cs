@@ -466,6 +466,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 服务或客户端应用程序中的通信错误 的本地化字符串。
+        /// </summary>
+        public static string Error_CommunicationException {
+            get {
+                return ResourceManager.GetString("Error_CommunicationException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 连接服务器失败 的本地化字符串。
         /// </summary>
         public static string Error_ConnectionServerFailed {
@@ -597,6 +606,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Info_Loading {
             get {
                 return ResourceManager.GetString("Info_Loading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 没有下一条记录了 的本地化字符串。
+        /// </summary>
+        public static string Info_NoNext {
+            get {
+                return ResourceManager.GetString("Info_NoNext", resourceCulture);
             }
         }
         

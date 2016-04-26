@@ -14,6 +14,7 @@
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              
              
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
@@ -38,10 +39,13 @@
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarAddButtonItem_ItemClick" />
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarCopyAddButtonItem_ItemClick" />
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}"  ItemClick="BarEditButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" 
+                                               Command="{Binding DeleteCommand}"
+                                               CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"
+                                               />
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
@@ -50,13 +54,14 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid">
+            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" 
+                             >
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
-                    <dxg:GridColumn FieldName="RegisterProductName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
+                    <dxg:GridColumn FieldName="RegisterName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
                     <dxg:GridColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}"/>
                     <dxg:GridColumn FieldName="RegisterNo1" Header="{x:Static res:Resources.Entity_Register_RegisterNo1}"/>
-                    <dxg:GridColumn FieldName="RegisterProductName1" Header="{x:Static res:Resources.Entity_Register_RegisterName1}"/>
+                    <dxg:GridColumn FieldName="RegisterName1" Header="{x:Static res:Resources.Entity_Register_RegisterName1}"/>
                     <dxg:GridColumn FieldName="StandardCode1" Header="{x:Static res:Resources.Entity_Register_StandardCode1}"/>
                     <dxg:GridColumn FieldName="StartDate" Header="{x:Static res:Resources.Entity_Register_StartDate}"/>
                     <dxg:GridColumn FieldName="EndDate" Header="{x:Static res:Resources.Entity_Register_EndDate}"/>
@@ -67,13 +72,12 @@
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
                 </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
-                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" Name="tableview">
-                        <i:Interaction.Triggers>
+                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
+                        <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="RowDoubleClick">
-                                <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}"
-                                   CommandParameter="{Binding FocusedRow,ElementName=tableview}"/>
+                                <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}" />
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>
+                        </i:Interaction.Triggers>-->
                     </dxg:TableView>
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>

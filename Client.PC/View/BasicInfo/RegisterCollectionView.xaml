@@ -72,7 +72,8 @@
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
                 </dxg:GridControl.Columns>
                 <dxg:GridControl.View>
-                    <dxg:TableView RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}" Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
+                    <dxg:TableView Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
+                        <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                         <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="RowDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}" />

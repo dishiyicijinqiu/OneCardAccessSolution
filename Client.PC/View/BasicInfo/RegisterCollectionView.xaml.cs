@@ -2,8 +2,6 @@
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using System.Windows;
-using System.Linq;
-using System.Windows.Markup;
 using System;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
@@ -101,7 +99,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             }
             CreateRegisterView(new RegisterEditMessage(SelectedRow.RegisterId, EntityEditMode.Edit));
         }
-
         private void tableview_RowDoubleClick(object sender, DevExpress.Xpf.Grid.RowDoubleClickEventArgs e)
         {
             try

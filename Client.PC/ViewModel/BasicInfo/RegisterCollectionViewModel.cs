@@ -85,8 +85,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
-        //FirstRegisterEntity
-        //SelectedEntity
 
         private FirstRegisterEntity _SelectedEntity;
         public FirstRegisterEntity SelectedEntity

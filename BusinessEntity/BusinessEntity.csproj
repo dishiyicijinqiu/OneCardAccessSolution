@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicInfo\P_CRTempEntity.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity_Auto.cs" />
     <Compile Include="BasicInfo\RegisterEntity.cs" />
     <Compile Include="BasicInfo\RegisterEntity_Auto.cs" />

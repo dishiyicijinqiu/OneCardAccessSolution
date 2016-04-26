@@ -3,6 +3,8 @@ using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
+    [KnownType(typeof(FirstRegisterEntity))]
+    [KnownType(typeof(SecondRegisterEntity))]
     public partial class RegisterEntity
     {
         public static RegisterEntity CreateEntity()
@@ -43,7 +45,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
             }
         }
     }
-
+    [KnownType(typeof(Register_FileEntity))]
     public class SecondRegisterEntity : FirstRegisterEntity
     {
         public new static SecondRegisterEntity CreateEntity()

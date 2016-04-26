@@ -360,4 +360,10 @@
   <data name="Menu_P_CRTemp" xml:space="preserve">
     <value>产品检验报告模板</value>
   </data>
+  <data name="Info_NoNext" xml:space="preserve">
+    <value>没有下一条记录了</value>
+  </data>
+  <data name="Error_CommunicationException" xml:space="preserve">
+    <value>服务或客户端应用程序中的通信错误</value>
+  </data>
 </root>

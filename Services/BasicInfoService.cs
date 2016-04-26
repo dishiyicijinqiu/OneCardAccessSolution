@@ -171,7 +171,7 @@ namespace FengSharp.OneCardAccess.Services
                     {
                         throw new BusinessException(Properties.Resources.Error_DeleteFailed);
                     }
-                    base.DeleteRelationEntitys<int, int>(entity.RegisterId, tran);
+                    //base.DeleteRelationEntitys<int, int>(entity.RegisterId, tran);
                 }
             });
         }

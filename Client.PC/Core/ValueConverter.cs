@@ -3,6 +3,7 @@ using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
+using System.Linq;
 
 namespace FengSharp.OneCardAccess.Core
 {
@@ -16,7 +17,6 @@ namespace FengSharp.OneCardAccess.Core
 
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-
             var grid = (GridControl)values[0];
             var rowHandle = (int)values[1];
             var result = grid.GetListIndexByRowHandle(rowHandle);
@@ -63,26 +63,45 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
-
-    [ValueConversion(typeof(EntityEditMode), typeof(bool))]
-    public class EditModeVisibleConverter : IValueConverter
+    public class ViewSelectedRowsConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            EntityEditMode re = (EntityEditMode)value;
-            switch (re)
-            {
-                case EntityEditMode.Add:
-                case EntityEditMode.CopyAdd:
-                    return true;
-                default:
-                    return false;
-            }
+            System.Collections.IList list = value as System.Collections.IList;
+            if (list == null) return null;
+            return list.Cast<object>().ToList();
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            throw new NotImplementedException();
+            return value;
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
         }
     }
+
+    //[ValueConversion(typeof(EntityEditMode), typeof(bool))]
+    //public class EditModeVisibleConverter : IValueConverter
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        EntityEditMode re = (EntityEditMode)value;
+    //        switch (re)
+    //        {
+    //            case EntityEditMode.Add:
+    //            case EntityEditMode.CopyAdd:
+    //                return true;
+    //            default:
+    //                return false;
+    //        }
+    //    }
+
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

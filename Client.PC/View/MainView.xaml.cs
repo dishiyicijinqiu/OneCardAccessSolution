@@ -24,16 +24,25 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             InitializeComponent();
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                this.Width = System.Windows.Forms.SystemInformation.WorkingArea.Width;
-                this.Height = System.Windows.Forms.SystemInformation.WorkingArea.Height;
-                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
-                DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginSuccess);
-                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
-                DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Subscribe(OnCloseDocument);
-                this.Unloaded += MainView_Unloaded;
                 this.Loaded += MainView_Loaded;
-                this.DataContext = new MainViewModel();
             }
+        }
+        protected override void Init()
+        {
+            base.Init();
+            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
+            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginSuccess);
+            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
+            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Subscribe(OnCloseDocument);
+            this.DataContext = new MainViewModel();
+        }
+        protected override void UnInit()
+        {
+            base.UnInit();
+            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Unsubscribe(OnLogin);
+            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Unsubscribe(OnLoginSuccess);
+            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Unsubscribe(OnShowDocument);
+            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Unsubscribe(OnCloseDocument);
         }
 
         private void CloseDocument(DocumentPanel panel)
@@ -46,15 +55,15 @@ namespace FengSharp.OneCardAccess.Client.PC.View
 
         private void OnCloseDocument(UICloseDocumentEventArgs args)
         {
-            if (docs.ContainsKey(args.Document))
+            if (docs.ContainsKey(args.PanelContent))
             {
                 lock (docs)
                 {
-                    if (docs.ContainsKey(args.Document))
+                    if (docs.ContainsKey(args.PanelContent))
                     {
-                        var document = docs[args.Document];
+                        var document = docs[args.PanelContent];
                         dockLayoutManager.DockController.RemovePanel(document);
-                        docs.Remove(args.Document);
+                        docs.Remove(args.PanelContent);
                     }
                 }
             }
@@ -94,13 +103,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                 DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
                 isfirstlogin = false;
             }
-        }
-        private void MainView_Unloaded(object sender, RoutedEventArgs e)
-        {
-            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Unsubscribe(OnLogin);
-            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Unsubscribe(OnLoginSuccess);
-            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Unsubscribe(OnShowDocument);
-            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Unsubscribe(OnCloseDocument);
         }
         #endregion
         #region EventAggregator Events

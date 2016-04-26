@@ -16,24 +16,19 @@ using System.ComponentModel;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.Client.PC.UI;
+using DevExpress.Xpf.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
     /// <summary>
     /// RegisterView.xaml 的交互逻辑
     /// </summary>
-    public partial class RegisterView : UserControl
+    public partial class RegisterView : BaseUserControl
     {
-        public RegisterView(RegisterEditMessage registerEditMessage)
+        public RegisterView(object ParentViewModel, RegisterEditMessage registerEditMessage)
         {
             InitializeComponent();
-            if (!DesignerProperties.GetIsInDesignMode(this))
-            {
-                //DefaultEventAggregator.Current.GetEvent<ExceptionEvent<RegisterViewModel>>().Subscribe(OnException);
-                //DefaultEventAggregator.Current.GetEvent<CloseEvent<RegisterViewModel>>().Subscribe(OnClose);
-                //DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<RegisterViewModel>>().Subscribe(OnMessage);
-                //this.DataContext = new RegisterViewModel(registerEditMessage);
-            }
+            this.DataContext = new RegisterViewModel(ParentViewModel, registerEditMessage);
         }
     }
 }

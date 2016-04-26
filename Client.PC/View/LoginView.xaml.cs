@@ -18,15 +18,17 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         public LoginView(bool isReLogin)
         {
             InitializeComponent();
-
-            DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Subscribe(OnLogined);
             this.DataContext = new LoginViewModel(isReLogin);
             this.Loaded += LoginView_Loaded;
-            this.Unloaded += LoginView_Unloaded;
         }
-
-        private void LoginView_Unloaded(object sender, RoutedEventArgs e)
+        protected override void Init()
         {
+            base.Init();
+            DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Subscribe(OnLogined);
+        }
+        protected override void UnInit()
+        {
+            base.UnInit();
             DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Unsubscribe(OnLogined);
         }
         public void OnLogined(LoginedEventArgs args)

@@ -369,4 +369,7 @@
   <data name="Info_ConfirmToDelete" xml:space="preserve">
     <value>确实要删除吗？</value>
   </data>
+  <data name="View_P_CRTempView_P_CRTempImage" xml:space="preserve">
+    <value>检验报告模板</value>
+  </data>
 </root>

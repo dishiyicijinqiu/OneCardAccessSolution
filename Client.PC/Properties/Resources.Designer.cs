@@ -754,6 +754,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 检验报告模板 的本地化字符串。
+        /// </summary>
+        public static string View_P_CRTempView_P_CRTempImage {
+            get {
+                return ResourceManager.GetString("View_P_CRTempView_P_CRTempImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 产品检验报告模板 的本地化字符串。
         /// </summary>
         public static string View_P_CRTempView_Title {

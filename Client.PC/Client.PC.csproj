@@ -34,8 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>FengSharp.OneCardAccess.Client.PC.App</StartupObject>
@@ -292,7 +291,10 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\P_CRTemp_16x16.png" />
+    <Resource Include="Resources\P_CRTemp_32x32.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Bars\add_16x16.png" />
   </ItemGroup>
@@ -370,6 +372,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

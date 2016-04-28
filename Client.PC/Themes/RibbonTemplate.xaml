@@ -29,11 +29,17 @@
             <dxr:ApplicationMenu>
                 <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_NewReport}" LargeGlyph="{dx:DXImage Image=New_32x32.png}" 
                                    Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.NewDocument, RelativeSource={RelativeSource Self}}" 
-                                   IsVisible="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocumentViewSource.IsPersistent, RelativeSource={RelativeSource Self}, Converter={dxmvvm:BooleanNegationConverter}}"
+                                   IsVisible="False"
                     />
-                <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_OpenReport}"  LargeGlyph="{dx:DXImage Image=Open_32x32.png}"  Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenDocument, RelativeSource={RelativeSource Self}}" />
+                <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_OpenReport}"  LargeGlyph="{dx:DXImage Image=Open_32x32.png}"  
+                                   Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenDocument, RelativeSource={RelativeSource Self}}"
+                                   IsVisible="False"
+                                   />
                 <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveReport}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocument.Commands.Save, RelativeSource={RelativeSource Self}}" IsEnabled="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocument, RelativeSource={RelativeSource Self}, Converter={dxmvvm:ObjectToBooleanConverter}}" />
-                <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveAsReport}" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocument.Commands.SaveAs, RelativeSource={RelativeSource Self}}" />
+                <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveAsReport}" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}" 
+                                   Command="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocument.Commands.SaveAs, RelativeSource={RelativeSource Self}}"
+                                   IsVisible="False"
+                                   />
                 <dxb:BarItemSeparator />
                 <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Exit}" LargeGlyph="{dx:DXImage Image=Close_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocument.Commands.Exit, RelativeSource={RelativeSource Self}}" />
             </dxr:ApplicationMenu>
@@ -47,11 +53,22 @@
                     <dxr:RibbonPageGroup Caption="{x:Static res:Resources.WpfReportDesignerStringId_NewReport}">
                         <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_NewReport}" Glyph="{dx:DXImage Image=New_16x16.png}" LargeGlyph="{dx:DXImage Image=New_32x32.png}" 
                                            Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.NewDocument, RelativeSource={RelativeSource TemplatedParent}}" 
-                                           IsVisible="{Binding Path=(designer:ReportDesigner.Designer).ActiveDocumentViewSource.IsPersistent, RelativeSource={RelativeSource TemplatedParent}, Converter={dxmvvm:BooleanNegationConverter}}"/>
-                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_OpenReport}" Glyph="{dx:DXImage Image=Open_16x16.png}" LargeGlyph="{dx:DXImage Image=Open_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenDocument, RelativeSource={RelativeSource TemplatedParent}}" />
-                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveReport}" Glyph="{dx:DXImage Image=Save_16x16.png}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.DesignerPane).Document.Commands.Save, RelativeSource={RelativeSource TemplatedParent}}" IsEnabled="{Binding Path=(designer:ReportDesigner.DesignerPane).Document, RelativeSource={RelativeSource Self}, Converter={dxmvvm:ObjectToBooleanConverter}}" />
-                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveAsReport}" Glyph="{dx:DXImage Image=SaveAs_16x16.png}" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.DesignerPane).Document.Commands.SaveAs, RelativeSource={RelativeSource TemplatedParent}}" />
-                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Preview}" Glyph="{dx:DXImage Image=Preview_16x16.png}" LargeGlyph="{dx:DXImage Image=Preview_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenPreview, RelativeSource={RelativeSource TemplatedParent}}" CommandParameter="{Binding Path=(designer:ReportDesigner.DesignerPane).Document, RelativeSource={RelativeSource TemplatedParent}}" />
+                                           IsVisible="False"/>
+                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_OpenReport}" Glyph="{dx:DXImage Image=Open_16x16.png}" LargeGlyph="{dx:DXImage Image=Open_32x32.png}" 
+                                           Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenDocument, RelativeSource={RelativeSource TemplatedParent}}"
+                                           IsVisible="False"
+                                           />
+                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveReport}" Glyph="{dx:DXImage Image=Save_16x16.png}" LargeGlyph="{dx:DXImage Image=Save_32x32.png}" 
+                                           Command="{Binding Path=(designer:ReportDesigner.DesignerPane).Document.Commands.Save, RelativeSource={RelativeSource TemplatedParent}}" 
+                                           IsEnabled="{Binding Path=(designer:ReportDesigner.DesignerPane).Document, RelativeSource={RelativeSource Self}, Converter={dxmvvm:ObjectToBooleanConverter}}"
+                                           />
+                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_SaveAsReport}" Glyph="{dx:DXImage Image=SaveAs_16x16.png}" LargeGlyph="{dx:DXImage Image=SaveAs_32x32.png}" 
+                                           Command="{Binding Path=(designer:ReportDesigner.DesignerPane).Document.Commands.SaveAs, RelativeSource={RelativeSource TemplatedParent}}"
+                                           IsVisible="False"
+                                           />
+                        <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Preview}" Glyph="{dx:DXImage Image=Preview_16x16.png}" LargeGlyph="{dx:DXImage Image=Preview_32x32.png}" 
+                                           Command="{Binding Path=(designer:ReportDesigner.Designer).Commands.OpenPreview, RelativeSource={RelativeSource TemplatedParent}}" 
+                                           CommandParameter="{Binding Path=(designer:ReportDesigner.DesignerPane).Document, RelativeSource={RelativeSource TemplatedParent}}" />
                     </dxr:RibbonPageGroup>
                     <dxr:RibbonPageGroup Caption="{x:Static res:Resources.WpfReportDesignerStringId_EditGroup}">
                         <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Delete}" Glyph="{dx:DXImage Image=Delete_16x16.png}" LargeGlyph="{dx:DXImage Image=Delete_32x32.png}" Command="{Binding Path=(designer:ReportDesigner.DesignerPane).Diagram.Commands.Delete, RelativeSource={RelativeSource TemplatedParent}}" />

@@ -24,7 +24,9 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         {
             InitializeComponent();
             this.reportDesigner.OpenDocument(report);
-            
+            reportDesigner = new DevExpress.Xpf.Reports.UserDesigner.ReportDesigner();
+
+
         }
     }
 }

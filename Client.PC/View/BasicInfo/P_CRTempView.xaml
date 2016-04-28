@@ -63,14 +63,17 @@
                     </dxlc:LayoutItem>-->
 
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">
-                        <!--<Button Background="Transparent">
+                        <Button Background="Transparent" Width="100" Height="45" Click="Button_Click">
                             <Button.Content>
-                            </Button.Content>
-                        </Button>-->
-                        <Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
+                                <Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
                                        Stretch="None" Width="100" Height="45" />
+                            </Button.Content>
+                        </Button>
                         <!--<dxe:TextEdit EditValue="{Binding CRTempPath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
                     </dxlc:LayoutItem>
+
+                    <!--<Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
+                                       Stretch="None" Width="100" Height="45" />-->
 
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">

@@ -1,0 +1,38 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+        xmlns:dxdiag="clr-namespace:DevExpress.Xpf.Diagram;assembly=DevExpress.Xpf.Diagram.v15.1.Core"
+        xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+        xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+          xmlns:res="clr-namespace:DevExpress.Xpf.WpfReportDesignerLanguage.Properties;assembly=DevExpress.Xpf.WpfReportDesignerLanguage"
+        xmlns:xrdiagram="clr-namespace:DevExpress.Xpf.Reports.UserDesigner.XRDiagram;assembly=DevExpress.Xpf.WpfReportDesigner.v15.1">
+
+    <Style TargetType="xrdiagram:XRDiagramItem">
+        <Setter Property="xrdiagram:XRDiagramItemBase.DiagramItem" Value="{Binding RelativeSource={RelativeSource Self}}" />
+        <Setter Property="dxmvvm:Interaction.BehaviorsTemplate">
+            <Setter.Value>
+                <DataTemplate>
+                    <ContentControl>
+                        <dxb:ControllerBehavior>
+                            <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Cut}" Glyph="{dx:DXImage Image=Cut_16x16.png}" Command="{Binding Path=(xrdiagram:XRDiagramItemBase.DiagramItem).(xrdiagram:XRDiagramItemBase.Diagram).Commands.Cut, RelativeSource={RelativeSource Self}}" />
+                            <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Copy}" Glyph="{dx:DXImage Image=Copy_16x16.png}" Command="{Binding Path=(xrdiagram:XRDiagramItemBase.DiagramItem).(xrdiagram:XRDiagramItemBase.Diagram).Commands.Copy, RelativeSource={RelativeSource Self}}" />
+                            <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Paste}" Glyph="{dx:DXImage Image=Paste_16x16.png}" Command="{Binding Path=(xrdiagram:XRDiagramItemBase.DiagramItem).(xrdiagram:XRDiagramItemBase.Diagram).Commands.Paste, RelativeSource={RelativeSource Self}}" />
+                            <dxb:BarItemSeparator />
+                            <dxb:BarButtonItem Content="{x:Static res:Resources.WpfReportDesignerStringId_Properties}" Glyph="{dx:DXImage Image=Properties_16x16.png}" Command="{Binding Path=(xrdiagram:XRDiagramItemBase.DiagramItem).(xrdiagram:XRDiagramItemBase.Diagram).XRCommands.ShowProperties, RelativeSource={RelativeSource Self}}" />
+                        </dxb:ControllerBehavior>
+                    </ContentControl>
+                </DataTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="xrdiagram:XRDiagramItem">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

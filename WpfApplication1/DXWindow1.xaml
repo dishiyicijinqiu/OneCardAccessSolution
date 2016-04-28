@@ -1,0 +1,12 @@
+﻿<dx:DXWindow
+    x:Class="WpfApplication1.DXWindow1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:designer="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesigner" 
+    Title="DXWindow1" Height="492.664" Width="1051.817"
+    >
+    <Grid>
+        <designer:ReportDesigner x:Name="reportDesigner"/>
+    </Grid>
+</dx:DXWindow>

@@ -8,8 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FengSharp.OneCardAccess.ReportTool
-{
+namespace FengSharp.OneCardAccess.Client.PC.ReportTool {
     using System;
     
     
@@ -40,7 +39,7 @@ namespace FengSharp.OneCardAccess.ReportTool
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WindowsFormsApplication2.XRDesignRibbonControllerResources", typeof(XRDesignRibbonControllerResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources", typeof(XRDesignRibbonControllerResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

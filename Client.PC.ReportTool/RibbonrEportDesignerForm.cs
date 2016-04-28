@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 
-namespace FengSharp.OneCardAccess.ReportTool
+namespace FengSharp.OneCardAccess.Client.PC.ReportTool
 {
     public partial class RibbonrEportDesignerForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {

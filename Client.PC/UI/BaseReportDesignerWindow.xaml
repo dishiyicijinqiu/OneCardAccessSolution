@@ -1,0 +1,25 @@
+﻿<dxr:DXRibbonWindow
+    x:Class="FengSharp.OneCardAccess.Client.PC.UI.BaseReportDesignerWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:designer="http://schemas.devexpress.com/winfx/2008/xaml/reports/userdesigner" 
+    Title="BaseReportDesignerWindow" Height="600" Width="800"
+    WindowState="Maximized"
+    WindowStartupLocation="CenterOwner"
+    >
+    <dxr:DXRibbonWindow.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/RibbonTemplate.xaml"/>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/ReportDesignerClassicView.xaml"/>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/XRDiagram/BandDiagramItem.xaml"/>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/XRDiagram/XRTableCellDiagramItem.xaml"/>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/XRDiagram/XRDiagramItem.xaml"/>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/XRDiagram/XRDiagramRootItem.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </dxr:DXRibbonWindow.Resources>
+    <designer:ReportDesigner x:Name="reportDesigner"/>
+</dxr:DXRibbonWindow>

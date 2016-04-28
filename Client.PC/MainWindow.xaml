@@ -7,7 +7,7 @@
     xmlns:View="clr-namespace:FengSharp.OneCardAccess.Client.PC.View" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     WindowStartupLocation="CenterScreen"
-    
+    ShowInTaskbar="False"
     WindowState="Maximized"
     SizeToContent="Manual"
     Opacity="0" 

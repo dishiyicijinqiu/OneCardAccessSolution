@@ -63,6 +63,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.WpfReportDesigner.v15.1.dll</HintPath>
     </Reference>
+    <Reference Include="DevExpress.XtraBars.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -128,6 +129,14 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="ReportTool\PrintRibbonControllerResources.Designer.cs" />
+    <Compile Include="ReportTool\RibbonrEportDesignerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportTool\RibbonrEportDesignerForm.designer.cs">
+      <DependentUpon>RibbonrEportDesignerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportTool\XRDesignRibbonControllerResources.Designer.cs" />
     <Compile Include="UI\BaseReportDesignerWindow.xaml.cs">
       <DependentUpon>BaseReportDesignerWindow.xaml</DependentUpon>
     </Compile>
@@ -269,6 +278,11 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ReportTool\PrintRibbonControllerResources.resx" />
+    <EmbeddedResource Include="ReportTool\RibbonrEportDesignerForm.resx">
+      <DependentUpon>RibbonrEportDesignerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportTool\XRDesignRibbonControllerResources.resx" />
     <None Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.zh-Hans.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

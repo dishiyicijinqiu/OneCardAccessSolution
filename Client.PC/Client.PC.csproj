@@ -129,14 +129,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="ReportTool\PrintRibbonControllerResources.Designer.cs" />
-    <Compile Include="ReportTool\RibbonrEportDesignerForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ReportTool\RibbonrEportDesignerForm.designer.cs">
-      <DependentUpon>RibbonrEportDesignerForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ReportTool\XRDesignRibbonControllerResources.Designer.cs" />
     <Compile Include="UI\BaseReportDesignerWindow.xaml.cs">
       <DependentUpon>BaseReportDesignerWindow.xaml</DependentUpon>
     </Compile>
@@ -278,11 +270,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ReportTool\PrintRibbonControllerResources.resx" />
-    <EmbeddedResource Include="ReportTool\RibbonrEportDesignerForm.resx">
-      <DependentUpon>RibbonrEportDesignerForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ReportTool\XRDesignRibbonControllerResources.resx" />
     <None Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.zh-Hans.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -446,7 +433,9 @@
   <ItemGroup>
     <Resource Include="logo.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="ReportTool\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

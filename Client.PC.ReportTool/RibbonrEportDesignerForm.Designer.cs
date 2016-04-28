@@ -1,4 +1,4 @@
-﻿namespace FengSharp.OneCardAccess.ReportTool
+﻿namespace FengSharp.OneCardAccess.Client.PC.ReportTool
 {
     partial class RibbonrEportDesignerForm
     {
@@ -106,7 +106,6 @@
             DevExpress.Utils.SuperToolTip superToolTip26 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem26 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem26 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonrEportDesignerForm));
             DevExpress.Utils.SuperToolTip superToolTip27 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem27 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem27 = new DevExpress.Utils.ToolTipItem();
@@ -125,6 +124,7 @@
             DevExpress.Utils.SuperToolTip superToolTip32 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem32 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem32 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RibbonrEportDesignerForm));
             DevExpress.Utils.SuperToolTip superToolTip33 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem33 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem33 = new DevExpress.Utils.ToolTipItem();
@@ -326,6 +326,33 @@
             DevExpress.Utils.SuperToolTip superToolTip99 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem99 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem99 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip100 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem100 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem100 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip101 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem101 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem101 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip102 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem102 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem102 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip103 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem103 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem103 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip104 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem104 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem104 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip105 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem105 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem105 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip106 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem106 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem106 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip107 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem107 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem107 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip108 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem108 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem108 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener1 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
             DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener2 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
             DevExpress.XtraReports.UserDesigner.XRDesignPanelListener xrDesignPanelListener3 = new DevExpress.XtraReports.UserDesigner.XRDesignPanelListener();
@@ -337,6 +364,12 @@
             this.xrDesignRibbonController1 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonController();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.applicationMenu1 = new DevExpress.XtraBars.Ribbon.ApplicationMenu();
+            this.commandBarItem31 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem34 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem32 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem33 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem52 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem53 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem1 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem2 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem3 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
@@ -369,10 +402,10 @@
             this.commandBarItem28 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem29 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem30 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
-            this.commandBarItem32 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem35 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem36 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem37 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem38 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem39 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem40 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.commandBarItem41 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
@@ -387,8 +420,11 @@
             this.designRepositoryItemComboBox1 = new DevExpress.XtraReports.UserDesigner.DesignRepositoryItemComboBox();
             this.barDockPanelsListItem1 = new DevExpress.XtraReports.UserDesigner.BarDockPanelsListItem();
             this.scriptsCommandBarItem1 = new DevExpress.XtraReports.UserDesigner.ScriptsCommandBarItem();
-            this.commandBarItem52 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
-            this.commandBarItem53 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem47 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem48 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem49 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem50 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
+            this.commandBarItem51 = new DevExpress.XtraReports.UserDesigner.CommandBarItem();
             this.xrDesignBarButtonGroup1 = new DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup();
             this.xrDesignBarButtonGroup2 = new DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup();
             this.xrDesignBarButtonGroup3 = new DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup();
@@ -456,6 +492,7 @@
             this.zoomTrackBarEditItem1 = new DevExpress.XtraPrinting.Preview.ZoomTrackBarEditItem();
             this.repositoryItemZoomTrackBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar();
             this.xrToolboxPageCategory1 = new DevExpress.XtraReports.UserDesigner.XRToolboxPageCategory();
+            this.ribbonPage2 = new DevExpress.XtraReports.UserDesigner.XRToolboxRibbonPage();
             this.ribbonPage1 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonPage();
             this.xrDesignRibbonPageGroup1 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup();
             this.xrDesignRibbonPageGroup2 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup();
@@ -474,15 +511,17 @@
             this.printPreviewRibbonPageGroup6 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
             this.printPreviewRibbonPageGroup7 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
             this.printPreviewRibbonPageGroup8 = new DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup();
+            this.ribbonPage3 = new DevExpress.XtraReports.UserDesigner.XRHtmlRibbonPage();
+            this.xrDesignRibbonPageGroup9 = new DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.xrDesignDockManager1 = new DevExpress.XtraReports.UserDesigner.XRDesignDockManager();
             this.panelContainer2 = new DevExpress.XtraBars.Docking.DockPanel();
-            this.propertyGridDockPanel1 = new DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel();
-            this.propertyGridDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
-            this.reportExplorerDockPanel1 = new DevExpress.XtraReports.UserDesigner.ReportExplorerDockPanel();
-            this.reportExplorerDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
             this.fieldListDockPanel1 = new DevExpress.XtraReports.UserDesigner.FieldListDockPanel();
             this.fieldListDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
+            this.reportExplorerDockPanel1 = new DevExpress.XtraReports.UserDesigner.ReportExplorerDockPanel();
+            this.reportExplorerDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
+            this.propertyGridDockPanel1 = new DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel();
+            this.propertyGridDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
             this.toolBoxDockPanel1 = new DevExpress.XtraReports.UserDesigner.ToolBoxDockPanel();
             this.toolBoxDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
             this.panelContainer3 = new DevExpress.XtraBars.Docking.DockPanel();
@@ -491,7 +530,6 @@
             this.groupAndSortDockPanel1 = new DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel();
             this.groupAndSortDockPanel1_Container = new DevExpress.XtraReports.UserDesigner.DesignControlContainer();
             this.reportDesigner1 = new DevExpress.XtraReports.UserDesigner.XRDesignMdiController();
-            this.ribbonPage2 = new DevExpress.XtraReports.UserDesigner.XRToolboxRibbonPage();
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignRibbonController1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).BeginInit();
@@ -501,9 +539,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignDockManager1)).BeginInit();
             this.panelContainer2.SuspendLayout();
-            this.propertyGridDockPanel1.SuspendLayout();
-            this.reportExplorerDockPanel1.SuspendLayout();
             this.fieldListDockPanel1.SuspendLayout();
+            this.reportExplorerDockPanel1.SuspendLayout();
+            this.propertyGridDockPanel1.SuspendLayout();
             this.toolBoxDockPanel1.SuspendLayout();
             this.panelContainer3.SuspendLayout();
             this.errorListDockPanel1.SuspendLayout();
@@ -556,10 +594,14 @@
             this.commandBarItem28,
             this.commandBarItem29,
             this.commandBarItem30,
+            this.commandBarItem31,
             this.commandBarItem32,
+            this.commandBarItem33,
+            this.commandBarItem34,
             this.commandBarItem35,
             this.commandBarItem36,
             this.commandBarItem37,
+            this.commandBarItem38,
             this.commandBarItem39,
             this.commandBarItem40,
             this.commandBarItem41,
@@ -572,6 +614,11 @@
             this.barEditItem2,
             this.barDockPanelsListItem1,
             this.scriptsCommandBarItem1,
+            this.commandBarItem47,
+            this.commandBarItem48,
+            this.commandBarItem49,
+            this.commandBarItem50,
+            this.commandBarItem51,
             this.commandBarItem52,
             this.commandBarItem53,
             this.xrDesignBarButtonGroup1,
@@ -639,472 +686,592 @@
             this.printPreviewStaticItem2,
             this.zoomTrackBarEditItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 131;
+            this.ribbonControl1.MaxItemId = 124;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.xrToolboxPageCategory1});
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage1,
-            this.ribbonPage4});
+            this.ribbonPage4,
+            this.ribbonPage3});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.recentlyUsedItemsComboBox1,
             this.designRepositoryItemComboBox1,
             this.repositoryItemProgressBar1,
             this.repositoryItemZoomTrackBar1});
-            this.ribbonControl1.Size = new System.Drawing.Size(950, 147);
+            this.ribbonControl1.Size = new System.Drawing.Size(954, 147);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.TransparentEditors = true;
             // 
             // applicationMenu1
             // 
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem31);
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem34);
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem32);
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem33);
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem52, true);
+            this.applicationMenu1.ItemLinks.Add(this.commandBarItem53, true);
             this.applicationMenu1.Name = "applicationMenu1";
             this.applicationMenu1.Ribbon = this.ribbonControl1;
             this.applicationMenu1.ShowRightPane = true;
+            // 
+            // commandBarItem31
+            // 
+            this.commandBarItem31.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.commandBarItem31.Caption = "New Report";
+            this.commandBarItem31.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.NewReport;
+            this.commandBarItem31.Description = "Create a new blank report.";
+            this.commandBarItem31.Enabled = false;
+            this.commandBarItem31.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReport;
+            this.commandBarItem31.Id = 33;
+            this.commandBarItem31.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportLarge;
+            this.commandBarItem31.Name = "commandBarItem31";
+            superToolTip1.FixedTooltipWidth = true;
+            toolTipTitleItem1.Text = "New Blank Report";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Create a new blank report.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            superToolTip1.MaxWidth = 210;
+            this.commandBarItem31.SuperTip = superToolTip1;
+            // 
+            // commandBarItem34
+            // 
+            this.commandBarItem34.Caption = "Open...";
+            this.commandBarItem34.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.OpenFile;
+            this.commandBarItem34.Enabled = false;
+            this.commandBarItem34.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_OpenFile;
+            this.commandBarItem34.Id = 36;
+            this.commandBarItem34.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O));
+            this.commandBarItem34.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_OpenFileLarge;
+            this.commandBarItem34.Name = "commandBarItem34";
+            superToolTip2.FixedTooltipWidth = true;
+            toolTipTitleItem2.Text = "Open Report (Ctrl+O)";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "Open a report.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            superToolTip2.MaxWidth = 210;
+            this.commandBarItem34.SuperTip = superToolTip2;
+            // 
+            // commandBarItem32
+            // 
+            this.commandBarItem32.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
+            this.commandBarItem32.Caption = "Save";
+            this.commandBarItem32.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SaveFile;
+            this.commandBarItem32.Description = "Save the current report.";
+            this.commandBarItem32.Enabled = false;
+            this.commandBarItem32.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFile;
+            this.commandBarItem32.Id = 34;
+            this.commandBarItem32.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileLarge;
+            this.commandBarItem32.Name = "commandBarItem32";
+            superToolTip3.FixedTooltipWidth = true;
+            toolTipTitleItem3.Text = "Save Report";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Save the current report.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            superToolTip3.MaxWidth = 210;
+            this.commandBarItem32.SuperTip = superToolTip3;
+            // 
+            // commandBarItem33
+            // 
+            this.commandBarItem33.Caption = "Save All";
+            this.commandBarItem33.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SaveAll;
+            this.commandBarItem33.Enabled = false;
+            this.commandBarItem33.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveAll;
+            this.commandBarItem33.Id = 35;
+            this.commandBarItem33.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L));
+            this.commandBarItem33.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveAllLarge;
+            this.commandBarItem33.Name = "commandBarItem33";
+            superToolTip4.FixedTooltipWidth = true;
+            toolTipTitleItem4.Text = "Save All Reports (Ctrl+L)";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "Save all modified reports.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            superToolTip4.MaxWidth = 210;
+            this.commandBarItem33.SuperTip = superToolTip4;
+            // 
+            // commandBarItem52
+            // 
+            this.commandBarItem52.Caption = "Close";
+            this.commandBarItem52.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Close;
+            this.commandBarItem52.Enabled = false;
+            this.commandBarItem52.Id = 58;
+            this.commandBarItem52.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4));
+            this.commandBarItem52.Name = "commandBarItem52";
+            superToolTip5.FixedTooltipWidth = true;
+            toolTipTitleItem5.Text = "Close (Ctrl+F4)";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Close the current report.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            superToolTip5.MaxWidth = 210;
+            this.commandBarItem52.SuperTip = superToolTip5;
+            // 
+            // commandBarItem53
+            // 
+            this.commandBarItem53.Caption = "Exit";
+            this.commandBarItem53.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Exit;
+            this.commandBarItem53.Enabled = false;
+            this.commandBarItem53.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Exit;
+            this.commandBarItem53.Id = 59;
+            this.commandBarItem53.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ExitLarge;
+            this.commandBarItem53.Name = "commandBarItem53";
+            superToolTip6.FixedTooltipWidth = true;
+            toolTipTitleItem6.Text = "Exit";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Close the report designer.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            superToolTip6.MaxWidth = 210;
+            this.commandBarItem53.SuperTip = superToolTip6;
             // 
             // commandBarItem1
             // 
             this.commandBarItem1.Caption = "Align to Grid";
             this.commandBarItem1.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignToGrid;
             this.commandBarItem1.Enabled = false;
-            this.commandBarItem1.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignToGrid;
+            this.commandBarItem1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignToGrid;
             this.commandBarItem1.Id = 1;
             this.commandBarItem1.Name = "commandBarItem1";
-            superToolTip1.FixedTooltipWidth = true;
-            toolTipTitleItem1.Text = "Align to Grid";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Align the positions of the selected controls to the grid.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            superToolTip1.MaxWidth = 210;
-            this.commandBarItem1.SuperTip = superToolTip1;
+            superToolTip7.FixedTooltipWidth = true;
+            toolTipTitleItem7.Text = "Align to Grid";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "Align the positions of the selected controls to the grid.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            superToolTip7.MaxWidth = 210;
+            this.commandBarItem1.SuperTip = superToolTip7;
             // 
             // commandBarItem2
             // 
             this.commandBarItem2.Caption = "Align Lefts";
             this.commandBarItem2.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignLeft;
             this.commandBarItem2.Enabled = false;
-            this.commandBarItem2.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignLeft;
+            this.commandBarItem2.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignLeft;
             this.commandBarItem2.Id = 2;
             this.commandBarItem2.Name = "commandBarItem2";
-            superToolTip2.FixedTooltipWidth = true;
-            toolTipTitleItem2.Text = "Align Lefts";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Left align the selected controls.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            superToolTip2.MaxWidth = 210;
-            this.commandBarItem2.SuperTip = superToolTip2;
+            superToolTip8.FixedTooltipWidth = true;
+            toolTipTitleItem8.Text = "Align Lefts";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "Left align the selected controls.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            superToolTip8.MaxWidth = 210;
+            this.commandBarItem2.SuperTip = superToolTip8;
             // 
             // commandBarItem3
             // 
             this.commandBarItem3.Caption = "Align Centers";
             this.commandBarItem3.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignVerticalCenters;
             this.commandBarItem3.Enabled = false;
-            this.commandBarItem3.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignVerticalCenters;
+            this.commandBarItem3.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignVerticalCenters;
             this.commandBarItem3.Id = 3;
             this.commandBarItem3.Name = "commandBarItem3";
-            superToolTip3.FixedTooltipWidth = true;
-            toolTipTitleItem3.Text = "Align Centers";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "Align the centers of the selected controls vertically.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.MaxWidth = 210;
-            this.commandBarItem3.SuperTip = superToolTip3;
+            superToolTip9.FixedTooltipWidth = true;
+            toolTipTitleItem9.Text = "Align Centers";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "Align the centers of the selected controls vertically.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            superToolTip9.MaxWidth = 210;
+            this.commandBarItem3.SuperTip = superToolTip9;
             // 
             // commandBarItem4
             // 
             this.commandBarItem4.Caption = "Align Rights";
             this.commandBarItem4.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignRight;
             this.commandBarItem4.Enabled = false;
-            this.commandBarItem4.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignRight;
+            this.commandBarItem4.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignRight;
             this.commandBarItem4.Id = 4;
             this.commandBarItem4.Name = "commandBarItem4";
-            superToolTip4.FixedTooltipWidth = true;
-            toolTipTitleItem4.Text = "Align Rights";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Right align the selected controls.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            superToolTip4.MaxWidth = 210;
-            this.commandBarItem4.SuperTip = superToolTip4;
+            superToolTip10.FixedTooltipWidth = true;
+            toolTipTitleItem10.Text = "Align Rights";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "Right align the selected controls.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            superToolTip10.MaxWidth = 210;
+            this.commandBarItem4.SuperTip = superToolTip10;
             // 
             // commandBarItem5
             // 
             this.commandBarItem5.Caption = "Align Tops";
             this.commandBarItem5.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignTop;
             this.commandBarItem5.Enabled = false;
-            this.commandBarItem5.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignTop;
+            this.commandBarItem5.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignTop;
             this.commandBarItem5.Id = 5;
             this.commandBarItem5.Name = "commandBarItem5";
-            superToolTip5.FixedTooltipWidth = true;
-            toolTipTitleItem5.Text = "Align Tops";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Align the tops of the selected controls.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.MaxWidth = 210;
-            this.commandBarItem5.SuperTip = superToolTip5;
+            superToolTip11.FixedTooltipWidth = true;
+            toolTipTitleItem11.Text = "Align Tops";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Align the tops of the selected controls.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            superToolTip11.MaxWidth = 210;
+            this.commandBarItem5.SuperTip = superToolTip11;
             // 
             // commandBarItem6
             // 
             this.commandBarItem6.Caption = "Align Middles";
             this.commandBarItem6.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignHorizontalCenters;
             this.commandBarItem6.Enabled = false;
-            this.commandBarItem6.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignHorizontalCenters;
+            this.commandBarItem6.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignHorizontalCenters;
             this.commandBarItem6.Id = 6;
             this.commandBarItem6.Name = "commandBarItem6";
-            superToolTip6.FixedTooltipWidth = true;
-            toolTipTitleItem6.Text = "Align Middles";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Align the centers of the selected controls horizontally.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            superToolTip6.MaxWidth = 210;
-            this.commandBarItem6.SuperTip = superToolTip6;
+            superToolTip12.FixedTooltipWidth = true;
+            toolTipTitleItem12.Text = "Align Middles";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Align the centers of the selected controls horizontally.";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            superToolTip12.MaxWidth = 210;
+            this.commandBarItem6.SuperTip = superToolTip12;
             // 
             // commandBarItem7
             // 
             this.commandBarItem7.Caption = "Align Bottoms";
             this.commandBarItem7.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.AlignBottom;
             this.commandBarItem7.Enabled = false;
-            this.commandBarItem7.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignBottom;
+            this.commandBarItem7.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignBottom;
             this.commandBarItem7.Id = 7;
             this.commandBarItem7.Name = "commandBarItem7";
-            superToolTip7.FixedTooltipWidth = true;
-            toolTipTitleItem7.Text = "Align Bottoms";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Align the bottoms of the selected controls.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            superToolTip7.MaxWidth = 210;
-            this.commandBarItem7.SuperTip = superToolTip7;
+            superToolTip13.FixedTooltipWidth = true;
+            toolTipTitleItem13.Text = "Align Bottoms";
+            toolTipItem13.LeftIndent = 6;
+            toolTipItem13.Text = "Align the bottoms of the selected controls.";
+            superToolTip13.Items.Add(toolTipTitleItem13);
+            superToolTip13.Items.Add(toolTipItem13);
+            superToolTip13.MaxWidth = 210;
+            this.commandBarItem7.SuperTip = superToolTip13;
             // 
             // commandBarItem8
             // 
             this.commandBarItem8.Caption = "Make Same Width";
             this.commandBarItem8.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SizeToControlWidth;
             this.commandBarItem8.Enabled = false;
-            this.commandBarItem8.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlWidth;
+            this.commandBarItem8.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlWidth;
             this.commandBarItem8.Id = 8;
             this.commandBarItem8.Name = "commandBarItem8";
-            superToolTip8.FixedTooltipWidth = true;
-            toolTipTitleItem8.Text = "Make Same Width";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Make the selected controls have the same width.";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            superToolTip8.MaxWidth = 210;
-            this.commandBarItem8.SuperTip = superToolTip8;
+            superToolTip14.FixedTooltipWidth = true;
+            toolTipTitleItem14.Text = "Make Same Width";
+            toolTipItem14.LeftIndent = 6;
+            toolTipItem14.Text = "Make the selected controls have the same width.";
+            superToolTip14.Items.Add(toolTipTitleItem14);
+            superToolTip14.Items.Add(toolTipItem14);
+            superToolTip14.MaxWidth = 210;
+            this.commandBarItem8.SuperTip = superToolTip14;
             // 
             // commandBarItem9
             // 
             this.commandBarItem9.Caption = "Size to Grid";
             this.commandBarItem9.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SizeToGrid;
             this.commandBarItem9.Enabled = false;
-            this.commandBarItem9.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToGrid;
+            this.commandBarItem9.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToGrid;
             this.commandBarItem9.Id = 9;
             this.commandBarItem9.Name = "commandBarItem9";
-            superToolTip9.FixedTooltipWidth = true;
-            toolTipTitleItem9.Text = "Size to Grid";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Size the selected controls to the grid.";
-            superToolTip9.Items.Add(toolTipTitleItem9);
-            superToolTip9.Items.Add(toolTipItem9);
-            superToolTip9.MaxWidth = 210;
-            this.commandBarItem9.SuperTip = superToolTip9;
+            superToolTip15.FixedTooltipWidth = true;
+            toolTipTitleItem15.Text = "Size to Grid";
+            toolTipItem15.LeftIndent = 6;
+            toolTipItem15.Text = "Size the selected controls to the grid.";
+            superToolTip15.Items.Add(toolTipTitleItem15);
+            superToolTip15.Items.Add(toolTipItem15);
+            superToolTip15.MaxWidth = 210;
+            this.commandBarItem9.SuperTip = superToolTip15;
             // 
             // commandBarItem10
             // 
             this.commandBarItem10.Caption = "Make Same Height";
             this.commandBarItem10.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SizeToControlHeight;
             this.commandBarItem10.Enabled = false;
-            this.commandBarItem10.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlHeight;
+            this.commandBarItem10.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControlHeight;
             this.commandBarItem10.Id = 10;
             this.commandBarItem10.Name = "commandBarItem10";
-            superToolTip10.FixedTooltipWidth = true;
-            toolTipTitleItem10.Text = "Make Same Height";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "Make the selected controls have the same height.";
-            superToolTip10.Items.Add(toolTipTitleItem10);
-            superToolTip10.Items.Add(toolTipItem10);
-            superToolTip10.MaxWidth = 210;
-            this.commandBarItem10.SuperTip = superToolTip10;
+            superToolTip16.FixedTooltipWidth = true;
+            toolTipTitleItem16.Text = "Make Same Height";
+            toolTipItem16.LeftIndent = 6;
+            toolTipItem16.Text = "Make the selected controls have the same height.";
+            superToolTip16.Items.Add(toolTipTitleItem16);
+            superToolTip16.Items.Add(toolTipItem16);
+            superToolTip16.MaxWidth = 210;
+            this.commandBarItem10.SuperTip = superToolTip16;
             // 
             // commandBarItem11
             // 
             this.commandBarItem11.Caption = "Make Same Size";
             this.commandBarItem11.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SizeToControl;
             this.commandBarItem11.Enabled = false;
-            this.commandBarItem11.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControl;
+            this.commandBarItem11.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControl;
             this.commandBarItem11.Id = 11;
             this.commandBarItem11.Name = "commandBarItem11";
-            superToolTip11.FixedTooltipWidth = true;
-            toolTipTitleItem11.Text = "Make Same Size";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "Make the selected controls have the same size.";
-            superToolTip11.Items.Add(toolTipTitleItem11);
-            superToolTip11.Items.Add(toolTipItem11);
-            superToolTip11.MaxWidth = 210;
-            this.commandBarItem11.SuperTip = superToolTip11;
+            superToolTip17.FixedTooltipWidth = true;
+            toolTipTitleItem17.Text = "Make Same Size";
+            toolTipItem17.LeftIndent = 6;
+            toolTipItem17.Text = "Make the selected controls have the same size.";
+            superToolTip17.Items.Add(toolTipTitleItem17);
+            superToolTip17.Items.Add(toolTipItem17);
+            superToolTip17.MaxWidth = 210;
+            this.commandBarItem11.SuperTip = superToolTip17;
             // 
             // commandBarItem12
             // 
             this.commandBarItem12.Caption = "Make Horizontal Spacing Equal";
             this.commandBarItem12.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HorizSpaceMakeEqual;
             this.commandBarItem12.Enabled = false;
-            this.commandBarItem12.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceMakeEqual;
+            this.commandBarItem12.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceMakeEqual;
             this.commandBarItem12.Id = 12;
             this.commandBarItem12.Name = "commandBarItem12";
-            superToolTip12.FixedTooltipWidth = true;
-            toolTipTitleItem12.Text = "Make Horizontal Spacing Equal";
-            toolTipItem12.LeftIndent = 6;
-            toolTipItem12.Text = "Make the horizontal spacing between the selected controls equal.";
-            superToolTip12.Items.Add(toolTipTitleItem12);
-            superToolTip12.Items.Add(toolTipItem12);
-            superToolTip12.MaxWidth = 210;
-            this.commandBarItem12.SuperTip = superToolTip12;
+            superToolTip18.FixedTooltipWidth = true;
+            toolTipTitleItem18.Text = "Make Horizontal Spacing Equal";
+            toolTipItem18.LeftIndent = 6;
+            toolTipItem18.Text = "Make the horizontal spacing between the selected controls equal.";
+            superToolTip18.Items.Add(toolTipTitleItem18);
+            superToolTip18.Items.Add(toolTipItem18);
+            superToolTip18.MaxWidth = 210;
+            this.commandBarItem12.SuperTip = superToolTip18;
             // 
             // commandBarItem13
             // 
             this.commandBarItem13.Caption = "Increase Horizontal Spacing";
             this.commandBarItem13.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HorizSpaceIncrease;
             this.commandBarItem13.Enabled = false;
-            this.commandBarItem13.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceIncrease;
+            this.commandBarItem13.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceIncrease;
             this.commandBarItem13.Id = 13;
             this.commandBarItem13.Name = "commandBarItem13";
-            superToolTip13.FixedTooltipWidth = true;
-            toolTipTitleItem13.Text = "Increase Horizontal Spacing";
-            toolTipItem13.LeftIndent = 6;
-            toolTipItem13.Text = "Increase the horizontal spacing between the selected controls.";
-            superToolTip13.Items.Add(toolTipTitleItem13);
-            superToolTip13.Items.Add(toolTipItem13);
-            superToolTip13.MaxWidth = 210;
-            this.commandBarItem13.SuperTip = superToolTip13;
+            superToolTip19.FixedTooltipWidth = true;
+            toolTipTitleItem19.Text = "Increase Horizontal Spacing";
+            toolTipItem19.LeftIndent = 6;
+            toolTipItem19.Text = "Increase the horizontal spacing between the selected controls.";
+            superToolTip19.Items.Add(toolTipTitleItem19);
+            superToolTip19.Items.Add(toolTipItem19);
+            superToolTip19.MaxWidth = 210;
+            this.commandBarItem13.SuperTip = superToolTip19;
             // 
             // commandBarItem14
             // 
             this.commandBarItem14.Caption = "Decrease Horizontal Spacing";
             this.commandBarItem14.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HorizSpaceDecrease;
             this.commandBarItem14.Enabled = false;
-            this.commandBarItem14.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceDecrease;
+            this.commandBarItem14.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceDecrease;
             this.commandBarItem14.Id = 14;
             this.commandBarItem14.Name = "commandBarItem14";
-            superToolTip14.FixedTooltipWidth = true;
-            toolTipTitleItem14.Text = "Decrease Horizontal Spacing";
-            toolTipItem14.LeftIndent = 6;
-            toolTipItem14.Text = "Decrease the horizontal spacing between the selected controls.";
-            superToolTip14.Items.Add(toolTipTitleItem14);
-            superToolTip14.Items.Add(toolTipItem14);
-            superToolTip14.MaxWidth = 210;
-            this.commandBarItem14.SuperTip = superToolTip14;
+            superToolTip20.FixedTooltipWidth = true;
+            toolTipTitleItem20.Text = "Decrease Horizontal Spacing";
+            toolTipItem20.LeftIndent = 6;
+            toolTipItem20.Text = "Decrease the horizontal spacing between the selected controls.";
+            superToolTip20.Items.Add(toolTipTitleItem20);
+            superToolTip20.Items.Add(toolTipItem20);
+            superToolTip20.MaxWidth = 210;
+            this.commandBarItem14.SuperTip = superToolTip20;
             // 
             // commandBarItem15
             // 
             this.commandBarItem15.Caption = "Remove Horizontal Spacing";
             this.commandBarItem15.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HorizSpaceConcatenate;
             this.commandBarItem15.Enabled = false;
-            this.commandBarItem15.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceConcatenate;
+            this.commandBarItem15.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HorizSpaceConcatenate;
             this.commandBarItem15.Id = 15;
             this.commandBarItem15.Name = "commandBarItem15";
-            superToolTip15.FixedTooltipWidth = true;
-            toolTipTitleItem15.Text = "Remove Horizontal Spacing";
-            toolTipItem15.LeftIndent = 6;
-            toolTipItem15.Text = "Remove the horizontal spacing between the selected controls.";
-            superToolTip15.Items.Add(toolTipTitleItem15);
-            superToolTip15.Items.Add(toolTipItem15);
-            superToolTip15.MaxWidth = 210;
-            this.commandBarItem15.SuperTip = superToolTip15;
+            superToolTip21.FixedTooltipWidth = true;
+            toolTipTitleItem21.Text = "Remove Horizontal Spacing";
+            toolTipItem21.LeftIndent = 6;
+            toolTipItem21.Text = "Remove the horizontal spacing between the selected controls.";
+            superToolTip21.Items.Add(toolTipTitleItem21);
+            superToolTip21.Items.Add(toolTipItem21);
+            superToolTip21.MaxWidth = 210;
+            this.commandBarItem15.SuperTip = superToolTip21;
             // 
             // commandBarItem16
             // 
             this.commandBarItem16.Caption = "Make Vertical Spacing Equal";
             this.commandBarItem16.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.VertSpaceMakeEqual;
             this.commandBarItem16.Enabled = false;
-            this.commandBarItem16.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceMakeEqual;
+            this.commandBarItem16.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceMakeEqual;
             this.commandBarItem16.Id = 16;
             this.commandBarItem16.Name = "commandBarItem16";
-            superToolTip16.FixedTooltipWidth = true;
-            toolTipTitleItem16.Text = "Make Vertical Spacing Equal";
-            toolTipItem16.LeftIndent = 6;
-            toolTipItem16.Text = "Make the vertical spacing between the selected controls equal.";
-            superToolTip16.Items.Add(toolTipTitleItem16);
-            superToolTip16.Items.Add(toolTipItem16);
-            superToolTip16.MaxWidth = 210;
-            this.commandBarItem16.SuperTip = superToolTip16;
+            superToolTip22.FixedTooltipWidth = true;
+            toolTipTitleItem22.Text = "Make Vertical Spacing Equal";
+            toolTipItem22.LeftIndent = 6;
+            toolTipItem22.Text = "Make the vertical spacing between the selected controls equal.";
+            superToolTip22.Items.Add(toolTipTitleItem22);
+            superToolTip22.Items.Add(toolTipItem22);
+            superToolTip22.MaxWidth = 210;
+            this.commandBarItem16.SuperTip = superToolTip22;
             // 
             // commandBarItem17
             // 
             this.commandBarItem17.Caption = "Increase Vertical Spacing";
             this.commandBarItem17.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.VertSpaceIncrease;
             this.commandBarItem17.Enabled = false;
-            this.commandBarItem17.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceIncrease;
+            this.commandBarItem17.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceIncrease;
             this.commandBarItem17.Id = 17;
             this.commandBarItem17.Name = "commandBarItem17";
-            superToolTip17.FixedTooltipWidth = true;
-            toolTipTitleItem17.Text = "Increase Vertical Spacing";
-            toolTipItem17.LeftIndent = 6;
-            toolTipItem17.Text = "Increase the vertical spacing between the selected controls.";
-            superToolTip17.Items.Add(toolTipTitleItem17);
-            superToolTip17.Items.Add(toolTipItem17);
-            superToolTip17.MaxWidth = 210;
-            this.commandBarItem17.SuperTip = superToolTip17;
+            superToolTip23.FixedTooltipWidth = true;
+            toolTipTitleItem23.Text = "Increase Vertical Spacing";
+            toolTipItem23.LeftIndent = 6;
+            toolTipItem23.Text = "Increase the vertical spacing between the selected controls.";
+            superToolTip23.Items.Add(toolTipTitleItem23);
+            superToolTip23.Items.Add(toolTipItem23);
+            superToolTip23.MaxWidth = 210;
+            this.commandBarItem17.SuperTip = superToolTip23;
             // 
             // commandBarItem18
             // 
             this.commandBarItem18.Caption = "Decrease Vertical Spacing";
             this.commandBarItem18.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.VertSpaceDecrease;
             this.commandBarItem18.Enabled = false;
-            this.commandBarItem18.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceDecrease;
+            this.commandBarItem18.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceDecrease;
             this.commandBarItem18.Id = 18;
             this.commandBarItem18.Name = "commandBarItem18";
-            superToolTip18.FixedTooltipWidth = true;
-            toolTipTitleItem18.Text = "Decrease Vertical Spacing";
-            toolTipItem18.LeftIndent = 6;
-            toolTipItem18.Text = "Decrease the vertical spacing between the selected controls.";
-            superToolTip18.Items.Add(toolTipTitleItem18);
-            superToolTip18.Items.Add(toolTipItem18);
-            superToolTip18.MaxWidth = 210;
-            this.commandBarItem18.SuperTip = superToolTip18;
+            superToolTip24.FixedTooltipWidth = true;
+            toolTipTitleItem24.Text = "Decrease Vertical Spacing";
+            toolTipItem24.LeftIndent = 6;
+            toolTipItem24.Text = "Decrease the vertical spacing between the selected controls.";
+            superToolTip24.Items.Add(toolTipTitleItem24);
+            superToolTip24.Items.Add(toolTipItem24);
+            superToolTip24.MaxWidth = 210;
+            this.commandBarItem18.SuperTip = superToolTip24;
             // 
             // commandBarItem19
             // 
             this.commandBarItem19.Caption = "Remove Vertical Spacing";
             this.commandBarItem19.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.VertSpaceConcatenate;
             this.commandBarItem19.Enabled = false;
-            this.commandBarItem19.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceConcatenate;
+            this.commandBarItem19.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_VertSpaceConcatenate;
             this.commandBarItem19.Id = 19;
             this.commandBarItem19.Name = "commandBarItem19";
-            superToolTip19.FixedTooltipWidth = true;
-            toolTipTitleItem19.Text = "Remove Vertical Spacing";
-            toolTipItem19.LeftIndent = 6;
-            toolTipItem19.Text = "Remove the vertical spacing between the selected controls.";
-            superToolTip19.Items.Add(toolTipTitleItem19);
-            superToolTip19.Items.Add(toolTipItem19);
-            superToolTip19.MaxWidth = 210;
-            this.commandBarItem19.SuperTip = superToolTip19;
+            superToolTip25.FixedTooltipWidth = true;
+            toolTipTitleItem25.Text = "Remove Vertical Spacing";
+            toolTipItem25.LeftIndent = 6;
+            toolTipItem25.Text = "Remove the vertical spacing between the selected controls.";
+            superToolTip25.Items.Add(toolTipTitleItem25);
+            superToolTip25.Items.Add(toolTipItem25);
+            superToolTip25.MaxWidth = 210;
+            this.commandBarItem19.SuperTip = superToolTip25;
             // 
             // commandBarItem20
             // 
             this.commandBarItem20.Caption = "Center Horizontally";
             this.commandBarItem20.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.CenterHorizontally;
             this.commandBarItem20.Enabled = false;
-            this.commandBarItem20.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterHorizontally;
+            this.commandBarItem20.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterHorizontally;
             this.commandBarItem20.Id = 20;
             this.commandBarItem20.Name = "commandBarItem20";
-            superToolTip20.FixedTooltipWidth = true;
-            toolTipTitleItem20.Text = "Center Horizontally";
-            toolTipItem20.LeftIndent = 6;
-            toolTipItem20.Text = "Horizontally center the selected controls within a band.";
-            superToolTip20.Items.Add(toolTipTitleItem20);
-            superToolTip20.Items.Add(toolTipItem20);
-            superToolTip20.MaxWidth = 210;
-            this.commandBarItem20.SuperTip = superToolTip20;
+            superToolTip26.FixedTooltipWidth = true;
+            toolTipTitleItem26.Text = "Center Horizontally";
+            toolTipItem26.LeftIndent = 6;
+            toolTipItem26.Text = "Horizontally center the selected controls within a band.";
+            superToolTip26.Items.Add(toolTipTitleItem26);
+            superToolTip26.Items.Add(toolTipItem26);
+            superToolTip26.MaxWidth = 210;
+            this.commandBarItem20.SuperTip = superToolTip26;
             // 
             // commandBarItem21
             // 
             this.commandBarItem21.Caption = "Center Vertically";
             this.commandBarItem21.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.CenterVertically;
             this.commandBarItem21.Enabled = false;
-            this.commandBarItem21.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterVertically;
+            this.commandBarItem21.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CenterVertically;
             this.commandBarItem21.Id = 21;
             this.commandBarItem21.Name = "commandBarItem21";
-            superToolTip21.FixedTooltipWidth = true;
-            toolTipTitleItem21.Text = "Center Vertically";
-            toolTipItem21.LeftIndent = 6;
-            toolTipItem21.Text = "Vertically center the selected controls within a band.";
-            superToolTip21.Items.Add(toolTipTitleItem21);
-            superToolTip21.Items.Add(toolTipItem21);
-            superToolTip21.MaxWidth = 210;
-            this.commandBarItem21.SuperTip = superToolTip21;
+            superToolTip27.FixedTooltipWidth = true;
+            toolTipTitleItem27.Text = "Center Vertically";
+            toolTipItem27.LeftIndent = 6;
+            toolTipItem27.Text = "Vertically center the selected controls within a band.";
+            superToolTip27.Items.Add(toolTipTitleItem27);
+            superToolTip27.Items.Add(toolTipItem27);
+            superToolTip27.MaxWidth = 210;
+            this.commandBarItem21.SuperTip = superToolTip27;
             // 
             // commandBarItem22
             // 
             this.commandBarItem22.Caption = "Bring to Front";
             this.commandBarItem22.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.BringToFront;
             this.commandBarItem22.Enabled = false;
-            this.commandBarItem22.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_BringToFront;
+            this.commandBarItem22.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_BringToFront;
             this.commandBarItem22.Id = 22;
             this.commandBarItem22.Name = "commandBarItem22";
-            superToolTip22.FixedTooltipWidth = true;
-            toolTipTitleItem22.Text = "Bring to Front";
-            toolTipItem22.LeftIndent = 6;
-            toolTipItem22.Text = "Bring the selected controls to the front.";
-            superToolTip22.Items.Add(toolTipTitleItem22);
-            superToolTip22.Items.Add(toolTipItem22);
-            superToolTip22.MaxWidth = 210;
-            this.commandBarItem22.SuperTip = superToolTip22;
+            superToolTip28.FixedTooltipWidth = true;
+            toolTipTitleItem28.Text = "Bring to Front";
+            toolTipItem28.LeftIndent = 6;
+            toolTipItem28.Text = "Bring the selected controls to the front.";
+            superToolTip28.Items.Add(toolTipTitleItem28);
+            superToolTip28.Items.Add(toolTipItem28);
+            superToolTip28.MaxWidth = 210;
+            this.commandBarItem22.SuperTip = superToolTip28;
             // 
             // commandBarItem23
             // 
             this.commandBarItem23.Caption = "Send to Back";
             this.commandBarItem23.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SendToBack;
             this.commandBarItem23.Enabled = false;
-            this.commandBarItem23.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SendToBack;
+            this.commandBarItem23.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SendToBack;
             this.commandBarItem23.Id = 23;
             this.commandBarItem23.Name = "commandBarItem23";
-            superToolTip23.FixedTooltipWidth = true;
-            toolTipTitleItem23.Text = "Send to Back";
-            toolTipItem23.LeftIndent = 6;
-            toolTipItem23.Text = "Move the selected controls to the back.";
-            superToolTip23.Items.Add(toolTipTitleItem23);
-            superToolTip23.Items.Add(toolTipItem23);
-            superToolTip23.MaxWidth = 210;
-            this.commandBarItem23.SuperTip = superToolTip23;
+            superToolTip29.FixedTooltipWidth = true;
+            toolTipTitleItem29.Text = "Send to Back";
+            toolTipItem29.LeftIndent = 6;
+            toolTipItem29.Text = "Move the selected controls to the back.";
+            superToolTip29.Items.Add(toolTipTitleItem29);
+            superToolTip29.Items.Add(toolTipItem29);
+            superToolTip29.MaxWidth = 210;
+            this.commandBarItem23.SuperTip = superToolTip29;
             // 
             // commandBarItem24
             // 
             this.commandBarItem24.Caption = "Bold";
             this.commandBarItem24.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.FontBold;
             this.commandBarItem24.Enabled = false;
-            this.commandBarItem24.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontBold;
+            this.commandBarItem24.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontBold;
             this.commandBarItem24.Id = 24;
             this.commandBarItem24.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B));
             this.commandBarItem24.Name = "commandBarItem24";
-            superToolTip24.FixedTooltipWidth = true;
-            toolTipTitleItem24.Text = "Bold (Ctrl+B)";
-            toolTipItem24.LeftIndent = 6;
-            toolTipItem24.Text = "Make the selected text bold.";
-            superToolTip24.Items.Add(toolTipTitleItem24);
-            superToolTip24.Items.Add(toolTipItem24);
-            superToolTip24.MaxWidth = 210;
-            this.commandBarItem24.SuperTip = superToolTip24;
+            superToolTip30.FixedTooltipWidth = true;
+            toolTipTitleItem30.Text = "Bold (Ctrl+B)";
+            toolTipItem30.LeftIndent = 6;
+            toolTipItem30.Text = "Make the selected text bold.";
+            superToolTip30.Items.Add(toolTipTitleItem30);
+            superToolTip30.Items.Add(toolTipItem30);
+            superToolTip30.MaxWidth = 210;
+            this.commandBarItem24.SuperTip = superToolTip30;
             // 
             // commandBarItem25
             // 
             this.commandBarItem25.Caption = "Italic";
             this.commandBarItem25.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.FontItalic;
             this.commandBarItem25.Enabled = false;
-            this.commandBarItem25.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontItalic;
+            this.commandBarItem25.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontItalic;
             this.commandBarItem25.Id = 25;
             this.commandBarItem25.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I));
             this.commandBarItem25.Name = "commandBarItem25";
-            superToolTip25.FixedTooltipWidth = true;
-            toolTipTitleItem25.Text = "Italic (Ctrl+I)";
-            toolTipItem25.LeftIndent = 6;
-            toolTipItem25.Text = "Italicize the text.";
-            superToolTip25.Items.Add(toolTipTitleItem25);
-            superToolTip25.Items.Add(toolTipItem25);
-            superToolTip25.MaxWidth = 210;
-            this.commandBarItem25.SuperTip = superToolTip25;
+            superToolTip31.FixedTooltipWidth = true;
+            toolTipTitleItem31.Text = "Italic (Ctrl+I)";
+            toolTipItem31.LeftIndent = 6;
+            toolTipItem31.Text = "Italicize the text.";
+            superToolTip31.Items.Add(toolTipTitleItem31);
+            superToolTip31.Items.Add(toolTipItem31);
+            superToolTip31.MaxWidth = 210;
+            this.commandBarItem25.SuperTip = superToolTip31;
             // 
             // commandBarItem26
             // 
             this.commandBarItem26.Caption = "Underline";
             this.commandBarItem26.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.FontUnderline;
             this.commandBarItem26.Enabled = false;
-            this.commandBarItem26.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontUnderline;
+            this.commandBarItem26.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_FontUnderline;
             this.commandBarItem26.Id = 26;
             this.commandBarItem26.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U));
             this.commandBarItem26.Name = "commandBarItem26";
-            superToolTip26.FixedTooltipWidth = true;
-            toolTipTitleItem26.Text = "Underline (Ctrl+U)";
-            toolTipItem26.LeftIndent = 6;
-            toolTipItem26.Text = "Underline the selected text.";
-            superToolTip26.Items.Add(toolTipTitleItem26);
-            superToolTip26.Items.Add(toolTipItem26);
-            superToolTip26.MaxWidth = 210;
-            this.commandBarItem26.SuperTip = superToolTip26;
+            superToolTip32.FixedTooltipWidth = true;
+            toolTipTitleItem32.Text = "Underline (Ctrl+U)";
+            toolTipItem32.LeftIndent = 6;
+            toolTipItem32.Text = "Underline the selected text.";
+            superToolTip32.Items.Add(toolTipTitleItem32);
+            superToolTip32.Items.Add(toolTipItem32);
+            superToolTip32.MaxWidth = 210;
+            this.commandBarItem26.SuperTip = superToolTip32;
             // 
             // commandColorBarItem1
             // 
@@ -1116,14 +1283,14 @@
             this.commandColorBarItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("commandColorBarItem1.Glyph")));
             this.commandColorBarItem1.Id = 27;
             this.commandColorBarItem1.Name = "commandColorBarItem1";
-            superToolTip27.FixedTooltipWidth = true;
-            toolTipTitleItem27.Text = "Foreground Color";
-            toolTipItem27.LeftIndent = 6;
-            toolTipItem27.Text = "Change the text foreground color.";
-            superToolTip27.Items.Add(toolTipTitleItem27);
-            superToolTip27.Items.Add(toolTipItem27);
-            superToolTip27.MaxWidth = 210;
-            this.commandColorBarItem1.SuperTip = superToolTip27;
+            superToolTip33.FixedTooltipWidth = true;
+            toolTipTitleItem33.Text = "Foreground Color";
+            toolTipItem33.LeftIndent = 6;
+            toolTipItem33.Text = "Change the text foreground color.";
+            superToolTip33.Items.Add(toolTipTitleItem33);
+            superToolTip33.Items.Add(toolTipItem33);
+            superToolTip33.MaxWidth = 210;
+            this.commandColorBarItem1.SuperTip = superToolTip33;
             // 
             // commandColorBarItem2
             // 
@@ -1135,102 +1302,83 @@
             this.commandColorBarItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("commandColorBarItem2.Glyph")));
             this.commandColorBarItem2.Id = 28;
             this.commandColorBarItem2.Name = "commandColorBarItem2";
-            superToolTip28.FixedTooltipWidth = true;
-            toolTipTitleItem28.Text = "Background Color";
-            toolTipItem28.LeftIndent = 6;
-            toolTipItem28.Text = "Change the text background color.";
-            superToolTip28.Items.Add(toolTipTitleItem28);
-            superToolTip28.Items.Add(toolTipItem28);
-            superToolTip28.MaxWidth = 210;
-            this.commandColorBarItem2.SuperTip = superToolTip28;
+            superToolTip34.FixedTooltipWidth = true;
+            toolTipTitleItem34.Text = "Background Color";
+            toolTipItem34.LeftIndent = 6;
+            toolTipItem34.Text = "Change the text background color.";
+            superToolTip34.Items.Add(toolTipTitleItem34);
+            superToolTip34.Items.Add(toolTipItem34);
+            superToolTip34.MaxWidth = 210;
+            this.commandColorBarItem2.SuperTip = superToolTip34;
             // 
             // commandBarItem27
             // 
             this.commandBarItem27.Caption = "Align Text Left";
             this.commandBarItem27.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.JustifyLeft;
             this.commandBarItem27.Enabled = false;
-            this.commandBarItem27.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyLeft;
+            this.commandBarItem27.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyLeft;
             this.commandBarItem27.Id = 29;
             this.commandBarItem27.Name = "commandBarItem27";
-            superToolTip29.FixedTooltipWidth = true;
-            toolTipTitleItem29.Text = "Align Text Left";
-            toolTipItem29.LeftIndent = 6;
-            toolTipItem29.Text = "Align text to the left.";
-            superToolTip29.Items.Add(toolTipTitleItem29);
-            superToolTip29.Items.Add(toolTipItem29);
-            superToolTip29.MaxWidth = 210;
-            this.commandBarItem27.SuperTip = superToolTip29;
+            superToolTip35.FixedTooltipWidth = true;
+            toolTipTitleItem35.Text = "Align Text Left";
+            toolTipItem35.LeftIndent = 6;
+            toolTipItem35.Text = "Align text to the left.";
+            superToolTip35.Items.Add(toolTipTitleItem35);
+            superToolTip35.Items.Add(toolTipItem35);
+            superToolTip35.MaxWidth = 210;
+            this.commandBarItem27.SuperTip = superToolTip35;
             // 
             // commandBarItem28
             // 
             this.commandBarItem28.Caption = "Center Text";
             this.commandBarItem28.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.JustifyCenter;
             this.commandBarItem28.Enabled = false;
-            this.commandBarItem28.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyCenter;
+            this.commandBarItem28.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyCenter;
             this.commandBarItem28.Id = 30;
             this.commandBarItem28.Name = "commandBarItem28";
-            superToolTip30.FixedTooltipWidth = true;
-            toolTipTitleItem30.Text = "Center Text";
-            toolTipItem30.LeftIndent = 6;
-            toolTipItem30.Text = "Center text.";
-            superToolTip30.Items.Add(toolTipTitleItem30);
-            superToolTip30.Items.Add(toolTipItem30);
-            superToolTip30.MaxWidth = 210;
-            this.commandBarItem28.SuperTip = superToolTip30;
+            superToolTip36.FixedTooltipWidth = true;
+            toolTipTitleItem36.Text = "Center Text";
+            toolTipItem36.LeftIndent = 6;
+            toolTipItem36.Text = "Center text.";
+            superToolTip36.Items.Add(toolTipTitleItem36);
+            superToolTip36.Items.Add(toolTipItem36);
+            superToolTip36.MaxWidth = 210;
+            this.commandBarItem28.SuperTip = superToolTip36;
             // 
             // commandBarItem29
             // 
             this.commandBarItem29.Caption = "Align Text Right";
             this.commandBarItem29.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.JustifyRight;
             this.commandBarItem29.Enabled = false;
-            this.commandBarItem29.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyRight;
+            this.commandBarItem29.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyRight;
             this.commandBarItem29.Id = 31;
             this.commandBarItem29.Name = "commandBarItem29";
-            superToolTip31.FixedTooltipWidth = true;
-            toolTipTitleItem31.Text = "Align Text Right";
-            toolTipItem31.LeftIndent = 6;
-            toolTipItem31.Text = "Align text to the right.";
-            superToolTip31.Items.Add(toolTipTitleItem31);
-            superToolTip31.Items.Add(toolTipItem31);
-            superToolTip31.MaxWidth = 210;
-            this.commandBarItem29.SuperTip = superToolTip31;
+            superToolTip37.FixedTooltipWidth = true;
+            toolTipTitleItem37.Text = "Align Text Right";
+            toolTipItem37.LeftIndent = 6;
+            toolTipItem37.Text = "Align text to the right.";
+            superToolTip37.Items.Add(toolTipTitleItem37);
+            superToolTip37.Items.Add(toolTipItem37);
+            superToolTip37.MaxWidth = 210;
+            this.commandBarItem29.SuperTip = superToolTip37;
             // 
             // commandBarItem30
             // 
             this.commandBarItem30.Caption = "Justify";
             this.commandBarItem30.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.JustifyJustify;
             this.commandBarItem30.Enabled = false;
-            this.commandBarItem30.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyJustify;
+            this.commandBarItem30.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_JustifyJustify;
             this.commandBarItem30.Id = 32;
             this.commandBarItem30.Name = "commandBarItem30";
-            superToolTip32.FixedTooltipWidth = true;
-            toolTipTitleItem32.Text = "Justify";
-            toolTipItem32.LeftIndent = 6;
-            toolTipItem32.Text = "Align text to both the left and right sides, adding extra space between words as " +
+            superToolTip38.FixedTooltipWidth = true;
+            toolTipTitleItem38.Text = "Justify";
+            toolTipItem38.LeftIndent = 6;
+            toolTipItem38.Text = "Align text to both the left and right sides, adding extra space between words as " +
     "necessary.";
-            superToolTip32.Items.Add(toolTipTitleItem32);
-            superToolTip32.Items.Add(toolTipItem32);
-            superToolTip32.MaxWidth = 210;
-            this.commandBarItem30.SuperTip = superToolTip32;
-            // 
-            // commandBarItem32
-            // 
-            this.commandBarItem32.Caption = "Save";
-            this.commandBarItem32.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SaveFile;
-            this.commandBarItem32.Description = "Save the current report.";
-            this.commandBarItem32.Enabled = false;
-            this.commandBarItem32.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFile;
-            this.commandBarItem32.Id = 34;
-            this.commandBarItem32.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileLarge;
-            this.commandBarItem32.Name = "commandBarItem32";
-            superToolTip33.FixedTooltipWidth = true;
-            toolTipTitleItem33.Text = "Save Report";
-            toolTipItem33.LeftIndent = 6;
-            toolTipItem33.Text = "Save the current report.";
-            superToolTip33.Items.Add(toolTipTitleItem33);
-            superToolTip33.Items.Add(toolTipItem33);
-            superToolTip33.MaxWidth = 210;
-            this.commandBarItem32.SuperTip = superToolTip33;
+            superToolTip38.Items.Add(toolTipTitleItem38);
+            superToolTip38.Items.Add(toolTipItem38);
+            superToolTip38.MaxWidth = 210;
+            this.commandBarItem30.SuperTip = superToolTip38;
             // 
             // commandBarItem35
             // 
@@ -1238,19 +1386,19 @@
             this.commandBarItem35.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.NewReport;
             this.commandBarItem35.Description = "Create a new blank report.";
             this.commandBarItem35.Enabled = false;
-            this.commandBarItem35.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReport;
+            this.commandBarItem35.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReport;
             this.commandBarItem35.Id = 37;
             this.commandBarItem35.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
-            this.commandBarItem35.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportLarge;
+            this.commandBarItem35.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportLarge;
             this.commandBarItem35.Name = "commandBarItem35";
-            superToolTip34.FixedTooltipWidth = true;
-            toolTipTitleItem34.Text = "New Blank Report (Ctrl+N)";
-            toolTipItem34.LeftIndent = 6;
-            toolTipItem34.Text = "Create a new blank report.";
-            superToolTip34.Items.Add(toolTipTitleItem34);
-            superToolTip34.Items.Add(toolTipItem34);
-            superToolTip34.MaxWidth = 210;
-            this.commandBarItem35.SuperTip = superToolTip34;
+            superToolTip39.FixedTooltipWidth = true;
+            toolTipTitleItem39.Text = "New Blank Report (Ctrl+N)";
+            toolTipItem39.LeftIndent = 6;
+            toolTipItem39.Text = "Create a new blank report.";
+            superToolTip39.Items.Add(toolTipTitleItem39);
+            superToolTip39.Items.Add(toolTipItem39);
+            superToolTip39.MaxWidth = 210;
+            this.commandBarItem35.SuperTip = superToolTip39;
             // 
             // commandBarItem36
             // 
@@ -1258,19 +1406,19 @@
             this.commandBarItem36.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.NewReportWizard;
             this.commandBarItem36.Description = "Launch the report wizard to create a new report.";
             this.commandBarItem36.Enabled = false;
-            this.commandBarItem36.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizard;
+            this.commandBarItem36.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizard;
             this.commandBarItem36.Id = 38;
             this.commandBarItem36.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W));
-            this.commandBarItem36.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizardLarge;
+            this.commandBarItem36.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_NewReportWizardLarge;
             this.commandBarItem36.Name = "commandBarItem36";
-            superToolTip35.FixedTooltipWidth = true;
-            toolTipTitleItem35.Text = "New Report via Wizard (Ctrl+W)";
-            toolTipItem35.LeftIndent = 6;
-            toolTipItem35.Text = "Launch the report wizard to create a new report.";
-            superToolTip35.Items.Add(toolTipTitleItem35);
-            superToolTip35.Items.Add(toolTipItem35);
-            superToolTip35.MaxWidth = 210;
-            this.commandBarItem36.SuperTip = superToolTip35;
+            superToolTip40.FixedTooltipWidth = true;
+            toolTipTitleItem40.Text = "New Report via Wizard (Ctrl+W)";
+            toolTipItem40.LeftIndent = 6;
+            toolTipItem40.Text = "Launch the report wizard to create a new report.";
+            superToolTip40.Items.Add(toolTipTitleItem40);
+            superToolTip40.Items.Add(toolTipItem40);
+            superToolTip40.MaxWidth = 210;
+            this.commandBarItem36.SuperTip = superToolTip40;
             // 
             // commandBarItem37
             // 
@@ -1278,114 +1426,133 @@
             this.commandBarItem37.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SaveFile;
             this.commandBarItem37.Description = "Save the current report.";
             this.commandBarItem37.Enabled = false;
-            this.commandBarItem37.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFile;
+            this.commandBarItem37.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFile;
             this.commandBarItem37.Id = 39;
             this.commandBarItem37.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
-            this.commandBarItem37.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileLarge;
+            this.commandBarItem37.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileLarge;
             this.commandBarItem37.Name = "commandBarItem37";
-            superToolTip36.FixedTooltipWidth = true;
-            toolTipTitleItem36.Text = "Save Report (Ctrl+S)";
-            toolTipItem36.LeftIndent = 6;
-            toolTipItem36.Text = "Save the current report.";
-            superToolTip36.Items.Add(toolTipTitleItem36);
-            superToolTip36.Items.Add(toolTipItem36);
-            superToolTip36.MaxWidth = 210;
-            this.commandBarItem37.SuperTip = superToolTip36;
+            superToolTip41.FixedTooltipWidth = true;
+            toolTipTitleItem41.Text = "Save Report (Ctrl+S)";
+            toolTipItem41.LeftIndent = 6;
+            toolTipItem41.Text = "Save the current report.";
+            superToolTip41.Items.Add(toolTipTitleItem41);
+            superToolTip41.Items.Add(toolTipItem41);
+            superToolTip41.MaxWidth = 210;
+            this.commandBarItem37.SuperTip = superToolTip41;
+            // 
+            // commandBarItem38
+            // 
+            this.commandBarItem38.Caption = "Save As...";
+            this.commandBarItem38.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.SaveFileAs;
+            this.commandBarItem38.Description = "Save the current report with a new name.";
+            this.commandBarItem38.Enabled = false;
+            this.commandBarItem38.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileAs;
+            this.commandBarItem38.Id = 40;
+            this.commandBarItem38.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SaveFileAsLarge;
+            this.commandBarItem38.Name = "commandBarItem38";
+            superToolTip42.FixedTooltipWidth = true;
+            toolTipTitleItem42.Text = "Save Report As";
+            toolTipItem42.LeftIndent = 6;
+            toolTipItem42.Text = "Save the current report with a new name.";
+            superToolTip42.Items.Add(toolTipTitleItem42);
+            superToolTip42.Items.Add(toolTipItem42);
+            superToolTip42.MaxWidth = 210;
+            this.commandBarItem38.SuperTip = superToolTip42;
             // 
             // commandBarItem39
             // 
             this.commandBarItem39.Caption = "Cut";
             this.commandBarItem39.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Cut;
             this.commandBarItem39.Enabled = false;
-            this.commandBarItem39.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Cut;
+            this.commandBarItem39.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Cut;
             this.commandBarItem39.Id = 41;
             this.commandBarItem39.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X));
-            this.commandBarItem39.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CutLarge;
+            this.commandBarItem39.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CutLarge;
             this.commandBarItem39.Name = "commandBarItem39";
-            superToolTip37.FixedTooltipWidth = true;
-            toolTipTitleItem37.Text = "Cut (Ctrl+X)";
-            toolTipItem37.LeftIndent = 6;
-            toolTipItem37.Text = "Cut the selected controls from the report and put them on the Clipboard.";
-            superToolTip37.Items.Add(toolTipTitleItem37);
-            superToolTip37.Items.Add(toolTipItem37);
-            superToolTip37.MaxWidth = 210;
-            this.commandBarItem39.SuperTip = superToolTip37;
+            superToolTip43.FixedTooltipWidth = true;
+            toolTipTitleItem43.Text = "Cut (Ctrl+X)";
+            toolTipItem43.LeftIndent = 6;
+            toolTipItem43.Text = "Cut the selected controls from the report and put them on the Clipboard.";
+            superToolTip43.Items.Add(toolTipTitleItem43);
+            superToolTip43.Items.Add(toolTipItem43);
+            superToolTip43.MaxWidth = 210;
+            this.commandBarItem39.SuperTip = superToolTip43;
             // 
             // commandBarItem40
             // 
             this.commandBarItem40.Caption = "Copy";
             this.commandBarItem40.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Copy;
             this.commandBarItem40.Enabled = false;
-            this.commandBarItem40.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Copy;
+            this.commandBarItem40.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Copy;
             this.commandBarItem40.Id = 42;
             this.commandBarItem40.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C));
-            this.commandBarItem40.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CopyLarge;
+            this.commandBarItem40.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_CopyLarge;
             this.commandBarItem40.Name = "commandBarItem40";
-            superToolTip38.FixedTooltipWidth = true;
-            toolTipTitleItem38.Text = "Copy (Ctrl+C)";
-            toolTipItem38.LeftIndent = 6;
-            toolTipItem38.Text = "Copy the selected controls and put them on the Clipboard.";
-            superToolTip38.Items.Add(toolTipTitleItem38);
-            superToolTip38.Items.Add(toolTipItem38);
-            superToolTip38.MaxWidth = 210;
-            this.commandBarItem40.SuperTip = superToolTip38;
+            superToolTip44.FixedTooltipWidth = true;
+            toolTipTitleItem44.Text = "Copy (Ctrl+C)";
+            toolTipItem44.LeftIndent = 6;
+            toolTipItem44.Text = "Copy the selected controls and put them on the Clipboard.";
+            superToolTip44.Items.Add(toolTipTitleItem44);
+            superToolTip44.Items.Add(toolTipItem44);
+            superToolTip44.MaxWidth = 210;
+            this.commandBarItem40.SuperTip = superToolTip44;
             // 
             // commandBarItem41
             // 
             this.commandBarItem41.Caption = "Paste";
             this.commandBarItem41.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Paste;
             this.commandBarItem41.Enabled = false;
-            this.commandBarItem41.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Paste;
+            this.commandBarItem41.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Paste;
             this.commandBarItem41.Id = 43;
             this.commandBarItem41.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V));
-            this.commandBarItem41.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_PasteLarge;
+            this.commandBarItem41.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_PasteLarge;
             this.commandBarItem41.Name = "commandBarItem41";
-            superToolTip39.FixedTooltipWidth = true;
-            toolTipTitleItem39.Text = "Paste (Ctrl+V)";
-            toolTipItem39.LeftIndent = 6;
-            toolTipItem39.Text = "Paste the contents of the Clipboard.";
-            superToolTip39.Items.Add(toolTipTitleItem39);
-            superToolTip39.Items.Add(toolTipItem39);
-            superToolTip39.MaxWidth = 210;
-            this.commandBarItem41.SuperTip = superToolTip39;
+            superToolTip45.FixedTooltipWidth = true;
+            toolTipTitleItem45.Text = "Paste (Ctrl+V)";
+            toolTipItem45.LeftIndent = 6;
+            toolTipItem45.Text = "Paste the contents of the Clipboard.";
+            superToolTip45.Items.Add(toolTipTitleItem45);
+            superToolTip45.Items.Add(toolTipItem45);
+            superToolTip45.MaxWidth = 210;
+            this.commandBarItem41.SuperTip = superToolTip45;
             // 
             // commandBarItem42
             // 
             this.commandBarItem42.Caption = "Undo";
             this.commandBarItem42.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Undo;
             this.commandBarItem42.Enabled = false;
-            this.commandBarItem42.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Undo;
+            this.commandBarItem42.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Undo;
             this.commandBarItem42.Id = 44;
             this.commandBarItem42.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z));
-            this.commandBarItem42.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_UndoLarge;
+            this.commandBarItem42.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_UndoLarge;
             this.commandBarItem42.Name = "commandBarItem42";
-            superToolTip40.FixedTooltipWidth = true;
-            toolTipTitleItem40.Text = "Undo (Ctrl+Z)";
-            toolTipItem40.LeftIndent = 6;
-            toolTipItem40.Text = "Undo the last operation.";
-            superToolTip40.Items.Add(toolTipTitleItem40);
-            superToolTip40.Items.Add(toolTipItem40);
-            superToolTip40.MaxWidth = 210;
-            this.commandBarItem42.SuperTip = superToolTip40;
+            superToolTip46.FixedTooltipWidth = true;
+            toolTipTitleItem46.Text = "Undo (Ctrl+Z)";
+            toolTipItem46.LeftIndent = 6;
+            toolTipItem46.Text = "Undo the last operation.";
+            superToolTip46.Items.Add(toolTipTitleItem46);
+            superToolTip46.Items.Add(toolTipItem46);
+            superToolTip46.MaxWidth = 210;
+            this.commandBarItem42.SuperTip = superToolTip46;
             // 
             // commandBarItem43
             // 
             this.commandBarItem43.Caption = "Redo";
             this.commandBarItem43.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Redo;
             this.commandBarItem43.Enabled = false;
-            this.commandBarItem43.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Redo;
+            this.commandBarItem43.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Redo;
             this.commandBarItem43.Id = 45;
             this.commandBarItem43.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y));
-            this.commandBarItem43.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_RedoLarge;
+            this.commandBarItem43.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_RedoLarge;
             this.commandBarItem43.Name = "commandBarItem43";
-            superToolTip41.FixedTooltipWidth = true;
-            toolTipTitleItem41.Text = "Redo (Ctrl+Y)";
-            toolTipItem41.LeftIndent = 6;
-            toolTipItem41.Text = "Redo the last operation.";
-            superToolTip41.Items.Add(toolTipTitleItem41);
-            superToolTip41.Items.Add(toolTipItem41);
-            superToolTip41.MaxWidth = 210;
-            this.commandBarItem43.SuperTip = superToolTip41;
+            superToolTip47.FixedTooltipWidth = true;
+            toolTipTitleItem47.Text = "Redo (Ctrl+Y)";
+            toolTipItem47.LeftIndent = 6;
+            toolTipItem47.Text = "Redo the last operation.";
+            superToolTip47.Items.Add(toolTipTitleItem47);
+            superToolTip47.Items.Add(toolTipItem47);
+            superToolTip47.MaxWidth = 210;
+            this.commandBarItem43.SuperTip = superToolTip47;
             // 
             // commandBarItem44
             // 
@@ -1393,70 +1560,70 @@
             this.commandBarItem44.Caption = "Zoom";
             this.commandBarItem44.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Zoom;
             this.commandBarItem44.Enabled = false;
-            this.commandBarItem44.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Zoom;
+            this.commandBarItem44.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Zoom;
             this.commandBarItem44.Id = 46;
-            this.commandBarItem44.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomLarge;
+            this.commandBarItem44.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomLarge;
             this.commandBarItem44.Name = "commandBarItem44";
-            superToolTip42.FixedTooltipWidth = true;
-            toolTipTitleItem42.Text = "Zoom";
-            toolTipItem42.LeftIndent = 6;
-            toolTipItem42.Text = "Change the zoom level of the document designer.";
-            superToolTip42.Items.Add(toolTipTitleItem42);
-            superToolTip42.Items.Add(toolTipItem42);
-            superToolTip42.MaxWidth = 210;
-            this.commandBarItem44.SuperTip = superToolTip42;
+            superToolTip48.FixedTooltipWidth = true;
+            toolTipTitleItem48.Text = "Zoom";
+            toolTipItem48.LeftIndent = 6;
+            toolTipItem48.Text = "Change the zoom level of the document designer.";
+            superToolTip48.Items.Add(toolTipTitleItem48);
+            superToolTip48.Items.Add(toolTipItem48);
+            superToolTip48.MaxWidth = 210;
+            this.commandBarItem44.SuperTip = superToolTip48;
             // 
             // commandBarItem45
             // 
             this.commandBarItem45.Caption = "Zoom In";
             this.commandBarItem45.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.ZoomIn;
             this.commandBarItem45.Enabled = false;
-            this.commandBarItem45.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomIn;
+            this.commandBarItem45.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomIn;
             this.commandBarItem45.Id = 47;
             this.commandBarItem45.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Add));
-            this.commandBarItem45.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomInLarge;
+            this.commandBarItem45.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomInLarge;
             this.commandBarItem45.Name = "commandBarItem45";
-            superToolTip43.FixedTooltipWidth = true;
-            toolTipTitleItem43.Text = "Zoom In (Ctrl+Add)";
-            toolTipItem43.LeftIndent = 6;
-            toolTipItem43.Text = "Zoom in to get a close-up view of the report.";
-            superToolTip43.Items.Add(toolTipTitleItem43);
-            superToolTip43.Items.Add(toolTipItem43);
-            superToolTip43.MaxWidth = 210;
-            this.commandBarItem45.SuperTip = superToolTip43;
+            superToolTip49.FixedTooltipWidth = true;
+            toolTipTitleItem49.Text = "Zoom In (Ctrl+Add)";
+            toolTipItem49.LeftIndent = 6;
+            toolTipItem49.Text = "Zoom in to get a close-up view of the report.";
+            superToolTip49.Items.Add(toolTipTitleItem49);
+            superToolTip49.Items.Add(toolTipItem49);
+            superToolTip49.MaxWidth = 210;
+            this.commandBarItem45.SuperTip = superToolTip49;
             // 
             // commandBarItem46
             // 
             this.commandBarItem46.Caption = "Zoom Out";
             this.commandBarItem46.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.ZoomOut;
             this.commandBarItem46.Enabled = false;
-            this.commandBarItem46.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOut;
+            this.commandBarItem46.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOut;
             this.commandBarItem46.Id = 48;
             this.commandBarItem46.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Subtract));
-            this.commandBarItem46.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOutLarge;
+            this.commandBarItem46.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ZoomOutLarge;
             this.commandBarItem46.Name = "commandBarItem46";
-            superToolTip44.FixedTooltipWidth = true;
-            toolTipTitleItem44.Text = "Zoom Out (Ctrl+Subtract)";
-            toolTipItem44.LeftIndent = 6;
-            toolTipItem44.Text = "Zoom out to see more of the report at a reduced size.";
-            superToolTip44.Items.Add(toolTipTitleItem44);
-            superToolTip44.Items.Add(toolTipItem44);
-            superToolTip44.MaxWidth = 210;
-            this.commandBarItem46.SuperTip = superToolTip44;
+            superToolTip50.FixedTooltipWidth = true;
+            toolTipTitleItem50.Text = "Zoom Out (Ctrl+Subtract)";
+            toolTipItem50.LeftIndent = 6;
+            toolTipItem50.Text = "Zoom out to see more of the report at a reduced size.";
+            superToolTip50.Items.Add(toolTipTitleItem50);
+            superToolTip50.Items.Add(toolTipItem50);
+            superToolTip50.MaxWidth = 210;
+            this.commandBarItem46.SuperTip = superToolTip50;
             // 
             // barEditItem1
             // 
             this.barEditItem1.Edit = this.recentlyUsedItemsComboBox1;
             this.barEditItem1.Id = 49;
             this.barEditItem1.Name = "barEditItem1";
-            superToolTip45.FixedTooltipWidth = true;
-            toolTipTitleItem45.Text = "Font";
-            toolTipItem45.LeftIndent = 6;
-            toolTipItem45.Text = "Change the font face.";
-            superToolTip45.Items.Add(toolTipTitleItem45);
-            superToolTip45.Items.Add(toolTipItem45);
-            superToolTip45.MaxWidth = 210;
-            this.barEditItem1.SuperTip = superToolTip45;
+            superToolTip51.FixedTooltipWidth = true;
+            toolTipTitleItem51.Text = "Font";
+            toolTipItem51.LeftIndent = 6;
+            toolTipItem51.Text = "Change the font face.";
+            superToolTip51.Items.Add(toolTipTitleItem51);
+            superToolTip51.Items.Add(toolTipItem51);
+            superToolTip51.MaxWidth = 210;
+            this.barEditItem1.SuperTip = superToolTip51;
             this.barEditItem1.Width = 140;
             // 
             // recentlyUsedItemsComboBox1
@@ -1473,14 +1640,14 @@
             this.barEditItem2.Edit = this.designRepositoryItemComboBox1;
             this.barEditItem2.Id = 50;
             this.barEditItem2.Name = "barEditItem2";
-            superToolTip46.FixedTooltipWidth = true;
-            toolTipTitleItem46.Text = "Font Size";
-            toolTipItem46.LeftIndent = 6;
-            toolTipItem46.Text = "Change the font size.";
-            superToolTip46.Items.Add(toolTipTitleItem46);
-            superToolTip46.Items.Add(toolTipItem46);
-            superToolTip46.MaxWidth = 210;
-            this.barEditItem2.SuperTip = superToolTip46;
+            superToolTip52.FixedTooltipWidth = true;
+            toolTipTitleItem52.Text = "Font Size";
+            toolTipItem52.LeftIndent = 6;
+            toolTipItem52.Text = "Change the font size.";
+            superToolTip52.Items.Add(toolTipTitleItem52);
+            superToolTip52.Items.Add(toolTipItem52);
+            superToolTip52.MaxWidth = 210;
+            this.barEditItem2.SuperTip = superToolTip52;
             // 
             // designRepositoryItemComboBox1
             // 
@@ -1492,22 +1659,22 @@
             // barDockPanelsListItem1
             // 
             this.barDockPanelsListItem1.Caption = "Windows";
-            this.barDockPanelsListItem1.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Windows;
+            this.barDockPanelsListItem1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Windows;
             this.barDockPanelsListItem1.Id = 51;
-            this.barDockPanelsListItem1.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_WindowsLarge;
+            this.barDockPanelsListItem1.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_WindowsLarge;
             this.barDockPanelsListItem1.Name = "barDockPanelsListItem1";
             this.barDockPanelsListItem1.ShowCustomizationItem = false;
             this.barDockPanelsListItem1.ShowDockPanels = true;
             this.barDockPanelsListItem1.ShowToolbars = false;
-            superToolTip47.FixedTooltipWidth = true;
-            toolTipTitleItem47.Text = "Show/Hide Windows";
-            toolTipItem47.LeftIndent = 6;
-            toolTipItem47.Text = "Show or hide the Tool Box, Report Explorer, Field List and Property Grid windows." +
+            superToolTip53.FixedTooltipWidth = true;
+            toolTipTitleItem53.Text = "Show/Hide Windows";
+            toolTipItem53.LeftIndent = 6;
+            toolTipItem53.Text = "Show or hide the Tool Box, Report Explorer, Field List and Property Grid windows." +
     "";
-            superToolTip47.Items.Add(toolTipTitleItem47);
-            superToolTip47.Items.Add(toolTipItem47);
-            superToolTip47.MaxWidth = 210;
-            this.barDockPanelsListItem1.SuperTip = superToolTip47;
+            superToolTip53.Items.Add(toolTipTitleItem53);
+            superToolTip53.Items.Add(toolTipItem53);
+            superToolTip53.MaxWidth = 210;
+            this.barDockPanelsListItem1.SuperTip = superToolTip53;
             // 
             // scriptsCommandBarItem1
             // 
@@ -1515,59 +1682,112 @@
             this.scriptsCommandBarItem1.Caption = "Scripts";
             this.scriptsCommandBarItem1.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.ShowScriptsTab;
             this.scriptsCommandBarItem1.Enabled = false;
-            this.scriptsCommandBarItem1.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Scripts;
+            this.scriptsCommandBarItem1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Scripts;
             this.scriptsCommandBarItem1.Id = 52;
-            this.scriptsCommandBarItem1.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ScriptsLarge;
+            this.scriptsCommandBarItem1.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ScriptsLarge;
             this.scriptsCommandBarItem1.Name = "scriptsCommandBarItem1";
-            superToolTip48.FixedTooltipWidth = true;
-            toolTipTitleItem48.Text = "Show/Hide Scripts";
-            toolTipItem48.LeftIndent = 6;
-            toolTipItem48.Text = "Show or hide the Scripts Editor.";
-            superToolTip48.Items.Add(toolTipTitleItem48);
-            superToolTip48.Items.Add(toolTipItem48);
-            superToolTip48.MaxWidth = 210;
-            this.scriptsCommandBarItem1.SuperTip = superToolTip48;
+            superToolTip54.FixedTooltipWidth = true;
+            toolTipTitleItem54.Text = "Show/Hide Scripts";
+            toolTipItem54.LeftIndent = 6;
+            toolTipItem54.Text = "Show or hide the Scripts Editor.";
+            superToolTip54.Items.Add(toolTipTitleItem54);
+            superToolTip54.Items.Add(toolTipItem54);
+            superToolTip54.MaxWidth = 210;
+            this.scriptsCommandBarItem1.SuperTip = superToolTip54;
             // 
-            // commandBarItem52
+            // commandBarItem47
             // 
-            this.commandBarItem52.Caption = "Close";
-            this.commandBarItem52.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Close;
-            this.commandBarItem52.Enabled = false;
-            this.commandBarItem52.Id = 58;
-            this.commandBarItem52.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F4));
-            this.commandBarItem52.Name = "commandBarItem52";
-            superToolTip49.FixedTooltipWidth = true;
-            toolTipTitleItem49.Text = "Close (Ctrl+F4)";
-            toolTipItem49.LeftIndent = 6;
-            toolTipItem49.Text = "Close the current report.";
-            superToolTip49.Items.Add(toolTipTitleItem49);
-            superToolTip49.Items.Add(toolTipItem49);
-            superToolTip49.MaxWidth = 210;
-            this.commandBarItem52.SuperTip = superToolTip49;
+            this.commandBarItem47.Caption = "Back";
+            this.commandBarItem47.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HtmlBackward;
+            this.commandBarItem47.Enabled = false;
+            this.commandBarItem47.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlBackward;
+            this.commandBarItem47.Id = 53;
+            this.commandBarItem47.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlBackwardLarge;
+            this.commandBarItem47.Name = "commandBarItem47";
+            superToolTip55.FixedTooltipWidth = true;
+            toolTipTitleItem55.Text = "Back";
+            toolTipItem55.LeftIndent = 6;
+            toolTipItem55.Text = "Move back to the previous page.";
+            superToolTip55.Items.Add(toolTipTitleItem55);
+            superToolTip55.Items.Add(toolTipItem55);
+            superToolTip55.MaxWidth = 210;
+            this.commandBarItem47.SuperTip = superToolTip55;
             // 
-            // commandBarItem53
+            // commandBarItem48
             // 
-            this.commandBarItem53.Caption = "Exit";
-            this.commandBarItem53.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.Exit;
-            this.commandBarItem53.Enabled = false;
-            this.commandBarItem53.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Exit;
-            this.commandBarItem53.Id = 59;
-            this.commandBarItem53.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_ExitLarge;
-            this.commandBarItem53.Name = "commandBarItem53";
-            superToolTip50.FixedTooltipWidth = true;
-            toolTipTitleItem50.Text = "Exit";
-            toolTipItem50.LeftIndent = 6;
-            toolTipItem50.Text = "Close the report designer.";
-            superToolTip50.Items.Add(toolTipTitleItem50);
-            superToolTip50.Items.Add(toolTipItem50);
-            superToolTip50.MaxWidth = 210;
-            this.commandBarItem53.SuperTip = superToolTip50;
+            this.commandBarItem48.Caption = "Forward";
+            this.commandBarItem48.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HtmlForward;
+            this.commandBarItem48.Enabled = false;
+            this.commandBarItem48.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlForward;
+            this.commandBarItem48.Id = 54;
+            this.commandBarItem48.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlForwardLarge;
+            this.commandBarItem48.Name = "commandBarItem48";
+            superToolTip56.FixedTooltipWidth = true;
+            toolTipTitleItem56.Text = "Forward";
+            toolTipItem56.LeftIndent = 6;
+            toolTipItem56.Text = "Move forward to the next page.";
+            superToolTip56.Items.Add(toolTipTitleItem56);
+            superToolTip56.Items.Add(toolTipItem56);
+            superToolTip56.MaxWidth = 210;
+            this.commandBarItem48.SuperTip = superToolTip56;
+            // 
+            // commandBarItem49
+            // 
+            this.commandBarItem49.Caption = "Home";
+            this.commandBarItem49.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HtmlHome;
+            this.commandBarItem49.Enabled = false;
+            this.commandBarItem49.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlHome;
+            this.commandBarItem49.Id = 55;
+            this.commandBarItem49.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlHomeLarge;
+            this.commandBarItem49.Name = "commandBarItem49";
+            superToolTip57.FixedTooltipWidth = true;
+            toolTipTitleItem57.Text = "Home";
+            toolTipItem57.LeftIndent = 6;
+            toolTipItem57.Text = "Display the home page.";
+            superToolTip57.Items.Add(toolTipTitleItem57);
+            superToolTip57.Items.Add(toolTipItem57);
+            superToolTip57.MaxWidth = 210;
+            this.commandBarItem49.SuperTip = superToolTip57;
+            // 
+            // commandBarItem50
+            // 
+            this.commandBarItem50.Caption = "Refresh";
+            this.commandBarItem50.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HtmlRefresh;
+            this.commandBarItem50.Enabled = false;
+            this.commandBarItem50.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlRefresh;
+            this.commandBarItem50.Id = 56;
+            this.commandBarItem50.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlRefreshLarge;
+            this.commandBarItem50.Name = "commandBarItem50";
+            superToolTip58.FixedTooltipWidth = true;
+            toolTipTitleItem58.Text = "Refresh";
+            toolTipItem58.LeftIndent = 6;
+            toolTipItem58.Text = "Refresh this page.";
+            superToolTip58.Items.Add(toolTipTitleItem58);
+            superToolTip58.Items.Add(toolTipItem58);
+            superToolTip58.MaxWidth = 210;
+            this.commandBarItem50.SuperTip = superToolTip58;
+            // 
+            // commandBarItem51
+            // 
+            this.commandBarItem51.Caption = "Find";
+            this.commandBarItem51.Command = DevExpress.XtraReports.UserDesigner.ReportCommand.HtmlFind;
+            this.commandBarItem51.Enabled = false;
+            this.commandBarItem51.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlFind;
+            this.commandBarItem51.Id = 57;
+            this.commandBarItem51.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_HtmlFindLarge;
+            this.commandBarItem51.Name = "commandBarItem51";
+            superToolTip59.FixedTooltipWidth = true;
+            toolTipTitleItem59.Text = "Find";
+            toolTipItem59.LeftIndent = 6;
+            toolTipItem59.Text = "Find the text on this page.";
+            superToolTip59.Items.Add(toolTipTitleItem59);
+            superToolTip59.Items.Add(toolTipItem59);
+            superToolTip59.MaxWidth = 210;
+            this.commandBarItem51.SuperTip = superToolTip59;
             // 
             // xrDesignBarButtonGroup1
             // 
             this.xrDesignBarButtonGroup1.Id = 60;
-            this.xrDesignBarButtonGroup1.ItemLinks.Add(this.commandColorBarItem2);
-            this.xrDesignBarButtonGroup1.ItemLinks.Add(this.commandColorBarItem1);
             this.xrDesignBarButtonGroup1.ItemLinks.Add(this.commandColorBarItem2);
             this.xrDesignBarButtonGroup1.ItemLinks.Add(this.commandColorBarItem1);
             this.xrDesignBarButtonGroup1.Name = "xrDesignBarButtonGroup1";
@@ -1578,18 +1798,11 @@
             this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem24);
             this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem25);
             this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem26);
-            this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem24);
-            this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem25);
-            this.xrDesignBarButtonGroup2.ItemLinks.Add(this.commandBarItem26);
             this.xrDesignBarButtonGroup2.Name = "xrDesignBarButtonGroup2";
             // 
             // xrDesignBarButtonGroup3
             // 
             this.xrDesignBarButtonGroup3.Id = 62;
-            this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem27);
-            this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem28);
-            this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem29);
-            this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem30);
             this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem27);
             this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem28);
             this.xrDesignBarButtonGroup3.ItemLinks.Add(this.commandBarItem29);
@@ -1603,10 +1816,6 @@
             this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem2);
             this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem3);
             this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem4);
-            this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem1);
-            this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem2);
-            this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem3);
-            this.xrDesignBarButtonGroup4.ItemLinks.Add(this.commandBarItem4);
             this.xrDesignBarButtonGroup4.Name = "xrDesignBarButtonGroup4";
             // 
             // xrDesignBarButtonGroup5
@@ -1615,18 +1824,11 @@
             this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem5);
             this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem6);
             this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem7);
-            this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem5);
-            this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem6);
-            this.xrDesignBarButtonGroup5.ItemLinks.Add(this.commandBarItem7);
             this.xrDesignBarButtonGroup5.Name = "xrDesignBarButtonGroup5";
             // 
             // xrDesignBarButtonGroup6
             // 
             this.xrDesignBarButtonGroup6.Id = 65;
-            this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem9);
-            this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem8);
-            this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem10);
-            this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem11);
             this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem9);
             this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem8);
             this.xrDesignBarButtonGroup6.ItemLinks.Add(this.commandBarItem10);
@@ -1640,19 +1842,11 @@
             this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem13);
             this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem14);
             this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem15);
-            this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem12);
-            this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem13);
-            this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem14);
-            this.xrDesignBarButtonGroup7.ItemLinks.Add(this.commandBarItem15);
             this.xrDesignBarButtonGroup7.Name = "xrDesignBarButtonGroup7";
             // 
             // xrDesignBarButtonGroup8
             // 
             this.xrDesignBarButtonGroup8.Id = 67;
-            this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem16);
-            this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem17);
-            this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem18);
-            this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem19);
             this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem16);
             this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem17);
             this.xrDesignBarButtonGroup8.ItemLinks.Add(this.commandBarItem18);
@@ -1666,10 +1860,6 @@
             this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem21);
             this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem22);
             this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem23);
-            this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem20);
-            this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem21);
-            this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem22);
-            this.xrDesignBarButtonGroup9.ItemLinks.Add(this.commandBarItem23);
             this.xrDesignBarButtonGroup9.Name = "xrDesignBarButtonGroup9";
             // 
             // printPreviewBarItem1
@@ -1679,19 +1869,19 @@
             this.printPreviewBarItem1.Command = DevExpress.XtraPrinting.PrintingSystemCommand.DocumentMap;
             this.printPreviewBarItem1.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem1.Enabled = false;
-            this.printPreviewBarItem1.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMap;
+            this.printPreviewBarItem1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMap;
             this.printPreviewBarItem1.Id = 69;
-            this.printPreviewBarItem1.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMapLarge;
+            this.printPreviewBarItem1.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_DocumentMapLarge;
             this.printPreviewBarItem1.Name = "printPreviewBarItem1";
-            superToolTip51.FixedTooltipWidth = true;
-            toolTipTitleItem51.Text = "Document Map";
-            toolTipItem51.LeftIndent = 6;
-            toolTipItem51.Text = "Open the Document Map, which allows you to navigate through a structural view of " +
+            superToolTip60.FixedTooltipWidth = true;
+            toolTipTitleItem60.Text = "Document Map";
+            toolTipItem60.LeftIndent = 6;
+            toolTipItem60.Text = "Open the Document Map, which allows you to navigate through a structural view of " +
     "the document.";
-            superToolTip51.Items.Add(toolTipTitleItem51);
-            superToolTip51.Items.Add(toolTipItem51);
-            superToolTip51.MaxWidth = 210;
-            this.printPreviewBarItem1.SuperTip = superToolTip51;
+            superToolTip60.Items.Add(toolTipTitleItem60);
+            superToolTip60.Items.Add(toolTipItem60);
+            superToolTip60.MaxWidth = 210;
+            this.printPreviewBarItem1.SuperTip = superToolTip60;
             // 
             // printPreviewBarItem2
             // 
@@ -1700,19 +1890,19 @@
             this.printPreviewBarItem2.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Parameters;
             this.printPreviewBarItem2.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem2.Enabled = false;
-            this.printPreviewBarItem2.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Parameters;
+            this.printPreviewBarItem2.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Parameters;
             this.printPreviewBarItem2.Id = 70;
-            this.printPreviewBarItem2.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ParametersLarge;
+            this.printPreviewBarItem2.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ParametersLarge;
             this.printPreviewBarItem2.Name = "printPreviewBarItem2";
-            superToolTip52.FixedTooltipWidth = true;
-            toolTipTitleItem52.Text = "Parameters";
-            toolTipItem52.LeftIndent = 6;
-            toolTipItem52.Text = "Open the Parameters pane, which allows you to enter values for report parameters." +
+            superToolTip61.FixedTooltipWidth = true;
+            toolTipTitleItem61.Text = "Parameters";
+            toolTipItem61.LeftIndent = 6;
+            toolTipItem61.Text = "Open the Parameters pane, which allows you to enter values for report parameters." +
     "";
-            superToolTip52.Items.Add(toolTipTitleItem52);
-            superToolTip52.Items.Add(toolTipItem52);
-            superToolTip52.MaxWidth = 210;
-            this.printPreviewBarItem2.SuperTip = superToolTip52;
+            superToolTip61.Items.Add(toolTipTitleItem61);
+            superToolTip61.Items.Add(toolTipItem61);
+            superToolTip61.MaxWidth = 210;
+            this.printPreviewBarItem2.SuperTip = superToolTip61;
             // 
             // printPreviewBarItem3
             // 
@@ -1721,18 +1911,18 @@
             this.printPreviewBarItem3.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Find;
             this.printPreviewBarItem3.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem3.Enabled = false;
-            this.printPreviewBarItem3.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Find;
+            this.printPreviewBarItem3.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Find;
             this.printPreviewBarItem3.Id = 71;
-            this.printPreviewBarItem3.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FindLarge;
+            this.printPreviewBarItem3.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FindLarge;
             this.printPreviewBarItem3.Name = "printPreviewBarItem3";
-            superToolTip53.FixedTooltipWidth = true;
-            toolTipTitleItem53.Text = "Find";
-            toolTipItem53.LeftIndent = 6;
-            toolTipItem53.Text = "Show the Find dialog to find text in the document.";
-            superToolTip53.Items.Add(toolTipTitleItem53);
-            superToolTip53.Items.Add(toolTipItem53);
-            superToolTip53.MaxWidth = 210;
-            this.printPreviewBarItem3.SuperTip = superToolTip53;
+            superToolTip62.FixedTooltipWidth = true;
+            toolTipTitleItem62.Text = "Find";
+            toolTipItem62.LeftIndent = 6;
+            toolTipItem62.Text = "Show the Find dialog to find text in the document.";
+            superToolTip62.Items.Add(toolTipTitleItem62);
+            superToolTip62.Items.Add(toolTipItem62);
+            superToolTip62.MaxWidth = 210;
+            this.printPreviewBarItem3.SuperTip = superToolTip62;
             // 
             // printPreviewBarItem4
             // 
@@ -1741,18 +1931,18 @@
             this.printPreviewBarItem4.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Thumbnails;
             this.printPreviewBarItem4.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem4.Enabled = false;
-            this.printPreviewBarItem4.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Thumbnails;
+            this.printPreviewBarItem4.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Thumbnails;
             this.printPreviewBarItem4.Id = 72;
-            this.printPreviewBarItem4.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ThumbnailsLarge;
+            this.printPreviewBarItem4.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ThumbnailsLarge;
             this.printPreviewBarItem4.Name = "printPreviewBarItem4";
-            superToolTip54.FixedTooltipWidth = true;
-            toolTipTitleItem54.Text = "Thumbnails";
-            toolTipItem54.LeftIndent = 6;
-            toolTipItem54.Text = "Open the Thumbnails, which allows you to navigate through the document.";
-            superToolTip54.Items.Add(toolTipTitleItem54);
-            superToolTip54.Items.Add(toolTipItem54);
-            superToolTip54.MaxWidth = 210;
-            this.printPreviewBarItem4.SuperTip = superToolTip54;
+            superToolTip63.FixedTooltipWidth = true;
+            toolTipTitleItem63.Text = "Thumbnails";
+            toolTipItem63.LeftIndent = 6;
+            toolTipItem63.Text = "Open the Thumbnails, which allows you to navigate through the document.";
+            superToolTip63.Items.Add(toolTipTitleItem63);
+            superToolTip63.Items.Add(toolTipItem63);
+            superToolTip63.MaxWidth = 210;
+            this.printPreviewBarItem4.SuperTip = superToolTip63;
             // 
             // printPreviewBarItem5
             // 
@@ -1760,18 +1950,18 @@
             this.printPreviewBarItem5.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Customize;
             this.printPreviewBarItem5.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem5.Enabled = false;
-            this.printPreviewBarItem5.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Customize;
+            this.printPreviewBarItem5.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Customize;
             this.printPreviewBarItem5.Id = 73;
-            this.printPreviewBarItem5.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_CustomizeLarge;
+            this.printPreviewBarItem5.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_CustomizeLarge;
             this.printPreviewBarItem5.Name = "printPreviewBarItem5";
-            superToolTip55.FixedTooltipWidth = true;
-            toolTipTitleItem55.Text = "Options";
-            toolTipItem55.LeftIndent = 6;
-            toolTipItem55.Text = "Open the Print Options dialog, in which you can change printing options.";
-            superToolTip55.Items.Add(toolTipTitleItem55);
-            superToolTip55.Items.Add(toolTipItem55);
-            superToolTip55.MaxWidth = 210;
-            this.printPreviewBarItem5.SuperTip = superToolTip55;
+            superToolTip64.FixedTooltipWidth = true;
+            toolTipTitleItem64.Text = "Options";
+            toolTipItem64.LeftIndent = 6;
+            toolTipItem64.Text = "Open the Print Options dialog, in which you can change printing options.";
+            superToolTip64.Items.Add(toolTipTitleItem64);
+            superToolTip64.Items.Add(toolTipItem64);
+            superToolTip64.MaxWidth = 210;
+            this.printPreviewBarItem5.SuperTip = superToolTip64;
             // 
             // printPreviewBarItem6
             // 
@@ -1779,18 +1969,18 @@
             this.printPreviewBarItem6.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Print;
             this.printPreviewBarItem6.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem6.Enabled = false;
-            this.printPreviewBarItem6.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Print;
+            this.printPreviewBarItem6.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Print;
             this.printPreviewBarItem6.Id = 74;
-            this.printPreviewBarItem6.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintLarge;
+            this.printPreviewBarItem6.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintLarge;
             this.printPreviewBarItem6.Name = "printPreviewBarItem6";
-            superToolTip56.FixedTooltipWidth = true;
-            toolTipTitleItem56.Text = "Print (Ctrl+P)";
-            toolTipItem56.LeftIndent = 6;
-            toolTipItem56.Text = "Select a printer, number of copies and other printing options before printing.";
-            superToolTip56.Items.Add(toolTipTitleItem56);
-            superToolTip56.Items.Add(toolTipItem56);
-            superToolTip56.MaxWidth = 210;
-            this.printPreviewBarItem6.SuperTip = superToolTip56;
+            superToolTip65.FixedTooltipWidth = true;
+            toolTipTitleItem65.Text = "Print (Ctrl+P)";
+            toolTipItem65.LeftIndent = 6;
+            toolTipItem65.Text = "Select a printer, number of copies and other printing options before printing.";
+            superToolTip65.Items.Add(toolTipTitleItem65);
+            superToolTip65.Items.Add(toolTipItem65);
+            superToolTip65.MaxWidth = 210;
+            this.printPreviewBarItem6.SuperTip = superToolTip65;
             // 
             // printPreviewBarItem7
             // 
@@ -1798,18 +1988,18 @@
             this.printPreviewBarItem7.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PrintDirect;
             this.printPreviewBarItem7.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem7.Enabled = false;
-            this.printPreviewBarItem7.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect;
+            this.printPreviewBarItem7.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect;
             this.printPreviewBarItem7.Id = 75;
-            this.printPreviewBarItem7.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirectLarge;
+            this.printPreviewBarItem7.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirectLarge;
             this.printPreviewBarItem7.Name = "printPreviewBarItem7";
-            superToolTip57.FixedTooltipWidth = true;
-            toolTipTitleItem57.Text = "Quick Print";
-            toolTipItem57.LeftIndent = 6;
-            toolTipItem57.Text = "Send the document directly to the default printer without making changes.";
-            superToolTip57.Items.Add(toolTipTitleItem57);
-            superToolTip57.Items.Add(toolTipItem57);
-            superToolTip57.MaxWidth = 210;
-            this.printPreviewBarItem7.SuperTip = superToolTip57;
+            superToolTip66.FixedTooltipWidth = true;
+            toolTipTitleItem66.Text = "Quick Print";
+            toolTipItem66.LeftIndent = 6;
+            toolTipItem66.Text = "Send the document directly to the default printer without making changes.";
+            superToolTip66.Items.Add(toolTipTitleItem66);
+            superToolTip66.Items.Add(toolTipItem66);
+            superToolTip66.MaxWidth = 210;
+            this.printPreviewBarItem7.SuperTip = superToolTip66;
             // 
             // printPreviewBarItem8
             // 
@@ -1819,14 +2009,14 @@
             this.printPreviewBarItem8.Enabled = false;
             this.printPreviewBarItem8.Id = 76;
             this.printPreviewBarItem8.Name = "printPreviewBarItem8";
-            superToolTip58.FixedTooltipWidth = true;
-            toolTipTitleItem58.Text = "Page Setup";
-            toolTipItem58.LeftIndent = 6;
-            toolTipItem58.Text = "Show the Page Setup dialog.";
-            superToolTip58.Items.Add(toolTipTitleItem58);
-            superToolTip58.Items.Add(toolTipItem58);
-            superToolTip58.MaxWidth = 210;
-            this.printPreviewBarItem8.SuperTip = superToolTip58;
+            superToolTip67.FixedTooltipWidth = true;
+            toolTipTitleItem67.Text = "Page Setup";
+            toolTipItem67.LeftIndent = 6;
+            toolTipItem67.Text = "Show the Page Setup dialog.";
+            superToolTip67.Items.Add(toolTipTitleItem67);
+            superToolTip67.Items.Add(toolTipItem67);
+            superToolTip67.MaxWidth = 210;
+            this.printPreviewBarItem8.SuperTip = superToolTip67;
             // 
             // printPreviewBarItem9
             // 
@@ -1834,18 +2024,18 @@
             this.printPreviewBarItem9.Command = DevExpress.XtraPrinting.PrintingSystemCommand.EditPageHF;
             this.printPreviewBarItem9.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem9.Enabled = false;
-            this.printPreviewBarItem9.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHF;
+            this.printPreviewBarItem9.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHF;
             this.printPreviewBarItem9.Id = 77;
-            this.printPreviewBarItem9.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHFLarge;
+            this.printPreviewBarItem9.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_EditPageHFLarge;
             this.printPreviewBarItem9.Name = "printPreviewBarItem9";
-            superToolTip59.FixedTooltipWidth = true;
-            toolTipTitleItem59.Text = "Header and Footer";
-            toolTipItem59.LeftIndent = 6;
-            toolTipItem59.Text = "Edit the header and footer of the document.";
-            superToolTip59.Items.Add(toolTipTitleItem59);
-            superToolTip59.Items.Add(toolTipItem59);
-            superToolTip59.MaxWidth = 210;
-            this.printPreviewBarItem9.SuperTip = superToolTip59;
+            superToolTip68.FixedTooltipWidth = true;
+            toolTipTitleItem68.Text = "Header and Footer";
+            toolTipItem68.LeftIndent = 6;
+            toolTipItem68.Text = "Edit the header and footer of the document.";
+            superToolTip68.Items.Add(toolTipTitleItem68);
+            superToolTip68.Items.Add(toolTipItem68);
+            superToolTip68.MaxWidth = 210;
+            this.printPreviewBarItem9.SuperTip = superToolTip68;
             // 
             // printPreviewBarItem10
             // 
@@ -1854,18 +2044,18 @@
             this.printPreviewBarItem10.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Scale;
             this.printPreviewBarItem10.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem10.Enabled = false;
-            this.printPreviewBarItem10.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Scale;
+            this.printPreviewBarItem10.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Scale;
             this.printPreviewBarItem10.Id = 78;
-            this.printPreviewBarItem10.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ScaleLarge;
+            this.printPreviewBarItem10.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ScaleLarge;
             this.printPreviewBarItem10.Name = "printPreviewBarItem10";
-            superToolTip60.FixedTooltipWidth = true;
-            toolTipTitleItem60.Text = "Scale";
-            toolTipItem60.LeftIndent = 6;
-            toolTipItem60.Text = "Stretch or shrink the printed output to a percentage of its actual size.";
-            superToolTip60.Items.Add(toolTipTitleItem60);
-            superToolTip60.Items.Add(toolTipItem60);
-            superToolTip60.MaxWidth = 210;
-            this.printPreviewBarItem10.SuperTip = superToolTip60;
+            superToolTip69.FixedTooltipWidth = true;
+            toolTipTitleItem69.Text = "Scale";
+            toolTipItem69.LeftIndent = 6;
+            toolTipItem69.Text = "Stretch or shrink the printed output to a percentage of its actual size.";
+            superToolTip69.Items.Add(toolTipTitleItem69);
+            superToolTip69.Items.Add(toolTipItem69);
+            superToolTip69.MaxWidth = 210;
+            this.printPreviewBarItem10.SuperTip = superToolTip69;
             // 
             // printPreviewBarItem11
             // 
@@ -1874,19 +2064,19 @@
             this.printPreviewBarItem11.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Pointer;
             this.printPreviewBarItem11.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem11.Enabled = false;
-            this.printPreviewBarItem11.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Pointer;
+            this.printPreviewBarItem11.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Pointer;
             this.printPreviewBarItem11.GroupIndex = 1;
             this.printPreviewBarItem11.Id = 79;
             this.printPreviewBarItem11.Name = "printPreviewBarItem11";
             this.printPreviewBarItem11.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            superToolTip61.FixedTooltipWidth = true;
-            toolTipTitleItem61.Text = "Mouse Pointer";
-            toolTipItem61.LeftIndent = 6;
-            toolTipItem61.Text = "Show the mouse pointer.";
-            superToolTip61.Items.Add(toolTipTitleItem61);
-            superToolTip61.Items.Add(toolTipItem61);
-            superToolTip61.MaxWidth = 210;
-            this.printPreviewBarItem11.SuperTip = superToolTip61;
+            superToolTip70.FixedTooltipWidth = true;
+            toolTipTitleItem70.Text = "Mouse Pointer";
+            toolTipItem70.LeftIndent = 6;
+            toolTipItem70.Text = "Show the mouse pointer.";
+            superToolTip70.Items.Add(toolTipTitleItem70);
+            superToolTip70.Items.Add(toolTipItem70);
+            superToolTip70.MaxWidth = 210;
+            this.printPreviewBarItem11.SuperTip = superToolTip70;
             // 
             // printPreviewBarItem12
             // 
@@ -1895,19 +2085,19 @@
             this.printPreviewBarItem12.Command = DevExpress.XtraPrinting.PrintingSystemCommand.HandTool;
             this.printPreviewBarItem12.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem12.Enabled = false;
-            this.printPreviewBarItem12.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_HandTool;
+            this.printPreviewBarItem12.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_HandTool;
             this.printPreviewBarItem12.GroupIndex = 1;
             this.printPreviewBarItem12.Id = 80;
             this.printPreviewBarItem12.Name = "printPreviewBarItem12";
             this.printPreviewBarItem12.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            superToolTip62.FixedTooltipWidth = true;
-            toolTipTitleItem62.Text = "Hand Tool";
-            toolTipItem62.LeftIndent = 6;
-            toolTipItem62.Text = "Invoke the Hand tool to manually scroll through pages.";
-            superToolTip62.Items.Add(toolTipTitleItem62);
-            superToolTip62.Items.Add(toolTipItem62);
-            superToolTip62.MaxWidth = 210;
-            this.printPreviewBarItem12.SuperTip = superToolTip62;
+            superToolTip71.FixedTooltipWidth = true;
+            toolTipTitleItem71.Text = "Hand Tool";
+            toolTipItem71.LeftIndent = 6;
+            toolTipItem71.Text = "Invoke the Hand tool to manually scroll through pages.";
+            superToolTip71.Items.Add(toolTipTitleItem71);
+            superToolTip71.Items.Add(toolTipItem71);
+            superToolTip71.MaxWidth = 210;
+            this.printPreviewBarItem12.SuperTip = superToolTip71;
             // 
             // printPreviewBarItem13
             // 
@@ -1916,21 +2106,21 @@
             this.printPreviewBarItem13.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Magnifier;
             this.printPreviewBarItem13.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem13.Enabled = false;
-            this.printPreviewBarItem13.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Magnifier;
+            this.printPreviewBarItem13.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Magnifier;
             this.printPreviewBarItem13.GroupIndex = 1;
             this.printPreviewBarItem13.Id = 81;
             this.printPreviewBarItem13.Name = "printPreviewBarItem13";
             this.printPreviewBarItem13.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            superToolTip63.FixedTooltipWidth = true;
-            toolTipTitleItem63.Text = "Magnifier";
-            toolTipItem63.LeftIndent = 6;
-            toolTipItem63.Text = "Invoke the Magnifier tool.\r\n\r\nClicking once on a document zooms it so that a sing" +
+            superToolTip72.FixedTooltipWidth = true;
+            toolTipTitleItem72.Text = "Magnifier";
+            toolTipItem72.LeftIndent = 6;
+            toolTipItem72.Text = "Invoke the Magnifier tool.\r\n\r\nClicking once on a document zooms it so that a sing" +
     "le page becomes entirely visible, while clicking another time zooms it to 100% o" +
     "f the normal size.";
-            superToolTip63.Items.Add(toolTipTitleItem63);
-            superToolTip63.Items.Add(toolTipItem63);
-            superToolTip63.MaxWidth = 210;
-            this.printPreviewBarItem13.SuperTip = superToolTip63;
+            superToolTip72.Items.Add(toolTipTitleItem72);
+            superToolTip72.Items.Add(toolTipItem72);
+            superToolTip72.MaxWidth = 210;
+            this.printPreviewBarItem13.SuperTip = superToolTip72;
             // 
             // printPreviewBarItem14
             // 
@@ -1938,18 +2128,18 @@
             this.printPreviewBarItem14.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomOut;
             this.printPreviewBarItem14.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem14.Enabled = false;
-            this.printPreviewBarItem14.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOut;
+            this.printPreviewBarItem14.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOut;
             this.printPreviewBarItem14.Id = 82;
-            this.printPreviewBarItem14.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOutLarge;
+            this.printPreviewBarItem14.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomOutLarge;
             this.printPreviewBarItem14.Name = "printPreviewBarItem14";
-            superToolTip64.FixedTooltipWidth = true;
-            toolTipTitleItem64.Text = "Zoom Out";
-            toolTipItem64.LeftIndent = 6;
-            toolTipItem64.Text = "Zoom out to see more of the page at a reduced size.";
-            superToolTip64.Items.Add(toolTipTitleItem64);
-            superToolTip64.Items.Add(toolTipItem64);
-            superToolTip64.MaxWidth = 210;
-            this.printPreviewBarItem14.SuperTip = superToolTip64;
+            superToolTip73.FixedTooltipWidth = true;
+            toolTipTitleItem73.Text = "Zoom Out";
+            toolTipItem73.LeftIndent = 6;
+            toolTipItem73.Text = "Zoom out to see more of the page at a reduced size.";
+            superToolTip73.Items.Add(toolTipTitleItem73);
+            superToolTip73.Items.Add(toolTipItem73);
+            superToolTip73.MaxWidth = 210;
+            this.printPreviewBarItem14.SuperTip = superToolTip73;
             // 
             // printPreviewBarItem15
             // 
@@ -1957,18 +2147,18 @@
             this.printPreviewBarItem15.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ZoomIn;
             this.printPreviewBarItem15.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem15.Enabled = false;
-            this.printPreviewBarItem15.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomIn;
+            this.printPreviewBarItem15.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomIn;
             this.printPreviewBarItem15.Id = 83;
-            this.printPreviewBarItem15.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomInLarge;
+            this.printPreviewBarItem15.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomInLarge;
             this.printPreviewBarItem15.Name = "printPreviewBarItem15";
-            superToolTip65.FixedTooltipWidth = true;
-            toolTipTitleItem65.Text = "Zoom In";
-            toolTipItem65.LeftIndent = 6;
-            toolTipItem65.Text = "Zoom in to get a close-up view of the document.";
-            superToolTip65.Items.Add(toolTipTitleItem65);
-            superToolTip65.Items.Add(toolTipItem65);
-            superToolTip65.MaxWidth = 210;
-            this.printPreviewBarItem15.SuperTip = superToolTip65;
+            superToolTip74.FixedTooltipWidth = true;
+            toolTipTitleItem74.Text = "Zoom In";
+            toolTipItem74.LeftIndent = 6;
+            toolTipItem74.Text = "Zoom in to get a close-up view of the document.";
+            superToolTip74.Items.Add(toolTipTitleItem74);
+            superToolTip74.Items.Add(toolTipItem74);
+            superToolTip74.MaxWidth = 210;
+            this.printPreviewBarItem15.SuperTip = superToolTip74;
             // 
             // printPreviewBarItem16
             // 
@@ -1977,18 +2167,18 @@
             this.printPreviewBarItem16.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Zoom;
             this.printPreviewBarItem16.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem16.Enabled = false;
-            this.printPreviewBarItem16.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Zoom;
+            this.printPreviewBarItem16.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Zoom;
             this.printPreviewBarItem16.Id = 84;
-            this.printPreviewBarItem16.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomLarge;
+            this.printPreviewBarItem16.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ZoomLarge;
             this.printPreviewBarItem16.Name = "printPreviewBarItem16";
-            superToolTip66.FixedTooltipWidth = true;
-            toolTipTitleItem66.Text = "Zoom";
-            toolTipItem66.LeftIndent = 6;
-            toolTipItem66.Text = "Change the zoom level of the document preview.";
-            superToolTip66.Items.Add(toolTipTitleItem66);
-            superToolTip66.Items.Add(toolTipItem66);
-            superToolTip66.MaxWidth = 210;
-            this.printPreviewBarItem16.SuperTip = superToolTip66;
+            superToolTip75.FixedTooltipWidth = true;
+            toolTipTitleItem75.Text = "Zoom";
+            toolTipItem75.LeftIndent = 6;
+            toolTipItem75.Text = "Change the zoom level of the document preview.";
+            superToolTip75.Items.Add(toolTipTitleItem75);
+            superToolTip75.Items.Add(toolTipItem75);
+            superToolTip75.MaxWidth = 210;
+            this.printPreviewBarItem16.SuperTip = superToolTip75;
             // 
             // printPreviewBarItem17
             // 
@@ -1996,18 +2186,18 @@
             this.printPreviewBarItem17.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowFirstPage;
             this.printPreviewBarItem17.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem17.Enabled = false;
-            this.printPreviewBarItem17.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPage;
+            this.printPreviewBarItem17.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPage;
             this.printPreviewBarItem17.Id = 85;
-            this.printPreviewBarItem17.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPageLarge;
+            this.printPreviewBarItem17.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowFirstPageLarge;
             this.printPreviewBarItem17.Name = "printPreviewBarItem17";
-            superToolTip67.FixedTooltipWidth = true;
-            toolTipTitleItem67.Text = "First Page (Ctrl+Home)";
-            toolTipItem67.LeftIndent = 6;
-            toolTipItem67.Text = "Navigate to the first page of the document.";
-            superToolTip67.Items.Add(toolTipTitleItem67);
-            superToolTip67.Items.Add(toolTipItem67);
-            superToolTip67.MaxWidth = 210;
-            this.printPreviewBarItem17.SuperTip = superToolTip67;
+            superToolTip76.FixedTooltipWidth = true;
+            toolTipTitleItem76.Text = "First Page (Ctrl+Home)";
+            toolTipItem76.LeftIndent = 6;
+            toolTipItem76.Text = "Navigate to the first page of the document.";
+            superToolTip76.Items.Add(toolTipTitleItem76);
+            superToolTip76.Items.Add(toolTipItem76);
+            superToolTip76.MaxWidth = 210;
+            this.printPreviewBarItem17.SuperTip = superToolTip76;
             // 
             // printPreviewBarItem18
             // 
@@ -2015,18 +2205,18 @@
             this.printPreviewBarItem18.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowPrevPage;
             this.printPreviewBarItem18.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem18.Enabled = false;
-            this.printPreviewBarItem18.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPage;
+            this.printPreviewBarItem18.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPage;
             this.printPreviewBarItem18.Id = 86;
-            this.printPreviewBarItem18.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPageLarge;
+            this.printPreviewBarItem18.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowPrevPageLarge;
             this.printPreviewBarItem18.Name = "printPreviewBarItem18";
-            superToolTip68.FixedTooltipWidth = true;
-            toolTipTitleItem68.Text = "Previous Page (PageUp)";
-            toolTipItem68.LeftIndent = 6;
-            toolTipItem68.Text = "Navigate to the previous page of the document.";
-            superToolTip68.Items.Add(toolTipTitleItem68);
-            superToolTip68.Items.Add(toolTipItem68);
-            superToolTip68.MaxWidth = 210;
-            this.printPreviewBarItem18.SuperTip = superToolTip68;
+            superToolTip77.FixedTooltipWidth = true;
+            toolTipTitleItem77.Text = "Previous Page (PageUp)";
+            toolTipItem77.LeftIndent = 6;
+            toolTipItem77.Text = "Navigate to the previous page of the document.";
+            superToolTip77.Items.Add(toolTipTitleItem77);
+            superToolTip77.Items.Add(toolTipItem77);
+            superToolTip77.MaxWidth = 210;
+            this.printPreviewBarItem18.SuperTip = superToolTip77;
             // 
             // printPreviewBarItem19
             // 
@@ -2034,18 +2224,18 @@
             this.printPreviewBarItem19.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowNextPage;
             this.printPreviewBarItem19.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem19.Enabled = false;
-            this.printPreviewBarItem19.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPage;
+            this.printPreviewBarItem19.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPage;
             this.printPreviewBarItem19.Id = 87;
-            this.printPreviewBarItem19.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPageLarge;
+            this.printPreviewBarItem19.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowNextPageLarge;
             this.printPreviewBarItem19.Name = "printPreviewBarItem19";
-            superToolTip69.FixedTooltipWidth = true;
-            toolTipTitleItem69.Text = "Next Page (PageDown)";
-            toolTipItem69.LeftIndent = 6;
-            toolTipItem69.Text = "Navigate to the next page of the document.";
-            superToolTip69.Items.Add(toolTipTitleItem69);
-            superToolTip69.Items.Add(toolTipItem69);
-            superToolTip69.MaxWidth = 210;
-            this.printPreviewBarItem19.SuperTip = superToolTip69;
+            superToolTip78.FixedTooltipWidth = true;
+            toolTipTitleItem78.Text = "Next Page (PageDown)";
+            toolTipItem78.LeftIndent = 6;
+            toolTipItem78.Text = "Navigate to the next page of the document.";
+            superToolTip78.Items.Add(toolTipTitleItem78);
+            superToolTip78.Items.Add(toolTipItem78);
+            superToolTip78.MaxWidth = 210;
+            this.printPreviewBarItem19.SuperTip = superToolTip78;
             // 
             // printPreviewBarItem20
             // 
@@ -2053,18 +2243,18 @@
             this.printPreviewBarItem20.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ShowLastPage;
             this.printPreviewBarItem20.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem20.Enabled = false;
-            this.printPreviewBarItem20.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPage;
+            this.printPreviewBarItem20.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPage;
             this.printPreviewBarItem20.Id = 88;
-            this.printPreviewBarItem20.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPageLarge;
+            this.printPreviewBarItem20.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ShowLastPageLarge;
             this.printPreviewBarItem20.Name = "printPreviewBarItem20";
-            superToolTip70.FixedTooltipWidth = true;
-            toolTipTitleItem70.Text = "Last Page (Ctrl+End)";
-            toolTipItem70.LeftIndent = 6;
-            toolTipItem70.Text = "Navigate to the last page of the document.";
-            superToolTip70.Items.Add(toolTipTitleItem70);
-            superToolTip70.Items.Add(toolTipItem70);
-            superToolTip70.MaxWidth = 210;
-            this.printPreviewBarItem20.SuperTip = superToolTip70;
+            superToolTip79.FixedTooltipWidth = true;
+            toolTipTitleItem79.Text = "Last Page (Ctrl+End)";
+            toolTipItem79.LeftIndent = 6;
+            toolTipItem79.Text = "Navigate to the last page of the document.";
+            superToolTip79.Items.Add(toolTipTitleItem79);
+            superToolTip79.Items.Add(toolTipItem79);
+            superToolTip79.MaxWidth = 210;
+            this.printPreviewBarItem20.SuperTip = superToolTip79;
             // 
             // printPreviewBarItem21
             // 
@@ -2073,18 +2263,18 @@
             this.printPreviewBarItem21.Command = DevExpress.XtraPrinting.PrintingSystemCommand.MultiplePages;
             this.printPreviewBarItem21.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem21.Enabled = false;
-            this.printPreviewBarItem21.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePages;
+            this.printPreviewBarItem21.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePages;
             this.printPreviewBarItem21.Id = 89;
-            this.printPreviewBarItem21.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePagesLarge;
+            this.printPreviewBarItem21.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_MultiplePagesLarge;
             this.printPreviewBarItem21.Name = "printPreviewBarItem21";
-            superToolTip71.FixedTooltipWidth = true;
-            toolTipTitleItem71.Text = "View Many Pages";
-            toolTipItem71.LeftIndent = 6;
-            toolTipItem71.Text = "Choose the page layout to arrange the document pages in preview.";
-            superToolTip71.Items.Add(toolTipTitleItem71);
-            superToolTip71.Items.Add(toolTipItem71);
-            superToolTip71.MaxWidth = 210;
-            this.printPreviewBarItem21.SuperTip = superToolTip71;
+            superToolTip80.FixedTooltipWidth = true;
+            toolTipTitleItem80.Text = "View Many Pages";
+            toolTipItem80.LeftIndent = 6;
+            toolTipItem80.Text = "Choose the page layout to arrange the document pages in preview.";
+            superToolTip80.Items.Add(toolTipTitleItem80);
+            superToolTip80.Items.Add(toolTipItem80);
+            superToolTip80.MaxWidth = 210;
+            this.printPreviewBarItem21.SuperTip = superToolTip80;
             // 
             // printPreviewBarItem22
             // 
@@ -2093,18 +2283,18 @@
             this.printPreviewBarItem22.Command = DevExpress.XtraPrinting.PrintingSystemCommand.FillBackground;
             this.printPreviewBarItem22.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem22.Enabled = false;
-            this.printPreviewBarItem22.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FillBackground;
+            this.printPreviewBarItem22.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FillBackground;
             this.printPreviewBarItem22.Id = 90;
-            this.printPreviewBarItem22.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FillBackgroundLarge;
+            this.printPreviewBarItem22.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_FillBackgroundLarge;
             this.printPreviewBarItem22.Name = "printPreviewBarItem22";
-            superToolTip72.FixedTooltipWidth = true;
-            toolTipTitleItem72.Text = "Background Color";
-            toolTipItem72.LeftIndent = 6;
-            toolTipItem72.Text = "Choose a color for the background of the document pages.";
-            superToolTip72.Items.Add(toolTipTitleItem72);
-            superToolTip72.Items.Add(toolTipItem72);
-            superToolTip72.MaxWidth = 210;
-            this.printPreviewBarItem22.SuperTip = superToolTip72;
+            superToolTip81.FixedTooltipWidth = true;
+            toolTipTitleItem81.Text = "Background Color";
+            toolTipItem81.LeftIndent = 6;
+            toolTipItem81.Text = "Choose a color for the background of the document pages.";
+            superToolTip81.Items.Add(toolTipTitleItem81);
+            superToolTip81.Items.Add(toolTipItem81);
+            superToolTip81.MaxWidth = 210;
+            this.printPreviewBarItem22.SuperTip = superToolTip81;
             // 
             // printPreviewBarItem23
             // 
@@ -2112,19 +2302,19 @@
             this.printPreviewBarItem23.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Watermark;
             this.printPreviewBarItem23.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem23.Enabled = false;
-            this.printPreviewBarItem23.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Watermark;
+            this.printPreviewBarItem23.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Watermark;
             this.printPreviewBarItem23.Id = 91;
-            this.printPreviewBarItem23.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_WatermarkLarge;
+            this.printPreviewBarItem23.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_WatermarkLarge;
             this.printPreviewBarItem23.Name = "printPreviewBarItem23";
-            superToolTip73.FixedTooltipWidth = true;
-            toolTipTitleItem73.Text = "Watermark";
-            toolTipItem73.LeftIndent = 6;
-            toolTipItem73.Text = "Insert ghosted text or image behind the content of a page.\r\n\r\nThis is often used " +
+            superToolTip82.FixedTooltipWidth = true;
+            toolTipTitleItem82.Text = "Watermark";
+            toolTipItem82.LeftIndent = 6;
+            toolTipItem82.Text = "Insert ghosted text or image behind the content of a page.\r\n\r\nThis is often used " +
     "to indicate that a document is to be treated specially.";
-            superToolTip73.Items.Add(toolTipTitleItem73);
-            superToolTip73.Items.Add(toolTipItem73);
-            superToolTip73.MaxWidth = 210;
-            this.printPreviewBarItem23.SuperTip = superToolTip73;
+            superToolTip82.Items.Add(toolTipTitleItem82);
+            superToolTip82.Items.Add(toolTipItem82);
+            superToolTip82.MaxWidth = 210;
+            this.printPreviewBarItem23.SuperTip = superToolTip82;
             // 
             // printPreviewBarItem24
             // 
@@ -2137,15 +2327,15 @@
             this.printPreviewBarItem24.Id = 92;
             this.printPreviewBarItem24.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("printPreviewBarItem24.LargeGlyph")));
             this.printPreviewBarItem24.Name = "printPreviewBarItem24";
-            superToolTip74.FixedTooltipWidth = true;
-            toolTipTitleItem74.Text = "Export To...";
-            toolTipItem74.LeftIndent = 6;
-            toolTipItem74.Text = "Export the current document in one of the available formats, and save it to the f" +
+            superToolTip83.FixedTooltipWidth = true;
+            toolTipTitleItem83.Text = "Export To...";
+            toolTipItem83.LeftIndent = 6;
+            toolTipItem83.Text = "Export the current document in one of the available formats, and save it to the f" +
     "ile on a disk.";
-            superToolTip74.Items.Add(toolTipTitleItem74);
-            superToolTip74.Items.Add(toolTipItem74);
-            superToolTip74.MaxWidth = 210;
-            this.printPreviewBarItem24.SuperTip = superToolTip74;
+            superToolTip83.Items.Add(toolTipTitleItem83);
+            superToolTip83.Items.Add(toolTipItem83);
+            superToolTip83.MaxWidth = 210;
+            this.printPreviewBarItem24.SuperTip = superToolTip83;
             // 
             // printPreviewBarItem25
             // 
@@ -2158,15 +2348,15 @@
             this.printPreviewBarItem25.Id = 93;
             this.printPreviewBarItem25.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("printPreviewBarItem25.LargeGlyph")));
             this.printPreviewBarItem25.Name = "printPreviewBarItem25";
-            superToolTip75.FixedTooltipWidth = true;
-            toolTipTitleItem75.Text = "E-Mail As...";
-            toolTipItem75.LeftIndent = 6;
-            toolTipItem75.Text = "Export the current document in one of the available formats, and attach it to the" +
+            superToolTip84.FixedTooltipWidth = true;
+            toolTipTitleItem84.Text = "E-Mail As...";
+            toolTipItem84.LeftIndent = 6;
+            toolTipItem84.Text = "Export the current document in one of the available formats, and attach it to the" +
     " e-mail.";
-            superToolTip75.Items.Add(toolTipTitleItem75);
-            superToolTip75.Items.Add(toolTipItem75);
-            superToolTip75.MaxWidth = 210;
-            this.printPreviewBarItem25.SuperTip = superToolTip75;
+            superToolTip84.Items.Add(toolTipTitleItem84);
+            superToolTip84.Items.Add(toolTipItem84);
+            superToolTip84.MaxWidth = 210;
+            this.printPreviewBarItem25.SuperTip = superToolTip84;
             // 
             // printPreviewBarItem26
             // 
@@ -2174,18 +2364,18 @@
             this.printPreviewBarItem26.Command = DevExpress.XtraPrinting.PrintingSystemCommand.ClosePreview;
             this.printPreviewBarItem26.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem26.Enabled = false;
-            this.printPreviewBarItem26.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview;
+            this.printPreviewBarItem26.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview;
             this.printPreviewBarItem26.Id = 94;
-            this.printPreviewBarItem26.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreviewLarge;
+            this.printPreviewBarItem26.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreviewLarge;
             this.printPreviewBarItem26.Name = "printPreviewBarItem26";
-            superToolTip76.FixedTooltipWidth = true;
-            toolTipTitleItem76.Text = "Close Print Preview";
-            toolTipItem76.LeftIndent = 6;
-            toolTipItem76.Text = "Close Print Preview of the document.";
-            superToolTip76.Items.Add(toolTipTitleItem76);
-            superToolTip76.Items.Add(toolTipItem76);
-            superToolTip76.MaxWidth = 210;
-            this.printPreviewBarItem26.SuperTip = superToolTip76;
+            superToolTip85.FixedTooltipWidth = true;
+            toolTipTitleItem85.Text = "Close Print Preview";
+            toolTipItem85.LeftIndent = 6;
+            toolTipItem85.Text = "Close Print Preview of the document.";
+            superToolTip85.Items.Add(toolTipTitleItem85);
+            superToolTip85.Items.Add(toolTipItem85);
+            superToolTip85.MaxWidth = 210;
+            this.printPreviewBarItem26.SuperTip = superToolTip85;
             // 
             // printPreviewBarItem27
             // 
@@ -2194,18 +2384,18 @@
             this.printPreviewBarItem27.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageOrientation;
             this.printPreviewBarItem27.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem27.Enabled = false;
-            this.printPreviewBarItem27.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientation;
+            this.printPreviewBarItem27.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientation;
             this.printPreviewBarItem27.Id = 95;
-            this.printPreviewBarItem27.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLarge;
+            this.printPreviewBarItem27.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageOrientationLarge;
             this.printPreviewBarItem27.Name = "printPreviewBarItem27";
-            superToolTip77.FixedTooltipWidth = true;
-            toolTipTitleItem77.Text = "Page Orientation";
-            toolTipItem77.LeftIndent = 6;
-            toolTipItem77.Text = "Switch the pages between portrait and landscape layouts.";
-            superToolTip77.Items.Add(toolTipTitleItem77);
-            superToolTip77.Items.Add(toolTipItem77);
-            superToolTip77.MaxWidth = 210;
-            this.printPreviewBarItem27.SuperTip = superToolTip77;
+            superToolTip86.FixedTooltipWidth = true;
+            toolTipTitleItem86.Text = "Page Orientation";
+            toolTipItem86.LeftIndent = 6;
+            toolTipItem86.Text = "Switch the pages between portrait and landscape layouts.";
+            superToolTip86.Items.Add(toolTipTitleItem86);
+            superToolTip86.Items.Add(toolTipItem86);
+            superToolTip86.MaxWidth = 210;
+            this.printPreviewBarItem27.SuperTip = superToolTip86;
             // 
             // printPreviewBarItem28
             // 
@@ -2214,18 +2404,18 @@
             this.printPreviewBarItem28.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PaperSize;
             this.printPreviewBarItem28.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem28.Enabled = false;
-            this.printPreviewBarItem28.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PaperSize;
+            this.printPreviewBarItem28.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PaperSize;
             this.printPreviewBarItem28.Id = 96;
-            this.printPreviewBarItem28.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PaperSizeLarge;
+            this.printPreviewBarItem28.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PaperSizeLarge;
             this.printPreviewBarItem28.Name = "printPreviewBarItem28";
-            superToolTip78.FixedTooltipWidth = true;
-            toolTipTitleItem78.Text = "Page Size";
-            toolTipItem78.LeftIndent = 6;
-            toolTipItem78.Text = "Choose the paper size of the document.";
-            superToolTip78.Items.Add(toolTipTitleItem78);
-            superToolTip78.Items.Add(toolTipItem78);
-            superToolTip78.MaxWidth = 210;
-            this.printPreviewBarItem28.SuperTip = superToolTip78;
+            superToolTip87.FixedTooltipWidth = true;
+            toolTipTitleItem87.Text = "Page Size";
+            toolTipItem87.LeftIndent = 6;
+            toolTipItem87.Text = "Choose the paper size of the document.";
+            superToolTip87.Items.Add(toolTipTitleItem87);
+            superToolTip87.Items.Add(toolTipItem87);
+            superToolTip87.MaxWidth = 210;
+            this.printPreviewBarItem28.SuperTip = superToolTip87;
             // 
             // printPreviewBarItem29
             // 
@@ -2234,19 +2424,19 @@
             this.printPreviewBarItem29.Command = DevExpress.XtraPrinting.PrintingSystemCommand.PageMargins;
             this.printPreviewBarItem29.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem29.Enabled = false;
-            this.printPreviewBarItem29.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins;
+            this.printPreviewBarItem29.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins;
             this.printPreviewBarItem29.Id = 97;
-            this.printPreviewBarItem29.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsLarge;
+            this.printPreviewBarItem29.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMarginsLarge;
             this.printPreviewBarItem29.Name = "printPreviewBarItem29";
-            superToolTip79.FixedTooltipWidth = true;
-            toolTipTitleItem79.Text = "Page Margins";
-            toolTipItem79.LeftIndent = 6;
-            toolTipItem79.Text = "Select the margin sizes for the entire document.\r\n\r\nTo apply specific margin size" +
+            superToolTip88.FixedTooltipWidth = true;
+            toolTipTitleItem88.Text = "Page Margins";
+            toolTipItem88.LeftIndent = 6;
+            toolTipItem88.Text = "Select the margin sizes for the entire document.\r\n\r\nTo apply specific margin size" +
     "s to the document, click Custom Margins.";
-            superToolTip79.Items.Add(toolTipTitleItem79);
-            superToolTip79.Items.Add(toolTipItem79);
-            superToolTip79.MaxWidth = 210;
-            this.printPreviewBarItem29.SuperTip = superToolTip79;
+            superToolTip88.Items.Add(toolTipTitleItem88);
+            superToolTip88.Items.Add(toolTipItem88);
+            superToolTip88.MaxWidth = 210;
+            this.printPreviewBarItem29.SuperTip = superToolTip88;
             // 
             // printPreviewBarItem30
             // 
@@ -2255,18 +2445,18 @@
             this.printPreviewBarItem30.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem30.Description = "Adobe Portable Document Format";
             this.printPreviewBarItem30.Enabled = false;
-            this.printPreviewBarItem30.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendPdf;
+            this.printPreviewBarItem30.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendPdf;
             this.printPreviewBarItem30.Id = 98;
-            this.printPreviewBarItem30.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendPdfLarge;
+            this.printPreviewBarItem30.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendPdfLarge;
             this.printPreviewBarItem30.Name = "printPreviewBarItem30";
-            superToolTip80.FixedTooltipWidth = true;
-            toolTipTitleItem80.Text = "E-Mail As PDF";
-            toolTipItem80.LeftIndent = 6;
-            toolTipItem80.Text = "Export the document to PDF and attach it to the e-mail.";
-            superToolTip80.Items.Add(toolTipTitleItem80);
-            superToolTip80.Items.Add(toolTipItem80);
-            superToolTip80.MaxWidth = 210;
-            this.printPreviewBarItem30.SuperTip = superToolTip80;
+            superToolTip89.FixedTooltipWidth = true;
+            toolTipTitleItem89.Text = "E-Mail As PDF";
+            toolTipItem89.LeftIndent = 6;
+            toolTipItem89.Text = "Export the document to PDF and attach it to the e-mail.";
+            superToolTip89.Items.Add(toolTipTitleItem89);
+            superToolTip89.Items.Add(toolTipItem89);
+            superToolTip89.MaxWidth = 210;
+            this.printPreviewBarItem30.SuperTip = superToolTip89;
             // 
             // printPreviewBarItem31
             // 
@@ -2275,18 +2465,18 @@
             this.printPreviewBarItem31.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem31.Description = "Plain Text";
             this.printPreviewBarItem31.Enabled = false;
-            this.printPreviewBarItem31.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendTxt;
+            this.printPreviewBarItem31.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendTxt;
             this.printPreviewBarItem31.Id = 99;
-            this.printPreviewBarItem31.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendTxtLarge;
+            this.printPreviewBarItem31.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendTxtLarge;
             this.printPreviewBarItem31.Name = "printPreviewBarItem31";
-            superToolTip81.FixedTooltipWidth = true;
-            toolTipTitleItem81.Text = "E-Mail As Text";
-            toolTipItem81.LeftIndent = 6;
-            toolTipItem81.Text = "Export the document to Text and attach it to the e-mail.";
-            superToolTip81.Items.Add(toolTipTitleItem81);
-            superToolTip81.Items.Add(toolTipItem81);
-            superToolTip81.MaxWidth = 210;
-            this.printPreviewBarItem31.SuperTip = superToolTip81;
+            superToolTip90.FixedTooltipWidth = true;
+            toolTipTitleItem90.Text = "E-Mail As Text";
+            toolTipItem90.LeftIndent = 6;
+            toolTipItem90.Text = "Export the document to Text and attach it to the e-mail.";
+            superToolTip90.Items.Add(toolTipTitleItem90);
+            superToolTip90.Items.Add(toolTipItem90);
+            superToolTip90.MaxWidth = 210;
+            this.printPreviewBarItem31.SuperTip = superToolTip90;
             // 
             // printPreviewBarItem32
             // 
@@ -2295,18 +2485,18 @@
             this.printPreviewBarItem32.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem32.Description = "Comma-Separated Values Text";
             this.printPreviewBarItem32.Enabled = false;
-            this.printPreviewBarItem32.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendCsv;
+            this.printPreviewBarItem32.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendCsv;
             this.printPreviewBarItem32.Id = 100;
-            this.printPreviewBarItem32.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendCsvLarge;
+            this.printPreviewBarItem32.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendCsvLarge;
             this.printPreviewBarItem32.Name = "printPreviewBarItem32";
-            superToolTip82.FixedTooltipWidth = true;
-            toolTipTitleItem82.Text = "E-Mail As CSV";
-            toolTipItem82.LeftIndent = 6;
-            toolTipItem82.Text = "Export the document to CSV and attach it to the e-mail.";
-            superToolTip82.Items.Add(toolTipTitleItem82);
-            superToolTip82.Items.Add(toolTipItem82);
-            superToolTip82.MaxWidth = 210;
-            this.printPreviewBarItem32.SuperTip = superToolTip82;
+            superToolTip91.FixedTooltipWidth = true;
+            toolTipTitleItem91.Text = "E-Mail As CSV";
+            toolTipItem91.LeftIndent = 6;
+            toolTipItem91.Text = "Export the document to CSV and attach it to the e-mail.";
+            superToolTip91.Items.Add(toolTipTitleItem91);
+            superToolTip91.Items.Add(toolTipItem91);
+            superToolTip91.MaxWidth = 210;
+            this.printPreviewBarItem32.SuperTip = superToolTip91;
             // 
             // printPreviewBarItem33
             // 
@@ -2315,18 +2505,18 @@
             this.printPreviewBarItem33.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem33.Description = "Single File Web Page";
             this.printPreviewBarItem33.Enabled = false;
-            this.printPreviewBarItem33.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendMht;
+            this.printPreviewBarItem33.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendMht;
             this.printPreviewBarItem33.Id = 101;
-            this.printPreviewBarItem33.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendMhtLarge;
+            this.printPreviewBarItem33.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendMhtLarge;
             this.printPreviewBarItem33.Name = "printPreviewBarItem33";
-            superToolTip83.FixedTooltipWidth = true;
-            toolTipTitleItem83.Text = "E-Mail As MHT";
-            toolTipItem83.LeftIndent = 6;
-            toolTipItem83.Text = "Export the document to MHT and attach it to the e-mail.";
-            superToolTip83.Items.Add(toolTipTitleItem83);
-            superToolTip83.Items.Add(toolTipItem83);
-            superToolTip83.MaxWidth = 210;
-            this.printPreviewBarItem33.SuperTip = superToolTip83;
+            superToolTip92.FixedTooltipWidth = true;
+            toolTipTitleItem92.Text = "E-Mail As MHT";
+            toolTipItem92.LeftIndent = 6;
+            toolTipItem92.Text = "Export the document to MHT and attach it to the e-mail.";
+            superToolTip92.Items.Add(toolTipTitleItem92);
+            superToolTip92.Items.Add(toolTipItem92);
+            superToolTip92.MaxWidth = 210;
+            this.printPreviewBarItem33.SuperTip = superToolTip92;
             // 
             // printPreviewBarItem34
             // 
@@ -2335,18 +2525,18 @@
             this.printPreviewBarItem34.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem34.Description = "Microsoft Excel 2000-2003 Workbook";
             this.printPreviewBarItem34.Enabled = false;
-            this.printPreviewBarItem34.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXls;
+            this.printPreviewBarItem34.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXls;
             this.printPreviewBarItem34.Id = 102;
-            this.printPreviewBarItem34.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsLarge;
+            this.printPreviewBarItem34.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsLarge;
             this.printPreviewBarItem34.Name = "printPreviewBarItem34";
-            superToolTip84.FixedTooltipWidth = true;
-            toolTipTitleItem84.Text = "E-Mail As XLS";
-            toolTipItem84.LeftIndent = 6;
-            toolTipItem84.Text = "Export the document to XLS and attach it to the e-mail.";
-            superToolTip84.Items.Add(toolTipTitleItem84);
-            superToolTip84.Items.Add(toolTipItem84);
-            superToolTip84.MaxWidth = 210;
-            this.printPreviewBarItem34.SuperTip = superToolTip84;
+            superToolTip93.FixedTooltipWidth = true;
+            toolTipTitleItem93.Text = "E-Mail As XLS";
+            toolTipItem93.LeftIndent = 6;
+            toolTipItem93.Text = "Export the document to XLS and attach it to the e-mail.";
+            superToolTip93.Items.Add(toolTipTitleItem93);
+            superToolTip93.Items.Add(toolTipItem93);
+            superToolTip93.MaxWidth = 210;
+            this.printPreviewBarItem34.SuperTip = superToolTip93;
             // 
             // printPreviewBarItem35
             // 
@@ -2355,18 +2545,18 @@
             this.printPreviewBarItem35.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem35.Description = "Microsoft Excel 2007 Workbook";
             this.printPreviewBarItem35.Enabled = false;
-            this.printPreviewBarItem35.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsx;
+            this.printPreviewBarItem35.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsx;
             this.printPreviewBarItem35.Id = 103;
-            this.printPreviewBarItem35.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsxLarge;
+            this.printPreviewBarItem35.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendXlsxLarge;
             this.printPreviewBarItem35.Name = "printPreviewBarItem35";
-            superToolTip85.FixedTooltipWidth = true;
-            toolTipTitleItem85.Text = "E-Mail As XLSX";
-            toolTipItem85.LeftIndent = 6;
-            toolTipItem85.Text = "Export the document to XLSX and attach it to the e-mail.";
-            superToolTip85.Items.Add(toolTipTitleItem85);
-            superToolTip85.Items.Add(toolTipItem85);
-            superToolTip85.MaxWidth = 210;
-            this.printPreviewBarItem35.SuperTip = superToolTip85;
+            superToolTip94.FixedTooltipWidth = true;
+            toolTipTitleItem94.Text = "E-Mail As XLSX";
+            toolTipItem94.LeftIndent = 6;
+            toolTipItem94.Text = "Export the document to XLSX and attach it to the e-mail.";
+            superToolTip94.Items.Add(toolTipTitleItem94);
+            superToolTip94.Items.Add(toolTipItem94);
+            superToolTip94.MaxWidth = 210;
+            this.printPreviewBarItem35.SuperTip = superToolTip94;
             // 
             // printPreviewBarItem36
             // 
@@ -2375,18 +2565,18 @@
             this.printPreviewBarItem36.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem36.Description = "Rich Text Format";
             this.printPreviewBarItem36.Enabled = false;
-            this.printPreviewBarItem36.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendRtf;
+            this.printPreviewBarItem36.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendRtf;
             this.printPreviewBarItem36.Id = 104;
-            this.printPreviewBarItem36.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendRtfLarge;
+            this.printPreviewBarItem36.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendRtfLarge;
             this.printPreviewBarItem36.Name = "printPreviewBarItem36";
-            superToolTip86.FixedTooltipWidth = true;
-            toolTipTitleItem86.Text = "E-Mail As RTF";
-            toolTipItem86.LeftIndent = 6;
-            toolTipItem86.Text = "Export the document to RTF and attach it to the e-mail.";
-            superToolTip86.Items.Add(toolTipTitleItem86);
-            superToolTip86.Items.Add(toolTipItem86);
-            superToolTip86.MaxWidth = 210;
-            this.printPreviewBarItem36.SuperTip = superToolTip86;
+            superToolTip95.FixedTooltipWidth = true;
+            toolTipTitleItem95.Text = "E-Mail As RTF";
+            toolTipItem95.LeftIndent = 6;
+            toolTipItem95.Text = "Export the document to RTF and attach it to the e-mail.";
+            superToolTip95.Items.Add(toolTipTitleItem95);
+            superToolTip95.Items.Add(toolTipItem95);
+            superToolTip95.MaxWidth = 210;
+            this.printPreviewBarItem36.SuperTip = superToolTip95;
             // 
             // printPreviewBarItem37
             // 
@@ -2395,18 +2585,18 @@
             this.printPreviewBarItem37.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem37.Description = "BMP, GIF, JPEG, PNG, TIFF, EMF, WMF";
             this.printPreviewBarItem37.Enabled = false;
-            this.printPreviewBarItem37.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphic;
+            this.printPreviewBarItem37.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphic;
             this.printPreviewBarItem37.Id = 105;
-            this.printPreviewBarItem37.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphicLarge;
+            this.printPreviewBarItem37.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SendGraphicLarge;
             this.printPreviewBarItem37.Name = "printPreviewBarItem37";
-            superToolTip87.FixedTooltipWidth = true;
-            toolTipTitleItem87.Text = "E-Mail As Image";
-            toolTipItem87.LeftIndent = 6;
-            toolTipItem87.Text = "Export the document to Image and attach it to the e-mail.";
-            superToolTip87.Items.Add(toolTipTitleItem87);
-            superToolTip87.Items.Add(toolTipItem87);
-            superToolTip87.MaxWidth = 210;
-            this.printPreviewBarItem37.SuperTip = superToolTip87;
+            superToolTip96.FixedTooltipWidth = true;
+            toolTipTitleItem96.Text = "E-Mail As Image";
+            toolTipItem96.LeftIndent = 6;
+            toolTipItem96.Text = "Export the document to Image and attach it to the e-mail.";
+            superToolTip96.Items.Add(toolTipTitleItem96);
+            superToolTip96.Items.Add(toolTipItem96);
+            superToolTip96.MaxWidth = 210;
+            this.printPreviewBarItem37.SuperTip = superToolTip96;
             // 
             // printPreviewBarItem38
             // 
@@ -2415,18 +2605,18 @@
             this.printPreviewBarItem38.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem38.Description = "Adobe Portable Document Format";
             this.printPreviewBarItem38.Enabled = false;
-            this.printPreviewBarItem38.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdf;
+            this.printPreviewBarItem38.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdf;
             this.printPreviewBarItem38.Id = 106;
-            this.printPreviewBarItem38.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdfLarge;
+            this.printPreviewBarItem38.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportPdfLarge;
             this.printPreviewBarItem38.Name = "printPreviewBarItem38";
-            superToolTip88.FixedTooltipWidth = true;
-            toolTipTitleItem88.Text = "Export to PDF";
-            toolTipItem88.LeftIndent = 6;
-            toolTipItem88.Text = "Export the document to PDF and save it to the file on a disk.";
-            superToolTip88.Items.Add(toolTipTitleItem88);
-            superToolTip88.Items.Add(toolTipItem88);
-            superToolTip88.MaxWidth = 210;
-            this.printPreviewBarItem38.SuperTip = superToolTip88;
+            superToolTip97.FixedTooltipWidth = true;
+            toolTipTitleItem97.Text = "Export to PDF";
+            toolTipItem97.LeftIndent = 6;
+            toolTipItem97.Text = "Export the document to PDF and save it to the file on a disk.";
+            superToolTip97.Items.Add(toolTipTitleItem97);
+            superToolTip97.Items.Add(toolTipItem97);
+            superToolTip97.MaxWidth = 210;
+            this.printPreviewBarItem38.SuperTip = superToolTip97;
             // 
             // printPreviewBarItem39
             // 
@@ -2435,18 +2625,18 @@
             this.printPreviewBarItem39.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem39.Description = "Web Page";
             this.printPreviewBarItem39.Enabled = false;
-            this.printPreviewBarItem39.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtm;
+            this.printPreviewBarItem39.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtm;
             this.printPreviewBarItem39.Id = 107;
-            this.printPreviewBarItem39.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtmLarge;
+            this.printPreviewBarItem39.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportHtmLarge;
             this.printPreviewBarItem39.Name = "printPreviewBarItem39";
-            superToolTip89.FixedTooltipWidth = true;
-            toolTipTitleItem89.Text = "Export to HTML";
-            toolTipItem89.LeftIndent = 6;
-            toolTipItem89.Text = "Export the document to HTML and save it to the file on a disk.";
-            superToolTip89.Items.Add(toolTipTitleItem89);
-            superToolTip89.Items.Add(toolTipItem89);
-            superToolTip89.MaxWidth = 210;
-            this.printPreviewBarItem39.SuperTip = superToolTip89;
+            superToolTip98.FixedTooltipWidth = true;
+            toolTipTitleItem98.Text = "Export to HTML";
+            toolTipItem98.LeftIndent = 6;
+            toolTipItem98.Text = "Export the document to HTML and save it to the file on a disk.";
+            superToolTip98.Items.Add(toolTipTitleItem98);
+            superToolTip98.Items.Add(toolTipItem98);
+            superToolTip98.MaxWidth = 210;
+            this.printPreviewBarItem39.SuperTip = superToolTip98;
             // 
             // printPreviewBarItem40
             // 
@@ -2455,18 +2645,18 @@
             this.printPreviewBarItem40.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem40.Description = "Plain Text";
             this.printPreviewBarItem40.Enabled = false;
-            this.printPreviewBarItem40.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxt;
+            this.printPreviewBarItem40.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxt;
             this.printPreviewBarItem40.Id = 108;
-            this.printPreviewBarItem40.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxtLarge;
+            this.printPreviewBarItem40.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportTxtLarge;
             this.printPreviewBarItem40.Name = "printPreviewBarItem40";
-            superToolTip90.FixedTooltipWidth = true;
-            toolTipTitleItem90.Text = "Export to Text";
-            toolTipItem90.LeftIndent = 6;
-            toolTipItem90.Text = "Export the document to Text and save it to the file on a disk.";
-            superToolTip90.Items.Add(toolTipTitleItem90);
-            superToolTip90.Items.Add(toolTipItem90);
-            superToolTip90.MaxWidth = 210;
-            this.printPreviewBarItem40.SuperTip = superToolTip90;
+            superToolTip99.FixedTooltipWidth = true;
+            toolTipTitleItem99.Text = "Export to Text";
+            toolTipItem99.LeftIndent = 6;
+            toolTipItem99.Text = "Export the document to Text and save it to the file on a disk.";
+            superToolTip99.Items.Add(toolTipTitleItem99);
+            superToolTip99.Items.Add(toolTipItem99);
+            superToolTip99.MaxWidth = 210;
+            this.printPreviewBarItem40.SuperTip = superToolTip99;
             // 
             // printPreviewBarItem41
             // 
@@ -2475,18 +2665,18 @@
             this.printPreviewBarItem41.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem41.Description = "Comma-Separated Values Text";
             this.printPreviewBarItem41.Enabled = false;
-            this.printPreviewBarItem41.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsv;
+            this.printPreviewBarItem41.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsv;
             this.printPreviewBarItem41.Id = 109;
-            this.printPreviewBarItem41.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsvLarge;
+            this.printPreviewBarItem41.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportCsvLarge;
             this.printPreviewBarItem41.Name = "printPreviewBarItem41";
-            superToolTip91.FixedTooltipWidth = true;
-            toolTipTitleItem91.Text = "Export to CSV";
-            toolTipItem91.LeftIndent = 6;
-            toolTipItem91.Text = "Export the document to CSV and save it to the file on a disk.";
-            superToolTip91.Items.Add(toolTipTitleItem91);
-            superToolTip91.Items.Add(toolTipItem91);
-            superToolTip91.MaxWidth = 210;
-            this.printPreviewBarItem41.SuperTip = superToolTip91;
+            superToolTip100.FixedTooltipWidth = true;
+            toolTipTitleItem100.Text = "Export to CSV";
+            toolTipItem100.LeftIndent = 6;
+            toolTipItem100.Text = "Export the document to CSV and save it to the file on a disk.";
+            superToolTip100.Items.Add(toolTipTitleItem100);
+            superToolTip100.Items.Add(toolTipItem100);
+            superToolTip100.MaxWidth = 210;
+            this.printPreviewBarItem41.SuperTip = superToolTip100;
             // 
             // printPreviewBarItem42
             // 
@@ -2495,18 +2685,18 @@
             this.printPreviewBarItem42.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem42.Description = "Single File Web Page";
             this.printPreviewBarItem42.Enabled = false;
-            this.printPreviewBarItem42.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportMht;
+            this.printPreviewBarItem42.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportMht;
             this.printPreviewBarItem42.Id = 110;
-            this.printPreviewBarItem42.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportMhtLarge;
+            this.printPreviewBarItem42.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportMhtLarge;
             this.printPreviewBarItem42.Name = "printPreviewBarItem42";
-            superToolTip92.FixedTooltipWidth = true;
-            toolTipTitleItem92.Text = "Export to MHT";
-            toolTipItem92.LeftIndent = 6;
-            toolTipItem92.Text = "Export the document to MHT and save it to the file on a disk.";
-            superToolTip92.Items.Add(toolTipTitleItem92);
-            superToolTip92.Items.Add(toolTipItem92);
-            superToolTip92.MaxWidth = 210;
-            this.printPreviewBarItem42.SuperTip = superToolTip92;
+            superToolTip101.FixedTooltipWidth = true;
+            toolTipTitleItem101.Text = "Export to MHT";
+            toolTipItem101.LeftIndent = 6;
+            toolTipItem101.Text = "Export the document to MHT and save it to the file on a disk.";
+            superToolTip101.Items.Add(toolTipTitleItem101);
+            superToolTip101.Items.Add(toolTipItem101);
+            superToolTip101.MaxWidth = 210;
+            this.printPreviewBarItem42.SuperTip = superToolTip101;
             // 
             // printPreviewBarItem43
             // 
@@ -2515,18 +2705,18 @@
             this.printPreviewBarItem43.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem43.Description = "Microsoft Excel 2000-2003 Workbook";
             this.printPreviewBarItem43.Enabled = false;
-            this.printPreviewBarItem43.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXls;
+            this.printPreviewBarItem43.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXls;
             this.printPreviewBarItem43.Id = 111;
-            this.printPreviewBarItem43.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsLarge;
+            this.printPreviewBarItem43.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsLarge;
             this.printPreviewBarItem43.Name = "printPreviewBarItem43";
-            superToolTip93.FixedTooltipWidth = true;
-            toolTipTitleItem93.Text = "Export to XLS";
-            toolTipItem93.LeftIndent = 6;
-            toolTipItem93.Text = "Export the document to XLS and save it to the file on a disk.";
-            superToolTip93.Items.Add(toolTipTitleItem93);
-            superToolTip93.Items.Add(toolTipItem93);
-            superToolTip93.MaxWidth = 210;
-            this.printPreviewBarItem43.SuperTip = superToolTip93;
+            superToolTip102.FixedTooltipWidth = true;
+            toolTipTitleItem102.Text = "Export to XLS";
+            toolTipItem102.LeftIndent = 6;
+            toolTipItem102.Text = "Export the document to XLS and save it to the file on a disk.";
+            superToolTip102.Items.Add(toolTipTitleItem102);
+            superToolTip102.Items.Add(toolTipItem102);
+            superToolTip102.MaxWidth = 210;
+            this.printPreviewBarItem43.SuperTip = superToolTip102;
             // 
             // printPreviewBarItem44
             // 
@@ -2535,18 +2725,18 @@
             this.printPreviewBarItem44.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem44.Description = "Microsoft Excel 2007 Workbook";
             this.printPreviewBarItem44.Enabled = false;
-            this.printPreviewBarItem44.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsx;
+            this.printPreviewBarItem44.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsx;
             this.printPreviewBarItem44.Id = 112;
-            this.printPreviewBarItem44.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsxLarge;
+            this.printPreviewBarItem44.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportXlsxLarge;
             this.printPreviewBarItem44.Name = "printPreviewBarItem44";
-            superToolTip94.FixedTooltipWidth = true;
-            toolTipTitleItem94.Text = "Export to XLSX";
-            toolTipItem94.LeftIndent = 6;
-            toolTipItem94.Text = "Export the document to XLSX and save it to the file on a disk.";
-            superToolTip94.Items.Add(toolTipTitleItem94);
-            superToolTip94.Items.Add(toolTipItem94);
-            superToolTip94.MaxWidth = 210;
-            this.printPreviewBarItem44.SuperTip = superToolTip94;
+            superToolTip103.FixedTooltipWidth = true;
+            toolTipTitleItem103.Text = "Export to XLSX";
+            toolTipItem103.LeftIndent = 6;
+            toolTipItem103.Text = "Export the document to XLSX and save it to the file on a disk.";
+            superToolTip103.Items.Add(toolTipTitleItem103);
+            superToolTip103.Items.Add(toolTipItem103);
+            superToolTip103.MaxWidth = 210;
+            this.printPreviewBarItem44.SuperTip = superToolTip103;
             // 
             // printPreviewBarItem45
             // 
@@ -2555,18 +2745,18 @@
             this.printPreviewBarItem45.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem45.Description = "Rich Text Format";
             this.printPreviewBarItem45.Enabled = false;
-            this.printPreviewBarItem45.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtf;
+            this.printPreviewBarItem45.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtf;
             this.printPreviewBarItem45.Id = 113;
-            this.printPreviewBarItem45.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtfLarge;
+            this.printPreviewBarItem45.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportRtfLarge;
             this.printPreviewBarItem45.Name = "printPreviewBarItem45";
-            superToolTip95.FixedTooltipWidth = true;
-            toolTipTitleItem95.Text = "Export to RTF";
-            toolTipItem95.LeftIndent = 6;
-            toolTipItem95.Text = "Export the document to RTF and save it to the file on a disk.";
-            superToolTip95.Items.Add(toolTipTitleItem95);
-            superToolTip95.Items.Add(toolTipItem95);
-            superToolTip95.MaxWidth = 210;
-            this.printPreviewBarItem45.SuperTip = superToolTip95;
+            superToolTip104.FixedTooltipWidth = true;
+            toolTipTitleItem104.Text = "Export to RTF";
+            toolTipItem104.LeftIndent = 6;
+            toolTipItem104.Text = "Export the document to RTF and save it to the file on a disk.";
+            superToolTip104.Items.Add(toolTipTitleItem104);
+            superToolTip104.Items.Add(toolTipItem104);
+            superToolTip104.MaxWidth = 210;
+            this.printPreviewBarItem45.SuperTip = superToolTip104;
             // 
             // printPreviewBarItem46
             // 
@@ -2575,18 +2765,18 @@
             this.printPreviewBarItem46.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem46.Description = "BMP, GIF, JPEG, PNG, TIFF, EMF, WMF";
             this.printPreviewBarItem46.Enabled = false;
-            this.printPreviewBarItem46.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphic;
+            this.printPreviewBarItem46.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphic;
             this.printPreviewBarItem46.Id = 114;
-            this.printPreviewBarItem46.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphicLarge;
+            this.printPreviewBarItem46.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportGraphicLarge;
             this.printPreviewBarItem46.Name = "printPreviewBarItem46";
-            superToolTip96.FixedTooltipWidth = true;
-            toolTipTitleItem96.Text = "Export to Image";
-            toolTipItem96.LeftIndent = 6;
-            toolTipItem96.Text = "Export the document to Image and save it to the file on a disk.";
-            superToolTip96.Items.Add(toolTipTitleItem96);
-            superToolTip96.Items.Add(toolTipItem96);
-            superToolTip96.MaxWidth = 210;
-            this.printPreviewBarItem46.SuperTip = superToolTip96;
+            superToolTip105.FixedTooltipWidth = true;
+            toolTipTitleItem105.Text = "Export to Image";
+            toolTipItem105.LeftIndent = 6;
+            toolTipItem105.Text = "Export the document to Image and save it to the file on a disk.";
+            superToolTip105.Items.Add(toolTipTitleItem105);
+            superToolTip105.Items.Add(toolTipItem105);
+            superToolTip105.MaxWidth = 210;
+            this.printPreviewBarItem46.SuperTip = superToolTip105;
             // 
             // printPreviewBarItem47
             // 
@@ -2594,18 +2784,18 @@
             this.printPreviewBarItem47.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Open;
             this.printPreviewBarItem47.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem47.Enabled = false;
-            this.printPreviewBarItem47.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Open;
+            this.printPreviewBarItem47.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Open;
             this.printPreviewBarItem47.Id = 115;
-            this.printPreviewBarItem47.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_OpenLarge;
+            this.printPreviewBarItem47.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_OpenLarge;
             this.printPreviewBarItem47.Name = "printPreviewBarItem47";
-            superToolTip97.FixedTooltipWidth = true;
-            toolTipTitleItem97.Text = "Open (Ctrl + O)";
-            toolTipItem97.LeftIndent = 6;
-            toolTipItem97.Text = "Open a document.";
-            superToolTip97.Items.Add(toolTipTitleItem97);
-            superToolTip97.Items.Add(toolTipItem97);
-            superToolTip97.MaxWidth = 210;
-            this.printPreviewBarItem47.SuperTip = superToolTip97;
+            superToolTip106.FixedTooltipWidth = true;
+            toolTipTitleItem106.Text = "Open (Ctrl + O)";
+            toolTipItem106.LeftIndent = 6;
+            toolTipItem106.Text = "Open a document.";
+            superToolTip106.Items.Add(toolTipTitleItem106);
+            superToolTip106.Items.Add(toolTipItem106);
+            superToolTip106.MaxWidth = 210;
+            this.printPreviewBarItem47.SuperTip = superToolTip106;
             // 
             // printPreviewBarItem48
             // 
@@ -2613,18 +2803,18 @@
             this.printPreviewBarItem48.Command = DevExpress.XtraPrinting.PrintingSystemCommand.Save;
             this.printPreviewBarItem48.ContextSpecifier = this.xrDesignRibbonController1;
             this.printPreviewBarItem48.Enabled = false;
-            this.printPreviewBarItem48.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Save;
+            this.printPreviewBarItem48.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Save;
             this.printPreviewBarItem48.Id = 116;
-            this.printPreviewBarItem48.LargeGlyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SaveLarge;
+            this.printPreviewBarItem48.LargeGlyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_SaveLarge;
             this.printPreviewBarItem48.Name = "printPreviewBarItem48";
-            superToolTip98.FixedTooltipWidth = true;
-            toolTipTitleItem98.Text = "Save (Ctrl + S)";
-            toolTipItem98.LeftIndent = 6;
-            toolTipItem98.Text = "Save the document.";
-            superToolTip98.Items.Add(toolTipTitleItem98);
-            superToolTip98.Items.Add(toolTipItem98);
-            superToolTip98.MaxWidth = 210;
-            this.printPreviewBarItem48.SuperTip = superToolTip98;
+            superToolTip107.FixedTooltipWidth = true;
+            toolTipTitleItem107.Text = "Save (Ctrl + S)";
+            toolTipItem107.LeftIndent = 6;
+            toolTipItem107.Text = "Save the document.";
+            superToolTip107.Items.Add(toolTipTitleItem107);
+            superToolTip107.Items.Add(toolTipItem107);
+            superToolTip107.MaxWidth = 210;
+            this.printPreviewBarItem48.SuperTip = superToolTip107;
             // 
             // printPreviewStaticItem1
             // 
@@ -2711,7 +2901,15 @@
             // xrToolboxPageCategory1
             // 
             this.xrToolboxPageCategory1.Name = "xrToolboxPageCategory1";
+            this.xrToolboxPageCategory1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage2});
             this.xrToolboxPageCategory1.Visible = false;
+            // 
+            // ribbonPage2
+            // 
+            this.ribbonPage2.Name = "ribbonPage2";
+            this.ribbonPage2.Text = "Toolbox";
+            this.ribbonPage2.Visible = false;
             // 
             // ribbonPage1
             // 
@@ -2730,8 +2928,11 @@
             // xrDesignRibbonPageGroup1
             // 
             this.xrDesignRibbonPageGroup1.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup1.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Report;
+            this.xrDesignRibbonPageGroup1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Report;
+            this.xrDesignRibbonPageGroup1.ItemLinks.Add(this.commandBarItem31);
+            this.xrDesignRibbonPageGroup1.ItemLinks.Add(this.commandBarItem34);
             this.xrDesignRibbonPageGroup1.ItemLinks.Add(this.commandBarItem32);
+            this.xrDesignRibbonPageGroup1.ItemLinks.Add(this.commandBarItem33);
             this.xrDesignRibbonPageGroup1.Kind = DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroupKind.Report;
             this.xrDesignRibbonPageGroup1.Name = "xrDesignRibbonPageGroup1";
             this.xrDesignRibbonPageGroup1.ShowCaptionButton = false;
@@ -2740,7 +2941,7 @@
             // xrDesignRibbonPageGroup2
             // 
             this.xrDesignRibbonPageGroup2.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup2.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Edit;
+            this.xrDesignRibbonPageGroup2.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Edit;
             this.xrDesignRibbonPageGroup2.ItemLinks.Add(this.commandBarItem39);
             this.xrDesignRibbonPageGroup2.ItemLinks.Add(this.commandBarItem40);
             this.xrDesignRibbonPageGroup2.ItemLinks.Add(this.commandBarItem41);
@@ -2754,7 +2955,7 @@
             // xrDesignRibbonPageGroup3
             // 
             this.xrDesignRibbonPageGroup3.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup3.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Font;
+            this.xrDesignRibbonPageGroup3.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Font;
             this.xrDesignRibbonPageGroup3.ItemLinks.Add(this.barEditItem1, false, "", "", true);
             this.xrDesignRibbonPageGroup3.ItemLinks.Add(this.xrDesignBarButtonGroup1);
             this.xrDesignRibbonPageGroup3.ItemLinks.Add(this.barEditItem2, false, "", "", true);
@@ -2768,7 +2969,7 @@
             // xrDesignRibbonPageGroup4
             // 
             this.xrDesignRibbonPageGroup4.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup4.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignVerticalCenters;
+            this.xrDesignRibbonPageGroup4.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_AlignVerticalCenters;
             this.xrDesignRibbonPageGroup4.ItemLinks.Add(this.xrDesignBarButtonGroup4);
             this.xrDesignRibbonPageGroup4.ItemLinks.Add(this.xrDesignBarButtonGroup5);
             this.xrDesignRibbonPageGroup4.Kind = DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroupKind.Alignment;
@@ -2779,7 +2980,7 @@
             // xrDesignRibbonPageGroup5
             // 
             this.xrDesignRibbonPageGroup5.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup5.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControl;
+            this.xrDesignRibbonPageGroup5.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_SizeToControl;
             this.xrDesignRibbonPageGroup5.ItemLinks.Add(this.xrDesignBarButtonGroup6);
             this.xrDesignRibbonPageGroup5.ItemLinks.Add(this.xrDesignBarButtonGroup7);
             this.xrDesignRibbonPageGroup5.ItemLinks.Add(this.xrDesignBarButtonGroup8);
@@ -2792,7 +2993,7 @@
             // xrDesignRibbonPageGroup6
             // 
             this.xrDesignRibbonPageGroup6.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup6.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Zoom;
+            this.xrDesignRibbonPageGroup6.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Zoom;
             this.xrDesignRibbonPageGroup6.ItemLinks.Add(this.commandBarItem46);
             this.xrDesignRibbonPageGroup6.ItemLinks.Add(this.commandBarItem44);
             this.xrDesignRibbonPageGroup6.ItemLinks.Add(this.commandBarItem45);
@@ -2804,7 +3005,7 @@
             // xrDesignRibbonPageGroup7
             // 
             this.xrDesignRibbonPageGroup7.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup7.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Windows;
+            this.xrDesignRibbonPageGroup7.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Windows;
             this.xrDesignRibbonPageGroup7.ItemLinks.Add(this.barDockPanelsListItem1);
             this.xrDesignRibbonPageGroup7.Kind = DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroupKind.View;
             this.xrDesignRibbonPageGroup7.Name = "xrDesignRibbonPageGroup7";
@@ -2814,7 +3015,7 @@
             // xrDesignRibbonPageGroup8
             // 
             this.xrDesignRibbonPageGroup8.AllowTextClipping = false;
-            this.xrDesignRibbonPageGroup8.Glyph = global::FengSharp.OneCardAccess.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Scripts;
+            this.xrDesignRibbonPageGroup8.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.XRDesignRibbonControllerResources.RibbonUserDesigner_Scripts;
             this.xrDesignRibbonPageGroup8.ItemLinks.Add(this.scriptsCommandBarItem1);
             this.xrDesignRibbonPageGroup8.Kind = DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroupKind.Scripts;
             this.xrDesignRibbonPageGroup8.Name = "xrDesignRibbonPageGroup8";
@@ -2840,7 +3041,7 @@
             // 
             this.printPreviewRibbonPageGroup1.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup1.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup1.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Document;
+            this.printPreviewRibbonPageGroup1.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Document;
             this.printPreviewRibbonPageGroup1.ItemLinks.Add(this.printPreviewBarItem47);
             this.printPreviewRibbonPageGroup1.ItemLinks.Add(this.printPreviewBarItem48);
             this.printPreviewRibbonPageGroup1.Kind = DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroupKind.Document;
@@ -2852,7 +3053,7 @@
             // 
             this.printPreviewRibbonPageGroup2.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup2.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup2.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect;
+            this.printPreviewRibbonPageGroup2.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PrintDirect;
             this.printPreviewRibbonPageGroup2.ItemLinks.Add(this.printPreviewBarItem6);
             this.printPreviewRibbonPageGroup2.ItemLinks.Add(this.printPreviewBarItem7);
             this.printPreviewRibbonPageGroup2.ItemLinks.Add(this.printPreviewBarItem5);
@@ -2866,7 +3067,7 @@
             // 
             this.printPreviewRibbonPageGroup3.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup3.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup3.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins;
+            this.printPreviewRibbonPageGroup3.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_PageMargins;
             this.printPreviewRibbonPageGroup3.ItemLinks.Add(this.printPreviewBarItem9);
             this.printPreviewRibbonPageGroup3.ItemLinks.Add(this.printPreviewBarItem10);
             this.printPreviewRibbonPageGroup3.ItemLinks.Add(this.printPreviewBarItem29);
@@ -2874,21 +3075,21 @@
             this.printPreviewRibbonPageGroup3.ItemLinks.Add(this.printPreviewBarItem28);
             this.printPreviewRibbonPageGroup3.Kind = DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroupKind.PageSetup;
             this.printPreviewRibbonPageGroup3.Name = "printPreviewRibbonPageGroup3";
-            superToolTip99.FixedTooltipWidth = true;
-            toolTipTitleItem99.Text = "Page Setup";
-            toolTipItem99.LeftIndent = 6;
-            toolTipItem99.Text = "Show the Page Setup dialog.";
-            superToolTip99.Items.Add(toolTipTitleItem99);
-            superToolTip99.Items.Add(toolTipItem99);
-            superToolTip99.MaxWidth = 210;
-            this.printPreviewRibbonPageGroup3.SuperTip = superToolTip99;
+            superToolTip108.FixedTooltipWidth = true;
+            toolTipTitleItem108.Text = "Page Setup";
+            toolTipItem108.LeftIndent = 6;
+            toolTipItem108.Text = "Show the Page Setup dialog.";
+            superToolTip108.Items.Add(toolTipTitleItem108);
+            superToolTip108.Items.Add(toolTipItem108);
+            superToolTip108.MaxWidth = 210;
+            this.printPreviewRibbonPageGroup3.SuperTip = superToolTip108;
             this.printPreviewRibbonPageGroup3.Text = "Page Setup";
             // 
             // printPreviewRibbonPageGroup4
             // 
             this.printPreviewRibbonPageGroup4.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup4.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup4.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Find;
+            this.printPreviewRibbonPageGroup4.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Find;
             this.printPreviewRibbonPageGroup4.ItemLinks.Add(this.printPreviewBarItem3);
             this.printPreviewRibbonPageGroup4.ItemLinks.Add(this.printPreviewBarItem4);
             this.printPreviewRibbonPageGroup4.ItemLinks.Add(this.printPreviewBarItem1);
@@ -2905,7 +3106,7 @@
             // 
             this.printPreviewRibbonPageGroup5.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup5.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup5.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Zoom;
+            this.printPreviewRibbonPageGroup5.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Zoom;
             this.printPreviewRibbonPageGroup5.ItemLinks.Add(this.printPreviewBarItem11);
             this.printPreviewRibbonPageGroup5.ItemLinks.Add(this.printPreviewBarItem12);
             this.printPreviewRibbonPageGroup5.ItemLinks.Add(this.printPreviewBarItem13);
@@ -2922,7 +3123,7 @@
             // 
             this.printPreviewRibbonPageGroup6.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup6.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup6.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Watermark;
+            this.printPreviewRibbonPageGroup6.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_Watermark;
             this.printPreviewRibbonPageGroup6.ItemLinks.Add(this.printPreviewBarItem22);
             this.printPreviewRibbonPageGroup6.ItemLinks.Add(this.printPreviewBarItem23);
             this.printPreviewRibbonPageGroup6.Kind = DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroupKind.Background;
@@ -2934,7 +3135,7 @@
             // 
             this.printPreviewRibbonPageGroup7.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup7.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup7.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportFile;
+            this.printPreviewRibbonPageGroup7.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ExportFile;
             this.printPreviewRibbonPageGroup7.ItemLinks.Add(this.printPreviewBarItem24);
             this.printPreviewRibbonPageGroup7.ItemLinks.Add(this.printPreviewBarItem25);
             this.printPreviewRibbonPageGroup7.Kind = DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroupKind.Export;
@@ -2946,29 +3147,52 @@
             // 
             this.printPreviewRibbonPageGroup8.AllowTextClipping = false;
             this.printPreviewRibbonPageGroup8.ContextSpecifier = this.xrDesignRibbonController1;
-            this.printPreviewRibbonPageGroup8.Glyph = global::FengSharp.OneCardAccess.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview;
+            this.printPreviewRibbonPageGroup8.Glyph = global::FengSharp.OneCardAccess.Client.PC.ReportTool.PrintRibbonControllerResources.RibbonPrintPreview_ClosePreview;
             this.printPreviewRibbonPageGroup8.ItemLinks.Add(this.printPreviewBarItem26);
             this.printPreviewRibbonPageGroup8.Kind = DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroupKind.Close;
             this.printPreviewRibbonPageGroup8.Name = "printPreviewRibbonPageGroup8";
             this.printPreviewRibbonPageGroup8.ShowCaptionButton = false;
             this.printPreviewRibbonPageGroup8.Text = "Close";
             // 
+            // ribbonPage3
+            // 
+            this.ribbonPage3.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.xrDesignRibbonPageGroup9});
+            this.ribbonPage3.Name = "ribbonPage3";
+            this.ribbonPage3.Text = "HTML View";
+            // 
+            // xrDesignRibbonPageGroup9
+            // 
+            this.xrDesignRibbonPageGroup9.AllowTextClipping = false;
+            this.xrDesignRibbonPageGroup9.ItemLinks.Add(this.commandBarItem47);
+            this.xrDesignRibbonPageGroup9.ItemLinks.Add(this.commandBarItem48);
+            this.xrDesignRibbonPageGroup9.ItemLinks.Add(this.commandBarItem49, true);
+            this.xrDesignRibbonPageGroup9.ItemLinks.Add(this.commandBarItem50);
+            this.xrDesignRibbonPageGroup9.ItemLinks.Add(this.commandBarItem51, true);
+            this.xrDesignRibbonPageGroup9.Kind = DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroupKind.HtmlNavigation;
+            this.xrDesignRibbonPageGroup9.Name = "xrDesignRibbonPageGroup9";
+            this.xrDesignRibbonPageGroup9.ShowCaptionButton = false;
+            this.xrDesignRibbonPageGroup9.Text = "Navigation";
+            // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 535);
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem1, true);
+            this.ribbonStatusBar1.ItemLinks.Add(this.progressBarEditItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewBarItem49);
+            this.ribbonStatusBar1.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonStatusBar1.ItemLinks.Add(this.printPreviewStaticItem2);
+            this.ribbonStatusBar1.ItemLinks.Add(this.zoomTrackBarEditItem1);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 563);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(950, 31);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(954, 31);
             // 
             // xrDesignDockManager1
             // 
             this.xrDesignDockManager1.Form = this;
-            this.xrDesignDockManager1.HiddenPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
-            this.panelContainer2,
-            this.toolBoxDockPanel1,
-            this.panelContainer3});
             this.xrDesignDockManager1.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("xrDesignDockManager1.ImageStream")));
-            this.xrDesignDockManager1.SavedVisiblePanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
+            this.xrDesignDockManager1.RootPanels.AddRange(new DevExpress.XtraBars.Docking.DockPanel[] {
             this.panelContainer2,
             this.toolBoxDockPanel1,
             this.panelContainer3});
@@ -2990,16 +3214,54 @@
             this.panelContainer2.Controls.Add(this.fieldListDockPanel1);
             this.panelContainer2.Controls.Add(this.propertyGridDockPanel1);
             this.panelContainer2.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.panelContainer2.ID = new System.Guid("43dd628a-8ece-4d66-b2f7-795416c66963");
-            this.panelContainer2.Location = new System.Drawing.Point(700, 147);
+            this.panelContainer2.ID = new System.Guid("b0ae3b4c-64d1-42da-996e-54e7bfffa9d2");
+            this.panelContainer2.ImageIndex = 2;
+            this.panelContainer2.Location = new System.Drawing.Point(798, 147);
             this.panelContainer2.Name = "panelContainer2";
-            this.panelContainer2.OriginalSize = new System.Drawing.Size(250, 200);
-            this.panelContainer2.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
-            this.panelContainer2.SavedIndex = 0;
-            this.panelContainer2.Size = new System.Drawing.Size(250, 388);
+            this.panelContainer2.OriginalSize = new System.Drawing.Size(156, 200);
+            this.panelContainer2.Size = new System.Drawing.Size(156, 416);
             this.panelContainer2.Tabbed = true;
             this.panelContainer2.Text = "panelContainer2";
-            this.panelContainer2.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
+            // 
+            // fieldListDockPanel1
+            // 
+            this.fieldListDockPanel1.Controls.Add(this.fieldListDockPanel1_Container);
+            this.fieldListDockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.fieldListDockPanel1.ID = new System.Guid("faf69838-a93f-4114-83e8-d0d09cc5ce95");
+            this.fieldListDockPanel1.ImageIndex = 0;
+            this.fieldListDockPanel1.Location = new System.Drawing.Point(4, 23);
+            this.fieldListDockPanel1.Name = "fieldListDockPanel1";
+            this.fieldListDockPanel1.OriginalSize = new System.Drawing.Size(67, 79);
+            this.fieldListDockPanel1.Size = new System.Drawing.Size(148, 361);
+            this.fieldListDockPanel1.Text = "Field List";
+            this.fieldListDockPanel1.XRDesignPanel = null;
+            // 
+            // fieldListDockPanel1_Container
+            // 
+            this.fieldListDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.fieldListDockPanel1_Container.Name = "fieldListDockPanel1_Container";
+            this.fieldListDockPanel1_Container.Size = new System.Drawing.Size(148, 361);
+            this.fieldListDockPanel1_Container.TabIndex = 0;
+            // 
+            // reportExplorerDockPanel1
+            // 
+            this.reportExplorerDockPanel1.Controls.Add(this.reportExplorerDockPanel1_Container);
+            this.reportExplorerDockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
+            this.reportExplorerDockPanel1.ID = new System.Guid("fb3ec6cc-3b9b-4b9c-91cf-cff78c1edbf1");
+            this.reportExplorerDockPanel1.ImageIndex = 3;
+            this.reportExplorerDockPanel1.Location = new System.Drawing.Point(4, 23);
+            this.reportExplorerDockPanel1.Name = "reportExplorerDockPanel1";
+            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(67, 79);
+            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(148, 361);
+            this.reportExplorerDockPanel1.Text = "Report Explorer";
+            this.reportExplorerDockPanel1.XRDesignPanel = null;
+            // 
+            // reportExplorerDockPanel1_Container
+            // 
+            this.reportExplorerDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
+            this.reportExplorerDockPanel1_Container.Name = "reportExplorerDockPanel1_Container";
+            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(148, 361);
+            this.reportExplorerDockPanel1_Container.TabIndex = 0;
             // 
             // propertyGridDockPanel1
             // 
@@ -3010,8 +3272,8 @@
             this.propertyGridDockPanel1.ImageIndex = 2;
             this.propertyGridDockPanel1.Location = new System.Drawing.Point(4, 23);
             this.propertyGridDockPanel1.Name = "propertyGridDockPanel1";
-            this.propertyGridDockPanel1.OriginalSize = new System.Drawing.Size(250, 194);
-            this.propertyGridDockPanel1.Size = new System.Drawing.Size(242, 333);
+            this.propertyGridDockPanel1.OriginalSize = new System.Drawing.Size(75, 133);
+            this.propertyGridDockPanel1.Size = new System.Drawing.Size(148, 361);
             this.propertyGridDockPanel1.Text = "Property Grid";
             this.propertyGridDockPanel1.XRDesignPanel = null;
             // 
@@ -3019,48 +3281,8 @@
             // 
             this.propertyGridDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
             this.propertyGridDockPanel1_Container.Name = "propertyGridDockPanel1_Container";
-            this.propertyGridDockPanel1_Container.Size = new System.Drawing.Size(242, 333);
+            this.propertyGridDockPanel1_Container.Size = new System.Drawing.Size(148, 361);
             this.propertyGridDockPanel1_Container.TabIndex = 0;
-            // 
-            // reportExplorerDockPanel1
-            // 
-            this.reportExplorerDockPanel1.Controls.Add(this.reportExplorerDockPanel1_Container);
-            this.reportExplorerDockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.reportExplorerDockPanel1.ID = new System.Guid("fb3ec6cc-3b9b-4b9c-91cf-cff78c1edbf1");
-            this.reportExplorerDockPanel1.ImageIndex = 3;
-            this.reportExplorerDockPanel1.Location = new System.Drawing.Point(4, 23);
-            this.reportExplorerDockPanel1.Name = "reportExplorerDockPanel1";
-            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(242, 139);
-            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(242, 333);
-            this.reportExplorerDockPanel1.Text = "Report Explorer";
-            this.reportExplorerDockPanel1.XRDesignPanel = null;
-            // 
-            // reportExplorerDockPanel1_Container
-            // 
-            this.reportExplorerDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
-            this.reportExplorerDockPanel1_Container.Name = "reportExplorerDockPanel1_Container";
-            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(242, 333);
-            this.reportExplorerDockPanel1_Container.TabIndex = 0;
-            // 
-            // fieldListDockPanel1
-            // 
-            this.fieldListDockPanel1.Controls.Add(this.fieldListDockPanel1_Container);
-            this.fieldListDockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
-            this.fieldListDockPanel1.ID = new System.Guid("faf69838-a93f-4114-83e8-d0d09cc5ce95");
-            this.fieldListDockPanel1.ImageIndex = 0;
-            this.fieldListDockPanel1.Location = new System.Drawing.Point(4, 23);
-            this.fieldListDockPanel1.Name = "fieldListDockPanel1";
-            this.fieldListDockPanel1.OriginalSize = new System.Drawing.Size(242, 139);
-            this.fieldListDockPanel1.Size = new System.Drawing.Size(242, 333);
-            this.fieldListDockPanel1.Text = "Field List";
-            this.fieldListDockPanel1.XRDesignPanel = null;
-            // 
-            // fieldListDockPanel1_Container
-            // 
-            this.fieldListDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
-            this.fieldListDockPanel1_Container.Name = "fieldListDockPanel1_Container";
-            this.fieldListDockPanel1_Container.Size = new System.Drawing.Size(242, 333);
-            this.fieldListDockPanel1_Container.TabIndex = 0;
             // 
             // toolBoxDockPanel1
             // 
@@ -3070,19 +3292,16 @@
             this.toolBoxDockPanel1.ImageIndex = 4;
             this.toolBoxDockPanel1.Location = new System.Drawing.Point(0, 147);
             this.toolBoxDockPanel1.Name = "toolBoxDockPanel1";
-            this.toolBoxDockPanel1.OriginalSize = new System.Drawing.Size(165, 200);
-            this.toolBoxDockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Left;
-            this.toolBoxDockPanel1.SavedIndex = 0;
-            this.toolBoxDockPanel1.Size = new System.Drawing.Size(165, 388);
+            this.toolBoxDockPanel1.OriginalSize = new System.Drawing.Size(75, 200);
+            this.toolBoxDockPanel1.Size = new System.Drawing.Size(75, 416);
             this.toolBoxDockPanel1.Text = "Tool Box";
-            this.toolBoxDockPanel1.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             this.toolBoxDockPanel1.XRDesignPanel = null;
             // 
             // toolBoxDockPanel1_Container
             // 
             this.toolBoxDockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.toolBoxDockPanel1_Container.Name = "toolBoxDockPanel1_Container";
-            this.toolBoxDockPanel1_Container.Size = new System.Drawing.Size(157, 361);
+            this.toolBoxDockPanel1_Container.Size = new System.Drawing.Size(67, 389);
             this.toolBoxDockPanel1_Container.TabIndex = 0;
             // 
             // panelContainer3
@@ -3091,16 +3310,13 @@
             this.panelContainer3.Controls.Add(this.groupAndSortDockPanel1);
             this.panelContainer3.Controls.Add(this.errorListDockPanel1);
             this.panelContainer3.Dock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.panelContainer3.ID = new System.Guid("0467c88e-6613-4af4-a004-05f369785d5e");
-            this.panelContainer3.Location = new System.Drawing.Point(0, 335);
+            this.panelContainer3.ID = new System.Guid("90d95590-576f-4b4d-979e-b66bb67a541f");
+            this.panelContainer3.Location = new System.Drawing.Point(75, 363);
             this.panelContainer3.Name = "panelContainer3";
             this.panelContainer3.OriginalSize = new System.Drawing.Size(200, 200);
-            this.panelContainer3.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Bottom;
-            this.panelContainer3.SavedIndex = 0;
-            this.panelContainer3.Size = new System.Drawing.Size(950, 200);
+            this.panelContainer3.Size = new System.Drawing.Size(723, 200);
             this.panelContainer3.Tabbed = true;
             this.panelContainer3.Text = "panelContainer3";
-            this.panelContainer3.Visibility = DevExpress.XtraBars.Docking.DockVisibility.Hidden;
             // 
             // errorListDockPanel1
             // 
@@ -3110,8 +3326,8 @@
             this.errorListDockPanel1.ImageIndex = 5;
             this.errorListDockPanel1.Location = new System.Drawing.Point(4, 23);
             this.errorListDockPanel1.Name = "errorListDockPanel1";
-            this.errorListDockPanel1.OriginalSize = new System.Drawing.Size(527, 145);
-            this.errorListDockPanel1.Size = new System.Drawing.Size(942, 145);
+            this.errorListDockPanel1.OriginalSize = new System.Drawing.Size(284, 145);
+            this.errorListDockPanel1.Size = new System.Drawing.Size(715, 145);
             this.errorListDockPanel1.Text = "Scripts Errors";
             this.errorListDockPanel1.XRDesignPanel = null;
             // 
@@ -3119,7 +3335,7 @@
             // 
             this.errorListDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
             this.errorListDockPanel1_Container.Name = "errorListDockPanel1_Container";
-            this.errorListDockPanel1_Container.Size = new System.Drawing.Size(942, 145);
+            this.errorListDockPanel1_Container.Size = new System.Drawing.Size(715, 145);
             this.errorListDockPanel1_Container.TabIndex = 0;
             // 
             // groupAndSortDockPanel1
@@ -3130,8 +3346,8 @@
             this.groupAndSortDockPanel1.ImageIndex = 1;
             this.groupAndSortDockPanel1.Location = new System.Drawing.Point(4, 23);
             this.groupAndSortDockPanel1.Name = "groupAndSortDockPanel1";
-            this.groupAndSortDockPanel1.OriginalSize = new System.Drawing.Size(527, 145);
-            this.groupAndSortDockPanel1.Size = new System.Drawing.Size(942, 145);
+            this.groupAndSortDockPanel1.OriginalSize = new System.Drawing.Size(284, 145);
+            this.groupAndSortDockPanel1.Size = new System.Drawing.Size(715, 145);
             this.groupAndSortDockPanel1.Text = "Group and Sort";
             this.groupAndSortDockPanel1.XRDesignPanel = null;
             // 
@@ -3139,7 +3355,7 @@
             // 
             this.groupAndSortDockPanel1_Container.Location = new System.Drawing.Point(0, 0);
             this.groupAndSortDockPanel1_Container.Name = "groupAndSortDockPanel1_Container";
-            this.groupAndSortDockPanel1_Container.Size = new System.Drawing.Size(942, 145);
+            this.groupAndSortDockPanel1_Container.Size = new System.Drawing.Size(715, 145);
             this.groupAndSortDockPanel1_Container.TabIndex = 0;
             // 
             // reportDesigner1
@@ -3164,23 +3380,20 @@
             xrDesignPanelListener8});
             this.reportDesigner1.Form = this;
             // 
-            // ribbonPage2
-            // 
-            this.ribbonPage2.Name = "ribbonPage2";
-            this.ribbonPage2.Text = "Toolbox";
-            this.ribbonPage2.Visible = false;
-            // 
             // RibbonrEportDesignerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(950, 566);
+            this.ClientSize = new System.Drawing.Size(954, 594);
+            this.Controls.Add(this.panelContainer3);
+            this.Controls.Add(this.toolBoxDockPanel1);
+            this.Controls.Add(this.panelContainer2);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.Name = "RibbonrEportDesignerForm";
             this.Ribbon = this.ribbonControl1;
             this.StatusBar = this.ribbonStatusBar1;
-            this.Text = "RibbonForm1";
+            this.Text = "RibbonrEportDesignerForm";
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignRibbonController1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu1)).EndInit();
@@ -3190,9 +3403,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemZoomTrackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrDesignDockManager1)).EndInit();
             this.panelContainer2.ResumeLayout(false);
-            this.propertyGridDockPanel1.ResumeLayout(false);
-            this.reportExplorerDockPanel1.ResumeLayout(false);
             this.fieldListDockPanel1.ResumeLayout(false);
+            this.reportExplorerDockPanel1.ResumeLayout(false);
+            this.propertyGridDockPanel1.ResumeLayout(false);
             this.toolBoxDockPanel1.ResumeLayout(false);
             this.panelContainer3.ResumeLayout(false);
             this.errorListDockPanel1.ResumeLayout(false);
@@ -3206,24 +3419,14 @@
 
         private DevExpress.XtraReports.UserDesigner.XRDesignMdiController reportDesigner1;
         private DevExpress.XtraReports.UserDesigner.XRDesignRibbonController xrDesignRibbonController1;
-        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
-        private DevExpress.XtraReports.UserDesigner.XRDesignDockManager xrDesignDockManager1;
-        private DevExpress.XtraBars.Docking.DockPanel panelContainer3;
-        private DevExpress.XtraReports.UserDesigner.ErrorListDockPanel errorListDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer errorListDockPanel1_Container;
-        private DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel groupAndSortDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer groupAndSortDockPanel1_Container;
-        private DevExpress.XtraReports.UserDesigner.ToolBoxDockPanel toolBoxDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer toolBoxDockPanel1_Container;
-        private DevExpress.XtraBars.Docking.DockPanel panelContainer2;
-        private DevExpress.XtraReports.UserDesigner.FieldListDockPanel fieldListDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer fieldListDockPanel1_Container;
-        private DevExpress.XtraReports.UserDesigner.ReportExplorerDockPanel reportExplorerDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer reportExplorerDockPanel1_Container;
-        private DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel propertyGridDockPanel1;
-        private DevExpress.XtraReports.UserDesigner.DesignControlContainer propertyGridDockPanel1_Container;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
+        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu1;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem31;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem34;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem32;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem33;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem52;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem53;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem1;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem2;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem3;
@@ -3256,10 +3459,10 @@
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem28;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem29;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem30;
-        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem32;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem35;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem36;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem37;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem38;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem39;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem40;
         private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem41;
@@ -3274,8 +3477,11 @@
         private DevExpress.XtraReports.UserDesigner.DesignRepositoryItemComboBox designRepositoryItemComboBox1;
         private DevExpress.XtraReports.UserDesigner.BarDockPanelsListItem barDockPanelsListItem1;
         private DevExpress.XtraReports.UserDesigner.ScriptsCommandBarItem scriptsCommandBarItem1;
-        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem52;
-        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem53;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem47;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem48;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem49;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem50;
+        private DevExpress.XtraReports.UserDesigner.CommandBarItem commandBarItem51;
         private DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup xrDesignBarButtonGroup1;
         private DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup xrDesignBarButtonGroup2;
         private DevExpress.XtraReports.UserDesigner.XRDesignBarButtonGroup xrDesignBarButtonGroup3;
@@ -3343,6 +3549,7 @@
         private DevExpress.XtraPrinting.Preview.ZoomTrackBarEditItem zoomTrackBarEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemZoomTrackBar repositoryItemZoomTrackBar1;
         private DevExpress.XtraReports.UserDesigner.XRToolboxPageCategory xrToolboxPageCategory1;
+        private DevExpress.XtraReports.UserDesigner.XRToolboxRibbonPage ribbonPage2;
         private DevExpress.XtraReports.UserDesigner.XRDesignRibbonPage ribbonPage1;
         private DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup xrDesignRibbonPageGroup1;
         private DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup xrDesignRibbonPageGroup2;
@@ -3361,6 +3568,23 @@
         private DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup printPreviewRibbonPageGroup6;
         private DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup printPreviewRibbonPageGroup7;
         private DevExpress.XtraPrinting.Preview.PrintPreviewRibbonPageGroup printPreviewRibbonPageGroup8;
-        private DevExpress.XtraReports.UserDesigner.XRToolboxRibbonPage ribbonPage2;
+        private DevExpress.XtraReports.UserDesigner.XRHtmlRibbonPage ribbonPage3;
+        private DevExpress.XtraReports.UserDesigner.XRDesignRibbonPageGroup xrDesignRibbonPageGroup9;
+        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
+        private DevExpress.XtraReports.UserDesigner.XRDesignDockManager xrDesignDockManager1;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer3;
+        private DevExpress.XtraReports.UserDesigner.ErrorListDockPanel errorListDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer errorListDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.GroupAndSortDockPanel groupAndSortDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer groupAndSortDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.ToolBoxDockPanel toolBoxDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer toolBoxDockPanel1_Container;
+        private DevExpress.XtraBars.Docking.DockPanel panelContainer2;
+        private DevExpress.XtraReports.UserDesigner.FieldListDockPanel fieldListDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer fieldListDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.ReportExplorerDockPanel reportExplorerDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer reportExplorerDockPanel1_Container;
+        private DevExpress.XtraReports.UserDesigner.PropertyGridDockPanel propertyGridDockPanel1;
+        private DevExpress.XtraReports.UserDesigner.DesignControlContainer propertyGridDockPanel1_Container;
     }
 }

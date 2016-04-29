@@ -70,11 +70,56 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件路径未正确设置 的本地化字符串。
+        /// </summary>
+        internal static string Error_FileAttachDir {
+            get {
+                return ResourceManager.GetString("Error_FileAttachDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文件不存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_FileNotFound {
+            get {
+                return ResourceManager.GetString("Error_FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未正确设置文件保存目录 的本地化字符串。
+        /// </summary>
+        internal static string Error_FileSaveDir {
+            get {
+                return ResourceManager.GetString("Error_FileSaveDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 保存失败 的本地化字符串。
         /// </summary>
         internal static string Error_SaveFailed {
             get {
                 return ResourceManager.GetString("Error_SaveFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文件流不可读 的本地化字符串。
+        /// </summary>
+        internal static string Error_StreamCanNotRead {
+            get {
+                return ResourceManager.GetString("Error_StreamCanNotRead", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 文件流为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_StreamIsEmpty {
+            get {
+                return ResourceManager.GetString("Error_StreamIsEmpty", resourceCulture);
             }
         }
     }

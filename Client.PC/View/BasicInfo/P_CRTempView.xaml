@@ -63,7 +63,7 @@
                     </dxlc:LayoutItem>-->
 
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">
-                        <Button Background="Transparent" Width="100" Height="45" Click="Button_Click">
+                        <Button Background="Transparent" Width="100" Height="45" Command="{Binding EditTempCommand}">
                             <Button.Content>
                                 <Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
                                        Stretch="None" Width="100" Height="45" />

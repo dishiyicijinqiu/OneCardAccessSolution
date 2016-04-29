@@ -115,6 +115,7 @@
     <Compile Include="Core\LoadingCallHandler.cs" />
     <Compile Include="Core\Extend.cs" />
     <Compile Include="Core\PCConfig.cs" />
+    <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -128,9 +129,6 @@
       <DependentUpon>Resources.zh-Hans.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="UI\BaseReportDesignerWindow.xaml.cs">
-      <DependentUpon>BaseReportDesignerWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\BaseRibbonWindow.xaml.cs">
       <DependentUpon>BaseRibbonWindow.xaml</DependentUpon>
@@ -186,14 +184,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Core\Helpers\ExceptionHelper.cs" />
-    <Page Include="Themes\ReportDesignerClassicView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\RibbonTemplate.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Themes\Shared.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,26 +191,6 @@
     <Page Include="Themes\Style.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\XRDiagram\BandDiagramItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\XRDiagram\XRDiagramItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\XRDiagram\XRDiagramRootItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Themes\XRDiagram\XRTableCellDiagramItem.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="UI\BaseReportDesignerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\BaseRibbonWindow.xaml">
       <SubType>Designer</SubType>
@@ -285,6 +255,10 @@
     <ProjectReference Include="..\BusinessEntity\BusinessEntity.csproj">
       <Project>{56440098-2131-465c-87b9-6c10d2985759}</Project>
       <Name>BusinessEntity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Client.PC.ReportTool\Client.PC.ReportTool.csproj">
+      <Project>{2294d81c-df23-41ee-93fd-2bc2271306a8}</Project>
+      <Name>Client.PC.ReportTool</Name>
     </ProjectReference>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{89dd6b99-d85b-4d96-8cf6-2a7044c87d1e}</Project>

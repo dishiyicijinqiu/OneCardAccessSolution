@@ -56,7 +56,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<Core.ExceptionEvent<object>>().Publish(this.DataContext, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this.DataContext, new ExceptionEventArgs(ex));
             }
         }
 
@@ -74,7 +74,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<Core.ExceptionEvent<object>>().Publish(this.DataContext, new ExceptionEventArgs(ex));
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this.DataContext, new ExceptionEventArgs(ex));
             }
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -11,5 +12,17 @@ namespace FengSharp.OneCardAccess.Core
         {
             "CreateId","Creater","CreateDate","LastModifyId","LastModifyer","LastModifyDate"
         };
+        static string _TempDir = Path.Combine(Environment.CurrentDirectory, "TempData");
+        internal static string TempDir
+        {
+            get
+            {
+                if (!Directory.Exists(_TempDir))
+                {
+                    Directory.CreateDirectory(_TempDir);
+                }
+                return _TempDir;
+            }
+        }
     }
 }

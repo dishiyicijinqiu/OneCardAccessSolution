@@ -120,7 +120,22 @@
   <data name="Error_DeleteFailed" xml:space="preserve">
     <value>删除失败</value>
   </data>
+  <data name="Error_FileAttachDir" xml:space="preserve">
+    <value>附件路径未正确设置</value>
+  </data>
+  <data name="Error_FileNotFound" xml:space="preserve">
+    <value>文件不存在</value>
+  </data>
+  <data name="Error_FileSaveDir" xml:space="preserve">
+    <value>未正确设置文件保存目录</value>
+  </data>
   <data name="Error_SaveFailed" xml:space="preserve">
     <value>保存失败</value>
+  </data>
+  <data name="Error_StreamCanNotRead" xml:space="preserve">
+    <value>文件流不可读</value>
+  </data>
+  <data name="Error_StreamIsEmpty" xml:space="preserve">
+    <value>文件流为空</value>
   </data>
 </root>

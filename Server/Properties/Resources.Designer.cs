@@ -61,6 +61,42 @@ namespace FengSharp.OneCardAccess.Server.Properties {
         }
         
         /// <summary>
+        ///   查找类似 保存名称与文件名称后缀名不一致 的本地化字符串。
+        /// </summary>
+        public static string Error_DiffExtension {
+            get {
+                return ResourceManager.GetString("Error_DiffExtension", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件路径未正确设置 的本地化字符串。
+        /// </summary>
+        public static string Error_FileAttachDir {
+            get {
+                return ResourceManager.GetString("Error_FileAttachDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 不正确的文件类型 的本地化字符串。
+        /// </summary>
+        public static string Error_FileType {
+            get {
+                return ResourceManager.GetString("Error_FileType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 非法上传 的本地化字符串。
+        /// </summary>
+        public static string Error_InvalidUpload {
+            get {
+                return ResourceManager.GetString("Error_InvalidUpload", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 服务内部出错 的本地化字符串。
         /// </summary>
         public static string ServerExceptionMessage {

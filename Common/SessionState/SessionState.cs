@@ -45,7 +45,10 @@ namespace FengSharp.OneCardAccess.Common
             lock (lockobj)
             {
                 if (!cacheManager.Contains(ticket))
+                {
+                    cacheManager.Remove(ticket);
                     cacheManager.Add(ticket, session, CacheItemPriority.Normal, null, new SlidingTime(TimeSpan.FromMinutes(SessionExpirationMinutes)));
+                }
             }
         }
         public static void LeaveSession(string ticket)

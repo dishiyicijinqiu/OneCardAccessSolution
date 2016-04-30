@@ -12,7 +12,7 @@ namespace FengSharp.OneCardAccess.Core
         {
             "CreateId","Creater","CreateDate","LastModifyId","LastModifyer","LastModifyDate"
         };
-        static string _TempDir = Path.Combine(Environment.CurrentDirectory, "TempData");
+        static string _TempDir = Path.Combine(System.IO.Path.GetPathRoot(Environment.CurrentDirectory), "TempData");
         internal static string TempDir
         {
             get

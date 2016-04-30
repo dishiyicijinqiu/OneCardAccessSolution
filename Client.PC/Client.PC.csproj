@@ -264,10 +264,6 @@
       <Project>{89dd6b99-d85b-4d96-8cf6-2a7044c87d1e}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\DevExpress.Xpf.WpfReportDesignerLanguage\DevExpress.Xpf.WpfReportDesignerLanguage.csproj">
-      <Project>{ccb9af68-ca81-4777-b73c-e96784731c91}</Project>
-      <Name>DevExpress.Xpf.WpfReportDesignerLanguage</Name>
-    </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\Common\Src\Common.2010.csproj">
       <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
       <Name>Common.2010</Name>

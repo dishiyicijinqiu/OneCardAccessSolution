@@ -372,4 +372,7 @@
   <data name="View_P_CRTempView_P_CRTempImage" xml:space="preserve">
     <value>检验报告模板</value>
   </data>
+  <data name="Error_UserConfigKey" xml:space="preserve">
+    <value>不正确的用户配置键</value>
+  </data>
 </root>

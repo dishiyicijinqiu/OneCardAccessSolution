@@ -76,8 +76,12 @@
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\External\System.Data.SQLite.dll</HintPath>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
@@ -110,7 +114,6 @@
     </Compile>
     <Compile Include="Core\Events\BaseSenderEvent.cs" />
     <Compile Include="Core\EditMessage.cs" />
-    <Compile Include="Core\EntityEditMode.cs" />
     <Compile Include="Core\Events\Events.cs" />
     <Compile Include="Core\LoadingCallHandler.cs" />
     <Compile Include="Core\Extend.cs" />
@@ -267,6 +270,10 @@
     <ProjectReference Include="..\EnterpriseLibrarys\Common\Src\Common.2010.csproj">
       <Project>{a09297c8-2c40-470b-8856-d856676ddffa}</Project>
       <Name>Common.2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EnterpriseLibrarys\Data\Src\Data\Data.2010.csproj">
+      <Project>{D349B6D8-992F-443F-BB57-57E50DD98794}</Project>
+      <Name>Data.2010</Name>
     </ProjectReference>
     <ProjectReference Include="..\EnterpriseLibrarys\ExceptionHandling\Src\ExceptionHandling\ExceptionHandling.2010.csproj">
       <Project>{2db0ad6d-bf59-4ebb-9f99-49abd8539fd2}</Project>

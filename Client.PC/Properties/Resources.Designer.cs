@@ -556,6 +556,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 不正确的用户配置键 的本地化字符串。
+        /// </summary>
+        public static string Error_UserConfigKey {
+            get {
+                return ResourceManager.GetString("Error_UserConfigKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户名为空 的本地化字符串。
         /// </summary>
         public static string Error_UserIsEmpty {

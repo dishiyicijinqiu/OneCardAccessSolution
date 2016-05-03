@@ -8,7 +8,6 @@ namespace FengSharp.OneCardAccess.Core
 {
     public static class Extend
     {
-
         public static void HandleException(this Exception ex, FrameworkElement owner = null, string policyName = null)
         {
             try

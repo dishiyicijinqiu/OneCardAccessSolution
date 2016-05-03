@@ -40,7 +40,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         }
         private void CreateP_CRTempView(P_CRTempEditMessage editmsg)
         {
-            var window = new UI.BaseRibbonWindow();
+            var window = new BaseRibbonWindow();
             window.Title = Properties.Resources.View_P_CRTempView_Title;
             window.Style = FindResource("DialogWindowStyle") as Style;
             window.Content = new P_CRTempView(this.DataContext, editmsg);

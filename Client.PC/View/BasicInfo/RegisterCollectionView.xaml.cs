@@ -5,6 +5,8 @@ using System.Windows;
 using System;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using DevExpress.Xpf.Grid;
+using DevExpress.Xpf.Grid.Native;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
@@ -19,7 +21,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             var vm = new RegisterCollectionViewModel();
             this.DataContext = vm;
             vm.Init();
+
         }
+
         protected override void Init()
         {
             base.Init();
@@ -104,6 +108,24 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             try
             {
                 if (e.HitInfo.RowHandle <= 0) return;
+                EditRegisterView();
+            }
+            catch (Exception ex)
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+            }
+        }
+
+        private void grid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (e.ChangedButton != System.Windows.Input.MouseButton.Left)
+                    return;
+                var grid = sender as GridControl;
+                ITableViewHitInfo hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject);
+                if (hitInfo == null || !hitInfo.InRow)
+                    return;
                 EditRegisterView();
             }
             catch (Exception ex)

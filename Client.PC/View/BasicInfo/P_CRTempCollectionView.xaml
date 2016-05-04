@@ -42,7 +42,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" ItemClick="BarEditButtonItem_ItemClick"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                Command="{Binding DeleteCommand}"
-                                               CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"/>
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
@@ -51,9 +51,9 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}">
+            <dxg:GridControl x:Name="grid" ItemsSource="{Binding Items}" Grid.Row="1" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="GridControl_MouseDoubleClick">
                 <dxg:GridControl.Columns>
-                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}"/>
+                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" Width="100" VisibleIndex="0"/>
                     <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}"/>
                     <dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
                     <dxg:GridColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}"/>
@@ -64,16 +64,16 @@
                     <dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
                     <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
                 </dxg:GridControl.Columns>
-                <dxg:GridControl.View>
+                <!--<dxg:GridControl.View>
                     <dxg:TableView  Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
-                        <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                        --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                         <!--<dxmvvm:Interaction.Behaviors>
                             <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" 
                                                    CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}" />
-                        </dxmvvm:Interaction.Behaviors>-->
+                        </dxmvvm:Interaction.Behaviors>--><!--
                     </dxg:TableView>
-                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
-                </dxg:GridControl.View>
+                    --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"--><!--
+                </dxg:GridControl.View>-->
             </dxg:GridControl>
         </Grid>
     </dxb:BarManager>

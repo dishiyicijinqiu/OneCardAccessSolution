@@ -5,6 +5,8 @@ using System.Windows;
 using System;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using DevExpress.Xpf.Grid;
+using DevExpress.Xpf.Grid.Native;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
@@ -82,14 +84,14 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
             try
             {
-                EditRegisterView();
+                EditP_CRTempView();
             }
             catch (Exception ex)
             {
                 DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
             }
         }
-        private void EditRegisterView()
+        private void EditP_CRTempView()
         {
             var SelectedRow = this.grid.CurrentItem as P_CRTempEntity;
             if (SelectedRow == null)
@@ -99,12 +101,36 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             }
             CreateP_CRTempView(new P_CRTempEditMessage(SelectedRow.P_CRTempId, EntityEditMode.Edit));
         }
-        private void tableview_RowDoubleClick(object sender, DevExpress.Xpf.Grid.RowDoubleClickEventArgs e)
+        //private void tableview_RowDoubleClick(object sender, DevExpress.Xpf.Grid.RowDoubleClickEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (e.HitInfo.RowHandle <= 0) return;
+        //        EditRegisterView();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+        //    }
+        //}
+        private void GridControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try
             {
-                if (e.HitInfo.RowHandle <= 0) return;
-                EditRegisterView();
+                if (e.ChangedButton != System.Windows.Input.MouseButton.Left)
+                    return;
+                var grid = sender as GridControl;
+                #region 第一种写法
+                int rowHandle = grid.View.GetRowHandleByMouseEventArgs(e);
+                if (rowHandle < 0)
+                    return;
+                #endregion
+                #region 第二种写法
+                //ITableViewHitInfo hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject);
+                //if (hitInfo == null || !hitInfo.InRow)
+                //    return;
+                #endregion
+                EditP_CRTempView();
             }
             catch (Exception ex)
             {

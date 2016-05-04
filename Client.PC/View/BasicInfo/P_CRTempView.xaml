@@ -58,10 +58,6 @@
                             <dxe:TextEdit EditValue="{Binding IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
-                    <!--<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}">
-                        <dxe:TextEdit EditValue="{Binding CRTempPath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-                    </dxlc:LayoutItem>-->
-
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">
                         <Button Background="Transparent" Width="100" Height="45" Command="{Binding EditTempCommand}">
                             <Button.Content>
@@ -69,12 +65,7 @@
                                        Stretch="None" Width="100" Height="45" />
                             </Button.Content>
                         </Button>
-                        <!--<dxe:TextEdit EditValue="{Binding CRTempPath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
                     </dxlc:LayoutItem>
-
-                    <!--<Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
-                                       Stretch="None" Width="100" Height="45" />-->
-
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CateNo}">
@@ -101,7 +92,10 @@
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}">
-                    <dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    <dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
+                                    Height="70"
+                                  />
                 </dxlc:LayoutItem>
 
             </dxlc:LayoutControl>

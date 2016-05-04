@@ -133,6 +133,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="UI\BaseGridControl.cs" />
     <Compile Include="UI\BaseRibbonWindow.xaml.cs">
       <DependentUpon>BaseRibbonWindow.xaml</DependentUpon>
     </Compile>

@@ -44,7 +44,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barEdit}"  ItemClick="BarEditButtonItem_ItemClick"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                Command="{Binding DeleteCommand}"
-                                               CommandParameter="{Binding ElementName=tableview,Path=SelectedRows}"
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
                                                />
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
@@ -54,8 +54,7 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}"
-                             >
+            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="grid_MouseDoubleClick" >
                 <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
                     <dxg:GridColumn FieldName="RegisterName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
@@ -71,17 +70,17 @@
                     <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Register_LastModifyDate}"/>
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
                 </dxg:GridControl.Columns>
-                <dxg:GridControl.View>
+                <!--<dxg:GridControl.View>
                     <dxg:TableView Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
-                        <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                        --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                         <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="RowDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}" />
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>-->
+                        </i:Interaction.Triggers>--><!--
                     </dxg:TableView>
-                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
-                </dxg:GridControl.View>
+                    --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"--><!--
+                </dxg:GridControl.View>-->
             </dxg:GridControl>
         </Grid>
     </dxb:BarManager>

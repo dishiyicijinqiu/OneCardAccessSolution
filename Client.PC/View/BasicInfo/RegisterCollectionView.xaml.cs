@@ -18,10 +18,20 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public RegisterCollectionView()
         {
             InitializeComponent();
-            var vm = new RegisterCollectionViewModel();
-            this.DataContext = vm;
-            vm.Init();
+            this.Loaded += RegisterCollectionView_Loaded;
+        }
 
+        private void RegisterCollectionView_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.DataContext = new RegisterCollectionViewModel();
+            }
+            catch (Exception ex)
+            {
+                ex.HandleException(this);
+                InterCloseDocument();
+            }
         }
 
         protected override void Init()

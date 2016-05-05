@@ -5,10 +5,43 @@ using System.Globalization;
 
 namespace FengSharp.OneCardAccess.Core
 {
+
+
+    public class CreateViewEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : CreateViewEventArgs<Msg, Key> where Msg : EditMessage<Key>
+    {
+
+    }
+    //public class CreateViewEvent<Sender, Args, Key> : BaseSenderEvent<Sender, CreateViewEventArgs<EditMessage<Key>, Key>>
+    //{
+
+    //}
+    public class CreateViewEventArgs<T, Key> : NullEventArgs where T : EditMessage<Key>
+    {
+        public CreateViewEventArgs(T EditMessage)
+        {
+            this.EditMessage = EditMessage;
+        }
+        public T EditMessage { get; set; }
+    }
+
+    public class EntityEditedEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : EntityEditedEventArgs<Msg, Key> where Msg : EditMessage<Key>
+    {
+
+    }
+    public class EntityEditedEventArgs<T, Key> : NullEventArgs where T : EditMessage<Key>
+    {
+        public EntityEditedEventArgs(T EditMessage)
+        {
+            this.EditMessage = EditMessage;
+        }
+        public T EditMessage { get; set; }
+    }
+
+
     public class ShutDownEvent : CompositePresentationEvent<ShutDownEventArgs> { }
-    public class ShutDownEventArgs { }
+    public class ShutDownEventArgs : NullEventArgs { }
     public class LoginTimeOutEvent : CompositePresentationEvent<LoginTimeOutEventArgs> { }
-    public class LoginTimeOutEventArgs
+    public class LoginTimeOutEventArgs : NullEventArgs
     {
         public LoginTimeOutEventArgs(LoginTimeOutException loginTimeOutException)
         {
@@ -17,9 +50,7 @@ namespace FengSharp.OneCardAccess.Core
         public LoginTimeOutException LoginTimeOutException { get; set; }
     }
     public class ExceptionEvent<Sender> : BaseSenderEvent<Sender, ExceptionEventArgs> { }
-    public class CloseEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
-    public class CloseDocumentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
-    public class ExceptionEventArgs
+    public class ExceptionEventArgs : NullEventArgs
     {
         public ExceptionEventArgs(Exception exception)
         {
@@ -27,9 +58,23 @@ namespace FengSharp.OneCardAccess.Core
         }
         public Exception Exception { get; set; }
     }
+    public class CloseEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
+    public class CloseFromParentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
+    public class ChangeDataContextFromParentEvent<Sender> : BaseSenderEvent<Sender, ChangeDataContextFromParentEventArgs> { }
+    public class ChangeDataContextFromParentEventArgs : NullEventArgs
+    {
+        public ChangeDataContextFromParentEventArgs(object NewDataContext)
+        {
+            this.NewDataContext = NewDataContext;
+        }
+        public object NewDataContext { get; set; }
+    }
+
+    public class CloseDocumentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
+    public class CloseDocumentFromParentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
     public class MessageBoxEvent : CompositePresentationEvent<MessageBoxEventArgs> { }
     public class MessageBoxEvent<Sender> : BaseSenderEvent<Sender, MessageBoxEventArgs> { }
-    public class MessageBoxEventArgs
+    public class MessageBoxEventArgs : NullEventArgs
     {
         public MessageBoxEventArgs(string messageText, string caption = null,
             MsgButton msgButton = MsgButton.OK, MsgImage msgImage = MsgImage.Information, MessageBoxCallBack callBack = null, params object[] paras)

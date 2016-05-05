@@ -14,10 +14,11 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
     /// </summary>
     public partial class BaseUserControl : UserControl
     {
+        public object ParentDataContext { get; set; }
+        public object Parameter { get; set; }
         public BaseUserControl()
         {
             Init();
-
         }
 
         protected virtual void Init()
@@ -28,6 +29,10 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Subscribe(OnClose);
                 DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Subscribe(OnCloseDocument);
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Subscribe(OnMessage);
+                DefaultEventAggregator.Current.GetEvent<ChangeDataContextFromParentEvent<object>>().Subscribe(OnParentChangeDataContext);
+                DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Subscribe(OnCloseFromParentEvent);
+                DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Subscribe(OnCloseDocumentFromParentEvent);
+                
             }
         }
 
@@ -39,11 +44,41 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Unsubscribe(OnClose);
                 DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Unsubscribe(OnCloseDocument);
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Unsubscribe(OnMessage);
+                DefaultEventAggregator.Current.GetEvent<ChangeDataContextFromParentEvent<object>>().Unsubscribe(OnParentChangeDataContext);
+                DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Unsubscribe(OnCloseFromParentEvent);
+                DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Unsubscribe(OnCloseDocumentFromParentEvent);
+            }
+        }
+
+        private void OnCloseDocumentFromParentEvent(object sender, NullEventArgs args)
+        {
+            if (sender == null) return;
+            if (sender == this.ParentDataContext)
+            {
+                InterCloseDocument();
+            }
+        }
+
+        private void OnCloseFromParentEvent(object sender, NullEventArgs args)
+        {
+            if (sender == null) return;
+            if (sender == this.ParentDataContext)
+            {
+                InterClose();
+            }
+        }
+        private void OnParentChangeDataContext(object sender, ChangeDataContextFromParentEventArgs args)
+        {
+            if (sender == null) return;
+            if (sender == this.ParentDataContext)
+            {
+                this.DataContext = args.NewDataContext;
             }
         }
 
         protected virtual void OnMessage(object sender, MessageBoxEventArgs args)
         {
+            if (sender == null) return;
             if (sender == this.DataContext)
             {
                 var diaresult = DXMessageBox.Show(this, args.MessageText,
@@ -56,24 +91,35 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
 
         protected virtual void OnClose(object sender, NullEventArgs args)
         {
+            if (sender == null) return;
             if (sender == this.DataContext)
             {
-                Window.GetWindow(this).Close();
-                UnInit();
+                InterClose();
             }
+        }
+        protected void InterClose()
+        {
+            Window.GetWindow(this).Close();
+            UnInit();
         }
 
         protected virtual void OnCloseDocument(object sender, NullEventArgs args)
         {
+            if (sender == null) return;
             if (sender == this.DataContext)
             {
-                DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(new UICloseDocumentEventArgs(this));
-                UnInit();
+                InterCloseDocument();
             }
+        }
+        protected void InterCloseDocument()
+        {
+            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(new UICloseDocumentEventArgs(this));
+            UnInit();
         }
 
         protected virtual void OnException(object sender, ExceptionEventArgs args)
         {
+            if (sender == null) return;
             if (sender == this.DataContext)
             {
                 args.Exception.HandleException(this);

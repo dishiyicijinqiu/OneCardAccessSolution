@@ -9,11 +9,10 @@ using System.Windows.Controls;
 
 namespace FengSharp.OneCardAccess.Client.PC.UI
 {
-    public class BaseComboColumn : BaseColumn
+    public class ComboBoxColumn : BaseColumn
     {
         public IList Source { get; set; }
     }
-
     public class BaseColumn
     {
         public string FieldName { get; set; }
@@ -37,9 +36,10 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             get { return _Width; }
             set { _Width = value; }
         }
+        public string DisplayFormat { get; set; }
         public SettingsType Settings { get; set; }
     }
-    public enum SettingsType { Default, Combo, Image }
+    public enum SettingsType { Default, CheckEdit, Combobox, Image }
 
     public class BaseSummary
     {

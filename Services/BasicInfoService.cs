@@ -179,14 +179,14 @@ namespace FengSharp.OneCardAccess.Services
         }
         #endregion
         #region P_CRTemp产品检验报告
-        public List<P_CRTempEntity> GetP_CRTempEntitys()
+        public List<FirstP_CRTempEntity> GetFirstP_CRTempEntitys()
         {
-            return this.GetEntitys<P_CRTempEntity>();
+            return this.GetEntitys<FirstP_CRTempEntity>();
         }
 
-        public P_CRTempEntity GetP_CRTempEntityById(int P_CRTempId)
+        public FirstP_CRTempEntity GetFirstP_CRTempEntityById(int P_CRTempId)
         {
-            return this.FindById<P_CRTempEntity>(new P_CRTempEntity()
+            return this.FindById<FirstP_CRTempEntity>(new FirstP_CRTempEntity()
             {
                 P_CRTempId = P_CRTempId
             });

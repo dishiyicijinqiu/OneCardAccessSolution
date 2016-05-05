@@ -5,12 +5,17 @@
                     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
+                     xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
                     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxit="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
+    <Style TargetType="dxlc:LayoutItem">
+        <Setter Property="AddColonToLabel" Value="True"/>
+        <Setter Property="LabelHorizontalAlignment" Value="Right"/>
+    </Style>
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
@@ -115,7 +120,25 @@
                             Visible="{Binding Visible}"
                             VisibleIndex="{Binding VisibleIndex}"
                             Width="{Binding Width}"
-                            />
+                            >
+                <dxg:GridColumn.EditSettings>
+                    <dxe:TextEditSettings DisplayFormat="{Binding DisplayFormat}"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </ContentControl>
+    </DataTemplate>
+    <DataTemplate x:Key="CheckEditColumnTemplate">
+        <ContentControl>
+            <dxg:GridColumn FieldName="{Binding FieldName}" 
+                            Header="{Binding Header}" 
+                            HeaderToolTip="{Binding HeaderToolTip}"
+                            Visible="{Binding Visible}"
+                            VisibleIndex="{Binding VisibleIndex}"
+                            Width="{Binding Width}">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:CheckEditSettings  DisplayFormat="{Binding DisplayFormat}" />
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
         </ContentControl>
     </DataTemplate>
     <DataTemplate x:Key="ComboboxColumnTemplate">
@@ -127,7 +150,7 @@
                             VisibleIndex="{Binding VisibleIndex}"
                             Width="{Binding Width}">
                 <dxg:GridColumn.EditSettings>
-                    <dxe:ComboBoxEditSettings ItemsSource="{Binding Source}"/>
+                    <dxe:ComboBoxEditSettings ItemsSource="{Binding Source}" />
                 </dxg:GridColumn.EditSettings>
             </dxg:GridColumn>
         </ContentControl>
@@ -156,6 +179,7 @@
 
     <Style TargetType="dxe:TextEdit">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
 
 

@@ -52,10 +52,13 @@
                     <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
 
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}">
-                            <dxe:TextEdit EditValue="{Binding CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit EditValue="{Binding Entity.CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}">
-                            <dxe:TextEdit EditValue="{Binding IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <!--<dxe:TextEdit EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
+                            <dxe:CheckEdit 
+                                EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                            
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">
@@ -69,30 +72,30 @@
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CateNo}">
-                        <dxe:TextEdit EditValue="{Binding CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}">
-                        <dxe:TextEdit EditValue="{Binding MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Creater}">
-                        <dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True" />
+                        <dxe:TextEdit EditValue="{Binding Entity.Creater}" IsReadOnly="True" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}">
-                        <dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}">
-                        <dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True" />
+                        <dxe:TextEdit EditValue="{Binding Entity.LastModifyer}" IsReadOnly="True" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}">
-                        <dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}">
-                    <dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                    <dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                   TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
                                     Height="70"
                                   />

@@ -112,6 +112,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\BaseNotificationObject.cs" />
     <Compile Include="Core\Events\BaseSenderEvent.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\Events\Events.cs" />

@@ -21,9 +21,9 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         #endregion
         #region P_CRTemp
         [OperationContract]
-        List<P_CRTempEntity> GetP_CRTempEntitys();
+        List<FirstP_CRTempEntity> GetFirstP_CRTempEntitys();
         [OperationContract]
-        P_CRTempEntity GetP_CRTempEntityById(int P_CRTempId);
+        FirstP_CRTempEntity GetFirstP_CRTempEntityById(int P_CRTempId);
         [OperationContract]
         int SaveP_CRTempEntity(P_CRTempEntity entity);
         [OperationContract]

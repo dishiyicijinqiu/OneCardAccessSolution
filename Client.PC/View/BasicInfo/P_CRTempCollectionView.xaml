@@ -63,7 +63,7 @@
                          GroupSummarySource="{Binding GroupSummary}"
                          GroupSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"-->
 
-                <!--<dxg:GridControl.Columns>
+                <dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" HeaderToolTip="ss" />
                     <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}" Visible="False"/>
                     <dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
@@ -74,7 +74,7 @@
                     <dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}"/>
                     <dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
                     <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
-                </dxg:GridControl.Columns>-->
+                </dxg:GridControl.Columns>
                 <!--<dxg:GridControl.View>
                     <dxg:TableView  Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
                         -->

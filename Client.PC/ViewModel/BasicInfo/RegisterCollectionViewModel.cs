@@ -19,22 +19,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             DeleteCommand = new DelegateCommand<System.Collections.IList>(DeleteWithConfirm);
             CloseCommand = new DelegateCommand(Close);
+            var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
+            Items = new ObservableCollection<FirstRegisterEntity>(list);
+            DefaultEventAggregator.Current.GetEvent<RegisterViewEditedEvent<object>>().Subscribe(OnRegisterViewEdited);
         }
-        public void Init()
-        {
-            try
-            {
-                var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
-                Items = new ObservableCollection<FirstRegisterEntity>(list);
-                DefaultEventAggregator.Current.GetEvent<RegisterViewEditedEvent<object>>().Subscribe(OnRegisterViewEdited);
-            }
-            catch (Exception ex)
-            {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
-                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
-            }
-        }
-
         private void DeleteCore(MsgResult msgResult, object[] param)
         {
             try

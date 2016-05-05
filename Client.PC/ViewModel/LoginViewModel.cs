@@ -19,9 +19,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             this.IsReLogin = isReLogin;
             LoginCommand = new DelegateCommand(Login);
-        }
-        public void Init()
-        {
             if (Session.Current != null)
             {
                 this.UserNo = Session.Current.SessionClientNo;

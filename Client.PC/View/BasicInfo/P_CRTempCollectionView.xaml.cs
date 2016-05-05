@@ -18,28 +18,43 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public P_CRTempCollectionView()
         {
             InitializeComponent();
-            var vm = new P_CRTempCollectionViewModel();
-            this.DataContext = vm;
-            vm.Init();
+            this.Loaded += P_CRTempCollectionView_Loaded;
         }
+
+        private void P_CRTempCollectionView_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                this.DataContext = new P_CRTempCollectionViewModel();
+            }
+            catch (Exception ex)
+            {
+                ex.HandleException(this);
+                InterCloseDocument();
+            }
+        }
+
         protected override void Init()
         {
 
             base.Init();
-            DefaultEventAggregator.Current.GetEvent<CreateP_CRTempViewEvent<object>>().Subscribe(OnCreateP_CRTempView);
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, int>, P_CRTempEditMessage, int>>().Subscribe(OnCreateP_CRTempView);
         }
-        protected override void UnInit()
-        {
-            base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<CreateP_CRTempViewEvent<object>>().Unsubscribe(OnCreateP_CRTempView);
-        }
-        private void OnCreateP_CRTempView(object sender, CreateP_CRTempViewEventArgs args)
+
+        private void OnCreateP_CRTempView(object sender, CreateViewEventArgs<P_CRTempEditMessage, int> args)
         {
             if (sender == this.DataContext)
             {
-                this.CreateP_CRTempView(args.P_CRTempEditMessage);
+                this.CreateP_CRTempView(args.EditMessage);
             }
         }
+
+        protected override void UnInit()
+        {
+            base.UnInit();
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, int>, P_CRTempEditMessage, int>>().Unsubscribe(OnCreateP_CRTempView);
+        }
+
         private void CreateP_CRTempView(P_CRTempEditMessage editmsg)
         {
             var window = new BaseRibbonWindow();
@@ -54,7 +69,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
             try
             {
-                CreateP_CRTempView(new P_CRTempEditMessage());
+                CreateP_CRTempView(new P_CRTempEditMessage(0));
             }
             catch (Exception ex)
             {

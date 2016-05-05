@@ -15,12 +15,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View
     /// </summary>
     public partial class LoginView : BaseUserControl
     {
+        private bool isReLogin;
         public LoginView(bool isReLogin)
         {
             InitializeComponent();
-            var vm = new LoginViewModel(isReLogin);
-            this.DataContext = vm;
-            vm.Init();
+            this.isReLogin = isReLogin;
             this.Loaded += LoginView_Loaded;
         }
         protected override void Init()
@@ -58,11 +57,20 @@ namespace FengSharp.OneCardAccess.Client.PC.View
 
         private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            if (DXSplashScreen.IsActive)
-                DXSplashScreen.Close();
-            Window loginWindow = Window.GetWindow(this);
-            System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
-            loginWindow.Activate();
+            try
+            {
+                this.DataContext = new LoginViewModel(isReLogin);
+                if (DXSplashScreen.IsActive)
+                    DXSplashScreen.Close();
+                Window loginWindow = Window.GetWindow(this);
+                System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
+                loginWindow.Activate();
+            }
+            catch (Exception ex)
+            {
+                ex.HandleException(this);
+                InterCloseDocument();
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

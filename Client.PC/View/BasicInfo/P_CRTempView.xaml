@@ -94,10 +94,9 @@
                         <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
-                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}">
+                <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}" VerticalAlignment="Stretch">
                     <dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                                  TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible"
-                                    Height="70"
+                                  TextWrapping="Wrap" AcceptsReturn="True"
                                   />
                 </dxlc:LayoutItem>
 

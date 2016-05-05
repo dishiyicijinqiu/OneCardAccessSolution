@@ -9,6 +9,7 @@
                     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+                    xmlns:dxit="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
@@ -17,6 +18,9 @@
     <Style TargetType="dxg:GridControl">
         <Setter Property="SelectionMode" Value="Row"/>
         <Setter Property="AutoGenerateColumns" Value="KeepOld"/>
+    </Style>
+    <Style TargetType="dxg:GridColumn">
+        <Setter Property="FilterPopupMode" Value="CheckedList"/>
     </Style>
     <Style TargetType="dxg:TableView">
         <Setter Property="ShowGroupPanel" Value="False"/>
@@ -101,6 +105,55 @@
 
         </DataTemplate.Triggers>
     </DataTemplate>
+
+    <ui:ColumnTemplateSelector x:Key="ColumnTemplateSelector"/>
+    <DataTemplate x:Key="DefaultColumnTemplate">
+        <ContentControl>
+            <dxg:GridColumn FieldName="{Binding FieldName}" 
+                            Header="{Binding Header}" 
+                            HeaderToolTip="{Binding HeaderToolTip}"
+                            Visible="{Binding Visible}"
+                            VisibleIndex="{Binding VisibleIndex}"
+                            Width="{Binding Width}"
+                            />
+        </ContentControl>
+    </DataTemplate>
+    <DataTemplate x:Key="ComboboxColumnTemplate">
+        <ContentControl>
+            <dxg:GridColumn FieldName="{Binding FieldName}" 
+                            Header="{Binding Header}" 
+                            HeaderToolTip="{Binding HeaderToolTip}"
+                            Visible="{Binding Visible}"
+                            VisibleIndex="{Binding VisibleIndex}"
+                            Width="{Binding Width}">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ComboBoxEditSettings ItemsSource="{Binding Source}"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </ContentControl>
+    </DataTemplate>
+    <DataTemplate x:Key="ImageColumnTemplate">
+        <ContentControl>
+            <dxg:GridColumn FieldName="{Binding FieldName}" 
+                            Header="{Binding Header}" 
+                            HeaderToolTip="{Binding HeaderToolTip}"
+                            Visible="{Binding Visible}"
+                            VisibleIndex="{Binding VisibleIndex}"
+                            Width="{Binding Width}">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ImageEditSettings ShowMenu="False"/>
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </ContentControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="SummaryTemplate">
+        <ContentControl>
+            <dxg:GridSummaryItem FieldName="{Binding Path=(dxit:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}"
+                                 SummaryType="{Binding Path=(dxit:DependencyObjectExtensions.DataContext).Type, RelativeSource={RelativeSource Self}}"/>
+        </ContentControl>
+    </DataTemplate>
+
     <Style TargetType="dxe:TextEdit">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
     </Style>

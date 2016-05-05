@@ -12,7 +12,6 @@ namespace FengSharp.OneCardAccess.Common
             {
                 return;
             }
-
             if (reply.Headers.Action == ServiceExceptionDetail.FaultAction)
             {
                 MessageFault fault = MessageFault.CreateFault(reply, int.MaxValue);

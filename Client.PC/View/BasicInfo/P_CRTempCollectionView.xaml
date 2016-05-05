@@ -51,10 +51,21 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl x:Name="grid" ItemsSource="{Binding Items}" Grid.Row="1" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="GridControl_MouseDoubleClick">
-                <dxg:GridControl.Columns>
-                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" Width="100" VisibleIndex="0"/>
-                    <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}"/>
+            <dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedEntity}" 
+                             ColumnsSource="{Binding Columns}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             ItemsSource="{Binding Items}"
+                             MouseDoubleClick="GridControl_MouseDoubleClick">
+
+                <!--TotalSummarySource="{Binding TotalSummary}"
+                         TotalSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"
+                         GroupSummarySource="{Binding GroupSummary}"
+                         GroupSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"-->
+
+                <!--<dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" HeaderToolTip="ss" />
+                    <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}" Visible="False"/>
                     <dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
                     <dxg:GridColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}"/>
                     <dxg:GridColumn FieldName="CateNo" Header="{x:Static res:Resources.Entity_P_CRTemp_CateNo}"/>
@@ -63,16 +74,20 @@
                     <dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}"/>
                     <dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
                     <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
-                </dxg:GridControl.Columns>
+                </dxg:GridControl.Columns>-->
                 <!--<dxg:GridControl.View>
                     <dxg:TableView  Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
-                        --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
-                        <!--<dxmvvm:Interaction.Behaviors>
+                        -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--<dxmvvm:Interaction.Behaviors>
                             <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" 
                                                    CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}" />
-                        </dxmvvm:Interaction.Behaviors>--><!--
+                        </dxmvvm:Interaction.Behaviors>-->
+                <!--
                     </dxg:TableView>
-                    --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"--><!--
+                    -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--
                 </dxg:GridControl.View>-->
             </dxg:GridControl>
         </Grid>

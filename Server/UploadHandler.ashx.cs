@@ -37,31 +37,31 @@ namespace FengSharp.OneCardAccess.Server
             }
         }
 
-        const string DefaultAttachBaseURL = "http://localhost/OneCardAccessServer/FileAttachMent";
-        static string ConfigAttachBaseURL = System.Configuration.ConfigurationManager.AppSettings["FileAttachMentURL"];
-        static string _AttachBaseURL;
-        static string AttachBaseURL
-        {
-            get
-            {
-                if (string.IsNullOrWhiteSpace(_AttachBaseURL))
-                {
-                    if (string.IsNullOrWhiteSpace(ConfigAttachBaseURL))
-                    {
-                        _AttachBaseURL = DefaultAttachBaseURL;
-                    }
-                    else
-                    {
-                        _AttachBaseURL = ConfigAttachBaseURL;
-                    }
-                }
-                if (string.IsNullOrWhiteSpace(_AttachBaseURL))
-                {
-                    throw new Exception(Properties.Resources.Error_FileAttachDir);
-                }
-                return _AttachBaseURL;
-            }
-        }
+        //const string DefaultAttachBaseURL = "http://localhost/OneCardAccessServer/FileAttachMent";
+        //static string ConfigAttachBaseURL = System.Configuration.ConfigurationManager.AppSettings["FileAttachMentURL"];
+        //static string _AttachBaseURL;
+        //static string AttachBaseURL
+        //{
+        //    get
+        //    {
+        //        if (string.IsNullOrWhiteSpace(_AttachBaseURL))
+        //        {
+        //            if (string.IsNullOrWhiteSpace(ConfigAttachBaseURL))
+        //            {
+        //                _AttachBaseURL = DefaultAttachBaseURL;
+        //            }
+        //            else
+        //            {
+        //                _AttachBaseURL = ConfigAttachBaseURL;
+        //            }
+        //        }
+        //        if (string.IsNullOrWhiteSpace(_AttachBaseURL))
+        //        {
+        //            throw new Exception(Properties.Resources.Error_FileAttachDir);
+        //        }
+        //        return _AttachBaseURL;
+        //    }
+        //}
         const string ServerKey = "9D36AAB8-7AFB-4EC8-B3B7-A675CCD0C54C";
         public void ProcessRequest(HttpContext context)
         {
@@ -102,8 +102,8 @@ namespace FengSharp.OneCardAccess.Server
                 {
                     Directory.CreateDirectory(dir);
                 }
-                file.SaveAs(Path.Combine(dir, file.FileName));
-                context.Response.Write(string.Format("{0}/{1}/{2}", AttachBaseURL, filedir, file.FileName));
+                file.SaveAs(Path.Combine(dir, saveName));
+                context.Response.Write(saveName);
             }
         }
 
@@ -113,6 +113,8 @@ namespace FengSharp.OneCardAccess.Server
             {
                 case "p_crtemp":
                     return "P_CRTemp";
+                case "register_file":
+                    return "Register_File";
                 default:
                     throw new Exception(Properties.Resources.Error_FileAttachDir);
             }

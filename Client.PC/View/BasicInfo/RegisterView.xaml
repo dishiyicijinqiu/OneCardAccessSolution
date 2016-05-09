@@ -43,7 +43,7 @@
                                                />
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgRegisterFile_Caption}">
-                            <dxb:BarButtonItem Style="{StaticResource barUpLoad}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barUpLoad}" Command="{Binding UpLoadRegisterFileCommand}"/>
                             <dxb:BarButtonItem Style="{StaticResource barMoveUp}"/>
                             <dxb:BarButtonItem Style="{StaticResource barMoveDown}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
@@ -74,7 +74,7 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}">
+                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
@@ -100,7 +100,7 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}">
+                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>

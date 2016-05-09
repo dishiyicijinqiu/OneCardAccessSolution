@@ -727,7 +727,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 密码： 的本地化字符串。
+        ///   查找类似 密码 的本地化字符串。
         /// </summary>
         public static string View_LoginView_lblPassWord_Label {
             get {
@@ -736,7 +736,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 用户名： 的本地化字符串。
+        ///   查找类似 用户名 的本地化字符串。
         /// </summary>
         public static string View_LoginView_lblUserNo_Label {
             get {

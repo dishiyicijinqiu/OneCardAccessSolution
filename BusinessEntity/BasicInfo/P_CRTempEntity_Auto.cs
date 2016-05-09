@@ -22,13 +22,13 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 			CateNo=string.Empty;
 			Remark=string.Empty;
 		}
-		private int _P_CRTempId;
+		private string _P_CRTempId;
 		/// <summary>
 		/// Id
 		/// </summary>
 		[DataBaseKey]
 		[DataMember]
-		public int P_CRTempId
+		public string P_CRTempId
         {
             get { return _P_CRTempId; }
             set
@@ -135,12 +135,12 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("Remark");
             }
         }
-		private int _CreateId;
+		private string _CreateId;
 		/// <summary>
 		/// 创建人Id
 		/// </summary>
 		[DataMember]
-		public int CreateId
+		public string CreateId
 		{
             get { return _CreateId; }
             set
@@ -167,12 +167,12 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("CreateDate");
             }
         }
-		private int _LastModifyId;
+		private string _LastModifyId;
 		/// <summary>
 		/// 最后更改人Id
 		/// </summary>
 		[DataMember]
-		public int LastModifyId
+		public string LastModifyId
 		{
             get { return _LastModifyId; }
             set

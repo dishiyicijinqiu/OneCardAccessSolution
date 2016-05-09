@@ -8,91 +8,6 @@ using System;
 
 namespace FengSharp.OneCardAccess.Services
 {
-    //public class BasicInfoService : ServiceBase, IBasicInfoService
-    //{
-    //    #region Register注册证
-    //    public List<FirstRegisterEntity> GetFirstRegisterList()
-    //    {
-    //        return this.GetEntitys<FirstRegisterEntity>();
-    //    }
-    //    public FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId)
-    //    {
-    //        return this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
-    //        {
-    //            RegisterId = RegisterId
-    //        });
-    //    }
-    //    public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)
-    //    {
-    //        var firstEntity = this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
-    //        {
-    //            RegisterId = RegisterId
-    //        });
-    //        var secondentity = new SecondRegisterEntity();
-    //        secondentity.CopyValueFrom(firstEntity);
-    //        var dbRegister_FileList = this.GetForeignEntitys<T_Register, T_Register_File>(new T_Register() { RegisterId = secondentity.RegisterId });
-    //        secondentity.Register_FileEntitys = new Register_FileEntity[dbRegister_FileList.Count].ToList();
-    //        ClassValueCopier.CopyArray(secondentity.Register_FileEntitys, dbRegister_FileList);
-    //        return secondentity;
-    //    }
-    //    public int SaveRegisterEntity(SecondRegisterEntity entity)
-    //    {
-    //        return UseTran((tran) =>
-    //        {
-    //            var dbregisterentity = new T_Register();
-    //            dbregisterentity.CopyValueFrom(entity);
-    //            if (entity.RegisterId <= 0)
-    //            {
-    //                dbregisterentity.LastModifyId = dbregisterentity.CreateId = (int)Session.Current.SessionClientId;
-    //                dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
-    //                dbregisterentity = CreateEntity(dbregisterentity, tran);
-    //                if (entity.Register_FileEntitys != null)
-    //                    foreach (var item in entity.Register_FileEntitys)
-    //                    {
-    //                        var dbregisterfileentity = new T_Register_File();
-    //                        dbregisterfileentity.CopyValueFrom(item);
-    //                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
-    //                        CreateEntity(dbregisterfileentity, tran);
-    //                    }
-    //            }
-    //            else
-    //            {
-    //                dbregisterentity.LastModifyId = (int)Session.Current.SessionClientId;
-    //                dbregisterentity.LastModifyDate = System.DateTime.Now;
-    //                if (!ModifyEntity(dbregisterentity, tran))
-    //                {
-    //                    throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
-    //                }
-    //                DeleteRelationEntitys<T_Register, T_Register_File>(dbregisterentity, tran);
-    //                if (entity.Register_FileEntitys != null)
-    //                    foreach (var item in entity.Register_FileEntitys)
-    //                    {
-    //                        var dbregisterfileentity = new T_Register_File();
-    //                        dbregisterfileentity.CopyValueFrom(item);
-    //                        dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
-    //                        CreateEntity(dbregisterfileentity, tran);
-    //                    }
-    //            }
-    //            return dbregisterentity.RegisterId;
-    //        });
-    //    }
-    //    public void DeleteRegisterEntitys(List<RegisterEntity> RegisterEntitys)
-    //    {
-    //        UseTran((tran) =>
-    //        {
-    //            foreach (var entity in RegisterEntitys)
-    //            {
-    //                if (!base.DeleteEntity<RegisterEntity>(entity, tran))
-    //                {
-    //                    throw new BusinessException(Properties.Resources.Error_DeleteFailed);
-    //                }
-    //                base.DeleteRelationEntitys<int, int>(entity.RegisterId, tran);
-    //            }
-    //        });
-    //    }
-    //    #endregion
-
-    //}
     public class BasicInfoService : ServiceBase, IBasicInfoService
     {
         #region Register注册证
@@ -100,14 +15,14 @@ namespace FengSharp.OneCardAccess.Services
         {
             return this.GetEntitys<FirstRegisterEntity>();
         }
-        public FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId)
+        public FirstRegisterEntity GetFirstRegisterEntityById(string RegisterId)
         {
             return this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
             {
                 RegisterId = RegisterId
             });
         }
-        public SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId)
+        public SecondRegisterEntity GetSecondRegisterEntityById(string RegisterId)
         {
             var firstEntity = this.FindById<FirstRegisterEntity>(new FirstRegisterEntity()
             {
@@ -120,15 +35,16 @@ namespace FengSharp.OneCardAccess.Services
             ClassValueCopier.CopyArray(secondentity.Register_FileEntitys, dbRegister_FileList);
             return secondentity;
         }
-        public int SaveRegisterEntity(SecondRegisterEntity entity)
+        public string SaveRegisterEntity(SecondRegisterEntity entity)
         {
             return UseTran((tran) =>
             {
                 var dbregisterentity = new T_Register();
                 dbregisterentity.CopyValueFrom(entity);
-                if (entity.RegisterId <= 0)
+                if (!string.IsNullOrWhiteSpace(entity.RegisterId) && entity.RegisterId.Length != 36)
+                //if (entity.RegisterId.Length != 36)
                 {
-                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
                     dbregisterentity = CreateEntity(dbregisterentity, tran);
                     if (entity.Register_FileEntitys != null)
@@ -142,7 +58,7 @@ namespace FengSharp.OneCardAccess.Services
                 }
                 else
                 {
-                    dbregisterentity.LastModifyId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = System.DateTime.Now;
                     if (!ModifyEntity(dbregisterentity, tran))
                     {
@@ -184,7 +100,7 @@ namespace FengSharp.OneCardAccess.Services
             return this.GetEntitys<FirstP_CRTempEntity>();
         }
 
-        public FirstP_CRTempEntity GetFirstP_CRTempEntityById(int P_CRTempId)
+        public FirstP_CRTempEntity GetFirstP_CRTempEntityById(string P_CRTempId)
         {
             return this.FindById<FirstP_CRTempEntity>(new FirstP_CRTempEntity()
             {
@@ -192,21 +108,22 @@ namespace FengSharp.OneCardAccess.Services
             });
         }
 
-        public int SaveP_CRTempEntity(P_CRTempEntity entity)
+        public string SaveP_CRTempEntity(P_CRTempEntity entity)
         {
             return UseTran((tran) =>
             {
                 var dbregisterentity = new T_P_CRTemp();
                 dbregisterentity.CopyValueFrom(entity);
-                if (entity.P_CRTempId <= 0)
+                if (!string.IsNullOrWhiteSpace(entity.P_CRTempId) && entity.P_CRTempId.Length != 36)
+                //if (entity.P_CRTempId.Length != 36)
                 {
-                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
                     dbregisterentity = CreateEntity(dbregisterentity, tran);
                 }
                 else
                 {
-                    dbregisterentity.LastModifyId = (int)Session.Current.SessionClientId;
+                    dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = System.DateTime.Now;
                     if (!ModifyEntity(dbregisterentity, tran))
                     {

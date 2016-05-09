@@ -13,21 +13,18 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
             InitializeComponent();
             this.ParentDataContext = ParentViewModel;
-            this.Parameter = EditMessage;
-            this.Loaded += P_CRTempView_Loaded;
-        }
-
-        private void P_CRTempView_Loaded(object sender, System.Windows.RoutedEventArgs e)
-        {
-            try
+            this.Loaded += (sender, e) =>
             {
-                this.DataContext = new P_CRTempViewModel(ParentDataContext, Parameter as P_CRTempEditMessage);
-            }
-            catch (System.Exception ex)
-            {
-                ex.HandleException(this);
-                InterCloseDocument();
-            }
+                try
+                {
+                    this.DataContext = new P_CRTempViewModel(this.ParentDataContext, EditMessage);
+                }
+                catch (System.Exception ex)
+                {
+                    ex.HandleException(this);
+                    InterCloseDocument();
+                }
+            };
         }
     }
 }

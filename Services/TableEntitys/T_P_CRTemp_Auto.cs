@@ -11,7 +11,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// P_CRTempId
         /// </summary>
         [DataBaseKey]
-		public int P_CRTempId { get; set; }
+		public string P_CRTempId { get; set; }
 		/// <summary>
 		/// 模板名称
 		/// </summary>
@@ -39,7 +39,7 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// <summary>
 		/// 创建人Id
 		/// </summary>
-		public int CreateId { get; set; }
+		public string CreateId { get; set; }
 		/// <summary>
 		/// 创建日期
 		/// </summary>
@@ -47,7 +47,7 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// <summary>
 		/// 最后更改人Id
 		/// </summary>
-		public int LastModifyId { get; set; }
+		public string LastModifyId { get; set; }
 		/// <summary>
 		/// 最后更改日期
 		/// </summary>

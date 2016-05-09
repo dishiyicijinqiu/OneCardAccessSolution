@@ -20,13 +20,13 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
             PassWord = string.Empty;
             Remark = string.Empty;
         }
-        private int _UserId;
+        private string _UserId;
         /// <summary>
         /// 用户Id
         /// </summary>
         [DataBaseKey]
         [DataMember]
-        public int UserId
+        public string UserId
         {
             get { return _UserId; }
             set

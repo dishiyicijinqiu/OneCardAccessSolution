@@ -37,19 +37,20 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         protected override void Init()
         {
             base.Init();
-            DefaultEventAggregator.Current.GetEvent<CreateRegisterViewEvent<object>>().Subscribe(OnCreateRegisterView);
-        }
-        protected override void UnInit()
-        {
-            base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<CreateRegisterViewEvent<object>>().Unsubscribe(OnCreateRegisterView);
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>().Subscribe(OnCreateRegisterView);
         }
 
-        private void OnCreateRegisterView(object sender, CreateRegisterViewEventArgs args)
+        protected override void UnInit()
+        { 
+            base.UnInit();
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>().Unsubscribe(OnCreateRegisterView);
+        }
+
+        private void OnCreateRegisterView(object sender, CreateViewEventArgs<RegisterEditMessage, string> args)
         {
             if (sender == this.DataContext)
             {
-                this.CreateRegisterView(args.RegisterEditMessage);
+                this.CreateRegisterView(args.EditMessage);
             }
         }
         private void CreateRegisterView(RegisterEditMessage editmsg)

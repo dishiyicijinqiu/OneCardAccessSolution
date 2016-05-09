@@ -11,18 +11,79 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : NotificationObject
+    public class RegisterCollectionViewModel : CrudNotificationObject<RegisterEditMessage, string>
     {
         public ICommand DeleteCommand { get; private set; }
-        public ICommand CloseCommand { get; private set; }
         public RegisterCollectionViewModel()
         {
             DeleteCommand = new DelegateCommand<System.Collections.IList>(DeleteWithConfirm);
-            CloseCommand = new DelegateCommand(Close);
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
             Items = new ObservableCollection<FirstRegisterEntity>(list);
-            DefaultEventAggregator.Current.GetEvent<RegisterViewEditedEvent<object>>().Subscribe(OnRegisterViewEdited);
         }
+
+        protected override void OnEntityViewEdited(object sender, EntityEditedEventArgs<RegisterEditMessage, string> args)
+        {
+            try
+            {
+                if (sender != this)
+                    return;
+                switch (args.EditMessage.EntityEditMode)
+                {
+                    case EntityEditMode.Add:
+                        {
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            Items.Add(newItem);
+                            if (args.EditMessage.IsContinue)
+                                ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage()));
+                        }
+                        break;
+                    case EntityEditMode.CopyAdd:
+                        {
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            Items.Add(newItem);
+                            if (args.EditMessage.IsContinue)
+                            {
+                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == args.EditMessage.CopyKey);
+                                SelectedEntity = copyItem;
+                                ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage(_CopyKey: copyItem.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                            }
+                        }
+                        break;
+                    case EntityEditMode.Edit:
+                        {
+                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == args.EditMessage.Key);
+                            if (oldItem == null) return;
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            var itemIndex = Items.IndexOf(oldItem);
+                            Items[itemIndex] = newItem;
+                            if (args.EditMessage.IsContinue)
+                            {
+                                int nextIndex = itemIndex + 1;
+                                if (Items.Count > nextIndex)
+                                {
+                                    var nextItem = Items[nextIndex];
+                                    SelectedEntity = nextItem;
+                                    ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
+                                }
+                                else
+                                {
+                                    SelectedEntity = Items[itemIndex];
+                                    ShowMessage(Properties.Resources.Info_NoNext);
+                                    CloseChild();
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
         private void DeleteCore(MsgResult msgResult, object[] param)
         {
             try
@@ -32,14 +93,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 var SelectedEntitys = param[0] as System.Collections.IList;
                 if (SelectedEntitys == null || SelectedEntitys.Count <= 0)
                 {
-                    DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
-                        Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_SelectAtLeastOne));
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
                 var listToDelete = SelectedEntitys.Cast<RegisterEntity>().ToList();
                 ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(listToDelete);
-                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().
-                    Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_DeleteSuccess));
+                ShowMessage(Properties.Resources.Info_DeleteSuccess);
                 foreach (var item in listToDelete)
                 {
                     this.Items.Remove(item as FirstRegisterEntity);
@@ -47,15 +106,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+                ShowException(ex);
             }
         }
 
         public void DeleteWithConfirm(System.Collections.IList SelectedEntitys)
         {
-            var deleteArgs =
-                new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, null, MsgButton.YesNo, MsgImage.Information, DeleteCore, SelectedEntitys);
-            DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, deleteArgs);
+            var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, null, MsgButton.YesNo, MsgImage.Information, DeleteCore, SelectedEntitys);
+            ShowMessage(deleteArgs);
         }
 
         #region propertys
@@ -86,126 +144,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
 
         #endregion
-        #region commandmethods
-        public void Close()
-        {
-            DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Publish(this);
-        }
-        #endregion
-        #region methods
-
-        private void OnRegisterViewEdited(object sender, RegisterViewEditedEventArgs args)
-        {
-            try
-            {
-                if (sender != this)
-                    return;
-                switch (args.RegisterEditMessage.EntityEditMode)
-                {
-                    case EntityEditMode.Add:
-                        {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.RegisterEditMessage.Key);
-                            Items.Add(newItem);
-                            if (args.RegisterEditMessage.IsContinue)
-                                DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                    Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage()));
-                        }
-                        break;
-                    case EntityEditMode.CopyAdd:
-                        {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.RegisterEditMessage.Key);
-                            Items.Add(newItem);
-                            if (args.RegisterEditMessage.IsContinue)
-                            {
-                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == args.RegisterEditMessage.CopyKey);
-                                SelectedEntity = copyItem;
-                                DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                    Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage(_CopyKey: copyItem.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
-                            }
-                        }
-                        break;
-                    case EntityEditMode.Edit:
-                        {
-                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == args.RegisterEditMessage.Key);
-                            if (oldItem == null) return;
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.RegisterEditMessage.Key);
-                            var itemIndex = Items.IndexOf(oldItem);
-                            Items[itemIndex] = newItem;
-                            if (args.RegisterEditMessage.IsContinue)
-                            {
-                                int nextIndex = itemIndex + 1;
-                                if (Items.Count > nextIndex)
-                                {
-                                    var nextItem = Items[nextIndex];
-                                    SelectedEntity = nextItem;
-                                    DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                        Publish(this, new RegisterViewDataContextChangeEventArgs(new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
-                                }
-                                else
-                                {
-                                    SelectedEntity = Items[itemIndex];
-                                    DefaultEventAggregator.Current.GetEvent<RegisterViewDataContextChangeEvent<object>>().
-                                        Publish(this, new RegisterViewDataContextChangeEventArgs(null));
-                                }
-                            }
-                            SelectedEntity = Items[itemIndex];
-                        }
-                        break;
-                    default:
-                        break;
-                }
-            }
-            catch (Exception ex)
-            {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
-            }
-        }
-        #endregion
     }
 
     #region message
-    public class RegisterEditMessage : EditMessage<int>
+    public class RegisterEditMessage : EditMessage<string>
     {
-        public RegisterEditMessage(int _Key = 0, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, int _CopyKey = 0)
+        public RegisterEditMessage(string _Key = null, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, string _CopyKey = null)
         {
             Key = _Key;
             EntityEditMode = _EntityEditMode;
             IsContinue = _IsContinue;
             CopyKey = _CopyKey;
         }
-        public int CopyKey { get; set; }
-    }
-
-    public class CreateRegisterViewEvent<Sender> : BaseSenderEvent<Sender, CreateRegisterViewEventArgs> { }
-    public class CreateRegisterViewEventArgs
-    {
-        public CreateRegisterViewEventArgs(RegisterEditMessage RegisterEditMessage)
-        {
-            this.RegisterEditMessage = RegisterEditMessage;
-        }
-        public RegisterEditMessage RegisterEditMessage { get; set; }
-    }
-
-
-    public class RegisterViewEditedEvent<Sender> : BaseSenderEvent<Sender, RegisterViewEditedEventArgs> { }
-    public class RegisterViewEditedEventArgs
-    {
-        public RegisterViewEditedEventArgs(RegisterEditMessage RegisterEditMessage)
-        {
-            this.RegisterEditMessage = RegisterEditMessage;
-        }
-        public RegisterEditMessage RegisterEditMessage { get; set; }
-    }
-
-
-    public class RegisterViewDataContextChangeEvent<Sender> : BaseSenderEvent<Sender, RegisterViewDataContextChangeEventArgs> { }
-    public class RegisterViewDataContextChangeEventArgs
-    {
-        public RegisterViewDataContextChangeEventArgs(RegisterEditMessage RegisterEditMessage)
-        {
-            this.RegisterEditMessage = RegisterEditMessage;
-        }
-        public RegisterEditMessage RegisterEditMessage { get; set; }
+        public string CopyKey { get; set; }
     }
     #endregion
 }

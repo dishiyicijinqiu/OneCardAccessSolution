@@ -12,7 +12,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// 主键Id
         /// </summary>
         [DataBaseKey]
-        public int RegisterId { get; set; }
+        public string RegisterId { get; set; }
         /// <summary>
         /// 注册证编号
         /// </summary>
@@ -48,7 +48,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// <summary>
         /// 创建人Id
         /// </summary>
-        public int CreateId { get; set; }
+        public string CreateId { get; set; }
         /// <summary>
         /// 创建日期
         /// </summary>
@@ -56,7 +56,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// <summary>
         /// 最后更改人Id
         /// </summary>
-        public int LastModifyId { get; set; }
+        public string LastModifyId { get; set; }
         /// <summary>
         /// 最后更改日期
         /// </summary>

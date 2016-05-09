@@ -9,7 +9,7 @@ namespace FengSharp.OneCardAccess.Services
 {
     public class RBACService : ServiceBase, IRBACService
     {
-        public UserInfoEntity GetUserById(int UserId)
+        public UserInfoEntity GetUserById(string UserId)
         {
             var dbentity = this.FindById<T_UserInfo>(new T_UserInfo()
             {

@@ -54,6 +54,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
             {
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
+                Register_FileEntitys = new List<Register_FileEntity>()
             };
         }
         private List<Register_FileEntity> _Register_FileEntitys;

@@ -38,10 +38,10 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
 
             base.Init();
-            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, int>, P_CRTempEditMessage, int>>().Subscribe(OnCreateP_CRTempView);
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>().Subscribe(OnCreateP_CRTempView);
         }
 
-        private void OnCreateP_CRTempView(object sender, CreateViewEventArgs<P_CRTempEditMessage, int> args)
+        private void OnCreateP_CRTempView(object sender, CreateViewEventArgs<P_CRTempEditMessage, string> args)
         {
             if (sender == this.DataContext)
             {
@@ -52,7 +52,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         protected override void UnInit()
         {
             base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, int>, P_CRTempEditMessage, int>>().Unsubscribe(OnCreateP_CRTempView);
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>().Unsubscribe(OnCreateP_CRTempView);
         }
 
         private void CreateP_CRTempView(P_CRTempEditMessage editmsg)
@@ -69,7 +69,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
             try
             {
-                CreateP_CRTempView(new P_CRTempEditMessage(0));
+                CreateP_CRTempView(new P_CRTempEditMessage());
             }
             catch (Exception ex)
             {
@@ -116,18 +116,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             }
             CreateP_CRTempView(new P_CRTempEditMessage(SelectedRow.P_CRTempId, EntityEditMode.Edit));
         }
-        //private void tableview_RowDoubleClick(object sender, DevExpress.Xpf.Grid.RowDoubleClickEventArgs e)
-        //{
-        //    try
-        //    {
-        //        if (e.HitInfo.RowHandle <= 0) return;
-        //        EditRegisterView();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
-        //    }
-        //}
         private void GridControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             try

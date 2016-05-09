@@ -16,7 +16,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// <summary>
         /// 注册证Id
         /// </summary>
-        public int RegisterId { get; set; }
+        public string RegisterId { get; set; }
         /// <summary>
         /// 文件名
         /// </summary>

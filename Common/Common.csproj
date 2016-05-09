@@ -51,6 +51,7 @@
     <Compile Include="ApplicationContext\ApplicationContextClientMessageInspector.cs" />
     <Compile Include="DataBase\DataBaseKeyAttribute.cs" />
     <Compile Include="Events\EventAggregator.cs" />
+    <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingChannelFactory.cs" />
@@ -58,8 +59,6 @@
     <Compile Include="ExceptionHandle\ExceptionHandlingServiceHost.cs" />
     <Compile Include="ExceptionHandle\ServiceErrorHandler.cs" />
     <Compile Include="ExceptionHandle\ServiceExceptionDetail.cs" />
-    <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
-    <Compile Include="ExceptionHandle\ExceptionHandlers\ResourceReplaceHandler.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\LoginTimeOutException.cs" />
     <Compile Include="Extends\LoggerExtend.cs" />
@@ -84,10 +83,6 @@
     <Compile Include="SessionState\SessionBehavior.cs" />
     <Compile Include="SessionState\Session.cs" />
     <Compile Include="SessionState\SessionClientMessageInspector.cs" />
-    <Compile Include="Unity Integration\Policy Injection Integration\IPolicyInjectionPolicy.cs" />
-    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionExtension.cs" />
-    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionPolicy.cs" />
-    <Compile Include="Unity Integration\Policy Injection Integration\PolicyInjectionStrategy.cs" />
     <Compile Include="Unity Integration\ServiceLoader.cs" />
     <Compile Include="Unity Integration\UnityBehaviorAttribute.cs" />
     <Compile Include="Unity Integration\UnityBehaviorElement.cs" />

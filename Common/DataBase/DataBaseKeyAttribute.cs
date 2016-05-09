@@ -16,8 +16,8 @@ namespace FengSharp.OneCardAccess.Common
     }
     public enum DataBaseKeyType
     {
-        Int,
         Guid,
+        Int,
         UnKnown
     }
 }

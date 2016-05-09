@@ -11,11 +11,11 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         List<FirstRegisterEntity> GetFirstRegisterEntitys();
         [OperationContract]
-        SecondRegisterEntity GetSecondRegisterEntityById(int RegisterId);
+        SecondRegisterEntity GetSecondRegisterEntityById(string RegisterId);
         [OperationContract]
-        FirstRegisterEntity GetFirstRegisterEntityById(int RegisterId);
+        FirstRegisterEntity GetFirstRegisterEntityById(string RegisterId);
         [OperationContract]
-        int SaveRegisterEntity(SecondRegisterEntity entity);
+        string SaveRegisterEntity(SecondRegisterEntity entity);
         [OperationContract]
         void DeleteRegisterEntitys(List<RegisterEntity> RegisterEntitys);
         #endregion
@@ -23,9 +23,9 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         List<FirstP_CRTempEntity> GetFirstP_CRTempEntitys();
         [OperationContract]
-        FirstP_CRTempEntity GetFirstP_CRTempEntityById(int P_CRTempId);
+        FirstP_CRTempEntity GetFirstP_CRTempEntityById(string P_CRTempId);
         [OperationContract]
-        int SaveP_CRTempEntity(P_CRTempEntity entity);
+        string SaveP_CRTempEntity(P_CRTempEntity entity);
         [OperationContract]
         void DeleteP_CRTempEntitys(List<P_CRTempEntity> P_CRTempEntitys);
         #endregion

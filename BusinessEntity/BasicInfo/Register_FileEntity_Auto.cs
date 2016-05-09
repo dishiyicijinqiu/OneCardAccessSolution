@@ -36,12 +36,12 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("Id");
             }
         }
-        private int _RegisterId;
+        private string _RegisterId;
         /// <summary>
         /// 注册证Id
         /// </summary>
         [DataMember]
-        public int RegisterId
+        public string RegisterId
         {
             get { return _RegisterId; }
             set

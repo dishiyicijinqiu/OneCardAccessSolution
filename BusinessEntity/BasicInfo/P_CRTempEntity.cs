@@ -6,6 +6,7 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
+    [KnownType(typeof(FirstP_CRTempEntity))]
     public partial class P_CRTempEntity
     {
         public static P_CRTempEntity CreateEntity()

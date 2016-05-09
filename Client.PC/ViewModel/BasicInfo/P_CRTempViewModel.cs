@@ -11,39 +11,36 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempViewModel : BaseNotificationObject<P_CRTempEditMessage>
+    public class P_CRTempViewModel : CrudNotificationObject<P_CRTempEditMessage, string>
     {
         FileSystemWatcher watcher = new FileSystemWatcher();
         public ICommand EditTempCommand { get; private set; }
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
-        public ICommand CloseCommand { get; private set; }
-        public P_CRTempViewModel(object ParentViewModel, P_CRTempEditMessage parameter)
+        public P_CRTempViewModel(object ParentViewModel, P_CRTempEditMessage editmessage)
         {
             this.ParentViewModel = ParentViewModel;
-            this.Parameter = parameter;
+            this.EditMessage = editmessage;
             watcher.Path = PCConfig.TempDir;
             watcher.Changed -= Watcher_Changed;
             watcher.Changed += Watcher_Changed;
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
-            CloseCommand = new DelegateCommand(Close);
             EditTempCommand = new DelegateCommand(EditTemp);
 
-            Entity = P_CRTempEntity.CreateEntity();
-            if (Parameter == null)
+            Entity = FirstP_CRTempEntity.CreateEntity();
+            if (editmessage == null)
                 throw new Exception(Properties.Resources.Error_ParameterIsError);
-            switch (Parameter.EntityEditMode)
+            switch (this.EditMessage.EntityEditMode)
             {
                 case EntityEditMode.Add:
                     {
-                        var newEntity = P_CRTempEntity.CreateEntity();
-                        Entity.CopyValueFrom(newEntity);
+                        //var newEntity = FirstP_CRTempEntity.CreateEntity();
+                        //Entity.CopyValueFrom(newEntity);
                     }
                     break;
                 case EntityEditMode.CopyAdd:
-                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(Parameter.CopyKey);
-                    Entity = P_CRTempEntity.CreateEntity();
+                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(this.EditMessage.CopyKey);
                     Entity.CopyValueFrom(copyEntity,
                         new List<string>(PCConfig.CreateAndModifyInfoColNames)
                     {
@@ -52,7 +49,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     break;
                 case EntityEditMode.Edit:
                     {
-                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(Parameter.Key);
+                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(this.EditMessage.Key);
                         Entity.CopyValueFrom(newEntity);
                     }
                     break;
@@ -60,10 +57,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     throw new Exception(Properties.Resources.Error_ParameterIsError);
             }
             if (Entity == null)
-                Entity = P_CRTempEntity.CreateEntity();
+                Entity = FirstP_CRTempEntity.CreateEntity();
 
         }
-
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
@@ -71,9 +67,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
 
         #region propertys
-        private P_CRTempEntity _Entity;
+        private FirstP_CRTempEntity _Entity;
 
-        public P_CRTempEntity Entity
+        public FirstP_CRTempEntity Entity
         {
             get { return _Entity; }
             set
@@ -97,38 +93,34 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region methods
         public void SaveAndNew()
         {
-            this.Parameter.IsContinue = true;
+            this.EditMessage.IsContinue = true;
             this.SaveCore();
         }
         public void Save()
         {
-            this.SaveCore();
-            DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
+            this.EditMessage.IsContinue = false;
+            if (this.SaveCore())
+                this.Close();
         }
-        void SaveCore()
+        bool SaveCore()
         {
             try
             {
-                this.Parameter.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveP_CRTempEntity(this.Entity);
-                if (this.Parameter.Key <= 0)
+                this.EditMessage.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveP_CRTempEntity(this.Entity);
+                if (this.EditMessage.Key == null || this.EditMessage.Key.Length != 36)
                 {
-                    DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, new MessageBoxEventArgs(Properties.Resources.Error_SaveFiled));
-                    return;
+                    ShowMessage(Properties.Resources.Error_SaveFiled);
+                    return false;
                 }
-                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, new MessageBoxEventArgs(Properties.Resources.Info_SaveSuccess));
-
-                DefaultEventAggregator.Current.GetEvent<EntityEditedEvent<object, EntityEditedEventArgs<P_CRTempEditMessage, int>, P_CRTempEditMessage, int>>()
-                    .Publish(this.ParentViewModel, new EntityEditedEventArgs<P_CRTempEditMessage, int>(this.Parameter));
+                ShowMessage(Properties.Resources.Info_SaveSuccess);
+                EntityEdited();
+                return true;
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().
-             Publish(this, new ExceptionEventArgs(ex));
+                ShowException(ex);
+                return false;
             }
-        }
-        public void Close()
-        {
-            DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Publish(this);
         }
         bool ischanged = false;
         public void EditTemp()
@@ -140,7 +132,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 {
                     UserNo = "UserNo",
                     UserName = "UserName",
-                    UserId = 1,
+                    UserId = Guid.NewGuid().ToString(),
                     Remark = "Remark",
                     IsLock = false,
                     IsSuper = false,
@@ -150,7 +142,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 {
                     UserNo = "UserNo1",
                     UserName = "UserName1",
-                    UserId = 2,
+                    UserId = Guid.NewGuid().ToString(),
                     Remark = "Remark1",
                     IsLock = true,
                     IsSuper = true,
@@ -182,7 +174,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             catch (System.Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+                ShowException(ex);
             }
         }
         #endregion

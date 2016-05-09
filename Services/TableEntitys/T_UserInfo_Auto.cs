@@ -12,7 +12,7 @@ namespace FengSharp.OneCardAccess.TEntity
         /// 用户Id
         /// </summary>
         [DataBaseKey]
-        public int UserId { get; set; }
+        public string UserId { get; set; }
 		/// <summary>
 		/// 用户账号
 		/// </summary>

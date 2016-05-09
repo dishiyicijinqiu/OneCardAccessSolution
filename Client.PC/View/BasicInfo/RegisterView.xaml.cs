@@ -1,5 +1,6 @@
 ﻿using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
+using FengSharp.OneCardAccess.Core;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
@@ -8,12 +9,22 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// </summary>
     public partial class RegisterView : BaseUserControl
     {
-        public RegisterView(object ParentViewModel, RegisterEditMessage registerEditMessage)
+        public RegisterView(object ParentViewModel, RegisterEditMessage EditMessage)
         {
             InitializeComponent();
-            var vm = new RegisterViewModel(ParentViewModel, registerEditMessage);
-            this.DataContext = vm;
-            vm.Init();
+            this.ParentDataContext = ParentViewModel;
+            this.Loaded += (sender, e) =>
+            {
+                try
+                {
+                    this.DataContext = new RegisterViewModel(this.ParentDataContext, EditMessage);
+                }
+                catch (System.Exception ex)
+                {
+                    ex.HandleException(this);
+                    InterCloseDocument();
+                }
+            };
         }
     }
 }

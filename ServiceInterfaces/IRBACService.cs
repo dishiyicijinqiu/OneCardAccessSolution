@@ -9,6 +9,6 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     public interface IRBACService
     {
         [OperationContract]
-        UserInfoEntity GetUserById(int UserId);
+        UserInfoEntity GetUserById(string UserId);
     }
 }

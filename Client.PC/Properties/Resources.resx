@@ -169,7 +169,7 @@
     <value>参数错误</value>
   </data>
   <data name="View_LoginView_lblPassWord_Label" xml:space="preserve">
-    <value>密码：</value>
+    <value>密码</value>
   </data>
   <data name="View_RegisterCollectionView_Title" xml:space="preserve">
     <value>注册证信息</value>
@@ -181,7 +181,7 @@
     <value>用户被锁定</value>
   </data>
   <data name="View_LoginView_lblUserNo_Label" xml:space="preserve">
-    <value>用户名：</value>
+    <value>用户名</value>
   </data>
   <data name="Error_UserNotExist" xml:space="preserve">
     <value>用户不存在</value>

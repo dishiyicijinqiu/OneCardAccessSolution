@@ -41,7 +41,7 @@ namespace FengSharp.OneCardAccess.Services
             {
                 var dbregisterentity = new T_Register();
                 dbregisterentity.CopyValueFrom(entity);
-                if (!string.IsNullOrWhiteSpace(entity.RegisterId) && entity.RegisterId.Length != 36)
+                if (string.IsNullOrWhiteSpace(entity.RegisterId) || entity.RegisterId.Length != 36)
                 //if (entity.RegisterId.Length != 36)
                 {
                     dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
@@ -114,7 +114,7 @@ namespace FengSharp.OneCardAccess.Services
             {
                 var dbregisterentity = new T_P_CRTemp();
                 dbregisterentity.CopyValueFrom(entity);
-                if (!string.IsNullOrWhiteSpace(entity.P_CRTempId) && entity.P_CRTempId.Length != 36)
+                if (string.IsNullOrWhiteSpace(entity.P_CRTempId) || entity.P_CRTempId.Length != 36)
                 //if (entity.P_CRTempId.Length != 36)
                 {
                     dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;

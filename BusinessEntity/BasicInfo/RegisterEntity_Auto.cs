@@ -22,7 +22,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
             RegisterNo1 = string.Empty;
             RegisterName1 = string.Empty;
             StandardCode1 = string.Empty;
-            StartDate = string.Empty;
+            StartDate = string.Empty; ;
             EndDate = string.Empty;
             Remark = string.Empty;
         }

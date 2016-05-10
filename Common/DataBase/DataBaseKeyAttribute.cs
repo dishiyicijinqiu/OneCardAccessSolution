@@ -10,7 +10,7 @@ namespace FengSharp.OneCardAccess.Common
         }
         public DataBaseKeyAttribute()
         {
-            this.KeyType = DataBaseKeyType.Int;
+            this.KeyType = DataBaseKeyType.Guid;
         }
         public DataBaseKeyType KeyType { get; set; }
     }

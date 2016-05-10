@@ -9,7 +9,11 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
     {
         public static RegisterEntity CreateEntity()
         {
-            return new RegisterEntity();
+            return new RegisterEntity()
+            {
+                StartDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
+                EndDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
+            };
         }
     }
     public class FirstRegisterEntity : RegisterEntity
@@ -18,6 +22,8 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         {
             return new FirstRegisterEntity()
             {
+                StartDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
+                EndDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
             };
@@ -52,6 +58,8 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         {
             return new SecondRegisterEntity()
             {
+                StartDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
+                EndDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
                 Register_FileEntitys = new List<Register_FileEntity>()

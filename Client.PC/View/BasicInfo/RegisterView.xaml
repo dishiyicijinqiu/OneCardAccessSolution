@@ -70,9 +70,11 @@
                             <dxe:TextEdit EditValue="{Binding Entity.StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_StartDate}">
-                            <dxe:DateEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
+                            <dxe:DateEdit EditValue="{Binding Entity.StartDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource stringDateValueConverter}}" 
+                                          AllowNullInput="False" MaskUseAsDisplayFormat="True"
+                                          Mask="{x:Static res:Resources.Format_DateString}"/>
                         </dxlc:LayoutItem>
-
+                        <!--EditValueConverter="{StaticResource stringDateValueConverter}"-->
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
                             <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
                                 <dxg:GridControl.Columns>
@@ -96,7 +98,9 @@
                             <dxe:TextEdit EditValue="{Binding Entity.StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Register_EndDate}">
-                            <dxe:DateEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"  MaskUseAsDisplayFormat="True" Mask="yyyy年MM月dd日"/>
+                            <dxe:DateEdit EditValue="{Binding Entity.EndDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True,Converter={StaticResource stringDateValueConverter}}"  
+                                          AllowNullInput="False" MaskUseAsDisplayFormat="True" 
+                                          Mask="{x:Static res:Resources.Format_DateString}"/>
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">

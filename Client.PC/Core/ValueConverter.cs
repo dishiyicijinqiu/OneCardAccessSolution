@@ -83,6 +83,28 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
+    public class StringDateValueConverter : MarkupExtension, IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var date = DateTime.Now;
+            DateTime.TryParse((string)value, out date);
+            return date;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var date = (DateTime)value;
+            return date.ToString("yyyy-MM-dd");
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+
+
     //[ValueConversion(typeof(EntityEditMode), typeof(bool))]
     //public class EditModeVisibleConverter : IValueConverter
     //{

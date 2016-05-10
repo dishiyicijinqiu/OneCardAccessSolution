@@ -5,6 +5,7 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
@@ -14,9 +15,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
     public class RegisterCollectionViewModel : CrudNotificationObject<RegisterEditMessage, string>
     {
         public ICommand DeleteCommand { get; private set; }
+        public ICommand AddCommand { get; private set; }
+        public ICommand CopyAddCommand { get; private set; }
+        public ICommand EditCommand { get; private set; }
         public RegisterCollectionViewModel()
         {
-            DeleteCommand = new DelegateCommand<System.Collections.IList>(DeleteWithConfirm);
+            AddCommand = new DelegateCommand(Add);
+            CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
+            EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
+            DeleteCommand = new DelegateCommand<List<RegisterEntity>>(Delete);
             Columns = new ObservableCollection<UI.BaseColumn>() {
                 new UI.BaseColumn() { FieldName="RegisterName", Header= Properties.Resources.Entity_Register_RegisterName,Width=150},
                 new UI.BaseColumn() { FieldName="RegisterNo", Header= Properties.Resources.Entity_Register_RegisterNo,Width=300},
@@ -27,7 +34,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 
                 new UI.BaseColumn() { FieldName="StartDate", Header= Properties.Resources.Entity_Register_StartDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
                 new UI.BaseColumn() { FieldName="EndDate", Header= Properties.Resources.Entity_Register_EndDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
-                //,DisplayFormat=Properties.Resources.Format_DateString
 
                 new UI.BaseColumn() { FieldName="Creater" , Header= Properties.Resources.Entity_Register_Creater},
                 new UI.BaseColumn() { FieldName="CreateDate", Header= Properties.Resources.Entity_Register_CreateDate,Width=120,DisplayFormat=Properties.Resources.Format_TimeString },
@@ -38,7 +44,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys().OrderBy(t => t.RegisterName).ThenBy(m => m.RegisterNo);
             Items = new ObservableCollection<FirstRegisterEntity>(list);
         }
-
         protected override void OnEntityViewEdited(object sender, EntityEditedEventArgs<RegisterEditMessage, string> args)
         {
             try
@@ -101,23 +106,62 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-
-        private void DeleteCore(MsgResult msgResult, object[] param)
+        private void Add()
         {
             try
             {
-                if (msgResult != MsgResult.Yes)
-                    return;
-                var SelectedEntitys = param[0] as System.Collections.IList;
-                if (SelectedEntitys == null || SelectedEntitys.Count <= 0)
+                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
+                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage()));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void CopyAdd(FirstRegisterEntity entity)
+        {
+            try
+            {
+                if (entity == null)
                 {
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                var listToDelete = SelectedEntitys.Cast<RegisterEntity>().ToList();
-                ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(listToDelete);
+                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
+                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void Edit(FirstRegisterEntity entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
+                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit)));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void Delete(List<RegisterEntity> entitys)
+        {
+            try
+            {
+                var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
+                if (ShowMessage(deleteArgs) != MsgResult.Yes)
+                    return;
+                ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(entitys);
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
-                foreach (var item in listToDelete)
+                foreach (var item in entitys)
                 {
                     this.Items.Remove(item as FirstRegisterEntity);
                 }
@@ -127,15 +171,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-
-        public void DeleteWithConfirm(System.Collections.IList SelectedEntitys)
-        {
-            var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, null, MsgButton.YesNo, MsgImage.Information, DeleteCore, SelectedEntitys);
-            ShowMessage(deleteArgs);
-        }
-
         #region propertys
-
         public ObservableCollection<UI.BaseColumn> Columns { get; private set; }
         ObservableCollection<FirstRegisterEntity> _Items;
         public ObservableCollection<FirstRegisterEntity> Items
@@ -150,7 +186,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
-
         private FirstRegisterEntity _SelectedEntity;
         public FirstRegisterEntity SelectedEntity
         {
@@ -161,7 +196,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("SelectedEntity");
             }
         }
-
         #endregion
     }
 

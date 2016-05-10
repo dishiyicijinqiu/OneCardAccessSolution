@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
@@ -62,13 +63,13 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 EndDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
-                Register_FileEntitys = new List<Register_FileEntity>()
+                Register_FileEntitys = new ObservableCollection<Register_FileEntity>()
             };
         }
-        private List<Register_FileEntity> _Register_FileEntitys;
+        private ObservableCollection<Register_FileEntity> _Register_FileEntitys;
 
         [DataMember]
-        public List<Register_FileEntity> Register_FileEntitys
+        public ObservableCollection<Register_FileEntity> Register_FileEntitys
         {
             get { return _Register_FileEntitys; }
             set

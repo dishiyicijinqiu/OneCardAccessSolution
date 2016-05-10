@@ -32,7 +32,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 DefaultEventAggregator.Current.GetEvent<ChangeDataContextFromParentEvent<object>>().Subscribe(OnParentChangeDataContext);
                 DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Subscribe(OnCloseFromParentEvent);
                 DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Subscribe(OnCloseDocumentFromParentEvent);
-                
+
             }
         }
 
@@ -85,7 +85,9 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                     args.Caption ?? Properties.Resources.Info_Title,
                     (MessageBoxButton)args.MsgButton, (MessageBoxImage)args.MsgImage
                     );
-                args.CallBack?.Invoke((MsgResult)diaresult, args.Paras);
+                if (args.CallBack != null)
+                    args.CallBack((MsgResult)diaresult, args.Paras);
+                //args.CallBack?.Invoke((MsgResult)diaresult, args.Paras);
             }
         }
 

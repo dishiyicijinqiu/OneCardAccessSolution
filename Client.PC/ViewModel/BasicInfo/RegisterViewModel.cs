@@ -1,4 +1,5 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+﻿using FengSharp.OneCardAccess.BusinessEntity;
+using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -7,6 +8,7 @@ using Microsoft.Practices.Prism.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
@@ -17,6 +19,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
         public ICommand UpLoadRegisterFileCommand { get; private set; }
+        public ICommand ViewRegisterFileCommand { get; private set; }
         public RegisterViewModel(object ParentViewModel, RegisterEditMessage editmessage)
         {
             this.ParentViewModel = ParentViewModel;
@@ -24,6 +27,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
             UpLoadRegisterFileCommand = new DelegateCommand(UpLoadRegisterFile);
+            ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile, CanViewRegisterFile);
+             
             Entity = SecondRegisterEntity.CreateEntity();
             if (this.EditMessage == null)
                 throw new Exception(Properties.Resources.Error_ParameterIsError);
@@ -55,7 +60,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             if (Entity == null)
                 Entity = SecondRegisterEntity.CreateEntity();
-            Register_FileEntitys = new ObservableCollection<Register_FileEntity>(Entity.Register_FileEntitys);
+        }
+
+        private bool CanViewRegisterFile(Register_FileEntity fileentity)
+        {
+            return fileentity != null;
         }
         #region propertys
         private SecondRegisterEntity _Entity;
@@ -69,29 +78,51 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Entity");
             }
         }
-        public ObservableCollection<Register_FileEntity> Register_FileEntitys { get; private set; }
+        #endregion
+
+        private void ViewRegisterFile(Register_FileEntity fileentity)
+        {
+            try
+            {
+                string filename = TransferHelper.DownloadFile(Transfer_FileType.Register_File.ToString(), fileentity.FilePath);
+                if (!File.Exists(filename))
+                {
+                    throw new Exception(Properties.Resources.Info_FileNotFound);
+                }
+                System.Diagnostics.Process.Start(filename);
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
         private void UpLoadRegisterFile()
         {
-            System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            openFileDialog1.Filter = "pdf 文件 (*.pdf)|*.pdf";
-            openFileDialog1.Multiselect = true;
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                var filenames = openFileDialog1.FileNames;
-                foreach (var filename in filenames)
+                System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+                openFileDialog1.Filter = "pdf 文件 (*.pdf)|*.pdf";
+                openFileDialog1.Multiselect = true;
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    string savename = TransferHelper.UploadFile("Register_File", filename, true);
+                    var filenames = openFileDialog1.FileNames;
+                    foreach (var filename in filenames)
                     {
-                        var entity = new Register_FileEntity();
-                        entity.FileName = System.IO.Path.GetFileName(filename);
-                        entity.FilePath = savename;
-                        //entity.SortNo = Entity.Register_FileEntitys.Count;
-                        //Entity.Register_FileEntitys.Add(entity);
-                        entity.SortNo = Register_FileEntitys.Count;
-                        Register_FileEntitys.Add(entity);
+                        string savename = TransferHelper.UploadFile("Register_File", filename, true);
+                        {
+                            var entity = new Register_FileEntity();
+                            entity.FileName = System.IO.Path.GetFileName(filename);
+                            entity.FilePath = savename;
+                            entity.SortNo = Entity.Register_FileEntitys.Count;
+                            Entity.Register_FileEntitys.Add(entity);
+                        }
+                        ShowMessage(savename);
                     }
-                    ShowMessage(savename);
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
             }
         }
         public void SaveAndNew()
@@ -125,6 +156,5 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 return false;
             }
         }
-        #endregion
     }
 }

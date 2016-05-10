@@ -1,6 +1,9 @@
-﻿using FengSharp.OneCardAccess.Client.PC.UI;
+﻿using DevExpress.Xpf.Grid;
+using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
+using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using System;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
@@ -25,6 +28,27 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
                     InterCloseDocument();
                 }
             };
+        }
+
+        private void GridControl_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                if (e.ChangedButton != System.Windows.Input.MouseButton.Left)
+                    return;
+                var grid = sender as GridControl;
+                #region 第一种写法
+                int rowHandle = grid.View.GetRowHandleByMouseEventArgs(e);
+                if (rowHandle < 0)
+                    return;
+                #endregion
+                var fileEntity = grid.GetRow(rowHandle) as BusinessEntity.BasicInfo.Register_FileEntity;
+                //ViewRegisterFileCommand
+            }
+            catch (Exception ex)
+            {
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+            }
         }
     }
 }

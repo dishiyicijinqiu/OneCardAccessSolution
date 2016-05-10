@@ -49,6 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBAC\LoginResult.cs" />
     <Compile Include="RBAC\UserInfoEntity_Auto.cs" />
+    <Compile Include="Transfer_FileType.cs" />
     <Compile Include="WidthAttribute.cs" />
   </ItemGroup>
   <ItemGroup>

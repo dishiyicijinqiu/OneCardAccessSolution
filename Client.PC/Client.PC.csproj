@@ -116,6 +116,7 @@
     <Compile Include="Core\Events\BaseSenderEvent.cs" />
     <Compile Include="Core\EditMessage.cs" />
     <Compile Include="Core\Events\Events.cs" />
+    <Compile Include="Core\EventToCommand\MouseDoubleClick.cs" />
     <Compile Include="Core\LoadingCallHandler.cs" />
     <Compile Include="Core\Extend.cs" />
     <Compile Include="Core\PCConfig.cs" />

@@ -73,17 +73,15 @@ namespace FengSharp.OneCardAccess.Core
             byte[] responseArray = webclient.UploadFile(UpLoadHandlerURL, "Post", filepath);
             return System.Text.Encoding.GetEncoding("UTF-8").GetString(responseArray);
         }
-        public static void DownloadFile(string filetype, string filepath, string savename)
+        public static string DownloadFile(string filetype, string filepath, string savename = null)
         {
             System.Net.WebClient webclient = new System.Net.WebClient();
-            webclient.DownloadFile(string.Format("{0}/{1}/{2}", BaseFileAttachMentURL), savename);
-        }
-        public static string DownloadFileToTemp(string filetype, string filepath)
-        {
-            string extension = Path.GetExtension(filepath);
-            string savename = Path.Combine(PCConfig.TempDir, Guid.NewGuid().ToString() + extension);
-            System.Net.WebClient webclient = new System.Net.WebClient();
-            webclient.DownloadFile(string.Format("{0}/{1}/{2}", BaseFileAttachMentURL), savename);
+            if (string.IsNullOrWhiteSpace(savename))
+            {
+                string extension = Path.GetExtension(filepath);
+                savename = Path.Combine(PCConfig.TempDir, Guid.NewGuid().ToString() + extension);
+            }
+            webclient.DownloadFile(string.Format("{0}/{1}/{2}", BaseFileAttachMentURL, filetype, filepath), savename);
             return savename;
         }
     }

@@ -21,6 +21,11 @@ namespace FengSharp.OneCardAccess.Client.PC
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)
         {
+            if (Common.Session.Current != null)
+            {
+                if (DXMessageBox.Show(this, Properties.Resources.Info_ConfirmToExit, Properties.Resources.Info_Title, MessageBoxButton.YesNo) != MessageBoxResult.Yes)
+                    e.Cancel = true;
+            }
         }
 
         private void MainWindow_SourceInitialized(object sender, EventArgs e)

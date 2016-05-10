@@ -27,8 +27,12 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <core:StringMarkup Value="FengSharp.OneCardAccess.BusinessEntity.BasicInfo.RegisterEntity,FengSharp.OneCardAccess.BusinessEntity" x:Key="typestring"/>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
+    <ui:BaseUserControl.InputBindings>
+        <KeyBinding Command="{Binding CloseDocumentCommand}" Key="Esc" />
+    </ui:BaseUserControl.InputBindings>
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>
@@ -39,16 +43,20 @@
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
                         <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}" ItemClick="BarAddButtonItem_ItemClick" />
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" ItemClick="BarCopyAddButtonItem_ItemClick" />
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}"  ItemClick="BarEditButtonItem_ItemClick"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" />
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}" />
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}"  CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                Command="{Binding DeleteCommand}"
-                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
-                                               />
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems,Converter={StaticResource listCastConverter},ConverterParameter={StaticResource typestring}}"
+                                               >
+                                <!--<dxb:BarButtonItem.Resources>
+                                    <core:StringMarkup Value="FengSharp.OneCardAccess.BusinessEntity.BasicInfo.FirstRegisterEntity" x:Key="typestring"/>
+                                </dxb:BarButtonItem.Resources>-->
+                            </dxb:BarButtonItem>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseDocumentCommand}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
@@ -58,8 +66,10 @@
                              Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                              ColumnsSource="{Binding Columns}"
                              ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
-                             ItemsSource="{Binding Items}"
-                             MouseDoubleClick="grid_MouseDoubleClick">
+                             core:MouseDoubleClick.Command="{Binding EditCommand}"
+                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                             core:MouseDoubleClick.HitPosition="InRow"
+                             ItemsSource="{Binding Items}">
 
                 <!--<dxg:GridControl ItemsSource="{Binding Items}" 
                                  ColumnsSource="{Binding Columns}"

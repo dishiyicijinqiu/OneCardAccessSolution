@@ -4,6 +4,8 @@ using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
 using System.Linq;
+using System.Windows;
+using System.Reflection;
 
 namespace FengSharp.OneCardAccess.Core
 {
@@ -63,23 +65,25 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
-    public class ViewSelectedRowsConverter : MarkupExtension, IValueConverter
+    public class ListCastConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            System.Collections.IList list = value as System.Collections.IList;
-            if (list == null) return null;
-            return list.Cast<object>().ToList();
+            if (parameter == null)
+                return parameter;
+
+            Type type = System.Type.GetType(parameter.ToString());
+            MethodInfo mi = typeof(Enumerable).GetMethod("Cast");
+            MethodInfo mi2 = mi.MakeGenericMethod(new Type[] { type });
+            var enumerables = mi2.Invoke(value, new object[] { value });
+            MethodInfo mi3 = typeof(Enumerable).GetMethod("ToList");
+            MethodInfo mi4 = mi3.MakeGenericMethod(new Type[] { type });
+            return mi4.Invoke(enumerables, new object[] { enumerables });
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return value;
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
+            throw new NotImplementedException();
         }
     }
 
@@ -104,7 +108,40 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
+    public class EnumConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+            if (parameterString == null)
+            {
+                return DependencyProperty.UnsetValue;
+            }
+            if (Enum.IsDefined(value.GetType(), value) == false)
+            {
+                return DependencyProperty.UnsetValue;
+            }
+            object parameterValue = Enum.Parse(value.GetType(), parameterString, true);
+            return parameterValue.Equals(value);
+        }
 
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string parameterString = parameter as string;
+            if (parameterString == null)
+                return DependencyProperty.UnsetValue;
+            return Enum.Parse(targetType, parameterString, true);
+        }
+    }
+
+    public class StringMarkup : MarkupExtension
+    {
+        public string Value { get; set; }
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return Value;
+        }
+    }
     //[ValueConversion(typeof(EntityEditMode), typeof(bool))]
     //public class EditModeVisibleConverter : IValueConverter
     //{

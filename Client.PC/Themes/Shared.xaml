@@ -195,7 +195,4 @@
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
         <Setter Property="VerticalContentAlignment" Value="Top"/>
     </Style>
-
-
-    <core:ViewSelectedRowsConverter x:Key="viewSelectedRowsConverter" />
 </ResourceDictionary>

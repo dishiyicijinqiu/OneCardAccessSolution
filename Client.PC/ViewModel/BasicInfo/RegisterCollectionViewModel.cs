@@ -17,7 +17,25 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public RegisterCollectionViewModel()
         {
             DeleteCommand = new DelegateCommand<System.Collections.IList>(DeleteWithConfirm);
-            var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys();
+            Columns = new ObservableCollection<UI.BaseColumn>() {
+                new UI.BaseColumn() { FieldName="RegisterName", Header= Properties.Resources.Entity_Register_RegisterName,Width=150},
+                new UI.BaseColumn() { FieldName="RegisterNo", Header= Properties.Resources.Entity_Register_RegisterNo,Width=300},
+                new UI.BaseColumn() { FieldName="StandardCode", Header= Properties.Resources.Entity_Register_StandardCode,Width=120},
+                new UI.BaseColumn() { FieldName="RegisterName1" , Header= Properties.Resources.Entity_Register_RegisterName1},
+                new UI.BaseColumn() { FieldName="RegisterNo1" , Header= Properties.Resources.Entity_Register_RegisterNo1},
+                new UI.BaseColumn() { FieldName="StandardCode1", Header= Properties.Resources.Entity_Register_StandardCode1 },
+
+                new UI.BaseColumn() { FieldName="StartDate", Header= Properties.Resources.Entity_Register_StartDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
+                new UI.BaseColumn() { FieldName="EndDate", Header= Properties.Resources.Entity_Register_EndDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
+                //,DisplayFormat=Properties.Resources.Format_DateString
+
+                new UI.BaseColumn() { FieldName="Creater" , Header= Properties.Resources.Entity_Register_Creater},
+                new UI.BaseColumn() { FieldName="CreateDate", Header= Properties.Resources.Entity_Register_CreateDate,Width=120,DisplayFormat=Properties.Resources.Format_TimeString },
+                new UI.BaseColumn() { FieldName="LastModifyer" , Header= Properties.Resources.Entity_Register_LastModifyer},
+                new UI.BaseColumn() { FieldName="LastModifyDate" , Header= Properties.Resources.Entity_Register_LastModifyDate,Width=120,DisplayFormat=Properties.Resources.Format_TimeString},
+                new UI.BaseColumn() { FieldName="Remark", Header= Properties.Resources.Entity_Register_Remark },
+            };
+            var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys().OrderBy(t => t.RegisterName).ThenBy(m => m.RegisterNo);
             Items = new ObservableCollection<FirstRegisterEntity>(list);
         }
 
@@ -118,6 +136,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 
         #region propertys
 
+        public ObservableCollection<UI.BaseColumn> Columns { get; private set; }
         ObservableCollection<FirstRegisterEntity> _Items;
         public ObservableCollection<FirstRegisterEntity> Items
         {

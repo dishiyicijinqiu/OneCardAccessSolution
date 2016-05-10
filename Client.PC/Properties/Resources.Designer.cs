@@ -592,6 +592,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 yyyy年MM月dd日 的本地化字符串。
+        /// </summary>
+        public static string Format_DateString {
+            get {
+                return ResourceManager.GetString("Format_DateString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 yyyy年MM月dd日 HH:mm:ss 的本地化字符串。
+        /// </summary>
+        public static string Format_TimeString {
+            get {
+                return ResourceManager.GetString("Format_TimeString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 确实要删除吗？ 的本地化字符串。
         /// </summary>
         public static string Info_ConfirmToDelete {

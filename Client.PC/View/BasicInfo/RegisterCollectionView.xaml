@@ -54,8 +54,19 @@
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
 
-            <dxg:GridControl ItemsSource="{Binding Items}" Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="grid_MouseDoubleClick" >
-                <dxg:GridControl.Columns>
+            <dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                             ColumnsSource="{Binding Columns}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             ItemsSource="{Binding Items}"
+                             MouseDoubleClick="grid_MouseDoubleClick">
+
+                <!--<dxg:GridControl ItemsSource="{Binding Items}" 
+                                 ColumnsSource="{Binding Columns}"
+                                 ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                                 Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="grid_MouseDoubleClick" >-->
+                
+                <!--<dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
                     <dxg:GridColumn FieldName="RegisterName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
                     <dxg:GridColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}"/>
@@ -69,7 +80,7 @@
                     <dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_Register_LastModifyer}"/>
                     <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Register_LastModifyDate}"/>
                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
-                </dxg:GridControl.Columns>
+                </dxg:GridControl.Columns>-->
                 <!--<dxg:GridControl.View>
                     <dxg:TableView Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
                         --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->

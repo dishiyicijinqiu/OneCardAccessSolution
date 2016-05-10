@@ -109,7 +109,7 @@ namespace FengSharp.OneCardAccess.Services
             DbCommand cmd = Database.GetStoredProcCommand(ProcudeName);
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", keyDbType, t.GetKeyFiledValue());
-            Database.AddInParameter(cmd, "UserId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
             DataSet ds = Database.ExecuteDataSet(cmd);
             if (ds == null || ds.Tables.Count <= 0 || ds.Tables[0].Rows.Count <= 0)
                 return default(T);
@@ -129,7 +129,7 @@ namespace FengSharp.OneCardAccess.Services
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindByNo");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityNo", DbType.String, EntityNo);
-            Database.AddInParameter(cmd, "UserId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
             DataSet ds = Database.ExecuteDataSet(cmd);
             if (ds == null || ds.Tables.Count <= 0 || ds.Tables[0].Rows.Count <= 0)
                 return default(T);
@@ -148,7 +148,7 @@ namespace FengSharp.OneCardAccess.Services
                 cMode = typeof(T).Name;
             DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetEntitys");
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
-            Database.AddInParameter(cmd, "UserId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
             DataSet ds = Database.ExecuteDataSet(cmd);
             var results = new List<T>();
             if (ds == null || ds.Tables.Count <= 0)
@@ -188,7 +188,7 @@ namespace FengSharp.OneCardAccess.Services
                 cMode = typeof(Primary).Name + "_" + typeof(Foreign).Name;
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", keyDbType, primary.GetKeyFiledValue());
-            Database.AddInParameter(cmd, "UserId", DbType.Int32, 0);
+            Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
             DataSet ds = Database.ExecuteDataSet(cmd);
             var results = new List<Foreign>();
             if (ds == null || ds.Tables.Count <= 0)

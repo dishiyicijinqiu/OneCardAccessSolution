@@ -375,4 +375,10 @@
   <data name="Error_UserConfigKey" xml:space="preserve">
     <value>不正确的用户配置键</value>
   </data>
+  <data name="Format_DateString" xml:space="preserve">
+    <value>yyyy年MM月dd日</value>
+  </data>
+  <data name="Format_TimeString" xml:space="preserve">
+    <value>yyyy年MM月dd日 HH:mm:ss</value>
+  </data>
 </root>

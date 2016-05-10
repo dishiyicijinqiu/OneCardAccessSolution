@@ -39,7 +39,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         public string DisplayFormat { get; set; }
         public SettingsType Settings { get; set; }
     }
-    public enum SettingsType { Default, CheckEdit, Combobox, Image }
+    public enum SettingsType { Default, CheckEdit, Date, Combobox, Image }
 
     public class BaseSummary
     {

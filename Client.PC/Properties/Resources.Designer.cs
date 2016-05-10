@@ -637,6 +637,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 文件不存在 的本地化字符串。
+        /// </summary>
+        public static string Info_FileNotFound {
+            get {
+                return ResourceManager.GetString("Info_FileNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 加载中... 的本地化字符串。
         /// </summary>
         public static string Info_Loading {

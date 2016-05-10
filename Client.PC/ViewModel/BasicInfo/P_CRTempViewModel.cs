@@ -158,7 +158,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 }
                 else
                 {
-                    RealTempPath = TransferHelper.DownloadFileToTemp("P_CRTemp", this.Entity.CRTempPath);
+                    RealTempPath = TransferHelper.DownloadFile("P_CRTemp", this.Entity.CRTempPath);
                 }
                 watcher.Filter = Path.GetFileName(RealTempPath);
                 watcher.EnableRaisingEvents = true;

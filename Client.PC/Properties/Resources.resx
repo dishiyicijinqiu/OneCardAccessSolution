@@ -381,4 +381,7 @@
   <data name="Format_TimeString" xml:space="preserve">
     <value>yyyy年MM月dd日 HH:mm:ss</value>
   </data>
+  <data name="Info_FileNotFound" xml:space="preserve">
+    <value>文件不存在</value>
+  </data>
 </root>

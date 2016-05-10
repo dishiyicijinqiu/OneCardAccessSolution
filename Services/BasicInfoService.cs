@@ -31,8 +31,9 @@ namespace FengSharp.OneCardAccess.Services
             var secondentity = new SecondRegisterEntity();
             secondentity.CopyValueFrom(firstEntity);
             var dbRegister_FileList = this.GetForeignEntitys<T_Register, T_Register_File>(new T_Register() { RegisterId = secondentity.RegisterId });
-            secondentity.Register_FileEntitys = new Register_FileEntity[dbRegister_FileList.Count].ToList();
-            ClassValueCopier.CopyArray(secondentity.Register_FileEntitys, dbRegister_FileList);
+            var list = new Register_FileEntity[dbRegister_FileList.Count].ToList();
+            ClassValueCopier.CopyArray(list, dbRegister_FileList);
+            secondentity.Register_FileEntitys = new System.Collections.ObjectModel.ObservableCollection<Register_FileEntity>(list);
             return secondentity;
         }
         public string SaveRegisterEntity(SecondRegisterEntity entity)

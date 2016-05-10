@@ -14,10 +14,12 @@
     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
     
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
     Width="658" Height="544"
     >
@@ -76,13 +78,24 @@
                         </dxlc:LayoutItem>
                         <!--EditValueConverter="{StaticResource stringDateValueConverter}"-->
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
+                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}"
+                                             core:MouseDoubleClick.Command="{Binding ViewRegisterFileCommand}"
+                                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                             core:MouseDoubleClick.HitPosition="InRow"
+                                             >
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
                                 <dxg:GridControl.View>
                                     <dxg:TableView />
                                 </dxg:GridControl.View>
+                                <!--<i:Interaction.Triggers>
+                                    --><!--="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/--><!--
+                                    <i:EventTrigger EventName="MouseDoubleClick">
+                                        <i:InvokeCommandAction Command="{Binding ViewRegisterFileCommand, Mode=OneWay}" 
+                                                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type dxg:GridControl}},Path=SelectedItem}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>-->
                             </dxg:GridControl>
                         </dxlc:LayoutGroup>
 
@@ -104,7 +117,7 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Register_FileEntitys}">
+                            <dxg:GridControl>
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>

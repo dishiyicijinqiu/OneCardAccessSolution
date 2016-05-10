@@ -59,14 +59,21 @@ namespace FengSharp.OneCardAccess.Core
             }
         }
 
-        public void ShowMessage(string message)
+        public MsgResult ShowMessage(string message)
         {
-            DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, new MessageBoxEventArgs(message));
+            var args = new MessageBoxEventArgs(message);
+            return ShowMessage(args);
         }
 
-        public void ShowMessage(MessageBoxEventArgs args)
+        public MsgResult ShowMessage(MessageBoxEventArgs args)
         {
+            var result = MsgResult.OK;
+            args.CallBack = (MsgResult msgResult, object[] param) =>
+            {
+                result = msgResult;
+            };
             DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Publish(this, args);
+            return result;
         }
 
         public void ShowException(Exception ex)

@@ -18,8 +18,8 @@ namespace ColumnsManager
             try
             {
                 var employee = new EmployeesData();
-                employee.Add(new Employee() { UserName = "zs", Id = 1 });
-                employee.Add(new Employee() { UserName = "ls", Id = 2 });
+                employee.Add(new Employee() { UserName = "zs", Id = 1, Settings = SettingsType.Default });
+                employee.Add(new Employee() { UserName = "ls", Id = 2, Settings = SettingsType.Date });
                 this.SaveEmployeesData(employee);
                 //var result = GetEmployeesData();
             }
@@ -51,18 +51,21 @@ namespace ColumnsManager
         }
     }
     [Serializable]
-    [XmlRoot(ElementName = "Employees")]
+    [XmlRoot(ElementName = "EmployeesData")]
     public class EmployeesData : List<Employee>
     {
-       
+
     }
     [Serializable]
-    [XmlRoot(ElementName = "员工")]
+    //[XmlRoot(ElementName = "员工")]
     public class Employee
     {
-        [XmlElement(ElementName = "Id")]
+        //[XmlElement(ElementName = "Id")]
         public int Id { get; set; }
-        [XmlElement(ElementName = "姓名")]
+        //[XmlElement(ElementName = "姓名")]
         public string UserName { get; set; }
+        [XmlElement(ElementName = "类型")]
+        public SettingsType Settings { get; set; }
     }
+    public enum SettingsType { Default, CheckEdit, Date, Combobox, Image }
 }

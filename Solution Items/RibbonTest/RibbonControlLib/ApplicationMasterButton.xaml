@@ -1,0 +1,16 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.ApplicationMasterButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="20" MinWidth="80" FlowDirection="LeftToRight">
+    <ribbon:RibbonBorder x:Name="masterBorder" BorderThickness="1" BorderBrush="Black" MouseLeftButtonUp="masterBorder_MouseLeftButtonUp">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image Name="theImage" Grid.Column="0" Width="16" Height="16" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Label Name="theLabel" Grid.Column="1" Margin="0,-4,0,-10">Default</Label>
+        </Grid>
+    </ribbon:RibbonBorder>
+</UserControl>

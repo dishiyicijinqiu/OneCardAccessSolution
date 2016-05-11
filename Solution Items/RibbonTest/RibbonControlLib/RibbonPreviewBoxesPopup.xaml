@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.RibbonPreviewBoxesPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    MinHeight="65" Width="204">
+    <Grid Name="backgroundGrid" LostFocus="backgroundGrid_LostFocus" MouseEnter="backgroundGrid_MouseEnter" MouseLeave="backgroundGrid_MouseLeave">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <src:RibbonBorder BorderThickness="1" x:Name="theBorder" CornerRadius="5">
+                <StackPanel Orientation="Vertical" Name="theStack" />
+            </src:RibbonBorder>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

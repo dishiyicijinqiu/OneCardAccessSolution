@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B8CA8F62-CB1B-4EB8-9E9A-A97C052AC4F0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RibbonControlLib</RootNamespace>
+    <AssemblyName>RibbonControlLib</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationButton.xaml.cs">
+      <DependentUpon>ApplicationButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationDocument.xaml.cs">
+      <DependentUpon>ApplicationDocument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMasterButton.xaml.cs">
+      <DependentUpon>ApplicationMasterButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMenuButton.xaml.cs">
+      <DependentUpon>ApplicationMenuButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMenuButtonPopup.xaml.cs">
+      <DependentUpon>ApplicationMenuButtonPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMenuButtonPopupItem.xaml.cs">
+      <DependentUpon>ApplicationMenuButtonPopupItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationMenuPopup.xaml.cs">
+      <DependentUpon>ApplicationMenuPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BasicSoundPlayer.cs" />
+    <Compile Include="IContextObject.cs" />
+    <Compile Include="IKeyboardPopup.cs" />
+    <Compile Include="ImageAndTextTip.xaml.cs">
+      <DependentUpon>ImageAndTextTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="IRibbonControl.cs" />
+    <Compile Include="IRibbonFullControl.cs" />
+    <Compile Include="IRibbonHalfControl.cs" />
+    <Compile Include="IScreenTip.cs" />
+    <Compile Include="ListenableList.cs" />
+    <Compile Include="NonClientRegionAPI.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuickAccessButton.xaml.cs">
+      <DependentUpon>QuickAccessButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickAccessToolbar.xaml.cs">
+      <DependentUpon>QuickAccessToolbar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickAccessToolbarConfigPanel.xaml.cs">
+      <DependentUpon>QuickAccessToolbarConfigPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="QuickAccessToolbarConfigWindow.xaml.cs">
+      <DependentUpon>QuickAccessToolbarConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonBar.xaml.cs">
+      <DependentUpon>RibbonBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonBarPopup.xaml.cs">
+      <DependentUpon>RibbonBarPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonBorder.cs" />
+    <Compile Include="RibbonButton.xaml.cs">
+      <DependentUpon>RibbonButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonColorPopup.xaml.cs">
+      <DependentUpon>RibbonColorPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonContextController.cs" />
+    <Compile Include="RibbonContextMenu.cs" />
+    <Compile Include="RibbonControlBase.cs" />
+    <Compile Include="RibbonController.cs" />
+    <Compile Include="RibbonDisplayImage.xaml.cs">
+      <DependentUpon>RibbonDisplayImage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonDisplayTextBox.xaml.cs">
+      <DependentUpon>RibbonDisplayTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonDoubleButton.xaml.cs">
+      <DependentUpon>RibbonDoubleButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonEventResources.cs" />
+    <Compile Include="RibbonFileLocations.cs" />
+    <Compile Include="RibbonGroupBox.xaml.cs">
+      <DependentUpon>RibbonGroupBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonGroupBoxLabelButton.xaml.cs">
+      <DependentUpon>RibbonGroupBoxLabelButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonGroupBoxPopup.xaml.cs">
+      <DependentUpon>RibbonGroupBoxPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfButton.xaml.cs">
+      <DependentUpon>RibbonHalfButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfButtonGroup.xaml.cs">
+      <DependentUpon>RibbonHalfButtonGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfComboBox.xaml.cs">
+      <DependentUpon>RibbonHalfComboBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfLabel.xaml.cs">
+      <DependentUpon>RibbonHalfLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfPasswordBox.xaml.cs">
+      <DependentUpon>RibbonHalfPasswordBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonHalfTextBox.xaml.cs">
+      <DependentUpon>RibbonHalfTextBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonKeyboardAccessController.cs" />
+    <Compile Include="RibbonKeyboardAccessKeyCombination.cs" />
+    <Compile Include="RibbonKeyboardAccessPopup.xaml.cs">
+      <DependentUpon>RibbonKeyboardAccessPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonPage.xaml.cs">
+      <DependentUpon>RibbonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonPreviewBox.xaml.cs">
+      <DependentUpon>RibbonPreviewBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonPreviewBoxes.xaml.cs">
+      <DependentUpon>RibbonPreviewBoxes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonPreviewBoxesPopup.xaml.cs">
+      <DependentUpon>RibbonPreviewBoxesPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonPreviewBoxesPopupGroup.xaml.cs">
+      <DependentUpon>RibbonPreviewBoxesPopupGroup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonSelectionButton.xaml.cs">
+      <DependentUpon>RibbonSelectionButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonStyleConfigWindow.xaml.cs">
+      <DependentUpon>RibbonStyleConfigWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonStyleHandler.cs" />
+    <Compile Include="RibbonTabSeperator.xaml.cs">
+      <DependentUpon>RibbonTabSeperator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonThirdLabel.xaml.cs">
+      <DependentUpon>RibbonThirdLabel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonThreeButtonsGroupLayout.xaml.cs">
+      <DependentUpon>RibbonThreeButtonsGroupLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonThreeRowsLayout.xaml.cs">
+      <DependentUpon>RibbonThreeRowsLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonTwoRowsLayout.xaml.cs">
+      <DependentUpon>RibbonTwoRowsLayout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonUserControl.xaml.cs">
+      <DependentUpon>RibbonUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RibbonWindow.xaml.cs">
+      <DependentUpon>RibbonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TextOnlyScreenTip.xaml.cs">
+      <DependentUpon>TextOnlyScreenTip.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TextOnlyTip.xaml.cs">
+      <DependentUpon>TextOnlyTip.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="ApplicationButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationDocument.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationMasterButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationMenuButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationMenuButtonPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationMenuButtonPopupItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ApplicationMenuPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ImageAndTextTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickAccessButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickAccessToolbar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickAccessToolbarConfigPanel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="QuickAccessToolbarConfigWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonBar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonBarPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonColorPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonDisplayImage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonDisplayTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonDoubleButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonGroupBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonGroupBoxLabelButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonGroupBoxPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfButtonGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfComboBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfPasswordBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonHalfTextBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonKeyboardAccessPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonPreviewBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonPreviewBoxes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonPreviewBoxesPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonPreviewBoxesPopupGroup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonSelectionButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonStyleConfigWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonTabSeperator.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonThirdLabel.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonThreeButtonsGroupLayout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonThreeRowsLayout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonTwoRowsLayout.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RibbonWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TextOnlyScreenTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="TextOnlyTip.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RibbonControl.csproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

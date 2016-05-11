@@ -25,7 +25,8 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <core:StringMarkup Value="FengSharp.OneCardAccess.BusinessEntity.BasicInfo.P_CRTempEntity,FengSharp.OneCardAccess.BusinessEntity" x:Key="typestring"/>
+            <core:ListCastConverter x:Key="listCastConverter" 
+             CastType="FengSharp.OneCardAccess.BusinessEntity.BasicInfo.P_CRTempEntity,FengSharp.OneCardAccess.BusinessEntity"/>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
     <ui:BaseUserControl.InputBindings>
@@ -46,7 +47,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                Command="{Binding DeleteCommand}"
-                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems,Converter={StaticResource listCastConverter},ConverterParameter={StaticResource typestring}}"/>
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems,Converter={StaticResource listCastConverter}}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseDocumentCommand}"/>

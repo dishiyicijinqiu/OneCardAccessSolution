@@ -1,0 +1,58 @@
+﻿<src:RibbonControlBase x:Class="DNBSoft.WPF.RibbonControl.RibbonDoubleButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="65" MinWidth="50" Margin="1.5,2,1.5,2" x:Name="RibbonDoubleButton2">
+    
+    <Grid Name="theControl">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="37"></RowDefinition>
+            <RowDefinition Height="15"></RowDefinition>
+            <RowDefinition Height="13"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ribbon:RibbonBorder Grid.Row="0" x:Name="topBorder" 
+                CornerRadius="5,5,0,0" 
+                BorderThickness="1" BorderBrush="Transparent">
+            <ribbon:RibbonBorder.Background>
+                <LinearGradientBrush EndPoint="0.5,1.0" StartPoint="0.5,0">
+                    <GradientStop Color="#00FFFCC9" Offset="0"/>
+                    <GradientStop Color="#00E3A814" Offset="1"/>
+                    <GradientStop Color="#00FEF225" Offset="0.481"/>
+                    <GradientStop Color="#00EEC55D" Offset="0.793"/>
+                </LinearGradientBrush>
+            </ribbon:RibbonBorder.Background>
+            <Image Name="imageBox" Margin="1" HorizontalAlignment="Center" />
+        </ribbon:RibbonBorder>
+
+        <ribbon:RibbonBorder Grid.Row="1" Grid.RowSpan="3" x:Name="bottomBorder"
+                CornerRadius="0,0,5,5" 
+                BorderThickness="1,0,1,1" BorderBrush="Transparent"
+                Background="#01FAFAD2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="15"></RowDefinition>
+                    <RowDefinition Height="13"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Margin="0,-15,0,-4" HorizontalAlignment="Center" Grid.Row="1"
+                        Name="descriptionLabel"  
+                        Height="28" Grid.RowSpan="2" FontSize="11">
+                    Default
+                </Label>
+                <StackPanel Grid.Row="2" Grid.RowSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Label Margin="0,-8,-10,-6" HorizontalAlignment="Center" Grid.Row="1"
+                        Name="descriptionLabel2"  
+                        Height="28" Grid.RowSpan="2" FontSize="11"></Label>
+                    <Label Margin="0,0,0,-4" HorizontalAlignment="Center" 
+                    FontFamily="Webdings" Name="arrowLabel" Height="23" 
+                        VerticalAlignment="Bottom" Width="22" FontSize="11">
+                        6
+                    </Label>
+                </StackPanel>
+            </Grid>
+        </ribbon:RibbonBorder>
+    </Grid>
+</src:RibbonControlBase>

@@ -1,0 +1,397 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.RibbonColorPopup"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="196" Width="173">
+    <ribbon:RibbonBorder x:Name="masterBorder" BorderThickness="1" BorderBrush="Black" CornerRadius="3" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25" />
+                <RowDefinition Height="18" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="18" />
+                <RowDefinition Height="18" />
+                <RowDefinition Height="25" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ribbon:RibbonBorder x:Name="automaticBorder" Grid.Column="0" 
+                    BorderBrush="Black" CornerRadius="1" BorderThickness="1"
+                    Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid Background="Black" Name="automaticColor" Width="13" Height="13" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ribbon:RibbonBorder>
+
+                <Label Grid.Column="1" Name="automaticLabel" FontSize="10" VerticalAlignment="Center">
+                    _Automatic
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="1" Background="LightGray" Name="themeHeaderBackground">
+                <Label Name="themeLabel" FontSize="10" Margin="10,-2,0,-10" FontWeight="Bold">
+                    Theme Colors
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="2" Margin="0,3,0,3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="13" />
+                    <RowDefinition Height="13" />
+                </Grid.RowDefinitions>
+
+                <ribbon:RibbonBorder x:Name="t0" Grid.Column="0" Grid.Row="0" Background="#FFFFFF" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid Background="#FFFFFF" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t1" Grid.Column="1" Grid.Row="0" Background="#000000" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#000000" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t2" Grid.Column="2" Grid.Row="0" Background="#EEECE1" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#EEECE1" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t3" Grid.Column="3" Grid.Row="0" Background="#1F497D" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#1F497D" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t4" Grid.Column="4" Grid.Row="0" Background="#4F81BD" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#4F81BD" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t5" Grid.Column="5" Grid.Row="0" Background="#C0504D" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#C0504D" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t6" Grid.Column="6" Grid.Row="0" Background="#9BBB59" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#9BBB59" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t7" Grid.Column="7" Grid.Row="0" Background="#8064A2" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#8064A2" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t8" Grid.Column="8" Grid.Row="0" Background="#4BACC6" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#4BACC6" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t9" Grid.Column="9" Grid.Row="0" Background="#F79646" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#F79646" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+
+
+                <ribbon:RibbonBorder x:Name="t10" Grid.Column="0" Grid.Row="2" Background="#F2F2F2" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#F2F2F2" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t11" Grid.Column="1" Grid.Row="2" Background="#7F7F7F" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#7F7F7F" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t12" Grid.Column="2" Grid.Row="2" Background="#DDD9C3" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#DDD9C3" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t13" Grid.Column="3" Grid.Row="2" Background="#C6D9F0" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#C6D9F0" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t14" Grid.Column="4" Grid.Row="2" Background="#DBE5F1" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#DBE5F1" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t15" Grid.Column="5" Grid.Row="2" Background="#F2DCDB" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#F2DCDB" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t16" Grid.Column="6" Grid.Row="2" Background="#EBF1DD" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#EBF1DD" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t17" Grid.Column="7" Grid.Row="2" Background="#E5E0EC" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#E5E0EC" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t18" Grid.Column="8" Grid.Row="2" Background="#DBEEF1" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#DBEEF1" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t19" Grid.Column="9" Grid.Row="2" Background="#FDEADA" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FDEADA" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+
+
+                <ribbon:RibbonBorder x:Name="t20" Grid.Column="0" Grid.Row="3" Background="#D8D8D8" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#D8D8D8" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t21" Grid.Column="1" Grid.Row="3" Background="#595959" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#595959" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t22" Grid.Column="2" Grid.Row="3" Background="#C4BD97" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#C4BD97" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t23" Grid.Column="3" Grid.Row="3" Background="#8DB3E2" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#8DB3E2" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t24" Grid.Column="4" Grid.Row="3" Background="#B8CCE4" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#B8CCE4" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t25" Grid.Column="5" Grid.Row="3" Background="#E5B9B7" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#E5B9B7" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t26" Grid.Column="6" Grid.Row="3" Background="#D7E3BC" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#D7E3BC" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t27" Grid.Column="7" Grid.Row="3" Background="#CCC1D9" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#CCC1D9" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t28" Grid.Column="8" Grid.Row="3" Background="#B7DDE8" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#B7DDE8" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t29" Grid.Column="9" Grid.Row="3" Background="#FBD5B5" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FBD5B5" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+
+
+                <ribbon:RibbonBorder x:Name="t30" Grid.Column="0" Grid.Row="4" Background="#BFBFBF" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#BFBFBF" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t31" Grid.Column="1" Grid.Row="4" Background="#3F3F3F" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#3F3F3F" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t32" Grid.Column="2" Grid.Row="4" Background="#938953" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#938953" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t33" Grid.Column="3" Grid.Row="4" Background="#548DD4" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#548DD4" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t34" Grid.Column="4" Grid.Row="4" Background="#95B3D7" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#95B3D7" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t35" Grid.Column="5" Grid.Row="4" Background="#D99694" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#D99694" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t36" Grid.Column="6" Grid.Row="4" Background="#C3D69B" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#C3D69B" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t37" Grid.Column="7" Grid.Row="4" Background="#B2A2C7" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#B2A2C7" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t38" Grid.Column="8" Grid.Row="4" Background="#92CDDC" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#92CDDC" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t39" Grid.Column="9" Grid.Row="4" Background="#FAC08F" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FAC08F" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+
+
+                <ribbon:RibbonBorder x:Name="t40" Grid.Column="0" Grid.Row="5" Background="#A5A5A5" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#A5A5A5" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t41" Grid.Column="1" Grid.Row="5" Background="#262626" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#262626" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t42" Grid.Column="2" Grid.Row="5" Background="#494429" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#494429" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t43" Grid.Column="3" Grid.Row="5" Background="#17365D" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#17365D" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t44" Grid.Column="4" Grid.Row="5" Background="#366092" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#366092" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t45" Grid.Column="5" Grid.Row="5" Background="#953734" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#953734" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t46" Grid.Column="6" Grid.Row="5" Background="#76923C" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#76923C" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t47" Grid.Column="7" Grid.Row="5" Background="#5F497A" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#5F497A" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t48" Grid.Column="8" Grid.Row="5" Background="#31859B" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#31859B" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t49" Grid.Column="9" Grid.Row="5" Background="#E36C09" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#E36C09" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+
+
+                <ribbon:RibbonBorder x:Name="t50" Grid.Column="0" Grid.Row="6" Background="#7F7F7F" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#7F7F7F" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t51" Grid.Column="1" Grid.Row="6" Background="#0C0C0C" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#0C0C0C" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t52" Grid.Column="2" Grid.Row="6" Background="#1D1B10" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#1D1B10" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t53" Grid.Column="3" Grid.Row="6" Background="#0F243E" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#0F243E" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t54" Grid.Column="4" Grid.Row="6" Background="#244061" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#244061" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t55" Grid.Column="5" Grid.Row="6" Background="#632423" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#632423" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t56" Grid.Column="6" Grid.Row="6" Background="#4F6128" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#4F6128" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t57" Grid.Column="7" Grid.Row="6" Background="#3F3151" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#3F3151" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t58" Grid.Column="8" Grid.Row="6" Background="#205867" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#205867" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="t59" Grid.Column="9" Grid.Row="6" Background="#974806" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#974806" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+            </Grid>
+
+            <Grid Grid.Row="3" Background="LightGray" Name="standardHeaderBackground">
+                <Label Name="standardLabel" FontSize="10" Margin="10,-2,0,-10" FontWeight="Bold">
+                    Standard Colors
+                </Label>
+            </Grid>
+
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ribbon:RibbonBorder x:Name="s0" Grid.Column="0" Background="#C00000" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#C00000" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s1" Grid.Column="1" Background="#FF0000" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FF0000" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s2" Grid.Column="2" Background="#FFC000" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FFC000" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s3" Grid.Column="3" Background="#FFFF00" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#FFFF00" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s4" Grid.Column="4" Background="#92D050" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#92D050" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s5" Grid.Column="5" Background="#00B050" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#00B050" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s6" Grid.Column="6" Background="#00B0F0" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#00B0F0" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s7" Grid.Column="7" Background="#0070C0" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#0070C0" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s8" Grid.Column="8" Background="#002060" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#002060" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+                <ribbon:RibbonBorder x:Name="s9" Grid.Column="9" Background="#7030A0" BorderThickness="1" BorderBrush="Black"
+                    Width="13" Height="13" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Grid Background="#7030A0" MouseLeftButtonUp="colorGrid_MouseLeftButtonUp" />
+                </ribbon:RibbonBorder>
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <ribbon:RibbonBorder x:Name="moreBorder" Grid.Column="0" 
+                    BorderBrush="Black" CornerRadius="1" BorderThickness="1"
+                    Width="20" Height="20" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Name="moreImage" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </ribbon:RibbonBorder>
+
+                <Label Grid.Column="1" Name="moreLabel" FontSize="10" VerticalAlignment="Center" MouseLeftButtonUp="moreLabel_MouseLeftButtonUp">
+                    _More Colors...
+                </Label>
+            </Grid>
+        </Grid>
+    </ribbon:RibbonBorder>
+</UserControl>

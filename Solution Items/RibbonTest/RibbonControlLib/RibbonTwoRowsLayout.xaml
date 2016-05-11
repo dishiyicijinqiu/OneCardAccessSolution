@@ -1,0 +1,21 @@
+﻿<src:RibbonControlBase x:Class="DNBSoft.WPF.RibbonControl.RibbonTwoRowsLayout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="65" MinWidth="10" Margin="0,1,1,1">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3" Name="rd1"></RowDefinition>
+            <RowDefinition Height="*" Name="rd2"></RowDefinition>
+            <RowDefinition Height="4" Name="rd3"></RowDefinition>
+            <RowDefinition Height="*" Name="rd4"></RowDefinition>
+            <RowDefinition Height="3" Name="rd5"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Name="topGrid" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="3" Name="bottomGrid"  VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Name="tr1" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Name="tr2" VerticalAlignment="Top"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Name="tr3" VerticalAlignment="Top"/>
+    </Grid>
+</src:RibbonControlBase>

@@ -1,0 +1,6 @@
+﻿<src:RibbonControlBase x:Class="DNBSoft.WPF.RibbonControl.RibbonThreeButtonsGroupLayout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="65" MinWidth="10" Margin="0" x:Name="layout">
+</src:RibbonControlBase>

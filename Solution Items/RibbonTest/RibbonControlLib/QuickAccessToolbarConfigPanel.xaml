@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.QuickAccessToolbarConfigPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Height="22" MinWidth="100">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="11" />
+        </Grid.ColumnDefinitions>
+        
+        <Image Grid.Column="0" Width="16" Height="16" Name="theImage" 
+               VerticalAlignment="Center" HorizontalAlignment="Center" />
+        <Label Grid.Column="1" Name="theLabel"
+               VerticalAlignment="Top" Margin="0,-1,0,0" Height="27">Testing</Label>
+    </Grid>
+</UserControl>

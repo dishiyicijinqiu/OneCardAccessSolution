@@ -1,0 +1,10 @@
+﻿<src:RibbonControlBase x:Class="DNBSoft.WPF.RibbonControl.RibbonHalfLabel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl">
+    <Grid>
+        <src:RibbonBorder CornerRadius="5,5,5,5" BorderThickness="1" x:Name="theBorder" Margin="0, 1,0,1" >
+            <Label Name="theLabel">Label</Label>
+        </src:RibbonBorder>
+    </Grid>
+</src:RibbonControlBase>

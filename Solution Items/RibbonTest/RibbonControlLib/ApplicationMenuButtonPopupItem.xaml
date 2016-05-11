@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.ApplicationMenuButtonPopupItem"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="50" Width="295">
+    <ribbon:RibbonBorder x:Name="masterBorder" BorderBrush="Black" BorderThickness="1" CornerRadius="3" MouseLeftButtonUp="masterBorder_MouseLeftButtonUp">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="43" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="18" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Image Name="theImage" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" 
+               HorizontalAlignment="Center" VerticalAlignment="Center" 
+               Width="33" Height="33" />
+
+            <Label Name="titleLabel" Grid.Row="0" Grid.Column="1"
+               HorizontalAlignment="Left" VerticalAlignment="Center"
+               Margin="0,-10,0,-10" FontWeight="Bold">
+                Default
+            </Label>
+
+            <TextBlock Name="descriptionBlock" Grid.Row="1" Grid.Column="1" Margin="5,0,0,0" Width="245" Height="32"
+                   HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" MaxWidth="245" MaxHeight="32">
+            Here some default text, which should wrap across two lines, but what happens when it's too long still
+        </TextBlock>
+        </Grid>
+    </ribbon:RibbonBorder>
+</UserControl>

@@ -65,14 +65,14 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
-    public class ListCastConverter : IValueConverter
+    public class ListCastConverter : MarkupExtension, IValueConverter
     {
+        public string CastType { get; set; }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (parameter == null)
-                return parameter;
-
-            Type type = System.Type.GetType(parameter.ToString());
+            if (string.IsNullOrWhiteSpace(CastType))
+                return null;
+            Type type = System.Type.GetType(CastType);
             MethodInfo mi = typeof(Enumerable).GetMethod("Cast");
             MethodInfo mi2 = mi.MakeGenericMethod(new Type[] { type });
             var enumerables = mi2.Invoke(value, new object[] { value });
@@ -84,6 +84,11 @@ namespace FengSharp.OneCardAccess.Core
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
         }
     }
 
@@ -142,25 +147,4 @@ namespace FengSharp.OneCardAccess.Core
             return Value;
         }
     }
-    //[ValueConversion(typeof(EntityEditMode), typeof(bool))]
-    //public class EditModeVisibleConverter : IValueConverter
-    //{
-    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        EntityEditMode re = (EntityEditMode)value;
-    //        switch (re)
-    //        {
-    //            case EntityEditMode.Add:
-    //            case EntityEditMode.CopyAdd:
-    //                return true;
-    //            default:
-    //                return false;
-    //        }
-    //    }
-
-    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //}
 }

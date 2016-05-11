@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.QuickAccessToolbar"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="22" MinWidth="44">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="12"></ColumnDefinition>
+            <ColumnDefinition Width="20"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left end -->
+        <Path Stroke="Black" StrokeThickness="1" Grid.Column="0" Name="leftPath">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="0,0.5">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment Size="20,20" IsLargeArc="False" 
+                                                    SweepDirection="Clockwise" Point="11,21.5" 
+                                                    IsSmoothJoin="True" />
+                                        <LineSegment Point="12,21.5" IsSmoothJoin="True"/>
+                                        <LineSegment Point="12,0.5" IsStroked="False" IsSmoothJoin="True"/>
+                                        <LineSegment Point="0,0.5" IsSmoothJoin="True"/>
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <!-- Buttons container -->
+        <ribbon:RibbonBorder Grid.Column="1" BorderThickness="0,1,0,1" BorderBrush="Black" x:Name="middlePath">
+            <StackPanel Name="buttonsStackPanel" Orientation="Horizontal"/>
+        </ribbon:RibbonBorder>
+
+        <!-- Right end -->
+        <Path Stroke="Black" StrokeThickness="1" Grid.Column="2" Name="rightPath">
+            <Path.Data>
+                <PathGeometry>
+                    <PathGeometry.Figures>
+                        <PathFigureCollection>
+                            <PathFigure StartPoint="0,0.5">
+                                <PathFigure.Segments>
+                                    <PathSegmentCollection>
+                                        <ArcSegment Size="0.5,0.5" IsLargeArc="False" 
+                                                    SweepDirection="Clockwise" Point="0,21.5" 
+                                                    IsSmoothJoin="True" />
+                                        <LineSegment Point="0,0.5" IsStroked="False" IsSmoothJoin="True"/>
+                                    </PathSegmentCollection>
+                                </PathFigure.Segments>
+                            </PathFigure>
+                        </PathFigureCollection>
+                    </PathGeometry.Figures>
+                </PathGeometry>
+            </Path.Data>
+        </Path>
+
+        <ribbon:RibbonBorder Grid.Column="3" x:Name="dropDownBorder" Width="12" HorizontalAlignment="Center">
+            <Label HorizontalAlignment="Center" Name="popupButton" MouseDown="popupButton_MouseDown"
+               FontFamily="Webdings" Height="23" VerticalAlignment="Center" 
+                   Width="22" Content="8">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                        <SkewTransform AngleX="0" AngleY="0"/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform X="22" Y="0"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </ribbon:RibbonBorder>
+    </Grid>
+</UserControl>

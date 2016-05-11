@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.ApplicationMenuButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="43" MinWidth="110">
+    <StackPanel Orientation="Vertical" Height="43">
+        <Grid>
+            <ribbon:RibbonBorder x:Name="masterBorder" BorderThickness="1" BorderBrush="Black" CornerRadius="5" Height="42" 
+                    MouseLeave="masterBorder_MouseLeave" MouseEnter="masterBorder_MouseEnter" 
+                    MouseLeftButtonUp="masterBorder_MouseLeftButtonUp" >
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Name="theImage" Grid.Column="1" Width="30" Height="30" />
+                    <Label Name="theLabel" Grid.Column="2" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="12" Margin="0,-7,0,-10">Default</Label>
+                </Grid>
+            </ribbon:RibbonBorder>
+            <ribbon:RibbonBorder BorderThickness="0" BorderBrush="Black" CornerRadius="5" Height="42">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="20" />
+                    </Grid.ColumnDefinitions>
+                    <ribbon:RibbonBorder x:Name="arrowBorder" Grid.Column="3" Height="42" Width="21"
+                        BorderThickness="1" BorderBrush="Black" CornerRadius="3,5,5,3" 
+                        MouseLeftButtonUp="arrowBorder_MouseLeftButtonUp" VerticalAlignment="Center" Margin="0,0,0,0" 
+                           MouseEnter="arrowBorder_MouseEnter" MouseLeave="arrowBorder_MouseLeave" >
+                        <Label Name="arrowLabel" FontFamily="Webdings" Margin="-2,12,0,-5">
+                            4
+                        </Label>
+                    </ribbon:RibbonBorder>
+                </Grid>
+            </ribbon:RibbonBorder>
+        </Grid>
+        <ribbon:RibbonBorder x:Name="dividerBorder" BorderBrush="Gray" BorderThickness="1" Width="70" HorizontalAlignment="Right"/>
+    </StackPanel>
+</UserControl>

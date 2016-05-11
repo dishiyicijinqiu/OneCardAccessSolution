@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="DNBSoft.WPF.RibbonControl.RibbonPreviewBox"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="59" Width="59" Margin="2.5,2.5,0,0">
+    
+    <UserControl.Resources>
+        <Storyboard x:Key="BorderEnterTimeline">
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="theBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF587696"/>
+                <SplineColorKeyFrame KeyTime="00:00:00.2000000" Value="#FFFFEA00"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="BorderLeaveTimeline">
+            <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="theBorder" Storyboard.TargetProperty="(Border.BorderBrush).(SolidColorBrush.Color)">
+                <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFFFEA00"/>
+                <SplineColorKeyFrame KeyTime="00:00:01.5000000" Value="#FF587696"/>
+            </ColorAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Mouse.MouseEnter" SourceName="theBorder">
+            <BeginStoryboard Storyboard="{StaticResource BorderEnterTimeline}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Mouse.MouseLeave" SourceName="theBorder">
+            <BeginStoryboard Storyboard="{StaticResource BorderLeaveTimeline}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid>
+        <src:RibbonBorder Grid.Row="0" Grid.Column="0" x:Name="theBorder"
+            BorderThickness="3" BorderBrush="#FF587696" CornerRadius="5" Background="White"
+                MouseLeftButtonUp="theBorder_MouseLeftButtonUp" MouseEnter="theBorder_MouseEnter" MouseLeave="theBorder_MouseLeave">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="15"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Image Name="imageBox" Grid.Row="0" Grid.RowSpan="2"/>
+                <Label Name="labelBox" Grid.Row="1" Margin="0,-8,0,-8"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+        </src:RibbonBorder>
+    </Grid>
+</UserControl>

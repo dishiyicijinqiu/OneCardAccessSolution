@@ -1,0 +1,23 @@
+﻿<src:RibbonControlBase x:Class="DNBSoft.WPF.RibbonControl.RibbonGroupBoxLabelButton"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    xmlns:ribbon="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Height="10" Width="10">
+    <Grid>
+        <ribbon:RibbonBorder x:Name="theBorder" BorderThickness="0.5" >            
+            <Canvas Name="theCanvas" Width="9" Height="9">
+                <Line X1="1" Y1="1" X2="8" Y2="1" Stroke="Black" Name="line1"
+                      StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                <Line X1="1" Y1="1" X2="1" Y2="8" Stroke="Black" Name="line2"
+                      StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                <Line X1="4" Y1="4" X2="8" Y2="8" Stroke="Black" Name="line3"
+                      StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                <Line X1="8" Y1="8" X2="8" Y2="5" Stroke="Black" Name="line4"
+                      StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+                <Line X1="8" Y1="8" X2="5" Y2="8" Stroke="Black" Name="line5"
+                      StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
+            </Canvas>
+        </ribbon:RibbonBorder>
+    </Grid>
+</src:RibbonControlBase>

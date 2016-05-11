@@ -1,0 +1,628 @@
+﻿<Page x:Class="DNBSoft.WPF.RibbonControl.RibbonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:src="clr-namespace:DNBSoft.WPF.RibbonControl"
+    Title="Page1">
+
+    <Page.Resources>
+        <Style x:Key="CloseButtonStyle" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1"/>
+                            <Storyboard x:Key="CloseOverTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFA20E0E"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1260000" Value="#FFFF0606"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="CloseOverRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFFF0606"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.4990000" Value="#FFA20E0E"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="ClosePressTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FFFF0606"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1010000" Value="#FF380707"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="ClossPressRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF380707"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1590000" Value="#FFFF0606"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643" Fill="#FFA20E0E" x:Name="rectangle"/>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#D3FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.497,0.886" StartPoint="0.495,0.511">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#71FFFFFF" Offset="1"/>
+                                        <GradientStop Color="#15FFFFFF" Offset="0.74"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Path Stretch="Fill" Stroke="#FF000000" HorizontalAlignment="Left" Margin="14.198,2.692,0,0" VerticalAlignment="Top" Width="5.353" Height="5.089" Data="M18.70783,3.5302905 L14.671702,7.2498594">
+                                <Path.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Stroke="#FF000000" Width="5.353" Height="5.089" Data="M18.70783,3.5302905 L14.671702,7.2498594" HorizontalAlignment="Right" Margin="0,0,14.612,2.881" VerticalAlignment="Bottom">
+                                <Path.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                            </Path>
+                            <Path Stretch="Fill" Stroke="#FF000000" Width="4.931" Height="5.458" Data="M18.70783,3.5302905 L14.671702,7.2498594" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right" Margin="0,2.907,14.402,0" VerticalAlignment="Top">
+                                <Path.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Stretch="Fill" Stroke="#FF000000" Width="4.931" Height="5.511" Data="M18.70783,3.5302905 L14.671702,7.2498594" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left" Margin="14.014,0,0,3.166" VerticalAlignment="Bottom">
+                                <Path.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#FFFFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Path.Fill>
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="0"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Data="M14.285714,3.7857143 L28.214286,15.928571" RenderTransformOrigin="0.5,0.5" Margin="17.482,7.153,14.597,3.67">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="-1.847"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Data="M14.285714,3.7857143 L28.214286,15.928571" RenderTransformOrigin="0.5,0.5" Margin="14.194,3.45,17.888,7.455">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="-1.847"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Data="M14.285714,3.7857143 L28.214286,15.928571" RenderTransformOrigin="0.5,0.5" Margin="14.437,6.547,18.517,3.343">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="1.297"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FF000000" StrokeThickness="1" Data="M14.285714,3.7857143 L28.214286,15.928571" RenderTransformOrigin="0.5,0.5" Margin="18.046,3.187,14.828,6.787">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="1.847"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path RenderTransformOrigin="0.5,0.5" Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="5" Margin="13.786,3.286,14.286,3.571" Data="M14.285714,3.7857143 L28.214286,15.928571">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="7.138"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                            <Path Fill="#FFFFFFFF" Stretch="Fill" Stroke="#FFFFFFFF" StrokeThickness="5" Data="M14.285714,3.7857143 L28.214286,15.928571" RenderTransformOrigin="0.5,0.5" Margin="13.786,3.286,14.286,3.571">
+                                <Path.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="1" ScaleY="-1"/>
+                                        <SkewTransform AngleX="0" AngleY="0"/>
+                                        <RotateTransform Angle="-1.847"/>
+                                        <TranslateTransform X="0" Y="0"/>
+                                    </TransformGroup>
+                                </Path.RenderTransform>
+                            </Path>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="ClosePressTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="ClossPressRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard x:Name="CloseOverTimeline_BeginStoryboard1" Storyboard="{StaticResource CloseOverTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="ClosePressTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="ClossPressRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard x:Name="CloseOverRevTimeline_BeginStoryboard1" Storyboard="{StaticResource CloseOverRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="ClosePressTimeline_BeginStoryboard" Storyboard="{StaticResource ClosePressTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="ClossPressRevTimeline_BeginStoryboard" Storyboard="{StaticResource ClossPressRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MaximiseButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="Timeline1"/>
+                            <Storyboard x:Key="MaxOverTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1220000" Value="#9900FFED"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MaxOverRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#9900FFED"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.4970000" Value="#00000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MaxPressTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#9900FFED"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1150000" Value="#99002624"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MaxPressRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#99002624"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#9900FFED"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle RenderTransformOrigin="-10.56,-1.75" Fill="#00000000" Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643" x:Name="rectangle"/>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643" Margin="0,0,0,0">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#D3FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.497,0.886" StartPoint="0.495,0.511">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#71FFFFFF" Offset="1"/>
+                                        <GradientStop Color="#15FFFFFF" Offset="0.74"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle RenderTransformOrigin="0.494,0.533" Fill="#FFFFFFFF" Stroke="#FF000000" RadiusX="0.997" RadiusY="0.997" StrokeThickness="0.5" Margin="7.019,2.719,5.781,5.081" Width="11" Height="11"/>
+                            <Rectangle RenderTransformOrigin="0.494,0.533" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5" RadiusX="0.997" RadiusY="0.997" Margin="5.131,5.876,9.372,3.148" Width="10" Height="10"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="MaxPressRevTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="MaxPressTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard x:Name="MaxOverTimeline_BeginStoryboard1" Storyboard="{StaticResource MaxOverTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="MaxPressTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="MaxPressRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard x:Name="MaxOverRevTimeline_BeginStoryboard1" Storyboard="{StaticResource MaxOverRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="MaxPressTimeline_BeginStoryboard" Storyboard="{StaticResource MaxPressTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="MaxPressRevTimeline_BeginStoryboard" Storyboard="{StaticResource MaxPressRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="MinimiseButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="MinOverTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="rectangle" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#00000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1220000" Value="#9900FFED"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MinOverRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#9900FFED"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.4970000" Value="#00000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MinPressTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#9900FFED"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1150000" Value="#99002624"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="MinPressRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#99002624"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#9900FFED"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Rectangle RenderTransformOrigin="-10.56,-1.75" Fill="#00000000" Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643" x:Name="rectangle"/>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.498,0.1" StartPoint="0.498,0.886">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#D3FFFFFF" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle Stroke="#3FFFFFFF" RadiusX="3.643" RadiusY="3.643">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush EndPoint="0.497,0.886" StartPoint="0.495,0.511">
+                                        <GradientStop Color="#00FFFFFF" Offset="0"/>
+                                        <GradientStop Color="#71FFFFFF" Offset="1"/>
+                                        <GradientStop Color="#15FFFFFF" Offset="0.74"/>
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle RenderTransformOrigin="0.494,0.533" Fill="#FFFFFFFF" Stroke="#FF000000" StrokeThickness="0.5" RadiusX="0.997" RadiusY="0.997" Width="Auto" Height="4" Margin="5.38,0,4.88,3.627" VerticalAlignment="Bottom"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="MinPressTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="MinPressRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard Storyboard="{StaticResource MinOverTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="MinPressTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="MinPressRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard Storyboard="{StaticResource MinOverRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="MinPressTimeline_BeginStoryboard" Storyboard="{StaticResource MinPressTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="MinPressRevTimeline_BeginStoryboard" Storyboard="{StaticResource MinPressRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="StartButton" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <ControlTemplate.Resources>
+                            <Storyboard x:Key="StartOverTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2580000" Value="#FF000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#00FFFFFF"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2580000" Value="#FF00175F"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#5F000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2580000" Value="#FF0AFF00"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="ellipse" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#960AFF00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.2580000" Value="#FF0AFF00"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="StartOverRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.6060000" Value="#FF000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00175F"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.6060000" Value="#00FFFFFF"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0AFF00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.6060000" Value="#5F000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0AFF00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.6060000" Value="#960AFF00"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="StartPressedTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#FF000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00175F"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#FF00175F"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0AFF00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#FF033C00"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF0AFF00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.0990000" Value="#FF055502"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                            <Storyboard x:Key="StartPressedRevTimeline">
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF000000"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1030000" Value="#FF000000"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Stroke).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF00175F"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1030000" Value="#FF00175F"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[0].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF033C00"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1030000" Value="#FF0AFF00"/>
+                                </ColorAnimationUsingKeyFrames>
+                                <ColorAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetProperty="(Shape.Fill).(GradientBrush.GradientStops)[1].(GradientStop.Color)" Storyboard.TargetName="ellipse">
+                                    <SplineColorKeyFrame KeyTime="00:00:00" Value="#FF055502"/>
+                                    <SplineColorKeyFrame KeyTime="00:00:00.1030000" Value="#FF0AFF00"/>
+                                </ColorAnimationUsingKeyFrames>
+                            </Storyboard>
+                        </ControlTemplate.Resources>
+                        <Grid>
+                            <Ellipse StrokeThickness="3" x:Name="ellipse">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush EndPoint="0.994,0.866" StartPoint="0.35,0.135">
+                                        <GradientStop Color="#5F000000" Offset="0"/>
+                                        <GradientStop Color="#960AFF00" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                                <Ellipse.Stroke>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="#FF000000" Offset="0.846"/>
+                                        <GradientStop Color="#00FFFFFF" Offset="1"/>
+                                    </RadialGradientBrush>
+                                </Ellipse.Stroke>
+                            </Ellipse>
+                            <Label Margin="-2.416,8,-3.09,-5.109" VerticalAlignment="Stretch" Height="Auto" Content="START" FontSize="14" Foreground="#FFFFFFFF"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Trigger.EnterActions>
+                                    <StopStoryboard BeginStoryboardName="StartPressedTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="StartPressedRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard Storyboard="{StaticResource StartOverTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <StopStoryboard BeginStoryboardName="StartPressedTimeline_BeginStoryboard"/>
+                                    <StopStoryboard BeginStoryboardName="StartPressedRevTimeline_BeginStoryboard"/>
+                                    <BeginStoryboard x:Name="StartOverRevTimeline_BeginStoryboard1" Storyboard="{StaticResource StartOverRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard x:Name="StartPressedTimeline_BeginStoryboard" Storyboard="{StaticResource StartPressedTimeline}"/>
+                                </Trigger.EnterActions>
+                                <Trigger.ExitActions>
+                                    <BeginStoryboard x:Name="StartPressedRevTimeline_BeginStoryboard" Storyboard="{StaticResource StartPressedRevTimeline}"/>
+                                </Trigger.ExitActions>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="StartPanel" BasedOn="{x:Null}" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Rectangle Fill="{x:Null}" Stroke="{x:Null}" Margin="0,0,-8.318,0"/>
+                            <Path Fill="#52FFFFFF" Stretch="Fill" Stroke="{x:Null}" HorizontalAlignment="Stretch" Margin="0,0,0,0" Width="76" Data="M0.49332318,0.32864118 C0.19064669,0.32862951 6.5043095,0.64564479 13.047103,8.4958469 18.340797,14.847349 17.398111,22.864112 17.397829,23.40861 17.397593,23.863549 17.885755,23.467065 19.851873,23.618295 21.81799,23.769524 75.507689,23.467301 75.507689,23.467301 L75.508072,0.47964689 13.046096,0.4798627 z"/>
+                            <Rectangle Fill="#52FFFFFF" Stroke="{x:Null}" HorizontalAlignment="Right" Margin="0,0,-19.102,0" Width="19.102" Height="24.7"/>
+                            <Path Fill="#51FFFFFF" Stretch="Fill" Stroke="{x:Null}" HorizontalAlignment="Right" Margin="0,0,-31.05,0.105" Width="11.948" Height="24.7" Data="M101.82398,0.025510204 L101.82398,23.920793 C101.82398,23.920793 113.77214,22.711149 113.77185,12.426771 113.77152,0.62901786 101.82398,0.025510204 101.82398,0.025510204 z"/>
+                            <Rectangle Fill="#00000000" Stroke="{x:Null}" HorizontalAlignment="Stretch" Margin="20.348,0,30,0" x:Name="Icon1" Width="24" Height="24"/>
+                            <Rectangle Fill="#00000000" Stroke="{x:Null}" Width="24" Height="24" HorizontalAlignment="Right" Margin="0,0,5,0" x:Name="Icon2"/>
+                            <Rectangle Fill="#00000000" Stroke="{x:Null}" Width="24" Height="24" HorizontalAlignment="Right" Margin="0,0,-21,0" x:Name="Icon3"/>
+                            <Path Fill="{x:Null}" Stretch="Fill" Stroke="#FF000000" Margin="-0.544,-0.587,-31.566,-0.768" VerticalAlignment="Stretch" Height="Auto" Data="M17.065598,24.751623 L21.881342,24.734481 95.241938,24.768648 C95.241938,24.768648 107.84125,22.398354 107.56728,11.561522 107.30801,1.3063947 95.803483,-0.47710569 95.803483,-0.47710569 L4.9745398,-0.56153174 -0.54726718,-0.57647694 C-0.54726718,-0.57647694 6.3604644,0.32654923 12.631842,8.6640454 17.572179,15.231986 17.065598,24.751623 17.065598,24.751623 z"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True"/>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <!-- Outer border -->
+    <src:RibbonBorder BorderThickness="0.5" CornerRadius="10" BorderBrush="#FF587696" Margin="5" x:Name="backgroundBorder">
+        <Border.BitmapEffect>
+            <OuterGlowBitmapEffect GlowColor="Black" />
+        </Border.BitmapEffect>
+
+        <!-- border grips -->
+        <Grid Name="resizeGrid" Width="auto" Height="auto">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <!-- Grips -->
+            <!-- Sides -->
+            <Rectangle Grid.Column="0" Grid.Row="1" Name="leftSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="2" Grid.Row="1" Name="rightSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="1" Grid.Row="0" Name="topSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="1" Grid.Row="2" Name="bottomSizeGrip" Fill="Transparent" />
+            <!-- Corners -->
+            <Rectangle Grid.Column="0" Grid.Row="0" Name="topLeftSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="2" Grid.Row="2" Name="bottomRightSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="2" Grid.Row="0" Name="topRightSizeGrip" Fill="Transparent" />
+            <Rectangle Grid.Column="0" Grid.Row="2" Name="bottomLeftSizeGrip" Fill="Transparent" />
+
+            <!-- inside border -->
+            <Grid Name="windowMaster" Grid.Row="1" Grid.Column="1">
+                <DockPanel>
+
+                    <!-- window headder stuff, title bar + ribbon -->
+                    <StackPanel DockPanel.Dock="Top">
+                        <!-- Title bar -->
+                        <Grid Background="Aqua" Name="TitleBar" 
+                      MouseDown="TitleBar_MouseDown" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown">
+
+                            <DockPanel Name="titleBarDock">
+
+                                <!-- quick access toolbar -->
+                                <!-- qat:QuickAccessToolbar Name="qatoolbar" Grid.Column="0" 
+                                         Margin="40,0,0,0" DockPanel.Dock="Left"/ -->
+
+                                <!-- close, min, max title buttons -->
+                                <StackPanel Orientation="Horizontal" 
+                            FlowDirection="RightToLeft" Margin="0,-1,0,0" DockPanel.Dock="Right">
+                                    <Button Width="43" Height="20" Name="closeButton"
+                        Click="closeButton_Click" MouseEnter="closeButton_MouseEnter"
+                        MouseLeave="closeButton_MouseLeave"
+                        Style="{DynamicResource CloseButtonStyle}" Margin="5,0,0,0">
+                                        X
+                                    </Button>
+                                    <Button Width="25" Height="20" Name="maximiseButton"
+                        Click="maximiseButton_Click"
+                        MouseEnter="maximiseButton_MouseEnter" MouseLeave="maximiseButton_MouseLeave"
+                        Style="{DynamicResource MaximiseButton}" Margin="5,0,0,0">
+                                        #
+                                    </Button>
+                                    <Button Width="25" Height="20" Name="minimiseButton"
+                        Click="minimiseButton_Click"
+                        MouseEnter="minimiseButton_MouseEnter" MouseLeave="minimiseButton_MouseLeave"
+                        Style="{DynamicResource MinimiseButton}" Margin="5,0,0,0">
+                                        _
+                                    </Button>
+                                </StackPanel>
+
+                                <!-- title bar label -->
+                                <Label Grid.Column="1" HorizontalAlignment="Center" 
+                   VerticalAlignment="Top" FontSize="14" Margin="0,-1,0,0"
+                   Name="titleLabel">
+                                    <Label.BitmapEffect>
+                                        <OuterGlowBitmapEffect GlowColor="White" />
+                                    </Label.BitmapEffect>
+                                    Title
+                                </Label>
+
+                            </DockPanel>
+                        </Grid>
+
+                        <!-- Ribbon control bar -->
+                        <Grid Name="ribbonTitleBackground">
+                            <Grid Margin="60,0,0,0" Name="titleHook" />
+                        </Grid>
+
+                        <!-- Ribbon -->
+                        <Grid Name="ribbonBorderWrapperGrid">
+                            <src:RibbonBorder BorderThickness="1" CornerRadius="5"
+                                Margin="2, 0, 2, 2" x:Name="ribbonBorder">
+                                <Border.BitmapEffect>
+                                    <DropShadowBitmapEffect ShadowDepth="1" Softness="0.75" />
+                                </Border.BitmapEffect>
+                                <Grid Name="ribbonGrid" VerticalAlignment="Top"/>
+                            </src:RibbonBorder>
+                        </Grid>
+                    </StackPanel>
+
+                    <!-- Content Panel -->
+                    <Grid Name="contentPanel" Background="Fuchsia" />
+                </DockPanel>
+            </Grid>
+
+            <Grid Name="windowMasterGrid" Margin="0" Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="28"></RowDefinition>
+                    <RowDefinition Height="25"></RowDefinition>
+                    <RowDefinition MinHeight="0" MaxHeight="92"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <!-- start button -->
+                <Grid Grid.Row="0" Grid.RowSpan="2" Name="applicationButtonHook" 
+                      Width="50" Height="50" HorizontalAlignment="Left" Background="Transparent" Margin="3"/>
+            </Grid>
+        </Grid>
+    </src:RibbonBorder>
+</Page>

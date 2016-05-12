@@ -11,6 +11,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
+using System.Collections;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -25,7 +26,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstP_CRTempEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstP_CRTempEntity>(Edit);
-            DeleteCommand = new DelegateCommand<List<P_CRTempEntity>>(Delete);
+            DeleteCommand = new DelegateCommand<IList>(Delete);
             Columns = new ObservableCollection<UI.BaseColumn>() {
                 new UI.BaseColumn() { FieldName="CRTempName", Header= Properties.Resources.Entity_P_CRTemp_CRTempName},
                 new UI.BaseColumn() { FieldName="CRTempPath", Header= Properties.Resources.Entity_P_CRTemp_CRTempPath,Visible=false},
@@ -150,14 +151,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-        private void Delete(List<P_CRTempEntity> entitys)
+        private void Delete(IList entitys)
         {
             try
             {
                 var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
                 if (ShowMessage(deleteArgs) != MsgResult.Yes)
                     return;
-                ServiceProxyFactory.Create<IBasicInfoService>().DeleteP_CRTempEntitys(entitys);
+                ServiceProxyFactory.Create<IBasicInfoService>().DeleteP_CRTempEntitys(entitys.Cast<P_CRTempEntity>().ToList());
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
                 foreach (var item in entitys)
                 {

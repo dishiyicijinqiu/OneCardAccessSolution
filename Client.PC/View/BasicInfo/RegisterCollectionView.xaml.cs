@@ -38,7 +38,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         }
 
         protected override void UnInit()
-        { 
+        {
             base.UnInit();
             DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>().Unsubscribe(OnCreateRegisterView);
         }

@@ -59,18 +59,14 @@
 
             <dxg:GridControl x:Name="grid" 
                              Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
-                             ColumnsSource="{Binding Columns}"
+                             ColumnsSource="{StaticResource registercolumnssource}"
                              ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
                              core:MouseDoubleClick.Command="{Binding EditCommand}"
                              core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                              core:MouseDoubleClick.HitPosition="InRow"
                              ItemsSource="{Binding Items}">
 
-                <!--<dxg:GridControl ItemsSource="{Binding Items}" 
-                                 ColumnsSource="{Binding Columns}"
-                                 ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
-                                 Grid.Row="1" Name="grid" SelectedItem="{Binding SelectedEntity}" MouseDoubleClick="grid_MouseDoubleClick" >-->
-                
+
                 <!--<dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}"/>
                     <dxg:GridColumn FieldName="RegisterName" Header="{x:Static res:Resources.Entity_Register_RegisterName}"/>
@@ -88,14 +84,18 @@
                 </dxg:GridControl.Columns>-->
                 <!--<dxg:GridControl.View>
                     <dxg:TableView Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
-                        --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
-                        <!--<i:Interaction.Triggers>
+                        -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--<i:Interaction.Triggers>
                             <i:EventTrigger EventName="RowDoubleClick">
                                 <i:InvokeCommandAction Command="{Binding EditCommand, Mode=OneWay}" />
                             </i:EventTrigger>
-                        </i:Interaction.Triggers>--><!--
+                        </i:Interaction.Triggers>-->
+                <!--
                     </dxg:TableView>
-                    --><!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"--><!--
+                    -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--
                 </dxg:GridControl.View>-->
             </dxg:GridControl>
         </Grid>

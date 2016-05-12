@@ -10,10 +10,11 @@
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
                     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     >
-
-    <!--<dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
-    <core:StringDateValueConverter x:Key="stringDateValueConverter"/>-->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Columns.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
     <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
@@ -21,15 +22,12 @@
         <Setter Property="ShowInTaskbar" Value="False"/>
         <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico" />
     </Style>
-
-
     <Style TargetType="{x:Type dx:DXWindow}" x:Key="LoginWindowStyle">
         <Setter Property="ResizeMode" Value="NoResize"/>
         <Setter Property="SizeToContent" Value="WidthAndHeight"/>
         <Setter Property="ShowInTaskbar" Value="False"/>
         <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico" />
     </Style>
-
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Add}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>
@@ -114,8 +112,6 @@
         <Setter Property="MaskType" Value="DateTime"/>
         <Setter Property="Mask" Value="yyyy年MM月dd日 HH:mm:ss"/>
     </Style>
-
-    <!--<core:CateRowHandleConverter x:Key="cateRowHandleConverter" />-->
     <DataTemplate x:Key="CateRowIndicatorThemeKey" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>
@@ -167,6 +163,12 @@
 
         </DataTemplate.Triggers>
     </DataTemplate>
+
+
+
+    <!--<dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
+    <core:StringDateValueConverter x:Key="stringDateValueConverter"/>-->
+    <!--<core:CateRowHandleConverter x:Key="cateRowHandleConverter" />-->
     <!--<Setter Property="RowIndicatorContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate}}" />-->
 
     <!--<Style TargetType="dxg:GridControl" x:Key="GridControlDoubleClickStyle">

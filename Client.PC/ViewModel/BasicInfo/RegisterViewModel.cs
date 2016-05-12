@@ -27,7 +27,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
             UpLoadRegisterFileCommand = new DelegateCommand(UpLoadRegisterFile);
-            ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile, CanViewRegisterFile);
+            ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile);
              
             Entity = SecondRegisterEntity.CreateEntity();
             if (this.EditMessage == null)
@@ -60,11 +60,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             if (Entity == null)
                 Entity = SecondRegisterEntity.CreateEntity();
-        }
-
-        private bool CanViewRegisterFile(Register_FileEntity fileentity)
-        {
-            return fileentity != null;
         }
         #region propertys
         private SecondRegisterEntity _Entity;

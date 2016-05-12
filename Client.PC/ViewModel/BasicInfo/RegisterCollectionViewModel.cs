@@ -25,23 +25,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
-            Columns = new ObservableCollection<UI.BaseColumn>() {
-                new UI.BaseColumn() { FieldName="RegisterName", Header= Properties.Resources.Entity_Register_RegisterName,Width=150},
-                new UI.BaseColumn() { FieldName="RegisterNo", Header= Properties.Resources.Entity_Register_RegisterNo,Width=300},
-                new UI.BaseColumn() { FieldName="StandardCode", Header= Properties.Resources.Entity_Register_StandardCode,Width=120},
-                new UI.BaseColumn() { FieldName="RegisterName1" , Header= Properties.Resources.Entity_Register_RegisterName1},
-                new UI.BaseColumn() { FieldName="RegisterNo1" , Header= Properties.Resources.Entity_Register_RegisterNo1},
-                new UI.BaseColumn() { FieldName="StandardCode1", Header= Properties.Resources.Entity_Register_StandardCode1 },
-
-                new UI.BaseColumn() { FieldName="StartDate", Header= Properties.Resources.Entity_Register_StartDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
-                new UI.BaseColumn() { FieldName="EndDate", Header= Properties.Resources.Entity_Register_EndDate,Width=120, Settings= UI.SettingsType.Date, DisplayFormat=Properties.Resources.Format_DateString },
-
-                new UI.BaseColumn() { FieldName="Creater" , Header= Properties.Resources.Entity_Register_Creater},
-                new UI.BaseColumn() { FieldName="CreateDate", Header= Properties.Resources.Entity_Register_CreateDate,Width=120,DisplayFormat=Properties.Resources.Format_TimeString },
-                new UI.BaseColumn() { FieldName="LastModifyer" , Header= Properties.Resources.Entity_Register_LastModifyer},
-                new UI.BaseColumn() { FieldName="LastModifyDate" , Header= Properties.Resources.Entity_Register_LastModifyDate,Width=120,DisplayFormat=Properties.Resources.Format_TimeString},
-                new UI.BaseColumn() { FieldName="Remark", Header= Properties.Resources.Entity_Register_Remark },
-            };
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys().OrderBy(t => t.RegisterName).ThenBy(m => m.RegisterNo);
             Items = new ObservableCollection<FirstRegisterEntity>(list);
         }

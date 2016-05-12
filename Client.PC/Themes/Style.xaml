@@ -11,9 +11,9 @@
                     xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
                     xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
                     >
-    <!--<core:EditModeVisibleConverter x:Key="editModeVisibleConverter"/>-->
-    <dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
-    <core:StringDateValueConverter x:Key="stringDateValueConverter"/>
+
+    <!--<dxc:EventArgsToDataRowConverter x:Key="eventArgsToDataRowConverter"/>
+    <core:StringDateValueConverter x:Key="stringDateValueConverter"/>-->
     <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
@@ -115,7 +115,7 @@
         <Setter Property="Mask" Value="yyyy年MM月dd日 HH:mm:ss"/>
     </Style>
 
-    <core:CateRowHandleConverter x:Key="cateRowHandleConverter" />
+    <!--<core:CateRowHandleConverter x:Key="cateRowHandleConverter" />-->
     <DataTemplate x:Key="CateRowIndicatorThemeKey" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>

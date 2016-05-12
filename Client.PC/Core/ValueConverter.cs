@@ -6,6 +6,8 @@ using System.Windows.Markup;
 using System.Linq;
 using System.Windows;
 using System.Reflection;
+using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace FengSharp.OneCardAccess.Core
 {
@@ -65,11 +67,11 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
-    public class ListCastConverter : MarkupExtension, IValueConverter
+    public class ListCastConverter : MarkupExtension, IValueConverter//TODO:不明白为什么Command中接受参数的数量是0
     {
-        public string CastType { get; set; }
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            string CastType = (string)parameter;
             if (string.IsNullOrWhiteSpace(CastType))
                 return null;
             Type type = System.Type.GetType(CastType);
@@ -136,15 +138,6 @@ namespace FengSharp.OneCardAccess.Core
             if (parameterString == null)
                 return DependencyProperty.UnsetValue;
             return Enum.Parse(targetType, parameterString, true);
-        }
-    }
-
-    public class StringMarkup : MarkupExtension
-    {
-        public string Value { get; set; }
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return Value;
         }
     }
 }

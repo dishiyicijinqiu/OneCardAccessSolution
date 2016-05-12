@@ -25,8 +25,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <core:ListCastConverter x:Key="listCastConverter" 
-             CastType="FengSharp.OneCardAccess.BusinessEntity.BasicInfo.P_CRTempEntity,FengSharp.OneCardAccess.BusinessEntity"/>
+            <core:ListCastConverter x:Key="listCastConverter"/>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
     <ui:BaseUserControl.InputBindings>
@@ -45,9 +44,8 @@
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" 
-                                               Command="{Binding DeleteCommand}"
-                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems,Converter={StaticResource listCastConverter}}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseDocumentCommand}"/>
@@ -55,7 +53,6 @@
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-
             <dxg:GridControl x:Name="grid" 
                              Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                              ColumnsSource="{Binding Columns}"

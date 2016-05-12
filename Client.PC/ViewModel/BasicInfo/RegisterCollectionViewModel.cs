@@ -5,6 +5,7 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
-            DeleteCommand = new DelegateCommand<List<RegisterEntity>>(Delete);
+            DeleteCommand = new DelegateCommand<IList>(Delete);
             Columns = new ObservableCollection<UI.BaseColumn>() {
                 new UI.BaseColumn() { FieldName="RegisterName", Header= Properties.Resources.Entity_Register_RegisterName,Width=150},
                 new UI.BaseColumn() { FieldName="RegisterNo", Header= Properties.Resources.Entity_Register_RegisterNo,Width=300},
@@ -152,14 +153,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-        private void Delete(List<RegisterEntity> entitys)
+        private void Delete(IList entitys)
         {
             try
             {
                 var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
                 if (ShowMessage(deleteArgs) != MsgResult.Yes)
                     return;
-                ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(entitys);
+                ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(entitys.Cast<RegisterEntity>().ToList());
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
                 foreach (var item in entitys)
                 {

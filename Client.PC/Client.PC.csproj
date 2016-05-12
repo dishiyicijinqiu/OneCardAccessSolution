@@ -190,6 +190,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="Core\Helpers\ExceptionHelper.cs" />
+    <Page Include="Themes\Columns.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Themes\Shared.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

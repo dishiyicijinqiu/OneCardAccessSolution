@@ -27,18 +27,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             CopyAddCommand = new DelegateCommand<FirstP_CRTempEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstP_CRTempEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
-            Columns = new ObservableCollection<UI.BaseColumn>() {
-                new UI.BaseColumn() { FieldName="CRTempName", Header= Properties.Resources.Entity_P_CRTemp_CRTempName},
-                new UI.BaseColumn() { FieldName="CRTempPath", Header= Properties.Resources.Entity_P_CRTemp_CRTempPath,Visible=false},
-                new UI.BaseColumn() { FieldName="MaterIden", Header= Properties.Resources.Entity_P_CRTemp_MaterIden},
-                new UI.BaseColumn() { FieldName="IsEnable" , Header= Properties.Resources.Entity_P_CRTemp_IsEnable, Settings= UI.SettingsType.CheckEdit},
-                new UI.BaseColumn() { FieldName="CateNo" , Header= Properties.Resources.Entity_P_CRTemp_CateNo},
-                new UI.BaseColumn() { FieldName="Remark", Header= Properties.Resources.Entity_P_CRTemp_Remark },
-                new UI.BaseColumn() { FieldName="Creater" , Header= Properties.Resources.Entity_P_CRTemp_Creater},
-                new UI.BaseColumn() { FieldName="CreateDate", Header= Properties.Resources.Entity_P_CRTemp_CreateDate,DisplayFormat=Properties.Resources.Format_TimeString },
-                new UI.BaseColumn() { FieldName="LastModifyer" , Header= Properties.Resources.Entity_P_CRTemp_LastModifyer},
-                new UI.BaseColumn() { FieldName="LastModifyDate" , Header= Properties.Resources.Entity_P_CRTemp_LastModifyDate,DisplayFormat=Properties.Resources.Format_TimeString},
-            };
+
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntitys().OrderBy(t => t.CateNo).ThenBy(m => m.CRTempName);
             Items = new ObservableCollection<FirstP_CRTempEntity>(list);
         }
@@ -172,7 +161,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #region propertys
         public ObservableCollection<FirstP_CRTempEntity> Items { get; private set; }
-        public ObservableCollection<UI.BaseColumn> Columns { get; private set; }
 
         private P_CRTempEntity _SelectedEntity;
         public P_CRTempEntity SelectedEntity

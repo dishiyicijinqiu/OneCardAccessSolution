@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
+    <ui:ColumnData x:Key="registercolumnssource">
+        <ui:BaseColumn FieldName="RegisterName" Header="{x:Static res:Resources.Entity_Register_RegisterName}" Width="150"/>
+        <ui:BaseColumn FieldName="RegisterNo" Header="{x:Static res:Resources.Entity_Register_RegisterNo}" Width="300"/>
+        <ui:BaseColumn FieldName="StandardCode" Header="{x:Static res:Resources.Entity_Register_StandardCode}" Width="120"/>
+        <ui:BaseColumn FieldName="RegisterName1" Header="{x:Static res:Resources.Entity_Register_RegisterName1}"/>
+        <ui:BaseColumn FieldName="RegisterNo1" Header="{x:Static res:Resources.Entity_Register_RegisterNo1}"/>
+        <ui:BaseColumn FieldName="StandardCode1" Header="{x:Static res:Resources.Entity_Register_StandardCode1}"/>
+        <ui:BaseColumn FieldName="StartDate" Header="{x:Static res:Resources.Entity_Register_StartDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_DateString}"/>
+        <ui:BaseColumn FieldName="EndDate" Header="{x:Static res:Resources.Entity_Register_EndDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_DateString}"/>
+        <ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_Register_Creater}"/>
+        <ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_Register_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_Register_LastModifyer}"/>
+        <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Register_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_Register_Remark}"/>
+    </ui:ColumnData>
+    <ui:ColumnData x:Key="p_crtempcolumnssource">
+        <ui:BaseColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" Width="150"/>
+        <ui:BaseColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}" Visible="False"/>
+        <ui:BaseColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}"/>
+        <ui:BaseColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}" Settings="CheckEdit"/>
+        <ui:BaseColumn FieldName="CateNo" Header="{x:Static res:Resources.Entity_P_CRTemp_CateNo}"/>
+        <ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_P_CRTemp_Creater}"/>
+        <ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
+        <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_Remark}"/>
+    </ui:ColumnData>
+</ResourceDictionary>

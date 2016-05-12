@@ -56,4 +56,8 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             return (DataTemplate)((Control)container).FindResource(column.Settings + "ColumnTemplate");
         }
     }
+
+    public class ColumnData : List<BaseColumn>
+    {
+    }
 }

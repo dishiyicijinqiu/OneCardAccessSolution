@@ -46,12 +46,15 @@
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgRegisterFile_Caption}">
                             <dxb:BarButtonItem Style="{StaticResource barUpLoad}" Command="{Binding UpLoadRegisterFileCommand}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}" Command="{Binding MoveUpRegisterFileCommand}" CommandParameter="{Binding ElementName=gridRegister_File,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}" Command="{Binding MoveDownRegisterFileCommand}" CommandParameter="{Binding ElementName=gridRegister_File,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteRegisterFileCommand}" CommandParameter="{Binding ElementName=gridRegister_File,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgTemplate_Caption}">
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" Command="{Binding AddRegisterTempCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}" Command="{Binding MoveUpRegisterTempCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}" Command="{Binding MoveDownRegisterTempCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteRegisterTempCommand}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
@@ -78,7 +81,7 @@
                         </dxlc:LayoutItem>
                         <!--EditValueConverter="{StaticResource stringDateValueConverter}"-->
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Entity.Register_FileEntitys}"
+                            <dxg:GridControl x:Name="gridRegister_File" ItemsSource="{Binding Entity.Register_FileEntitys}"
                                              core:MouseDoubleClick.Command="{Binding ViewRegisterFileCommand}"
                                              core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                                              core:MouseDoubleClick.HitPosition="InRow"

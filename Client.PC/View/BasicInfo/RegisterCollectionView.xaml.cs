@@ -15,6 +15,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public RegisterCollectionView()
         {
             InitializeComponent();
+            //registercolumnssource
+            var results = this.FindResource("registercolumnssource") as System.Collections.Generic.List<BaseColumn>;
+            this.grid.ColumnsSource = results;
             this.Loaded += RegisterCollectionView_Loaded;
         }
 

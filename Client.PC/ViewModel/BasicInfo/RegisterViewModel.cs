@@ -128,8 +128,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                             entity.SortNo = Entity.Register_FileEntitys.Count;
                             Entity.Register_FileEntitys.Add(entity);
                         }
-                        ShowMessage(savename);
                     }
+                    ShowMessage(Properties.Resources.Info_UploadSuccess);
                 }
             }
             catch (Exception ex)
@@ -206,6 +206,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 {
                     this.Entity.Register_FileEntitys[i].SortNo = i;
                 }
+                ShowMessage(Properties.Resources.Info_DeleteSuccess);
             }
             catch (Exception ex)
             {

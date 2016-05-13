@@ -700,6 +700,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 上传成功 的本地化字符串。
+        /// </summary>
+        public static string Info_UploadSuccess {
+            get {
+                return ResourceManager.GetString("Info_UploadSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 产品检验报告模板 的本地化字符串。
         /// </summary>
         public static string Menu_P_CRTemp {

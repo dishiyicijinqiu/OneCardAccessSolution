@@ -10,8 +10,10 @@
                     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+                    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
                     xmlns:dxit="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
                     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
+    <!--控件默认属性设置-->
     <Style TargetType="dxlc:LayoutItem">
         <Setter Property="AddColonToLabel" Value="True"/>
         <Setter Property="LabelHorizontalAlignment" Value="Right"/>
@@ -28,18 +30,29 @@
         <Setter Property="FilterPopupMode" Value="CheckedList"/>
     </Style>
     <Style TargetType="dxg:TableView">
+        <Setter Property="AllowColumnFiltering" Value="False"/>
+        <Setter Property="AllowSorting" Value="False"/>
         <Setter Property="ShowGroupPanel" Value="False"/>
         <Setter Property="IndicatorWidth" Value="40"/>
         <Setter Property="AllowEditing" Value="False"/>
         <Setter Property="AllowGrouping" Value="False"/>
+        <Setter Property="IsColumnMenuEnabled" Value="False"/>
+        <Setter Property="IsGroupFooterMenuEnabled" Value="False"/>
+        <Setter Property="IsGroupPanelMenuEnabled" Value="False"/>
+        <Setter Property="IsRowCellMenuEnabled" Value="False"/>
+        <Setter Property="IsTotalSummaryMenuEnabled" Value="False"/>
     </Style>
+    <Style TargetType="dxe:TextEdit">
+        <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
+    </Style>
+    <!--控件默认属性设置-->
     <!--ribonpage放在右侧-->
-    <dx:BooleanToDoubleConverter x:Key="opacityConverter" />
     <Style TargetType="{x:Type dxr:RibbonPageGroupsControl}">
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="IsHitTestVisible" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}}"/>
-        <Setter Property="Opacity" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}, Converter={StaticResource opacityConverter}}"/>
+        <Setter Property="Opacity" Value="{Binding Path=Page.IsSelected, RelativeSource={RelativeSource Mode=Self}, Converter={dx:BooleanToDoubleConverter}}"/>
         <Setter Property="ItemsPanel" Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlItemsPanelTemplate}}"/>
         <Setter Property="Template"  Value="{DynamicResource {dxrt:RibbonThemeKey ResourceKey=PageGroupsControlTemplate}}"/>
     </Style>
@@ -57,8 +70,7 @@
     </ItemsPanelTemplate>
     <!--ribonpage放在右侧-->
 
-
-    <core:RowHandleConverter x:Key="rowHandleConverter" />
+    <!--DataGrid列头序号-->
     <DataTemplate x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate, IsThemeIndependent=True}" >
         <Grid x:Name="rootOfRowIndicator">
             <DockPanel>
@@ -67,7 +79,7 @@
                                   />
                 <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock.Text>
-                        <MultiBinding Mode="OneWay" Converter="{StaticResource rowHandleConverter}">
+                        <MultiBinding Mode="OneWay" Converter="{core:RowHandleConverter}">
                             <Binding Path="View.DataControl" />
                             <Binding Path="RowHandle.Value" />
                         </MultiBinding>
@@ -110,7 +122,59 @@
 
         </DataTemplate.Triggers>
     </DataTemplate>
+    <DataTemplate x:Key="CateRowIndicatorThemeKey" >
+        <Grid x:Name="rootOfRowIndicator">
+            <DockPanel>
+                <ContentPresenter x:Name="iconPresenter" Content="{x:Null}"
+                                  DockPanel.Dock="Right" Width="auto" 
+                                  />
+                <TextBlock x:Name="tbRowIndicator" TextAlignment="Center" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock.Text>
+                        <MultiBinding Mode="OneWay" Converter="{core:CateRowHandleConverter}">
+                            <Binding Path="View.DataControl" />
+                            <Binding Path="RowHandle.Value" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+            </DockPanel>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Focused">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=FocusedIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Changed">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=ChangedIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="NewItemRow">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=NewItemRowIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Editing">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=EditingIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="Error">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=ErrorIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="FocusedError">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=FocusedErrorIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=IndicatorState}" Value="AutoFilterRow">
+                <Setter Property="ContentTemplate" Value="{DynamicResource {dxgt:RowIndicatorThemeKey ResourceKey=AutoFilterRowIconTemplate}}" TargetName="iconPresenter"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=(dxe:BaseEdit.HasValidationError)}" Value="True">
+                <Setter Property="ToolTip" TargetName="rootOfRowIndicator">
+                    <Setter.Value>
+                        <DockPanel>
+                            <dxe:ErrorControl Content="{Binding Path=(dxe:BaseEdit.ValidationError)}"/>
+                            <ContentPresenter VerticalAlignment="Center" Content="{Binding Path=(dxe:BaseEdit.ValidationError).ErrorContent}" />
+                        </DockPanel>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
 
+        </DataTemplate.Triggers>
+    </DataTemplate>
+    <!--DataGrid列头序号-->
+    <!--DataGrid列类型-->
     <ui:ColumnTemplateSelector x:Key="ColumnTemplateSelector"/>
     <DataTemplate x:Key="DefaultColumnTemplate">
         <ContentControl>
@@ -183,16 +247,11 @@
             </dxg:GridColumn>
         </ContentControl>
     </DataTemplate>
-
     <DataTemplate x:Key="SummaryTemplate">
         <ContentControl>
             <dxg:GridSummaryItem FieldName="{Binding Path=(dxit:DependencyObjectExtensions.DataContext).FieldName, RelativeSource={RelativeSource Self}}"
                                  SummaryType="{Binding Path=(dxit:DependencyObjectExtensions.DataContext).Type, RelativeSource={RelativeSource Self}}"/>
         </ContentControl>
     </DataTemplate>
-
-    <Style TargetType="dxe:TextEdit">
-        <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
-        <Setter Property="VerticalContentAlignment" Value="Top"/>
-    </Style>
+    <!--DataGrid列类型-->
 </ResourceDictionary>

@@ -89,16 +89,6 @@
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
-                                <dxg:GridControl.View>
-                                    <dxg:TableView />
-                                </dxg:GridControl.View>
-                                <!--<i:Interaction.Triggers>
-                                    --><!--="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}"/--><!--
-                                    <i:EventTrigger EventName="MouseDoubleClick">
-                                        <i:InvokeCommandAction Command="{Binding ViewRegisterFileCommand, Mode=OneWay}" 
-                                                               CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type dxg:GridControl}},Path=SelectedItem}" />
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>-->
                             </dxg:GridControl>
                         </dxlc:LayoutGroup>
 
@@ -124,9 +114,6 @@
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
                                 </dxg:GridControl.Columns>
-                                <dxg:GridControl.View>
-                                    <dxg:TableView />
-                                </dxg:GridControl.View>
                             </dxg:GridControl>
                         </dxlc:LayoutGroup>
 

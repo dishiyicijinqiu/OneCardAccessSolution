@@ -105,6 +105,13 @@ namespace FengSharp.OneCardAccess.Core
             ITableViewHitInfo hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject);
             if (hitInfo == null)
                 return;
+
+            //((DevExpress.Xpf.Grid.TableViewHitInfo)hitInfo).HitTest GroupRow DevExpress.Xpf.Grid.TableViewHitTest
+            //((DevExpress.Xpf.Grid.TableViewHitInfo)hitInfo).HitTest== TableViewHitTest.GroupRow
+
+
+            if (e.ChangedButton != MouseButton.Left)
+                return;
             switch (HitPosition)
             {
                 case HitPosition.InColumnHeader:

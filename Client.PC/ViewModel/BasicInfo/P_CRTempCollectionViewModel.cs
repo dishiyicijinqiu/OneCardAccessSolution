@@ -12,22 +12,24 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
 using System.Collections;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempCollectionViewModel : CrudNotificationObject<P_CRTempEditMessage, string>
+    public class P_CRTempCollectionViewModel : CrudNotificationObject<P_CRTempEditMessage, string>, IP_CRTempCollectionView, IP_CRTempCollectionSelect
     {
         public ICommand DeleteCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
-        public P_CRTempCollectionViewModel()
+        public P_CRTempCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
+        public P_CRTempCollectionViewModel(CollectionViewStyle style)
         {
+            this.CollectionViewStyle = style;
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstP_CRTempEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstP_CRTempEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
-
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntitys().OrderBy(t => t.CateNo).ThenBy(m => m.CRTempName);
             Items = new ObservableCollection<FirstP_CRTempEntity>(list);
         }
@@ -98,8 +100,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<P_CRTempEditMessage, string>(new P_CRTempEditMessage()));
+                var vm = ServiceLoader.LoadService<IP_CRTempEdit>(
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new P_CRTempEditMessage())
+                });
+                var view = ServiceLoader.LoadService<IView>("P_CRTempView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
             }
             catch (Exception ex)
             {
@@ -115,8 +125,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<P_CRTempEditMessage, string>(new P_CRTempEditMessage(_CopyKey: entity.P_CRTempId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                var vm = ServiceLoader.LoadService<IP_CRTempEdit>(
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new P_CRTempEditMessage(_CopyKey: entity.P_CRTempId, _EntityEditMode: EntityEditMode.CopyAdd))
+                });
+                var view = ServiceLoader.LoadService<IView>("P_CRTempView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
             }
             catch (Exception ex)
             {
@@ -132,8 +150,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<P_CRTempEditMessage, string>(new P_CRTempEditMessage(entity.P_CRTempId, EntityEditMode.Edit)));
+                var vm = ServiceLoader.LoadService<IP_CRTempEdit>(
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new P_CRTempEditMessage(entity.P_CRTempId, EntityEditMode.Edit))
+                });
+                var view = ServiceLoader.LoadService<IView>("P_CRTempView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
             }
             catch (Exception ex)
             {
@@ -172,6 +198,17 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("SelectedEntity");
             }
         }
+
+        private CollectionViewStyle _CollectionViewStyle;
+        public CollectionViewStyle CollectionViewStyle
+        {
+            get { return _CollectionViewStyle; }
+            set
+            {
+                _CollectionViewStyle = value;
+                RaisePropertyChanged("CollectionViewStyle");
+            }
+        }
         #endregion
     }
     #region message
@@ -186,6 +223,5 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public string CopyKey { get; set; }
     }
-
     #endregion
 }

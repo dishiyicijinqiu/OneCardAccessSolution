@@ -5,24 +5,40 @@ using System.Globalization;
 
 namespace FengSharp.OneCardAccess.Core
 {
-
-
-    public class CreateViewEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : CreateViewEventArgs<Msg, Key> where Msg : EditMessage<Key>
+    public class CreateViewEvent<Sender> : BaseSenderEvent<Sender, CreateViewEventArgs>
     {
 
     }
-    //public class CreateViewEvent<Sender, Args, Key> : BaseSenderEvent<Sender, CreateViewEventArgs<EditMessage<Key>, Key>>
+    public class CreateViewEventArgs : NullEventArgs
+    {
+        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Title,
+            ViewStyle ViewStyle = FengSharp.OneCardAccess.Core.ViewStyle.Dialog)
+        {
+            this.View = View;
+            this.Title = Title;
+            this.ViewStyle = ViewStyle;
+        }
+        public Client.PC.Interfaces.IView View { get; set; }
+        public string Title { get; set; }
+        public ViewStyle ViewStyle { get; set; }
+    }
+    public enum ViewStyle
+    {
+        Dialog
+    }
+
+    //public class CreateViewEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : CreateViewEventArgs<Msg, Key> where Msg : EditMessage<Key>
     //{
 
     //}
-    public class CreateViewEventArgs<T, Key> : NullEventArgs where T : EditMessage<Key>
-    {
-        public CreateViewEventArgs(T EditMessage)
-        {
-            this.EditMessage = EditMessage;
-        }
-        public T EditMessage { get; set; }
-    }
+    //public class CreateViewEventArgs<T, Key> : NullEventArgs where T : EditMessage<Key>
+    //{
+    //    public CreateViewEventArgs(T EditMessage)
+    //    {
+    //        this.EditMessage = EditMessage;
+    //    }
+    //    public T EditMessage { get; set; }
+    //}
 
     public class EntityEditedEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : EntityEditedEventArgs<Msg, Key> where Msg : EditMessage<Key>
     {

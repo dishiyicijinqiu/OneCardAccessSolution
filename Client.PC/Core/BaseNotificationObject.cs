@@ -80,6 +80,11 @@ namespace FengSharp.OneCardAccess.Core
         {
             DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
         }
+        public void CreateView(CreateViewEventArgs args)
+        {
+            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object>>().
+                Publish(this, args);
+        }
     }
     public class CrudNotificationObject<Msg, K> : BaseNotificationObject where Msg : EditMessage<K>
     {

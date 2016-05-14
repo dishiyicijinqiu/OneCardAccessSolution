@@ -47,17 +47,17 @@ namespace Microsoft.Practices.Unity.Configuration
         [ConfigurationProperty(NamePropertyName, IsKey = true, DefaultValue = "")]
         public string Name
         {
-            get { return (string) base[NamePropertyName]; }
+            get { return (string)base[NamePropertyName]; }
             set { base[NamePropertyName] = value; }
         }
 
         /// <summary>
         /// The type registrations in this container.
         /// </summary>
-        [ConfigurationProperty(RegistrationsPropertyName, IsDefaultCollection =  true)]
+        [ConfigurationProperty(RegistrationsPropertyName, IsDefaultCollection = true)]
         public RegisterElementCollection Registrations
         {
-            get { return (RegisterElementCollection) base[RegistrationsPropertyName]; }
+            get { return (RegisterElementCollection)base[RegistrationsPropertyName]; }
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Microsoft.Practices.Unity.Configuration
         [ConfigurationProperty(InstancesPropertyName)]
         public InstanceElementCollection Instances
         {
-            get { return (InstanceElementCollection) base[InstancesPropertyName]; }
+            get { return (InstanceElementCollection)base[InstancesPropertyName]; }
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Microsoft.Practices.Unity.Configuration
         [ConfigurationProperty(ExtensionsPropertyName)]
         public ContainerExtensionElementCollection Extensions
         {
-            get { return (ContainerExtensionElementCollection) base[ExtensionsPropertyName]; }
+            get { return (ContainerExtensionElementCollection)base[ExtensionsPropertyName]; }
         }
 
         /// <summary>
@@ -112,6 +112,15 @@ namespace Microsoft.Practices.Unity.Configuration
                 .Concat(Instances.Cast<ContainerConfiguringElement>())
                 .Concat(ConfiguringElements)
                 .ForEach(element => element.ConfigureContainerInternal(container));
+
+            //var tests = Extensions.Cast<ContainerConfiguringElement>()
+            //    .Concat(Registrations.Cast<ContainerConfiguringElement>())
+            //    .Concat(Instances.Cast<ContainerConfiguringElement>())
+            //    .Concat(ConfiguringElements);
+            //foreach (var element in tests)
+            //{
+            //    element.ConfigureContainerInternal(container);
+            //}
         }
 
         /// <summary>
@@ -163,7 +172,7 @@ namespace Microsoft.Practices.Unity.Configuration
         private bool DeserializeContainerConfiguringElement(string elementName, XmlReader reader)
         {
             Type elementType = ExtensionElementMap.GetContainerConfiguringElementType(elementName);
-            if(elementType != null)
+            if (elementType != null)
             {
                 this.ReadElementByType(reader, elementType, ConfiguringElements);
                 return true;
@@ -173,7 +182,7 @@ namespace Microsoft.Practices.Unity.Configuration
 
         private void SerializeContainerConfiguringElements(XmlWriter writer)
         {
-            foreach(var element in ConfiguringElements)
+            foreach (var element in ConfiguringElements)
             {
                 string tag = ExtensionElementMap.GetTagForExtensionElement(element);
                 writer.WriteElement(tag, element.SerializeContent);

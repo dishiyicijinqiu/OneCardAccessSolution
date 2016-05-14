@@ -48,19 +48,22 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     {
         public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
+        public string DocumentName { get; set; }
     }
     [MarkupExtensionReturnType(typeof(System.Windows.PropertyPath))]
     public class DocumentInfoExtension : MarkupExtension
     {
         public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
+        public string DocumentName { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             return new DocumentInfo()
             {
                 DocumentTitle = this.DocumentTitle,
-                DocumentType = this.DocumentType
+                DocumentType = this.DocumentType,
+                DocumentName = this.DocumentName
             };
         }
     }

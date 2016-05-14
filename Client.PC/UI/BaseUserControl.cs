@@ -33,6 +33,22 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Subscribe(OnCloseFromParentEvent);
                 DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Subscribe(OnCloseDocumentFromParentEvent);
 
+                //DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>().Subscribe(OnCreateP_CRTempView);
+                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object>>().Subscribe(OnCreateView);
+            }
+        }
+
+        private void OnCreateView(object sender, CreateViewEventArgs obj)
+        {
+            if (sender == this.DataContext)
+            {
+                var window = new BaseRibbonWindow();
+                window.Title = obj.Title;
+                if (obj.ViewStyle == ViewStyle.Dialog)
+                    window.Style = FindResource("DialogWindowStyle") as Style;
+                window.Content = obj.View;
+                window.Owner = Window.GetWindow(this);
+                window.ShowDialog();
             }
         }
 
@@ -118,7 +134,6 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(new UICloseDocumentEventArgs(this));
             UnInit();
         }
-
         protected virtual void OnException(object sender, ExceptionEventArgs args)
         {
             if (sender == null) return;
@@ -127,5 +142,6 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                 args.Exception.HandleException(this);
             }
         }
+
     }
 }

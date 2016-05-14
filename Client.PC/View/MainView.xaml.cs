@@ -80,8 +80,12 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                     doc.IsActive = true;
                     doc.FloatOnDoubleClick = false;
                     doc.Caption = docInfo.DocumentTitle;
-                    var type = System.Type.GetType(docInfo.DocumentType);
-                    doc.Content = Activator.CreateInstance(type);
+                    var vm = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType));
+                    var view = ServiceLoader.LoadService<Interfaces.IView>(docInfo.DocumentName,
+                        new Microsoft.Practices.Unity.ResolverOverride[] {
+                            new Microsoft.Practices.Unity.ParameterOverride("vm",vm)
+                        });
+                    doc.Content = view;
                     doc.CloseCommand = new DelegateCommand<DocumentPanel>(CloseDocument);
                     docs.Add(doc.Content, doc);
                 }

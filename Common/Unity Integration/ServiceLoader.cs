@@ -36,11 +36,11 @@ namespace FengSharp.OneCardAccess.Common
         #endregion
 
         #region LoadService
-        public static object LoadService(System.Type type, string name = null)
+        public static object LoadService(System.Type type, string name = null, params ResolverOverride[] overrides)
         {
             if (string.IsNullOrWhiteSpace(name))
-                return Container.Resolve(type);
-            return Container.Resolve(type, name);
+                return Container.Resolve(type, overrides);
+            return Container.Resolve(type, name, overrides);
         }
         public static void RegisterInstance<TInterface>(TInterface instance, LifetimeManager lifetime = null)
         {
@@ -53,6 +53,10 @@ namespace FengSharp.OneCardAccess.Common
         public static T LoadService<T>()
         {
             return Container.Resolve<T>();
+        }
+        public static T LoadService<T>(params ResolverOverride[] overrides)
+        {
+            return Container.Resolve<T>(overrides);
         }
         public static T LoadService<T>(string serviceName, params ResolverOverride[] overrides)
         {

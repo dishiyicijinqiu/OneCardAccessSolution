@@ -1,5 +1,6 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity;
 using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -15,7 +16,7 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterViewModel : CrudNotificationObject<RegisterEditMessage, string>
+    public class RegisterViewModel : CrudNotificationObject<RegisterEditMessage, string>, IRegisterEdit
     {
         #region commands
         public ICommand SaveAndNewCommand { get; private set; }
@@ -30,10 +31,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand DeleteRegisterTempCommand { get; private set; }
         public ICommand ViewRegisterFileCommand { get; private set; }
         #endregion
-        public RegisterViewModel(object ParentViewModel, RegisterEditMessage editmessage)
+        public RegisterViewModel(object ParentViewModel, RegisterEditMessage EditMessage)
         {
+            this.EditMessage = EditMessage;
+            if (this.EditMessage == null)
+                throw new Exception(Properties.Resources.Error_ParameterIsError);
             this.ParentViewModel = ParentViewModel;
-            this.EditMessage = editmessage;
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
             UpLoadRegisterFileCommand = new DelegateCommand(UpLoadRegisterFile);
@@ -46,8 +49,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             DeleteRegisterTempCommand = new DelegateCommand<IList>(DeleteRegisterTemp);
             ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile);
             Entity = SecondRegisterEntity.CreateEntity();
-            if (this.EditMessage == null)
-                throw new Exception(Properties.Resources.Error_ParameterIsError);
             switch (this.EditMessage.EntityEditMode)
             {
                 case EntityEditMode.Add:
@@ -178,7 +179,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-
+                var selectview = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("style",CollectionViewStyle.CollectionMulSelect)
+                });
+                this.CreateView(new CreateViewEventArgs(null, string.Empty));
             }
             catch (Exception ex)
             {
@@ -198,7 +202,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
                 if (ShowMessage(deleteArgs) != MsgResult.Yes)
                     return;
-                for (int i = entitys.Count-1; i >=0; i--)
+                for (int i = entitys.Count - 1; i >= 0; i--)
                 {
                     this.Entity.Register_FileEntitys.Remove(entitys[i] as Register_FileEntity);
                 }

@@ -1,4 +1,5 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -13,14 +14,15 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : CrudNotificationObject<RegisterEditMessage, string>
+    public class RegisterCollectionViewModel : CrudNotificationObject<RegisterEditMessage, string>, IRegisterCollectionView, IRegisterCollectionSelect
     {
         public ICommand DeleteCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
-        public RegisterCollectionViewModel()
+        public RegisterCollectionViewModel(CollectionViewStyle style = CollectionViewStyle.CollectionView)
         {
+            this.CollectionViewStyle = style;
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
@@ -94,8 +96,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage()));
+                var vm = ServiceLoader.LoadService<IRegisterEdit>(
+                 new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage())
+                });
+                var view = ServiceLoader.LoadService<IView>("RegisterView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
             }
             catch (Exception ex)
             {
@@ -111,8 +121,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                var vm = ServiceLoader.LoadService<IRegisterEdit>(
+                 new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd))
+                });
+                var view = ServiceLoader.LoadService<IView>("RegisterView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
             }
             catch (Exception ex)
             {
@@ -128,8 +146,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>()
-                    .Publish(this, new CreateViewEventArgs<RegisterEditMessage, string>(new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit)));
+                var vm = ServiceLoader.LoadService<IRegisterEdit>(
+                 new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
+                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit))
+                });
+                var view = ServiceLoader.LoadService<IView>("RegisterView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
+                });
+                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
             }
             catch (Exception ex)
             {
@@ -180,10 +206,22 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("SelectedEntity");
             }
         }
+
+
+
+        private CollectionViewStyle _CollectionViewStyle;
+        public CollectionViewStyle CollectionViewStyle
+        {
+            get { return _CollectionViewStyle; }
+            set
+            {
+                _CollectionViewStyle = value;
+                RaisePropertyChanged("CollectionViewStyle");
+            }
+        }
         #endregion
     }
 
-    #region message
     public class RegisterEditMessage : EditMessage<string>
     {
         public RegisterEditMessage(string _Key = null, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, string _CopyKey = null)
@@ -195,5 +233,4 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public string CopyKey { get; set; }
     }
-    #endregion
 }

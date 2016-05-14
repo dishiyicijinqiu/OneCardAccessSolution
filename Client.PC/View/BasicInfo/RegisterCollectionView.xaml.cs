@@ -1,4 +1,5 @@
-﻿using FengSharp.OneCardAccess.Client.PC.UI;
+﻿using FengSharp.OneCardAccess.Client.PC.Interfaces;
+using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
@@ -10,53 +11,32 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// <summary>
     /// RegisterCollectionView.xaml 的交互逻辑
     /// </summary>
-    public partial class RegisterCollectionView : BaseUserControl
+    public partial class RegisterCollectionView : BaseUserControl, IView
     {
-        public RegisterCollectionView()
+        //public RegisterCollectionView() : this(CollectionViewStyle.CollectionView)
+        //{
+
+        //}
+        //public RegisterCollectionView(CollectionViewStyle style)
+        //{
+        //    InitializeComponent();
+        //    this.Loaded += (sender, e) =>
+        //    {
+        //        try
+        //        {
+        //            this.DataContext = new RegisterCollectionViewModel(style);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            ex.HandleException(this);
+        //            InterCloseDocument();
+        //        }
+        //    };
+        //}
+        public RegisterCollectionView(RegisterCollectionViewModel vm)
         {
             InitializeComponent();
-            //registercolumnssource
-            var results = this.FindResource("registercolumnssource") as System.Collections.Generic.List<BaseColumn>;
-            this.grid.ColumnsSource = results;
-            this.Loaded += RegisterCollectionView_Loaded;
-        }
-
-        private void RegisterCollectionView_Loaded(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                this.DataContext = new RegisterCollectionViewModel();
-            }
-            catch (Exception ex)
-            {
-                ex.HandleException(this);
-                InterCloseDocument();
-            }
-        }
-
-        protected override void Init()
-        {
-            base.Init();
-            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>().Subscribe(OnCreateRegisterView);
-        }
-
-        protected override void UnInit()
-        {
-            base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<RegisterEditMessage, string>, RegisterEditMessage, string>>().Unsubscribe(OnCreateRegisterView);
-        }
-
-        private void OnCreateRegisterView(object sender, CreateViewEventArgs<RegisterEditMessage, string> args)
-        {
-            if (sender == this.DataContext)
-            {
-                var window = new UI.BaseRibbonWindow();
-                window.Title = Properties.Resources.View_RegisterView_Title;
-                window.Style = FindResource("DialogWindowStyle") as Style;
-                window.Content = new RegisterView(this.DataContext, args.EditMessage);
-                window.Owner = Window.GetWindow(this);
-                window.ShowDialog();
-            }
+            this.DataContext = vm;
         }
     }
 }

@@ -122,6 +122,9 @@
     <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
+    <Compile Include="Interfaces\IP_CRTemp.cs" />
+    <Compile Include="Interfaces\IRegister.cs" />
+    <Compile Include="Interfaces\IView.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>

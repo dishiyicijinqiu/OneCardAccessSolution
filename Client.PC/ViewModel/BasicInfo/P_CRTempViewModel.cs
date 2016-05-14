@@ -1,4 +1,5 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -11,16 +12,18 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempViewModel : CrudNotificationObject<P_CRTempEditMessage, string>
+    public class P_CRTempViewModel : CrudNotificationObject<P_CRTempEditMessage, string>, IP_CRTempEdit
     {
         FileSystemWatcher watcher = new FileSystemWatcher();
         public ICommand EditTempCommand { get; private set; }
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
-        public P_CRTempViewModel(object ParentViewModel, P_CRTempEditMessage editmessage)
+        public P_CRTempViewModel(object ParentViewModel, P_CRTempEditMessage EditMessage)
         {
+            this.EditMessage = EditMessage;
+            if (this.EditMessage == null)
+                throw new Exception(Properties.Resources.Error_ParameterIsError);
             this.ParentViewModel = ParentViewModel;
-            this.EditMessage = editmessage;
             watcher.Path = PCConfig.TempDir;
             watcher.Changed -= Watcher_Changed;
             watcher.Changed += Watcher_Changed;
@@ -29,8 +32,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             EditTempCommand = new DelegateCommand(EditTemp);
 
             Entity = FirstP_CRTempEntity.CreateEntity();
-            if (editmessage == null)
-                throw new Exception(Properties.Resources.Error_ParameterIsError);
             switch (this.EditMessage.EntityEditMode)
             {
                 case EntityEditMode.Add:

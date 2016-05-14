@@ -19,4 +19,10 @@ namespace FengSharp.OneCardAccess.Core
         Edit = 2,
         Cate = 3,
     }
+    public enum CollectionViewStyle
+    {
+        CollectionView,
+        CollectionOneSelect,
+        CollectionMulSelect
+    }
 }

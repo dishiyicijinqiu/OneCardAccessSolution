@@ -15,10 +15,6 @@
               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     >
-    <!--<UserControl.DataContext>
-        <dxmvvm:ViewModelSourceExtension Type="viewmodel:MainViewModel">
-        </dxmvvm:ViewModelSourceExtension>
-    </UserControl.DataContext>-->
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -26,27 +22,26 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
-    <!--<i:Interaction.Triggers>
-        <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding OnLoadedCommand, Mode=OneWay}"/>
-        </i:EventTrigger>
-    </i:Interaction.Triggers>-->
     <dxb:BarManager x:Name="barManager">
         <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="bCateInfo" Content="{x:Static res:Resources.Menu_Register}" 
+            <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}" 
                                Command="{Binding ShowDocumentCommand}" 
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}" DocumentType="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.RegisterCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}" 
+                                                     DocumentName="RegisterCollectionView"
+                                                     DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
-            <dxb:BarButtonItem x:Name="bProductInfo" Content="{x:Static res:Resources.Menu_P_CRTemp}" 
+            <dxb:BarButtonItem x:Name="btnP_CRTempCollectionView" Content="{x:Static res:Resources.Menu_P_CRTemp}" 
                                Command="{Binding ShowDocumentCommand}"
                                Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}" DocumentType="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.P_CRTempCollectionView"/>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}" 
+                                                     DocumentName="P_CRTempCollectionView"
+                                                     DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
         </dxb:BarManager.Items>
@@ -57,8 +52,8 @@
                     <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
                             <dxr:RibbonPageGroup.ItemLinks>
-                                <dxb:BarButtonItemLink BarItemName="bCateInfo" />
-                                <dxb:BarButtonItemLink BarItemName="bProductInfo" />
+                                <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
+                                <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
                             </dxr:RibbonPageGroup.ItemLinks>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>

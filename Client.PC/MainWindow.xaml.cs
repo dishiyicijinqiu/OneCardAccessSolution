@@ -1,6 +1,9 @@
 ﻿using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Ribbon;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
+using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using Microsoft.Practices.Unity;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -10,11 +13,14 @@ namespace FengSharp.OneCardAccess.Client.PC
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : DXRibbonWindow
+    public partial class MainWindow : DXRibbonWindow, IView
     {
         public MainWindow()
         {
             InitializeComponent();
+            //var mainview = ServiceLoader.LoadService<IView>("MainView", new ParameterOverride("VM", ServiceLoader.LoadService<IMainView>()));
+            ////this.Content = mainview;
+            //this.AddChild(mainview);
             this.SourceInitialized += MainWindow_SourceInitialized;
             this.Closing += MainWindow_Closing;
         }

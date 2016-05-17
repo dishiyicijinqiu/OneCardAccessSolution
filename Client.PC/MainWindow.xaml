@@ -16,5 +16,5 @@
     MinWidth="600"
     MinHeight="400"
     Title="{x:Static res:Resources.View_MainWindow_Title}">
-    <View:MainView />
+    <View:MainView  />
 </dxr:DXRibbonWindow>

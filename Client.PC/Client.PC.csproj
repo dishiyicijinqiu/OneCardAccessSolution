@@ -42,6 +42,10 @@
   <ItemGroup>
     <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Images.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Mvvm.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -122,9 +126,12 @@
     <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
+    <Compile Include="Interfaces\ILoginView.cs" />
+    <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Interfaces\IView.cs" />
+    <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -156,8 +163,6 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <ApplicationDefinition Include="App.xaml">
@@ -175,12 +180,6 @@
     </Compile>
     <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
       <DependentUpon>P_CRTempView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
-      <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterView.xaml.cs">
-      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -222,20 +221,12 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\P_CRTempCollectionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\P_CRTempView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\LoginView.xaml">
       <SubType>Designer</SubType>
@@ -422,6 +413,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ReportTool\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\apply_16x16.png" />
+    <Resource Include="Resources\Bars\apply_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

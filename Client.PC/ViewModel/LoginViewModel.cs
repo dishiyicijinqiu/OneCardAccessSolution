@@ -1,4 +1,5 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
@@ -9,7 +10,7 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class LoginViewModel : NotificationObject
+    public class LoginViewModel : BaseNotificationObject, ILoginView
     {
 
         #region Commands
@@ -28,7 +29,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 this.UserNo = string.Empty;
             }
         }
-
         #region Propertys
         public string _UserNo;
         public string UserNo
@@ -82,18 +82,36 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             try
             {
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
-                LoginResult loginresult = ConnectService.Login(this.UserNo, this.Password);
-                DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Publish(new LoginedEventArgs(loginresult));
+                var loginresult = ConnectService.Login(this.UserNo, this.Password);
+                switch (loginresult)
+                {
+                    case BusinessEntity.RBAC.LoginResult.Success:
+                        DefaultEventAggregator.Current.GetEvent<NullEvent>().Publish(ServiceLoader.LoadService<IMainView>().LoginSucessEventSubscriptionToken);
+                        this.OKClose();
+                        break;
+                    case BusinessEntity.RBAC.LoginResult.UserNotExist:
+                        ShowError(Client.PC.Properties.Resources.Error_UserNotExist);
+                        return;
+                    case BusinessEntity.RBAC.LoginResult.UserIsLocked:
+                        ShowError(Client.PC.Properties.Resources.Error_UserIsLocked);
+                        return;
+                    case BusinessEntity.RBAC.LoginResult.ErrorPassWord:
+                        ShowError(Client.PC.Properties.Resources.Error_PassWordIsError);
+                        return;
+                    case BusinessEntity.RBAC.LoginResult.UserIsEmpty:
+                        ShowError(Client.PC.Properties.Resources.Error_UserIsEmpty);
+                        return;
+                }
             }
             catch (System.Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+                ShowException(ex);
             }
         }
         #endregion
     }
     #region EventsDef
-    public class LoginEvent : CompositePresentationEvent<LoginEventArgs> { }
+    public class LoginEvent : SenderEvent<LoginEventArgs> { }
     public class LoginEventArgs
     {
         public LoginEventArgs(LoginState LoginState)
@@ -108,7 +126,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         ReLogin = 1,
         TimeOutLogin = 2
     }
-    public class LoginedEvent : CompositePresentationEvent<LoginedEventArgs> { }
+    public class LoginedEvent : SenderEvent<LoginedEventArgs> { }
     public class LoginedEventArgs
     {
         public LoginedEventArgs(LoginResult loginResult)

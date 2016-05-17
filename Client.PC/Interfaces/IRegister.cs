@@ -5,13 +5,13 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.Client.PC.Interfaces
 {
-    public interface IRegisterCollectionView
+    public interface IRegisterCollectionView : IViewModel
     {
     }
-    public interface IRegisterEdit
+    public interface IRegisterEdit : IViewModel
     {
     }
-    public interface IRegisterCollectionSelect
+    public interface IRegisterCollectionSelect : IViewModel
     {
     }
 }

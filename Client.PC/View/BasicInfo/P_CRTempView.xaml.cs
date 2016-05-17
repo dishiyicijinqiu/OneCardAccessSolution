@@ -27,10 +27,9 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         //        }
         //    };
         //}
-        public P_CRTempView(P_CRTempViewModel vm)
+        public P_CRTempView(P_CRTempViewModel VM) : base(VM)
         {
             InitializeComponent();
-            this.DataContext = vm;
         }
     }
 }

@@ -7,59 +7,29 @@ using System.Windows;
 using System.Windows.Controls;
 using System;
 using FengSharp.OneCardAccess.Client.PC.UI;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 
 namespace FengSharp.OneCardAccess.Client.PC.View
 {
     /// <summary>
     /// LoginView.xaml 的交互逻辑
     /// </summary>
-    public partial class LoginView : BaseUserControl
+    public partial class LoginView : BaseUserControl, IView
     {
-        private bool isReLogin;
-        public LoginView(bool isReLogin)
+        public LoginView()
         {
             InitializeComponent();
-            this.isReLogin = isReLogin;
+        }
+        public LoginView(LoginViewModel VM) : base(VM)
+        {
+            InitializeComponent();
             this.Loaded += LoginView_Loaded;
-        }
-        protected override void Init()
-        {
-            base.Init();
-            DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Subscribe(OnLogined);
-        }
-        protected override void UnInit()
-        {
-            base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<LoginedEvent>().Unsubscribe(OnLogined);
-        }
-        public void OnLogined(LoginedEventArgs args)
-        {
-            switch (args.LoginResult)
-            {
-                case BusinessEntity.RBAC.LoginResult.Success:
-                    DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Publish(null);
-                    Window.GetWindow(this).Close();
-                    break;
-                case BusinessEntity.RBAC.LoginResult.UserNotExist:
-                    DXMessageBox.Show(this, Client.PC.Properties.Resources.Error_UserNotExist, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                case BusinessEntity.RBAC.LoginResult.UserIsLocked:
-                    DXMessageBox.Show(this, Client.PC.Properties.Resources.Error_UserIsLocked, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                case BusinessEntity.RBAC.LoginResult.ErrorPassWord:
-                    DXMessageBox.Show(this, Client.PC.Properties.Resources.Error_PassWordIsError, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-                case BusinessEntity.RBAC.LoginResult.UserIsEmpty:
-                    DXMessageBox.Show(this, Client.PC.Properties.Resources.Error_UserIsEmpty, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
-                    return;
-            }
         }
 
         private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
-                this.DataContext = new LoginViewModel(isReLogin);
                 if (DXSplashScreen.IsActive)
                     DXSplashScreen.Close();
                 Window loginWindow = Window.GetWindow(this);
@@ -69,7 +39,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             catch (Exception ex)
             {
                 ex.HandleException(this);
-                InterCloseDocument();
             }
         }
 

@@ -13,10 +13,13 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// </summary>
     public partial class P_CRTempCollectionView : BaseUserControl, IView
     {
-        public P_CRTempCollectionView(P_CRTempCollectionViewModel vm)
+        public P_CRTempCollectionView(P_CRTempCollectionViewModel VM) : base(VM)
         {
             InitializeComponent();
-            this.DataContext = vm;
+        }
+        public P_CRTempCollectionView()
+        {
+            InitializeComponent();
         }
     }
 }

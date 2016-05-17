@@ -115,6 +115,70 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
+    public class CollectionViewVisibleConverter : MarkupExtension, System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            CollectionViewStyle style = (CollectionViewStyle)value;
+            return style == CollectionViewStyle.CollectionView;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+    public class CollectionSelectVisibleConverter : MarkupExtension, System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            CollectionViewStyle style = (CollectionViewStyle)value;
+            return style != CollectionViewStyle.CollectionView;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+    public class CollectionSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            CollectionViewStyle style = (CollectionViewStyle)value;
+            switch (style)
+            {
+                case CollectionViewStyle.CollectionOneSelect:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.None;
+                case CollectionViewStyle.CollectionView:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.Row;
+                case CollectionViewStyle.CollectionMulSelect:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.MultipleRow;
+                default:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.Row;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
     public class EnumConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

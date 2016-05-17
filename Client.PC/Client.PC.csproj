@@ -159,6 +159,8 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <ApplicationDefinition Include="App.xaml">
@@ -176,6 +178,12 @@
     </Compile>
     <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
       <DependentUpon>P_CRTempView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
+      <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -221,6 +229,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\BasicInfo\P_CRTempView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\BasicInfo\RegisterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -3,13 +3,15 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
-     Title="BaseRibbonWindow" Height="350" Width="525"
-    ResizeMode="NoResize" 
-    SizeToContent="WidthAndHeight"
-    WindowStartupLocation="CenterOwner"
+    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
     >
-
-    <Grid>
-
-    </Grid>
+    <!--<dx:DXWindow.DataContext>
+        <core:BaseWindowVM/>
+    </dx:DXWindow.DataContext>-->
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding CloseCommand, Mode=OneWay}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
 </dx:DXWindow>

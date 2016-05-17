@@ -34,6 +34,11 @@ namespace FengSharp.OneCardAccess.Services
             var list = new Register_FileEntity[dbRegister_FileList.Count].ToList();
             ClassValueCopier.CopyArray(list, dbRegister_FileList);
             secondentity.Register_FileEntitys = new System.Collections.ObjectModel.ObservableCollection<Register_FileEntity>(list);
+
+            var dbRegister_P_CRTempList = this.GetForeignEntitys<T_Register, T_P_CRTemp_To_Register>(new T_Register() { RegisterId = secondentity.RegisterId });
+            var list1 = new FirstP_CRTemp_To_RegisterEntity[dbRegister_P_CRTempList.Count].ToList();
+            ClassValueCopier.CopyArray(list1, dbRegister_P_CRTempList);
+            secondentity.P_CRTempEntitys = new System.Collections.ObjectModel.ObservableCollection<FirstP_CRTemp_To_RegisterEntity>(list1);
             return secondentity;
         }
         public string SaveRegisterEntity(SecondRegisterEntity entity)
@@ -55,6 +60,14 @@ namespace FengSharp.OneCardAccess.Services
                             dbregisterfileentity.CopyValueFrom(item);
                             dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
                             CreateEntity(dbregisterfileentity, tran);
+                        }
+                    if(entity.P_CRTempEntitys!=null)
+                        foreach (var item in entity.Register_FileEntitys)
+                        {
+                            //var dbp_crtempentity = new T_P_CRTemp_To_Register();
+                            //dbp_crtempentity.CopyValueFrom(item);
+                            //dbp_crtempentity.P_CRTempId = dbregisterentity.RegisterId;
+                            //CreateEntity(dbregisterfileentity, tran);
                         }
                 }
                 else

@@ -14,4 +14,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
         SubscriptionToken CreateViewEventToken { get; set; }
         SubscriptionToken ChangeDataContextEventToken { get; set; }
     }
+    public delegate void OnEntityViewEdited<T>(IViewModel vm, Core.EditMessage<T> EditMessage);
+
+    public delegate void OnSelectedItems<T>(List<T> SelectItems);
 }

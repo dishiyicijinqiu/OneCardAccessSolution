@@ -9,6 +9,7 @@
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
@@ -20,8 +21,16 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type Window}" x:Key="LoginWindowStyle">
+                <Setter Property="Title" Value="{x:Static res:Resources.View_LoginView_Title}"/>
+                <Setter Property="WindowStyle" Value="None"/>
+                <Setter Property="ResizeMode" Value="NoResize"/>
+                <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+                <Setter Property="ShowInTaskbar" Value="True"/>
+            </Style>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
+
     <dxb:BarManager x:Name="barManager">
         <dxb:BarManager.Items>
             <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}" 

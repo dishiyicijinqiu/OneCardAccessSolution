@@ -13,14 +13,13 @@ namespace FengSharp.OneCardAccess.Client.PC
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : DXRibbonWindow, IView
+    public partial class MainWindow : DXRibbonWindow
     {
         public MainWindow()
         {
             InitializeComponent();
-            //var mainview = ServiceLoader.LoadService<IView>("MainView", new ParameterOverride("VM", ServiceLoader.LoadService<IMainView>()));
-            ////this.Content = mainview;
-            //this.AddChild(mainview);
+            var mainview = ServiceLoader.LoadService<IView>("MainView", new ParameterOverride("VM", ServiceLoader.LoadService<IMainView>()));
+            this.AddChild(mainview);
             this.SourceInitialized += MainWindow_SourceInitialized;
             this.Closing += MainWindow_Closing;
         }

@@ -81,7 +81,7 @@ namespace FengSharp.OneCardAccess.Core
         public bool? CreateView(CreateViewEventArgs args)
         {
             bool? result = null;
-            if (args.ViewStyle == ViewStyle.Dialog)
+            if (args.IsDialog)
             {
                 args.CallBack = (bool? callbackresult) =>
                 {

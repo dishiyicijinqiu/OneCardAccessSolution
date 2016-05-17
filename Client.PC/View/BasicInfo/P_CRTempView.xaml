@@ -13,11 +13,11 @@
     xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
-             
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-    Width="546" Height="380">
+        d:DesignWidth="380" d:DesignHeight="546"
+                    >
 
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>

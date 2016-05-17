@@ -21,13 +21,19 @@
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-    Width="658" Height="544"
+    d:DesignWidth="658" d:DesignHeight="544"
     >
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
+                <Setter Property="Width" Value="546"/>
+                <Setter Property="Height" Value="380"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_P_CRTempView_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
     <dxb:BarManager>
@@ -110,9 +116,10 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
-                            <dxg:GridControl>
+                            <dxg:GridControl ItemsSource="{Binding Entity.P_CRTempEntitys}">
                                 <dxg:GridControl.Columns>
-                                    <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
+                                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_To_RegisterEntity_CRTempName}" Width="200"/>
+                                    <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_To_RegisterEntity_Remark}" Width="100" Visible="False"/>
                                 </dxg:GridControl.Columns>
                             </dxg:GridControl>
                         </dxlc:LayoutGroup>

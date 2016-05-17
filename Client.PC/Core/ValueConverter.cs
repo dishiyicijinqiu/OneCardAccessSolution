@@ -160,12 +160,8 @@ namespace FengSharp.OneCardAccess.Core
             {
                 case CollectionViewStyle.CollectionOneSelect:
                     return DevExpress.Xpf.Grid.MultiSelectMode.None;
-                case CollectionViewStyle.CollectionView:
-                    return DevExpress.Xpf.Grid.MultiSelectMode.Row;
-                case CollectionViewStyle.CollectionMulSelect:
-                    return DevExpress.Xpf.Grid.MultiSelectMode.MultipleRow;
                 default:
-                    return DevExpress.Xpf.Grid.MultiSelectMode.Row;
+                    return DevExpress.Xpf.Grid.MultiSelectMode.Cell;
             }
         }
 

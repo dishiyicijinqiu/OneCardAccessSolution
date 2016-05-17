@@ -22,7 +22,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View
     {
         System.Collections.Generic.Dictionary<object, DocumentPanel> docs = new System.Collections.Generic.Dictionary<object, DocumentPanel>();
 
-        public MainView() : base(ServiceLoader.LoadService<IMainView>() as BaseNotificationObject)
+        public MainView()
+        {
+            InitializeComponent();
+        }
+        public MainView(MainViewModel VM) : base(VM)
         {
             InitializeComponent();
             if (!DesignerProperties.GetIsInDesignMode(this))
@@ -95,7 +99,8 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                 doc.Caption = docInfo.DocumentTitle;
                 var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ResolverOverride[] { });
                 var viewdoc = ServiceLoader.LoadService<Interfaces.IView>(docInfo.DocumentName, new ParameterOverride("vm", vmdoc));
-                //var viewdoc = new BasicInfo.P_CRTempCollectionView(vmdoc as ViewModel.BasicInfo.P_CRTempCollectionViewModel);
+        
+
                 doc.Content = viewdoc;
                 doc.CloseCommand = new DelegateCommand<DocumentPanel>((panel) =>
                 {

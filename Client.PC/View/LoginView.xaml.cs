@@ -25,6 +25,20 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             InitializeComponent();
             this.Loaded += LoginView_Loaded;
         }
+        //protected override void OnClose(SubscriptionToken sender, CloseEventArgs args)
+        //{
+        //    base.OnClose(sender, args);
+        //    if (args.CloseStyle != CloseStyle.OKClose)
+        //        Application.Current.Shutdown();
+        //}
+        protected override void OnWindowClosed()
+        {
+            if (Common.Session.Current == null)
+            {
+                Application.Current.Shutdown();
+            }
+        }
+
 
         private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
@@ -40,11 +54,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             {
                 ex.HandleException(this);
             }
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

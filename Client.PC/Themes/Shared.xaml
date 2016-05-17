@@ -18,12 +18,15 @@
         <Setter Property="AddColonToLabel" Value="True"/>
         <Setter Property="LabelHorizontalAlignment" Value="Right"/>
     </Style>
+    <Style TargetType="Window">
+        <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico"/>
+    </Style>
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
     </Style>
     <Style TargetType="dxg:GridControl">
-        <Setter Property="SelectionMode" Value="Row"/>
+        <Setter Property="SelectionMode" Value="Cell"/>
         <Setter Property="AutoGenerateColumns" Value="KeepOld"/>
     </Style>
     <Style TargetType="dxg:GridColumn">
@@ -69,7 +72,6 @@
         <ui:MyRibbonPagesItemsPanel />
     </ItemsPanelTemplate>
     <!--ribonpage放在右侧-->
-
     <!--DataGrid列头序号-->
     <DataTemplate x:Key="{dxgt:RowIndicatorThemeKey ResourceKey=IconPresenterTemplate, IsThemeIndependent=True}" >
         <Grid x:Name="rootOfRowIndicator">

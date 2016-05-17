@@ -4,7 +4,7 @@ using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,72 +14,91 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : CrudNotificationObject<RegisterEditMessage, string>, IRegisterCollectionView, IRegisterCollectionSelect
+    public class RegisterCollectionViewModel : BaseNotificationObject, IRegisterCollectionView, IRegisterCollectionSelect
     {
         public ICommand DeleteCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
+        public ICommand CloseWindowCommand { get; private set; }
+        public ICommand ConfirmCommand { get; private set; }
         public RegisterCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
-        public RegisterCollectionViewModel(CollectionViewStyle style = CollectionViewStyle.CollectionView)
+        public RegisterCollectionViewModel(CollectionViewStyle style)
         {
             this.CollectionViewStyle = style;
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
+            CloseWindowCommand = new DelegateCommand(CloseWindow);
+            ConfirmCommand = new DelegateCommand<IList>(Confirm);
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys().OrderBy(t => t.RegisterName).ThenBy(m => m.RegisterNo);
             Items = new ObservableCollection<FirstRegisterEntity>(list);
         }
-        protected override void OnEntityViewEdited(object sender, EntityEditedEventArgs<RegisterEditMessage, string> args)
+        private void OnEntityViewEdited(IViewModel vm, Core.EditMessage<string> EditMessage)
         {
             try
             {
-                if (sender != this)
-                    return;
-                switch (args.EditMessage.EntityEditMode)
+                switch (EditMessage.EntityEditMode)
                 {
                     case EntityEditMode.Add:
                         {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(EditMessage.Key);
                             Items.Add(newItem);
-                            if (args.EditMessage.IsContinue)
-                                ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage()));
+                            if (EditMessage.IsContinue)
+                            {
+                                var newvm = new RegisterViewModel(new RegisterEditMessage());
+                                newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                    Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+                            }
                         }
                         break;
                     case EntityEditMode.CopyAdd:
                         {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(EditMessage.Key);
                             Items.Add(newItem);
-                            if (args.EditMessage.IsContinue)
+                            if (EditMessage.IsContinue)
                             {
-                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == args.EditMessage.CopyKey);
+                                var copyItem = Items.FirstOrDefault(t => t.RegisterId == (EditMessage as RegisterEditMessage).CopyKey);
                                 SelectedEntity = copyItem;
-                                ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage(_CopyKey: copyItem.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                                var newvm = new RegisterViewModel(new RegisterEditMessage(_CopyKey: copyItem.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd));
+                                newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                    Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+
+
                             }
                         }
                         break;
                     case EntityEditMode.Edit:
                         {
-                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == args.EditMessage.Key);
+                            var oldItem = Items.FirstOrDefault(t => t.RegisterId == EditMessage.Key);
                             if (oldItem == null) return;
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntityById(EditMessage.Key);
                             var itemIndex = Items.IndexOf(oldItem);
                             Items[itemIndex] = newItem;
-                            if (args.EditMessage.IsContinue)
+                            if (EditMessage.IsContinue)
                             {
                                 int nextIndex = itemIndex + 1;
                                 if (Items.Count > nextIndex)
                                 {
                                     var nextItem = Items[nextIndex];
                                     SelectedEntity = nextItem;
-                                    ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
+                                    //ChangeChildViewDataContext(new RegisterViewModel(this, new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit)));
+
+                                    var newvm = new RegisterViewModel(new RegisterEditMessage(nextItem.RegisterId, EntityEditMode.Edit));
+                                    newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                    DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                        Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+
                                 }
                                 else
                                 {
                                     SelectedEntity = Items[itemIndex];
                                     ShowMessage(Properties.Resources.Info_NoNext);
-                                    CloseChild();
+                                    DefaultEventAggregator.Current.GetEvent<CloseEvent>().
+                                        Publish(vm.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
                                 }
                             }
                         }
@@ -98,15 +117,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             try
             {
                 var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                 new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
-                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage())
-                });
-                var view = ServiceLoader.LoadService<IView>("RegisterView",
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
-                });
-                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
+                    new ParameterOverride("EditMessage", new RegisterEditMessage())
+               );
+                vm.OnEntityViewEdited += OnEntityViewEdited;
+                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
             {
@@ -123,15 +138,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 }
                 var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                 new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
-                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd))
-                });
-                var view = ServiceLoader.LoadService<IView>("RegisterView",
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
-                });
-                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
+                    new ParameterOverride("EditMessage", new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd))
+                );
+                vm.OnEntityViewEdited += OnEntityViewEdited;
+                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
             {
@@ -148,15 +159,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 }
                 var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                 new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
-                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit))
-                });
-                var view = ServiceLoader.LoadService<IView>("RegisterView",
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
-                });
-                this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_RegisterView_Title));
+                    new ParameterOverride("EditMessage", new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit))
+                );
+                vm.OnEntityViewEdited += OnEntityViewEdited;
+                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
             {
@@ -182,6 +189,38 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
+        private void Confirm(IList entitys)
+        {
+            try
+            {
+                if (entitys.Count <= 0)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                SelectItems = entitys.Cast<RegisterEntity>().ToList();
+                this.CloseWindow();
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void CloseWindow()
+        {
+            switch (CollectionViewStyle)
+            {
+                case CollectionViewStyle.CollectionView:
+                    this.CloseDocument();
+                    break;
+                case CollectionViewStyle.CollectionOneSelect:
+                case CollectionViewStyle.CollectionMulSelect:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
         #region propertys
         public ObservableCollection<UI.BaseColumn> Columns { get; private set; }
         ObservableCollection<FirstRegisterEntity> _Items;
@@ -197,8 +236,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("Items");
             }
         }
-        private FirstRegisterEntity _SelectedEntity;
-        public FirstRegisterEntity SelectedEntity
+        private RegisterEntity _SelectedEntity;
+        public RegisterEntity SelectedEntity
         {
             get { return _SelectedEntity; }
             set
@@ -208,7 +247,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
         }
 
-
+        public List<RegisterEntity> SelectItems { get; set; }
 
         private CollectionViewStyle _CollectionViewStyle;
         public CollectionViewStyle CollectionViewStyle

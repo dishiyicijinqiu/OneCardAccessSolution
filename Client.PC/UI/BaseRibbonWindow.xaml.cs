@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DevExpress.Xpf.Ribbon;
-
+using Microsoft.Practices.Prism.Commands;
 
 namespace FengSharp.OneCardAccess.Client.PC.UI
 {

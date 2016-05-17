@@ -23,17 +23,34 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         public BaseUserControl(BaseNotificationObject VM)
         {
             this.DataContext = VM;
-            var win = Window.GetWindow(this);
-            if (win != null)
-            {
-                win.Closed += Win_Closed;
-            }
+            this.Loaded += BaseUserControl_Loaded;
             Init();
+        }
+        bool isloaded = false;
+        private void BaseUserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (!DesignerProperties.GetIsInDesignMode(this))
+            {
+                if (!isloaded)
+                {
+                    var win = Window.GetWindow(this);
+                    if (win != null)
+                    {
+                        win.Closed += Win_Closed;
+                    }
+                    isloaded = true;
+                }
+            }
         }
 
         private void Win_Closed(object sender, EventArgs e)
         {
             UnInit();
+            OnWindowClosed();
+        }
+        protected virtual void OnWindowClosed()
+        {
+
         }
         protected virtual void Init()
         {
@@ -52,7 +69,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
             var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.CloseEventToken)
+            if (sender == vm.ChangeDataContextEventToken)
             {
                 OnChangeDataContext(sender, args);
             }
@@ -119,7 +136,8 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                     {
                         var uicloseargs = new UICloseDocumentEventArgs(this);
                         uicloseargs.CallBack = this.UnInit;
-                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(vm.CloseEventToken, new UICloseDocumentEventArgs(this));
+                        var doctoken = ServiceLoader.LoadService<IMainView>().UICloseDocumentEventSubscriptionToken;
+                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(doctoken, new UICloseDocumentEventArgs(this));
                     }
                     break;
                 default:
@@ -154,14 +172,18 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         protected virtual void OnCreateView(SubscriptionToken sender, CreateViewEventArgs args)
         {
             var window = new BaseRibbonWindow();
-            window.Title = args.Title;
-            if (args.ViewStyle == ViewStyle.Dialog)
-                window.Style = FindResource("DialogWindowStyle") as Style;
+            if (!string.IsNullOrWhiteSpace(args.Style))
+                window.Style = FindResource(args.Style) as Style;
             window.Content = args.View;
             window.Owner = Window.GetWindow(this);
-            var diaresult = window.ShowDialog();
-            if (args.CallBack != null)
-                args.CallBack(diaresult);
+            window.WindowStartupLocation = (System.Windows.WindowStartupLocation)args.WindowStartupLocation;
+            if (args.IsDialog)
+            {
+                var diaresult = window.ShowDialog();
+                args.CallBack?.Invoke(diaresult);
+            }
+            else
+                window.Show();
         }
     }
 }

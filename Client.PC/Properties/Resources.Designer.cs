@@ -331,6 +331,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 模板名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_To_RegisterEntity_CRTempName {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_To_RegisterEntity_CRTempName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_P_CRTemp_To_RegisterEntity_Remark {
+            get {
+                return ResourceManager.GetString("Entity_P_CRTemp_To_RegisterEntity_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 创建日期 的本地化字符串。
         /// </summary>
         public static string Entity_Register_CreateDate {

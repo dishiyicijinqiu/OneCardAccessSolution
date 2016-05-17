@@ -11,23 +11,27 @@ namespace FengSharp.OneCardAccess.Core
     }
     public class CreateViewEventArgs : NullEventArgs
     {
-        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Title = null, ViewStyle ViewStyle = Core.ViewStyle.Dialog)
+        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Style = null, bool IsDialog = true, WindowStartupLocation WindowStartupLocation = WindowStartupLocation.CenterOwner)
         {
             this.View = View;
-            this.Title = Title;
-            this.ViewStyle = ViewStyle;
+            this.WindowStartupLocation = WindowStartupLocation;
+            this.Style = Style;
+            this.IsDialog = IsDialog;
         }
         public Client.PC.Interfaces.IView View { get; set; }
-        public string Title { get; set; }
-        public ViewStyle ViewStyle { get; set; }
+        public WindowStartupLocation WindowStartupLocation { get; set; }
+        public string Style { get; set; }
+        public bool IsDialog { get; set; }
         public CreateViewCallBack CallBack { get; set; }
+    }
+    public enum WindowStartupLocation
+    {
+        Manual = 0,
+        CenterScreen = 1,
+        CenterOwner = 2
     }
 
     public delegate void CreateViewCallBack(bool? result);
-    public enum ViewStyle
-    {
-        Dialog
-    }
 
     public class EntityEditedEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : EntityEditedEventArgs<Msg, Key> where Msg : EditMessage<Key>
     {

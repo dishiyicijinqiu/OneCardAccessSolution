@@ -20,7 +20,7 @@ namespace <#=NameSpace#>
 	/// <#=dbhost.DbTable.Remark#>
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: BindableBase
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: NotificationObject
 	{
 		/// <summary>
 		/// 构造函数
@@ -64,7 +64,7 @@ if(column.ColumnName.ToLower()!="deleted"){#>
 }
 <#}#>
 <#+
-public static readonly string TableName="T_CheckReportTemp";
+public static readonly string TableName="T_P_CRTemp_To_Register";
 public static readonly bool IsBuilder= true;
-public static readonly string NameSpace="FengSharp.OneCardAccess.BusinessEntity.RBAC";
+public static readonly string NameSpace="FengSharp.OneCardAccess.BusinessEntity.BasicInfo";
 #>

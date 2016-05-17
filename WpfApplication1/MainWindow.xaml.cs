@@ -21,7 +21,7 @@ namespace WpfApplication1
                 user.IsSuper = i % 2 == 0 ? false : true;
                 user.PassWord = "335698";
                 user.Remark = "备注" + i.ToString();
-                user.UserId = i;
+                //user.UserId = i;
                 user.UserName = "UserName" + i.ToString();
                 user.UserNo = "UserNo" + i.ToString();
                 users.Add(user);

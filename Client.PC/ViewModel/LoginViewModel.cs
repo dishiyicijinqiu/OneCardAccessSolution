@@ -7,6 +7,7 @@ using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Prism.ViewModel;
 using System.Windows.Input;
+using System;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
@@ -110,6 +111,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         #endregion
     }
+
     #region EventsDef
     public class LoginEvent : SenderEvent<LoginEventArgs> { }
     public class LoginEventArgs

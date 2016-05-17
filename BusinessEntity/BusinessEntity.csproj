@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="BasicInfo\P_CRTempEntity.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity_Auto.cs" />
+    <Compile Include="BasicInfo\P_CRTemp_To_RegisterEntity.cs" />
+    <Compile Include="BasicInfo\P_CRTemp_To_RegisterEntity_Auto.cs" />
     <Compile Include="BasicInfo\RegisterEntity.cs" />
     <Compile Include="BasicInfo\RegisterEntity_Auto.cs" />
     <Compile Include="BasicInfo\Register_FileEntity.cs" />

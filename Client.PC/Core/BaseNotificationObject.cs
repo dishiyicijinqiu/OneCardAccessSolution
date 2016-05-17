@@ -18,7 +18,7 @@ namespace FengSharp.OneCardAccess.Core
         public SubscriptionToken MessageBoxEventToken { get; set; }
         public SubscriptionToken CreateViewEventToken { get; set; }
         public SubscriptionToken ChangeDataContextEventToken { get; set; }
-        
+
         public ICommand CloseCommand { get; private set; }
         public ICommand CloseDocumentCommand { get; private set; }
         public BaseNotificationObject()

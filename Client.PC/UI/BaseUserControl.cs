@@ -41,7 +41,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             {
                 var vm = this.DataContext as BaseNotificationObject;
 
-                vm.ChangeDataContextEventToken = DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().Subscribe(OnInterChangeDataContext); 
+                vm.ChangeDataContextEventToken = DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().Subscribe(OnInterChangeDataContext);
                 vm.ExceptionEventToken = DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Subscribe(OnInterException);
                 vm.CloseEventToken = DefaultEventAggregator.Current.GetEvent<CloseEvent>().Subscribe(OnInterClose);
                 vm.MessageBoxEventToken = DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Subscribe(OnInterMessage);

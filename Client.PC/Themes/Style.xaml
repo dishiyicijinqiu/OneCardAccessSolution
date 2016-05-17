@@ -15,7 +15,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Columns.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>

@@ -58,7 +58,7 @@
                             <!--<dxe:TextEdit EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
                             <dxe:CheckEdit 
                                 EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
-                            
+
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">

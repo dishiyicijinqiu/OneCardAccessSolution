@@ -19,12 +19,18 @@
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-             d:DesignHeight="300" d:DesignWidth="300">
+           d:DesignWidth="300"  d:DesignHeight="300"  >
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
+                <Setter Property="Width" Value="546"/>
+                <Setter Property="Height" Value="380"/> 
+                <Setter Property="Title" Value="{x:Static res:Resources.View_P_CRTempView_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
     <ui:BaseUserControl.InputBindings>
@@ -74,7 +80,13 @@
                          TotalSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"
                          GroupSummarySource="{Binding GroupSummary}"
                          GroupSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"-->
+                <!--var cols = System.Windows.Interactivity.Interaction.GetTriggers(this);
+                cols.Add(new System.Windows.Interactivity.EventTrigger("") { });
 
+                var even = new System.Windows.Interactivity.EventTrigger("") { };
+                even.Actions.Add(new System.Windows.Interactivity.InvokeCommandAction()
+                { CommandName = "CloseCommand" }
+                    );-->
                 <!--<dxg:GridControl.Columns>
                     <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" HeaderToolTip="ss" />
                     <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}" Visible="False"/>

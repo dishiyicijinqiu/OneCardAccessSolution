@@ -6,6 +6,7 @@ using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.ViewModel;
+using Microsoft.Practices.Unity;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,8 +17,9 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterViewModel : CrudNotificationObject<RegisterEditMessage, string>, IRegisterEdit
+    public class RegisterViewModel : BaseNotificationObject, IRegisterEdit
     {
+        public event OnEntityViewEdited<string> OnEntityViewEdited;
         #region commands
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
@@ -31,12 +33,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand DeleteRegisterTempCommand { get; private set; }
         public ICommand ViewRegisterFileCommand { get; private set; }
         #endregion
-        public RegisterViewModel(object ParentViewModel, RegisterEditMessage EditMessage)
+        public RegisterViewModel(RegisterEditMessage EditMessage)
         {
-            this.EditMessage = EditMessage;
-            if (this.EditMessage == null)
+            this.Parameter = EditMessage;
+            if (this.Parameter == null)
                 throw new Exception(Properties.Resources.Error_ParameterIsError);
-            this.ParentViewModel = ParentViewModel;
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
             UpLoadRegisterFileCommand = new DelegateCommand(UpLoadRegisterFile);
@@ -49,16 +50,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             DeleteRegisterTempCommand = new DelegateCommand<IList>(DeleteRegisterTemp);
             ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile);
             Entity = SecondRegisterEntity.CreateEntity();
-            switch (this.EditMessage.EntityEditMode)
+            switch (EditMessage.EntityEditMode)
             {
                 case EntityEditMode.Add:
-                    {
-                        var newEntity = SecondRegisterEntity.CreateEntity();
-                        Entity.CopyValueFrom(newEntity);
-                    }
                     break;
                 case EntityEditMode.CopyAdd:
-                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(this.EditMessage.CopyKey);
+                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(EditMessage.CopyKey);
                     Entity = SecondRegisterEntity.CreateEntity();
                     Entity.CopyValueFrom(copyEntity,
                         new List<string>(PCConfig.CreateAndModifyInfoColNames)
@@ -68,13 +65,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     break;
                 case EntityEditMode.Edit:
                     {
-                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(this.EditMessage.Key);
+                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(EditMessage.Key);
                         newEntity.Register_FileEntitys = new ObservableCollection<Register_FileEntity>(newEntity.Register_FileEntitys.OrderBy(t => t.SortNo));
+                        newEntity.P_CRTempEntitys = new ObservableCollection<FirstP_CRTemp_To_RegisterEntity>(newEntity.P_CRTempEntitys.OrderBy(t => t.SortNo));
                         Entity.CopyValueFrom(newEntity);
                     }
                     break;
-                default:
-                    throw new Exception(Properties.Resources.Error_ParameterIsError);
             }
             if (Entity == null)
                 Entity = SecondRegisterEntity.CreateEntity();
@@ -179,18 +175,36 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("style",CollectionViewStyle.CollectionMulSelect),
-                    });
-                var view = ServiceLoader.LoadService<IView>("P_CRTempCollectionView",
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm)
-                });
-                var result = this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
-                if (result == true)
-                {
+                var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(new ParameterOverride("style", CollectionViewStyle.CollectionMulSelect));
+                vm.OnSelectedItems += Vm_OnSelectedItems;
+                var view = ServiceLoader.LoadService<IView>("P_CRTempCollectionView", new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
 
+        private void Vm_OnSelectedItems(List<P_CRTempEntity> SelectItems)
+        {
+            try
+            {
+                if (SelectItems == null)
+                    return;
+                foreach (var item in SelectItems)
+                {
+                    if (Entity.P_CRTempEntitys.FirstOrDefault(t => t.P_CRTempId == item.P_CRTempId) == null)
+                    {
+                        var newitem = new FirstP_CRTemp_To_RegisterEntity();
+                        newitem.CRTempName = item.CRTempName;
+                        newitem.CRTempPath = item.CRTempPath;
+                        newitem.P_CRTempId = item.P_CRTempId;
+                        newitem.RegisterId = this.Entity.RegisterId;
+                        newitem.Remark = string.Empty;
+                        newitem.SortNo = Entity.P_CRTempEntitys.Count;
+                        Entity.P_CRTempEntitys.Add(newitem);
+                    }
                 }
             }
             catch (Exception ex)
@@ -280,12 +294,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public void SaveAndNew()
         {
-            this.EditMessage.IsContinue = true;
+            (this.Parameter as RegisterEditMessage).IsContinue = true;
             this.SaveCore();
         }
         public void Save()
         {
-            this.EditMessage.IsContinue = false;
+            (this.Parameter as RegisterEditMessage).IsContinue = false;
             if (this.SaveCore())
                 this.Close();
         }
@@ -295,14 +309,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                this.EditMessage.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveRegisterEntity(this.Entity);
-                if (this.EditMessage.Key == null || this.EditMessage.Key.Length != 36)
+                var para = this.Parameter as RegisterEditMessage;
+                para.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveRegisterEntity(this.Entity);
+                if (para.Key == null || para.Key.Length != 36)
                 {
                     ShowMessage(Properties.Resources.Error_SaveFiled);
                     return false;
                 }
                 ShowMessage(Properties.Resources.Info_SaveSuccess);
-                EntityEdited();
+                OnEntityViewEdited?.Invoke(this, para);
                 return true;
             }
             catch (Exception ex)

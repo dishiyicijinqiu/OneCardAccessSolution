@@ -390,4 +390,10 @@
   <data name="BarContent_Confirm" xml:space="preserve">
     <value>确定</value>
   </data>
+  <data name="Entity_P_CRTemp_To_RegisterEntity_CRTempName" xml:space="preserve">
+    <value>模板名称</value>
+  </data>
+  <data name="Entity_P_CRTemp_To_RegisterEntity_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
 </root>

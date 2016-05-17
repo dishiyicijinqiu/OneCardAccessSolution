@@ -50,7 +50,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             }
             var vm = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("isReLogin", isReLogin));
             var view = ServiceLoader.LoadService<IView>("LoginView", new ParameterOverride("VM", vm));
-            this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
+            this.CreateView(new CreateViewEventArgs(view, "LoginWindowStyle",
+                WindowStartupLocation: WindowStartupLocation.CenterScreen));
         }
     }
     #region Defs

@@ -36,7 +36,7 @@ namespace <#=NameSpace#>
 }
 <#}#>
 <#+
-public static readonly string TableName="T_Register";
+public static readonly string TableName="T_P_CRTemp_To_Register";
 public static readonly bool IsBuilder= true;
 public static readonly string NameSpace="FengSharp.OneCardAccess.BusinessEntity.BasicInfo";
 #>

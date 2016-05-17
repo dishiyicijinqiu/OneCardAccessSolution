@@ -1,6 +1,9 @@
 ﻿using DevExpress.Xpf.Core;
 using DevExpress.Xpf.Ribbon;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
+using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using Microsoft.Practices.Unity;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -15,6 +18,8 @@ namespace FengSharp.OneCardAccess.Client.PC
         public MainWindow()
         {
             InitializeComponent();
+            var mainview = ServiceLoader.LoadService<IView>("MainView", new ParameterOverride("VM", ServiceLoader.LoadService<IMainView>()));
+            this.AddChild(mainview);
             this.SourceInitialized += MainWindow_SourceInitialized;
             this.Closing += MainWindow_Closing;
         }

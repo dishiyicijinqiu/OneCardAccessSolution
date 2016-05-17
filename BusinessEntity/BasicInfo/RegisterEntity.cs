@@ -57,14 +57,17 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
     {
         public new static SecondRegisterEntity CreateEntity()
         {
-            return new SecondRegisterEntity()
+            var testP_CRTempEntitys = new ObservableCollection<P_CRTempEntity>();
+            var result= new SecondRegisterEntity()
             {
                 StartDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
                 EndDate = System.DateTime.Now.ToString("yyyy-MM-dd"),
                 Creater = string.Empty,
                 LastModifyer = string.Empty,
-                Register_FileEntitys = new ObservableCollection<Register_FileEntity>()
+                Register_FileEntitys = new ObservableCollection<Register_FileEntity>(),
+                P_CRTempEntitys = new ObservableCollection<FirstP_CRTemp_To_RegisterEntity>()
             };
+            return result;
         }
         private ObservableCollection<Register_FileEntity> _Register_FileEntitys;
 
@@ -76,6 +79,17 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
             {
                 _Register_FileEntitys = value;
                 RaisePropertyChanged("Register_FileEntitys");
+            }
+        }
+        private ObservableCollection<FirstP_CRTemp_To_RegisterEntity> _P_CRTempEntitys;
+        [DataMember]
+        public ObservableCollection<FirstP_CRTemp_To_RegisterEntity> P_CRTempEntitys
+        {
+            get { return _P_CRTempEntitys; }
+            set
+            {
+                _P_CRTempEntitys = value;
+                RaisePropertyChanged("P_CRTempEntitys");
             }
         }
     }

@@ -13,30 +13,13 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// </summary>
     public partial class RegisterCollectionView : BaseUserControl, IView
     {
-        //public RegisterCollectionView() : this(CollectionViewStyle.CollectionView)
-        //{
-
-        //}
-        //public RegisterCollectionView(CollectionViewStyle style)
-        //{
-        //    InitializeComponent();
-        //    this.Loaded += (sender, e) =>
-        //    {
-        //        try
-        //        {
-        //            this.DataContext = new RegisterCollectionViewModel(style);
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            ex.HandleException(this);
-        //            InterCloseDocument();
-        //        }
-        //    };
-        //}
-        public RegisterCollectionView(RegisterCollectionViewModel vm)
+        public RegisterCollectionView(RegisterCollectionViewModel VM) : base(VM)
         {
             InitializeComponent();
-            this.DataContext = vm;
+        }
+        public RegisterCollectionView()
+        {
+            InitializeComponent();
         }
     }
 }

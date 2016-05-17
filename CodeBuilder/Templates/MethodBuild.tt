@@ -109,6 +109,6 @@ if(column.ColumnName.ToLower()=="createid"){
 
 <#}#>
 <#+
-public static readonly string TableName="T_Register_File";
+public static readonly string TableName="T_P_CRTemp";
 public static readonly bool IsBuilder= true;
 #>

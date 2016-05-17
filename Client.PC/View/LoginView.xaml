@@ -6,6 +6,7 @@
             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel" 
             xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
     xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors" 
@@ -13,7 +14,8 @@
             mc:Ignorable="d"
             Height="160" Width="380"
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI">
-    <dxlc:LayoutControl >
+
+    <dxlc:LayoutControl>
         <dxlc:LayoutGroup Orientation="Vertical">
             <dxlc:LayoutGroup Orientation="Horizontal">
                 <dxlc:LayoutGroup Orientation="Horizontal" Width="120">
@@ -46,7 +48,7 @@
                     <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnLogin_Content}" Command="{Binding LoginCommand}" IsDefault="True" />
                 </dxlc:LayoutItem>
                 <dxlc:LayoutItem>
-                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CancelCommand}" IsCancel="True" Click="btnCancel_Click" />
+                    <Button Width="100" Height="25" Content="{x:Static res:Resources.View_LoginView_btnCancel_Content}" Command="{Binding CloseCommand}" IsCancel="True" />
                 </dxlc:LayoutItem>
             </dxlc:LayoutGroup>
         </dxlc:LayoutGroup>

@@ -16,7 +16,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
     {
         FileSystemWatcher watcher = new FileSystemWatcher();
 
-        public event OnEntityViewEdited OnEntityViewEdited;
+        public event OnEntityViewEdited<string> OnEntityViewEdited;
         public ICommand EditTempCommand { get; private set; }
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
@@ -34,12 +34,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             Entity = FirstP_CRTempEntity.CreateEntity();
             switch (EditMessage.EntityEditMode)
             {
-                case EntityEditMode.Add:
-                    {
-                        //var newEntity = FirstP_CRTempEntity.CreateEntity();
-                        //Entity.CopyValueFrom(newEntity);
-                    }
-                    break;
                 case EntityEditMode.CopyAdd:
                     var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.CopyKey);
                     Entity.CopyValueFrom(copyEntity,
@@ -54,8 +48,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         Entity.CopyValueFrom(newEntity);
                     }
                     break;
-                default:
-                    throw new Exception(Properties.Resources.Error_ParameterIsError);
             }
             if (Entity == null)
                 Entity = FirstP_CRTempEntity.CreateEntity();
@@ -115,7 +107,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return false;
                 }
                 ShowMessage(Properties.Resources.Info_SaveSuccess);
-                OnEntityViewEdited(this, para);
+                OnEntityViewEdited?.Invoke(this, para);
                 return true;
             }
             catch (Exception ex)
@@ -124,6 +116,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 return false;
             }
         }
+
         bool ischanged = false;
 
         public void EditTemp()

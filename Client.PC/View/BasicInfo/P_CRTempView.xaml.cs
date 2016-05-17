@@ -10,24 +10,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// </summary>
     public partial class P_CRTempView : BaseUserControl, IView
     {
-        //public P_CRTempView(object ParentViewModel, P_CRTempEditMessage EditMessage)
-        //{
-        //    InitializeComponent();
-        //    this.ParentDataContext = ParentViewModel;
-        //    this.Loaded += (sender, e) =>
-        //    {
-        //        try
-        //        {
-        //            this.DataContext = new P_CRTempViewModel(this.ParentDataContext, EditMessage);
-        //        }
-        //        catch (System.Exception ex)
-        //        {
-        //            ex.HandleException(this);
-        //            InterCloseDocument();
-        //        }
-        //    };
-        //}
         public P_CRTempView(P_CRTempViewModel VM) : base(VM)
+        {
+            InitializeComponent();
+        }
+        public P_CRTempView()
         {
             InitializeComponent();
         }

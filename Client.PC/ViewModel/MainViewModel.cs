@@ -1,47 +1,57 @@
-﻿using FengSharp.OneCardAccess.Common;
+﻿using FengSharp.OneCardAccess.Client.PC.Interfaces;
+using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
+using Microsoft.Practices.Unity;
 using System;
 using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class MainViewModel
+    public class MainViewModel : BaseNotificationObject, IMainView
     {
         public ICommand ShowDocumentCommand { get; private set; }
+        public SubscriptionToken LoginEventSubscriptionToken { get; set; }
+        public SubscriptionToken ShowDocumentEventSubscriptionToken { get; set; }
+        public SubscriptionToken UICloseDocumentEventSubscriptionToken { get; set; }
+        public SubscriptionToken LoginSucessEventSubscriptionToken { get; set; }
         public MainViewModel()
         {
-            DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Subscribe(TryLogin);
+            LoginEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
             ShowDocumentCommand = new DelegateCommand<DocumentInfo>(ShowDocument);
         }
-        #region commandMethods
         public void ShowDocument(DocumentInfo docInfo)
         {
             try
             {
-                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(this, new ShowDocumentEventArgs(docInfo));
+                var vm = ServiceLoader.LoadService<IMainView>();
+                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(
+                    vm.ShowDocumentEventSubscriptionToken,
+                    new ShowDocumentEventArgs(docInfo));
             }
             catch (Exception ex)
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Publish(this, new ExceptionEventArgs(ex));
+                ShowException(ex);
             }
         }
-        #endregion
-        #region Events
-        public void TryLogin(LoginTimeOutEventArgs para)
+        public void OnLogin(SubscriptionToken sender, LoginEventArgs args)
         {
-            if (para == null || para.LoginTimeOutException == null)
+            if (sender != LoginEventSubscriptionToken)
+                return;
+            bool isReLogin = false;
+            switch (args.LoginState)
             {
-                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
+                case LoginState.ReLogin:
+                case LoginState.TimeOutLogin:
+                    isReLogin = true;
+                    break;
             }
-            else
-            {
-                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.TimeOutLogin));
-            }
+            var vm = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("isReLogin", isReLogin));
+            var view = ServiceLoader.LoadService<IView>("LoginView", new ParameterOverride("VM", vm));
+            this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
         }
-        #endregion
     }
     #region Defs
     public class DocumentInfo
@@ -68,9 +78,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
     }
 
-    public class ShowDocumentEvent : BaseSenderEvent<MainViewModel, ShowDocumentEventArgs>
+    public class ShowDocumentEvent : SenderEvent<ShowDocumentEventArgs>
     {
-
     }
     public class ShowDocumentEventArgs : NullEventArgs
     {
@@ -80,7 +89,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         public DocumentInfo DocumentInfo { get; set; }
     }
-    public class UICloseDocumentEvent : CompositePresentationEvent<UICloseDocumentEventArgs>
+    public class UICloseDocumentEvent : SenderEvent<UICloseDocumentEventArgs>
     {
 
     }
@@ -92,6 +101,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             this.PanelContent = panelContent;
         }
         public object PanelContent { get; set; }
+
+        public UICloseDocumentCallBack CallBack { get; set; }
     }
+
+    public delegate void UICloseDocumentCallBack();
+
     #endregion
 }

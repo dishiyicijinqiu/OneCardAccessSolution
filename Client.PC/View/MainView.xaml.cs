@@ -10,6 +10,8 @@ using DevExpress.Xpf.Docking;
 using System.ComponentModel;
 using Microsoft.Practices.Prism.Commands;
 using FengSharp.OneCardAccess.Client.PC.UI;
+using Microsoft.Practices.Unity;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 
 namespace FengSharp.OneCardAccess.Client.PC.View
 {
@@ -19,7 +21,8 @@ namespace FengSharp.OneCardAccess.Client.PC.View
     public partial class MainView : BaseUserControl
     {
         System.Collections.Generic.Dictionary<object, DocumentPanel> docs = new System.Collections.Generic.Dictionary<object, DocumentPanel>();
-        public MainView()
+
+        public MainView() : base(ServiceLoader.LoadService<IMainView>() as BaseNotificationObject)
         {
             InitializeComponent();
             if (!DesignerProperties.GetIsInDesignMode(this))
@@ -30,31 +33,38 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         protected override void Init()
         {
             base.Init();
-            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
-            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Subscribe(OnLoginSuccess);
-            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
-            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Subscribe(OnCloseDocument);
-            this.DataContext = new MainViewModel();
+            var vm = this.DataContext as MainViewModel;
+            vm.ShowDocumentEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Subscribe(OnShowDocument);
+            vm.UICloseDocumentEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Subscribe(OnCloseDocument);
+            vm.LoginSucessEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<NullEvent>().Subscribe(OnLoginSucess);
         }
+
         protected override void UnInit()
         {
             base.UnInit();
-            DefaultEventAggregator.Current.GetEvent<LoginEvent>().Unsubscribe(OnLogin);
-            DefaultEventAggregator.Current.GetEvent<LoginSuccessEvent>().Unsubscribe(OnLoginSuccess);
-            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Unsubscribe(OnShowDocument);
-            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Unsubscribe(OnCloseDocument);
+            var vm = this.DataContext as MainViewModel;
+            DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Unsubscribe(vm.ShowDocumentEventSubscriptionToken);
+            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Unsubscribe(vm.UICloseDocumentEventSubscriptionToken);
+            DefaultEventAggregator.Current.GetEvent<NullEvent>().Unsubscribe(vm.LoginSucessEventSubscriptionToken);
         }
-
-        private void CloseDocument(DocumentPanel panel)
+        bool isfirstlogin = true;
+        private void MainView_Loaded(object sender, RoutedEventArgs e)
         {
-            if (panel != null && panel.Content != null)
+            if (!isfirstlogin)
+                return;
+            if (isfirstlogin)
             {
-                OnCloseDocument(new UICloseDocumentEventArgs(panel.Content));
+                var vm = this.DataContext as MainViewModel;
+                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish
+                    (vm.LoginEventSubscriptionToken, new LoginEventArgs(LoginState.NewLogin));
+                isfirstlogin = false;
             }
         }
-
-        private void OnCloseDocument(UICloseDocumentEventArgs args)
+        public void OnCloseDocument(SubscriptionToken sender, UICloseDocumentEventArgs args)
         {
+            var vm = this.DataContext as MainViewModel;
+            if (sender != vm.UICloseDocumentEventSubscriptionToken)
+                return;
             if (docs.ContainsKey(args.PanelContent))
             {
                 lock (docs)
@@ -64,84 +74,52 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                         var document = docs[args.PanelContent];
                         dockLayoutManager.DockController.RemovePanel(document);
                         docs.Remove(args.PanelContent);
+                        if (args.CallBack != null)
+                            args.CallBack();
                     }
                 }
             }
         }
-        private void OnShowDocument(MainViewModel sender, ShowDocumentEventArgs args)
+        public void OnShowDocument(SubscriptionToken sender, ShowDocumentEventArgs args)
         {
-            if (sender == this.DataContext)
-            {
-                var doc = dockLayoutManager.DockController.AddDocumentPanel(mdiContainer);
-                try
-                {
-                    var docInfo = args.DocumentInfo;
-                    doc.AllowDrag = false;
-                    doc.IsActive = true;
-                    doc.FloatOnDoubleClick = false;
-                    doc.Caption = docInfo.DocumentTitle;
-                    var vm = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType));
-                    var view = ServiceLoader.LoadService<Interfaces.IView>(docInfo.DocumentName,
-                        new Microsoft.Practices.Unity.ResolverOverride[] {
-                            new Microsoft.Practices.Unity.ParameterOverride("vm",vm)
-                        });
-                    doc.Content = view;
-                    doc.CloseCommand = new DelegateCommand<DocumentPanel>(CloseDocument);
-                    docs.Add(doc.Content, doc);
-                }
-                catch (Exception ex)
-                {
-                    dockLayoutManager.DockController.RemovePanel(doc);
-                    throw ex;
-                }
-            }
-        }
-        bool isfirstlogin = true;
-        #region Events
-        private void MainView_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (!isfirstlogin)
+            var vm = this.DataContext as MainViewModel;
+            if (sender != vm.ShowDocumentEventSubscriptionToken)
                 return;
-            if (isfirstlogin)
+            var doc = dockLayoutManager.DockController.AddDocumentPanel(mdiContainer);
+            try
             {
-                DefaultEventAggregator.Current.GetEvent<LoginEvent>().Publish(new LoginEventArgs(LoginState.NewLogin));
-                isfirstlogin = false;
+                var docInfo = args.DocumentInfo;
+                doc.AllowDrag = false;
+                doc.IsActive = true;
+                doc.FloatOnDoubleClick = false;
+                doc.Caption = docInfo.DocumentTitle;
+                var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ResolverOverride[] { });
+                var viewdoc = ServiceLoader.LoadService<Interfaces.IView>(docInfo.DocumentName, new ParameterOverride("vm", vmdoc));
+                //var viewdoc = new BasicInfo.P_CRTempCollectionView(vmdoc as ViewModel.BasicInfo.P_CRTempCollectionViewModel);
+                doc.Content = viewdoc;
+                doc.CloseCommand = new DelegateCommand<DocumentPanel>((panel) =>
+                {
+                    if (panel != null && panel.Content != null)
+                    {
+                        OnCloseDocument(vm.UICloseDocumentEventSubscriptionToken, new UICloseDocumentEventArgs(panel.Content));
+                    }
+                });
+                docs.Add(doc.Content, doc);
+            }
+            catch (Exception ex)
+            {
+                dockLayoutManager.DockController.RemovePanel(doc);
+                throw ex;
             }
         }
-        #endregion
-        #region EventAggregator Events
-        private void OnLoginSuccess(NullEventArgs args)
+        private void OnLoginSucess(SubscriptionToken sender, NullEventArgs args)
         {
+            var vm = this.DataContext as MainViewModel;
+            if (sender != vm.LoginSucessEventSubscriptionToken)
+                return;
             var mainwindow = Window.GetWindow(this);
             mainwindow.ShowInTaskbar = true;
             mainwindow.Opacity = 100;
         }
-        public void OnLogin(LoginEventArgs args)
-        {
-            var window = new UI.BaseWindow();
-            window.Title = Properties.Resources.View_LoginView_Title;
-            window.Style = FindResource("LoginWindowStyle") as Style;
-            bool isReLogin = false;
-            switch (args.LoginState)
-            {
-                case LoginState.NewLogin:
-                    window.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-                    isReLogin = false;
-                    break;
-                case LoginState.ReLogin:
-                    isReLogin = true;
-                    break;
-                case LoginState.TimeOutLogin:
-                    isReLogin = true;
-                    break;
-                default:
-                    break;
-            }
-            window.ShowInTaskbar = true;
-            window.Content = new LoginView(isReLogin);
-            window.Owner = Window.GetWindow(this);
-            window.ShowDialog();
-        }
-        #endregion
     }
 }

@@ -122,9 +122,12 @@
     <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
+    <Compile Include="Interfaces\ILoginView.cs" />
+    <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Interfaces\IView.cs" />
+    <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -156,8 +159,6 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
-    <Compile Include="ViewModel\BasicInfo\RegisterViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <ApplicationDefinition Include="App.xaml">
@@ -175,12 +176,6 @@
     </Compile>
     <Compile Include="View\BasicInfo\P_CRTempView.xaml.cs">
       <DependentUpon>P_CRTempView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterCollectionView.xaml.cs">
-      <DependentUpon>RegisterCollectionView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\BasicInfo\RegisterView.xaml.cs">
-      <DependentUpon>RegisterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
@@ -226,14 +221,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\BasicInfo\P_CRTempView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\BasicInfo\RegisterView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -422,6 +409,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ReportTool\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\apply_16x16.png" />
+    <Resource Include="Resources\Bars\apply_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

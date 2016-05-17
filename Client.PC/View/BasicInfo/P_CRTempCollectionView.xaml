@@ -39,7 +39,7 @@
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_P_CRTempView_Title}">
-                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1">
+                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1" IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionViewVisibleConverter}}">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
@@ -47,7 +47,10 @@
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseDocumentCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barConfirm}" 
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
+                                               IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionSelectVisibleConverter}}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseWindowCommand}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
@@ -59,8 +62,13 @@
                              ItemsSource="{Binding Items}"
                              core:MouseDoubleClick.Command="{Binding EditCommand}"
                              core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                             core:MouseDoubleClick.HitPosition="InRow"
+                             core:MouseDoubleClick.HitPosition="InRow" SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
                              >
+
+                <!--MultiSelect-->
+                <dxg:GridControl.View>
+                    <dxg:TableView  />
+                </dxg:GridControl.View>
 
                 <!--TotalSummarySource="{Binding TotalSummary}"
                          TotalSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"

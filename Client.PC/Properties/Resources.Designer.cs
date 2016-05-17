@@ -88,6 +88,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 确定 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Confirm {
+            get {
+                return ResourceManager.GetString("BarContent_Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 复制新增 的本地化字符串。
         /// </summary>
         public static string BarContent_CopyAdd {

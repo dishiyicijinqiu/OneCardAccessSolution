@@ -8,6 +8,9 @@ using System.Windows.Threading;
 
 namespace FengSharp.OneCardAccess.Core
 {
+    public class SenderEvent<Args> : BaseSenderEvent<SubscriptionToken, Args>
+    {
+    }
     public class BaseSenderEvent<Sender, Args> : EventBase
     {
         private ISenderDispatcherFacade uiDispatcher;

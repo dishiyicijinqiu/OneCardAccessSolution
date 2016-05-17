@@ -12,27 +12,27 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempViewModel : CrudNotificationObject<P_CRTempEditMessage, string>, IP_CRTempEdit
+    public class P_CRTempViewModel : BaseNotificationObject, IP_CRTempEdit
     {
         FileSystemWatcher watcher = new FileSystemWatcher();
+
+        public event OnEntityViewEdited OnEntityViewEdited;
         public ICommand EditTempCommand { get; private set; }
         public ICommand SaveAndNewCommand { get; private set; }
         public ICommand SaveCommand { get; private set; }
-        public P_CRTempViewModel(object ParentViewModel, P_CRTempEditMessage EditMessage)
+        public P_CRTempViewModel(P_CRTempEditMessage EditMessage)
         {
-            this.EditMessage = EditMessage;
-            if (this.EditMessage == null)
+            this.Parameter = EditMessage;
+            if (this.Parameter == null)
                 throw new Exception(Properties.Resources.Error_ParameterIsError);
-            this.ParentViewModel = ParentViewModel;
             watcher.Path = PCConfig.TempDir;
             watcher.Changed -= Watcher_Changed;
             watcher.Changed += Watcher_Changed;
             SaveAndNewCommand = new DelegateCommand(SaveAndNew);
             SaveCommand = new DelegateCommand(Save);
             EditTempCommand = new DelegateCommand(EditTemp);
-
             Entity = FirstP_CRTempEntity.CreateEntity();
-            switch (this.EditMessage.EntityEditMode)
+            switch (EditMessage.EntityEditMode)
             {
                 case EntityEditMode.Add:
                     {
@@ -41,7 +41,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     }
                     break;
                 case EntityEditMode.CopyAdd:
-                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(this.EditMessage.CopyKey);
+                    var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.CopyKey);
                     Entity.CopyValueFrom(copyEntity,
                         new List<string>(PCConfig.CreateAndModifyInfoColNames)
                     {
@@ -50,7 +50,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     break;
                 case EntityEditMode.Edit:
                     {
-                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(this.EditMessage.Key);
+                        var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.Key);
                         Entity.CopyValueFrom(newEntity);
                     }
                     break;
@@ -94,12 +94,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         #region methods
         public void SaveAndNew()
         {
-            this.EditMessage.IsContinue = true;
+            (this.Parameter as P_CRTempEditMessage).IsContinue = true;
             this.SaveCore();
         }
         public void Save()
         {
-            this.EditMessage.IsContinue = false;
+            (this.Parameter as P_CRTempEditMessage).IsContinue = false;
             if (this.SaveCore())
                 this.Close();
         }
@@ -107,14 +107,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                this.EditMessage.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveP_CRTempEntity(this.Entity);
-                if (this.EditMessage.Key == null || this.EditMessage.Key.Length != 36)
+                var para = this.Parameter as P_CRTempEditMessage;
+                para.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveP_CRTempEntity(this.Entity);
+                if (para.Key == null || para.Key.Length != 36)
                 {
                     ShowMessage(Properties.Resources.Error_SaveFiled);
                     return false;
                 }
                 ShowMessage(Properties.Resources.Info_SaveSuccess);
-                EntityEdited();
+                OnEntityViewEdited(this, para);
                 return true;
             }
             catch (Exception ex)
@@ -124,6 +125,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
         }
         bool ischanged = false;
+
         public void EditTemp()
         {
             try

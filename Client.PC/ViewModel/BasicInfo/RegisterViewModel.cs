@@ -179,10 +179,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                var selectview = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("style",CollectionViewStyle.CollectionMulSelect)
+                var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("style",CollectionViewStyle.CollectionMulSelect),
+                    });
+                var view = ServiceLoader.LoadService<IView>("P_CRTempCollectionView",
+                    new Microsoft.Practices.Unity.ResolverOverride[] {
+                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm)
                 });
-                this.CreateView(new CreateViewEventArgs(null, string.Empty));
+                var result = this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
+                if (result == true)
+                {
+
+                }
             }
             catch (Exception ex)
             {

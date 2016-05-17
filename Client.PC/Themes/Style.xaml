@@ -15,7 +15,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Columns.xaml"/>
     </ResourceDictionary.MergedDictionaries>
-    
+
     <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
         <Setter Property="WindowStyle" Value="None"/>
         <Setter Property="ResizeMode" Value="NoResize"/>
@@ -70,6 +70,12 @@
         <Setter Property="Command" Value="{Binding SaveCommand}"/>
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/save_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/save_32x32.png"/>
+    </Style>
+    <Style TargetType="dxb:BarButtonItem" x:Key="barConfirm">
+        <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Confirm}"/>
+        <Setter Property="Command" Value="{Binding ConfirmCommand}"/>
+        <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/apply_16x16.png"/>
+        <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/apply_32x32.png"/>
     </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barSaveAndNew">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_SaveAndNew}"/>

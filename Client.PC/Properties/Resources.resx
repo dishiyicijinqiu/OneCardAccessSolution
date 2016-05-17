@@ -387,4 +387,7 @@
   <data name="Info_UploadSuccess" xml:space="preserve">
     <value>上传成功</value>
   </data>
+  <data name="BarContent_Confirm" xml:space="preserve">
+    <value>确定</value>
+  </data>
 </root>

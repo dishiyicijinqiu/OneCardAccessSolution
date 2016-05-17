@@ -20,6 +20,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
+        public RegisterCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
         public RegisterCollectionViewModel(CollectionViewStyle style = CollectionViewStyle.CollectionView)
         {
             this.CollectionViewStyle = style;

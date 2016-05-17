@@ -1,7 +1,9 @@
 ﻿using DevExpress.Xpf.Core;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Client.PC.ViewModel;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
+using Microsoft.Practices.Prism.Events;
 using System;
 using System.ComponentModel;
 using System.Windows;
@@ -12,136 +14,154 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
     /// <summary>
     /// BaseUserControl.xaml 的交互逻辑
     /// </summary>
-    public partial class BaseUserControl : UserControl
+    public partial class BaseUserControl : UserControl, IView
     {
-        public object ParentDataContext { get; set; }
-        public object Parameter { get; set; }
         public BaseUserControl()
         {
+
+        }
+        public BaseUserControl(BaseNotificationObject VM)
+        {
+            this.DataContext = VM;
+            var win = Window.GetWindow(this);
+            if (win != null)
+            {
+                win.Closed += Win_Closed;
+            }
             Init();
         }
 
+        private void Win_Closed(object sender, EventArgs e)
+        {
+            UnInit();
+        }
         protected virtual void Init()
         {
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Subscribe(OnException);
-                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Subscribe(OnClose);
-                DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Subscribe(OnCloseDocument);
-                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Subscribe(OnMessage);
-                DefaultEventAggregator.Current.GetEvent<ChangeDataContextFromParentEvent<object>>().Subscribe(OnParentChangeDataContext);
-                DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Subscribe(OnCloseFromParentEvent);
-                DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Subscribe(OnCloseDocumentFromParentEvent);
+                var vm = this.DataContext as BaseNotificationObject;
 
-                //DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object, CreateViewEventArgs<P_CRTempEditMessage, string>, P_CRTempEditMessage, string>>().Subscribe(OnCreateP_CRTempView);
-                DefaultEventAggregator.Current.GetEvent<CreateViewEvent<object>>().Subscribe(OnCreateView);
+                vm.ChangeDataContextEventToken = DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().Subscribe(OnInterChangeDataContext);
+                vm.ExceptionEventToken = DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Subscribe(OnInterException);
+                vm.CloseEventToken = DefaultEventAggregator.Current.GetEvent<CloseEvent>().Subscribe(OnInterClose);
+                vm.MessageBoxEventToken = DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Subscribe(OnInterMessage);
+                vm.CreateViewEventToken = DefaultEventAggregator.Current.GetEvent<CreateViewEvent>().Subscribe(OnInterCreateView);
             }
         }
 
-        private void OnCreateView(object sender, CreateViewEventArgs obj)
+        private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
-            if (sender == this.DataContext)
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.CloseEventToken)
             {
-                var window = new BaseRibbonWindow();
-                window.Title = obj.Title;
-                if (obj.ViewStyle == ViewStyle.Dialog)
-                    window.Style = FindResource("DialogWindowStyle") as Style;
-                window.Content = obj.View;
-                window.Owner = Window.GetWindow(this);
-                window.ShowDialog();
+                OnChangeDataContext(sender, args);
             }
+        }
+        protected virtual void OnChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
+        {
+            this.DataContext = args.NewDataContext;
         }
 
         protected virtual void UnInit()
         {
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent<object>>().Unsubscribe(OnException);
-                DefaultEventAggregator.Current.GetEvent<CloseEvent<object>>().Unsubscribe(OnClose);
-                DefaultEventAggregator.Current.GetEvent<CloseDocumentEvent<object>>().Unsubscribe(OnCloseDocument);
-                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent<object>>().Unsubscribe(OnMessage);
-                DefaultEventAggregator.Current.GetEvent<ChangeDataContextFromParentEvent<object>>().Unsubscribe(OnParentChangeDataContext);
-                DefaultEventAggregator.Current.GetEvent<CloseFromParentEvent<object>>().Unsubscribe(OnCloseFromParentEvent);
-                DefaultEventAggregator.Current.GetEvent<CloseDocumentFromParentEvent<object>>().Unsubscribe(OnCloseDocumentFromParentEvent);
+                var vm = this.DataContext as BaseNotificationObject;
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Unsubscribe(vm.ExceptionEventToken);
+                DefaultEventAggregator.Current.GetEvent<CloseEvent>().Unsubscribe(vm.CloseEventToken);
+                DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Unsubscribe(vm.MessageBoxEventToken);
+                DefaultEventAggregator.Current.GetEvent<CreateViewEvent>().Unsubscribe(vm.CreateViewEventToken);
             }
         }
-
-        private void OnCloseDocumentFromParentEvent(object sender, NullEventArgs args)
+        private void OnInterException(SubscriptionToken sender, ExceptionEventArgs args)
         {
-            if (sender == null) return;
-            if (sender == this.ParentDataContext)
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.ExceptionEventToken)
             {
-                InterCloseDocument();
+                OnException(sender, args);
             }
         }
-
-        private void OnCloseFromParentEvent(object sender, NullEventArgs args)
+        protected virtual void OnException(SubscriptionToken sender, ExceptionEventArgs args)
         {
-            if (sender == null) return;
-            if (sender == this.ParentDataContext)
+            args.Exception.HandleException(this);
+        }
+        private void OnInterClose(SubscriptionToken sender, CloseEventArgs args)
+        {
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.CloseEventToken)
             {
-                InterClose();
+                OnClose(sender, args);
             }
         }
-        private void OnParentChangeDataContext(object sender, ChangeDataContextFromParentEventArgs args)
+        protected virtual void OnClose(SubscriptionToken sender, CloseEventArgs args)
         {
-            if (sender == null) return;
-            if (sender == this.ParentDataContext)
+            var vm = this.DataContext as BaseNotificationObject;
+            switch (args.CloseStyle)
             {
-                this.DataContext = args.NewDataContext;
+                case CloseStyle.NullClose:
+                    Window.GetWindow(this).Close();
+                    break;
+                case CloseStyle.CancelClose:
+                    {
+                        var window = Window.GetWindow(this);
+                        window.DialogResult = false;
+                        window.Close();
+                    }
+                    break;
+                case CloseStyle.OKClose:
+                    {
+                        var window = Window.GetWindow(this);
+                        window.DialogResult = true;
+                        window.Close();
+                    }
+                    break;
+                case CloseStyle.DocumentClose:
+                    {
+                        var uicloseargs = new UICloseDocumentEventArgs(this);
+                        uicloseargs.CallBack = this.UnInit;
+                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(vm.CloseEventToken, new UICloseDocumentEventArgs(this));
+                    }
+                    break;
+                default:
+                    break;
             }
         }
-
-        protected virtual void OnMessage(object sender, MessageBoxEventArgs args)
+        private void OnInterMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {
-            if (sender == null) return;
-            if (sender == this.DataContext)
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.MessageBoxEventToken)
             {
-                var diaresult = DXMessageBox.Show(this, args.MessageText,
-                    args.Caption ?? Properties.Resources.Info_Title,
-                    (MessageBoxButton)args.MsgButton, (MessageBoxImage)args.MsgImage
-                    );
-                if (args.CallBack != null)
-                    args.CallBack((MsgResult)diaresult, args.Paras);
-                //args.CallBack?.Invoke((MsgResult)diaresult, args.Paras);
+                OnMessage(sender, args);
             }
         }
-
-        protected virtual void OnClose(object sender, NullEventArgs args)
+        protected virtual void OnMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {
-            if (sender == null) return;
-            if (sender == this.DataContext)
+            var diaresult = DXMessageBox.Show(this, args.MessageText,
+                args.Caption ?? Properties.Resources.Info_Title,
+                (MessageBoxButton)args.MsgButton, (MessageBoxImage)args.MsgImage
+                );
+            if (args.CallBack != null)
+                args.CallBack((MsgResult)diaresult, args.Paras);
+        }
+        private void OnInterCreateView(SubscriptionToken sender, CreateViewEventArgs args)
+        {
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.CreateViewEventToken)
             {
-                InterClose();
+                OnCreateView(sender, args);
             }
         }
-        protected void InterClose()
+        protected virtual void OnCreateView(SubscriptionToken sender, CreateViewEventArgs args)
         {
-            Window.GetWindow(this).Close();
-            UnInit();
+            var window = new BaseRibbonWindow();
+            window.Title = args.Title;
+            if (args.ViewStyle == ViewStyle.Dialog)
+                window.Style = FindResource("DialogWindowStyle") as Style;
+            window.Content = args.View;
+            window.Owner = Window.GetWindow(this);
+            var diaresult = window.ShowDialog();
+            if (args.CallBack != null)
+                args.CallBack(diaresult);
         }
-
-        protected virtual void OnCloseDocument(object sender, NullEventArgs args)
-        {
-            if (sender == null) return;
-            if (sender == this.DataContext)
-            {
-                InterCloseDocument();
-            }
-        }
-        protected void InterCloseDocument()
-        {
-            DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(new UICloseDocumentEventArgs(this));
-            UnInit();
-        }
-        protected virtual void OnException(object sender, ExceptionEventArgs args)
-        {
-            if (sender == null) return;
-            if (sender == this.DataContext)
-            {
-                args.Exception.HandleException(this);
-            }
-        }
-
     }
 }

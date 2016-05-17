@@ -1,27 +1,28 @@
-﻿using DevExpress.Mvvm;
-using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+﻿using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Common;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.ViewModel;
+using Microsoft.Practices.Unity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using System.Collections;
-using FengSharp.OneCardAccess.Client.PC.Interfaces;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempCollectionViewModel : CrudNotificationObject<P_CRTempEditMessage, string>, IP_CRTempCollectionView, IP_CRTempCollectionSelect
+    public class P_CRTempCollectionViewModel : BaseNotificationObject, IP_CRTempCollectionView, IP_CRTempCollectionSelect
     {
         public ICommand DeleteCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
+        public ICommand CloseWindowCommand { get; private set; }
+        public ICommand ConfirmCommand { get; private set; }
+
         public P_CRTempCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
         public P_CRTempCollectionViewModel(CollectionViewStyle style)
         {
@@ -30,59 +31,75 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             CopyAddCommand = new DelegateCommand<FirstP_CRTempEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstP_CRTempEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
+            CloseWindowCommand = new DelegateCommand(CloseWindow);
+            ConfirmCommand = new DelegateCommand<IList>(Confirm);
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntitys().OrderBy(t => t.CateNo).ThenBy(m => m.CRTempName);
             Items = new ObservableCollection<FirstP_CRTempEntity>(list);
         }
 
-        protected override void OnEntityViewEdited(object sender, EntityEditedEventArgs<P_CRTempEditMessage, string> args)
+        private void OnEntityViewEdited(IViewModel vm, P_CRTempEditMessage EditMessage)
         {
             try
             {
-                if (sender == null || sender != this)
-                    return;
-                switch (args.EditMessage.EntityEditMode)
+                switch (EditMessage.EntityEditMode)
                 {
                     case EntityEditMode.Add:
                         {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.Key);
                             Items.Add(newItem);
-                            if (args.EditMessage.IsContinue)
-                                ChangeChildViewDataContext(new P_CRTempViewModel(this, new P_CRTempEditMessage()));
+                            if (EditMessage.IsContinue)
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                Publish(vm.ChangeDataContextEventToken,
+                                    new ChangeDataContextEventArgs(
+                                        new P_CRTempViewModel(new P_CRTempEditMessage())
+                                    )
+                                );
                         }
                         break;
                     case EntityEditMode.CopyAdd:
                         {
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.Key);
                             Items.Add(newItem);
-                            if (args.EditMessage.IsContinue)
+                            if (EditMessage.IsContinue)
                             {
-                                var copyItem = Items.FirstOrDefault(t => t.P_CRTempId == args.EditMessage.CopyKey);
+                                var copyItem = Items.FirstOrDefault(t => t.P_CRTempId == EditMessage.CopyKey);
                                 SelectedEntity = copyItem;
-                                ChangeChildViewDataContext(new P_CRTempViewModel(this, new P_CRTempEditMessage(_CopyKey: copyItem.P_CRTempId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                Publish(vm.ChangeDataContextEventToken,
+                                    new ChangeDataContextEventArgs(
+                                        new P_CRTempViewModel(new P_CRTempEditMessage(_CopyKey: copyItem.P_CRTempId, _EntityEditMode: EntityEditMode.CopyAdd))
+                                    )
+                                );
                             }
                         }
                         break;
                     case EntityEditMode.Edit:
                         {
-                            var oldItem = Items.FirstOrDefault(t => t.P_CRTempId == args.EditMessage.Key);
+                            var oldItem = Items.FirstOrDefault(t => t.P_CRTempId == EditMessage.Key);
                             if (oldItem == null) return;
-                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(args.EditMessage.Key);
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.Key);
                             var itemIndex = Items.IndexOf(oldItem);
                             Items[itemIndex] = newItem;
-                            if (args.EditMessage.IsContinue)
+                            if (EditMessage.IsContinue)
                             {
                                 int nextIndex = itemIndex + 1;
                                 if (Items.Count > nextIndex)
                                 {
                                     var nextItem = Items[nextIndex];
                                     SelectedEntity = nextItem;
-                                    ChangeChildViewDataContext(new P_CRTempViewModel(this, new P_CRTempEditMessage(nextItem.P_CRTempId, EntityEditMode.Edit)));
+                                    DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                    Publish(vm.ChangeDataContextEventToken,
+                                        new ChangeDataContextEventArgs(
+                                            new P_CRTempViewModel(new P_CRTempEditMessage(nextItem.P_CRTempId, EntityEditMode.Edit))
+                                        )
+                                    );
                                 }
                                 else
                                 {
                                     SelectedEntity = Items[itemIndex];
                                     ShowMessage(Properties.Resources.Info_NoNext);
-                                    CloseChild();
+                                    DefaultEventAggregator.Current.GetEvent<CloseEvent>().
+                                        Publish(vm.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
                                 }
                             }
                         }
@@ -105,6 +122,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
                     new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new P_CRTempEditMessage())
                 });
+                vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IView>("P_CRTempView",
                     new Microsoft.Practices.Unity.ResolverOverride[] {
                     new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
@@ -151,14 +169,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 }
                 var vm = ServiceLoader.LoadService<IP_CRTempEdit>(
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("ParentViewModel",this),
-                    new Microsoft.Practices.Unity.ParameterOverride("EditMessage",new P_CRTempEditMessage(entity.P_CRTempId, EntityEditMode.Edit))
-                });
-                var view = ServiceLoader.LoadService<IView>("P_CRTempView",
-                    new Microsoft.Practices.Unity.ResolverOverride[] {
-                    new Microsoft.Practices.Unity.ParameterOverride("vm",vm),
-                });
+                    new ParameterOverride("EditMessage", new P_CRTempEditMessage(entity.P_CRTempId, EntityEditMode.Edit))
+               );
+                var view = ServiceLoader.LoadService<IView>("P_CRTempView", new ParameterOverride("VM", vm));
+                //var view = new View.BasicInfo.P_CRTempView(vm as P_CRTempViewModel);
+
                 this.CreateView(new CreateViewEventArgs(view, Properties.Resources.View_P_CRTempView_Title));
             }
             catch (Exception ex)
@@ -185,6 +200,38 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
+        private void Confirm(IList entitys)
+        {
+            try
+            {
+                if (entitys.Count <= 0)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                SelectItems = entitys.Cast<P_CRTempEntity>().ToList();
+                this.CloseWindow();
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void CloseWindow()
+        {
+            switch (CollectionViewStyle)
+            {
+                case CollectionViewStyle.CollectionView:
+                    this.CloseDocument();
+                    break;
+                case CollectionViewStyle.CollectionOneSelect:
+                case CollectionViewStyle.CollectionMulSelect:
+                    this.Close();
+                    break;
+                default:
+                    break;
+            }
+        }
         #region propertys
         public ObservableCollection<FirstP_CRTempEntity> Items { get; private set; }
 
@@ -209,6 +256,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 RaisePropertyChanged("CollectionViewStyle");
             }
         }
+        public List<P_CRTempEntity> SelectItems { get; set; }
         #endregion
     }
     #region message

@@ -5,14 +5,13 @@ using System.Globalization;
 
 namespace FengSharp.OneCardAccess.Core
 {
-    public class CreateViewEvent<Sender> : BaseSenderEvent<Sender, CreateViewEventArgs>
+    public class CreateViewEvent : SenderEvent<CreateViewEventArgs>
     {
 
     }
     public class CreateViewEventArgs : NullEventArgs
     {
-        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Title,
-            ViewStyle ViewStyle = FengSharp.OneCardAccess.Core.ViewStyle.Dialog)
+        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Title = null, ViewStyle ViewStyle = Core.ViewStyle.Dialog)
         {
             this.View = View;
             this.Title = Title;
@@ -21,24 +20,14 @@ namespace FengSharp.OneCardAccess.Core
         public Client.PC.Interfaces.IView View { get; set; }
         public string Title { get; set; }
         public ViewStyle ViewStyle { get; set; }
+        public CreateViewCallBack CallBack { get; set; }
     }
+
+    public delegate void CreateViewCallBack(bool? result);
     public enum ViewStyle
     {
         Dialog
     }
-
-    //public class CreateViewEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : CreateViewEventArgs<Msg, Key> where Msg : EditMessage<Key>
-    //{
-
-    //}
-    //public class CreateViewEventArgs<T, Key> : NullEventArgs where T : EditMessage<Key>
-    //{
-    //    public CreateViewEventArgs(T EditMessage)
-    //    {
-    //        this.EditMessage = EditMessage;
-    //    }
-    //    public T EditMessage { get; set; }
-    //}
 
     public class EntityEditedEvent<Sender, Args, Msg, Key> : BaseSenderEvent<Sender, Args> where Args : EntityEditedEventArgs<Msg, Key> where Msg : EditMessage<Key>
     {
@@ -65,7 +54,7 @@ namespace FengSharp.OneCardAccess.Core
         }
         public LoginTimeOutException LoginTimeOutException { get; set; }
     }
-    public class ExceptionEvent<Sender> : BaseSenderEvent<Sender, ExceptionEventArgs> { }
+    public class ExceptionEvent : SenderEvent<ExceptionEventArgs> { }
     public class ExceptionEventArgs : NullEventArgs
     {
         public ExceptionEventArgs(Exception exception)
@@ -74,8 +63,22 @@ namespace FengSharp.OneCardAccess.Core
         }
         public Exception Exception { get; set; }
     }
-    public class CloseEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
-    public class CloseFromParentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
+    public class CloseEvent : SenderEvent<CloseEventArgs> { }
+    public class CloseEventArgs : NullEventArgs
+    {
+        public CloseEventArgs(CloseStyle CloseStyle)
+        {
+            this.CloseStyle = CloseStyle;
+        }
+        public CloseStyle CloseStyle { get; set; }
+    }
+    public enum CloseStyle
+    {
+        NullClose,
+        CancelClose,
+        OKClose,
+        DocumentClose
+    }
     public class ChangeDataContextFromParentEvent<Sender> : BaseSenderEvent<Sender, ChangeDataContextFromParentEventArgs> { }
     public class ChangeDataContextFromParentEventArgs : NullEventArgs
     {
@@ -86,10 +89,19 @@ namespace FengSharp.OneCardAccess.Core
         public object NewDataContext { get; set; }
     }
 
-    public class CloseDocumentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
-    public class CloseDocumentFromParentEvent<Sender> : BaseSenderEvent<Sender, NullEventArgs> { }
-    public class MessageBoxEvent : CompositePresentationEvent<MessageBoxEventArgs> { }
-    public class MessageBoxEvent<Sender> : BaseSenderEvent<Sender, MessageBoxEventArgs> { }
+    public class ChangeDataContextEvent : SenderEvent<ChangeDataContextEventArgs>
+    {
+
+    }
+    public class ChangeDataContextEventArgs : NullEventArgs
+    {
+        public ChangeDataContextEventArgs(BaseNotificationObject NewDataContext)
+        {
+            this.NewDataContext = NewDataContext;
+        }
+        public BaseNotificationObject NewDataContext { get; set; }
+    }
+    public class MessageBoxEvent : SenderEvent<MessageBoxEventArgs> { }
     public class MessageBoxEventArgs : NullEventArgs
     {
         public MessageBoxEventArgs(string messageText, string caption = null,
@@ -205,6 +217,6 @@ namespace FengSharp.OneCardAccess.Core
         Information = 64
     }
     #endregion
-    public class NullEvent : CompositePresentationEvent<NullEventArgs> { }
+    public class NullEvent : SenderEvent<NullEventArgs> { }
     public class NullEventArgs { }
 }

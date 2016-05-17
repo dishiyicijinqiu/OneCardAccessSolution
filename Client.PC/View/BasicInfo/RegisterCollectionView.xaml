@@ -75,7 +75,7 @@
                             <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.SearchPanel}"/>-->
                         </dxg:TableView.ColumnMenuCustomizations>
                     </dxg:TableView>
-                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>

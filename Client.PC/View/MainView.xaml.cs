@@ -18,7 +18,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View
     /// <summary>
     /// MainView.xaml 的交互逻辑
     /// </summary>
-    public partial class MainView : BaseUserControl
+    public partial class MainView : BaseUserControl, IMainView
     {
         System.Collections.Generic.Dictionary<object, DocumentPanel> docs = new System.Collections.Generic.Dictionary<object, DocumentPanel>();
 
@@ -97,9 +97,8 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                 doc.IsActive = true;
                 doc.FloatOnDoubleClick = false;
                 doc.Caption = docInfo.DocumentTitle;
-                var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ResolverOverride[] { });
-                var viewdoc = ServiceLoader.LoadService<Interfaces.IView>(docInfo.DocumentName, new ParameterOverride("vm", vmdoc));
-        
+                var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentVMType), docInfo.DocumentName);
+                var viewdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ParameterOverride("VM", vmdoc));
 
                 doc.Content = viewdoc;
                 doc.CloseCommand = new DelegateCommand<DocumentPanel>((panel) =>

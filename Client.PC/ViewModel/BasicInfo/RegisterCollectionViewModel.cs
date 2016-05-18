@@ -14,13 +14,12 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterCollectionViewModel : BaseNotificationObject, IRegisterCollectionView, IRegisterCollectionSelect
+    public class RegisterCollectionViewModel : BaseNotificationObject, IRegisterCollectionViewModel, IRegisterCollectionSelectViewModel
     {
         public ICommand DeleteCommand { get; private set; }
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
-        public ICommand CloseWindowCommand { get; private set; }
         public ICommand ConfirmCommand { get; private set; }
         public RegisterCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
         public RegisterCollectionViewModel(CollectionViewStyle style)
@@ -30,7 +29,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
             DeleteCommand = new DelegateCommand<IList>(Delete);
-            CloseWindowCommand = new DelegateCommand(CloseWindow);
             ConfirmCommand = new DelegateCommand<IList>(Confirm);
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstRegisterEntitys().OrderBy(t => t.RegisterName).ThenBy(m => m.RegisterNo);
             Items = new ObservableCollection<FirstRegisterEntity>(list);
@@ -116,11 +114,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         {
             try
             {
-                var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                    new ParameterOverride("EditMessage", new RegisterEditMessage())
-               );
+                var vm = ServiceLoader.LoadService<IRegisterViewModel>(new ParameterOverride("EditMessage", new RegisterEditMessage()));
                 vm.OnEntityViewEdited += OnEntityViewEdited;
-                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                var view = ServiceLoader.LoadService<IRegisterView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
@@ -137,11 +133,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                    new ParameterOverride("EditMessage", new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd))
-                );
+                var vm = ServiceLoader.LoadService<IRegisterViewModel>(new ParameterOverride("EditMessage", new RegisterEditMessage(_CopyKey: entity.RegisterId, _EntityEditMode: EntityEditMode.CopyAdd)));
                 vm.OnEntityViewEdited += OnEntityViewEdited;
-                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                var view = ServiceLoader.LoadService<IRegisterView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
@@ -158,11 +152,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                var vm = ServiceLoader.LoadService<IRegisterEdit>(
-                    new ParameterOverride("EditMessage", new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit))
-                );
+                var vm = ServiceLoader.LoadService<IRegisterViewModel>(new ParameterOverride("EditMessage", new RegisterEditMessage(entity.RegisterId, EntityEditMode.Edit)));
                 vm.OnEntityViewEdited += OnEntityViewEdited;
-                var view = ServiceLoader.LoadService<IView>("RegisterView", new ParameterOverride("VM", vm));
+                var view = ServiceLoader.LoadService<IRegisterView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
@@ -199,25 +191,22 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 }
                 SelectItems = entitys.Cast<RegisterEntity>().ToList();
-                this.CloseWindow();
+                this.Close();
             }
             catch (Exception ex)
             {
                 ShowException(ex);
             }
         }
-        private void CloseWindow()
+        public override void Close()
         {
             switch (CollectionViewStyle)
             {
                 case CollectionViewStyle.CollectionView:
-                    this.CloseDocument();
-                    break;
-                case CollectionViewStyle.CollectionOneSelect:
-                case CollectionViewStyle.CollectionMulSelect:
-                    this.Close();
+                    DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.DocumentClose));
                     break;
                 default:
+                    base.Close();
                     break;
             }
         }

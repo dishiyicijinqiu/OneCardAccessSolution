@@ -17,7 +17,7 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class RegisterViewModel : BaseNotificationObject, IRegisterEdit
+    public class RegisterViewModel : BaseNotificationObject, IRegisterViewModel
     {
         public event OnEntityViewEdited<string> OnEntityViewEdited;
         #region commands
@@ -27,11 +27,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand MoveUpRegisterFileCommand { get; private set; }
         public ICommand MoveDownRegisterFileCommand { get; private set; }
         public ICommand DeleteRegisterFileCommand { get; private set; }
+        public ICommand ViewRegisterFileCommand { get; private set; }
         public ICommand AddRegisterTempCommand { get; private set; }
         public ICommand MoveUpRegisterTempCommand { get; private set; }
         public ICommand MoveDownRegisterTempCommand { get; private set; }
         public ICommand DeleteRegisterTempCommand { get; private set; }
-        public ICommand ViewRegisterFileCommand { get; private set; }
+        public ICommand ViewP_CRTempCommand { get; private set; }
         #endregion
         public RegisterViewModel(RegisterEditMessage EditMessage)
         {
@@ -44,11 +45,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             MoveUpRegisterFileCommand = new DelegateCommand<Register_FileEntity>(MoveUpRegisterFile);
             MoveDownRegisterFileCommand = new DelegateCommand<Register_FileEntity>(MoveDownRegisterFile);
             DeleteRegisterFileCommand = new DelegateCommand<IList>(DeleteRegisterFile);
-            AddRegisterTempCommand = new DelegateCommand(AddRegisterTemp);
-            MoveUpRegisterTempCommand = new DelegateCommand<FirstP_CRTempEntity>(MoveUpRegisterTemp);
-            MoveDownRegisterTempCommand = new DelegateCommand<FirstP_CRTempEntity>(MoveDownRegisterTemp);
-            DeleteRegisterTempCommand = new DelegateCommand<IList>(DeleteRegisterTemp);
             ViewRegisterFileCommand = new DelegateCommand<Register_FileEntity>(ViewRegisterFile);
+
+            AddRegisterTempCommand = new DelegateCommand(AddRegisterTemp);
+            MoveUpRegisterTempCommand = new DelegateCommand<FirstP_CRTemp_To_RegisterEntity>(MoveUpRegisterTemp);
+            MoveDownRegisterTempCommand = new DelegateCommand<FirstP_CRTemp_To_RegisterEntity>(MoveDownRegisterTemp);
+            DeleteRegisterTempCommand = new DelegateCommand<IList>(DeleteRegisterTemp);
+            ViewP_CRTempCommand = new DelegateCommand<FirstP_CRTemp_To_RegisterEntity>(ViewP_CRTemp);
+
+
+
             Entity = SecondRegisterEntity.CreateEntity();
             switch (EditMessage.EntityEditMode)
             {
@@ -67,7 +73,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     {
                         var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetSecondRegisterEntityById(EditMessage.Key);
                         newEntity.Register_FileEntitys = new ObservableCollection<Register_FileEntity>(newEntity.Register_FileEntitys.OrderBy(t => t.SortNo));
-                        newEntity.P_CRTempEntitys = new ObservableCollection<FirstP_CRTemp_To_RegisterEntity>(newEntity.P_CRTempEntitys.OrderBy(t => t.SortNo));
+                        newEntity.P_CRTemp_To_RegisterEntitys = new ObservableCollection<FirstP_CRTemp_To_RegisterEntity>(newEntity.P_CRTemp_To_RegisterEntitys.OrderBy(t => t.SortNo));
                         Entity.CopyValueFrom(newEntity);
                     }
                     break;
@@ -75,6 +81,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             if (Entity == null)
                 Entity = SecondRegisterEntity.CreateEntity();
         }
+
         #region propertys
         private SecondRegisterEntity _Entity;
 
@@ -89,22 +96,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #endregion
         #region commandmethods
-        private void ViewRegisterFile(Register_FileEntity fileentity)
-        {
-            try
-            {
-                string filename = TransferHelper.DownloadFile(Transfer_FileType.Register_File.ToString(), fileentity.FilePath);
-                if (!File.Exists(filename))
-                {
-                    throw new Exception(Properties.Resources.Info_FileNotFound);
-                }
-                System.Diagnostics.Process.Start(filename);
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
         private void UpLoadRegisterFile()
         {
             try
@@ -134,77 +125,23 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-
-        private void DeleteRegisterTemp(IList entitys)
+        private void MoveUpRegisterTemp(FirstP_CRTemp_To_RegisterEntity entity)
         {
             try
             {
-
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
-
-        private void MoveDownRegisterTemp(FirstP_CRTempEntity obj)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
-
-        private void MoveUpRegisterTemp(FirstP_CRTempEntity obj)
-        {
-            try
-            {
-
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
-
-        private void AddRegisterTemp()
-        {
-            try
-            {
-                var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelect>(new ParameterOverride("style", CollectionViewStyle.CollectionMulSelect));
-                vm.OnSelectedItems += Vm_OnSelectedItems;
-                var view = ServiceLoader.LoadService<IView>("P_CRTempCollectionView", new ParameterOverride("VM", vm));
-                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
-
-        private void Vm_OnSelectedItems(List<P_CRTempEntity> SelectItems)
-        {
-            try
-            {
-                if (SelectItems == null)
-                    return;
-                foreach (var item in SelectItems)
+                if (entity == null)
                 {
-                    if (Entity.P_CRTempEntitys.FirstOrDefault(t => t.P_CRTempId == item.P_CRTempId) == null)
-                    {
-                        var newitem = new FirstP_CRTemp_To_RegisterEntity();
-                        newitem.CRTempName = item.CRTempName;
-                        newitem.CRTempPath = item.CRTempPath;
-                        newitem.P_CRTempId = item.P_CRTempId;
-                        newitem.RegisterId = this.Entity.RegisterId;
-                        newitem.Remark = string.Empty;
-                        newitem.SortNo = Entity.P_CRTempEntitys.Count;
-                        Entity.P_CRTempEntitys.Add(newitem);
-                    }
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                int oldindex = this.Entity.P_CRTemp_To_RegisterEntitys.IndexOf(entity);
+                int newindex = oldindex - 1;
+                if (newindex < 0)
+                    return;
+                this.Entity.P_CRTemp_To_RegisterEntitys.Move(oldindex, newindex);
+                for (int i = 0; i <= this.Entity.P_CRTemp_To_RegisterEntitys.Count - 1; i++)
+                {
+                    this.Entity.P_CRTemp_To_RegisterEntitys[i].SortNo = i;
                 }
             }
             catch (Exception ex)
@@ -212,8 +149,32 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-
-        private void DeleteRegisterFile(IList entitys)
+        private void MoveDownRegisterTemp(FirstP_CRTemp_To_RegisterEntity entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                int count = this.Entity.P_CRTemp_To_RegisterEntitys.Count;
+                int oldindex = this.Entity.P_CRTemp_To_RegisterEntitys.IndexOf(entity);
+                int newindex = oldindex + 1;
+                if (newindex >= count)
+                    return;
+                this.Entity.P_CRTemp_To_RegisterEntitys.Move(oldindex, newindex);
+                for (int i = 0; i <= this.Entity.P_CRTemp_To_RegisterEntitys.Count - 1; i++)
+                {
+                    this.Entity.P_CRTemp_To_RegisterEntitys[i].SortNo = i;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void DeleteRegisterTemp(IList entitys)
         {
             try
             {
@@ -227,13 +188,28 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 for (int i = entitys.Count - 1; i >= 0; i--)
                 {
-                    this.Entity.Register_FileEntitys.Remove(entitys[i] as Register_FileEntity);
+                    this.Entity.P_CRTemp_To_RegisterEntitys.Remove(entitys[i] as FirstP_CRTemp_To_RegisterEntity);
                 }
-                for (int i = 0; i <= this.Entity.Register_FileEntitys.Count - 1; i++)
+                for (int i = 0; i <= this.Entity.P_CRTemp_To_RegisterEntitys.Count - 1; i++)
                 {
-                    this.Entity.Register_FileEntitys[i].SortNo = i;
+                    this.Entity.P_CRTemp_To_RegisterEntitys[i].SortNo = i;
                 }
-                ShowMessage(Properties.Resources.Info_DeleteSuccess);
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void ViewRegisterFile(Register_FileEntity fileentity)
+        {
+            try
+            {
+                string filename = TransferHelper.DownloadFile(Transfer_FileType.Register_File.ToString(), fileentity.FilePath);
+                if (!File.Exists(filename))
+                {
+                    throw new Exception(Properties.Resources.Info_FileNotFound);
+                }
+                System.Diagnostics.Process.Start(filename);
             }
             catch (Exception ex)
             {
@@ -241,6 +217,76 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
         }
 
+        private void AddRegisterTemp()
+        {
+            try
+            {
+                var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelectViewModel>("IP_CRTempCollectionSelectViewModel",
+                    new ParameterOverride("style", CollectionViewStyle.CollectionMulSelect));
+                vm.OnSelectedItems += Vm_OnSelectedItems;
+                var view = ServiceLoader.LoadService<IP_CRTempCollectionView>(new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void Vm_OnSelectedItems(List<P_CRTempEntity> SelectItems)
+        {
+            try
+            {
+                if (SelectItems == null)
+                    return;
+                foreach (var item in SelectItems)
+                {
+                    if (Entity.P_CRTemp_To_RegisterEntitys.FirstOrDefault(t => t.P_CRTempId == item.P_CRTempId) == null)
+                    {
+                        var newitem = new FirstP_CRTemp_To_RegisterEntity();
+                        newitem.CRTempName = item.CRTempName;
+                        newitem.CRTempPath = item.CRTempPath;
+                        newitem.P_CRTempId = item.P_CRTempId;
+                        newitem.RegisterId = this.Entity.RegisterId;
+                        newitem.Remark = string.Empty;
+                        Entity.P_CRTemp_To_RegisterEntitys.Add(newitem);
+                    }
+                }
+                for (int i = 0; i < Entity.P_CRTemp_To_RegisterEntitys.Count; i++)
+                {
+                    var entity = Entity.P_CRTemp_To_RegisterEntitys[i];
+                    entity.SortNo = i;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void MoveUpRegisterFile(Register_FileEntity entity)
+        {
+            try
+            {
+
+                if (entity == null)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                int oldindex = this.Entity.Register_FileEntitys.IndexOf(entity);
+                int newindex = oldindex - 1;
+                if (newindex < 0)
+                    return;
+                this.Entity.Register_FileEntitys.Move(oldindex, newindex);
+                for (int i = 0; i <= this.Entity.Register_FileEntitys.Count - 1; i++)
+                {
+                    this.Entity.Register_FileEntitys[i].SortNo = i;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
         private void MoveDownRegisterFile(Register_FileEntity entity)
         {
             try
@@ -266,26 +312,39 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-
-        private void MoveUpRegisterFile(Register_FileEntity entity)
+        private void DeleteRegisterFile(IList entitys)
         {
             try
             {
-
-                if (entity == null)
+                if (entitys == null || entitys.Count <= 0)
                 {
                     ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
                     return;
                 }
-                int oldindex = this.Entity.Register_FileEntitys.IndexOf(entity);
-                int newindex = oldindex - 1;
-                if (newindex < 0)
+                var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
+                if (ShowMessage(deleteArgs) != MsgResult.Yes)
                     return;
-                this.Entity.Register_FileEntitys.Move(oldindex, newindex);
+                for (int i = entitys.Count - 1; i >= 0; i--)
+                {
+                    this.Entity.Register_FileEntitys.Remove(entitys[i] as Register_FileEntity);
+                }
                 for (int i = 0; i <= this.Entity.Register_FileEntitys.Count - 1; i++)
                 {
                     this.Entity.Register_FileEntitys[i].SortNo = i;
                 }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        private void ViewP_CRTemp(FirstP_CRTemp_To_RegisterEntity entity)
+        {
+            try
+            {
+                var vm = ServiceLoader.LoadService<IP_CRTempViewModel>(new ParameterOverride("EditMessage", new P_CRTempEditMessage(entity.P_CRTempId, EntityEditMode.See)));
+                var view = ServiceLoader.LoadService<IP_CRTempView>(new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
             catch (Exception ex)
             {

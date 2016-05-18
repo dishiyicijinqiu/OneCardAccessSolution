@@ -56,7 +56,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barConfirm}" 
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
                                                IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionSelectVisibleConverter}}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseWindowCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
@@ -66,12 +66,29 @@
                              ColumnsSource="{StaticResource p_crtempcolumnssource}"
                              ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
                              ItemsSource="{Binding Items}"
-                             core:MouseDoubleClick.Command="{Binding EditCommand}"
-                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                             core:MouseDoubleClick.HitPosition="InRow" SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
+                             SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
                              >
+                <dxg:GridControl.Resources>
+                    <Style TargetType="{x:Type dxg:GridControl}" x:Key="EditCommand">
+                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding EditCommand}"/>
+                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"/>
+                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                    </Style>
+                    <Style TargetType="{x:Type dxg:GridControl}" x:Key="ConfirmCommand">
+                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding ConfirmCommand}"/>
+                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItems}"/>
+                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                    </Style>
+                </dxg:GridControl.Resources>
+                <dxg:GridControl.Style>
+                    <MultiBinding Mode="OneWay" Converter="{local:ViewOrEditConverter}">
+                        <Binding ElementName="grid" />
+                        <Binding Path="CollectionViewStyle" />
+                    </MultiBinding>
+                </dxg:GridControl.Style>
 
-                <!--MultiSelect-->
+                <!--Style="{Binding CollectionViewStyle,Converter={local:ViewOrEditConverter},ConverterParameter={Self.DataControl}}"-->
+            
                 <dxg:GridControl.View>
                     <dxg:TableView  />
                 </dxg:GridControl.View>

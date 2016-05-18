@@ -200,4 +200,23 @@ namespace FengSharp.OneCardAccess.Core
             return Enum.Parse(targetType, parameterString, true);
         }
     }
+
+    public class InverseBoolConverter : MarkupExtension, IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            bool bvalue = (bool)value;
+            return !bvalue;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
 }

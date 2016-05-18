@@ -6,7 +6,10 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.Client.PC.Interfaces
 {
-    public interface ILoginView: IViewModel
+    public interface ILoginViewModel : IViewModel
+    {
+    }
+    public interface ILoginView : IView
     {
     }
 }

@@ -8,7 +8,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// <summary>
     /// P_CRTempView.xaml 的交互逻辑
     /// </summary>
-    public partial class P_CRTempView : BaseUserControl, IView
+    public partial class P_CRTempView : BaseUserControl, IP_CRTempView
     {
         public P_CRTempView(P_CRTempViewModel VM) : base(VM)
         {

@@ -78,10 +78,10 @@ namespace FengSharp.OneCardAccess.Core
     }
     public enum CloseStyle
     {
-        NullClose,
-        CancelClose,
-        OKClose,
-        DocumentClose
+        NullClose = 0,
+        CancelClose = 1,
+        OKClose = 2,
+        DocumentClose = 3
     }
     public class ChangeDataContextFromParentEvent<Sender> : BaseSenderEvent<Sender, ChangeDataContextFromParentEventArgs> { }
     public class ChangeDataContextFromParentEventArgs : NullEventArgs

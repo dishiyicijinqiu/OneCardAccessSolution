@@ -14,6 +14,7 @@
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
     xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
         d:DesignWidth="380" d:DesignHeight="546"
@@ -37,9 +38,9 @@
                 <dxr:RibbonDefaultPageCategory>
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_P_CRTempView_Title}">
                         <dxr:RibbonPageGroup>
-                            <dxb:BarButtonItem Style="{StaticResource barSave}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"
-                                               />
+                            <!--IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionViewVisibleConverter}}">-->
+                            <dxb:BarButtonItem Style="{StaticResource barSave}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
@@ -52,17 +53,20 @@
                     <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
 
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}">
-                            <dxe:TextEdit EditValue="{Binding Entity.CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            <dxe:TextEdit 
+                                IsReadOnly="{Binding IsSee}"
+                                EditValue="{Binding Entity.CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}">
                             <!--<dxe:TextEdit EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
-                            <dxe:CheckEdit 
+                            <dxe:CheckEdit IsReadOnly="{Binding IsSee}"
                                 EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 
                         </dxlc:LayoutItem>
                     </dxlc:LayoutGroup>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.View_P_CRTempView_P_CRTempImage}">
-                        <Button Background="Transparent" Width="100" Height="45" Command="{Binding EditTempCommand}">
+                        <Button  IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"
+                                 Background="Transparent" Width="100" Height="45" Command="{Binding EditTempCommand}">
                             <Button.Content>
                                 <Image Source="pack://application:,,,/FengSharp.OneCardAccess.Client.PC;component/Resources/P_CRTemp_32x32.png" 
                                        Stretch="None" Width="100" Height="45" />
@@ -72,15 +76,19 @@
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CateNo}">
-                        <dxe:TextEdit EditValue="{Binding Entity.CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit IsReadOnly="{Binding IsSee}"
+                            EditValue="{Binding Entity.CateNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}">
-                        <dxe:TextEdit EditValue="{Binding Entity.MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit 
+                            IsReadOnly="{Binding IsSee}"
+                            EditValue="{Binding Entity.MaterIden, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Creater}">
-                        <dxe:TextEdit EditValue="{Binding Entity.Creater}" IsReadOnly="True" />
+                        <dxe:TextEdit 
+                            EditValue="{Binding Entity.Creater}" IsReadOnly="True" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}">
                         <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
@@ -95,7 +103,7 @@
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_Remark}" VerticalAlignment="Stretch">
-                    <dxe:TextEdit EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                    <dxe:TextEdit IsReadOnly="{Binding IsSee}" EditValue="{Binding Entity.Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                                   TextWrapping="Wrap" AcceptsReturn="True"
                                   />
                 </dxlc:LayoutItem>

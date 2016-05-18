@@ -58,9 +58,9 @@
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.View_RegisterView_rpgTemplate_Caption}">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" Command="{Binding AddRegisterTempCommand}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}" Command="{Binding MoveUpRegisterTempCommand}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}" Command="{Binding MoveDownRegisterTempCommand}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteRegisterTempCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveUp}" Command="{Binding MoveUpRegisterTempCommand}" CommandParameter="{Binding ElementName=gridP_CRTemp_To_Register,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barMoveDown}" Command="{Binding MoveDownRegisterTempCommand}" CommandParameter="{Binding ElementName=gridP_CRTemp_To_Register,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteRegisterTempCommand}" CommandParameter="{Binding ElementName=gridP_CRTemp_To_Register,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
@@ -116,7 +116,11 @@
                         </dxlc:LayoutItem>
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
-                            <dxg:GridControl ItemsSource="{Binding Entity.P_CRTempEntitys}">
+                            <dxg:GridControl x:Name="gridP_CRTemp_To_Register" ItemsSource="{Binding Entity.P_CRTemp_To_RegisterEntitys}"
+                                             core:MouseDoubleClick.Command="{Binding ViewP_CRTempCommand}"
+                                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                             core:MouseDoubleClick.HitPosition="InRow"
+                                             >
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_To_RegisterEntity_CRTempName}" Width="200"/>
                                     <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_To_RegisterEntity_Remark}" Width="100" Visible="False"/>

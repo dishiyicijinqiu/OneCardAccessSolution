@@ -18,7 +18,7 @@ namespace FengSharp.OneCardAccess.Client.PC
         public MainWindow()
         {
             InitializeComponent();
-            var mainview = ServiceLoader.LoadService<IView>("MainView", new ParameterOverride("VM", ServiceLoader.LoadService<IMainView>()));
+            var mainview = ServiceLoader.LoadService<IMainView>(new ParameterOverride("VM", ServiceLoader.LoadService<IMainViewModel>()));
             this.AddChild(mainview);
             this.SourceInitialized += MainWindow_SourceInitialized;
             this.Closing += MainWindow_Closing;

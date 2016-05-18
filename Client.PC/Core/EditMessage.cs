@@ -18,6 +18,7 @@ namespace FengSharp.OneCardAccess.Core
         CopyAdd = 1,
         Edit = 2,
         Cate = 3,
+        See = 4
     }
     public enum CollectionViewStyle
     {

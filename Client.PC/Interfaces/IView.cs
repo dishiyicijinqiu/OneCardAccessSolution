@@ -9,4 +9,14 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     public interface IView
     {
     }
+    public interface IWindowView : IView
+    {
+    }
+    public interface IDocumentView : IView
+    {
+    }
+    public interface IWindowAndDocumentView : IWindowView, IDocumentView
+    {
+
+    }
 }

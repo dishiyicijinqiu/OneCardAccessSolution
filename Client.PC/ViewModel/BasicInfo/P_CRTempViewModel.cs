@@ -12,7 +12,7 @@ using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
-    public class P_CRTempViewModel : BaseNotificationObject, IP_CRTempEdit
+    public class P_CRTempViewModel : BaseNotificationObject, IP_CRTempViewModel
     {
         FileSystemWatcher watcher = new FileSystemWatcher();
 
@@ -42,6 +42,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                             "P_CRTempId"
                     });
                     break;
+                case EntityEditMode.See:
                 case EntityEditMode.Edit:
                     {
                         var newEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstP_CRTempEntityById(EditMessage.Key);
@@ -51,7 +52,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
             if (Entity == null)
                 Entity = FirstP_CRTempEntity.CreateEntity();
-
+            IsSee = EditMessage.EntityEditMode == EntityEditMode.See;
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
@@ -60,6 +61,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
 
         #region propertys
+        bool _IsSee = false;
+        public bool IsSee
+        {
+            get { return _IsSee; }
+            set
+            {
+                _IsSee = value;
+                RaisePropertyChanged("IsSee");
+            }
+        }
         private FirstP_CRTempEntity _Entity;
 
         public FirstP_CRTempEntity Entity

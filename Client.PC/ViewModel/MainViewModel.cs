@@ -10,7 +10,7 @@ using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class MainViewModel : BaseNotificationObject, IMainView
+    public class MainViewModel : BaseNotificationObject, IMainViewModel
     {
         public ICommand ShowDocumentCommand { get; private set; }
         public SubscriptionToken LoginEventSubscriptionToken { get; set; }
@@ -26,7 +26,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
-                var vm = ServiceLoader.LoadService<IMainView>();
+                var vm = ServiceLoader.LoadService<IMainViewModel>();
                 DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(
                     vm.ShowDocumentEventSubscriptionToken,
                     new ShowDocumentEventArgs(docInfo));
@@ -48,8 +48,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                     isReLogin = true;
                     break;
             }
-            var vm = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("isReLogin", isReLogin));
-            var view = ServiceLoader.LoadService<IView>("LoginView", new ParameterOverride("VM", vm));
+            var vm = ServiceLoader.LoadService<ILoginViewModel>(new ParameterOverride("isReLogin", isReLogin));
+            var view = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("VM", vm));
             this.CreateView(new CreateViewEventArgs(view, "LoginWindowStyle",
                 WindowStartupLocation: WindowStartupLocation.CenterScreen));
         }
@@ -59,6 +59,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     {
         public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
+        public string DocumentVMType { get; set; }
         public string DocumentName { get; set; }
     }
     [MarkupExtensionReturnType(typeof(System.Windows.PropertyPath))]
@@ -66,6 +67,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     {
         public string DocumentTitle { get; set; }
         public string DocumentType { get; set; }
+        public string DocumentVMType { get; set; }
         public string DocumentName { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -74,6 +76,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 DocumentTitle = this.DocumentTitle,
                 DocumentType = this.DocumentType,
+                DocumentVMType = this.DocumentVMType,
                 DocumentName = this.DocumentName
             };
         }

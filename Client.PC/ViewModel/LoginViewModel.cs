@@ -11,7 +11,7 @@ using System;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel
 {
-    public class LoginViewModel : BaseNotificationObject, ILoginView
+    public class LoginViewModel : BaseNotificationObject, ILoginViewModel
     {
 
         #region Commands
@@ -87,7 +87,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 switch (loginresult)
                 {
                     case BusinessEntity.RBAC.LoginResult.Success:
-                        DefaultEventAggregator.Current.GetEvent<NullEvent>().Publish(ServiceLoader.LoadService<IMainView>().LoginSucessEventSubscriptionToken);
+                        DefaultEventAggregator.Current.GetEvent<NullEvent>().Publish(ServiceLoader.LoadService<IMainViewModel>().LoginSucessEventSubscriptionToken);
                         this.OKClose();
                         break;
                     case BusinessEntity.RBAC.LoginResult.UserNotExist:

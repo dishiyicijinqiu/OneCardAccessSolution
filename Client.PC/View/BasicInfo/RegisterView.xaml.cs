@@ -10,7 +10,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// <summary>
     /// RegisterView.xaml 的交互逻辑
     /// </summary>
-    public partial class RegisterView : BaseUserControl, Interfaces.IView
+    public partial class RegisterView : BaseUserControl, Interfaces.IRegisterView
     {
         public RegisterView(RegisterViewModel VM) : base(VM)
         {

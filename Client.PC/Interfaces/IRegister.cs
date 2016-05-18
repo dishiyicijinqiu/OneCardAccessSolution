@@ -6,14 +6,20 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.Client.PC.Interfaces
 {
-    public interface IRegisterCollectionView : IViewModel
+    public interface IRegisterCollectionView : IView
     {
     }
-    public interface IRegisterEdit : IViewModel
+    public interface IRegisterView : IView
+    {
+    }
+    public interface IRegisterCollectionViewModel : IViewModel
+    {
+    }
+    public interface IRegisterViewModel : IViewModel
     {
         event OnEntityViewEdited<string> OnEntityViewEdited;
     }
-    public interface IRegisterCollectionSelect : IViewModel
+    public interface IRegisterCollectionSelectViewModel : IViewModel
     {
     }
 }

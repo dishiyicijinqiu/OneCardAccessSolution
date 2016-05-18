@@ -60,7 +60,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barConfirm}" 
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
                                                IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionSelectVisibleConverter}}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barClose}" Command="{Binding CloseDocumentCommand}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>

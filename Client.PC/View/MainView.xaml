@@ -39,7 +39,8 @@
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
                     <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}" 
-                                                     DocumentName="RegisterCollectionView"
+                                                     DocumentName="IRegisterCollectionViewModel"
+                                                     DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionViewModel"
                                                      DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
@@ -49,7 +50,8 @@
                                LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
                 <dxb:BarButtonItem.CommandParameter>
                     <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}" 
-                                                     DocumentName="P_CRTempCollectionView"
+                                                     DocumentName="IP_CRTempCollectionViewModel"
+                                                     DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionViewModel"
                                                      DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>

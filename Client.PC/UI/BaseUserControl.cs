@@ -57,26 +57,12 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
                 var vm = this.DataContext as BaseNotificationObject;
-
+                vm.CloseEventToken = DefaultEventAggregator.Current.GetEvent<CloseEvent>().Subscribe(OnInterClose);
                 vm.ChangeDataContextEventToken = DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().Subscribe(OnInterChangeDataContext);
                 vm.ExceptionEventToken = DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Subscribe(OnInterException);
-                vm.CloseEventToken = DefaultEventAggregator.Current.GetEvent<CloseEvent>().Subscribe(OnInterClose);
                 vm.MessageBoxEventToken = DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Subscribe(OnInterMessage);
                 vm.CreateViewEventToken = DefaultEventAggregator.Current.GetEvent<CreateViewEvent>().Subscribe(OnInterCreateView);
             }
-        }
-
-        private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
-        {
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.ChangeDataContextEventToken)
-            {
-                OnChangeDataContext(sender, args);
-            }
-        }
-        protected virtual void OnChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
-        {
-            this.DataContext = args.NewDataContext;
         }
 
         protected virtual void UnInit()
@@ -84,24 +70,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             if (!DesignerProperties.GetIsInDesignMode(this))
             {
                 var vm = this.DataContext as BaseNotificationObject;
-                DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Unsubscribe(vm.ExceptionEventToken);
                 DefaultEventAggregator.Current.GetEvent<CloseEvent>().Unsubscribe(vm.CloseEventToken);
+                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().Unsubscribe(vm.ChangeDataContextEventToken);
+                DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Unsubscribe(vm.ExceptionEventToken);
                 DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Unsubscribe(vm.MessageBoxEventToken);
                 DefaultEventAggregator.Current.GetEvent<CreateViewEvent>().Unsubscribe(vm.CreateViewEventToken);
             }
         }
-        private void OnInterException(SubscriptionToken sender, ExceptionEventArgs args)
-        {
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.ExceptionEventToken)
-            {
-                OnException(sender, args);
-            }
-        }
-        protected virtual void OnException(SubscriptionToken sender, ExceptionEventArgs args)
-        {
-            args.Exception.HandleException(this);
-        }
+
         private void OnInterClose(SubscriptionToken sender, CloseEventArgs args)
         {
             var vm = this.DataContext as BaseNotificationObject;
@@ -112,9 +88,16 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         }
         protected virtual void OnClose(SubscriptionToken sender, CloseEventArgs args)
         {
-            var vm = this.DataContext as BaseNotificationObject;
             switch (args.CloseStyle)
             {
+                case CloseStyle.DocumentClose:
+                    {
+                        var uicloseargs = new UICloseDocumentEventArgs(this);
+                        uicloseargs.CallBack = this.UnInit;
+                        var doctoken = ServiceLoader.LoadService<IMainViewModel>().UICloseDocumentEventSubscriptionToken;
+                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(doctoken, new UICloseDocumentEventArgs(this));
+                    }
+                    break;
                 case CloseStyle.NullClose:
                     Window.GetWindow(this).Close();
                     break;
@@ -132,17 +115,31 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                         window.Close();
                     }
                     break;
-                case CloseStyle.DocumentClose:
-                    {
-                        var uicloseargs = new UICloseDocumentEventArgs(this);
-                        uicloseargs.CallBack = this.UnInit;
-                        var doctoken = ServiceLoader.LoadService<IMainView>().UICloseDocumentEventSubscriptionToken;
-                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(doctoken, new UICloseDocumentEventArgs(this));
-                    }
-                    break;
-                default:
-                    break;
             }
+        }
+        private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
+        {
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.ChangeDataContextEventToken)
+            {
+                OnChangeDataContext(sender, args);
+            }
+        }
+        protected virtual void OnChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
+        {
+            this.DataContext = args.NewDataContext;
+        }
+        private void OnInterException(SubscriptionToken sender, ExceptionEventArgs args)
+        {
+            var vm = this.DataContext as BaseNotificationObject;
+            if (sender == vm.ExceptionEventToken)
+            {
+                OnException(sender, args);
+            }
+        }
+        protected virtual void OnException(SubscriptionToken sender, ExceptionEventArgs args)
+        {
+            args.Exception.HandleException(this);
         }
         private void OnInterMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {

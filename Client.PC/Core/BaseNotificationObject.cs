@@ -14,33 +14,11 @@ namespace FengSharp.OneCardAccess.Core
     public class BaseNotificationObject : NotificationObject, IViewModel
     {
         public SubscriptionToken ExceptionEventToken { get; set; }
-        public SubscriptionToken CloseEventToken { get; set; }
         public SubscriptionToken MessageBoxEventToken { get; set; }
         public SubscriptionToken CreateViewEventToken { get; set; }
         public SubscriptionToken ChangeDataContextEventToken { get; set; }
-
+        public SubscriptionToken CloseEventToken { get; set; }
         public ICommand CloseCommand { get; private set; }
-        public ICommand CloseDocumentCommand { get; private set; }
-        public BaseNotificationObject()
-        {
-            CloseCommand = new DelegateCommand(Close);
-            CloseDocumentCommand = new DelegateCommand(CloseDocument);
-        }
-        #region commandmethods
-        public void Close()
-        {
-            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
-        }
-        public void CloseDocument()
-        {
-            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.DocumentClose));
-        }
-        #endregion
-        public void OKClose()
-        {
-            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.OKClose));
-        }
-
         private object _Parameter;
         public object Parameter
         {
@@ -51,19 +29,30 @@ namespace FengSharp.OneCardAccess.Core
                 RaisePropertyChanged("Parameter");
             }
         }
+        public BaseNotificationObject()
+        {
+            CloseCommand = new DelegateCommand(Close);
+        }
 
-        public MsgResult ShowMessage(string message)
+        public virtual void Close()
+        {
+            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
+        }
+        public virtual void OKClose()
+        {
+            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.OKClose));
+        }
+        public virtual MsgResult ShowMessage(string message)
         {
             var args = new MessageBoxEventArgs(message);
             return ShowMessage(args);
         }
-        public MsgResult ShowError(string message)
+        public virtual MsgResult ShowError(string message)
         {
             var args = new MessageBoxEventArgs(message);
             return ShowMessage(args);
         }
-
-        public MsgResult ShowMessage(MessageBoxEventArgs args)
+        public virtual MsgResult ShowMessage(MessageBoxEventArgs args)
         {
             var result = MsgResult.OK;
             args.CallBack = (MsgResult msgResult, object[] param) =>
@@ -73,12 +62,11 @@ namespace FengSharp.OneCardAccess.Core
             DefaultEventAggregator.Current.GetEvent<MessageBoxEvent>().Publish(this.MessageBoxEventToken, args);
             return result;
         }
-
-        public void ShowException(Exception ex)
+        public virtual void ShowException(Exception ex)
         {
             DefaultEventAggregator.Current.GetEvent<ExceptionEvent>().Publish(this.ExceptionEventToken, new ExceptionEventArgs(ex));
         }
-        public bool? CreateView(CreateViewEventArgs args)
+        public virtual bool? CreateView(CreateViewEventArgs args)
         {
             bool? result = null;
             if (args.IsDialog)
@@ -92,33 +80,4 @@ namespace FengSharp.OneCardAccess.Core
             return result;
         }
     }
-    //public class CrudNotificationObject<Msg, K> : BaseNotificationObject where Msg : EditMessage<K>
-    //{
-    //    public CrudNotificationObject()
-    //    {
-    //        DefaultEventAggregator.Current.
-    //            GetEvent<EntityEditedEvent<object, EntityEditedEventArgs<Msg, K>, Msg, K>>().
-    //            Subscribe(OnEntityViewEdited);
-    //    }
-    //    protected virtual void OnEntityViewEdited(object sender, EntityEditedEventArgs<Msg, K> args)
-    //    {
-    //    }
-
-    //    public void EntityEdited()
-    //    {
-    //        DefaultEventAggregator.Current.GetEvent<EntityEditedEvent<object, EntityEditedEventArgs<Msg, K>, Msg, K>>()
-    //            .Publish(this.ParentViewModel, new EntityEditedEventArgs<Msg, K>(this.EditMessage));
-    //    }
-
-    //    private Msg _EditMessage;
-    //    public Msg EditMessage
-    //    {
-    //        get { return _EditMessage; }
-    //        set
-    //        {
-    //            _EditMessage = value;
-    //            RaisePropertyChanged("EditMessage");
-    //        }
-    //    }
-    //}
 }

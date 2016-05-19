@@ -12,6 +12,13 @@ namespace FengSharp.OneCardAccess.Core
         public EntityEditMode EntityEditMode { get; protected set; }
         public T Key { get; set; }
     }
+    public abstract class TreeEditMessage<T>
+    {
+        public string TreeParentNo { get; set; }
+        public bool IsContinue { get; set; }
+        public EntityEditMode EntityEditMode { get; protected set; }
+        public T Key { get; set; }
+    }
     public enum EntityEditMode
     {
         Add = 0,

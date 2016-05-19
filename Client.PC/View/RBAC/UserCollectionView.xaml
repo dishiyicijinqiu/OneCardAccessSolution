@@ -37,7 +37,7 @@
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="RibbonPage" Caption="{Binding MenuTitle}">
-                        <dxr:RibbonPageGroup x:Name="rpgUser" Caption="{x:Static res:Resources.ToolBar_UserCollectionView_OP}">
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.ToolBar_UserCollectionView_OP}" MergeOrder="2">
                             <dxr:RibbonPageGroup.IsVisible>
                                 <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="ViewIsVisible"/>
                             </dxr:RibbonPageGroup.IsVisible>
@@ -47,10 +47,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup x:Name="rpgUserR" ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <!--<dxr:RibbonPageGroup.IsVisible>
-                                <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
-                            </dxr:RibbonPageGroup.IsVisible>-->
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}">
                                 <dxb:BarButtonItem.IsVisible>
                                     <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>

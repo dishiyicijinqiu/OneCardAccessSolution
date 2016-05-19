@@ -11,7 +11,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     public interface IUserView : IView
     {
     }
-    public interface IUserConnectionViewModel : IViewModel
+    public interface IUserCollectionViewModel : IViewModel
     {
     }
     public interface IUserViewModel : IViewModel

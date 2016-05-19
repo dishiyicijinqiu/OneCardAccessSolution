@@ -15,7 +15,7 @@ using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
 {
-    public class UserCollectionViewModel : BaseNotificationObject, IUserConnectionViewModel, IUserCollectionSelectViewModel
+    public class UserCollectionViewModel : BaseNotificationObject, IUserCollectionViewModel, IUserCollectionSelectViewModel
     {
         public event OnSelectedItems<UserInfoEntity> OnSelectedItems;
 

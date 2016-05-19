@@ -34,8 +34,8 @@
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage x:Name="RibbonPage"  Caption="{Binding MenuTitle}">
-                        <dxr:RibbonPageGroup x:Name="rpgUser3"  Caption="{x:Static res:Resources.ToolBar_UserGroupCollectionView_OP}">
+                    <dxr:RibbonPage Caption="{Binding MenuTitle}">
+                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_UserGroupCollectionView_OP}" MergeOrder="0">
                             <dxr:RibbonPageGroup.IsVisible>
                                 <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewSelectionModeConverter}" ConverterParameter="ViewIsVisible"/>
                             </dxr:RibbonPageGroup.IsVisible>
@@ -45,10 +45,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
-                        <dxr:RibbonPageGroup x:Name="rpgUserR3" ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <!--<dxr:RibbonPageGroup.IsVisible>
-                                <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
-                            </dxr:RibbonPageGroup.IsVisible>-->
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}">
                                 <dxb:BarButtonItem.IsVisible>
                                     <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>

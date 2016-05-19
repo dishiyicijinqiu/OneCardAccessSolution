@@ -222,7 +222,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             try
             {
                 var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelectViewModel>("IP_CRTempCollectionSelectViewModel",
-                    new ParameterOverride("style", ViewStyle.MulSelect));
+                    new ParameterOverride("ViewStyle", ViewStyle.MulSelect));
                 vm.OnSelectedItems += Vm_OnSelectedItems;
                 var view = ServiceLoader.LoadService<IP_CRTempCollectionView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));

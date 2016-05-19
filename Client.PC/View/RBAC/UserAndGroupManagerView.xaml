@@ -34,7 +34,17 @@
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="RibbonPage" Caption="{x:Static res:Resources.View_UserAndGroupManagerView_Title}">
-                       
+                        <dxr:RibbonPageGroup Caption=" " MergeOrder="1">
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
+                        </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>

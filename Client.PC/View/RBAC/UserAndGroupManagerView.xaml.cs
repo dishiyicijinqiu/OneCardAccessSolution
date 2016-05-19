@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FengSharp.OneCardAccess.Core;
 using FengSharp.OneCardAccess.Common;
+using Microsoft.Practices.Unity;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
 {
@@ -45,8 +46,10 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
                     try
                     {
                         UserAndGroupManagerViewModel VM = this.DataContext as UserAndGroupManagerViewModel;
-                        this.UserGroupCollectionViewContent.Content = new UserGroupCollectionView(VM.UserGroupCollectionViewModel);
-                        this.UserCollectionViewContent.Content = new UserCollectionView(VM.UserCollectionViewModel);
+                        this.UserGroupCollectionViewContent.Content =
+                            ServiceLoader.LoadService<IUserGroupCollectionView>(new ParameterOverride("VM", VM.UserGroupCollectionViewModel));
+                        this.UserCollectionViewContent.Content =
+                            ServiceLoader.LoadService<IUserCollectionView>(new ParameterOverride("VM", VM.UserCollectionViewModel));
                     }
                     catch (Exception ex)
                     {

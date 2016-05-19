@@ -18,12 +18,12 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
     {
         public BaseUserControl()
         {
-
         }
         public BaseUserControl(BaseNotificationObject VM)
         {
             this.DataContext = VM;
             this.Loaded += BaseUserControl_Loaded;
+            this.InputBindings.Add(new System.Windows.Input.KeyBinding(VM.CloseCommand, System.Windows.Input.Key.Escape, System.Windows.Input.ModifierKeys.None));
             Init();
         }
         bool isloaded = false;

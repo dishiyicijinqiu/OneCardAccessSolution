@@ -35,9 +35,6 @@
             </Style>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
-    <ui:BaseUserControl.InputBindings>
-        <KeyBinding Command="{Binding CloseDocumentCommand}" Key="Esc" />
-    </ui:BaseUserControl.InputBindings>
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>

@@ -35,7 +35,7 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             #line default
             #line hidden
             this.Write("using System;\r\nusing System.Runtime.Serialization;\r\nusing FengSharp.OneCardAccess" +
-                    ".Common;\r\nusing DevExpress.Mvvm;\r\nnamespace ");
+                    ".Common;\r\nusing Microsoft.Practices.Prism.ViewModel;\r\nnamespace ");
             
             #line 11 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NameSpace));
@@ -57,8 +57,8 @@ DBHost dbhost=new DBHost(TableName);if(IsBuilder) {
             
             #line default
             #line hidden
-            this.Write("Entity: BindableBase\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\tpublic" +
-                    " ");
+            this.Write("Entity: NotificationObject\r\n\t{\r\n\t\t/// <summary>\r\n\t\t/// 构造函数\r\n\t\t/// </summary>\r\n\t\t" +
+                    "public ");
             
             #line 22 "D:\Work\Project\Company\OneCardAccess\CodeBuilder\Templates\RunTime\RuntimeBusinessEntity.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(TableName.Replace("T_",string.Empty)));

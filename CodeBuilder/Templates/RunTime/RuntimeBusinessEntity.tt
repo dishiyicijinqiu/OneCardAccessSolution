@@ -7,14 +7,14 @@
 using System;
 using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
-using DevExpress.Mvvm;
+using Microsoft.Practices.Prism.ViewModel;
 namespace <#=NameSpace#>
 {
 	/// <summary>
 	/// <#=dbhost.DbTable.Remark#>
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: BindableBase
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: NotificationObject
 	{
 		/// <summary>
 		/// 构造函数

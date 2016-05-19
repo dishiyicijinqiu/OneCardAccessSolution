@@ -14,9 +14,9 @@
             xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
-        xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+            xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
              
-             
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
@@ -44,7 +44,10 @@
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_RegisterCollectionView_Title}">
-                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1"  IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionViewVisibleConverter}}">
+                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1" >
+                            <dxr:RibbonPageGroup.IsVisible>
+                                <Binding Path="ViewStyle" Converter="{local:RegisterCollectionViewViewStyleConverter}" ConverterParameter="ViewIsVisible"/>
+                            </dxr:RibbonPageGroup.IsVisible>
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" />
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}" />
                             <dxb:BarButtonItem Style="{StaticResource barEdit}"  CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
@@ -55,8 +58,12 @@
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barConfirm}" 
-                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
-                                               IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionSelectVisibleConverter}}"/>
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}">
+                                <dxb:BarButtonItem.IsVisible>
+                                    <Binding Path="ViewStyle" Converter="{local:RegisterCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
+                                </dxb:BarButtonItem.IsVisible>
+                            </dxb:BarButtonItem>
+
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
@@ -70,19 +77,11 @@
                              core:MouseDoubleClick.Command="{Binding EditCommand}"
                              core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                              core:MouseDoubleClick.HitPosition="InRow"
-                             SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
+                             SelectionMode="{Binding ViewStyle,Converter={local:RegisterCollectionViewSelectionModeConverter}}"
                              ItemsSource="{Binding Items}">
                 <dxg:GridControl.View>
                     <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowGrouping="True">
-                        <!--<dxg:TableView.ColumnMenuCustomizations>
-                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupBox}"/>
-                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupColumn}"/>
-                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.ColumnChooser}"/>
-                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.FilterEditor}"/>
-                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.SearchPanel}"/>
-                        </dxg:TableView.ColumnMenuCustomizations>-->
                     </dxg:TableView>
-                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
         </Grid>
@@ -90,4 +89,3 @@
 </ui:BaseUserControl>
 
 
-<!--<TextBox x:Name="textBox1" FontSize="24" Margin="10" Text="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=Name}"/>-->  

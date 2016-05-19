@@ -126,6 +126,7 @@
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
+    <Compile Include="Interfaces\IUserGroup.cs" />
     <Compile Include="Interfaces\IUserView.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
@@ -254,12 +255,12 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\BasicInfo\RegisterCollectionView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\RegisterView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\LoginView.xaml">
       <SubType>Designer</SubType>
@@ -470,6 +471,10 @@
   <ItemGroup>
     <Resource Include="Resources\Bars\apply_16x16.png" />
     <Resource Include="Resources\Bars\apply_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Bars\usergroup_16x16.png" />
+    <Resource Include="Resources\Bars\usergroup_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -21,10 +21,14 @@ namespace FengSharp.OneCardAccess.Core
 
         public object Convert(object[] values, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            var grid = (GridControl)values[0];
+            //var grid = (GridControl)values[0];
+            //var rowHandle = (int)values[1];
+            //var result = grid.GetListIndexByRowHandle(rowHandle);
+            //return rowHandle >= 0 ? string.Format("{0}", result + 1) : string.Empty;
+
+
             var rowHandle = (int)values[1];
-            var result = grid.GetListIndexByRowHandle(rowHandle);
-            return rowHandle >= 0 ? string.Format("{0}", result + 1) : string.Empty;
+            return rowHandle >= 0 ? string.Format("{0}", rowHandle + 1) : string.Empty;
         }
 
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, System.Globalization.CultureInfo culture)
@@ -67,32 +71,32 @@ namespace FengSharp.OneCardAccess.Core
         }
     }
 
-    public class ListCastConverter : MarkupExtension, IValueConverter//TODO:不明白为什么Command中接受参数的数量是0
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string CastType = (string)parameter;
-            if (string.IsNullOrWhiteSpace(CastType))
-                return null;
-            Type type = System.Type.GetType(CastType);
-            MethodInfo mi = typeof(Enumerable).GetMethod("Cast");
-            MethodInfo mi2 = mi.MakeGenericMethod(new Type[] { type });
-            var enumerables = mi2.Invoke(value, new object[] { value });
-            MethodInfo mi3 = typeof(Enumerable).GetMethod("ToList");
-            MethodInfo mi4 = mi3.MakeGenericMethod(new Type[] { type });
-            return mi4.Invoke(enumerables, new object[] { enumerables });
-        }
+    //public class ListCastConverter : MarkupExtension, IValueConverter//TODO:不明白为什么Command中接受参数的数量是0
+    //{
+    //    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        string CastType = (string)parameter;
+    //        if (string.IsNullOrWhiteSpace(CastType))
+    //            return null;
+    //        Type type = System.Type.GetType(CastType);
+    //        MethodInfo mi = typeof(Enumerable).GetMethod("Cast");
+    //        MethodInfo mi2 = mi.MakeGenericMethod(new Type[] { type });
+    //        var enumerables = mi2.Invoke(value, new object[] { value });
+    //        MethodInfo mi3 = typeof(Enumerable).GetMethod("ToList");
+    //        MethodInfo mi4 = mi3.MakeGenericMethod(new Type[] { type });
+    //        return mi4.Invoke(enumerables, new object[] { enumerables });
+    //    }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
+    //    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
 
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-    }
+    //    public override object ProvideValue(IServiceProvider serviceProvider)
+    //    {
+    //        return this;
+    //    }
+    //}
 
     public class StringDateValueConverter : MarkupExtension, IValueConverter
     {
@@ -114,93 +118,6 @@ namespace FengSharp.OneCardAccess.Core
             return this;
         }
     }
-
-    public class CollectionViewVisibleConverter : MarkupExtension, System.Windows.Data.IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            CollectionViewStyle style = (CollectionViewStyle)value;
-            return style == CollectionViewStyle.CollectionView;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-    }
-    public class CollectionSelectVisibleConverter : MarkupExtension, System.Windows.Data.IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            CollectionViewStyle style = (CollectionViewStyle)value;
-            return style != CollectionViewStyle.CollectionView;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-    }
-    public class CollectionSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            CollectionViewStyle style = (CollectionViewStyle)value;
-            switch (style)
-            {
-                case CollectionViewStyle.CollectionOneSelect:
-                    return DevExpress.Xpf.Grid.MultiSelectMode.None;
-                default:
-                    return DevExpress.Xpf.Grid.MultiSelectMode.Cell;
-            }
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override object ProvideValue(IServiceProvider serviceProvider)
-        {
-            return this;
-        }
-    }
-    public class EnumConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string parameterString = parameter as string;
-            if (parameterString == null)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-            if (Enum.IsDefined(value.GetType(), value) == false)
-            {
-                return DependencyProperty.UnsetValue;
-            }
-            object parameterValue = Enum.Parse(value.GetType(), parameterString, true);
-            return parameterValue.Equals(value);
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string parameterString = parameter as string;
-            if (parameterString == null)
-                return DependencyProperty.UnsetValue;
-            return Enum.Parse(targetType, parameterString, true);
-        }
-    }
-
     public class InverseBoolConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

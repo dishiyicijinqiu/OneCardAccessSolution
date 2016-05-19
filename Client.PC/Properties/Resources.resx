@@ -396,4 +396,94 @@
   <data name="Entity_P_CRTemp_To_RegisterEntity_Remark" xml:space="preserve">
     <value>备注</value>
   </data>
+  <data name="View_UserGroupView_Title" xml:space="preserve">
+    <value>用户组编辑</value>
+  </data>
+  <data name="Menu_RibbonPageGroup_RBAC" xml:space="preserve">
+    <value>用户权限</value>
+  </data>
+  <data name="Menu_UserAndGroupManager" xml:space="preserve">
+    <value>用户组管理</value>
+  </data>
+  <data name="View_UserAndGroupManagerView_Title" xml:space="preserve">
+    <value>用户组管理</value>
+  </data>
+  <data name="Entity_UserGroup_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_UserGroup_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_UserGroup_IsLock" xml:space="preserve">
+    <value>锁定标识</value>
+  </data>
+  <data name="Entity_UserGroup_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_UserGroup_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_UserGroup_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_UserGroup_UserGroupName" xml:space="preserve">
+    <value>用户组名称</value>
+  </data>
+  <data name="Entity_UserGroup_UserGroupNo" xml:space="preserve">
+    <value>用户组编号</value>
+  </data>
+  <data name="Entity_UserInfo_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_UserInfo_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_UserInfo_IsLock" xml:space="preserve">
+    <value>锁定标识</value>
+  </data>
+  <data name="Entity_UserInfo_IsSuper" xml:space="preserve">
+    <value>是否为超级管理员</value>
+  </data>
+  <data name="Entity_UserInfo_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_UserInfo_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_UserInfo_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_UserInfo_UserName" xml:space="preserve">
+    <value>用户姓名</value>
+  </data>
+  <data name="Entity_UserInfo_UserNo" xml:space="preserve">
+    <value>用户账号</value>
+  </data>
+  <data name="View_UserCollectionView_Title" xml:space="preserve">
+    <value>用户信息管理</value>
+  </data>
+  <data name="Entity_UserInfo_UserGroupName" xml:space="preserve">
+    <value>组名称</value>
+  </data>
+  <data name="Entity_UserInfo_UserGroupNo" xml:space="preserve">
+    <value>组编号</value>
+  </data>
+  <data name="Entity_UserInfo_PassWord" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="View_UserGroupCollectionView_Title" xml:space="preserve">
+    <value>用户组</value>
+  </data>
+  <data name="Menu_UserCollectionView" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="Menu_UserGroupCollectionView" xml:space="preserve">
+    <value>用户组</value>
+  </data>
+  <data name="ToolBar_UserCollectionView_OP" xml:space="preserve">
+    <value>用户信息操作</value>
+  </data>
+  <data name="ToolBar_UserGroupCollectionView_OP" xml:space="preserve">
+    <value>用户组操作</value>
+  </data>
 </root>

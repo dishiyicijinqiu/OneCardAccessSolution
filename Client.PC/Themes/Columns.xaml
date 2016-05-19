@@ -29,4 +29,19 @@
         <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
         <ui:BaseColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_Remark}"/>
     </ui:ColumnData>
+
+    <ui:ColumnData x:Key="usercolumnssource">
+        <ui:BaseColumn FieldName="UserNo" Header="{x:Static res:Resources.Entity_UserInfo_UserNo}"/>
+        <ui:BaseColumn FieldName="UserName" Header="{x:Static res:Resources.Entity_UserInfo_UserName}"/>
+        <ui:BaseColumn FieldName="UserGroupNo" Header="{x:Static res:Resources.Entity_UserInfo_UserGroupNo}"/>
+        <ui:BaseColumn FieldName="UserGroupName" Header="{x:Static res:Resources.Entity_UserInfo_UserGroupName}"/>
+        <ui:BaseColumn FieldName="PassWord" Header="{x:Static res:Resources.Entity_UserInfo_PassWord}" Visible="False"/>
+        <ui:BaseColumn FieldName="IsLock" Header="{x:Static res:Resources.Entity_UserInfo_IsLock}" Settings="CheckEdit"/>
+        <ui:BaseColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_UserInfo_Remark}"/>
+        <ui:BaseColumn FieldName="IsSuper" Header="{x:Static res:Resources.Entity_UserInfo_IsSuper}" Settings="CheckEdit"/>
+        <ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_UserInfo_Creater}"/>
+        <ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_UserInfo_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyer}"/>
+        <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+    </ui:ColumnData>
 </ResourceDictionary>

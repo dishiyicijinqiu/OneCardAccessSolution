@@ -85,7 +85,6 @@
                                           AllowNullInput="False" MaskUseAsDisplayFormat="True"
                                           Mask="{x:Static res:Resources.Format_DateString}"/>
                         </dxlc:LayoutItem>
-                        <!--EditValueConverter="{StaticResource stringDateValueConverter}"-->
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
                             <dxg:GridControl x:Name="gridRegister_File" ItemsSource="{Binding Entity.Register_FileEntitys}"
                                              core:MouseDoubleClick.Command="{Binding ViewRegisterFileCommand}"

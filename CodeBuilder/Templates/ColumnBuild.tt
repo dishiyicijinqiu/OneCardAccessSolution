@@ -23,10 +23,30 @@ if(column.ColumnName.ToLower()=="createid"){
 <#}
 }#>
 
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.ColumnName.ToLower()=="createid"){
+#>
+<ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_Creater}"/>
+<#} else if(column.ColumnName.ToLower()=="lastmodifyid") {#>
+<ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyer}"/>
+<#} 
+
+else if(column.ColumnName.ToLower()=="createdate") {#>
+<ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+<#}
+else if(column.ColumnName.ToLower()=="lastmodifydate") {#>
+<ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+<#}
+
+
+else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
+<ui:BaseColumn FieldName="<#=column.ColumnName#>" Header="{x:Static res:Resources.Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>}"/>
+<#}
+}#>
 
 
 <#}#>
 <#+
-public static readonly string TableName="T_P_CRTemp";
+public static readonly string TableName="T_UserInfo";
 public static readonly bool IsBuilder= true;
 #>

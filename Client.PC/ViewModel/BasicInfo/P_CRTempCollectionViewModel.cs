@@ -23,10 +23,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand EditCommand { get; private set; }
         public ICommand ConfirmCommand { get; private set; }
 
-        public P_CRTempCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
-        public P_CRTempCollectionViewModel(CollectionViewStyle style)
+        public P_CRTempCollectionViewModel() : this(ViewStyle.View) { }
+        public P_CRTempCollectionViewModel(ViewStyle ViewStyle)
         {
-            this.CollectionViewStyle = style;
+            this.ViewStyle = ViewStyle;
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstP_CRTempEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstP_CRTempEntity>(Edit);
@@ -201,9 +201,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public override void Close()
         {
-            switch (CollectionViewStyle)
+            switch (ViewStyle)
             {
-                case CollectionViewStyle.CollectionView:
+                case ViewStyle.View:
                     DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.DocumentClose));
                     break;
                 default:
@@ -225,15 +225,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             }
         }
 
-        private CollectionViewStyle _CollectionViewStyle;
+        private ViewStyle _ViewStyle;
 
-        public CollectionViewStyle CollectionViewStyle
+        public ViewStyle ViewStyle
         {
-            get { return _CollectionViewStyle; }
+            get { return _ViewStyle; }
             set
             {
-                _CollectionViewStyle = value;
-                RaisePropertyChanged("CollectionViewStyle");
+                _ViewStyle = value;
+                RaisePropertyChanged("ViewStyle");
             }
         }
         #endregion

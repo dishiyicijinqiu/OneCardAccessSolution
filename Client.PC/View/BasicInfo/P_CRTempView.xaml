@@ -38,7 +38,6 @@
                 <dxr:RibbonDefaultPageCategory>
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_P_CRTempView_Title}">
                         <dxr:RibbonPageGroup>
-                            <!--IsVisible="{Binding CollectionViewStyle,Converter={core:CollectionViewVisibleConverter}}">-->
                             <dxb:BarButtonItem Style="{StaticResource barSave}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
                             <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
                         </dxr:RibbonPageGroup>
@@ -58,7 +57,6 @@
                                 EditValue="{Binding Entity.CRTempName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
                         </dxlc:LayoutItem>
                         <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}">
-                            <!--<dxe:TextEdit EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>-->
                             <dxe:CheckEdit IsReadOnly="{Binding IsSee}"
                                 EditValue="{Binding Entity.IsEnable, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
 

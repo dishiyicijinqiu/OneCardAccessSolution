@@ -5,73 +5,88 @@ using Microsoft.Practices.Prism.ViewModel;
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
 	/// <summary>
-	/// 用户组
+	/// 用户表
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class UserGroupEntity: NotificationObject
+	public partial class UserInfoEntity: NotificationObject
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public UserGroupEntity()
+		public UserInfoEntity()
 		{
-			UserGroupId=string.Empty;
-			UserGroupNo=string.Empty;
-			UserGroupName=string.Empty;
+			UserId=string.Empty;
+			UserNo=string.Empty;
+			UserName=string.Empty;
+			PassWord=string.Empty;
 			Remark=string.Empty;
-			TreeNo=string.Empty;
-			TreeParentNo=string.Empty;
-			TreePath=string.Empty;
 			CreateId=string.Empty;
 			LastModifyId=string.Empty;
+			UserGroupId=string.Empty;
 		}
-		private string _UserGroupId;
+		private string _UserId;
 		/// <summary>
-		/// UserGroupId
+		/// 用户Id
 		/// </summary>
 		[DataBaseKey(DataBaseKeyType.Guid)]
 		[DataMember]
-		public string UserGroupId 
+		public string UserId 
 		{
-            get { return _UserGroupId; }
+            get { return _UserId; }
             set
             {
-				if(_UserGroupId == value)
+				if(_UserId == value)
 					return;
-                _UserGroupId = value;
-                RaisePropertyChanged("UserGroupId");
+                _UserId = value;
+                RaisePropertyChanged("UserId");
             }
         }
-		private string _UserGroupNo;
+		private string _UserNo;
 		/// <summary>
-		/// 用户组编号
+		/// 用户账号
 		/// </summary>
 		[DataMember]
-		public string UserGroupNo 
+		public string UserNo 
 		{
-            get { return _UserGroupNo; }
+            get { return _UserNo; }
             set
             {
-				if(_UserGroupNo == value)
+				if(_UserNo == value)
 					return;
-                _UserGroupNo = value;
-                RaisePropertyChanged("UserGroupNo");
+                _UserNo = value;
+                RaisePropertyChanged("UserNo");
             }
         }
-		private string _UserGroupName;
+		private string _UserName;
 		/// <summary>
-		/// 用户组名称
+		/// 用户姓名
 		/// </summary>
 		[DataMember]
-		public string UserGroupName 
+		public string UserName 
 		{
-            get { return _UserGroupName; }
+            get { return _UserName; }
             set
             {
-				if(_UserGroupName == value)
+				if(_UserName == value)
 					return;
-                _UserGroupName = value;
-                RaisePropertyChanged("UserGroupName");
+                _UserName = value;
+                RaisePropertyChanged("UserName");
+            }
+        }
+		private string _PassWord;
+		/// <summary>
+		/// 密码
+		/// </summary>
+		[DataMember]
+		public string PassWord 
+		{
+            get { return _PassWord; }
+            set
+            {
+				if(_PassWord == value)
+					return;
+                _PassWord = value;
+                RaisePropertyChanged("PassWord");
             }
         }
 		private bool _IsLock;
@@ -120,86 +135,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 					return;
                 _IsSuper = value;
                 RaisePropertyChanged("IsSuper");
-            }
-        }
-		private string _TreeNo;
-		/// <summary>
-		/// 树编号
-		/// </summary>
-		[DataMember]
-		public string TreeNo 
-		{
-            get { return _TreeNo; }
-            set
-            {
-				if(_TreeNo == value)
-					return;
-                _TreeNo = value;
-                RaisePropertyChanged("TreeNo");
-            }
-        }
-		private string _TreeParentNo;
-		/// <summary>
-		/// 父亲树编号
-		/// </summary>
-		[DataMember]
-		public string TreeParentNo 
-		{
-            get { return _TreeParentNo; }
-            set
-            {
-				if(_TreeParentNo == value)
-					return;
-                _TreeParentNo = value;
-                RaisePropertyChanged("TreeParentNo");
-            }
-        }
-		private string _TreePath;
-		/// <summary>
-		/// 树路径
-		/// </summary>
-		[DataMember]
-		public string TreePath 
-		{
-            get { return _TreePath; }
-            set
-            {
-				if(_TreePath == value)
-					return;
-                _TreePath = value;
-                RaisePropertyChanged("TreePath");
-            }
-        }
-		private int _TreeSon;
-		/// <summary>
-		/// 儿子数量
-		/// </summary>
-		[DataMember]
-		public int TreeSon 
-		{
-            get { return _TreeSon; }
-            set
-            {
-				if(_TreeSon == value)
-					return;
-                _TreeSon = value;
-                RaisePropertyChanged("TreeSon");
-            }
-        }
-		private int _TreeTotal;
-		/// <summary>
-		/// 子孙数量
-		/// </summary>
-		[DataMember]
-		public int TreeTotal 
-		{
-            get { return _TreeTotal; }
-            set
-            {
-				if(_TreeTotal == value)
-					return;
-                _TreeTotal = value;
-                RaisePropertyChanged("TreeTotal");
             }
         }
 		private string _CreateId;
@@ -264,6 +199,22 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 					return;
                 _LastModifyDate = value;
                 RaisePropertyChanged("LastModifyDate");
+            }
+        }
+		private string _UserGroupId;
+		/// <summary>
+		/// 用户组Id
+		/// </summary>
+		[DataMember]
+		public string UserGroupId 
+		{
+            get { return _UserGroupId; }
+            set
+            {
+				if(_UserGroupId == value)
+					return;
+                _UserGroupId = value;
+                RaisePropertyChanged("UserGroupId");
             }
         }
 	}

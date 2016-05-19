@@ -18,10 +18,20 @@ namespace FengSharp.OneCardAccess.Client.PC
         public MainWindow()
         {
             InitializeComponent();
-            var mainview = ServiceLoader.LoadService<IMainView>(new ParameterOverride("VM", ServiceLoader.LoadService<IMainViewModel>()));
-            this.AddChild(mainview);
-            this.SourceInitialized += MainWindow_SourceInitialized;
-            this.Closing += MainWindow_Closing;
+            try
+            {
+                var mainview = ServiceLoader.LoadService<IMainView>(new ParameterOverride("VM", ServiceLoader.LoadService<IMainViewModel>()));
+                this.AddChild(mainview);
+                this.SourceInitialized += MainWindow_SourceInitialized;
+                this.Closing += MainWindow_Closing;
+            }
+            catch (Exception ex)
+            {
+                if (DXSplashScreen.IsActive)
+                    DXSplashScreen.Close();
+                ex.HandleException(this);
+                Application.Current.Shutdown();
+            }
         }
 
         private void MainWindow_Closing(object sender, CancelEventArgs e)

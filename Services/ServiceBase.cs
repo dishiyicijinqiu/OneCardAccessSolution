@@ -135,10 +135,12 @@ namespace FengSharp.OneCardAccess.Services
                 return default(T);
             T t = Activator.CreateInstance<T>();
             var dr = ds.Tables[0].Rows[0];
+            var colnames = ds.Tables[0].Columns.Cast<DataColumn>().Select(m => m.ColumnName.ToLower()).ToList();
             var ps = typeof(T).GetProperties();
             foreach (var p in ps)
             {
-                p.SetValue(t, dr[p.Name], null);
+                if (colnames.Contains(p.Name.ToLower()))
+                    p.SetValue(t, dr[p.Name], null);
             }
             return t;
         }

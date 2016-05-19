@@ -21,10 +21,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand ConfirmCommand { get; private set; }
-        public RegisterCollectionViewModel() : this(CollectionViewStyle.CollectionView) { }
-        public RegisterCollectionViewModel(CollectionViewStyle style)
+        public RegisterCollectionViewModel() : this(ViewStyle.View) { }
+        public RegisterCollectionViewModel(ViewStyle ViewStyle)
         {
-            this.CollectionViewStyle = style;
+            this.ViewStyle = ViewStyle;
             AddCommand = new DelegateCommand(Add);
             CopyAddCommand = new DelegateCommand<FirstRegisterEntity>(CopyAdd);
             EditCommand = new DelegateCommand<FirstRegisterEntity>(Edit);
@@ -200,9 +200,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         public override void Close()
         {
-            switch (CollectionViewStyle)
+            switch (ViewStyle)
             {
-                case CollectionViewStyle.CollectionView:
+                case ViewStyle.View:
                     DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.DocumentClose));
                     break;
                 default:
@@ -238,14 +238,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 
         public List<RegisterEntity> SelectItems { get; set; }
 
-        private CollectionViewStyle _CollectionViewStyle;
-        public CollectionViewStyle CollectionViewStyle
+        private ViewStyle _ViewStyle;
+        public ViewStyle ViewStyle
         {
-            get { return _CollectionViewStyle; }
+            get { return _ViewStyle; }
             set
             {
-                _CollectionViewStyle = value;
-                RaisePropertyChanged("CollectionViewStyle");
+                _ViewStyle = value;
+                RaisePropertyChanged("ViewStyle");
             }
         }
         #endregion

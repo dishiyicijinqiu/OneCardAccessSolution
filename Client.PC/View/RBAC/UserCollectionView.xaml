@@ -3,9 +3,78 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+             
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+            xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+                    
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-   
+    <ui:BaseUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
+                <Setter Property="Width" Value="658"/>
+                <Setter Property="Height" Value="544"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_UserGroupView_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ui:BaseUserControl.Resources>
+    <dxb:BarManager Name="barManager">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
+                <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
+                    <dxr:RibbonPage x:Name="RibbonPage" Caption="{Binding MenuTitle}">
+                        <dxr:RibbonPageGroup x:Name="rpgUser" Caption="{x:Static res:Resources.ToolBar_UserCollectionView_OP}">
+                            <dxr:RibbonPageGroup.IsVisible>
+                                <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="ViewIsVisible"/>
+                            </dxr:RibbonPageGroup.IsVisible>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup x:Name="rpgUserR" ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <!--<dxr:RibbonPageGroup.IsVisible>
+                                <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
+                            </dxr:RibbonPageGroup.IsVisible>-->
+                            <dxb:BarButtonItem Style="{StaticResource barClose}">
+                                <dxb:BarButtonItem.IsVisible>
+                                    <Binding Path="ViewStyle" Converter="{local:UserCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
+                                </dxb:BarButtonItem.IsVisible>
+                            </dxb:BarButtonItem>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <dxg:GridControl x:Name="grid"
+                       Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                       ColumnsSource="{StaticResource usercolumnssource}"
+                       ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                       core:MouseDoubleClick.Command="{Binding EditCommand}"
+                       core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                       core:MouseDoubleClick.HitPosition="InRow"
+                       SelectionMode="{Binding ViewStyle,Converter={local:UserCollectionViewSelectionModeConverter}}"
+                       ItemsSource="{Binding Items}">
+                <dxg:GridControl.View>
+                    <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowGrouping="True">
+                    </dxg:TableView>
+                </dxg:GridControl.View>
+            </dxg:GridControl>
+        </Grid>
+    </dxb:BarManager>
 </ui:BaseUserControl>

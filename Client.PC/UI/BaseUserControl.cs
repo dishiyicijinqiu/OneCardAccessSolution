@@ -182,5 +182,12 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             else
                 window.Show();
         }
+
+
+        protected virtual void Close(CloseStyle closestyle = CloseStyle.NullClose)
+        {
+            BaseNotificationObject VM = this.DataContext as BaseNotificationObject;
+            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(VM.CloseEventToken, new CloseEventArgs(closestyle));
+        }
     }
 }

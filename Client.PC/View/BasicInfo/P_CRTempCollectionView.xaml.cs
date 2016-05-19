@@ -25,16 +25,16 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             InitializeComponent();
         }
     }
-    public class ViewOrEditConverter : MarkupExtension, IMultiValueConverter
+    public class P_CRTempCollectionViewViewOrEditConverter : MarkupExtension, IMultiValueConverter
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             var grid = (DevExpress.Xpf.Grid.GridControl)values[0];
-            CollectionViewStyle style = (CollectionViewStyle)values[1];
+            ViewStyle style = (ViewStyle)values[1];
             switch (style)
             {
-                case CollectionViewStyle.CollectionOneSelect:
-                case CollectionViewStyle.CollectionMulSelect:
+                case ViewStyle.OneSelect:
+                case ViewStyle.MulSelect:
                     return grid.FindResource("ConfirmCommand");
                 default:
                     return grid.FindResource("EditCommand");
@@ -46,24 +46,56 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
             throw new NotImplementedException();
         }
 
-        //public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        //{
-        //    var element = parameter as System.Windows.Controls.DataGrid;
-        //    CollectionViewStyle style = (CollectionViewStyle)value;
-        //    switch (style)
-        //    {
-        //        case CollectionViewStyle.CollectionOneSelect:
-        //        case CollectionViewStyle.CollectionMulSelect:
-        //            return element.FindResource("ConfirmCommand");
-        //        default:
-        //            return element.FindResource("EditCommand");
-        //    }
-        //}
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+    public class P_CRTempCollectionViewViewStyleConverter : MarkupExtension, System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            string method = parameter.ToString();
+            ViewStyle style = (ViewStyle)value;
+            if (method == "ViewIsVisible")
+            {
+                return ViewStyle.View == style;
+            }
+            else if (method == "SelectIsVisible")
+            {
+                return (ViewStyle.View == ViewStyle.OneSelect) | (ViewStyle.View == ViewStyle.MulSelect);
+            }
+            return false;
+        }
 
-        //public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
+        }
+    }
+    public class P_CRTempCollectionViewSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            ViewStyle style = (ViewStyle)value;
+            switch (style)
+            {
+                case ViewStyle.OneSelect:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.None;
+                default:
+                    return DevExpress.Xpf.Grid.MultiSelectMode.Cell;
+            }
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {

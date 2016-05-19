@@ -1,6 +1,5 @@
-using FengSharp.OneCardAccess.Common;
 using System;
-using System.ComponentModel.DataAnnotations;
+using FengSharp.OneCardAccess.Common;
 namespace FengSharp.OneCardAccess.TEntity
 {
 	/// <summary>
@@ -8,11 +7,11 @@ namespace FengSharp.OneCardAccess.TEntity
 	/// </summary>
 	public class T_UserInfo
 	{
-        /// <summary>
-        /// 用户Id
-        /// </summary>
-        [DataBaseKey]
-        public string UserId { get; set; }
+		/// <summary>
+		/// 用户Id
+		/// </summary>
+		[DataBaseKey(DataBaseKeyType.Guid)]
+		public string UserId { get; set; }
 		/// <summary>
 		/// 用户账号
 		/// </summary>
@@ -26,10 +25,6 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public string PassWord { get; set; }
 		/// <summary>
-		/// 删除标识
-		/// </summary>
-		public bool Deleted { get; set; }
-		/// <summary>
 		/// 锁定标识
 		/// </summary>
 		public bool IsLock { get; set; }
@@ -41,5 +36,29 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// 是否为超级管理员
 		/// </summary>
 		public bool IsSuper { get; set; }
+		/// <summary>
+		/// 创建人Id
+		/// </summary>
+		public string CreateId { get; set; }
+		/// <summary>
+		/// 创建日期
+		/// </summary>
+		public DateTime CreateDate { get; set; }
+		/// <summary>
+		/// 最后更改人Id
+		/// </summary>
+		public string LastModifyId { get; set; }
+		/// <summary>
+		/// 最后更改日期
+		/// </summary>
+		public DateTime LastModifyDate { get; set; }
+		/// <summary>
+		/// 删除标识
+		/// </summary>
+		public bool Deleted { get; set; }
+		/// <summary>
+		/// 用户组Id
+		/// </summary>
+		public string UserGroupId { get; set; }
 	}
 }

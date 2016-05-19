@@ -1,7 +1,7 @@
+using System;
+using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
 using Microsoft.Practices.Prism.ViewModel;
-using System.Runtime.Serialization;
-
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
     /// <summary>
@@ -15,16 +15,20 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
         /// </summary>
         public UserInfoEntity()
         {
+            UserId = string.Empty;
             UserNo = string.Empty;
             UserName = string.Empty;
             PassWord = string.Empty;
             Remark = string.Empty;
+            CreateId = string.Empty;
+            LastModifyId = string.Empty;
+            UserGroupId = string.Empty;
         }
         private string _UserId;
         /// <summary>
         /// 用户Id
         /// </summary>
-        [DataBaseKey]
+        [DataBaseKey(DataBaseKeyType.Guid)]
         [DataMember]
         public string UserId
         {
@@ -131,6 +135,86 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
                     return;
                 _IsSuper = value;
                 RaisePropertyChanged("IsSuper");
+            }
+        }
+        private string _CreateId;
+        /// <summary>
+        /// 创建人Id
+        /// </summary>
+        [DataMember]
+        public string CreateId
+        {
+            get { return _CreateId; }
+            set
+            {
+                if (_CreateId == value)
+                    return;
+                _CreateId = value;
+                RaisePropertyChanged("CreateId");
+            }
+        }
+        private DateTime _CreateDate;
+        /// <summary>
+        /// 创建日期
+        /// </summary>
+        [DataMember]
+        public DateTime CreateDate
+        {
+            get { return _CreateDate; }
+            set
+            {
+                if (_CreateDate == value)
+                    return;
+                _CreateDate = value;
+                RaisePropertyChanged("CreateDate");
+            }
+        }
+        private string _LastModifyId;
+        /// <summary>
+        /// 最后更改人Id
+        /// </summary>
+        [DataMember]
+        public string LastModifyId
+        {
+            get { return _LastModifyId; }
+            set
+            {
+                if (_LastModifyId == value)
+                    return;
+                _LastModifyId = value;
+                RaisePropertyChanged("LastModifyId");
+            }
+        }
+        private DateTime _LastModifyDate;
+        /// <summary>
+        /// 最后更改日期
+        /// </summary>
+        [DataMember]
+        public DateTime LastModifyDate
+        {
+            get { return _LastModifyDate; }
+            set
+            {
+                if (_LastModifyDate == value)
+                    return;
+                _LastModifyDate = value;
+                RaisePropertyChanged("LastModifyDate");
+            }
+        }
+        private string _UserGroupId;
+        /// <summary>
+        /// 用户组Id
+        /// </summary>
+        [DataMember]
+        public string UserGroupId
+        {
+            get { return _UserGroupId; }
+            set
+            {
+                if (_UserGroupId == value)
+                    return;
+                _UserGroupId = value;
+                RaisePropertyChanged("UserGroupId");
             }
         }
     }

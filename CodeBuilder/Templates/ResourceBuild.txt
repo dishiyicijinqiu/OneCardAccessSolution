@@ -1,15 +1,16 @@
 ﻿
 
-Entity_P_CRTemp_CRTempName	模板名称
-Entity_P_CRTemp_CRTempPath	路径
-Entity_P_CRTemp_MaterIden	材料标识
-Entity_P_CRTemp_IsEnable	是否启用
-Entity_P_CRTemp_CateNo	类别号
-Entity_P_CRTemp_Remark	备注
-Entity_P_CRTemp_Creater	创建人
-Entity_P_CRTemp_CreateDate	创建日期
-Entity_P_CRTemp_LastModifyer	最后更改人
-Entity_P_CRTemp_LastModifyDate	最后更改日期
+Entity_UserInfo_UserNo	用户账号
+Entity_UserInfo_UserName	用户姓名
+Entity_UserInfo_PassWord	密码
+Entity_UserInfo_IsLock	锁定标识
+Entity_UserInfo_Remark	备注
+Entity_UserInfo_IsSuper	是否为超级管理员
+Entity_UserInfo_Creater	创建人
+Entity_UserInfo_CreateDate	创建日期
+Entity_UserInfo_LastModifyer	最后更改人
+Entity_UserInfo_LastModifyDate	最后更改日期
+Entity_UserInfo_UserGroupId	用户组Id
 
 
 

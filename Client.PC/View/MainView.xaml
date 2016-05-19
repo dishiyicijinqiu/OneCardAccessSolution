@@ -1,8 +1,8 @@
 ﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.MainView"
             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-            xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
             xmlns:dxd="http://schemas.devexpress.com/winfx/2008/xaml/docking"
@@ -13,72 +13,88 @@
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
-              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+              xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     >
-    <ui:BaseUserControl.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-            <Style TargetType="{x:Type Window}" x:Key="LoginWindowStyle">
-                <Setter Property="Title" Value="{x:Static res:Resources.View_LoginView_Title}"/>
-                <Setter Property="WindowStyle" Value="None"/>
-                <Setter Property="ResizeMode" Value="NoResize"/>
-                <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-                <Setter Property="ShowInTaskbar" Value="True"/>
-            </Style>
-        </ResourceDictionary>
-    </ui:BaseUserControl.Resources>
+  <ui:BaseUserControl.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+      </ResourceDictionary.MergedDictionaries>
+      <Style TargetType="{x:Type Window}" x:Key="LoginWindowStyle">
+        <Setter Property="Title" Value="{x:Static res:Resources.View_LoginView_Title}"/>
+        <Setter Property="WindowStyle" Value="None"/>
+        <Setter Property="ResizeMode" Value="NoResize"/>
+        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+        <Setter Property="ShowInTaskbar" Value="True"/>
+      </Style>
+    </ResourceDictionary>
+  </ui:BaseUserControl.Resources>
 
-    <dxb:BarManager x:Name="barManager">
-        <dxb:BarManager.Items>
-            <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}" 
-                               Command="{Binding ShowDocumentCommand}" 
-                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
-                <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}" 
-                                                     DocumentName="IRegisterCollectionViewModel"
-                                                     DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionViewModel"
-                                                     DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionView"/>
-                </dxb:BarButtonItem.CommandParameter>
-            </dxb:BarButtonItem>
-            <dxb:BarButtonItem x:Name="btnP_CRTempCollectionView" Content="{x:Static res:Resources.Menu_P_CRTemp}" 
-                               Command="{Binding ShowDocumentCommand}"
-                               Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png" 
-                               LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
-                <dxb:BarButtonItem.CommandParameter>
-                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}" 
-                                                     DocumentName="IP_CRTempCollectionViewModel"
-                                                     DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionViewModel"
-                                                     DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
-                </dxb:BarButtonItem.CommandParameter>
-            </dxb:BarButtonItem>
-        </dxb:BarManager.Items>
+  <dxb:BarManager x:Name="barManager">
+    <dxb:BarManager.Items>
+      <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}"
+                         Command="{Binding ShowDocumentCommand}"
+                         Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png"
+                         LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
+        <dxb:BarButtonItem.CommandParameter>
+          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}"
+                                           DocumentName="IRegisterCollectionViewModel"
+                                           DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionViewModel"
+                                           DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionView"/>
+        </dxb:BarButtonItem.CommandParameter>
+      </dxb:BarButtonItem>
+      <dxb:BarButtonItem x:Name="btnP_CRTempCollectionView" Content="{x:Static res:Resources.Menu_P_CRTemp}"
+                         Command="{Binding ShowDocumentCommand}"
+                         Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png"
+                         LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
+        <dxb:BarButtonItem.CommandParameter>
+          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}"
+                                           DocumentName="IP_CRTempCollectionViewModel"
+                                           DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionViewModel"
+                                           DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
+        </dxb:BarButtonItem.CommandParameter>
+      </dxb:BarButtonItem>
+      <dxb:BarButtonItem x:Name="btnUserAndGroupManagerView" Content="{x:Static res:Resources.Menu_UserAndGroupManager}"
+                         Command="{Binding ShowDocumentCommand}"
+                         Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/usergroup_16x16.png"
+                         LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/usergroup_32x32.png" >
+        <dxb:BarButtonItem.CommandParameter>
+          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_UserAndGroupManagerView_Title}"
+                                           DocumentName="IUserAndGroupManagerViewModel"
+                                           DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IUserAndGroupManagerViewModel"
+                                           DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IUserAndGroupManagerView"/>
+        </dxb:BarButtonItem.CommandParameter>
+      </dxb:BarButtonItem>
+    </dxb:BarManager.Items>
 
-        <DockPanel>
-            <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
-                <dxr:RibbonDefaultPageCategory>
-                    <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
-                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
-                            <dxr:RibbonPageGroup.ItemLinks>
-                                <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
-                                <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
-                            </dxr:RibbonPageGroup.ItemLinks>
-                        </dxr:RibbonPageGroup>
-                    </dxr:RibbonPage>
-                </dxr:RibbonDefaultPageCategory>
-            </dxr:RibbonControl>
-            <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
-                <dxd:LayoutGroup >
-                    <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
-                        <dxd:DocumentPanel ShowCloseButton="False" AllowClose="False">
+    <DockPanel>
+      <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
+        <dxr:RibbonDefaultPageCategory>
+          <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
+            <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
+              <dxr:RibbonPageGroup.ItemLinks>
+                <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
+                <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
+              </dxr:RibbonPageGroup.ItemLinks>
+            </dxr:RibbonPageGroup>
+            <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_RBAC}" >
+              <dxr:RibbonPageGroup.ItemLinks>
+                <dxb:BarButtonItemLink BarItemName="btnUserAndGroupManagerView" />
+              </dxr:RibbonPageGroup.ItemLinks>
+            </dxr:RibbonPageGroup>
+          </dxr:RibbonPage>
+        </dxr:RibbonDefaultPageCategory>
+      </dxr:RibbonControl>
+      <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
+        <dxd:LayoutGroup >
+          <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
+            <dxd:DocumentPanel ShowCloseButton="False" AllowClose="False">
 
-                        </dxd:DocumentPanel>
-                    </dxd:DocumentGroup>
-                </dxd:LayoutGroup>
-            </dxd:DockLayoutManager>
-        </DockPanel>
-    </dxb:BarManager>
+            </dxd:DocumentPanel>
+          </dxd:DocumentGroup>
+        </dxd:LayoutGroup>
+      </dxd:DockLayoutManager>
+    </DockPanel>
+  </dxb:BarManager>
 </ui:BaseUserControl>

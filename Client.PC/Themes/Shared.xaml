@@ -6,6 +6,7 @@
 	                xmlns:dxgt="clr-namespace:DevExpress.Xpf.Grid.Themes;assembly=DevExpress.Xpf.Grid.v15.1"
                     xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
                      xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"
                     xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
                     xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
@@ -21,6 +22,14 @@
     <Style TargetType="Window">
         <Setter Property="Icon" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/logo.ico"/>
     </Style>
+
+    <Style TargetType="dxdo:LayoutPanel">
+        <Setter Property="ShowCaption" Value="False"/>
+        <Setter Property="ShowBorder" Value="False"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+
+
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
@@ -42,6 +51,15 @@
         <Setter Property="IsColumnMenuEnabled" Value="False"/>
         <Setter Property="IsGroupFooterMenuEnabled" Value="False"/>
         <Setter Property="IsGroupPanelMenuEnabled" Value="False"/>
+        <Setter Property="IsRowCellMenuEnabled" Value="False"/>
+        <Setter Property="IsTotalSummaryMenuEnabled" Value="False"/>
+    </Style>
+    <Style TargetType="dxg:TreeListView">
+        <Setter Property="AllowColumnFiltering" Value="False"/>
+        <Setter Property="AllowSorting" Value="False"/>
+        <Setter Property="IndicatorWidth" Value="40"/>
+        <Setter Property="AllowEditing" Value="False"/>
+        <Setter Property="IsColumnMenuEnabled" Value="False"/>
         <Setter Property="IsRowCellMenuEnabled" Value="False"/>
         <Setter Property="IsTotalSummaryMenuEnabled" Value="False"/>
     </Style>

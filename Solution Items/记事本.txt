@@ -1,2 +1,102 @@
+一、系统命令：
 System.Windows.Input.ApplicationCommands
 System.Windows.Input.ComponentCommands.MoveDown
+二、示例写法：
+<dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                             ColumnsSource="{StaticResource p_crtempcolumnssource}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             ItemsSource="{Binding Items}"
+                             SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
+                             >
+                <dxg:GridControl.Resources>
+                    <Style TargetType="{x:Type dxg:GridControl}" x:Key="EditCommand">
+                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding EditCommand}"/>
+                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"/>
+                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                    </Style>
+                    <Style TargetType="{x:Type dxg:GridControl}" x:Key="ConfirmCommand">
+                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding ConfirmCommand}"/>
+                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItems}"/>
+                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                    </Style>
+                </dxg:GridControl.Resources>
+                <dxg:GridControl.Style>
+                    <MultiBinding Mode="OneWay" Converter="{local:ViewOrEditConverter}">
+                        <Binding ElementName="grid" />
+                        <Binding Path="CollectionViewStyle" />
+                    </MultiBinding>
+                </dxg:GridControl.Style>
+
+                <!--Style="{Binding CollectionViewStyle,Converter={local:ViewOrEditConverter},ConverterParameter={Self.DataControl}}"-->
+            
+                <dxg:GridControl.View>
+                    <dxg:TableView  />
+                </dxg:GridControl.View>
+
+                <!--TotalSummarySource="{Binding TotalSummary}"
+                         TotalSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"
+                         GroupSummarySource="{Binding GroupSummary}"
+                         GroupSummaryGeneratorTemplate="{StaticResource SummaryTemplate}"-->
+                <!--var cols = System.Windows.Interactivity.Interaction.GetTriggers(this);
+                cols.Add(new System.Windows.Interactivity.EventTrigger("") { });
+
+                var even = new System.Windows.Interactivity.EventTrigger("") { };
+                even.Actions.Add(new System.Windows.Interactivity.InvokeCommandAction()
+                { CommandName = "CloseCommand" }
+                    );-->
+                <!--<dxg:GridControl.Columns>
+                    <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}" HeaderToolTip="ss" />
+                    <dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}" Visible="False"/>
+                    <dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
+                    <dxg:GridColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}"/>
+                    <dxg:GridColumn FieldName="CateNo" Header="{x:Static res:Resources.Entity_P_CRTemp_CateNo}"/>
+                    <dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_Remark}"/>
+                    <dxg:GridColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_P_CRTemp_Creater}"/>
+                    <dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}"/>
+                    <dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
+                    <dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
+                </dxg:GridControl.Columns>-->
+                <!--<dxg:GridControl.View>
+                    <dxg:TableView  Name="tableview" RowDoubleClick="tableview_RowDoubleClick">
+                        -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--<dxmvvm:Interaction.Behaviors>
+                            <dxmvvm:EventToCommand PassEventArgsToCommand="True" Command="{Binding EditCommand}" EventName="RowDoubleClick" 
+                                                   CommandParameter="{Binding ElementName=tableview,Path=FocusedRow}" />
+                        </dxmvvm:Interaction.Behaviors>-->
+                <!--
+                    </dxg:TableView>
+                    -->
+                <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                <!--
+                </dxg:GridControl.View>-->
+            </dxg:GridControl>
+
+
+
+
+<!--<TextBox x:Name="textBox1" FontSize="24" Margin="10" Text="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=Name}"/>-->  
+
+<dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                             ColumnsSource="{StaticResource registercolumnssource}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             core:MouseDoubleClick.Command="{Binding EditCommand}"
+                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                             core:MouseDoubleClick.HitPosition="InRow"
+                             SelectionMode="{Binding CollectionViewStyle,Converter={core:CollectionSelectionModeConverter}}"
+                             ItemsSource="{Binding Items}">
+                <dxg:GridControl.View>
+                    <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowGrouping="True">
+                        <!--<dxg:TableView.ColumnMenuCustomizations>
+                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupBox}"/>
+                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.GroupColumn}"/>
+                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.ColumnChooser}"/>
+                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.FilterEditor}"/>
+                            <dxb:RemoveBarItemAndLinkAction ItemName="{x:Static dxg:DefaultColumnMenuItemNames.SearchPanel}"/>
+                        </dxg:TableView.ColumnMenuCustomizations>-->
+                    </dxg:TableView>
+                    <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
+                </dxg:GridControl.View>
+            </dxg:GridControl>

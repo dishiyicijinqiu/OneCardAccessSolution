@@ -11,11 +11,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     public interface IUserView : IView
     {
     }
-    public interface IUserConnectionViewModel
+    public interface IUserConnectionViewModel : IViewModel
     {
     }
-    public interface IUserCollectionSelectViewModel
+    public interface IUserViewModel : IViewModel
     {
-
+        event OnEntityViewEdited<string> OnEntityViewEdited;
+    }
+    public interface IUserCollectionSelectViewModel : IViewModel
+    {
+        event OnSelectedItems<BusinessEntity.RBAC.UserInfoEntity> OnSelectedItems;
     }
 }

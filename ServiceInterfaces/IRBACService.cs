@@ -1,5 +1,6 @@
 ﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using FengSharp.OneCardAccess.Common;
+using System.Collections.Generic;
 using System.ServiceModel;
 
 namespace FengSharp.OneCardAccess.ServiceInterfaces
@@ -10,5 +11,11 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     {
         [OperationContract]
         UserInfoEntity GetUserById(string UserId);
+        [OperationContract]
+        List<FirstUserGroupEntity> GetFirstUserGroupEntitys();
+        [OperationContract]
+        List<FirstUserInfoEntity> GetFirstUserInfoEntitys();
+        [OperationContract]
+        List<FirstUserInfoEntity> GetFirstUserInfoEntitysByUserGroupId(string UserGroupId);
     }
 }

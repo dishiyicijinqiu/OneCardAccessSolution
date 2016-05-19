@@ -28,6 +28,6 @@ Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=colum
 
 <#}#>
 <#+
-public static readonly string TableName="T_P_CRTemp";
+public static readonly string TableName="T_UserInfo";
 public static readonly bool IsBuilder= true;
 #>

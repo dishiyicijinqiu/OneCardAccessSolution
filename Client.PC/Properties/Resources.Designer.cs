@@ -493,6 +493,186 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_Creater {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 锁定标识 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_IsLock {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_IsLock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_Remark {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_UserGroupName {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_UserGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组编号 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_UserGroupNo {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_UserGroupNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_Creater {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 锁定标识 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_IsLock {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_IsLock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 是否为超级管理员 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_IsSuper {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_IsSuper", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_PassWord {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_PassWord", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_Remark {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 组名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_UserGroupName {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_UserGroupName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 组编号 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_UserGroupNo {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_UserGroupNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户姓名 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_UserName {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_UserName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户账号 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserInfo_UserNo {
+            get {
+                return ResourceManager.GetString("Entity_UserInfo_UserNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 服务或客户端应用程序中的通信错误 的本地化字符串。
         /// </summary>
         public static string Error_CommunicationException {
@@ -772,6 +952,60 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 用户权限 的本地化字符串。
+        /// </summary>
+        public static string Menu_RibbonPageGroup_RBAC {
+            get {
+                return ResourceManager.GetString("Menu_RibbonPageGroup_RBAC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组管理 的本地化字符串。
+        /// </summary>
+        public static string Menu_UserAndGroupManager {
+            get {
+                return ResourceManager.GetString("Menu_UserAndGroupManager", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户信息 的本地化字符串。
+        /// </summary>
+        public static string Menu_UserCollectionView {
+            get {
+                return ResourceManager.GetString("Menu_UserCollectionView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组 的本地化字符串。
+        /// </summary>
+        public static string Menu_UserGroupCollectionView {
+            get {
+                return ResourceManager.GetString("Menu_UserGroupCollectionView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户信息操作 的本地化字符串。
+        /// </summary>
+        public static string ToolBar_UserCollectionView_OP {
+            get {
+                return ResourceManager.GetString("ToolBar_UserCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组操作 的本地化字符串。
+        /// </summary>
+        public static string ToolBar_UserGroupCollectionView_OP {
+            get {
+                return ResourceManager.GetString("ToolBar_UserGroupCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         public static string View_LoginView_btnCancel_Content {
@@ -894,6 +1128,42 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_RegisterView_Title {
             get {
                 return ResourceManager.GetString("View_RegisterView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组管理 的本地化字符串。
+        /// </summary>
+        public static string View_UserAndGroupManagerView_Title {
+            get {
+                return ResourceManager.GetString("View_UserAndGroupManagerView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户信息管理 的本地化字符串。
+        /// </summary>
+        public static string View_UserCollectionView_Title {
+            get {
+                return ResourceManager.GetString("View_UserCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组 的本地化字符串。
+        /// </summary>
+        public static string View_UserGroupCollectionView_Title {
+            get {
+                return ResourceManager.GetString("View_UserGroupCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组编辑 的本地化字符串。
+        /// </summary>
+        public static string View_UserGroupView_Title {
+            get {
+                return ResourceManager.GetString("View_UserGroupView_Title", resourceCulture);
             }
         }
     }

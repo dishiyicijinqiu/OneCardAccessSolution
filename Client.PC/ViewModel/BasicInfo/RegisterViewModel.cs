@@ -66,7 +66,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     Entity.CopyValueFrom(copyEntity,
                         new List<string>(PCConfig.CreateAndModifyInfoColNames)
                     {
-                            "RegisterId","Register_FileEntitys"
+                            "RegisterId","Register_FileEntitys","P_CRTemp_To_RegisterEntitys"
                     });
                     break;
                 case EntityEditMode.Edit:
@@ -222,7 +222,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             try
             {
                 var vm = ServiceLoader.LoadService<IP_CRTempCollectionSelectViewModel>("IP_CRTempCollectionSelectViewModel",
-                    new ParameterOverride("style", CollectionViewStyle.CollectionMulSelect));
+                    new ParameterOverride("style", ViewStyle.MulSelect));
                 vm.OnSelectedItems += Vm_OnSelectedItems;
                 var view = ServiceLoader.LoadService<IP_CRTempCollectionView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));

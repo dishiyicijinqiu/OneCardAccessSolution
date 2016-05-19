@@ -3,12 +3,12 @@
 
 
 
---产品检验报告模板
-select p_crt.P_CRTempId,p_crt.CRTempName,p_crt.CRTempPath,p_crt.MaterIden,p_crt.IsEnable,p_crt.CateNo,
-	 p_crt.Remark,p_crt.CreateId,p_crt.CreateDate,p_crt.LastModifyId,p_crt.LastModifyDate,p_crt.Deleted
+--用户表
+select u.UserId,u.UserNo,u.UserName,u.PassWord,u.IsLock,u.Remark,u.IsSuper,u.CreateId,
+	 u.CreateDate,u.LastModifyId,u.LastModifyDate,u.Deleted,u.UserGroupId
 	 
-from T_P_CRTemp p_crt
-where P_CRTempId=P_CRTempId
+from T_UserInfo u
+where UserId=UserId
 
 
 

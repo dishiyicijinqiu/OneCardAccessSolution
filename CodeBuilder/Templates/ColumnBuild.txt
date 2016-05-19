@@ -1,15 +1,27 @@
 ﻿
 
-<dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempName}"/>
-<dxg:GridColumn FieldName="CRTempPath" Header="{x:Static res:Resources.Entity_P_CRTemp_CRTempPath}"/>
-<dxg:GridColumn FieldName="MaterIden" Header="{x:Static res:Resources.Entity_P_CRTemp_MaterIden}"/>
-<dxg:GridColumn FieldName="IsEnable" Header="{x:Static res:Resources.Entity_P_CRTemp_IsEnable}"/>
-<dxg:GridColumn FieldName="CateNo" Header="{x:Static res:Resources.Entity_P_CRTemp_CateNo}"/>
-<dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_P_CRTemp_Remark}"/>
-<dxg:GridColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_P_CRTemp_Creater}"/>
-<dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_P_CRTemp_CreateDate}"/>
-<dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyer}"/>
-<dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_P_CRTemp_LastModifyDate}"/>
+<dxg:GridColumn FieldName="UserNo" Header="{x:Static res:Resources.Entity_UserInfo_UserNo}"/>
+<dxg:GridColumn FieldName="UserName" Header="{x:Static res:Resources.Entity_UserInfo_UserName}"/>
+<dxg:GridColumn FieldName="PassWord" Header="{x:Static res:Resources.Entity_UserInfo_PassWord}"/>
+<dxg:GridColumn FieldName="IsLock" Header="{x:Static res:Resources.Entity_UserInfo_IsLock}"/>
+<dxg:GridColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_UserInfo_Remark}"/>
+<dxg:GridColumn FieldName="IsSuper" Header="{x:Static res:Resources.Entity_UserInfo_IsSuper}"/>
+<dxg:GridColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_UserInfo_Creater}"/>
+<dxg:GridColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_UserInfo_CreateDate}"/>
+<dxg:GridColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyer}"/>
+<dxg:GridColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyDate}"/>
+<dxg:GridColumn FieldName="UserGroupId" Header="{x:Static res:Resources.Entity_UserInfo_UserGroupId}"/>
 
+<ui:BaseColumn FieldName="UserNo" Header="{x:Static res:Resources.Entity_UserInfo_UserNo}"/>
+<ui:BaseColumn FieldName="UserName" Header="{x:Static res:Resources.Entity_UserInfo_UserName}"/>
+<ui:BaseColumn FieldName="PassWord" Header="{x:Static res:Resources.Entity_UserInfo_PassWord}"/>
+<ui:BaseColumn FieldName="IsLock" Header="{x:Static res:Resources.Entity_UserInfo_IsLock}"/>
+<ui:BaseColumn FieldName="Remark" Header="{x:Static res:Resources.Entity_UserInfo_Remark}"/>
+<ui:BaseColumn FieldName="IsSuper" Header="{x:Static res:Resources.Entity_UserInfo_IsSuper}"/>
+<ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_UserInfo_Creater}"/>
+<ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_UserInfo_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+<ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyer}"/>
+<ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+<ui:BaseColumn FieldName="UserGroupId" Header="{x:Static res:Resources.Entity_UserInfo_UserGroupId}"/>
 
 

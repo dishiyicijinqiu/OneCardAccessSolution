@@ -5,6 +5,8 @@ using FengSharp.OneCardAccess.TEntity;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using System.Data.Common;
+using System.Data;
 
 namespace FengSharp.OneCardAccess.Services
 {
@@ -48,8 +50,29 @@ namespace FengSharp.OneCardAccess.Services
                 var dbregisterentity = new T_Register();
                 dbregisterentity.CopyValueFrom(entity);
                 if (string.IsNullOrWhiteSpace(entity.RegisterId) || entity.RegisterId.Length != 36)
-                //if (entity.RegisterId.Length != 36)
                 {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.RegisterNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.RegisterName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Register");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, null);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.RegisterNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == 1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
                     dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
                     dbregisterentity = CreateEntity(dbregisterentity, tran);
@@ -72,6 +95,28 @@ namespace FengSharp.OneCardAccess.Services
                 }
                 else
                 {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.RegisterNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.RegisterName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Register");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.RegisterId);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.RegisterNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == 1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
                     dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = System.DateTime.Now;
                     if (!ModifyEntity(dbregisterentity, tran))

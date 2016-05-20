@@ -17,5 +17,11 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         List<FirstUserInfoEntity> GetFirstUserInfoEntitys();
         [OperationContract]
         List<FirstUserInfoEntity> GetFirstUserInfoEntitysByUserGroupId(string UserGroupId);
+        [OperationContract]
+        FirstUserGroupEntity GetFirstUserGroupEntityById(string UserGroupId);
+        [OperationContract]
+        string SaveUserGroupEntity(UserGroupEntity entity);
+        [OperationContract]
+        void DeleteUserGroupEntitys(List<UserGroupEntity> list);
     }
 }

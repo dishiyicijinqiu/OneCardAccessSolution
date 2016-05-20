@@ -19,8 +19,8 @@
                 <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
-                <Setter Property="Width" Value="658"/>
-                <Setter Property="Height" Value="544"/>
+                <Setter Property="Width" Value="520"/>
+                <Setter Property="Height" Value="420"/>
                 <Setter Property="Title" Value="{x:Static res:Resources.View_UserGroupView_Title}"/>
                 <Setter Property="ShowInTaskbar" Value="False"/>
             </Style>
@@ -39,11 +39,12 @@
                             <dxr:RibbonPageGroup.IsVisible>
                                 <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewSelectionModeConverter}" ConverterParameter="ViewIsVisible"/>
                             </dxr:RibbonPageGroup.IsVisible>
-                            <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" Content="{x:Static res:Resources.BarContent_AddChild}"
+                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
-                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
+                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}">
@@ -55,9 +56,12 @@
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-            <dxg:TreeListControl x:Name="grid" Grid.Row="1"
+            <dxg:TreeListControl x:Name="treelist" Grid.Row="1"
                                 SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 ItemsSource="{Binding Items}"
+                                core:MouseDoubleClick.Command="{Binding ClickToEditCommand}"
+                                core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                core:MouseDoubleClick.HitPosition="InRow"
                                  >
                 <dxg:TreeListControl.Columns>
                     <dxg:TreeListColumn FieldName="UserGroupNo" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupNo}" />

@@ -14,37 +14,37 @@ namespace FengSharp.OneCardAccess.Core
 {
     public class MouseDoubleClick
     {
-        private static readonly DependencyProperty GridControlMouseDoubleClickCommandBehaviorProperty = DependencyProperty.RegisterAttached("GridControlMouseDoubleClickCommandBehavior", typeof(GridControlMouseDoubleClickCommandBehavior), typeof(MouseDoubleClick), null);
+        private static readonly DependencyProperty GridDataControlBaseMouseDoubleClickCommandBehaviorProperty = DependencyProperty.RegisterAttached("GridDataControlBaseMouseDoubleClickCommandBehavior", typeof(GridDataControlBaseMouseDoubleClickCommandBehavior), typeof(MouseDoubleClick), null);
         public static readonly DependencyProperty CommandProperty = DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(MouseDoubleClick), new PropertyMetadata(OnSetCommandCallback));
         public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(MouseDoubleClick), new PropertyMetadata(OnSetCommandParameterCallback));
         public static readonly DependencyProperty HitPositionProperty = DependencyProperty.RegisterAttached("HitPosition", typeof(HitPosition), typeof(MouseDoubleClick), new PropertyMetadata(OnSetClickPositionCallback));
         #region GetSet
-        public static void SetCommand(GridControl dg, ICommand command)
+        public static void SetCommand(GridDataControlBase dg, ICommand command)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             dg.SetValue(CommandProperty, command);
         }
-        public static ICommand GetCommand(GridControl dg)
+        public static ICommand GetCommand(GridDataControlBase dg)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             return dg.GetValue(CommandProperty) as ICommand;
         }
-        public static void SetCommandParameter(GridControl dg, object parameter)
+        public static void SetCommandParameter(GridDataControlBase dg, object parameter)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             dg.SetValue(CommandParameterProperty, parameter);
         }
-        public static object GetCommandParameter(GridControl dg)
+        public static object GetCommandParameter(GridDataControlBase dg)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             return dg.GetValue(CommandParameterProperty);
         }
-        public static void SetHitPosition(GridControl dg, HitPosition parameter)
+        public static void SetHitPosition(GridDataControlBase dg, HitPosition parameter)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             dg.SetValue(HitPositionProperty, parameter);
         }
-        public static HitPosition GetHitPosition(GridControl dg)
+        public static HitPosition GetHitPosition(GridDataControlBase dg)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
             //return (HitPosition)Enum.Parse(typeof(HitPosition), (string)dg.GetValue(HitPositionProperty));
@@ -53,47 +53,47 @@ namespace FengSharp.OneCardAccess.Core
         #endregion
         private static void OnSetCommandCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            GridControl dg = dependencyObject as GridControl;
+            GridDataControlBase dg = dependencyObject as GridDataControlBase;
             if (dg != null)
             {
-                GridControlMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
+                GridDataControlBaseMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
                 behavior.Command = e.NewValue as ICommand;
             }
         }
         private static void OnSetCommandParameterCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            GridControl dg = dependencyObject as GridControl;
+            GridDataControlBase dg = dependencyObject as GridDataControlBase;
             if (dg != null)
             {
-                GridControlMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
+                GridDataControlBaseMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
                 behavior.CommandParameter = e.NewValue;
             }
         }
         private static void OnSetClickPositionCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
-            GridControl dg = dependencyObject as GridControl;
+            GridDataControlBase dg = dependencyObject as GridDataControlBase;
             if (dg != null)
             {
-                GridControlMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
+                GridDataControlBaseMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
                 behavior.CommandParameter = e.NewValue;
             }
         }
-        private static GridControlMouseDoubleClickCommandBehavior GetOrCreateBehavior(GridControl dg)
+        private static GridDataControlBaseMouseDoubleClickCommandBehavior GetOrCreateBehavior(GridDataControlBase dg)
         {
-            GridControlMouseDoubleClickCommandBehavior behavior = dg.GetValue(GridControlMouseDoubleClickCommandBehaviorProperty) as GridControlMouseDoubleClickCommandBehavior;
+            GridDataControlBaseMouseDoubleClickCommandBehavior behavior = dg.GetValue(GridDataControlBaseMouseDoubleClickCommandBehaviorProperty) as GridDataControlBaseMouseDoubleClickCommandBehavior;
             if (behavior == null)
             {
-                behavior = new GridControlMouseDoubleClickCommandBehavior(dg);
-                dg.SetValue(GridControlMouseDoubleClickCommandBehaviorProperty, behavior);
+                behavior = new GridDataControlBaseMouseDoubleClickCommandBehavior(dg);
+                dg.SetValue(GridDataControlBaseMouseDoubleClickCommandBehaviorProperty, behavior);
             }
             return behavior;
         }
     }
 
-    public class GridControlMouseDoubleClickCommandBehavior : Microsoft.Practices.Prism.Commands.CommandBehaviorBase<GridControl>
+    public class GridDataControlBaseMouseDoubleClickCommandBehavior : Microsoft.Practices.Prism.Commands.CommandBehaviorBase<GridDataControlBase>
     {
         public HitPosition HitPosition { get; set; }
-        public GridControlMouseDoubleClickCommandBehavior(GridControl targetObject) : base(targetObject)
+        public GridDataControlBaseMouseDoubleClickCommandBehavior(GridDataControlBase targetObject) : base(targetObject)
         {
             //this.HitPosition = HitPosition;
             if (targetObject == null) throw new System.ArgumentNullException("targetObject can't be null");
@@ -101,8 +101,18 @@ namespace FengSharp.OneCardAccess.Core
         }
         private void TargetObject_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            var grid = sender as GridControl;
-            ITableViewHitInfo hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject);
+            ITableView tableView = null;
+            var treelist = sender as TreeListControl;
+            if (treelist != null)
+                tableView = (ITableView)treelist.View;
+            else
+            {
+                var grid = sender as GridControl;
+                if (grid != null)
+                    tableView = (ITableView)grid.View;
+            }
+            if (tableView == null) return;
+            ITableViewHitInfo hitInfo = tableView.CalcHitInfo(e.OriginalSource as DependencyObject);
             if (hitInfo == null)
                 return;
 

@@ -486,4 +486,10 @@
   <data name="ToolBar_UserGroupCollectionView_OP" xml:space="preserve">
     <value>用户组操作</value>
   </data>
+  <data name="Entity_UserGroup_IsSuper" xml:space="preserve">
+    <value>超级管理组</value>
+  </data>
+  <data name="BarContent_AddChild" xml:space="preserve">
+    <value>新增子项</value>
+  </data>
 </root>

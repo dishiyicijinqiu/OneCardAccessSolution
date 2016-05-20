@@ -6,6 +6,7 @@ using System.Text;
 
 namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 {
+    [KnownType(typeof(FirstUserGroupEntity))]
     public partial class UserGroupEntity
     {
         public static UserGroupEntity CreateEntity()

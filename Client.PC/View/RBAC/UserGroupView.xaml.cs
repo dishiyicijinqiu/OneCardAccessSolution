@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FengSharp.OneCardAccess.Client.PC.Interfaces;
+using FengSharp.OneCardAccess.Client.PC.UI;
+using FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,8 +20,12 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
     /// <summary>
     /// UserGroupView.xaml 的交互逻辑
     /// </summary>
-    public partial class UserGroupView : UserControl
+    public partial class UserGroupView : BaseUserControl, IUserGroupView
     {
+        public UserGroupView(UserGroupViewModel VM) : base(VM)
+        {
+            InitializeComponent();
+        }
         public UserGroupView()
         {
             InitializeComponent();

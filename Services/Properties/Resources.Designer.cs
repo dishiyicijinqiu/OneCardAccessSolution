@@ -97,6 +97,42 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 编号不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_NoCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_NoCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号已存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_NoIsExist {
+            get {
+                return ResourceManager.GetString("Error_NoIsExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号不存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_NoIsNotExist {
+            get {
+                return ResourceManager.GetString("Error_NoIsNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 注册证名称不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_RegisterNameCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_RegisterNameCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 保存失败 的本地化字符串。
         /// </summary>
         internal static string Error_SaveFailed {
@@ -120,6 +156,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_StreamIsEmpty {
             get {
                 return ResourceManager.GetString("Error_StreamIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 用户组名称不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_UserGroupNameCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_UserGroupNameCanNotEmpty", resourceCulture);
             }
         }
     }

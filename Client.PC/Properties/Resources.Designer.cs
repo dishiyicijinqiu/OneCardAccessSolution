@@ -70,6 +70,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 新增子项 的本地化字符串。
+        /// </summary>
+        public static string BarContent_AddChild {
+            get {
+                return ResourceManager.GetString("BarContent_AddChild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 分类 的本地化字符串。
         /// </summary>
         public static string BarContent_Cate {
@@ -516,6 +525,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Entity_UserGroup_IsLock {
             get {
                 return ResourceManager.GetString("Entity_UserGroup_IsLock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 超级管理组 的本地化字符串。
+        /// </summary>
+        public static string Entity_UserGroup_IsSuper {
+            get {
+                return ResourceManager.GetString("Entity_UserGroup_IsSuper", resourceCulture);
             }
         }
         

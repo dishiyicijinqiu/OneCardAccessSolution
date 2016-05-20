@@ -3,12 +3,12 @@
 
 
 
---用户表
-select u.UserId,u.UserNo,u.UserName,u.PassWord,u.IsLock,u.Remark,u.IsSuper,u.CreateId,
-	 u.CreateDate,u.LastModifyId,u.LastModifyDate,u.Deleted,u.UserGroupId
-	 
-from T_UserInfo u
-where UserId=UserId
+--用户组
+select ug.UserGroupId,ug.UserGroupNo,ug.UserGroupName,ug.IsLock,ug.Remark,ug.IsSuper,
+	 ug.TreeNo,ug.TreeParentNo,ug.TreePath,ug.TreeSon,ug.TreeTotal,ug.CreateId,ug.CreateDate,
+	 ug.LastModifyId,ug.LastModifyDate,ug.Deleted
+from T_UserGroup ug
+where UserGroupId=UserGroupId
 
 
 

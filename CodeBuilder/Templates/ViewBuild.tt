@@ -39,6 +39,6 @@ if(column.ColumnName.ToLower()=="createid"){
 
 <#}#>
 <#+
-public static readonly string TableName="T_P_CRTemp";
+public static readonly string TableName="T_UserGroup";
 public static readonly bool IsBuilder= true;
 #>

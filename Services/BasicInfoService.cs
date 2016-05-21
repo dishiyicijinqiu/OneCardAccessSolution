@@ -74,8 +74,7 @@ namespace FengSharp.OneCardAccess.Services
                     }
                     #endregion
                     dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
-                    dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
-                    dbregisterentity = CreateEntity(dbregisterentity, tran);
+                    dbregisterentity = CreateEntity(dbregisterentity, tran, CreateEntityUnCreateFileds);
                     if (entity.Register_FileEntitys != null)
                         foreach (var item in entity.Register_FileEntitys)
                         {
@@ -84,7 +83,7 @@ namespace FengSharp.OneCardAccess.Services
                             dbregisterfileentity.RegisterId = dbregisterentity.RegisterId;
                             CreateEntity(dbregisterfileentity, tran);
                         }
-                    if(entity.P_CRTemp_To_RegisterEntitys != null)
+                    if (entity.P_CRTemp_To_RegisterEntitys != null)
                         foreach (var item in entity.P_CRTemp_To_RegisterEntitys)
                         {
                             var dbp_crtempentity = new T_P_CRTemp_To_Register();
@@ -106,7 +105,7 @@ namespace FengSharp.OneCardAccess.Services
                     }
 
                     DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Register");
-                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
                     Database.AddInParameter(cmd, "EntityId", DbType.String, entity.RegisterId);
                     Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.RegisterNo);
                     Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
@@ -119,7 +118,7 @@ namespace FengSharp.OneCardAccess.Services
                     #endregion
                     dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
                     dbregisterentity.LastModifyDate = System.DateTime.Now;
-                    if (!ModifyEntity(dbregisterentity, tran))
+                    if (!ModifyEntity(dbregisterentity, tran, ModifyEntityUnChangedFileds))
                     {
                         throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
                     }
@@ -153,16 +152,23 @@ namespace FengSharp.OneCardAccess.Services
                 {
                     var dbentity = new T_Register();
                     dbentity.CopyValueFrom(entity);
-                    if (!base.DeleteEntity<T_Register>(dbentity, tran))
+                    int ReturnValue = 0;
+                    base.DeleteEntity(dbentity, ref ReturnValue, tran);
+                    switch (ReturnValue)
                     {
-                        throw new BusinessException(Properties.Resources.Error_DeleteFailed);
+                        default:
+                            throw new Exception(Properties.Resources.Error_UnHandleException);
+                        case 0:
+                            break;
+                        case -1:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_ObjIsNotExist,
+                                string.Format("{0},{1}", entity.RegisterNo, entity.RegisterName)));
                     }
-                    //base.DeleteRelationEntitys<int, int>(entity.RegisterId, tran);
                 }
             });
         }
         #endregion
-        #region P_CRTemp产品检验报告
+        #region P_CRTemp产品检验报告模板
         public List<FirstP_CRTempEntity> GetFirstP_CRTempEntitys()
         {
             return this.GetEntitys<FirstP_CRTempEntity>();
@@ -178,28 +184,56 @@ namespace FengSharp.OneCardAccess.Services
 
         public string SaveP_CRTempEntity(P_CRTempEntity entity)
         {
-            return UseTran((tran) =>
+            //return UseTran((tran) =>
+            //{
+            var dbregisterentity = new T_P_CRTemp();
+            dbregisterentity.CopyValueFrom(entity);
+            if (string.IsNullOrWhiteSpace(entity.P_CRTempId) || entity.P_CRTempId.Length != 36)
             {
-                var dbregisterentity = new T_P_CRTemp();
-                dbregisterentity.CopyValueFrom(entity);
-                if (string.IsNullOrWhiteSpace(entity.P_CRTempId) || entity.P_CRTempId.Length != 36)
-                //if (entity.P_CRTempId.Length != 36)
+                #region 服务端验证
+                if (string.IsNullOrWhiteSpace(entity.CRTempName))
+                    throw new BusinessException(Properties.Resources.Error_CRTempNameCanNotEmpty);
+                DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_P_CRTemp");
+                Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                Database.AddInParameter(cmd, "EntityId", DbType.String, null);
+                Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.CRTempName);
+                Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                this.Database.ExecuteNonQuery(cmd);
+                int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                if (result == 1)
                 {
-                    dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
-                    dbregisterentity.LastModifyDate = dbregisterentity.CreateDate = System.DateTime.Now;
-                    dbregisterentity = CreateEntity(dbregisterentity, tran);
+                    throw new BusinessException(Properties.Resources.Error_NameIsExist);
                 }
-                else
+                #endregion
+                dbregisterentity.LastModifyId = dbregisterentity.CreateId = (string)Session.Current.SessionClientId;
+                dbregisterentity = CreateEntity(dbregisterentity, uncreatefileds: CreateEntityUnCreateFileds);
+            }
+            else
+            {
+                #region 服务端验证
+                if (string.IsNullOrWhiteSpace(entity.CRTempName))
+                    throw new BusinessException(Properties.Resources.Error_CRTempNameCanNotEmpty);
+                DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_P_CRTemp");
+                Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
+                Database.AddInParameter(cmd, "EntityId", DbType.String, entity.P_CRTempId);
+                Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.CRTempName);
+                Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                this.Database.ExecuteNonQuery(cmd);
+                int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                if (result == 1)
                 {
-                    dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
-                    dbregisterentity.LastModifyDate = System.DateTime.Now;
-                    if (!ModifyEntity(dbregisterentity, tran))
-                    {
-                        throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
-                    }
+                    throw new BusinessException(Properties.Resources.Error_NameIsExist);
                 }
-                return dbregisterentity.P_CRTempId;
-            });
+                #endregion
+                dbregisterentity.LastModifyId = (string)Session.Current.SessionClientId;
+                dbregisterentity.LastModifyDate = System.DateTime.Now;
+                if (!ModifyEntity(dbregisterentity, uncreatefileds: ModifyEntityUnChangedFileds))
+                {
+                    throw new BusinessException(FengSharp.OneCardAccess.Services.Properties.Resources.Error_SaveFailed);
+                }
+            }
+            return dbregisterentity.P_CRTempId;
+            //});
         }
 
         public void DeleteP_CRTempEntitys(List<P_CRTempEntity> P_CRTempEntitys)
@@ -208,9 +242,16 @@ namespace FengSharp.OneCardAccess.Services
             {
                 foreach (var entity in P_CRTempEntitys)
                 {
-                    if (!base.DeleteEntity<P_CRTempEntity>(entity, tran))
+                    int ReturnValue = 0;
+                    base.DeleteEntity<P_CRTempEntity>(entity, ref ReturnValue, tran);
+                    switch (ReturnValue)
                     {
-                        throw new BusinessException(Properties.Resources.Error_DeleteFailed);
+                        default:
+                            throw new Exception(Properties.Resources.Error_UnHandleException);
+                        case 0:
+                            break;
+                        case -1:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_ObjIsNotExist, entity.CRTempName));
                     }
                 }
             });

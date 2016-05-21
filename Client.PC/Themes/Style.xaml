@@ -15,6 +15,7 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Columns.xaml"/>
     </ResourceDictionary.MergedDictionaries>
+    
     <Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Add}"/>
         <Setter Property="Command" Value="{Binding AddCommand}"/>

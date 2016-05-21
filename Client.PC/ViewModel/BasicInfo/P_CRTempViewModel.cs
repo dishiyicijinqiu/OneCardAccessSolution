@@ -142,7 +142,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     UserId = Guid.NewGuid().ToString(),
                     Remark = "Remark",
                     IsLock = false,
-                    IsSuper = false,
                     PassWord = "PassWord"
                 });
                 list.Add(new FengSharp.OneCardAccess.BusinessEntity.RBAC.UserInfoEntity()
@@ -152,7 +151,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     UserId = Guid.NewGuid().ToString(),
                     Remark = "Remark1",
                     IsLock = true,
-                    IsSuper = true,
                     PassWord = "PassWord1"
                 });
                 var report = new View.BasicInfo.P_CRTempReport();

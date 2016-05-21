@@ -39,6 +39,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             {
                 if (e.PropertyName == "SelectedEntity")
                 {
+                    if (UserGroupCollectionViewModel.SelectedEntity == null) return;
                     var list = ServiceProxyFactory.Create<IRBACService>().GetFirstUserInfoEntitysByUserGroupId(UserGroupCollectionViewModel.SelectedEntity.UserGroupId).
                          OrderBy(t => t.UserNo).ThenBy(m => m.UserNo);
                     UserCollectionViewModel.Items.Clear();

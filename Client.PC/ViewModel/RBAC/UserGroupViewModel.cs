@@ -27,13 +27,25 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             Entity = FirstUserGroupEntity.CreateEntity();
             switch (EditMessage.EntityEditMode)
             {
-                case EntityEditMode.CopyAdd:
-                    var copyEntity = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.CopyKey);
-                    Entity.CopyValueFrom(copyEntity,
-                        new List<string>(PCConfig.CreateAndModifyInfoColNames)
+                case EntityEditMode.Add:
                     {
+                        var copyEntity = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.CopyKey);
+                        Entity.CopyValueFrom(copyEntity,
+                            new List<string>(PCConfig.CreateAndModifyInfoColNames)
+                        {
                             "UserGroupId"
-                    });
+                        });
+                    }
+                    break;
+                case EntityEditMode.CopyAdd:
+                    {
+                        var copyEntity = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.CopyKey);
+                        Entity.CopyValueFrom(copyEntity,
+                            new List<string>(PCConfig.CreateAndModifyInfoColNames)
+                        {
+                            "UserGroupId"
+                        });
+                    }
                     break;
                 case EntityEditMode.See:
                 case EntityEditMode.Edit:
@@ -88,6 +100,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             try
             {
                 var para = this.Parameter as UserGroupEditMessage;
+                if (string.IsNullOrWhiteSpace(para.TreeParentNo))
+                {
+                    ShowError(Properties.Resources.Error_FatherCanNotEmpty);
+                    return false;
+                }
+                this.Entity.TreeParentNo = para.TreeParentNo;
                 para.Key = ServiceProxyFactory.Create<IRBACService>().SaveUserGroupEntity(this.Entity);
                 if (para.Key == null || para.Key.Length != 36)
                 {

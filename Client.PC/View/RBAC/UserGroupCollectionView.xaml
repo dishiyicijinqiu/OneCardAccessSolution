@@ -42,8 +42,10 @@
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" Content="{x:Static res:Resources.BarContent_AddChild}"
                                                 CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}" 
+                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" 
+                                               CommandTarget="{Binding ElementName=treelist}"
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
@@ -62,6 +64,7 @@
                                 core:MouseDoubleClick.Command="{Binding ClickToEditCommand}"
                                 core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                                 core:MouseDoubleClick.HitPosition="InRow"
+                                SelectionMode="Cell"
                                  >
                 <dxg:TreeListControl.Columns>
                     <dxg:TreeListColumn FieldName="UserGroupNo" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupNo}" />

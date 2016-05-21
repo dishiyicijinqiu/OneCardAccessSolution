@@ -14,6 +14,11 @@ namespace FengSharp.OneCardAccess.Services
 {
     public abstract class ServiceBase
     {
+        protected static string[] ModifyTreeEntityUnChangedFileds = { "treeno", "treeparentno", "treepath", "treeson", "treetotal", "createid", "createdate", "deleted" };
+        protected static string[] ModifyEntityUnChangedFileds = { "createid", "createdate", "deleted" };
+
+        protected static string[] CreateTreeEntityUnCreateFileds = { "treeno", "treepath", "treeson", "treetotal", "createdate", "lastmodifydate", "deleted" };
+        protected static string[] CreateEntityUnCreateFileds = { "createdate", "lastmodifydate", "deleted" };
         private Database database;
         public Database Database
         {
@@ -24,18 +29,49 @@ namespace FengSharp.OneCardAccess.Services
                 return database;
             }
         }
-        public T CreateEntity<T>(T t, DbTransaction tran = null, Database _Database = null)
+        public T CreateEntity<T>(T t, DbTransaction tran = null, IEnumerable<string> uncreatefileds = null, IEnumerable<string> createfileds = null, Database _Database = null)
         {
             if (_Database == null)
                 _Database = this.Database;
-            var cmd = DataBaseExtend.GetCreateCommand(t, _Database);
-            _Database.ExecuteNonQuery(cmd, tran);
+            var cmd = DataBaseExtend.GetCreateCommand(t, _Database, uncreatefileds, createfileds);
+            if (tran == null)
+                _Database.ExecuteNonQuery(cmd);
+            else
+                _Database.ExecuteNonQuery(cmd, tran);
             var keyvalue = _Database.GetParameterValue(cmd, t.GetKeyFiledName());
             var p = t.GetType().GetProperty(t.GetKeyFiledName());
             p.SetValue(t, keyvalue, null);
             return t;
         }
-        public virtual bool DeleteEntity<T>(T entity, DbTransaction transaction = null, string cMode = null)
+        /// <summary>
+        /// 保存对象工作流
+        /// </summary>
+        /// <returns></returns>
+        public int SaveEntityFlow<T>(T entity, string cMode, DbTransaction tran, Database _Database = null)
+        {
+            var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
+            var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
+            string ProcudeName = "P_Glo_SaveEntityFlow";
+            switch (keyDbType)
+            {
+                default:
+                    throw new Exception("不支持的类型");
+                case DbType.Int32:
+                    break;
+                case DbType.String:
+                    ProcudeName = "P_Glo_SaveEntityFlow;2";
+                    break;
+            }
+            if (_Database == null)
+                _Database = this.Database;
+            var cmd = _Database.GetStoredProcCommand(ProcudeName);
+            _Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
+            Database.AddInParameter(cmd, "EntityId", keyDbType, KeyProperty.GetValue(entity, null));
+            _Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+            _Database.ExecuteNonQuery(cmd, tran);
+            return (int)_Database.GetParameterValue(cmd, "ReturnValue");
+        }
+        public virtual void DeleteEntity<T>(T entity, ref int ReturnValue, DbTransaction transaction = null, string cMode = null)
         {
             var KeyProperty = DataBaseExtend.GetKeyProperty<T>();
             var keyDbType = DataBaseExtend.GetDbTypeByPropertyTypeName(KeyProperty.PropertyType.Name);
@@ -55,8 +91,9 @@ namespace FengSharp.OneCardAccess.Services
                 cMode = typeof(T).Name;
             Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
             Database.AddInParameter(cmd, "EntityId", keyDbType, KeyProperty.GetValue(entity, null));
-            int rowcount = Database.ExecuteNonQuery(cmd, transaction);
-            return rowcount > 0;
+            Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+            Database.ExecuteNonQuery(cmd, transaction);
+            ReturnValue = (int)Database.GetParameterValue(cmd, "ReturnValue");
         }
         public virtual void DeleteRelationEntitys<Primary, Foreign>(Primary primary, DbTransaction transaction = null, string cMode = null)
         {
@@ -80,12 +117,16 @@ namespace FengSharp.OneCardAccess.Services
             Database.AddInParameter(cmd, "EntityId", keyDbType, primary.GetKeyFiledValue());
             Database.ExecuteNonQuery(cmd, transaction);
         }
-        public bool ModifyEntity<T>(T t, DbTransaction tran = null, Database _Database = null)
+        public bool ModifyEntity<T>(T t, DbTransaction tran = null, IEnumerable<string> uncreatefileds = null, IEnumerable<string> createfileds = null, Database _Database = null)
         {
             if (_Database == null)
                 _Database = this.Database;
-            var cmd = DataBaseExtend.GetModifyCommand(t, _Database);
-            int rowcount = _Database.ExecuteNonQuery(cmd, tran);
+            var cmd = DataBaseExtend.GetModifyCommand(t, _Database, uncreatefileds, createfileds);
+            int rowcount = 0;
+            if (tran == null)
+                rowcount = _Database.ExecuteNonQuery(cmd);
+            else
+                rowcount = _Database.ExecuteNonQuery(cmd, tran);
             return rowcount > 0;
         }
         public virtual T FindById<T>(T t, string cMode = null)
@@ -366,7 +407,7 @@ namespace FengSharp.OneCardAccess.Services
                     return DbType.DateTimeOffset;
             }
         }
-        public static DbCommand GetCreateCommand<T>(T entity, Database _Database, string[] uncreatefileds = null, string[] createfileds = null)
+        public static DbCommand GetCreateCommand<T>(T entity, Database _Database, IEnumerable<string> uncreatefileds = null, IEnumerable<string> createfileds = null)
         {
             string keyfiled = entity.GetKeyFiledName();
             DataBaseKeyType databasekeytype = entity.GetKeyFiledKeyType();
@@ -380,14 +421,14 @@ namespace FengSharp.OneCardAccess.Services
             {
                 if (createfileds != null)
                 {
-                    if (createfileds.Contains(field))
+                    if (createfileds.Contains(field.ToLower()))
                     {
                         genefileds.Add(field);
                     }
                 }
                 else if (uncreatefileds != null)
                 {
-                    if (!uncreatefileds.Contains(field))
+                    if (!uncreatefileds.Contains(field.ToLower()))
                     {
                         genefileds.Add(field);
                     }
@@ -460,7 +501,7 @@ namespace FengSharp.OneCardAccess.Services
             return cmd;
         }
 
-        internal static DbCommand GetModifyCommand<T>(T entity, Database _Database, string[] uncreatefileds = null, string[] createfileds = null)
+        internal static DbCommand GetModifyCommand<T>(T entity, Database _Database, IEnumerable<string> uncreatefileds = null, IEnumerable<string> createfileds = null)
         {
             string keyfiled = entity.GetKeyFiledName();
             DataBaseKeyType databasekeytype = entity.GetKeyFiledKeyType();
@@ -474,14 +515,14 @@ namespace FengSharp.OneCardAccess.Services
             {
                 if (createfileds != null)
                 {
-                    if (createfileds.Contains(field))
+                    if (createfileds.Contains(field.ToLower()))
                     {
                         genefileds.Add(field);
                     }
                 }
                 else if (uncreatefileds != null)
                 {
-                    if (!uncreatefileds.Contains(field))
+                    if (!uncreatefileds.Contains(field.ToLower()))
                     {
                         genefileds.Add(field);
                     }

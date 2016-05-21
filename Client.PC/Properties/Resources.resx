@@ -441,9 +441,6 @@
   <data name="Entity_UserInfo_IsLock" xml:space="preserve">
     <value>锁定标识</value>
   </data>
-  <data name="Entity_UserInfo_IsSuper" xml:space="preserve">
-    <value>是否为超级管理员</value>
-  </data>
   <data name="Entity_UserInfo_LastModifyDate" xml:space="preserve">
     <value>最后更改日期</value>
   </data>
@@ -491,5 +488,11 @@
   </data>
   <data name="BarContent_AddChild" xml:space="preserve">
     <value>新增子项</value>
+  </data>
+  <data name="Error_FatherCanNotEmpty" xml:space="preserve">
+    <value>父节点不可为空</value>
+  </data>
+  <data name="EmptyString" xml:space="preserve">
+    <value> </value>
   </data>
 </root>

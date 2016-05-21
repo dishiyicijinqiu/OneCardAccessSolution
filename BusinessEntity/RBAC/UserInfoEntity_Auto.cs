@@ -121,22 +121,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
                 RaisePropertyChanged("Remark");
             }
         }
-        private bool _IsSuper;
-        /// <summary>
-        /// 是否为超级管理员
-        /// </summary>
-        [DataMember]
-        public bool IsSuper
-        {
-            get { return _IsSuper; }
-            set
-            {
-                if (_IsSuper == value)
-                    return;
-                _IsSuper = value;
-                RaisePropertyChanged("IsSuper");
-            }
-        }
         private string _CreateId;
         /// <summary>
         /// 创建人Id

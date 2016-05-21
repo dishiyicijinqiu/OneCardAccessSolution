@@ -250,6 +250,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似   的本地化字符串。
+        /// </summary>
+        public static string EmptyString {
+            get {
+                return ResourceManager.GetString("EmptyString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 类别号 的本地化字符串。
         /// </summary>
         public static string Entity_P_CRTemp_CateNo {
@@ -610,15 +619,6 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
-        ///   查找类似 是否为超级管理员 的本地化字符串。
-        /// </summary>
-        public static string Entity_UserInfo_IsSuper {
-            get {
-                return ResourceManager.GetString("Entity_UserInfo_IsSuper", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   查找类似 最后更改日期 的本地化字符串。
         /// </summary>
         public static string Entity_UserInfo_LastModifyDate {
@@ -705,6 +705,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Error_ConnectionServerFailed {
             get {
                 return ResourceManager.GetString("Error_ConnectionServerFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 父节点不可为空 的本地化字符串。
+        /// </summary>
+        public static string Error_FatherCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_FatherCanNotEmpty", resourceCulture);
             }
         }
         

@@ -20,7 +20,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         public ICommand AddCommand { get; private set; }
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
-        public ICommand ClickToEditCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
 
         public UserGroupCollectionViewModel() : this(ViewStyle.View) { }
@@ -32,7 +31,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             CopyAddCommand = new DelegateCommand<FirstUserGroupEntity>(CopyAdd, CanCopyAdd);
             EditCommand = new DelegateCommand<FirstUserGroupEntity>(Edit, CanEdit);
             DeleteCommand = new DelegateCommand<IList>(Delete, CanDelete);
-            ClickToEditCommand = new DelegateCommand<FirstUserGroupEntity>(Edit);
             var list = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntitys().
                 OrderBy(t => t.UserGroupNo).ThenBy(m => m.UserGroupName);
             Items = new ObservableCollection<FirstUserGroupEntity>(list);
@@ -106,8 +104,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         {
             try
             {
-                if (!this.CanEdit(entity))
-                    return;
                 var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage",
                     new UserGroupEditMessage(entity.TreeParentNo, entity.UserGroupId, EntityEditMode.Edit)));
                 vm.OnEntityViewEdited += OnEntityViewEdited;

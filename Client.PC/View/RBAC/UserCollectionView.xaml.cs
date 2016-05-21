@@ -21,6 +21,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
         {
             InitializeComponent();
         }
+
     }
 
     public class UserCollectionViewSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter

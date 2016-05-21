@@ -3,7 +3,9 @@ using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC;
 using FengSharp.OneCardAccess.Core;
 using System;
+using System.Collections;
 using System.Globalization;
+using System.Windows.Input;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.RBAC

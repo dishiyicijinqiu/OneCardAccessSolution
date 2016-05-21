@@ -33,10 +33,6 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public string Remark { get; set; }
 		/// <summary>
-		/// 是否为超级管理员
-		/// </summary>
-		public bool IsSuper { get; set; }
-		/// <summary>
 		/// 创建人Id
 		/// </summary>
 		public string CreateId { get; set; }

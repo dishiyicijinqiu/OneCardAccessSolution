@@ -171,9 +171,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return;
                 ServiceProxyFactory.Create<IBasicInfoService>().DeleteRegisterEntitys(entitys.Cast<RegisterEntity>().ToList());
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
-                foreach (var item in entitys)
+                for (int i = entitys.Count - 1; i >= 0; i--)
                 {
-                    this.Items.Remove(item as FirstRegisterEntity);
+                    this.Items.Remove(entitys[i] as FirstRegisterEntity);
                 }
             }
             catch (Exception ex)

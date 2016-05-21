@@ -13,7 +13,8 @@
                     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
                     xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
                     xmlns:dxit="http://schemas.devexpress.com/winfx/2008/xaml/core/internal"
-                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon">
+                    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+                    >
     <!--控件默认属性设置-->
     <Style TargetType="dxlc:LayoutItem">
         <Setter Property="AddColonToLabel" Value="True"/>
@@ -28,7 +29,6 @@
         <Setter Property="ShowBorder" Value="False"/>
         <Setter Property="Background" Value="Transparent"/>
     </Style>
-
 
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
@@ -66,6 +66,7 @@
     <Style TargetType="dxe:TextEdit">
         <Setter Property="MaskUseAsDisplayFormat" Value="True"/>
         <Setter Property="VerticalContentAlignment" Value="Top"/>
+        <Setter Property="NullValue" Value=""/>
     </Style>
     <!--控件默认属性设置-->
     <!--ribonpage放在右侧-->

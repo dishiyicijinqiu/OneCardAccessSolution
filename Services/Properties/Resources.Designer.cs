@@ -61,6 +61,24 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 新增{0}失败 的本地化字符串。
+        /// </summary>
+        internal static string Error_AddFailed {
+            get {
+                return ResourceManager.GetString("Error_AddFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 检验报告模板名称不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_CRTempNameCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_CRTempNameCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 删除失败 的本地化字符串。
         /// </summary>
         internal static string Error_DeleteFailed {
@@ -97,6 +115,33 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 {0}正在使用 的本地化字符串。
+        /// </summary>
+        internal static string Error_IsUsing {
+            get {
+                return ResourceManager.GetString("Error_IsUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存{0}失败 的本地化字符串。
+        /// </summary>
+        internal static string Error_ModifyFailed {
+            get {
+                return ResourceManager.GetString("Error_ModifyFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 名称已存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_NameIsExist {
+            get {
+                return ResourceManager.GetString("Error_NameIsExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 编号不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_NoCanNotEmpty {
@@ -120,6 +165,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_NoIsNotExist {
             get {
                 return ResourceManager.GetString("Error_NoIsNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 {0}已不存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_ObjIsNotExist {
+            get {
+                return ResourceManager.GetString("Error_ObjIsNotExist", resourceCulture);
             }
         }
         
@@ -156,6 +210,24 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_StreamIsEmpty {
             get {
                 return ResourceManager.GetString("Error_StreamIsEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 超级用户组不可删除 的本地化字符串。
+        /// </summary>
+        internal static string Error_SuperUserGroupCanNotDelete {
+            get {
+                return ResourceManager.GetString("Error_SuperUserGroupCanNotDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未处理的错误 的本地化字符串。
+        /// </summary>
+        internal static string Error_UnHandleException {
+            get {
+                return ResourceManager.GetString("Error_UnHandleException", resourceCulture);
             }
         }
         

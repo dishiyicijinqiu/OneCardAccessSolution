@@ -80,6 +80,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
 
         private void OnInterClose(SubscriptionToken sender, CloseEventArgs args)
         {
+            if (sender == null) return;
             var vm = this.DataContext as BaseNotificationObject;
             if (sender == vm.CloseEventToken)
             {
@@ -119,6 +120,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         }
         private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
+            if (sender == null) return;
             var vm = this.DataContext as BaseNotificationObject;
             if (sender == vm.ChangeDataContextEventToken)
             {
@@ -127,10 +129,13 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         }
         protected virtual void OnChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
+            UnInit();
             this.DataContext = args.NewDataContext;
+            Init();
         }
         private void OnInterException(SubscriptionToken sender, ExceptionEventArgs args)
         {
+            if (sender == null) return;
             var vm = this.DataContext as BaseNotificationObject;
             if (sender == vm.ExceptionEventToken)
             {
@@ -143,6 +148,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         }
         private void OnInterMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {
+            if (sender == null) return;
             var vm = this.DataContext as BaseNotificationObject;
             if (sender == vm.MessageBoxEventToken)
             {
@@ -160,6 +166,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         }
         private void OnInterCreateView(SubscriptionToken sender, CreateViewEventArgs args)
         {
+            if (sender == null) return;
             var vm = this.DataContext as BaseNotificationObject;
             if (sender == vm.CreateViewEventToken)
             {

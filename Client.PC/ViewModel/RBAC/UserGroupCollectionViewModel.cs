@@ -22,7 +22,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         public ICommand EditCommand { get; private set; }
         public ICommand ClickToEditCommand { get; private set; }
         public ICommand DeleteCommand { get; private set; }
-        
+
         public UserGroupCollectionViewModel() : this(ViewStyle.View) { }
         public UserGroupCollectionViewModel(ViewStyle ViewStyle)
         {
@@ -38,7 +38,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             Items = new ObservableCollection<FirstUserGroupEntity>(list);
         }
 
-        private bool CanDelete(IList entitys)
+        public bool CanDelete(IList entitys)
         {
             if (entitys == null) return false;
             foreach (var item in entitys)
@@ -59,9 +59,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                     return;
                 ServiceProxyFactory.Create<IRBACService>().DeleteUserGroupEntitys(entitys.Cast<UserGroupEntity>().ToList());
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
-                foreach (var item in entitys)
+                for (int i = entitys.Count - 1; i >= 0; i--)
                 {
-                    this.Items.Remove(item as FirstUserGroupEntity);
+                    this.Items.Remove(entitys[i] as FirstUserGroupEntity);
                 }
             }
             catch (Exception ex)
@@ -75,8 +75,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             try
             {
                 var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage",
-                    new UserGroupEditMessage(entity.TreeParentNo, entity.UserGroupId, EntityEditMode.CopyAdd)));
-                vm.OnEntityViewEdited += vm_OnEntityViewEdited;
+                    new UserGroupEditMessage(entity.TreeParentNo, _CopyKey: entity.UserGroupId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
@@ -110,7 +110,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                     return;
                 var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage",
                     new UserGroupEditMessage(entity.TreeParentNo, entity.UserGroupId, EntityEditMode.Edit)));
-                vm.OnEntityViewEdited += vm_OnEntityViewEdited;
+                vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
@@ -124,13 +124,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         {
             try
             {
-                string TreeParentNo = string.Empty;
-                if (SelectedEntity != null)
+                string TreeParentNo = null;
+                string CopyId = null;
+                if (entity != null)
                 {
-                    TreeParentNo = SelectedEntity.TreeNo;
+                    TreeParentNo = entity.TreeNo;
+                    CopyId = entity.UserGroupId;
                 }
-                var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage", new UserGroupEditMessage(TreeParentNo)));
-                vm.OnEntityViewEdited += vm_OnEntityViewEdited;
+                var editmessage = new UserGroupEditMessage(TreeParentNo, _EntityEditMode: EntityEditMode.Add, _CopyKey: CopyId);
+                var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage", editmessage));
+                vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
                 this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
             }
@@ -140,9 +143,83 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             }
         }
 
-        private void vm_OnEntityViewEdited(IViewModel vm, EditMessage<string> EditMessage)
+        private void OnEntityViewEdited(IViewModel vm, EditMessage<string> EditMessage)
         {
+            try
+            {
+                switch (EditMessage.EntityEditMode)
+                {
+                    case EntityEditMode.Add:
+                        {
+                            var newItem = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.Key);
+                            var father = Items.First(t => t.TreeNo == newItem.TreeParentNo);
 
+                            int newindex = Items.IndexOf(father) + Items.Count(t => t.TreeParentNo == father.TreeNo) + 1;
+                            Items.Insert(newindex, newItem);
+                            if (EditMessage.IsContinue)
+                            {
+                                var newvm = new UserGroupViewModel(new UserGroupEditMessage(newItem.TreeParentNo, _EntityEditMode: EntityEditMode.Add, _CopyKey: newItem.UserGroupId));
+                                newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                    Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+                            }
+                        }
+                        break;
+                    case EntityEditMode.CopyAdd:
+                        {
+                            var newItem = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.Key);
+                            var father = Items.First(t => t.TreeNo == newItem.TreeParentNo);
+                            int newindex = Items.IndexOf(father) + Items.Count(t => t.TreeParentNo == father.TreeNo) + 1;
+                            Items.Insert(newindex, newItem);
+                            if (EditMessage.IsContinue)
+                            {
+                                var copyItem = Items.FirstOrDefault(t => t.UserGroupId == (EditMessage as UserGroupEditMessage).CopyKey);
+                                SelectedEntity = copyItem;
+
+                                var newvm = new UserGroupViewModel(new UserGroupEditMessage(newItem.TreeParentNo, _CopyKey: copyItem.UserGroupId, _EntityEditMode: EntityEditMode.CopyAdd));
+                                newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                    Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+                            }
+                        }
+                        break;
+                    case EntityEditMode.Edit:
+                        {
+                            var oldItem = Items.FirstOrDefault(t => t.UserGroupId == EditMessage.Key);
+                            if (oldItem == null) return;
+                            var newItem = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntityById(EditMessage.Key);
+                            var itemIndex = Items.IndexOf(oldItem);
+                            Items[itemIndex] = newItem;
+                            if (EditMessage.IsContinue)
+                            {
+                                int nextIndex = itemIndex + 1;
+                                if (Items.Count > nextIndex)
+                                {
+                                    var nextItem = Items[nextIndex];
+                                    SelectedEntity = nextItem;
+                                    var newvm = new UserGroupViewModel(new UserGroupEditMessage(newItem.TreeParentNo, nextItem.UserGroupId, EntityEditMode.Edit));
+                                    newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                    DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                        Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+                                }
+                                else
+                                {
+                                    SelectedEntity = Items[itemIndex];
+                                    ShowMessage(Properties.Resources.Info_NoNext);
+                                    DefaultEventAggregator.Current.GetEvent<CloseEvent>().
+                                        Publish(vm.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
+                                }
+                            }
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
         }
         public ObservableCollection<FirstUserGroupEntity> Items { get; private set; }
 
@@ -154,8 +231,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             {
                 _SelectedEntity = value;
                 RaisePropertyChanged("SelectedEntity");
+                (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
             }
         }
+
         private ViewStyle _ViewStyle;
 
         public ViewStyle ViewStyle

@@ -6,8 +6,6 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC

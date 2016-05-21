@@ -232,6 +232,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 用户组无效 的本地化字符串。
+        /// </summary>
+        internal static string Error_UserGroupIsUnable {
+            get {
+                return ResourceManager.GetString("Error_UserGroupIsUnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户组名称不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_UserGroupNameCanNotEmpty {

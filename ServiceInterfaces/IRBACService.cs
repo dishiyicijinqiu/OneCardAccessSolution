@@ -10,7 +10,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     public interface IRBACService
     {
         [OperationContract]
-        UserInfoEntity GetUserById(string UserId);
+        FirstUserInfoEntity GetFirstUserInfoEntityById(string UserId);
         [OperationContract]
         List<FirstUserGroupEntity> GetFirstUserGroupEntitys();
         [OperationContract]
@@ -23,5 +23,9 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         string SaveUserGroupEntity(UserGroupEntity entity);
         [OperationContract]
         void DeleteUserGroupEntitys(List<UserGroupEntity> list);
+        [OperationContract]
+        string SaveUserEntity(UserInfoEntity entity);
+        [OperationContract]
+        void DeleteUserEntitys(List<UserInfoEntity> UserInfoEntitys);
     }
 }

@@ -1193,5 +1193,14 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
                 return ResourceManager.GetString("View_UserGroupView_Title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 用户信息 的本地化字符串。
+        /// </summary>
+        public static string View_UserView_Title {
+            get {
+                return ResourceManager.GetString("View_UserView_Title", resourceCulture);
+            }
+        }
     }
 }

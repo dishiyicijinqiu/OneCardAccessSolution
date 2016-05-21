@@ -62,9 +62,6 @@
                        Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                        ColumnsSource="{StaticResource usercolumnssource}"
                        ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
-                       core:MouseDoubleClick.Command="{Binding EditCommand}"
-                       core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                       core:MouseDoubleClick.HitPosition="InRow"
                        SelectionMode="{Binding ViewStyle,Converter={local:UserCollectionViewSelectionModeConverter}}"
                        ItemsSource="{Binding Items}">
                 <dxg:GridControl.View>
@@ -75,3 +72,7 @@
         </Grid>
     </dxb:BarManager>
 </ui:BaseUserControl>
+
+<!--core:MouseDoubleClick.Command="{Binding EditCommand}"
+                       core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                       core:MouseDoubleClick.HitPosition="InRow"-->

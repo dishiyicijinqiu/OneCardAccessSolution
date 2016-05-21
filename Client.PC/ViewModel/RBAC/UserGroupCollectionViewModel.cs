@@ -131,7 +131,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                     TreeParentNo = entity.TreeNo;
                     CopyId = entity.UserGroupId;
                 }
-                var editmessage = new UserGroupEditMessage(TreeParentNo, _EntityEditMode: EntityEditMode.Add, _CopyKey: CopyId);
+                var editmessage = new UserGroupEditMessage(TreeParentNo, _EntityEditMode: EntityEditMode.Add);
                 var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage", editmessage));
                 vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
@@ -158,7 +158,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                             Items.Insert(newindex, newItem);
                             if (EditMessage.IsContinue)
                             {
-                                var newvm = new UserGroupViewModel(new UserGroupEditMessage(newItem.TreeParentNo, _EntityEditMode: EntityEditMode.Add, _CopyKey: newItem.UserGroupId));
+                                var newvm = new UserGroupViewModel(new UserGroupEditMessage(newItem.TreeParentNo, _EntityEditMode: EntityEditMode.Add));
                                 newvm.OnEntityViewEdited += OnEntityViewEdited;
                                 DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
                                     Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));

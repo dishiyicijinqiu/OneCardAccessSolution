@@ -16,6 +16,9 @@ namespace FengSharp.OneCardAccess.Core
     {
         private static readonly DependencyProperty GridDataControlBaseMouseDoubleClickCommandBehaviorProperty = DependencyProperty.RegisterAttached("GridDataControlBaseMouseDoubleClickCommandBehavior", typeof(GridDataControlBaseMouseDoubleClickCommandBehavior), typeof(MouseDoubleClick), null);
         public static readonly DependencyProperty CommandProperty = DependencyProperty.RegisterAttached("Command", typeof(ICommand), typeof(MouseDoubleClick), new PropertyMetadata(OnSetCommandCallback));
+        public static readonly DependencyProperty CommandTargetProperty = DependencyProperty.RegisterAttached("CommandTarget", typeof(UIElement), typeof(MouseDoubleClick), new PropertyMetadata(OnSetCommandTargetCallback));
+
+        //System.Windows.IInputElement CommandTarget
         public static readonly DependencyProperty CommandParameterProperty = DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(MouseDoubleClick), new PropertyMetadata(OnSetCommandParameterCallback));
         public static readonly DependencyProperty HitPositionProperty = DependencyProperty.RegisterAttached("HitPosition", typeof(HitPosition), typeof(MouseDoubleClick), new PropertyMetadata(OnSetClickPositionCallback));
         #region GetSet
@@ -39,6 +42,17 @@ namespace FengSharp.OneCardAccess.Core
             if (dg == null) throw new System.ArgumentNullException("dg");
             return dg.GetValue(CommandParameterProperty);
         }
+
+        public static void SetCommandTarget(GridDataControlBase dg, object parameter)
+        {
+            if (dg == null) throw new System.ArgumentNullException("dg");
+            dg.SetValue(CommandTargetProperty, parameter);
+        }
+        public static object GetCommandTarget(GridDataControlBase dg)
+        {
+            if (dg == null) throw new System.ArgumentNullException("dg");
+            return dg.GetValue(CommandTargetProperty);
+        }
         public static void SetHitPosition(GridDataControlBase dg, HitPosition parameter)
         {
             if (dg == null) throw new System.ArgumentNullException("dg");
@@ -60,6 +74,18 @@ namespace FengSharp.OneCardAccess.Core
                 behavior.Command = e.NewValue as ICommand;
             }
         }
+        private static void OnSetCommandTargetCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
+        {
+            GridDataControlBase dg = dependencyObject as GridDataControlBase;
+            if (dg != null)
+            {
+                GridDataControlBaseMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(dg);
+                behavior.CommandTarget = e.NewValue as UIElement;
+            }
+        }
+
+
+
         private static void OnSetCommandParameterCallback(DependencyObject dependencyObject, DependencyPropertyChangedEventArgs e)
         {
             GridDataControlBase dg = dependencyObject as GridDataControlBase;
@@ -92,6 +118,8 @@ namespace FengSharp.OneCardAccess.Core
 
     public class GridDataControlBaseMouseDoubleClickCommandBehavior : Microsoft.Practices.Prism.Commands.CommandBehaviorBase<GridDataControlBase>
     {
+
+        //behavior.TargetObject = e.NewValue as ICommand;
         public HitPosition HitPosition { get; set; }
         public GridDataControlBaseMouseDoubleClickCommandBehavior(GridDataControlBase targetObject) : base(targetObject)
         {
@@ -99,6 +127,15 @@ namespace FengSharp.OneCardAccess.Core
             if (targetObject == null) throw new System.ArgumentNullException("targetObject can't be null");
             targetObject.MouseDoubleClick += TargetObject_MouseDoubleClick;
         }
+        protected override void UpdateEnabledState()
+        {
+            if (this.Command != null && CommandTarget != null)
+            {
+                CommandTarget.IsEnabled = this.Command.CanExecute(this.CommandParameter);
+            }
+        }
+        public UIElement CommandTarget { get; set; }
+
         private void TargetObject_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ITableView tableView = null;

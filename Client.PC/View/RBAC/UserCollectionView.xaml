@@ -44,7 +44,7 @@
                             <dxb:BarButtonItem Style="{StaticResource barAdd}"/>
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}" 
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" Command="{Binding DeleteCommand}"
                                                CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
@@ -63,6 +63,11 @@
                        ColumnsSource="{StaticResource usercolumnssource}"
                        ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
                        SelectionMode="{Binding ViewStyle,Converter={local:UserCollectionViewSelectionModeConverter}}"
+                        core:MouseDoubleClick.CommandTarget="{Binding ElementName=barEdit}"
+                        core:MouseDoubleClick.Command="{Binding EditCommand}"
+                        core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                        core:MouseDoubleClick.HitPosition="InRow"
+                             
                        ItemsSource="{Binding Items}">
                 <dxg:GridControl.View>
                     <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowGrouping="True">

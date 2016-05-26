@@ -19,10 +19,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
     {
         public event OnSelectedItems<UserInfoEntity> OnSelectedItems;
 
-        public ICommand AddCommand { get; private set; }
-        public ICommand CopyAddCommand { get; private set; }
-        public ICommand EditCommand { get; private set; }
-        public ICommand DeleteCommand { get; private set; }
+        public ICommand AddCommand { get; set; }
+        public ICommand CopyAddCommand { get; set; }
+        public ICommand EditCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public UserCollectionViewModel() : this(ViewStyle.View) { }
         public UserCollectionViewModel(ViewStyle ViewStyle)
         {
@@ -32,20 +32,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             CopyAddCommand = new DelegateCommand<FirstUserInfoEntity>(CopyAdd, CanCopyAdd);
             EditCommand = new DelegateCommand<FirstUserInfoEntity>(Edit, CanEdit);
             DeleteCommand = new DelegateCommand<IList>(Delete, CanDelete);
-            //ClickToEditCommand = new DelegateCommand<FirstUserGroupEntity>(Edit);
             var list = ServiceProxyFactory.Create<IRBACService>().GetFirstUserInfoEntitys().
                 OrderBy(t => t.UserNo).ThenBy(m => m.UserNo);
             Items = new ObservableCollection<FirstUserInfoEntity>(list);
             //Items = new ObservableCollection<FirstUserInfoEntity>();
         }
-
-        private bool CanDelete(IList entitys)
+        public event AfterEntityViewEdited AfterEntityViewEdited;
+        public bool CanDelete(IList entitys)
         {
             if (entitys == null) return false;
             return entitys.Count > 0;
         }
 
-        private void Delete(IList entitys)
+        public void Delete(IList entitys)
         {
             try
             {
@@ -65,12 +64,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             }
         }
 
-        private bool CanEdit(FirstUserInfoEntity entity)
+        public bool CanEdit(FirstUserInfoEntity entity)
         {
             return entity != null;
         }
 
-        private void Edit(FirstUserInfoEntity entity)
+        public void Edit(FirstUserInfoEntity entity)
         {
             try
             {
@@ -202,6 +201,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                     default:
                         break;
                 }
+                AfterEntityViewEdited?.Invoke(SelectedEntity);
             }
             catch (Exception ex)
             {
@@ -248,6 +248,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
     }
 
 
+
+    public delegate void AfterEntityViewEdited(UserInfoEntity entity);
     public class UserEditMessage : EditMessage<string>
     {
         public UserEditMessage(string _UserGroupId = null, string _Key = null, EntityEditMode _EntityEditMode = EntityEditMode.Add, bool _IsContinue = false, string _CopyKey = null)

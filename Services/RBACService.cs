@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using FengSharp.OneCardAccess.BusinessEntity;
 
 namespace FengSharp.OneCardAccess.Services
 {
@@ -67,6 +68,14 @@ namespace FengSharp.OneCardAccess.Services
                     result = this.SaveEntityFlow(dbusergroupentity, "CreateUserGroupEntity", tran);
                     if (result != 1)
                     {
+                        if (result == -1)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherNotExist);
+                        }
+                        if (result == -2)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherIsUsingCanNotChild);
+                        }
                         throw new BusinessException(string.Format(Properties.Resources.Error_AddFailed, dbusergroupentity.UserGroupName));
                     }
                 }
@@ -125,7 +134,7 @@ namespace FengSharp.OneCardAccess.Services
                     switch (ReturnValue)
                     {
                         default:
-                            throw new Exception(Properties.Resources.Error_UnHandleException);
+                            throw new BusinessException(Properties.Resources.Error_UnHandleException);
                         case 1:
                             break;
                         case -1:
@@ -135,10 +144,27 @@ namespace FengSharp.OneCardAccess.Services
                             throw new BusinessException(string.Format(Properties.Resources.Error_IsUsing,
                                 string.Format("{0},{1}", entity.UserGroupNo, entity.UserGroupName)));
                         case -101:
-                            throw new Exception(Properties.Resources.Error_SuperUserGroupCanNotDelete);
+                            throw new BusinessException(Properties.Resources.Error_SuperUserGroupCanNotDelete);
                     }
                 }
             });
+        }
+        public bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree)
+        {
+            return UseTran((tran) =>
+             {
+                 int ReturnValue = base.MoveTree("UserGroup", sourceId, targetId, movetree, tran);
+                 switch (ReturnValue)
+                 {
+                     default:
+                         throw new BusinessException(Properties.Resources.Error_UnHandleException);
+                     case 1:
+                         break;
+                     case -200:
+                         throw new BusinessException(Properties.Resources.Error_MethodNotImplemented);
+                 }
+                 return true;
+             });
         }
         #endregion
 

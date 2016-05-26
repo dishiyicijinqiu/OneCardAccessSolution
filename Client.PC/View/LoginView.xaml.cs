@@ -31,6 +31,10 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         //    if (args.CloseStyle != CloseStyle.OKClose)
         //        Application.Current.Shutdown();
         //}
+        protected override void UnInit()
+        {
+
+        }
         protected override void OnWindowClosed()
         {
             if (Common.Session.Current == null)

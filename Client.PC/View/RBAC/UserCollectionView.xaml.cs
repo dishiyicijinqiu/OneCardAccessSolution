@@ -16,12 +16,24 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
         public UserCollectionView()
         {
             InitializeComponent();
+            //DevExpress.Xpf.Grid.TreeListDragDropManager
+        //DataGridDragDropManager
         }
         public UserCollectionView(UserCollectionViewModel VM) : base(VM)
         {
             InitializeComponent();
         }
 
+        private void GridDragDropManager_Drop(object sender, DevExpress.Xpf.Grid.DragDrop.GridDropEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void GridDragDropManager_DragOver(object sender, DevExpress.Xpf.Grid.DragDrop.GridDragOverEventArgs e)
+        {
+            e.AllowDrop = false;
+            e.Handled = true;
+        }
     }
 
     public class UserCollectionViewSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter

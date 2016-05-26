@@ -66,7 +66,7 @@ namespace FengSharp.OneCardAccess.Services
                 _Database = this.Database;
             var cmd = _Database.GetStoredProcCommand(ProcudeName);
             _Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
-            Database.AddInParameter(cmd, "EntityId", keyDbType, KeyProperty.GetValue(entity, null));
+            _Database.AddInParameter(cmd, "EntityId", keyDbType, KeyProperty.GetValue(entity, null));
             _Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
             _Database.ExecuteNonQuery(cmd, tran);
             return (int)_Database.GetParameterValue(cmd, "ReturnValue");
@@ -163,6 +163,23 @@ namespace FengSharp.OneCardAccess.Services
             }
             return t;
         }
+
+        public virtual int MoveTree(string cMode, string sourceId, string targetId, BusinessEntity.MoveTree movetree, DbTransaction tran, Database _Database = null)
+        {
+
+            string ProcudeName = "P_Glo_MoveTree";
+            if (_Database == null)
+                _Database = this.Database;
+            var cmd = _Database.GetStoredProcCommand(ProcudeName);
+            _Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
+            _Database.AddInParameter(cmd, "SourceEntityId", DbType.String, sourceId);
+            _Database.AddInParameter(cmd, "TargetEntityId", DbType.String, targetId);
+            _Database.AddInParameter(cmd, "OP", DbType.Int16, BusinessEntity.MoveTree.IntoNode);
+            _Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+            _Database.ExecuteNonQuery(cmd, tran);
+            return (int)_Database.GetParameterValue(cmd, "ReturnValue");
+        }
+
         public virtual T FindByNo<T>(string EntityNo, string cMode = null)
         {
             if (cMode == null)

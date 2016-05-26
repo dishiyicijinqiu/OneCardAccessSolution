@@ -12,10 +12,15 @@ namespace FengSharp.OneCardAccess.Core
         {
             try
             {
+                Exception handleException = null;
+                if (ex is Microsoft.Practices.Unity.ResolutionFailedException && ex.InnerException != null)
+                    handleException = ex.InnerException;
+                else
+                    handleException = ex;
                 Exception exceptionToRethrow;
                 if (!string.IsNullOrWhiteSpace(policyName))
                 {
-                    if (ExceptionPolicy.HandleException(ex, policyName, out exceptionToRethrow))
+                    if (ExceptionPolicy.HandleException(handleException, policyName, out exceptionToRethrow))
                     {
                         if (exceptionToRethrow != null)
                         {
@@ -27,14 +32,14 @@ namespace FengSharp.OneCardAccess.Core
                         else
                         {
                             if (owner == null)
-                                DXMessageBox.Show(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                                DXMessageBox.Show(handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                             else
-                                DXMessageBox.Show(owner, ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                                DXMessageBox.Show(owner, handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         return;
                     }
                 }
-                if (ExceptionPolicy.HandleException(ex, "ExceptionPolicy", out exceptionToRethrow))
+                if (ExceptionPolicy.HandleException(handleException, "ExceptionPolicy", out exceptionToRethrow))
                 {
                     if (exceptionToRethrow != null)
                     {
@@ -44,27 +49,31 @@ namespace FengSharp.OneCardAccess.Core
                             DXMessageBox.Show(owner, exceptionToRethrow.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                         if (exceptionToRethrow is LoginTimeOutException)
                         {
-                            DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Publish(new LoginTimeOutEventArgs(exceptionToRethrow as LoginTimeOutException));
+                            var token = ServiceLoader.LoadService<Client.PC.Interfaces.IMainViewModel>().LoginEventSubscriptionToken;
+                            DefaultEventAggregator.Current.GetEvent<Client.PC.ViewModel.LoginEvent>().Publish(token,
+                                new Client.PC.ViewModel.LoginEventArgs(Client.PC.ViewModel.LoginState.TimeOutLogin));
                         }
                     }
                     else
                     {
                         if (owner == null)
-                            DXMessageBox.Show(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                            DXMessageBox.Show(handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                         else
-                            DXMessageBox.Show(owner, ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                            DXMessageBox.Show(owner, handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
 
-                        if (ex is LoginTimeOutException)
+                        if (handleException is LoginTimeOutException)
                         {
-                            DefaultEventAggregator.Current.GetEvent<LoginTimeOutEvent>().Publish(new LoginTimeOutEventArgs(ex as LoginTimeOutException));
+                            var token = ServiceLoader.LoadService<Client.PC.Interfaces.IMainViewModel>().LoginEventSubscriptionToken;
+                            DefaultEventAggregator.Current.GetEvent<Client.PC.ViewModel.LoginEvent>().Publish(token,
+                                new Client.PC.ViewModel.LoginEventArgs(Client.PC.ViewModel.LoginState.TimeOutLogin));
                         }
                     }
                     return;
                 }
                 if (owner == null)
-                    DXMessageBox.Show(ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
                 else
-                    DXMessageBox.Show(owner, ex.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
+                    DXMessageBox.Show(owner, handleException.Message, Client.PC.Properties.Resources.Error_Title, MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception exception)
             {

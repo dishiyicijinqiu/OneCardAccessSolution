@@ -46,10 +46,7 @@ namespace FengSharp.OneCardAccess.Core
         public T EditMessage { get; set; }
     }
 
-
-    public class ShutDownEvent : CompositePresentationEvent<ShutDownEventArgs> { }
-    public class ShutDownEventArgs : NullEventArgs { }
-    public class LoginTimeOutEvent : CompositePresentationEvent<LoginTimeOutEventArgs> { }
+    public class LoginTimeOutEvent : SenderEvent<LoginTimeOutEventArgs>  { }
     public class LoginTimeOutEventArgs : NullEventArgs
     {
         public LoginTimeOutEventArgs(LoginTimeOutException loginTimeOutException)

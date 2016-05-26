@@ -498,4 +498,7 @@
   <data name="View_UserView_Title" xml:space="preserve">
     <value>用户信息</value>
   </data>
+  <data name="Info_ConfirmToMove" xml:space="preserve">
+    <value>确实要移动吗？</value>
+  </data>
 </root>

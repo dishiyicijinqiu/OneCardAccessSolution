@@ -21,16 +21,11 @@ namespace FengSharp.OneCardAccess.Client.PC
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-cn");
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-cn");
             ExceptionHelper.Initialize();
-            DefaultEventAggregator.Current.GetEvent<ShutDownEvent>().Subscribe(ShutDown);
             //RealProxyCallHandlerManager.AddCallHandler(new Core.LoadingCallHandler());
             if (DXSplashScreen.IsActive)
                 DXSplashScreen.Close();
             //DXSplashScreen.Show<SplashScreenView>();
             base.OnStartup(e);
-        }
-        void ShutDown(ShutDownEventArgs args)
-        {
-            this.Shutdown();
         }
     }
 }

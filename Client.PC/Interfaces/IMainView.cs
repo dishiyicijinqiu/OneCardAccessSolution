@@ -11,6 +11,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     {
         SubscriptionToken ShowDocumentEventSubscriptionToken { get; set; }
         SubscriptionToken UICloseDocumentEventSubscriptionToken { get; set; }
+        SubscriptionToken LoginEventSubscriptionToken { get; set; }
         SubscriptionToken LoginSucessEventSubscriptionToken { get; set; }
     }
     public interface IMainView : IView

@@ -209,6 +209,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             }
         }
 
+        #region propertys
         public ObservableCollection<FirstUserInfoEntity> Items { get; set; }
 
         private UserInfoEntity _SelectedEntity;
@@ -243,6 +244,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 RaisePropertyChanged("MenuTitle");
             }
         }
+        #endregion
     }
 
 

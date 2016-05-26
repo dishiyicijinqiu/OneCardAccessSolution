@@ -233,6 +233,11 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
                 return;
             }
         }
+
+        private void TreeListView_CellValueChanging(object sender, DevExpress.Xpf.Grid.TreeList.TreeListCellValueChangedEventArgs e)
+        {
+
+        }
     }
 
     public class UserGroupCollectionViewSelectionModeConverter : MarkupExtension, System.Windows.Data.IValueConverter

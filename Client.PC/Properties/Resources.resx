@@ -501,4 +501,34 @@
   <data name="Info_ConfirmToMove" xml:space="preserve">
     <value>确实要移动吗？</value>
   </data>
+  <data name="View_ChangePassWordView_btnCancel_Content" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="View_ChangePassWordView_btnOK_Content" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="View_ChangePassWordView_lblNewPassword_Label" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="View_ChangePassWordView_lblOldPassword_Label" xml:space="preserve">
+    <value>原密码</value>
+  </data>
+  <data name="View_ChangePassWordView_lblRNewPassword_Label" xml:space="preserve">
+    <value>重复新密码</value>
+  </data>
+  <data name="Menu_App_ChangePassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="View_ChangePassword_Title" xml:space="preserve">
+    <value>密码修改</value>
+  </data>
+  <data name="Menu_App_RecentDocuments" xml:space="preserve">
+    <value>最近打开的项目</value>
+  </data>
+  <data name="Menu_App_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Menu_App_Exit" xml:space="preserve">
+    <value>退出系统</value>
+  </data>
 </root>

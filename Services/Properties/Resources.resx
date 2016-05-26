@@ -165,6 +165,12 @@
   <data name="Error_ObjIsNotExist" xml:space="preserve">
     <value>{0}已不存在</value>
   </data>
+  <data name="Error_OldPassword" xml:space="preserve">
+    <value>原始密码不正确</value>
+  </data>
+  <data name="Error_PasswordLen" xml:space="preserve">
+    <value>密码长度必须在{0}到{1}之间</value>
+  </data>
   <data name="Error_RegisterNameCanNotEmpty" xml:space="preserve">
     <value>注册证名称不可为空</value>
   </data>

@@ -131,7 +131,7 @@
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Interfaces\IUserGroup.cs" />
-    <Compile Include="Interfaces\IUserView.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Interfaces\IView.cs" />
     <Compile Include="Interfaces\IViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -151,6 +151,7 @@
     <Compile Include="UI\BaseRibbonWindow.xaml.cs">
       <DependentUpon>BaseRibbonWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\BaseTreeListNodeImageSelector.cs" />
     <Compile Include="UI\BaseUserControl.cs" />
     <Compile Include="UI\BaseWindow.xaml.cs">
       <DependentUpon>BaseWindow.xaml</DependentUpon>
@@ -173,6 +174,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\RBAC\ChangePassWordViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserAndGroupManagerViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserCollectionViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserGroupCollectionViewModel.cs" />
@@ -201,6 +203,9 @@
     </Compile>
     <Compile Include="View\MainView.xaml.cs">
       <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RBAC\ChangePassWordView.xaml.cs">
+      <DependentUpon>ChangePassWordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RBAC\UserAndGroupManagerView.xaml.cs">
       <DependentUpon>UserAndGroupManagerView.xaml</DependentUpon>
@@ -271,6 +276,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RBAC\ChangePassWordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -479,6 +488,16 @@
   <ItemGroup>
     <Resource Include="Resources\Bars\usergroup_16x16.png" />
     <Resource Include="Resources\Bars\usergroup_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\childleaf_16x16.png" />
+    <Resource Include="Resources\childleaf_32x32.png" />
+    <Resource Include="Resources\leaf_16x16.png" />
+    <Resource Include="Resources\leaf_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\key_16x16.png" />
+    <Resource Include="Resources\key_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

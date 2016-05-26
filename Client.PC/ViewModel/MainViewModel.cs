@@ -5,6 +5,7 @@ using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Events;
 using Microsoft.Practices.Unity;
 using System;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Markup;
 
@@ -13,14 +14,40 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     public class MainViewModel : BaseNotificationObject, IMainViewModel
     {
         public ICommand ShowDocumentCommand { get; private set; }
+        public ICommand ChangePasswordCommand { get; private set; }
+        public ICommand AboutCommand { get; private set; }
+        public ICommand ExitCommand { get; private set; }
         public SubscriptionToken LoginEventSubscriptionToken { get; set; }
         public SubscriptionToken ShowDocumentEventSubscriptionToken { get; set; }
         public SubscriptionToken UICloseDocumentEventSubscriptionToken { get; set; }
         public SubscriptionToken LoginSucessEventSubscriptionToken { get; set; }
         public MainViewModel()
         {
+            RecentItems = new ObservableCollection<RecentItem>();
             LoginEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
             ShowDocumentCommand = new DelegateCommand<DocumentInfo>(ShowDocument);
+            ChangePasswordCommand = new DelegateCommand(ChangePassword);
+            AboutCommand = new DelegateCommand(AboutApp);
+            ExitCommand = new DelegateCommand(this.Close);
+        }
+
+        private void AboutApp()
+        {
+            ShowMessage(Properties.Resources.CompanyRight_ComanyName);
+        }
+
+        private void ChangePassword()
+        {
+            try
+            {
+                var vm = ServiceLoader.LoadService<IChangePassWordViewModel>();
+                var view = ServiceLoader.LoadService<IChangePassWordView>(new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "ChangePasswordWindowStyle"));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
         }
 
         public void ShowDocument(DocumentInfo docInfo)
@@ -31,6 +58,14 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(
                     vm.ShowDocumentEventSubscriptionToken,
                     new ShowDocumentEventArgs(docInfo));
+
+                RecentItems.Add(new RecentItem() { DocumentInfo = docInfo, DocumentTitle = docInfo.DocumentTitle, Number = 0 });
+                if (RecentItems.Count > 10)
+                    RecentItems.RemoveAt(0);
+                for (int i = 0; i < RecentItems.Count; i++)
+                {
+                    RecentItems[i].Number = i + 1;
+                }
             }
             catch (Exception ex)
             {
@@ -61,6 +96,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 ShowException(ex);
             }
         }
+
+
+        public ObservableCollection<RecentItem> RecentItems { get; private set; }
+    }
+    public class RecentItem
+    {
+        public int Number { get; set; }
+        public string DocumentTitle { get; set; }
+        public DocumentInfo DocumentInfo { get; set; }
     }
     #region Defs
     public class DocumentInfo

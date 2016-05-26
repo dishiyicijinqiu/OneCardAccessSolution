@@ -205,6 +205,24 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 原始密码不正确 的本地化字符串。
+        /// </summary>
+        internal static string Error_OldPassword {
+            get {
+                return ResourceManager.GetString("Error_OldPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码长度必须在{0}到{1}之间 的本地化字符串。
+        /// </summary>
+        internal static string Error_PasswordLen {
+            get {
+                return ResourceManager.GetString("Error_PasswordLen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 注册证名称不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_RegisterNameCanNotEmpty {

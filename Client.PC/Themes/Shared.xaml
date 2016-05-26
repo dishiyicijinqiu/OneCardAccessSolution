@@ -275,4 +275,7 @@
         </ContentControl>
     </DataTemplate>
     <!--DataGrid列类型-->
+
+    <ui:BaseTreeListNodeImageSelector x:Key="treeListNodeImageSelector"/>
+    
 </ResourceDictionary>

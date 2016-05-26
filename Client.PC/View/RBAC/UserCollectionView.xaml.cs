@@ -16,8 +16,6 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
         public UserCollectionView()
         {
             InitializeComponent();
-            //DevExpress.Xpf.Grid.TreeListDragDropManager
-        //DataGridDragDropManager
         }
         public UserCollectionView(UserCollectionViewModel VM) : base(VM)
         {

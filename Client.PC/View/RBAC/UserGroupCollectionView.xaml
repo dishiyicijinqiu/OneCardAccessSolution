@@ -72,7 +72,10 @@
                     <dxg:TreeListColumn FieldName="UserGroupName" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupName}" />
                 </dxg:TreeListControl.Columns>
                 <dxg:TreeListControl.View>
-                    <dxg:TreeListView KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
+                    <dxg:TreeListView 
+                                      NodeImageSelector="{StaticResource treeListNodeImageSelector}"
+                        ShowNodeImages="True" 
+                                      KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
                     </dxg:TreeListView>
                 </dxg:TreeListControl.View>
                 <dxmvvm:Interaction.Behaviors>

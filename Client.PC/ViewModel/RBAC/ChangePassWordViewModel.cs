@@ -55,6 +55,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             {
                 _OldPassword = value;
                 RaisePropertyChanged("OldPassword");
+                (ChangePasswordCommand as DelegateCommand).RaiseCanExecuteChanged();
             }
         }
         private string _NewPassword;
@@ -66,6 +67,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             {
                 _NewPassword = value;
                 RaisePropertyChanged("NewPassword");
+                (ChangePasswordCommand as DelegateCommand).RaiseCanExecuteChanged();
             }
         }
         private string _RNewPassword;
@@ -77,6 +79,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             {
                 _RNewPassword = value;
                 RaisePropertyChanged("RNewPassword");
+                (ChangePasswordCommand as DelegateCommand).RaiseCanExecuteChanged();
             }
         }
         #endregion

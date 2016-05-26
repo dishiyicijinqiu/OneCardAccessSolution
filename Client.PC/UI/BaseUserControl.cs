@@ -81,11 +81,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterClose(SubscriptionToken sender, CloseEventArgs args)
         {
             if (sender == null) return;
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.CloseEventToken)
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                OnClose(sender, args);
-            }
+                var vm = this.DataContext as BaseNotificationObject;
+                if (sender == vm.CloseEventToken)
+                {
+                    OnClose(sender, args);
+                }
+            }));
         }
         protected virtual void OnClose(SubscriptionToken sender, CloseEventArgs args)
         {
@@ -121,11 +124,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
             if (sender == null) return;
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.ChangeDataContextEventToken)
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                OnChangeDataContext(sender, args);
-            }
+                var vm = this.DataContext as BaseNotificationObject;
+                if (sender == vm.ChangeDataContextEventToken)
+                {
+                    OnChangeDataContext(sender, args);
+                }
+            }));
         }
         protected virtual void OnChangeDataContext(SubscriptionToken sender, ChangeDataContextEventArgs args)
         {
@@ -136,11 +142,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterException(SubscriptionToken sender, ExceptionEventArgs args)
         {
             if (sender == null) return;
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.ExceptionEventToken)
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                OnException(sender, args);
-            }
+                var vm = this.DataContext as BaseNotificationObject;
+                if (sender == vm.ExceptionEventToken)
+                {
+                    OnException(sender, args);
+                }
+            }));
         }
         protected virtual void OnException(SubscriptionToken sender, ExceptionEventArgs args)
         {
@@ -149,11 +158,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {
             if (sender == null) return;
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.MessageBoxEventToken)
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                OnMessage(sender, args);
-            }
+                var vm = this.DataContext as BaseNotificationObject;
+                if (sender == vm.MessageBoxEventToken)
+                {
+                    OnMessage(sender, args);
+                }
+            }));
         }
         protected virtual void OnMessage(SubscriptionToken sender, MessageBoxEventArgs args)
         {
@@ -167,11 +179,14 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         private void OnInterCreateView(SubscriptionToken sender, CreateViewEventArgs args)
         {
             if (sender == null) return;
-            var vm = this.DataContext as BaseNotificationObject;
-            if (sender == vm.CreateViewEventToken)
+            this.Dispatcher.Invoke(new Action(() =>
             {
-                OnCreateView(sender, args);
-            }
+                var vm = this.DataContext as BaseNotificationObject;
+                if (sender == vm.CreateViewEventToken)
+                {
+                    OnCreateView(sender, args);
+                }
+            }));
         }
         protected virtual void OnCreateView(SubscriptionToken sender, CreateViewEventArgs args)
         {
@@ -193,8 +208,11 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
 
         protected virtual void Close(CloseStyle closestyle = CloseStyle.NullClose)
         {
-            BaseNotificationObject VM = this.DataContext as BaseNotificationObject;
-            DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(VM.CloseEventToken, new CloseEventArgs(closestyle));
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                BaseNotificationObject VM = this.DataContext as BaseNotificationObject;
+                DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(VM.CloseEventToken, new CloseEventArgs(closestyle));
+            }));
         }
     }
 }

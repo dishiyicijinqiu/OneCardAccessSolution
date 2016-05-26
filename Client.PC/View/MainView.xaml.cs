@@ -118,12 +118,20 @@ namespace FengSharp.OneCardAccess.Client.PC.View
         }
         private void OnLoginSucess(SubscriptionToken sender, NullEventArgs args)
         {
-            var vm = this.DataContext as MainViewModel;
-            if (sender != vm.LoginSucessEventSubscriptionToken)
-                return;
-            var mainwindow = Window.GetWindow(this);
-            mainwindow.ShowInTaskbar = true;
-            mainwindow.Opacity = 100;
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                var vm = this.DataContext as MainViewModel;
+                if (sender != vm.LoginSucessEventSubscriptionToken)
+                    return;
+                var mainwindow = Window.GetWindow(this);
+                mainwindow.ShowInTaskbar = true;
+                mainwindow.Opacity = 100;
+            }));
+        }
+
+        private void listbox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ((DevExpress.Xpf.Ribbon.ApplicationMenu)ribbonControl1.ApplicationMenu).ClosePopup();
         }
     }
 }

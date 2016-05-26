@@ -15,7 +15,7 @@ namespace FengSharp.OneCardAccess.Services
             var dbentity = this.FindByNo<T_UserInfo>(UserNo);
             if (dbentity == null)
                 return LoginResult.UserNotExist;
-            if (dbentity.PassWord != PassWord)
+            if (dbentity.PassWord != MD5Encrypt.Encrypt(PassWord))
                 return LoginResult.ErrorPassWord;
             if (dbentity.IsLock)
                 return LoginResult.UserIsLocked;

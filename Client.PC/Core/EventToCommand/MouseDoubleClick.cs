@@ -156,7 +156,7 @@ namespace FengSharp.OneCardAccess.Core
             //((DevExpress.Xpf.Grid.TableViewHitInfo)hitInfo).HitTest GroupRow DevExpress.Xpf.Grid.TableViewHitTest
             //((DevExpress.Xpf.Grid.TableViewHitInfo)hitInfo).HitTest== TableViewHitTest.GroupRow
 
-
+            //HitTest RowCell DevExpress.Xpf.Grid.TreeList.TreeListViewHitTest
             if (e.ChangedButton != MouseButton.Left)
                 return;
             switch (HitPosition)
@@ -170,7 +170,7 @@ namespace FengSharp.OneCardAccess.Core
                         ExecuteCommand();
                     break;
                 case HitPosition.InRow:
-                    if (hitInfo.InRow)
+                    if (hitInfo.InRow && hitInfo.IsRowCell)
                         ExecuteCommand();
                     break;
                 case HitPosition.InColumnHeaderOrGroupPanel:

@@ -43,21 +43,35 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             }
         }
 
-
+        bool isloaded = false;
         private void LoginView_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
             try
             {
+                if (isloaded) return;
+                isloaded = true;
                 if (DXSplashScreen.IsActive)
                     DXSplashScreen.Close();
                 Window loginWindow = Window.GetWindow(this);
-                System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
-                loginWindow.Activate();
+                loginWindow.Topmost = true;
+                loginWindow.Activated += LoginWindow_Activated;
             }
             catch (Exception ex)
             {
                 ex.HandleException(this);
             }
+        }
+
+        private void LoginWindow_Activated(object sender, EventArgs e)
+        {
+            Window loginWindow = Window.GetWindow(this);
+            System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
+#if DEBUG
+            this.tbUserNo.Text = "1";
+            this.tbPwd.Text = "12345";
+            LoginViewModel VM = this.DataContext as LoginViewModel;
+            VM.Login();
+#endif
         }
     }
 }

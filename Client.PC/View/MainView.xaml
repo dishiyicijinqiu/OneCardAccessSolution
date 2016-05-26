@@ -30,8 +30,9 @@
                 <Setter Property="ShowInTaskbar" Value="True"/>
             </Style>
             <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="ChangePasswordWindowStyle">
-                <Setter Property="Width" Value="546"/>
-                <Setter Property="Height" Value="380"/>
+                <Setter Property="Width" Value="450"/>
+                <Setter Property="Height" Value="260"/>
+                <Setter Property="ResizeMode" Value="NoResize"/>
                 <Setter Property="Title" Value="{x:Static res:Resources.View_ChangePassword_Title}"/>
                 <Setter Property="ShowInTaskbar" Value="False"/>
             </Style>
@@ -111,7 +112,9 @@
                                     <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Margin="7,5,5,0">
                                         <Label FontWeight="Bold" Content="{x:Static res:Resources.Menu_App_RecentDocuments}"/>
                                     </Border>
-                                    <ListBox Grid.Row="1" BorderThickness="0" Margin="2,0,0,0" ItemsSource="{Binding RecentItems}" >
+                                    <ListBox x:Name="listbox" Grid.Row="1" BorderThickness="0" Margin="2,0,0,0" 
+                                             SelectionChanged="listbox_SelectionChanged"
+                                             ItemsSource="{Binding RecentItems}" >
                                         <ListBox.ItemTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
@@ -122,6 +125,14 @@
                                                 </StackPanel>
                                             </DataTemplate>
                                         </ListBox.ItemTemplate>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding RecentShowDocumentCommand}" 
+                                                    CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor,AncestorLevel=1,AncestorType={x:Type ListBox}},Path=SelectedItem}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+
                                     </ListBox>
                                 </Grid>
                             </Border>

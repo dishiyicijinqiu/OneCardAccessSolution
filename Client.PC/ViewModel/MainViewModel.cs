@@ -14,6 +14,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
     public class MainViewModel : BaseNotificationObject, IMainViewModel
     {
         public ICommand ShowDocumentCommand { get; private set; }
+        public ICommand RecentShowDocumentCommand { get; private set; }
         public ICommand ChangePasswordCommand { get; private set; }
         public ICommand AboutCommand { get; private set; }
         public ICommand ExitCommand { get; private set; }
@@ -29,13 +30,44 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             ChangePasswordCommand = new DelegateCommand(ChangePassword);
             AboutCommand = new DelegateCommand(AboutApp);
             ExitCommand = new DelegateCommand(this.Close);
+            RecentShowDocumentCommand = new DelegateCommand<RecentItem>(RecentShowDocument);
+        }
+        public void RecentShowDocument(RecentItem recentitem)
+        {
+            try
+            {
+                if (recentitem == null) return;
+                var docInfo = recentitem.DocumentInfo;
+                var vm = ServiceLoader.LoadService<IMainViewModel>();
+                DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(
+                    vm.ShowDocumentEventSubscriptionToken,
+                    new ShowDocumentEventArgs(docInfo));
+                foreach (var item in RecentItems)
+                {
+                    if (string.Compare(item.DocumentTitle, docInfo.DocumentTitle) == 0)
+                    {
+                        RecentItems.Remove(item);
+                        break;
+                    }
+                }
+                RecentItems.Insert(0, new RecentItem() { DocumentInfo = docInfo, DocumentTitle = docInfo.DocumentTitle, Number = 0 });
+                if (RecentItems.Count > 10)
+                    RecentItems.RemoveAt(0);
+                for (int i = 0; i < RecentItems.Count; i++)
+                {
+                    RecentItems[i].Number = i + 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
         }
 
         private void AboutApp()
         {
             ShowMessage(Properties.Resources.CompanyRight_ComanyName);
         }
-
         private void ChangePassword()
         {
             try
@@ -58,8 +90,15 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 DefaultEventAggregator.Current.GetEvent<ShowDocumentEvent>().Publish(
                     vm.ShowDocumentEventSubscriptionToken,
                     new ShowDocumentEventArgs(docInfo));
-
-                RecentItems.Add(new RecentItem() { DocumentInfo = docInfo, DocumentTitle = docInfo.DocumentTitle, Number = 0 });
+                foreach (var item in RecentItems)
+                {
+                    if (string.Compare(item.DocumentTitle, docInfo.DocumentTitle) == 0)
+                    {
+                        RecentItems.Remove(item);
+                        break;
+                    }
+                }
+                RecentItems.Insert(0, new RecentItem() { DocumentInfo = docInfo, DocumentTitle = docInfo.DocumentTitle, Number = 0 });
                 if (RecentItems.Count > 10)
                     RecentItems.RemoveAt(0);
                 for (int i = 0; i < RecentItems.Count; i++)

@@ -244,7 +244,7 @@ namespace FengSharp.OneCardAccess.Services
                     #region 服务端验证
                     DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_User");
                     Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
-                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.UserGroupId);
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.UserId);
                     Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.UserNo);
                     Database.AddInParameter(cmd, "UserGroupId", DbType.String, entity.UserGroupId);
                     Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
@@ -310,8 +310,8 @@ namespace FengSharp.OneCardAccess.Services
             {
                 var cmd = this.Database.GetStoredProcCommand("P_Gen_ChangePassword");
                 Database.AddInParameter(cmd, "EntityId", DbType.String, Session.Current.SessionClientId);
-                Database.AddInParameter(cmd, "OldPassword", DbType.String, MD5(oldPassword));
-                Database.AddInParameter(cmd, "NewPassword", DbType.String, MD5(newPassword));
+                Database.AddInParameter(cmd, "OldPassword", DbType.String, MD5Encrypt.Encrypt(oldPassword));
+                Database.AddInParameter(cmd, "NewPassword", DbType.String, MD5Encrypt.Encrypt(newPassword));
                 Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
                 Database.ExecuteNonQuery(cmd);
                 int ReturnValue = (int)Database.GetParameterValue(cmd, "ReturnValue");
@@ -330,17 +330,6 @@ namespace FengSharp.OneCardAccess.Services
         #endregion
 
 
-        static string MD5(string str)
-        {
-            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-            byte[] InBytes = System.Text.Encoding.UTF8.GetBytes(str);
-            byte[] OutBytes = md5.ComputeHash(InBytes);
-            string OutString = "";
-            for (int i = 0; i < OutBytes.Length; i++)
-            {
-                OutString += OutBytes[i].ToString("x2");
-            }
-            return OutString;
-        }
+      
     }
 }

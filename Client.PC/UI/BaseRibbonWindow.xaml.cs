@@ -34,10 +34,13 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
 
         private void OnInterClose(SubscriptionToken sender, CloseEventArgs args)
         {
-            var vm = this.DataContext as BaseRibbonWindowVM;
-            if (sender != vm.CloseEventToken)
-                return;
-            this.Close();
+            this.Dispatcher.Invoke(new Action(() =>
+            {
+                var vm = this.DataContext as BaseRibbonWindowVM;
+                if (sender != vm.CloseEventToken)
+                    return;
+                this.Close();
+            }));
         }
 
         protected override void OnClosed(EventArgs e)

@@ -13,88 +13,154 @@
             xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
               xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
                     >
-  <ui:BaseUserControl.Resources>
-    <ResourceDictionary>
-      <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
-      </ResourceDictionary.MergedDictionaries>
-      <Style TargetType="{x:Type Window}" x:Key="LoginWindowStyle">
-        <Setter Property="Title" Value="{x:Static res:Resources.View_LoginView_Title}"/>
-        <Setter Property="WindowStyle" Value="None"/>
-        <Setter Property="ResizeMode" Value="NoResize"/>
-        <Setter Property="SizeToContent" Value="WidthAndHeight"/>
-        <Setter Property="ShowInTaskbar" Value="True"/>
-      </Style>
-    </ResourceDictionary>
-  </ui:BaseUserControl.Resources>
+    <ui:BaseUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type Window}" x:Key="LoginWindowStyle">
+                <Setter Property="Title" Value="{x:Static res:Resources.View_LoginView_Title}"/>
+                <Setter Property="WindowStyle" Value="None"/>
+                <Setter Property="ResizeMode" Value="NoResize"/>
+                <Setter Property="SizeToContent" Value="WidthAndHeight"/>
+                <Setter Property="ShowInTaskbar" Value="True"/>
+            </Style>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="ChangePasswordWindowStyle">
+                <Setter Property="Width" Value="546"/>
+                <Setter Property="Height" Value="380"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_ChangePassword_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ui:BaseUserControl.Resources>
 
-  <dxb:BarManager x:Name="barManager">
-    <dxb:BarManager.Items>
-      <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}"
+
+
+    <dxb:BarManager x:Name="barManager">
+        <dxb:BarManager.Items>
+            <dxb:BarButtonItem x:Name="btnRegisterCollectionView" Content="{x:Static res:Resources.Menu_Register}"
                          Command="{Binding ShowDocumentCommand}"
                          Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png"
                          LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
-        <dxb:BarButtonItem.CommandParameter>
-          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}"
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_RegisterCollectionView_Title}"
                                            DocumentName="IRegisterCollectionViewModel"
                                            DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionViewModel"
                                            DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IRegisterCollectionView"/>
-        </dxb:BarButtonItem.CommandParameter>
-      </dxb:BarButtonItem>
-      <dxb:BarButtonItem x:Name="btnP_CRTempCollectionView" Content="{x:Static res:Resources.Menu_P_CRTemp}"
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
+            <dxb:BarButtonItem x:Name="btnP_CRTempCollectionView" Content="{x:Static res:Resources.Menu_P_CRTemp}"
                          Command="{Binding ShowDocumentCommand}"
                          Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png"
                          LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
-        <dxb:BarButtonItem.CommandParameter>
-          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}"
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_P_CRTempView_Title}"
                                            DocumentName="IP_CRTempCollectionViewModel"
                                            DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionViewModel"
                                            DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
-        </dxb:BarButtonItem.CommandParameter>
-      </dxb:BarButtonItem>
-      <dxb:BarButtonItem x:Name="btnUserAndGroupManagerView" Content="{x:Static res:Resources.Menu_UserAndGroupManager}"
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
+            <dxb:BarButtonItem x:Name="btnUserAndGroupManagerView" Content="{x:Static res:Resources.Menu_UserAndGroupManager}"
                          Command="{Binding ShowDocumentCommand}"
                          Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/usergroup_16x16.png"
                          LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/usergroup_32x32.png" >
-        <dxb:BarButtonItem.CommandParameter>
-          <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_UserAndGroupManagerView_Title}"
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_UserAndGroupManagerView_Title}"
                                            DocumentName="IUserAndGroupManagerViewModel"
                                            DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IUserAndGroupManagerViewModel"
                                            DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IUserAndGroupManagerView"/>
-        </dxb:BarButtonItem.CommandParameter>
-      </dxb:BarButtonItem>
-    </dxb:BarManager.Items>
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
 
-    <DockPanel>
-      <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
-        <dxr:RibbonDefaultPageCategory>
-          <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
-            <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
-              <dxr:RibbonPageGroup.ItemLinks>
-                <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
-                <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
-              </dxr:RibbonPageGroup.ItemLinks>
-            </dxr:RibbonPageGroup>
-            <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_RBAC}" >
-              <dxr:RibbonPageGroup.ItemLinks>
-                <dxb:BarButtonItemLink BarItemName="btnUserAndGroupManagerView" />
-              </dxr:RibbonPageGroup.ItemLinks>
-            </dxr:RibbonPageGroup>
-          </dxr:RibbonPage>
-        </dxr:RibbonDefaultPageCategory>
-      </dxr:RibbonControl>
-      <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
-        <dxd:LayoutGroup >
-          <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
-            <dxd:DocumentPanel ShowCloseButton="False" AllowClose="False">
 
-            </dxd:DocumentPanel>
-          </dxd:DocumentGroup>
-        </dxd:LayoutGroup>
-      </dxd:DockLayoutManager>
-    </DockPanel>
-  </dxb:BarManager>
+            <dxb:BarButtonItem x:Name="btnChangePasswordView" Content="{x:Static res:Resources.Menu_App_ChangePassword}"
+                         Command="{Binding ChangePasswordCommand}"
+                         Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/key_16x16.png"
+                         LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/key_32x32.png" />
+            <dxb:BarButtonItem Name="btnAbout" Content="{x:Static res:Resources.Menu_App_About}" 
+                               Command="{Binding AboutCommand}"
+                               Glyph="{dxc:DXImage Image=Info_16x16.png}" 
+                               LargeGlyph="{dxc:DXImage Image=Info_32x32.png}" />
+            <dxb:BarButtonItem Name="btnExit" Content="{x:Static res:Resources.Menu_App_Exit}" 
+                               Command="{Binding ExitCommand}"
+                               Glyph="{dxc:DXImage Image=Close_16x16.png}" 
+                               LargeGlyph="{dxc:DXImage Image=Close_32x32.png}" />
+        </dxb:BarManager.Items>
+
+        <DockPanel>
+            <dxr:RibbonControl x:Name="ribbonControl1" DockPanel.Dock="Top">
+                <dxr:RibbonControl.ApplicationMenu>
+                    <dxr:ApplicationMenu ShowRightPane="True">
+                        <dxr:ApplicationMenu.ItemLinks>
+                            <dxb:BarButtonItemLink BarItemName="btnChangePasswordView" />
+                            <dxb:BarButtonItemLink BarItemName="btnAbout" />
+                            <dxb:BarButtonItemLink BarItemName="btnExit" />
+                        </dxr:ApplicationMenu.ItemLinks>
+
+                        <dxr:ApplicationMenu.RightPane>
+                            <Border Background="White" BorderThickness="1,0,0,0" Width="200" Height="260" BorderBrush="LightGray">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Border BorderThickness="0,0,0,1" BorderBrush="LightGray" Margin="7,5,5,0">
+                                        <Label FontWeight="Bold" Content="{x:Static res:Resources.Menu_App_RecentDocuments}"/>
+                                    </Border>
+                                    <ListBox Grid.Row="1" BorderThickness="0" Margin="2,0,0,0" ItemsSource="{Binding RecentItems}" >
+                                        <ListBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                    <Border BorderThickness="0,0,0,1" BorderBrush="Black">
+                                                        <TextBlock Text="{Binding Number}"/>
+                                                    </Border>
+                                                    <TextBlock Text="{Binding DocumentTitle}" Margin="7,0,0,0"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ListBox.ItemTemplate>
+                                    </ListBox>
+                                </Grid>
+                            </Border>
+                        </dxr:ApplicationMenu.RightPane>
+                        <dxr:ApplicationMenu.BottomPane>
+                            <StackPanel Orientation="Horizontal">
+                                <Button Command="{Binding ExitCommand}" Content="{x:Static res:Resources.Menu_App_Exit}" Width="80" />
+                            </StackPanel>
+                        </dxr:ApplicationMenu.BottomPane>
+
+                    </dxr:ApplicationMenu>
+                </dxr:RibbonControl.ApplicationMenu>
+
+
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage Name="Home" Caption="{x:Static res:Resources.Menu_RibbonPage_Navigate}">
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_BasicInfo}" >
+                            <dxr:RibbonPageGroup.ItemLinks>
+                                <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
+                                <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
+                            </dxr:RibbonPageGroup.ItemLinks>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_RBAC}" >
+                            <dxr:RibbonPageGroup.ItemLinks>
+                                <dxb:BarButtonItemLink BarItemName="btnUserAndGroupManagerView" />
+                            </dxr:RibbonPageGroup.ItemLinks>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxd:DockLayoutManager x:Name="dockLayoutManager" DisposeOnWindowClosing="True">
+                <dxd:LayoutGroup >
+                    <dxd:DocumentGroup x:Name="mdiContainer" MDIStyle="Tabbed" AllowContextMenu="True" >
+                        <dxd:DocumentPanel ShowCloseButton="False" AllowClose="False">
+
+                        </dxd:DocumentPanel>
+                    </dxd:DocumentGroup>
+                </dxd:LayoutGroup>
+            </dxd:DockLayoutManager>
+        </DockPanel>
+    </dxb:BarManager>
 </ui:BaseUserControl>

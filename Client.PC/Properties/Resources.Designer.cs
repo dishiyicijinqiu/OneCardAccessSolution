@@ -952,6 +952,42 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 关于 的本地化字符串。
+        /// </summary>
+        public static string Menu_App_About {
+            get {
+                return ResourceManager.GetString("Menu_App_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 修改密码 的本地化字符串。
+        /// </summary>
+        public static string Menu_App_ChangePassword {
+            get {
+                return ResourceManager.GetString("Menu_App_ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 退出系统 的本地化字符串。
+        /// </summary>
+        public static string Menu_App_Exit {
+            get {
+                return ResourceManager.GetString("Menu_App_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最近打开的项目 的本地化字符串。
+        /// </summary>
+        public static string Menu_App_RecentDocuments {
+            get {
+                return ResourceManager.GetString("Menu_App_RecentDocuments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 产品检验报告模板 的本地化字符串。
         /// </summary>
         public static string Menu_P_CRTemp {
@@ -1038,6 +1074,60 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string ToolBar_UserGroupCollectionView_OP {
             get {
                 return ResourceManager.GetString("ToolBar_UserGroupCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 密码修改 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassword_Title {
+            get {
+                return ResourceManager.GetString("View_ChangePassword_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 取消 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassWordView_btnCancel_Content {
+            get {
+                return ResourceManager.GetString("View_ChangePassWordView_btnCancel_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 保存 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassWordView_btnOK_Content {
+            get {
+                return ResourceManager.GetString("View_ChangePassWordView_btnOK_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 新密码 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassWordView_lblNewPassword_Label {
+            get {
+                return ResourceManager.GetString("View_ChangePassWordView_lblNewPassword_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 原密码 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassWordView_lblOldPassword_Label {
+            get {
+                return ResourceManager.GetString("View_ChangePassWordView_lblOldPassword_Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 重复新密码 的本地化字符串。
+        /// </summary>
+        public static string View_ChangePassWordView_lblRNewPassword_Label {
+            get {
+                return ResourceManager.GetString("View_ChangePassWordView_lblRNewPassword_Label", resourceCulture);
             }
         }
         

@@ -22,4 +22,12 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     {
         event OnSelectedItems<BusinessEntity.RBAC.UserInfoEntity> OnSelectedItems;
     }
+    public interface IChangePassWordView : IView
+    {
+
+    }
+    public interface IChangePassWordViewModel : IViewModel
+    {
+
+    }
 }

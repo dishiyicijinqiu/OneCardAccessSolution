@@ -30,5 +30,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         void DeleteUserEntitys(List<UserInfoEntity> UserInfoEntitys);
         [OperationContract]
         bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree);
+        [OperationContract]
+        void ChangePassword(string oldPassword, string newPassword);
     }
 }

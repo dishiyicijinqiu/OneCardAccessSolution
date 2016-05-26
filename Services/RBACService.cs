@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using FengSharp.OneCardAccess.BusinessEntity;
+using System.Security.Cryptography;
 
 namespace FengSharp.OneCardAccess.Services
 {
@@ -298,6 +299,48 @@ namespace FengSharp.OneCardAccess.Services
                 }
             });
         }
+
+        public void ChangePassword(string oldPassword, string newPassword)
+        {
+            if (string.IsNullOrEmpty(newPassword) || newPassword.Length <= 3 || newPassword.Length > 20)
+            {
+                throw new BusinessException(string.Format(Properties.Resources.Error_PasswordLen, 4, 20));
+            }
+            base.UseTran((tran) =>
+            {
+                var cmd = this.Database.GetStoredProcCommand("P_Gen_ChangePassword");
+                Database.AddInParameter(cmd, "EntityId", DbType.String, Session.Current.SessionClientId);
+                Database.AddInParameter(cmd, "OldPassword", DbType.String, MD5(oldPassword));
+                Database.AddInParameter(cmd, "NewPassword", DbType.String, MD5(newPassword));
+                Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                Database.ExecuteNonQuery(cmd);
+                int ReturnValue = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                if (ReturnValue != 1)
+                {
+                    switch (ReturnValue)
+                    {
+                        default:
+                            throw new BusinessException(Properties.Resources.Error_UnHandleException);
+                        case -1:
+                            throw new BusinessException(Properties.Resources.Error_OldPassword);
+                    }
+                }
+            });
+        }
         #endregion
+
+
+        static string MD5(string str)
+        {
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] InBytes = System.Text.Encoding.UTF8.GetBytes(str);
+            byte[] OutBytes = md5.ComputeHash(InBytes);
+            string OutString = "";
+            for (int i = 0; i < OutBytes.Length; i++)
+            {
+                OutString += OutBytes[i].ToString("x2");
+            }
+            return OutString;
+        }
     }
 }

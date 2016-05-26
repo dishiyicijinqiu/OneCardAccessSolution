@@ -51,7 +51,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 var entity = item as FirstUserGroupEntity;
                 if (entity.TreeSon > 0) return false;
                 if (entity.IsSuper) return false;
-                if (entity.TreeNo == "0000000000") return false;
+                if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
             }
             return true;
         }
@@ -96,7 +96,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         {
             if (entity == null) return false;
             if (entity.IsSuper) return false;
-            if (entity.TreeNo == "0000000000") return false;
+            if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
             return true;
         }
 
@@ -104,7 +104,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         {
             if (entity == null) return false;
             if (entity.IsSuper) return false;
-            if (entity.TreeNo == "0000000000") return false;
+            if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
             return true;
         }
 

@@ -31,24 +31,39 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
 
 
             this.UserGroupCollectionViewModel.AddChildCommand = new DelegateCommand<FirstUserGroupEntity>(this.UserGroupCollectionViewModel.AddChild, CanAddChild);
-            this.UserGroupCollectionViewModel.DeleteCommand = new DelegateCommand<IList>(this.UserGroupCollectionViewModel.Delete, CanDelete); 
+            this.UserGroupCollectionViewModel.DeleteCommand = new DelegateCommand<IList>(this.UserGroupCollectionViewModel.Delete, CanDelete);
 
+            this.UserCollectionViewModel.AfterEntityViewEdited += UserCollectionViewModel_AfterEntityViewEdited;
 
             this.UserGroupCollectionViewModel.MenuTitle = this.UserCollectionViewModel.MenuTitle = Properties.Resources.View_UserAndGroupManagerView_Title;
             UserGroupCollectionViewModel.PropertyChanged += UserGroupCollectionViewModel_PropertyChanged;
         }
 
+        private void UserCollectionViewModel_AfterEntityViewEdited(UserInfoEntity entity)
+        {
+          
+        }
 
         public bool CanDelete(IList entitys)
         {
-            if (this.UserCollectionViewModel.Items.Count > 0)
-                return false;
+            //if (this.UserCollectionViewModel.Items.Count > 0)
+            //    return false;
+            foreach (FirstUserInfoEntity item in this.UserCollectionViewModel.Items)
+            {
+                if (item.UserGroupId == this.UserGroupCollectionViewModel.SelectedEntity.UserGroupId)
+                    return false;
+            }
             return this.UserGroupCollectionViewModel.CanDelete(entitys);
         }
         private bool CanAddChild(FirstUserGroupEntity entity)
         {
-            if (this.UserCollectionViewModel.Items.Count > 0)
-                return false;
+            foreach (FirstUserInfoEntity item in this.UserCollectionViewModel.Items)
+            {
+                if (item.UserGroupId == this.UserGroupCollectionViewModel.SelectedEntity.UserGroupId)
+                    return false;
+            }
+            //if (this.UserCollectionViewModel.Items.Count > 0)
+            //    return false;
             return this.UserGroupCollectionViewModel.CanAddChild(entity);
         }
 

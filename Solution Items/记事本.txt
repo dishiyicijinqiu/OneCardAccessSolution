@@ -73,7 +73,11 @@ System.Windows.Input.ComponentCommands.MoveDown
                 </dxg:GridControl.View>-->
             </dxg:GridControl>
 
-
+			 <!--<i:Interaction.Triggers>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding CloseCommand, Mode=OneWay}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>-->
 
 
 <!--<TextBox x:Name="textBox1" FontSize="24" Margin="10" Text="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Grid},AncestorLevel=2},Path=Name}"/>-->  

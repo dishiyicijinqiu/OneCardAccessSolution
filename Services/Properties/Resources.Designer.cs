@@ -88,6 +88,24 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 父节点正在使用不可分类 的本地化字符串。
+        /// </summary>
+        internal static string Error_FatherIsUsingCanNotChild {
+            get {
+                return ResourceManager.GetString("Error_FatherIsUsingCanNotChild", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 父节点不存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_FatherNotExist {
+            get {
+                return ResourceManager.GetString("Error_FatherNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 附件路径未正确设置 的本地化字符串。
         /// </summary>
         internal static string Error_FileAttachDir {
@@ -120,6 +138,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_IsUsing {
             get {
                 return ResourceManager.GetString("Error_IsUsing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 方法未实现 的本地化字符串。
+        /// </summary>
+        internal static string Error_MethodNotImplemented {
+            get {
+                return ResourceManager.GetString("Error_MethodNotImplemented", resourceCulture);
             }
         }
         

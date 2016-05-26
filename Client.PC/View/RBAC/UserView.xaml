@@ -11,12 +11,12 @@
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
             xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
-             
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-             
+            xmlns:vm="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC"
              d:DesignHeight="300" d:DesignWidth="300">
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
@@ -60,8 +60,45 @@
                                 EditValue="{Binding Entity.IsLock, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserInfo_UserGroupName}">
-                        <dxe:CheckEdit IsReadOnly="True"
-                                EditValue="{Binding Entity.UserGroupName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+
+                        <dxg:LookUpEdit x:Name="lookupedit"
+                        PopupWidth="440"
+                        PopupHeight="350"
+                        AutoPopulateColumns="False" 
+                        DisplayMember="UserGroupName" 
+                        ValueMember="UserGroupId"
+                        VerticalAlignment="Top" 
+                        CustomDisplayText="lookupedit_CustomDisplayText"
+                        EditValue="{Binding Entity.UserGroupId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                        ItemsSource="{Binding UserGroupItems}" >
+                            <dxg:LookUpEdit.StyleSettings>
+                                <local:BaseSearchLookUpEditStyleSettings/>
+                            </dxg:LookUpEdit.StyleSettings>
+                            <dxg:LookUpEdit.PopupContentTemplate>
+                                <ControlTemplate>
+                                    <dxg:GridControl x:Name="PART_GridControl"
+                                                     SelectionMode="Cell"
+                                                     >
+                                        <!--<i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="PreviewMouseUp">
+                                                <i:InvokeCommandAction Command="{Binding BeforeSelectCommand, Mode=OneWay}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>-->
+                                        <dxg:GridControl.Columns>
+                                            <dxg:GridColumn FieldName="UserGroupNo" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupNo}" />
+                                            <dxg:GridColumn FieldName="UserGroupName" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupName}" />
+                                        </dxg:GridControl.Columns>
+                                        <dxg:GridControl.View>
+                                            <dxg:TreeListView AutoWidth="True" KeyFieldName="TreeNo" 
+                                                              ParentFieldName="TreeParentNo" />
+                                        </dxg:GridControl.View>
+                                    </dxg:GridControl>
+                                </ControlTemplate>
+                            </dxg:LookUpEdit.PopupContentTemplate>
+                        </dxg:LookUpEdit>
+
+                        <!--<dxe:CheckEdit IsReadOnly="True"
+                                EditValue="{Binding Entity.UserGroupName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />-->
                     </dxlc:LayoutItem>
                 </dxlc:LayoutGroup>
                 <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">

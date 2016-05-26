@@ -126,6 +126,12 @@
   <data name="Error_DeleteFailed" xml:space="preserve">
     <value>删除失败</value>
   </data>
+  <data name="Error_FatherIsUsingCanNotChild" xml:space="preserve">
+    <value>父节点正在使用不可分类</value>
+  </data>
+  <data name="Error_FatherNotExist" xml:space="preserve">
+    <value>父节点不存在</value>
+  </data>
   <data name="Error_FileAttachDir" xml:space="preserve">
     <value>附件路径未正确设置</value>
   </data>
@@ -137,6 +143,9 @@
   </data>
   <data name="Error_IsUsing" xml:space="preserve">
     <value>{0}正在使用</value>
+  </data>
+  <data name="Error_MethodNotImplemented" xml:space="preserve">
+    <value>方法未实现</value>
   </data>
   <data name="Error_ModifyFailed" xml:space="preserve">
     <value>保存{0}失败</value>

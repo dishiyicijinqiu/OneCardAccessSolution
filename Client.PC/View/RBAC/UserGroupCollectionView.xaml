@@ -6,7 +6,7 @@
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
-             
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
@@ -40,12 +40,12 @@
                                 <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewSelectionModeConverter}" ConverterParameter="ViewIsVisible"/>
                             </dxr:RibbonPageGroup.IsVisible>
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" Content="{x:Static res:Resources.BarContent_AddChild}"
+                                           Command="{Binding AddChildCommand}"
                                                 CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" 
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
-                                               CommandTarget="{Binding ElementName=treelist}"
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
@@ -72,8 +72,16 @@
                     <dxg:TreeListColumn FieldName="UserGroupName" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupName}" />
                 </dxg:TreeListControl.Columns>
                 <dxg:TreeListControl.View>
-                    <dxg:TreeListView KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" />
+                    <dxg:TreeListView KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
+                    </dxg:TreeListView>
                 </dxg:TreeListControl.View>
+                <dxmvvm:Interaction.Behaviors>
+                    <dxg:TreeListDragDropManager AllowDrag="True" AllowDrop="True" ScrollSpacing="50" ScrollSpeed="1" 
+                                                 DragOver="TreeListDragDropManager_DragOver"
+                                                 Drop="TreeListDragDropManager_Drop" 
+                                                 StartDrag="TreeListDragDropManager_StartDrag" 
+                                                 />
+                </dxmvvm:Interaction.Behaviors>
             </dxg:TreeListControl>
         </Grid>
     </dxb:BarManager>

@@ -6,6 +6,8 @@ using FengSharp.OneCardAccess.ServiceInterfaces;
 using Microsoft.Practices.Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Input;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
@@ -57,6 +59,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             if (Entity == null)
                 Entity = FirstUserInfoEntity.CreateEntity();
             IsSee = EditMessage.EntityEditMode == EntityEditMode.See;
+
+            var list = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntitys().OrderBy(t => t.UserGroupNo).ThenBy(m => m.UserGroupName);
+            UserGroupItems = new ObservableCollection<FirstUserGroupEntity>(list);
         }
 
         #region propertys
@@ -81,6 +86,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 RaisePropertyChanged("Entity");
             }
         }
+        public ObservableCollection<FirstUserGroupEntity> UserGroupItems { get; private set; }
         #endregion
         #region methods
         public void SaveAndNew()

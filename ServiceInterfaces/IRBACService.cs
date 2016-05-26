@@ -2,6 +2,7 @@
 using FengSharp.OneCardAccess.Common;
 using System.Collections.Generic;
 using System.ServiceModel;
+using FengSharp.OneCardAccess.BusinessEntity;
 
 namespace FengSharp.OneCardAccess.ServiceInterfaces
 {
@@ -27,5 +28,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         string SaveUserEntity(UserInfoEntity entity);
         [OperationContract]
         void DeleteUserEntitys(List<UserInfoEntity> UserInfoEntitys);
+        [OperationContract]
+        bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree);
     }
 }

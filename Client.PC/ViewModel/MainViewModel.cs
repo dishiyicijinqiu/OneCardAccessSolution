@@ -22,6 +22,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             LoginEventSubscriptionToken = DefaultEventAggregator.Current.GetEvent<LoginEvent>().Subscribe(OnLogin);
             ShowDocumentCommand = new DelegateCommand<DocumentInfo>(ShowDocument);
         }
+
         public void ShowDocument(DocumentInfo docInfo)
         {
             try
@@ -38,20 +39,27 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         }
         public void OnLogin(SubscriptionToken sender, LoginEventArgs args)
         {
-            if (sender != LoginEventSubscriptionToken)
-                return;
-            bool isReLogin = false;
-            switch (args.LoginState)
+            try
             {
-                case LoginState.ReLogin:
-                case LoginState.TimeOutLogin:
-                    isReLogin = true;
-                    break;
+                if (sender != LoginEventSubscriptionToken)
+                    return;
+                bool isReLogin = false;
+                switch (args.LoginState)
+                {
+                    case LoginState.ReLogin:
+                    case LoginState.TimeOutLogin:
+                        isReLogin = true;
+                        break;
+                }
+                var vm = ServiceLoader.LoadService<ILoginViewModel>(new ParameterOverride("isReLogin", isReLogin));
+                var view = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "LoginWindowStyle",
+                    WindowStartupLocation: WindowStartupLocation.CenterScreen));
             }
-            var vm = ServiceLoader.LoadService<ILoginViewModel>(new ParameterOverride("isReLogin", isReLogin));
-            var view = ServiceLoader.LoadService<ILoginView>(new ParameterOverride("VM", vm));
-            this.CreateView(new CreateViewEventArgs(view, "LoginWindowStyle",
-                WindowStartupLocation: WindowStartupLocation.CenterScreen));
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
         }
     }
     #region Defs

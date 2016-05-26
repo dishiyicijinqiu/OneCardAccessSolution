@@ -7,6 +7,7 @@
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
              
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
@@ -70,9 +71,15 @@
                              
                        ItemsSource="{Binding Items}">
                 <dxg:GridControl.View>
-                    <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowGrouping="True">
+                    <dxg:TableView Name="tableview" IsColumnMenuEnabled="True" AllowSorting="True" AllowDrop="True" AllowGrouping="True">
                     </dxg:TableView>
                 </dxg:GridControl.View>
+                <dxmvvm:Interaction.Behaviors>
+                    <dxg:GridDragDropManager AllowDrag="True" AllowDrop="True" ScrollSpacing="50" ScrollSpeed="1" 
+                                             Drop="GridDragDropManager_Drop"
+                                             DragOver="GridDragDropManager_DragOver"
+                                                 />
+                </dxmvvm:Interaction.Behaviors>
             </dxg:GridControl>
         </Grid>
     </dxb:BarManager>

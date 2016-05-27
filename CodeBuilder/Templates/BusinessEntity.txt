@@ -2,107 +2,173 @@
 using System.Runtime.Serialization;
 using FengSharp.OneCardAccess.Common;
 using Microsoft.Practices.Prism.ViewModel;
-namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
+namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
 	/// <summary>
-	/// 用户表
+	/// 附件目录表
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class UserInfoEntity: NotificationObject
+	public partial class AttachmentDirEntity: NotificationObject
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public UserInfoEntity()
+		public AttachmentDirEntity()
 		{
-			UserId=string.Empty;
-			UserNo=string.Empty;
-			UserName=string.Empty;
-			PassWord=string.Empty;
+			AttachmentDirId=string.Empty;
+			AttachmentDirNo=string.Empty;
+			AttachmentDirName=string.Empty;
+			Filter=string.Empty;
+			TreeNo=string.Empty;
+			TreeParentNo=string.Empty;
+			TreePath=string.Empty;
 			Remark=string.Empty;
 			CreateId=string.Empty;
 			LastModifyId=string.Empty;
-			UserGroupId=string.Empty;
 		}
-		private string _UserId;
+		private string _AttachmentDirId;
 		/// <summary>
-		/// 用户Id
+		/// 附件目录I的
 		/// </summary>
 		[DataBaseKey(DataBaseKeyType.Guid)]
 		[DataMember]
-		public string UserId 
+		public string AttachmentDirId 
 		{
-            get { return _UserId; }
+            get { return _AttachmentDirId; }
             set
             {
-				if(_UserId == value)
+				if(_AttachmentDirId == value)
 					return;
-                _UserId = value;
-                RaisePropertyChanged("UserId");
+                _AttachmentDirId = value;
+                RaisePropertyChanged("AttachmentDirId");
             }
         }
-		private string _UserNo;
+		private string _AttachmentDirNo;
 		/// <summary>
-		/// 用户账号
+		/// 附件目录编号
 		/// </summary>
 		[DataMember]
-		public string UserNo 
+		public string AttachmentDirNo 
 		{
-            get { return _UserNo; }
+            get { return _AttachmentDirNo; }
             set
             {
-				if(_UserNo == value)
+				if(_AttachmentDirNo == value)
 					return;
-                _UserNo = value;
-                RaisePropertyChanged("UserNo");
+                _AttachmentDirNo = value;
+                RaisePropertyChanged("AttachmentDirNo");
             }
         }
-		private string _UserName;
+		private string _AttachmentDirName;
 		/// <summary>
-		/// 用户姓名
+		/// 附件目录名称
 		/// </summary>
 		[DataMember]
-		public string UserName 
+		public string AttachmentDirName 
 		{
-            get { return _UserName; }
+            get { return _AttachmentDirName; }
             set
             {
-				if(_UserName == value)
+				if(_AttachmentDirName == value)
 					return;
-                _UserName = value;
-                RaisePropertyChanged("UserName");
+                _AttachmentDirName = value;
+                RaisePropertyChanged("AttachmentDirName");
             }
         }
-		private string _PassWord;
+		private string _Filter;
 		/// <summary>
-		/// 密码
+		/// 文件名筛选器字符串
 		/// </summary>
 		[DataMember]
-		public string PassWord 
+		public string Filter 
 		{
-            get { return _PassWord; }
+            get { return _Filter; }
             set
             {
-				if(_PassWord == value)
+				if(_Filter == value)
 					return;
-                _PassWord = value;
-                RaisePropertyChanged("PassWord");
+                _Filter = value;
+                RaisePropertyChanged("Filter");
             }
         }
-		private bool _IsLock;
+		private string _TreeNo;
 		/// <summary>
-		/// 锁定标识
+		/// 树编号
 		/// </summary>
 		[DataMember]
-		public bool IsLock 
+		public string TreeNo 
 		{
-            get { return _IsLock; }
+            get { return _TreeNo; }
             set
             {
-				if(_IsLock == value)
+				if(_TreeNo == value)
 					return;
-                _IsLock = value;
-                RaisePropertyChanged("IsLock");
+                _TreeNo = value;
+                RaisePropertyChanged("TreeNo");
+            }
+        }
+		private string _TreeParentNo;
+		/// <summary>
+		/// 父亲树编号
+		/// </summary>
+		[DataMember]
+		public string TreeParentNo 
+		{
+            get { return _TreeParentNo; }
+            set
+            {
+				if(_TreeParentNo == value)
+					return;
+                _TreeParentNo = value;
+                RaisePropertyChanged("TreeParentNo");
+            }
+        }
+		private string _TreePath;
+		/// <summary>
+		/// 树路径
+		/// </summary>
+		[DataMember]
+		public string TreePath 
+		{
+            get { return _TreePath; }
+            set
+            {
+				if(_TreePath == value)
+					return;
+                _TreePath = value;
+                RaisePropertyChanged("TreePath");
+            }
+        }
+		private int _TreeSon;
+		/// <summary>
+		/// 儿子数量
+		/// </summary>
+		[DataMember]
+		public int TreeSon 
+		{
+            get { return _TreeSon; }
+            set
+            {
+				if(_TreeSon == value)
+					return;
+                _TreeSon = value;
+                RaisePropertyChanged("TreeSon");
+            }
+        }
+		private int _TreeTotal;
+		/// <summary>
+		/// 子孙数量
+		/// </summary>
+		[DataMember]
+		public int TreeTotal 
+		{
+            get { return _TreeTotal; }
+            set
+            {
+				if(_TreeTotal == value)
+					return;
+                _TreeTotal = value;
+                RaisePropertyChanged("TreeTotal");
             }
         }
 		private string _Remark;
@@ -119,22 +185,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 					return;
                 _Remark = value;
                 RaisePropertyChanged("Remark");
-            }
-        }
-		private bool _IsSuper;
-		/// <summary>
-		/// 是否为超级管理员
-		/// </summary>
-		[DataMember]
-		public bool IsSuper 
-		{
-            get { return _IsSuper; }
-            set
-            {
-				if(_IsSuper == value)
-					return;
-                _IsSuper = value;
-                RaisePropertyChanged("IsSuper");
             }
         }
 		private string _CreateId;
@@ -199,22 +249,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
 					return;
                 _LastModifyDate = value;
                 RaisePropertyChanged("LastModifyDate");
-            }
-        }
-		private string _UserGroupId;
-		/// <summary>
-		/// 用户组Id
-		/// </summary>
-		[DataMember]
-		public string UserGroupId 
-		{
-            get { return _UserGroupId; }
-            set
-            {
-				if(_UserGroupId == value)
-					return;
-                _UserGroupId = value;
-                RaisePropertyChanged("UserGroupId");
             }
         }
 	}

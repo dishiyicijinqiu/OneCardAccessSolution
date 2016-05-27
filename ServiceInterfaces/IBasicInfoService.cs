@@ -29,6 +29,16 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         void DeleteP_CRTempEntitys(List<P_CRTempEntity> P_CRTempEntitys);
         #endregion
+        #region Attachment
+        [OperationContract]
+        List<FirstAttachmentDirEntity> GetFirstAttachmentDirEntitys();
+        [OperationContract]
+        FirstAttachmentDirEntity GetFirstAttachmentDirEntityById(string attachmentdirid);
+        [OperationContract]
+        string SaveAttachmentDirEntity(AttachmentDirEntity entity);
+        [OperationContract]
+        void DeleteAttachmentDirEntitys(List<AttachmentDirEntity> list);
+        #endregion
     }
 
     //[ServiceContract]

@@ -126,6 +126,7 @@
     <Compile Include="Core\PCConfig.cs" />
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
+    <Compile Include="Interfaces\IAttachmentDir.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
@@ -164,6 +165,8 @@
     <Compile Include="UI\SplashScreenView.xaml.cs">
       <DependentUpon>SplashScreenView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\BasicInfo\AttachmentDirCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\AttachmentDirViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
@@ -180,6 +183,12 @@
     <Compile Include="ViewModel\RBAC\UserGroupCollectionViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserGroupViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserViewModel.cs" />
+    <Compile Include="View\BasicInfo\AttachmentDirCollectionView.xaml.cs">
+      <DependentUpon>AttachmentDirCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\AttachmentDirView.xaml.cs">
+      <DependentUpon>AttachmentDirView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
       <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
     </Compile>
@@ -252,6 +261,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\SplashScreenView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\AttachmentDirCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\AttachmentDirView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

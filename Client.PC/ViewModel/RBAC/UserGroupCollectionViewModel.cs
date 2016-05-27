@@ -35,14 +35,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 OrderBy(t => t.UserGroupNo).ThenBy(m => m.UserGroupName);
             Items = new ObservableCollection<FirstUserGroupEntity>(list);
         }
-
-        public bool CanAddChild(FirstUserGroupEntity entity)
-        {
-            if (entity == null) return false;
-            if (entity.IsSuper) return false;
-            return true;
-        }
-
         public bool CanDelete(IList entitys)
         {
             if (entitys == null) return false;
@@ -55,7 +47,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             }
             return true;
         }
-
         public void Delete(IList entitys)
         {
             try
@@ -75,31 +66,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 ShowException(ex);
             }
         }
-
-        public void CopyAdd(FirstUserGroupEntity entity)
-        {
-            try
-            {
-                var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage",
-                    new UserGroupEditMessage(entity.TreeParentNo, _CopyKey: entity.UserGroupId, _EntityEditMode: EntityEditMode.CopyAdd)));
-                vm.OnEntityViewEdited += OnEntityViewEdited;
-                var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
-                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
-            }
-            catch (Exception ex)
-            {
-                ShowException(ex);
-            }
-        }
-
-        public bool CanCopyAdd(FirstUserGroupEntity entity)
-        {
-            if (entity == null) return false;
-            if (entity.IsSuper) return false;
-            if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
-            return true;
-        }
-
         public bool CanEdit(FirstUserGroupEntity entity)
         {
             if (entity == null) return false;
@@ -107,7 +73,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
             return true;
         }
-
         public void Edit(FirstUserGroupEntity entity)
         {
             try
@@ -124,7 +89,34 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 ShowException(ex);
             }
         }
-
+        public void CopyAdd(FirstUserGroupEntity entity)
+        {
+            try
+            {
+                var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage",
+                    new UserGroupEditMessage(entity.TreeParentNo, _CopyKey: entity.UserGroupId, _EntityEditMode: EntityEditMode.CopyAdd)));
+                vm.OnEntityViewEdited += OnEntityViewEdited;
+                var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+        public bool CanCopyAdd(FirstUserGroupEntity entity)
+        {
+            if (entity == null) return false;
+            if (entity.IsSuper) return false;
+            if (string.IsNullOrEmpty(entity.TreeParentNo)) return false;
+            return true;
+        }
+        public bool CanAddChild(FirstUserGroupEntity entity)
+        {
+            if (entity == null) return false;
+            if (entity.IsSuper) return false;
+            return true;
+        }
         public void AddChild(FirstUserGroupEntity entity)
         {
             try
@@ -136,7 +128,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                     TreeParentNo = entity.TreeNo;
                     CopyId = entity.UserGroupId;
                 }
-                var editmessage = new UserGroupEditMessage(TreeParentNo, _EntityEditMode: EntityEditMode.Add);
+                var editmessage = new UserGroupEditMessage(TreeParentNo, _EntityEditMode: EntityEditMode.CopyAdd, _CopyKey: CopyId);
                 var vm = ServiceLoader.LoadService<IUserGroupViewModel>(new ParameterOverride("EditMessage", editmessage));
                 vm.OnEntityViewEdited += OnEntityViewEdited;
                 var view = ServiceLoader.LoadService<IUserGroupView>(new ParameterOverride("VM", vm));
@@ -147,7 +139,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 ShowException(ex);
             }
         }
-
         private void OnEntityViewEdited(IViewModel vm, EditMessage<string> EditMessage)
         {
             try
@@ -226,8 +217,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 ShowException(ex);
             }
         }
+        #region properties
         public ObservableCollection<FirstUserGroupEntity> Items { get; private set; }
-
         private UserGroupEntity _SelectedEntity;
         public UserGroupEntity SelectedEntity
         {
@@ -239,9 +230,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
             }
         }
-
         private ViewStyle _ViewStyle;
-
         public ViewStyle ViewStyle
         {
             get { return _ViewStyle; }
@@ -252,7 +241,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             }
         }
         private string _MenuTitle;
-
         public string MenuTitle
         {
             get { return _MenuTitle; }
@@ -262,6 +250,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 RaisePropertyChanged("MenuTitle");
             }
         }
+        #endregion
     }
 
     public class UserGroupEditMessage : TreeEditMessage<string>

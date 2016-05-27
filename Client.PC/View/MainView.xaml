@@ -77,6 +77,18 @@
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
 
+            <dxb:BarButtonItem x:Name="btnAttachmentDirCollectionView" Content="{x:Static res:Resources.Menu_AttachmentDir}"
+                         Command="{Binding ShowDocumentCommand}"
+                         Glyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_16x16.png"
+                         LargeGlyph="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/add_32x32.png" >
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_AttachmentDirCollectionView_Title}"
+                                           DocumentName="IAttachmentDirCollectionViewModel"
+                                           DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IAttachmentDirCollectionViewModel"
+                                           DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IAttachmentDirCollectionView"/>
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
+
 
             <dxb:BarButtonItem x:Name="btnChangePasswordView" Content="{x:Static res:Resources.Menu_App_ChangePassword}"
                          Command="{Binding ChangePasswordCommand}"
@@ -153,6 +165,7 @@
                             <dxr:RibbonPageGroup.ItemLinks>
                                 <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
                                 <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
+                                <dxb:BarButtonItemLink BarItemName="btnAttachmentDirCollectionView" />
                             </dxr:RibbonPageGroup.ItemLinks>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_RBAC}" >

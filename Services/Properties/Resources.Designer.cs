@@ -70,6 +70,24 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件目录名称不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_AttachmentDirNameCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_AttachmentDirNameCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 名称不可为{0} 的本地化字符串。
+        /// </summary>
+        internal static string Error_CanNotNameRootDir {
+            get {
+                return ResourceManager.GetString("Error_CanNotNameRootDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 检验报告模板名称不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_CRTempNameCanNotEmpty {
@@ -84,6 +102,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_DeleteFailed {
             get {
                 return ResourceManager.GetString("Error_DeleteFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 目录下有子目录或文件不可删除 的本地化字符串。
+        /// </summary>
+        internal static string Error_DirHasChild {
+            get {
+                return ResourceManager.GetString("Error_DirHasChild", resourceCulture);
             }
         }
         
@@ -223,6 +250,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 路径{0}不存在 的本地化字符串。
+        /// </summary>
+        internal static string Error_PathNotFound {
+            get {
+                return ResourceManager.GetString("Error_PathNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 注册证名称不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_RegisterNameCanNotEmpty {
@@ -291,6 +327,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_UserGroupNameCanNotEmpty {
             get {
                 return ResourceManager.GetString("Error_UserGroupNameCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 根目录 的本地化字符串。
+        /// </summary>
+        internal static string Filed_RootDir {
+            get {
+                return ResourceManager.GetString("Filed_RootDir", resourceCulture);
             }
         }
     }

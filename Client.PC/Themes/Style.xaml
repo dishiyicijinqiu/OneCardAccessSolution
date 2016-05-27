@@ -22,6 +22,13 @@
         <Setter Property="Glyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/new_16x16.png"/>
         <Setter Property="LargeGlyph" Value="/FengSharp.OneCardAccess.Client.PC;component/Resources/Bars/new_32x32.png"/>
     </Style>
+
+    <Style TargetType="dxb:BarButtonItem" x:Key="barAddChild">
+        <Setter Property="Content" Value="{x:Static res:Resources.BarContent_AddChild}"/>
+        <Setter Property="Command" Value="{Binding AddChildCommand}"/>
+        <Setter Property="Glyph" Value="{dxc:DXImage Image=AddItem_16x16.png}"/>
+        <Setter Property="LargeGlyph" Value="{dxc:DXImage Image=AddItem_32x32.png}"/>
+    </Style>
     <Style TargetType="dxb:BarButtonItem" x:Key="barCopyAdd">
         <Setter Property="Content" Value="{x:Static res:Resources.BarContent_CopyAdd}"/>
         <Setter Property="Command" Value="{Binding CopyAddCommand}"/>

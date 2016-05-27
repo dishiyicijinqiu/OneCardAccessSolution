@@ -3,35 +3,27 @@ using FengSharp.OneCardAccess.Common;
 namespace FengSharp.OneCardAccess.TEntity
 {
 	/// <summary>
-	/// 用户组
+	/// 附件目录表
 	/// </summary>
-	public class T_UserGroup
+	public class T_AttachmentDir
 	{
 		/// <summary>
-		/// UserGroupId
+		/// 附件目录I的
 		/// </summary>
 		[DataBaseKey(DataBaseKeyType.Guid)]
-		public string UserGroupId { get; set; }
+		public string AttachmentDirId { get; set; }
 		/// <summary>
-		/// 用户组编号
+		/// 附件目录编号
 		/// </summary>
-		public string UserGroupNo { get; set; }
+		public string AttachmentDirNo { get; set; }
 		/// <summary>
-		/// 用户组名称
+		/// 附件目录名称
 		/// </summary>
-		public string UserGroupName { get; set; }
+		public string AttachmentDirName { get; set; }
 		/// <summary>
-		/// 锁定标识
+		/// 文件名筛选器字符串
 		/// </summary>
-		public bool IsLock { get; set; }
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string Remark { get; set; }
-		/// <summary>
-		/// 是否为超级管理员
-		/// </summary>
-		public bool IsSuper { get; set; }
+		public string Filter { get; set; }
 		/// <summary>
 		/// 树编号
 		/// </summary>
@@ -52,6 +44,10 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// 子孙数量
 		/// </summary>
 		public int TreeTotal { get; set; }
+		/// <summary>
+		/// 备注
+		/// </summary>
+		public string Remark { get; set; }
 		/// <summary>
 		/// 创建人Id
 		/// </summary>

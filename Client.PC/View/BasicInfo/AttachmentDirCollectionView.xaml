@@ -1,18 +1,20 @@
-﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.RBAC.UserGroupCollectionView"
+﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.AttachmentDirCollectionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+                    
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
-             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.BasicInfo"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,7 +23,7 @@
             <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
                 <Setter Property="Width" Value="520"/>
                 <Setter Property="Height" Value="420"/>
-                <Setter Property="Title" Value="{x:Static res:Resources.View_UserGroupView_Title}"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_AttachmentDirView_Title}"/>
                 <Setter Property="ShowInTaskbar" Value="False"/>
             </Style>
         </ResourceDictionary>
@@ -34,26 +36,19 @@
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
-                    <dxr:RibbonPage Caption="{Binding MenuTitle}">
-                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_UserGroupCollectionView_OP}" MergeOrder="0">
-                            <dxr:RibbonPageGroup.IsVisible>
-                                <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewSelectionModeConverter}" ConverterParameter="ViewIsVisible"/>
-                            </dxr:RibbonPageGroup.IsVisible>
-                            <dxb:BarButtonItem Style="{StaticResource barAddChild}"
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_AttachmentDirCollectionView_Title}">
+                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_AttachmentCollectionView_OP}" MergeOrder="0">
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" Content="{x:Static res:Resources.BarContent_AddChild}"
+                                           Command="{Binding AddChildCommand}"
                                                 CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
-                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" 
-                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" 
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
-                            <dxb:BarButtonItem Style="{StaticResource barClose}">
-                                <dxb:BarButtonItem.IsVisible>
-                                    <Binding Path="ViewStyle" Converter="{local:UserGroupCollectionViewViewStyleConverter}" ConverterParameter="SelectIsVisible"/>
-                                </dxb:BarButtonItem.IsVisible>
-                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
@@ -68,23 +63,20 @@
                                 SelectionMode="Cell"
                                  >
                 <dxg:TreeListControl.Columns>
-                    <dxg:TreeListColumn FieldName="UserGroupNo" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupNo}" />
-                    <dxg:TreeListColumn FieldName="UserGroupName" Header="{x:Static res:Resources.Entity_UserGroup_UserGroupName}" />
+                    <dxg:TreeListColumn FieldName="AttachmentDirNo" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirNo}" />
+                    <dxg:TreeListColumn FieldName="AttachmentDirName" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirName}" />
                 </dxg:TreeListControl.Columns>
                 <dxg:TreeListControl.View>
                     <dxg:TreeListView 
-                                      NodeImageSelector="{StaticResource treeListNodeImageSelector}"
+                        NodeImageSelector="{StaticResource treeListNodeImageSelector}"
                         ShowNodeImages="True" 
-                                      KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
+                        KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
                     </dxg:TreeListView>
                 </dxg:TreeListControl.View>
-                <dxmvvm:Interaction.Behaviors>
-                    <dxg:TreeListDragDropManager AllowDrag="True" AllowDrop="True" ScrollSpacing="50" ScrollSpeed="1" 
-                                                 DragOver="TreeListDragDropManager_DragOver"
-                                                 Drop="TreeListDragDropManager_Drop" 
-                                                 StartDrag="TreeListDragDropManager_StartDrag" 
-                                                 />
-                </dxmvvm:Interaction.Behaviors>
+                <!--<dxmvvm:Interaction.Behaviors>
+                    <dxg:TreeListDragDropManager AllowDrag="False" 
+                                                 AllowDrop="False" ScrollSpacing="50" ScrollSpeed="1" />
+                </dxmvvm:Interaction.Behaviors>-->
             </dxg:TreeListControl>
         </Grid>
     </dxb:BarManager>

@@ -34,9 +34,11 @@
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SystemServiceConfig.cs" />
     <Compile Include="BasicInfoService.cs" />
     <Compile Include="ConnectService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +57,7 @@
     </Compile>
     <Compile Include="RBACService.cs" />
     <Compile Include="ServiceBase.cs" />
+    <Compile Include="TableEntitys\T_Attachment_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_To_Register.cs" />
     <Compile Include="TableEntitys\T_Register_Auto.cs" />

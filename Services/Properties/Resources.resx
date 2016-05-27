@@ -120,6 +120,12 @@
   <data name="Error_AddFailed" xml:space="preserve">
     <value>新增{0}失败</value>
   </data>
+  <data name="Error_AttachmentDirNameCanNotEmpty" xml:space="preserve">
+    <value>附件目录名称不可为空</value>
+  </data>
+  <data name="Error_CanNotNameRootDir" xml:space="preserve">
+    <value>名称不可为{0}</value>
+  </data>
   <data name="Error_CRTempNameCanNotEmpty" xml:space="preserve">
     <value>检验报告模板名称不可为空</value>
   </data>
@@ -171,6 +177,9 @@
   <data name="Error_PasswordLen" xml:space="preserve">
     <value>密码长度必须在{0}到{1}之间</value>
   </data>
+  <data name="Error_PathNotFound" xml:space="preserve">
+    <value>路径{0}不存在</value>
+  </data>
   <data name="Error_RegisterNameCanNotEmpty" xml:space="preserve">
     <value>注册证名称不可为空</value>
   </data>
@@ -194,5 +203,11 @@
   </data>
   <data name="Error_UserGroupNameCanNotEmpty" xml:space="preserve">
     <value>用户组名称不可为空</value>
+  </data>
+  <data name="Filed_RootDir" xml:space="preserve">
+    <value>根目录</value>
+  </data>
+  <data name="Error_DirHasChild" xml:space="preserve">
+    <value>目录下有子目录或文件不可删除</value>
   </data>
 </root>

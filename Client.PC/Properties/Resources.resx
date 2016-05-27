@@ -531,4 +531,43 @@
   <data name="Menu_App_Exit" xml:space="preserve">
     <value>退出系统</value>
   </data>
+  <data name="Entity_AttachmentDir_AttachmentDirName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Entity_AttachmentDir_AttachmentDirNo" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="ToolBar_AttachmentDirCollectionView_OP" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="View_AttachmentDirView_Title" xml:space="preserve">
+    <value>附件目录</value>
+  </data>
+  <data name="Menu_AttachmentDir" xml:space="preserve">
+    <value>附件管理</value>
+  </data>
+  <data name="View_AttachmentDirCollectionView_Title" xml:space="preserve">
+    <value>附件目录管理</value>
+  </data>
+  <data name="ToolBar_AttachmentCollectionView_OP" xml:space="preserve">
+    <value>附件目录操作</value>
+  </data>
+  <data name="Entity_AttachmentDir_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_AttachmentDir_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_AttachmentDir_LastModifyDate" xml:space="preserve">
+    <value>最后修改日期</value>
+  </data>
+  <data name="Entity_AttachmentDir_LastModifyer" xml:space="preserve">
+    <value>最后修改人</value>
+  </data>
+  <data name="Entity_AttachmentDir_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_AttachmentDir_Filter" xml:space="preserve">
+    <value>过滤条件</value>
+  </data>
 </root>

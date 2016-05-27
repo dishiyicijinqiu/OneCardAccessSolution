@@ -36,7 +36,7 @@ namespace <#=NameSpace#>
 }
 <#}#>
 <#+
-public static readonly string TableName="T_UserGroup";
+public static readonly string TableName="T_AttachmentDir";
 public static readonly bool IsBuilder= true;
 public static readonly string NameSpace="FengSharp.OneCardAccess.TEntity";
 #>

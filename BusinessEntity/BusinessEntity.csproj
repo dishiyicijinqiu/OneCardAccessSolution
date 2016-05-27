@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicInfo\AttachmentDirEntity.cs" />
+    <Compile Include="BasicInfo\AttachmentDirEntity_Auto.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity_Auto.cs" />
     <Compile Include="BasicInfo\P_CRTemp_To_RegisterEntity.cs" />

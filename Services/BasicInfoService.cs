@@ -7,6 +7,7 @@ using System.Linq;
 using System;
 using System.Data.Common;
 using System.Data;
+using System.IO;
 
 namespace FengSharp.OneCardAccess.Services
 {
@@ -68,7 +69,7 @@ namespace FengSharp.OneCardAccess.Services
                     Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
                     this.Database.ExecuteNonQuery(cmd);
                     int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
-                    if (result == 1)
+                    if (result == -1)
                     {
                         throw new BusinessException(Properties.Resources.Error_NoIsExist);
                     }
@@ -111,7 +112,7 @@ namespace FengSharp.OneCardAccess.Services
                     Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
                     this.Database.ExecuteNonQuery(cmd);
                     int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
-                    if (result == 1)
+                    if (result == -1)
                     {
                         throw new BusinessException(Properties.Resources.Error_NoIsExist);
                     }
@@ -200,7 +201,7 @@ namespace FengSharp.OneCardAccess.Services
                 Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
                 this.Database.ExecuteNonQuery(cmd);
                 int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
-                if (result == 1)
+                if (result == -1)
                 {
                     throw new BusinessException(Properties.Resources.Error_NameIsExist);
                 }
@@ -220,7 +221,7 @@ namespace FengSharp.OneCardAccess.Services
                 Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
                 this.Database.ExecuteNonQuery(cmd);
                 int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
-                if (result == 1)
+                if (result == -1)
                 {
                     throw new BusinessException(Properties.Resources.Error_NameIsExist);
                 }
@@ -256,6 +257,185 @@ namespace FengSharp.OneCardAccess.Services
                 }
             });
         }
+        #endregion
+        #region Attachment
+        public List<FirstAttachmentDirEntity> GetFirstAttachmentDirEntitys()
+        {
+            return this.GetEntitys<FirstAttachmentDirEntity>();
+        }
+
+        public FirstAttachmentDirEntity GetFirstAttachmentDirEntityById(string AttachmentDirId)
+        {
+            return this.FindById<FirstAttachmentDirEntity>(new FirstAttachmentDirEntity()
+            {
+                AttachmentDirId = AttachmentDirId
+            });
+        }
+        public string SaveAttachmentDirEntity(AttachmentDirEntity entity)
+        {
+            if (entity.AttachmentDirName == Properties.Resources.Filed_RootDir)
+            {
+                throw new BusinessException(string.Format(Properties.Resources.Error_CanNotNameRootDir, Properties.Resources.Filed_RootDir));
+            }
+            return UseTran((tran) =>
+            {
+                var dbattachmentdirentity = new T_AttachmentDir();
+                dbattachmentdirentity.CopyValueFrom(entity);
+                if (string.IsNullOrWhiteSpace(entity.AttachmentDirId) || entity.AttachmentDirId.Length != 36)
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.AttachmentDirNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.AttachmentDirName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_AttachmentDirNameCanNotEmpty);
+                    }
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Attachment");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, null);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.AttachmentDirNo);
+                    Database.AddInParameter(cmd, "TreeParentNo", DbType.String, entity.TreeParentNo);
+                    Database.AddOutParameter(cmd, "FullPath", DbType.String, 3000);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    #region 新建文件夹
+                    string path = Database.GetParameterValue(cmd, "FullPath").ToString();
+                    string fullpath = Path.Combine(SystemServiceConfig.AttachBaseDir, path);
+                    if (!Directory.Exists(fullpath))
+                    {
+                        throw new BusinessException(string.Format(Properties.Resources.Error_PathNotFound, path));
+                    }
+                    fullpath = Path.Combine(fullpath, entity.AttachmentDirName);
+                    Directory.CreateDirectory(fullpath);
+                    #endregion
+                    dbattachmentdirentity.LastModifyId = dbattachmentdirentity.CreateId = (string)Session.Current.SessionClientId;
+                    dbattachmentdirentity = CreateEntity(dbattachmentdirentity, tran, CreateTreeEntityUnCreateFileds);
+                    result = this.SaveEntityFlow(dbattachmentdirentity, "CreateAttachmentDirEntity", tran);
+                    if (result != 1)
+                    {
+                        if (result == -1)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherNotExist);
+                        }
+                        if (result == -2)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherIsUsingCanNotChild);
+                        }
+                        throw new BusinessException(string.Format(Properties.Resources.Error_AddFailed, dbattachmentdirentity.AttachmentDirName));
+                    }
+                }
+                else
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.AttachmentDirNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.AttachmentDirName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Attachment");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.AttachmentDirId);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.AttachmentDirNo);
+                    Database.AddInParameter(cmd, "TreeParentNo", DbType.String, entity.TreeParentNo);
+                    Database.AddOutParameter(cmd, "FullPath", DbType.String, 3000);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    dbattachmentdirentity.LastModifyId = (string)Session.Current.SessionClientId;
+                    dbattachmentdirentity.LastModifyDate = System.DateTime.Now;
+                    if (!ModifyEntity(dbattachmentdirentity, tran, ModifyTreeEntityUnChangedFileds))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_SaveFailed);
+                    }
+                }
+                return dbattachmentdirentity.AttachmentDirId;
+            });
+        }
+
+        public void DeleteAttachmentDirEntitys(List<AttachmentDirEntity> entitys)
+        {
+            UseTran((tran) =>
+            {
+                foreach (var entity in entitys)
+                {
+                    var dbentity = new T_AttachmentDir();
+                    dbentity.CopyValueFrom(entity);
+
+                    #region 服务端验证
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Attachment");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "DeleteEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.AttachmentDirId);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.AttachmentDirNo);
+                    Database.AddInParameter(cmd, "TreeParentNo", DbType.String, entity.TreeParentNo);
+                    Database.AddOutParameter(cmd, "FullPath", DbType.String, 3000);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    #region 检查文件夹下是否有文件或文件夹
+                    if (!string.IsNullOrWhiteSpace(entity.AttachmentDirName))
+                    {
+                        string path = Database.GetParameterValue(cmd, "FullPath").ToString();
+                        string fullpath = Path.Combine(SystemServiceConfig.AttachBaseDir, path);
+                        fullpath = Path.Combine(fullpath, entity.AttachmentDirName);
+                        if (Directory.Exists(fullpath))
+                        {
+                            var filecount = Directory.GetFiles(fullpath, entity.Filter).Length;
+                            if (filecount > 0)
+                            {
+                                throw new BusinessException(Properties.Resources.Error_DirHasChild);
+                            }
+                            var dircount = Directory.GetDirectories(fullpath).Length;
+                            if (dircount > 0)
+                            {
+                                throw new BusinessException(Properties.Resources.Error_DirHasChild);
+                            }
+                            Directory.Delete(fullpath);
+                        }
+                    }
+                    #endregion
+                    int ReturnValue = 0;
+                    base.DeleteEntity(dbentity, ref ReturnValue, tran);
+                    switch (ReturnValue)
+                    {
+                        default:
+                            throw new BusinessException(Properties.Resources.Error_UnHandleException);
+                        case 1:
+                            break;
+                        case -1:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_ObjIsNotExist,
+                                string.Format("{0},{1}", entity.AttachmentDirNo, entity.AttachmentDirName)));
+                        case -2:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_IsUsing,
+                                string.Format("{0},{1}", entity.AttachmentDirNo, entity.AttachmentDirName)));
+                    }
+                }
+            });
+        }
+        #endregion
+        #region newmethods
         #endregion
     }
 }

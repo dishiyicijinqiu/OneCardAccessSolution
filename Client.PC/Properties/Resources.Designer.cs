@@ -259,6 +259,78 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_AttachmentDirName {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_AttachmentDirName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 编号 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_AttachmentDirNo {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_AttachmentDirNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_Creater {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 过滤条件 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_Filter {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后修改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后修改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注 的本地化字符串。
+        /// </summary>
+        public static string Entity_AttachmentDir_Remark {
+            get {
+                return ResourceManager.GetString("Entity_AttachmentDir_Remark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 类别号 的本地化字符串。
         /// </summary>
         public static string Entity_P_CRTemp_CateNo {
@@ -988,6 +1060,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件管理 的本地化字符串。
+        /// </summary>
+        public static string Menu_AttachmentDir {
+            get {
+                return ResourceManager.GetString("Menu_AttachmentDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 产品检验报告模板 的本地化字符串。
         /// </summary>
         public static string Menu_P_CRTemp {
@@ -1060,6 +1141,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件目录操作 的本地化字符串。
+        /// </summary>
+        public static string ToolBar_AttachmentCollectionView_OP {
+            get {
+                return ResourceManager.GetString("ToolBar_AttachmentCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 操作 的本地化字符串。
+        /// </summary>
+        public static string ToolBar_AttachmentDirCollectionView_OP {
+            get {
+                return ResourceManager.GetString("ToolBar_AttachmentDirCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 用户信息操作 的本地化字符串。
         /// </summary>
         public static string ToolBar_UserCollectionView_OP {
@@ -1074,6 +1173,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string ToolBar_UserGroupCollectionView_OP {
             get {
                 return ResourceManager.GetString("ToolBar_UserGroupCollectionView_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件目录管理 的本地化字符串。
+        /// </summary>
+        public static string View_AttachmentDirCollectionView_Title {
+            get {
+                return ResourceManager.GetString("View_AttachmentDirCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件目录 的本地化字符串。
+        /// </summary>
+        public static string View_AttachmentDirView_Title {
+            get {
+                return ResourceManager.GetString("View_AttachmentDirView_Title", resourceCulture);
             }
         }
         

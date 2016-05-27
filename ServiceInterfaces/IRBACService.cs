@@ -1,8 +1,7 @@
-﻿using FengSharp.OneCardAccess.BusinessEntity.RBAC;
-using FengSharp.OneCardAccess.Common;
+﻿using FengSharp.OneCardAccess.BusinessEntity;
+using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using System.Collections.Generic;
 using System.ServiceModel;
-using FengSharp.OneCardAccess.BusinessEntity;
 
 namespace FengSharp.OneCardAccess.ServiceInterfaces
 {
@@ -10,14 +9,23 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
     [ServiceContract]
     public interface IRBACService
     {
+        #region UserInfo
         [OperationContract]
         FirstUserInfoEntity GetFirstUserInfoEntityById(string UserId);
-        [OperationContract]
-        List<FirstUserGroupEntity> GetFirstUserGroupEntitys();
         [OperationContract]
         List<FirstUserInfoEntity> GetFirstUserInfoEntitys();
         [OperationContract]
         List<FirstUserInfoEntity> GetFirstUserInfoEntitysByUserGroupId(string UserGroupId);
+        [OperationContract]
+        void ChangePassword(string oldPassword, string newPassword);
+        [OperationContract]
+        string SaveUserEntity(UserInfoEntity entity);
+        [OperationContract]
+        void DeleteUserEntitys(List<UserInfoEntity> UserInfoEntitys);
+        #endregion
+        #region UserGroup
+        [OperationContract]
+        List<FirstUserGroupEntity> GetFirstUserGroupEntitys();
         [OperationContract]
         FirstUserGroupEntity GetFirstUserGroupEntityById(string UserGroupId);
         [OperationContract]
@@ -25,12 +33,7 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         void DeleteUserGroupEntitys(List<UserGroupEntity> list);
         [OperationContract]
-        string SaveUserEntity(UserInfoEntity entity);
-        [OperationContract]
-        void DeleteUserEntitys(List<UserInfoEntity> UserInfoEntitys);
-        [OperationContract]
         bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree);
-        [OperationContract]
-        void ChangePassword(string oldPassword, string newPassword);
+        #endregion
     }
 }

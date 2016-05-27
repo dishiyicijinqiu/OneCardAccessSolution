@@ -16,7 +16,7 @@ using System.Windows.Markup;
 namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
 {
     /// <summary>
-    /// UserGroupCollectionView.xaml 的交互逻辑
+    /// UserGroupCollectionView.xaml 的交互逻辑 
     /// </summary>
     public partial class UserGroupCollectionView : BaseUserControl, IUserGroupCollectionView
     {

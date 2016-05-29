@@ -181,7 +181,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
         {
             while (true)
             {
-                Thread.Sleep(2000);
                 UpLoadAttachmentInfoEntity nextEntity = null;
                 try
                 {

@@ -192,6 +192,9 @@
     <Compile Include="View\BasicInfo\AttachmentDirView.xaml.cs">
       <DependentUpon>AttachmentDirView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\BasicInfo\ProductCollectionView.xaml.cs">
+      <DependentUpon>ProductCollectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
       <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
     </Compile>
@@ -275,6 +278,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\AttachmentDirView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\ProductCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

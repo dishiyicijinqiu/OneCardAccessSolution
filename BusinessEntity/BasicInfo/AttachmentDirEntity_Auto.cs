@@ -28,7 +28,7 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
         }
         private string _AttachmentDirId;
         /// <summary>
-        /// 附件目录I的
+        /// 附件目录Id
         /// </summary>
         [DataBaseKey(DataBaseKeyType.Guid)]
         [DataMember]

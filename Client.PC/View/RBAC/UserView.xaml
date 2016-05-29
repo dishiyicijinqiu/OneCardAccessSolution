@@ -107,7 +107,7 @@
                             EditValue="{Binding Entity.Creater}" IsReadOnly="True" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserInfo_CreateDate}">
-                        <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.CreateDate}" Style="{StaticResource teCreateDate}" />
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>
@@ -116,7 +116,7 @@
                         <dxe:TextEdit EditValue="{Binding Entity.LastModifyer}" IsReadOnly="True" />
                     </dxlc:LayoutItem>
                     <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserInfo_LastModifyDate}">
-                        <dxe:TextEdit IsReadOnly="True" EditValue="{Binding Entity.LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <dxe:TextEdit EditValue="{Binding Entity.LastModifyDate}" Style="{StaticResource teLastModifyDate}"/>
                     </dxlc:LayoutItem>
 
                 </dxlc:LayoutGroup>

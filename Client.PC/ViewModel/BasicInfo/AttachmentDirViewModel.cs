@@ -104,6 +104,28 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     return false;
                 }
                 this.Entity.TreeParentNo = para.TreeParentNo;
+                if (!string.IsNullOrWhiteSpace(this.Entity.Filter))
+                {
+                    string[] formats = this.Entity.Filter.Split(';');
+                    if (formats == null)
+                    {
+                        ShowError(Properties.Resources.Error_Filter);
+                        return false;
+                    }
+                    foreach (var item in formats)
+                    {
+                        if (!item.StartsWith("*."))
+                        {
+                            ShowError(Properties.Resources.Error_Filter);
+                            return false;
+                        }
+                        if (System.Text.RegularExpressions.Regex.IsMatch("^[a-zA-Z]", item.Substring(2)))
+                        {
+                            ShowError(Properties.Resources.Error_Filter);
+                            return false;
+                        }
+                    }
+                }
                 para.Key = ServiceProxyFactory.Create<IBasicInfoService>().SaveAttachmentDirEntity(this.Entity);
                 if (para.Key == null || para.Key.Length != 36)
                 {

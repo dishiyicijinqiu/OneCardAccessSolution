@@ -210,4 +210,10 @@
   <data name="Error_DirHasChild" xml:space="preserve">
     <value>目录下有子目录或文件不可删除</value>
   </data>
+  <data name="Error_Filter" xml:space="preserve">
+    <value>错误的过滤条件</value>
+  </data>
+  <data name="Error_AttachmentNameCanNotEmpty" xml:space="preserve">
+    <value>附件名称不可为空</value>
+  </data>
 </root>

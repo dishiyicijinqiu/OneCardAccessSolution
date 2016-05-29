@@ -1,8 +1,10 @@
-﻿using FengSharp.OneCardAccess.Services;
+﻿using FengSharp.OneCardAccess.Common;
+using FengSharp.OneCardAccess.Services;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace FengSharp.OneCardAccess.Server
@@ -12,53 +14,27 @@ namespace FengSharp.OneCardAccess.Server
     /// </summary>
     public class UploadHandler : IHttpHandler
     {
-
-        //const string DefaultAttachBaseURL = "http://localhost/OneCardAccessServer/FileAttachMent";
-        //static string ConfigAttachBaseURL = System.Configuration.ConfigurationManager.AppSettings["FileAttachMentURL"];
-        //static string _AttachBaseURL;
-        //static string AttachBaseURL
-        //{
-        //    get
-        //    {
-        //        if (string.IsNullOrWhiteSpace(_AttachBaseURL))
-        //        {
-        //            if (string.IsNullOrWhiteSpace(ConfigAttachBaseURL))
-        //            {
-        //                _AttachBaseURL = DefaultAttachBaseURL;
-        //            }
-        //            else
-        //            {
-        //                _AttachBaseURL = ConfigAttachBaseURL;
-        //            }
-        //        }
-        //        if (string.IsNullOrWhiteSpace(_AttachBaseURL))
-        //        {
-        //            throw new Exception(Properties.Resources.Error_FileAttachDir);
-        //        }
-        //        return _AttachBaseURL;
-        //    }
-        //}
         const string ServerKey = "9D36AAB8-7AFB-4EC8-B3B7-A675CCD0C54C";
         public void ProcessRequest(HttpContext context)
         {
             if (context.Request.Files.Count > 0)
             {
-                var key = context.Request.Headers["key"];
+                var key = HttpUtility.UrlDecode(context.Request.Headers["key"], Encoding.UTF8);
                 if (key != ServerKey)
                 {
                     throw new Exception(Properties.Resources.Error_InvalidUpload);
                 }
-                var filetype = context.Request.Headers["FileType"];
-                if (string.IsNullOrWhiteSpace(filetype))
+                var filepath = HttpUtility.UrlDecode(context.Request.Headers["FilePath"], Encoding.UTF8);
+                if (string.IsNullOrWhiteSpace(filepath))
                 {
                     throw new Exception(Properties.Resources.Error_FileType);
                 }
                 HttpPostedFile file = context.Request.Files[0];
-                var saveName = context.Request.Headers["SaveName"];
+                var saveName = HttpUtility.UrlDecode(context.Request.Headers["SaveName"], Encoding.UTF8);
                 string extension = Path.GetExtension(file.FileName);
                 if (string.IsNullOrWhiteSpace(saveName))
                 {
-                    var isRondomName = context.Request.Headers["IsRondomName"];
+                    var isRondomName = HttpUtility.UrlDecode(context.Request.Headers["IsRondomName"], Encoding.UTF8);
                     if (isRondomName == bool.TrueString)
                     {
                         saveName = DateTime.Now.ToString("yyyyMMddHHmmssfff") + extension;
@@ -72,27 +48,13 @@ namespace FengSharp.OneCardAccess.Server
                 {
                     throw new Exception(Properties.Resources.Error_DiffExtension);
                 }
-                string filedir = GetDirByFileType(filetype.ToLower());
-                string dir = Path.Combine(SystemServiceConfig.AttachBaseDir, filedir);
+                string dir = Path.Combine(SystemServiceConfig.AttachBaseDir, filepath);
                 if (!Directory.Exists(dir))
                 {
-                    Directory.CreateDirectory(dir);
+                    throw new BusinessException(Properties.Resources.Error_FileAttachDirNotFound);
                 }
                 file.SaveAs(Path.Combine(dir, saveName));
                 context.Response.Write(saveName);
-            }
-        }
-
-        private string GetDirByFileType(string filetype)
-        {
-            switch (filetype)
-            {
-                case "p_crtemp":
-                    return "P_CRTemp";
-                case "register_file":
-                    return "Register_File";
-                default:
-                    throw new Exception(Properties.Resources.Error_FileAttachDir);
             }
         }
 

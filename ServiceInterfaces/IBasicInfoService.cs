@@ -38,6 +38,10 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         string SaveAttachmentDirEntity(AttachmentDirEntity entity);
         [OperationContract]
         void DeleteAttachmentDirEntitys(List<AttachmentDirEntity> list);
+        [OperationContract]
+        List<FirstAttachmentInfoEntity> GetFirstAttachmentInfoEntitysByAttachmentDirId(string attachmentdirid);
+        [OperationContract]
+        void DeleteAttachment(AttachmentInfoEntity attachmentinfoentity);
         #endregion
     }
 

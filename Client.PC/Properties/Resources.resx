@@ -570,4 +570,34 @@
   <data name="Entity_AttachmentDir_Filter" xml:space="preserve">
     <value>过滤条件</value>
   </data>
+  <data name="Entity_Attachment_AttachmentName" xml:space="preserve">
+    <value>附件名称</value>
+  </data>
+  <data name="Error_Filter" xml:space="preserve">
+    <value>错误的过滤条件</value>
+  </data>
+  <data name="View_UpLoadView_Title" xml:space="preserve">
+    <value>附件上传</value>
+  </data>
+  <data name="BarContent_DeleteAttachment" xml:space="preserve">
+    <value>删除附件</value>
+  </data>
+  <data name="ToolBar_AttachmentCollectionView_Attachment_OP" xml:space="preserve">
+    <value>附件操作</value>
+  </data>
+  <data name="BarContent_Pause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="BarContent_Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="BarContent_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="BarContent_Continue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="BarContent_UpLoadBackGround" xml:space="preserve">
+    <value>后台上传</value>
+  </data>
 </root>

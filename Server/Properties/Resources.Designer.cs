@@ -70,11 +70,11 @@ namespace FengSharp.OneCardAccess.Server.Properties {
         }
         
         /// <summary>
-        ///   查找类似 附件路径未正确设置 的本地化字符串。
+        ///   查找类似 附件目录不存在 的本地化字符串。
         /// </summary>
-        public static string Error_FileAttachDir {
+        public static string Error_FileAttachDirNotFound {
             get {
-                return ResourceManager.GetString("Error_FileAttachDir", resourceCulture);
+                return ResourceManager.GetString("Error_FileAttachDirNotFound", resourceCulture);
             }
         }
         

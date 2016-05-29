@@ -1,4 +1,6 @@
-﻿using FengSharp.OneCardAccess.Client.PC.Interfaces;
+﻿using DevExpress.Xpf.Grid.Native;
+using FengSharp.OneCardAccess.BusinessEntity.BasicInfo;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 using System;
@@ -20,7 +22,7 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
     /// <summary>
     /// AttachmentCollectionView.xaml 的交互逻辑
     /// </summary>
-    public partial class AttachmentDirCollectionView : BaseUserControl , IAttachmentDirCollectionView
+    public partial class AttachmentDirCollectionView : BaseUserControl, IAttachmentDirCollectionView
     {
         public AttachmentDirCollectionView()
         {
@@ -29,6 +31,18 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         public AttachmentDirCollectionView(AttachmentDirCollectionViewModel VM) : base(VM)
         {
             InitializeComponent();
+        }
+
+        private void TreeListView_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ITableViewHitInfo hitInfo = this.treelist.View.CalcHitInfo(e.OriginalSource as DependencyObject);
+            if (hitInfo.InRow && hitInfo.IsRowCell)
+            {
+                var entity = this.treelist.SelectedItem as FirstAttachmentDirEntity;
+                if (entity == null) return;
+                AttachmentDirCollectionViewModel VM = this.DataContext as AttachmentDirCollectionViewModel;
+                VM.LoadAttachment(entity);
+            }
         }
     }
 }

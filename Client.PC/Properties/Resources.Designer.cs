@@ -106,6 +106,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 继续 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Continue {
+            get {
+                return ResourceManager.GetString("BarContent_Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 复制新增 的本地化字符串。
         /// </summary>
         public static string BarContent_CopyAdd {
@@ -120,6 +129,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string BarContent_Delete {
             get {
                 return ResourceManager.GetString("BarContent_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 删除附件 的本地化字符串。
+        /// </summary>
+        public static string BarContent_DeleteAttachment {
+            get {
+                return ResourceManager.GetString("BarContent_DeleteAttachment", resourceCulture);
             }
         }
         
@@ -151,6 +169,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 暂停 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Pause {
+            get {
+                return ResourceManager.GetString("BarContent_Pause", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 返回 的本地化字符串。
         /// </summary>
         public static string BarContent_Return {
@@ -178,11 +205,38 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 开始 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Start {
+            get {
+                return ResourceManager.GetString("BarContent_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 停止 的本地化字符串。
+        /// </summary>
+        public static string BarContent_Stop {
+            get {
+                return ResourceManager.GetString("BarContent_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 上传 的本地化字符串。
         /// </summary>
         public static string BarContent_UpLoad {
             get {
                 return ResourceManager.GetString("BarContent_UpLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 后台上传 的本地化字符串。
+        /// </summary>
+        public static string BarContent_UpLoadBackGround {
+            get {
+                return ResourceManager.GetString("BarContent_UpLoadBackGround", resourceCulture);
             }
         }
         
@@ -255,6 +309,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string EmptyString {
             get {
                 return ResourceManager.GetString("EmptyString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_Attachment_AttachmentName {
+            get {
+                return ResourceManager.GetString("Entity_Attachment_AttachmentName", resourceCulture);
             }
         }
         
@@ -790,6 +853,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 错误的过滤条件 的本地化字符串。
+        /// </summary>
+        public static string Error_Filter {
+            get {
+                return ResourceManager.GetString("Error_Filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 登录超时 的本地化字符串。
         /// </summary>
         public static string Error_LoginTimeOut {
@@ -1141,6 +1213,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件操作 的本地化字符串。
+        /// </summary>
+        public static string ToolBar_AttachmentCollectionView_Attachment_OP {
+            get {
+                return ResourceManager.GetString("ToolBar_AttachmentCollectionView_Attachment_OP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 附件目录操作 的本地化字符串。
         /// </summary>
         public static string ToolBar_AttachmentCollectionView_OP {
@@ -1371,6 +1452,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_RegisterView_Title {
             get {
                 return ResourceManager.GetString("View_RegisterView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 附件上传 的本地化字符串。
+        /// </summary>
+        public static string View_UpLoadView_Title {
+            get {
+                return ResourceManager.GetString("View_UpLoadView_Title", resourceCulture);
             }
         }
         

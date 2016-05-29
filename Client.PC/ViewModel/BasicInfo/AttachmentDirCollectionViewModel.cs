@@ -10,6 +10,8 @@ using System.Linq;
 using System.Windows.Input;
 using System;
 using Microsoft.Practices.Unity;
+using System.Text;
+using System.IO;
 
 namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
 {
@@ -19,18 +21,154 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand LoadAttachmentCommand { get; set; }
+        public ICommand UpLoadCommand { get; set; }
+        public ICommand DeleteAttachmentCommand { get; set; }
+
+
         public AttachmentDirCollectionViewModel()
         {
             AddChildCommand = new DelegateCommand<FirstAttachmentDirEntity>(AddChild, CanAddChild);
             CopyAddCommand = new DelegateCommand<FirstAttachmentDirEntity>(CopyAdd, CanCopyAdd);
             EditCommand = new DelegateCommand<FirstAttachmentDirEntity>(Edit, CanEdit);
             DeleteCommand = new DelegateCommand<IList>(Delete, CanDelete);
+            LoadAttachmentCommand = new DelegateCommand<FirstAttachmentDirEntity>(LoadAttachment);
+            UpLoadCommand = new DelegateCommand<FirstAttachmentDirEntity>(UpLoad, CanUpLoad);
+            DeleteAttachmentCommand = new DelegateCommand<IList>(DeleteAttachment, CanDeleteAttachment);
+
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstAttachmentDirEntitys().
                 OrderBy(t => t.AttachmentDirNo).ThenBy(m => m.AttachmentDirName);
             Items = new ObservableCollection<FirstAttachmentDirEntity>(list);
+            AttachmentInfoItems = new ObservableCollection<FirstAttachmentInfoEntity>();
         }
+
+        public bool CanDeleteAttachment(IList entitys)
+        {
+            if (entitys == null) return false;
+            if (entitys.Count > 1)
+            {
+
+            }
+            return entitys.Count > 0;
+        }
+
+        public void DeleteAttachment(IList entitys)
+        {
+            try
+            {
+                if (entitys == null || entitys.Count <= 0)
+                {
+                    ShowMessage(Properties.Resources.Info_SelectAtLeastOne);
+                    return;
+                }
+                var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_ConfirmToDelete, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
+                if (ShowMessage(deleteArgs) != MsgResult.Yes)
+                    return;
+                for (int i = entitys.Count - 1; i >= 0; i--)
+                {
+                    var item = entitys[i] as FirstAttachmentInfoEntity;
+                    ServiceProxyFactory.Create<IBasicInfoService>().DeleteAttachment(item);
+                }
+                ShowMessage(Properties.Resources.Info_DeleteSuccess);
+                for (int i = entitys.Count - 1; i >= 0; i--)
+                {
+                    var item = entitys[i] as FirstAttachmentInfoEntity;
+                    this.AttachmentInfoItems.Remove(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
+        private bool CanUpLoad(FirstAttachmentDirEntity entity)
+        {
+            if (entity == null) return false;
+            if (entity.TreeSon > 0) return false;
+            return true;
+        }
+
+        private void UpLoad(FirstAttachmentDirEntity entity)
+        {
+            try
+            {
+                string dir = GetFullDir(entity);
+                System.Windows.Forms.OpenFileDialog openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+                if (!string.IsNullOrWhiteSpace(entity.Filter))
+                {
+                    openFileDialog1.Filter = string.Format("{0}|{1}", entity.Filter.Replace(';', ','), entity.Filter);
+                }
+                openFileDialog1.Multiselect = true;
+                if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+                    vm.AddUpLoadItem(
+                        openFileDialog1.FileNames.Select(t =>
+                        new UpLoadAttachmentInfoEntity()
+                        {
+                            AttachmentDirId = entity.AttachmentDirId,
+                            AttachmentName = Path.GetFileName(t),
+                            AttachmentPath = dir,
+                            Message = string.Empty,
+                            LocalPath = t
+                        }
+                        ));
+                    var view = ServiceLoader.LoadService<IUpLoadView>("IUpLoadView", new ParameterOverride("VM", vm));
+                    vm.StartUpLoad();
+                    this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
+        private string GetFullDir(FirstAttachmentDirEntity entity)
+        {
+            StringBuilder sb = new StringBuilder();
+            var results = this.Items.Where(t => entity.TreePath.StartsWith(t.TreePath)).OrderBy(t => t.TreeTotal).ToList();
+            foreach (var item in results)
+            {
+                if (!string.IsNullOrWhiteSpace(item.TreeParentNo))
+                    sb.AppendFormat("{0}\\", item.AttachmentDirName);
+            }
+            return sb.ToString().TrimEnd(new char[] { '\\' });
+        }
+
+        public void LoadAttachment(FirstAttachmentDirEntity entity)
+        {
+            try
+            {
+                if (entity == null)
+                {
+                    AttachmentInfoItems = new ObservableCollection<FirstAttachmentInfoEntity>();
+                    return;
+                }
+                var list = ServiceProxyFactory.Create<IBasicInfoService>().
+                    GetFirstAttachmentInfoEntitysByAttachmentDirId(entity.AttachmentDirId).
+                    OrderBy(t => t.AttachmentName);
+                AttachmentInfoItems = new ObservableCollection<FirstAttachmentInfoEntity>(list);
+                SelectedAttachmentInfoItem = null;
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
         private bool CanDelete(IList entitys)
         {
+            if (entitys == null || entitys.Count <= 0) return false;
+            if (this.AttachmentInfoItems != null && AttachmentInfoItems.Count > 0)
+                return false;
+            foreach (var item in entitys)
+            {
+                var entity = item as FirstAttachmentDirEntity;
+                if (entity == null) return false;
+                if (entity.TreeSon > 0) return false;
+            }
             return true;
         }
         private void Delete(IList entitys)
@@ -52,8 +190,10 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 ShowException(ex);
             }
         }
-        private bool CanEdit(FirstAttachmentDirEntity entitys)
+        private bool CanEdit(FirstAttachmentDirEntity entity)
         {
+            if (entity != null && string.IsNullOrWhiteSpace(entity.TreeParentNo))
+                return false;
             return true;
         }
         private void Edit(FirstAttachmentDirEntity entity)
@@ -78,6 +218,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         private bool CanCopyAdd(FirstAttachmentDirEntity entity)
         {
+            if (entity != null && string.IsNullOrWhiteSpace(entity.TreeParentNo))
+                return false;
             return true;
         }
         private void CopyAdd(FirstAttachmentDirEntity entity)
@@ -104,6 +246,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         private bool CanAddChild(FirstAttachmentDirEntity entity)
         {
             if (entity == null) return false;
+            if (this.AttachmentInfoItems != null && AttachmentInfoItems.Count > 0)
+                return false;
             return true;
         }
         private void AddChild(FirstAttachmentDirEntity entity)
@@ -168,6 +312,33 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                         }
                         break;
                     case EntityEditMode.Edit:
+                        {
+                            var oldItem = Items.FirstOrDefault(t => t.AttachmentDirId == EditMessage.Key);
+                            if (oldItem == null) return;
+                            var newItem = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstAttachmentDirEntityById(EditMessage.Key);
+                            var itemIndex = Items.IndexOf(oldItem);
+                            Items[itemIndex] = newItem;
+                            if (EditMessage.IsContinue)
+                            {
+                                int nextIndex = itemIndex + 1;
+                                if (Items.Count > nextIndex)
+                                {
+                                    var nextItem = Items[nextIndex];
+                                    SelectedEntity = nextItem;
+                                    var newvm = new AttachmentDirViewModel(new AttachmentDirEditMessage(newItem.TreeParentNo, nextItem.AttachmentDirId, EntityEditMode.Edit));
+                                    newvm.OnEntityViewEdited += OnEntityViewEdited;
+                                    DefaultEventAggregator.Current.GetEvent<ChangeDataContextEvent>().
+                                        Publish(vm.ChangeDataContextEventToken, new ChangeDataContextEventArgs(newvm));
+                                }
+                                else
+                                {
+                                    SelectedEntity = Items[itemIndex];
+                                    ShowMessage(Properties.Resources.Info_NoNext);
+                                    DefaultEventAggregator.Current.GetEvent<CloseEvent>().
+                                        Publish(vm.CloseEventToken, new CloseEventArgs(CloseStyle.NullClose));
+                                }
+                            }
+                        }
                         break;
                     default:
                         break;
@@ -180,6 +351,30 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         }
         #region properties
         public ObservableCollection<FirstAttachmentDirEntity> Items { get; private set; }
+        private ObservableCollection<FirstAttachmentInfoEntity> _AttachmentInfoItems;
+        public ObservableCollection<FirstAttachmentInfoEntity> AttachmentInfoItems
+        {
+            get { return _AttachmentInfoItems; }
+            set
+            {
+                _AttachmentInfoItems = value;
+                RaisePropertyChanged("AttachmentInfoItems");
+                (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
+                (DeleteAttachmentCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
+            }
+        }
+
+        private FirstAttachmentInfoEntity _SelectedAttachmentInfoItem;
+        public FirstAttachmentInfoEntity SelectedAttachmentInfoItem
+        {
+            get { return _SelectedAttachmentInfoItem; }
+            set
+            {
+                _SelectedAttachmentInfoItem = value;
+                RaisePropertyChanged("SelectedAttachmentInfoItem");
+                (DeleteAttachmentCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
+            }
+        }
 
         private FirstAttachmentDirEntity _SelectedEntity;
         public FirstAttachmentDirEntity SelectedEntity
@@ -189,6 +384,11 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             {
                 _SelectedEntity = value;
                 RaisePropertyChanged("SelectedEntity");
+                (AddChildCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
+                (CopyAddCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
+                (EditCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
+                (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
+                (UpLoadCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
             }
         }
         #endregion

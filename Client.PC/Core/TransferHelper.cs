@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web;
 
 namespace FengSharp.OneCardAccess.Core
 {
@@ -57,21 +58,23 @@ namespace FengSharp.OneCardAccess.Core
 
 
 
-        public static string UploadFile(string filetype, string filepath, bool isrondomname = false, string savename = null)
+        public static string UploadFile(string filepath, string filename, bool isrondomname = false, string savename = null)
         {
             System.Net.WebClient webclient = new System.Net.WebClient();
-            webclient.Headers["key"] = UpLoadKey;
-            webclient.Headers["FileType"] = filetype;
+            webclient.Encoding = Encoding.UTF8;
+            webclient.Headers["key"] = HttpUtility.UrlEncode(UpLoadKey, Encoding.UTF8);
+            webclient.Headers["FilePath"] = HttpUtility.UrlEncode(filepath, Encoding.UTF8);
             if (!string.IsNullOrWhiteSpace(savename))
             {
-                webclient.Headers["SaveName"] = savename;
+                webclient.Headers["SaveName"] = HttpUtility.UrlEncode(savename, Encoding.UTF8);
             }
             else
             {
-                webclient.Headers["IsRondomName"] = isrondomname ? bool.TrueString : bool.FalseString;
+                webclient.Headers["IsRondomName"] = HttpUtility.UrlEncode(isrondomname ? bool.TrueString : bool.FalseString, Encoding.UTF8);
             }
-            byte[] responseArray = webclient.UploadFile(UpLoadHandlerURL, "Post", filepath);
-            return System.Text.Encoding.GetEncoding("UTF-8").GetString(responseArray);
+            byte[] responseArray = webclient.UploadFile(UpLoadHandlerURL, "Post", filename);
+            return Encoding.UTF8.GetString(responseArray);
+            //return Encoding.GetEncoding("GB2312").GetString(responseArray);
         }
         public static string DownloadFile(string filetype, string filepath, string savename = null)
         {

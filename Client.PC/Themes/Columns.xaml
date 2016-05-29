@@ -43,4 +43,9 @@
         <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyer}"/>
         <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_UserInfo_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
     </ui:ColumnData>
+
+    <ui:ColumnData x:Key="attachmentinfocolumnssource">
+        <ui:BaseColumn FieldName="AttachmentName" Header="{x:Static res:Resources.Entity_Attachment_AttachmentName}"/>
+        <!--<ui:BaseColumn FieldName="UserName" Header="{x:Static res:Resources.Entity_UserInfo_UserName}"/>-->
+    </ui:ColumnData>
 </ResourceDictionary>

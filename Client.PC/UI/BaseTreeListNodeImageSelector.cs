@@ -15,6 +15,10 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
         {
             if (rowData == null)
                 return base.Select(rowData);
+            if (rowData == null)
+                return base.Select(rowData);
+            if (rowData.Node == null)
+                return base.Select(rowData);
             if (rowData.Node.HasChildren)
                 return HasChildrenImage;
             return NoChildrenImage;

@@ -79,6 +79,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件名称不可为空 的本地化字符串。
+        /// </summary>
+        internal static string Error_AttachmentNameCanNotEmpty {
+            get {
+                return ResourceManager.GetString("Error_AttachmentNameCanNotEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 名称不可为{0} 的本地化字符串。
         /// </summary>
         internal static string Error_CanNotNameRootDir {
@@ -156,6 +165,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         internal static string Error_FileSaveDir {
             get {
                 return ResourceManager.GetString("Error_FileSaveDir", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 错误的过滤条件 的本地化字符串。
+        /// </summary>
+        internal static string Error_Filter {
+            get {
+                return ResourceManager.GetString("Error_Filter", resourceCulture);
             }
         }
         

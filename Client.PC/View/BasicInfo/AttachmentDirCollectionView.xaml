@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-                    
+                    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+                     xmlns:dxdo="http://schemas.devexpress.com/winfx/2008/xaml/docking"   
             xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
             xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
@@ -33,13 +35,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
                 <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_AttachmentDirCollectionView_Title}">
-                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_AttachmentCollectionView_OP}" MergeOrder="0">
+                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_AttachmentCollectionView_OP}">
                             <dxb:BarButtonItem Style="{StaticResource barAdd}" Content="{x:Static res:Resources.BarContent_AddChild}"
-                                           Command="{Binding AddChildCommand}"
+                                                Command="{Binding AddChildCommand}"
                                                 CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
                             <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barEdit}" 
@@ -47,37 +50,124 @@
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
                         </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup Caption=" ">
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                            <dxb:BarStaticItem />
+                            <dxb:BarItemLinkSeparator/>
+                        </dxr:RibbonPageGroup>
+
+                        <dxr:RibbonPageGroup  Caption="{x:Static res:Resources.ToolBar_AttachmentCollectionView_Attachment_OP}">
+                            <dxb:BarButtonItem Style="{StaticResource barUpLoad}"
+                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}" />
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}"
+                                               Content="{x:Static res:Resources.BarContent_DeleteAttachment}"
+                                               Command="{Binding DeleteAttachmentCommand}"
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}"
+                                                />
+                            <!--Glyph="{dxc:DXImage Image=Delete_16x16.png}"
+                                               LargeGlyph="{dxc:DXImage Image=Delete32x32.png}"-->
+                            <!--<Style TargetType="dxb:BarButtonItem" x:Key="barAdd">
+                                <Setter Property="Content" Value="{x:Static res:Resources.BarContent_Add}"/>
+                                <Setter Property="Command" Value="{Binding AddCommand}"/>
+                                <Setter Property="Glyph" Value="{dxc:DXImage Image=New_16x16.png}"/>
+                                <Setter Property="LargeGlyph" Value="{dxc:DXImage Image=New_32x32.png}"/>
+                            </Style>-->
+                            <!--Style="{StaticResource barDelete}"-->
+                            <!--<Setter Property="Glyph" Value="{dxc:DXImage Image=New_16x16.png}"/>
+                            <Setter Property="LargeGlyph" Value="{dxc:DXImage Image=New_32x32.png}"-->
+                        </dxr:RibbonPageGroup>
+
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-            <dxg:TreeListControl x:Name="treelist" Grid.Row="1"
+            <dxdo:DockLayoutManager Grid.Row="1" x:Name="DockLayoutManager" Background="Transparent">
+                <dxdo:LayoutGroup Orientation="Horizontal" Background="Transparent">
+                    <dxdo:LayoutPanel ItemWidth="0.2*">
+
+                        <dxg:TreeListControl x:Name="treelist"
                                 SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 ItemsSource="{Binding Items}"
                                 core:MouseDoubleClick.CommandTarget="{Binding ElementName=barEdit}"
                                 core:MouseDoubleClick.Command="{Binding EditCommand}"
                                 core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                                 core:MouseDoubleClick.HitPosition="InRow"
-                                SelectionMode="Cell"
+                                SelectionMode="Cell" 
                                  >
-                <dxg:TreeListControl.Columns>
-                    <dxg:TreeListColumn FieldName="AttachmentDirNo" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirNo}" />
-                    <dxg:TreeListColumn FieldName="AttachmentDirName" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirName}" />
-                </dxg:TreeListControl.Columns>
-                <dxg:TreeListControl.View>
-                    <dxg:TreeListView 
+                            <dxg:TreeListControl.Columns>
+                                <dxg:TreeListColumn FieldName="AttachmentDirNo" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirNo}" />
+                                <dxg:TreeListColumn FieldName="AttachmentDirName" Header="{x:Static res:Resources.Entity_AttachmentDir_AttachmentDirName}" />
+                            </dxg:TreeListControl.Columns>
+                            <dxg:TreeListControl.View>
+                                <dxg:TreeListView
                         NodeImageSelector="{StaticResource treeListNodeImageSelector}"
                         ShowNodeImages="True" 
-                        KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
-                    </dxg:TreeListView>
-                </dxg:TreeListControl.View>
-                <!--<dxmvvm:Interaction.Behaviors>
+                        KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" MouseDown="TreeListView_MouseDown" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="NodeChanged">
+                                            <i:InvokeCommandAction Command="{Binding LoadAttachmentCommand, Mode=OneWay}"
+                                                                   CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"
+                                                                   />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </dxg:TreeListView>
+                            </dxg:TreeListControl.View>
+                            <!--<dxmvvm:Interaction.Behaviors>
                     <dxg:TreeListDragDropManager AllowDrag="False" 
                                                  AllowDrop="False" ScrollSpacing="50" ScrollSpeed="1" />
                 </dxmvvm:Interaction.Behaviors>-->
-            </dxg:TreeListControl>
+                        </dxg:TreeListControl>
+
+                    </dxdo:LayoutPanel>
+                    <dxdo:LayoutPanel ItemWidth="0.8*">
+
+
+                        <dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedAttachmentInfoItem, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                             ColumnsSource="{StaticResource attachmentinfocolumnssource}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             ItemsSource="{Binding AttachmentInfoItems}"
+                             SelectionMode="Cell"
+                             >
+                            <!--<dxg:GridControl.Resources>
+                                <Style TargetType="{x:Type dxg:GridControl}" x:Key="EditCommand">
+                                    <Setter Property="core:MouseDoubleClick.Command" Value="{Binding EditCommand}"/>
+                                    <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"/>
+                                    <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                                </Style>
+                                <Style TargetType="{x:Type dxg:GridControl}" x:Key="ConfirmCommand">
+                                    <Setter Property="core:MouseDoubleClick.Command" Value="{Binding ConfirmCommand}"/>
+                                    <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItems}"/>
+                                    <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                                </Style>
+                            </dxg:GridControl.Resources>
+                            <dxg:GridControl.Style>
+                                <MultiBinding Mode="OneWay" Converter="{local:P_CRTempCollectionViewViewOrEditConverter}">
+                                    <Binding ElementName="grid" />
+                                    <Binding Path="ViewStyle" />
+                                </MultiBinding>
+                            </dxg:GridControl.Style>-->
+                            <dxg:GridControl.View>
+                                <dxg:TableView  />
+                            </dxg:GridControl.View>
+                        </dxg:GridControl>
+
+
+                    </dxdo:LayoutPanel>
+                </dxdo:LayoutGroup>
+            </dxdo:DockLayoutManager>
+            <dxr:RibbonStatusBarControl Grid.Row="2">
+                <dxr:RibbonStatusBarControl.RightItemLinks>
+                    <!--<dxb:BarButtonItem Style="{StaticResource barEdit}" 
+                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>-->
+                    <dxr:RibbonGalleryBarItemLink />
+                </dxr:RibbonStatusBarControl.RightItemLinks>
+            </dxr:RibbonStatusBarControl>
         </Grid>
     </dxb:BarManager>
 </ui:BaseUserControl>

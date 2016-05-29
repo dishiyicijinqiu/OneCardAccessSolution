@@ -89,6 +89,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -131,6 +132,7 @@
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
+    <Compile Include="Interfaces\IUpLoad.cs" />
     <Compile Include="Interfaces\IUserGroup.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Interfaces\IView.cs" />
@@ -183,6 +185,7 @@
     <Compile Include="ViewModel\RBAC\UserGroupCollectionViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserGroupViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserViewModel.cs" />
+    <Compile Include="ViewModel\Tool\UpLoadViewModel.cs" />
     <Compile Include="View\BasicInfo\AttachmentDirCollectionView.xaml.cs">
       <DependentUpon>AttachmentDirCollectionView.xaml</DependentUpon>
     </Compile>
@@ -230,6 +233,9 @@
     </Compile>
     <Compile Include="View\RBAC\UserView.xaml.cs">
       <DependentUpon>UserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Tool\UpLoadView.xaml.cs">
+      <DependentUpon>UpLoadView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -317,6 +323,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RBAC\UserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Tool\UpLoadView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -415,78 +425,6 @@
     <Resource Include="Resources\P_CRTemp_32x32.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Bars\add_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\add_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\cards_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\cards_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\close_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\close_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\copy-16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\copy-32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\delete_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\delete_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\edit_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\edit_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\movedown_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\movedown_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\moveup_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\moveup_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\new_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\new_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\save_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\save_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\saveandnew_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\saveandnew_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\up_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\up_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Login.png" />
   </ItemGroup>
   <ItemGroup>
@@ -499,14 +437,6 @@
     <Folder Include="ReportTool\" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Bars\apply_16x16.png" />
-    <Resource Include="Resources\Bars\apply_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Bars\usergroup_16x16.png" />
-    <Resource Include="Resources\Bars\usergroup_32x32.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\childleaf_16x16.png" />
     <Resource Include="Resources\childleaf_32x32.png" />
     <Resource Include="Resources\leaf_16x16.png" />
@@ -515,6 +445,26 @@
   <ItemGroup>
     <Resource Include="Resources\key_16x16.png" />
     <Resource Include="Resources\key_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\shutdown_16x16.png" />
+    <Resource Include="Resources\shutdown_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Pause_16x16.png" />
+    <Resource Include="Resources\Pause_32x32.png" />
+    <Resource Include="Resources\Start_16x16.png" />
+    <Resource Include="Resources\Start_32x32.png" />
+    <Resource Include="Resources\Stop_16x16.png" />
+    <Resource Include="Resources\Stop_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Continue_16x16.png" />
+    <Resource Include="Resources\Continue_32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_16x16.png" />
+    <Resource Include="Resources\background_32x32.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

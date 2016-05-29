@@ -26,7 +26,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand DeleteAttachmentCommand { get; set; }
         public ICommand ViewAttachmentUpLoadCommand { get; set; }
 
-
         public AttachmentDirCollectionViewModel()
         {
             AddChildCommand = new DelegateCommand<FirstAttachmentDirEntity>(AddChild, CanAddChild);

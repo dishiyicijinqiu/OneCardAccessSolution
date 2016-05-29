@@ -89,16 +89,21 @@ namespace FengSharp.OneCardAccess.Client.PC.View
             var vm = this.DataContext as MainViewModel;
             if (sender != vm.ShowDocumentEventSubscriptionToken)
                 return;
+            var docInfo = args.DocumentInfo;
+            var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentVMType), docInfo.DocumentName);
+            var viewdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ParameterOverride("VM", vmdoc));
+            if (docs.ContainsKey(viewdoc))
+            {
+                docs[viewdoc].IsActive = true;
+                return;
+            }
             var doc = dockLayoutManager.DockController.AddDocumentPanel(mdiContainer);
             try
             {
-                var docInfo = args.DocumentInfo;
                 doc.AllowDrag = false;
                 doc.IsActive = true;
                 doc.FloatOnDoubleClick = false;
                 doc.Caption = docInfo.DocumentTitle;
-                var vmdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentVMType), docInfo.DocumentName);
-                var viewdoc = ServiceLoader.LoadService(System.Type.GetType(docInfo.DocumentType), null, new ParameterOverride("VM", vmdoc));
 
                 doc.Content = viewdoc;
                 doc.CloseCommand = new DelegateCommand<DocumentPanel>((panel) =>

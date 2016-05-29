@@ -32,6 +32,12 @@ namespace FengSharp.OneCardAccess.Client.PC.View.Tool
         {
             InitializeComponent();
         }
+
+        private void BaseUserControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            UpLoadViewModel VM = this.DataContext as UpLoadViewModel;
+            VM.IsViewVisible = (bool)e.NewValue;
+        }
     }
     public class StartStopContentConverter : MarkupExtension, IValueConverter
     {

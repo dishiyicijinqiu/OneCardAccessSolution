@@ -12,7 +12,9 @@
             xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+                   IsVisibleChanged="BaseUserControl_IsVisibleChanged"
+                    >
     <ui:BaseUserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -47,7 +49,6 @@
                                                 Command="{Binding UpLoadBackGroundCommand}"
                                                Glyph="{Binding Path=UpLoadState,Converter={local:StartStopGlyphConverter},ConverterParameter=small}"
                                                LargeGlyph="{Binding Path=UpLoadState,Converter={local:StartStopGlyphConverter},ConverterParameter=large}"
-                                               
                                                />
                             <dxb:BarButtonItem Style="{StaticResource barClose}"/>
                         </dxr:RibbonPageGroup>
@@ -58,10 +59,9 @@
                              SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                              ItemsSource="{Binding UpLoadAttachmentInfoItems}">
                 <dxg:GridControl.Columns>
-                    <!--{x:Static res:Resources.Entity_UserGroup_UserGroupNo}-->
-                    <dxg:GridColumn FieldName="AttachmentName" Header="附件名称" />
-                    <dxg:GridColumn FieldName="AttachmentPath" Header="上传路径" />
-                    <dxg:GridColumn FieldName="Message" Header="上传结果" />
+                    <dxg:GridColumn FieldName="AttachmentName" Header="{x:Static res:Resources.Entity_UpLoadAttachmentInfo_AttachmentName}" />
+                    <dxg:GridColumn FieldName="AttachmentPath" Header="{x:Static res:Resources.Entity_UpLoadAttachmentInfo_AttachmentPath}" />
+                    <dxg:GridColumn FieldName="Message" Header="{x:Static res:Resources.Entity_UpLoadAttachmentInfo_Message}" />
                 </dxg:GridControl.Columns>
             </dxg:GridControl>
         </Grid>

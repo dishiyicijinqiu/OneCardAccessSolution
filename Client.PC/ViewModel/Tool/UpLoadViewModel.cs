@@ -89,6 +89,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
                     }
                 }
                 ShowMessage(Properties.Resources.Info_DeleteSuccess);
+                OnUpLoadItemsChanged?.Invoke(UpLoadAttachmentInfoItems.Count);
+                OnUpLoadItemProgress?.Invoke(UpLoadAttachmentInfoItems.Count - queue.Count);
             }
             catch (Exception ex)
             {
@@ -143,6 +145,8 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
                 {
                     UpLoadAttachmentInfoItems.Add(item);
                 }
+                OnUpLoadItemsChanged?.Invoke(UpLoadAttachmentInfoItems.Count);
+                OnUpLoadItemProgress?.Invoke(UpLoadAttachmentInfoItems.Count - queue.Count);
             }
         }
         public void StartUpLoad()
@@ -151,17 +155,16 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
             {
                 lock (lockobj)
                 {
+                    foreach (var item in UpLoadAttachmentInfoItems)
+                    {
+                        if (string.IsNullOrWhiteSpace(item.Message))
+                            queue.Enqueue(item);
+                    }
                     if (UpLoadState == UpLoadState.Running)
                         return;
                     else if (UpLoadState == UpLoadState.Pause)
                     {
                         UpLoadState = UpLoadState.Pause;
-                    }
-                    queue.Clear();
-                    foreach (var item in UpLoadAttachmentInfoItems)
-                    {
-                        if (string.IsNullOrWhiteSpace(item.Message))
-                            queue.Enqueue(item);
                     }
                     UpLoadState = UpLoadState.Running;
                     Thread thread = new Thread(Run);
@@ -207,6 +210,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
                     {
                         TransferHelper.UploadFile(nextEntity.AttachmentPath, nextEntity.LocalPath, false);
                         nextEntity.Message = Properties.Resources.Info_UploadSuccess;
+                        OnUpLoadItemProgress?.Invoke(UpLoadAttachmentInfoItems.Count - queue.Count);
                     }
                 }
                 catch (Exception ex)
@@ -220,17 +224,36 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
                 {
                     if (queue.Count <= 0)
                     {
-                        lock (lockobj)
+                        if (UpLoadState != UpLoadState.Stoped)
                         {
-                            if (queue.Count <= 0)
+                            lock (lockobj)
                             {
-                                UpLoadState = UpLoadState.Stoped;
+                                if (queue.Count <= 0)
+                                {
+                                    UpLoadState = UpLoadState.Stoped;
+                                }
                             }
+                            OnCompleteUpLoad?.Invoke();
                         }
                     }
                 }
             }
         }
+
+        public double GetTotalUpLoadItemCount()
+        {
+            return UpLoadAttachmentInfoItems.Count;
+        }
+
+        public double GetUpLoadedItemCount()
+        {
+            return UpLoadAttachmentInfoItems.Count - queue.Count;
+        }
+
+        public event Action<double> OnUpLoadItemsChanged;
+        public event Action<double> OnUpLoadItemProgress;
+        public event Action OnCompleteUpLoad;
+
         private UpLoadAttachmentInfoEntity _SelectedEntity;
         public UpLoadAttachmentInfoEntity SelectedEntity
         {
@@ -242,6 +265,26 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.Tool
                 (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
             }
         }
+
+        private bool _IsViewVisible;
+        public bool IsViewVisible
+        {
+            get { return _IsViewVisible; }
+            set
+            {
+                _IsViewVisible = value;
+                RaisePropertyChanged("IsViewVisible");
+            }
+        }
+
+        public bool CanUpLoad
+        {
+            get
+            {
+                return UpLoadAttachmentInfoItems.Count > 0;
+            }
+        }
+
     }
     public enum UpLoadState
     {

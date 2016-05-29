@@ -168,11 +168,19 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
                 DocumentTitle = this.DocumentTitle,
                 DocumentType = this.DocumentType,
                 DocumentVMType = this.DocumentVMType,
-                DocumentName = this.DocumentName
+                DocumentName = this.DocumentName,
             };
         }
     }
 
+
+    public class ActiveDocumentEvent : SenderEvent<ActiveDocumentEventArgs>
+    {
+    }
+    public class ActiveDocumentEventArgs : NullEventArgs
+    {
+
+    }
     public class ShowDocumentEvent : SenderEvent<ShowDocumentEventArgs>
     {
     }

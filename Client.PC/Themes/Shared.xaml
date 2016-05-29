@@ -33,6 +33,10 @@
     <Style TargetType="dxr:RibbonControl">
         <Setter Property="ToolbarShowCustomizationButton" Value="False" />
         <Setter Property="ToolbarShowMode" Value="Hide" />
+        <Setter Property="MDIMergeStyle" Value="WhenChildActivated"/>
+    </Style>
+    <Style TargetType="dxr:RibbonStatusBarControl">
+        <Setter Property="MDIMergeStyle" Value="Always"/>
     </Style>
     <Style TargetType="dxg:GridControl">
         <Setter Property="SelectionMode" Value="Cell"/>

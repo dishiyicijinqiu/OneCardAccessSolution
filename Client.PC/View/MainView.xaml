@@ -187,13 +187,14 @@
                         </dxd:DocumentGroup>
                     </dxd:LayoutGroup>
                 </dxd:DockLayoutManager>
-                <!--<dxr:RibbonStatusBarControl Grid.Row="2">
-                    <dxr:RibbonStatusBarControl.RightItemLinks>
-                        --><!--<dxb:BarButtonItem Style="{StaticResource barEdit}" 
-                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>--><!--
-                        <dxr:RibbonGalleryBarItemLink />
-                    </dxr:RibbonStatusBarControl.RightItemLinks>
-                </dxr:RibbonStatusBarControl>-->
+                <dxr:RibbonStatusBarControl Grid.Row="2">
+                    <dxr:RibbonStatusBarControl.LeftItems>
+                        <dxb:BarStaticItem ItemMinWidth="150" Content="b"/>
+                    </dxr:RibbonStatusBarControl.LeftItems>
+                    <dxr:RibbonStatusBarControl.RightItems>
+                       
+                    </dxr:RibbonStatusBarControl.RightItems>
+                </dxr:RibbonStatusBarControl>
             </Grid>
         </DockPanel>
     </dxb:BarManager>

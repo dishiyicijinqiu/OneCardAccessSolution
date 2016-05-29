@@ -99,7 +99,7 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
                         var uicloseargs = new UICloseDocumentEventArgs(this);
                         uicloseargs.CallBack = this.UnInit;
                         var doctoken = ServiceLoader.LoadService<IMainViewModel>().UICloseDocumentEventSubscriptionToken;
-                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(doctoken, new UICloseDocumentEventArgs(this));
+                        DefaultEventAggregator.Current.GetEvent<UICloseDocumentEvent>().Publish(doctoken, uicloseargs);
                     }
                     break;
                 case CloseStyle.NullClose:

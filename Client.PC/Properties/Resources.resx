@@ -600,4 +600,19 @@
   <data name="BarContent_UpLoadBackGround" xml:space="preserve">
     <value>后台上传</value>
   </data>
+  <data name="Entity_UpLoadAttachmentInfo_AttachmentName" xml:space="preserve">
+    <value>附件名称</value>
+  </data>
+  <data name="Entity_UpLoadAttachmentInfo_AttachmentPath" xml:space="preserve">
+    <value>上传路径</value>
+  </data>
+  <data name="Entity_UpLoadAttachmentInfo_Message" xml:space="preserve">
+    <value>上传结果</value>
+  </data>
+  <data name="BarItem_Attachment" xml:space="preserve">
+    <value>附件上传</value>
+  </data>
+  <data name="Info_CompleteUploadIsToView" xml:space="preserve">
+    <value>上传完成是否查看</value>
+  </data>
 </root>

@@ -241,6 +241,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件上传 的本地化字符串。
+        /// </summary>
+        public static string BarItem_Attachment {
+            get {
+                return ResourceManager.GetString("BarItem_Attachment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 关闭 的本地化字符串。
         /// </summary>
         public static string btn_Close {
@@ -646,6 +655,33 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 附件名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_UpLoadAttachmentInfo_AttachmentName {
+            get {
+                return ResourceManager.GetString("Entity_UpLoadAttachmentInfo_AttachmentName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上传路径 的本地化字符串。
+        /// </summary>
+        public static string Entity_UpLoadAttachmentInfo_AttachmentPath {
+            get {
+                return ResourceManager.GetString("Entity_UpLoadAttachmentInfo_AttachmentPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上传结果 的本地化字符串。
+        /// </summary>
+        public static string Entity_UpLoadAttachmentInfo_Message {
+            get {
+                return ResourceManager.GetString("Entity_UpLoadAttachmentInfo_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 创建日期 的本地化字符串。
         /// </summary>
         public static string Entity_UserGroup_CreateDate {
@@ -984,6 +1020,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string Format_TimeString {
             get {
                 return ResourceManager.GetString("Format_TimeString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 上传完成是否查看 的本地化字符串。
+        /// </summary>
+        public static string Info_CompleteUploadIsToView {
+            get {
+                return ResourceManager.GetString("Info_CompleteUploadIsToView", resourceCulture);
             }
         }
         

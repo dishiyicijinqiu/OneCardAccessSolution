@@ -1,4 +1,4 @@
-﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.AttachmentDirCollectionView"
+﻿<ui:BaseUserControl xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"  x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.AttachmentDirCollectionView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -162,11 +162,22 @@
                 </dxdo:LayoutGroup>
             </dxdo:DockLayoutManager>
             <dxr:RibbonStatusBarControl Grid.Row="2">
-                <dxr:RibbonStatusBarControl.RightItemLinks>
-                    <!--<dxb:BarButtonItem Style="{StaticResource barEdit}" 
-                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>-->
-                    <dxr:RibbonGalleryBarItemLink />
-                </dxr:RibbonStatusBarControl.RightItemLinks>
+                <dxr:RibbonStatusBarControl.RightItems>
+                    <dxb:BarEditItem EditWidth="150"
+                                     EditValue="{Binding UploadNum, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
+                                     Content="{x:Static res:Resources.BarItem_Attachment}">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="ItemDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding ViewAttachmentUpLoadCommand, Mode=OneWay}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                        <dxb:BarEditItem.EditSettings>
+                            <dxe:ProgressBarEditSettings 
+                                Maximum="{Binding UploadMaximum, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" Minimum="0"/>
+                        </dxb:BarEditItem.EditSettings>
+                    </dxb:BarEditItem>
+                    
+                </dxr:RibbonStatusBarControl.RightItems>
             </dxr:RibbonStatusBarControl>
         </Grid>
     </dxb:BarManager>

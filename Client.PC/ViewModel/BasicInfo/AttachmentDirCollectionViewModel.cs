@@ -24,6 +24,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ICommand LoadAttachmentCommand { get; set; }
         public ICommand UpLoadCommand { get; set; }
         public ICommand DeleteAttachmentCommand { get; set; }
+        public ICommand ViewAttachmentUpLoadCommand { get; set; }
 
 
         public AttachmentDirCollectionViewModel()
@@ -35,11 +36,38 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             LoadAttachmentCommand = new DelegateCommand<FirstAttachmentDirEntity>(LoadAttachment);
             UpLoadCommand = new DelegateCommand<FirstAttachmentDirEntity>(UpLoad, CanUpLoad);
             DeleteAttachmentCommand = new DelegateCommand<IList>(DeleteAttachment, CanDeleteAttachment);
+            ViewAttachmentUpLoadCommand = new DelegateCommand(ViewAttachmentUpLoad, CanViewAttachmentUpLoad);
 
             var list = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstAttachmentDirEntitys().
                 OrderBy(t => t.AttachmentDirNo).ThenBy(m => m.AttachmentDirName);
             Items = new ObservableCollection<FirstAttachmentDirEntity>(list);
             AttachmentInfoItems = new ObservableCollection<FirstAttachmentInfoEntity>();
+
+
+            var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+            this.UploadMaximum = vm.GetTotalUpLoadItemCount();
+            this.UploadNum = vm.GetUpLoadedItemCount();
+            vm.OnUpLoadItemsChanged += Vm_OnAddedUpLoadItem;
+            vm.OnUpLoadItemProgress += Vm_OnUpLoadItemProgress;
+            vm.OnCompleteUpLoad += Vm_OnCompleteUpLoad;
+        }
+
+
+        private bool CanViewAttachmentUpLoad()
+        {
+            var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+            if (vm == null) return false;
+            return vm.CanUpLoad;
+        }
+
+        private void ViewAttachmentUpLoad()
+        {
+            var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+            this.UploadMaximum = vm.GetTotalUpLoadItemCount();
+            this.UploadNum = vm.GetUpLoadedItemCount();
+            var view = ServiceLoader.LoadService<IUpLoadView>("IUpLoadView", new ParameterOverride("VM", vm));
+            this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+            (ViewAttachmentUpLoadCommand as DelegateCommand).RaiseCanExecuteChanged();
         }
 
         public bool CanDeleteAttachment(IList entitys)
@@ -75,6 +103,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     var item = entitys[i] as FirstAttachmentInfoEntity;
                     this.AttachmentInfoItems.Remove(item);
                 }
+
+                (AddChildCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
+                (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
             }
             catch (Exception ex)
             {
@@ -117,12 +148,37 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     var view = ServiceLoader.LoadService<IUpLoadView>("IUpLoadView", new ParameterOverride("VM", vm));
                     vm.StartUpLoad();
                     this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+                    (ViewAttachmentUpLoadCommand as DelegateCommand).RaiseCanExecuteChanged();
                 }
             }
             catch (Exception ex)
             {
                 ShowException(ex);
             }
+        }
+
+        private void Vm_OnCompleteUpLoad()
+        {
+            (ViewAttachmentUpLoadCommand as DelegateCommand).RaiseCanExecuteChanged();
+            var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+            if (vm.IsViewVisible) return;
+            var deleteArgs = new MessageBoxEventArgs(Properties.Resources.Info_CompleteUploadIsToView, Properties.Resources.Info_Title, MsgButton.YesNo, MsgImage.Information);
+            if (ShowMessage(deleteArgs) != MsgResult.Yes)
+                return;
+            System.Windows.Application.Current.Dispatcher.Invoke(new Action(() =>
+            {
+                var view = ServiceLoader.LoadService<IUpLoadView>("IUpLoadView", new ParameterOverride("VM", vm));
+                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+            }));
+        }
+        private void Vm_OnUpLoadItemProgress(double progress)
+        {
+            this.UploadNum = progress;
+        }
+
+        private void Vm_OnAddedUpLoadItem(double totalCount)
+        {
+            this.UploadMaximum = totalCount;
         }
 
         private string GetFullDir(FirstAttachmentDirEntity entity)
@@ -151,6 +207,9 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                     OrderBy(t => t.AttachmentName);
                 AttachmentInfoItems = new ObservableCollection<FirstAttachmentInfoEntity>(list);
                 SelectedAttachmentInfoItem = null;
+
+                (AddChildCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
+                (DeleteCommand as DelegateCommand<IList>).RaiseCanExecuteChanged();
             }
             catch (Exception ex)
             {
@@ -391,10 +450,36 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
                 (UpLoadCommand as DelegateCommand<FirstAttachmentDirEntity>).RaiseCanExecuteChanged();
             }
         }
+
+        private double _UploadMaximum;
+        public double UploadMaximum
+        {
+            get { return _UploadMaximum; }
+            set
+            {
+                _UploadMaximum = value;
+                RaisePropertyChanged("UploadMaximum");
+            }
+        }
+        private double _UploadNum;
+        public double UploadNum
+        {
+            get { return _UploadNum; }
+            set
+            {
+                _UploadNum = value;
+                RaisePropertyChanged("UploadNum");
+            }
+        }
+
         #endregion
         public override void Close()
         {
             DefaultEventAggregator.Current.GetEvent<CloseEvent>().Publish(this.CloseEventToken, new CloseEventArgs(CloseStyle.DocumentClose));
+            //var vm = ServiceLoader.LoadService<IUpLoadViewModel>();
+            //vm.OnUpLoadItemsChanged -= Vm_OnAddedUpLoadItem;
+            //vm.OnUpLoadItemProgress -= Vm_OnUpLoadItemProgress;
+            //vm.OnCompleteUpLoad -= Vm_OnCompleteUpLoad;
         }
     }
 

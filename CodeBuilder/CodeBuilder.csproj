@@ -136,6 +136,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MethodBuild.tt</DependentUpon>
     </Content>
+    <Content Include="Templates\MethodBuild1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MethodBuild1.txt</LastGenOutput>
+    </Content>
+    <Content Include="Templates\MethodBuild1.txt">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MethodBuild1.tt</DependentUpon>
+    </Content>
     <Content Include="Templates\ResourceBuild.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ResourceBuild.txt</LastGenOutput>

@@ -199,6 +199,16 @@ namespace FengSharp.OneCardAccess.CodeBuilder
             }
         }
         /// <summary>
+        /// 数据库类型对应的C#DbType类型
+        /// </summary>
+        public string CsharpDbType
+        {
+            get
+            {
+                return SqlServerDbTypeMap.MapCsharpDbType(ColumnType);
+            }
+        }
+        /// <summary>
         /// 
         /// </summary>
         public Type CommonType
@@ -280,7 +290,48 @@ namespace FengSharp.OneCardAccess.CodeBuilder
             }
             return csharpType;
         }
-
+        public static string MapCsharpDbType(string dbtype)
+        {
+            if (string.IsNullOrEmpty(dbtype)) return dbtype;
+            dbtype = dbtype.ToLower();
+            string csharpType = "object";
+            switch (dbtype)
+            {
+                case "bigint": csharpType = "Int64"; break;
+                case "binary": csharpType = "Binary"; break;
+                case "bit": csharpType = "Boolean"; break;
+                case "char": csharpType = "String"; break;
+                case "date": csharpType = "DateTime"; break;
+                case "datetime": csharpType = "DateTime"; break;
+                case "datetime2": csharpType = "DateTime"; break;
+                case "datetimeoffset": csharpType = "DateTimeOffset"; break;
+                case "decimal": csharpType = "Decimal"; break;
+                case "float": csharpType = "Double"; break;
+                case "image": csharpType = "byte[]"; break;
+                case "int": csharpType = "Int32"; break;
+                case "money": csharpType = "Currency"; break;
+                case "nchar": csharpType = "String"; break;
+                case "ntext": csharpType = "String"; break;
+                case "numeric": csharpType = "Decimal"; break;
+                case "nvarchar": csharpType = "String"; break;
+                case "real": csharpType = "Single"; break;
+                case "smalldatetime": csharpType = "DateTime"; break;
+                case "smallint": csharpType = "Int16"; break;
+                case "smallmoney": csharpType = "Decimal"; break;
+                case "sql_variant": csharpType = "object"; break;
+                case "sysname": csharpType = "object"; break;
+                case "text": csharpType = "String"; break;
+                case "time": csharpType = "TimeSpan"; break;
+                case "timestamp": csharpType = "byte[]"; break;
+                case "tinyint": csharpType = "byte"; break;
+                case "uniqueidentifier": csharpType = "Guid"; break;
+                case "varbinary": csharpType = "byte[]"; break;
+                case "varchar": csharpType = "String"; break;
+                case "xml": csharpType = "String"; break;
+                default: csharpType = "object"; break;
+            }
+            return csharpType;
+        }
         public static Type MapCommonType(string dbtype)
         {
             if (string.IsNullOrEmpty(dbtype)) return Type.Missing.GetType();

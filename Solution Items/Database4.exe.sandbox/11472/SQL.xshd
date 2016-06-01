@@ -1,0 +1,353 @@
+<?xml version="1.0"?>
+<SyntaxDefinition name="SQL" extensions=".sql">
+  <Environment>
+    <Default color="#000000" bgcolor="#FFFFFF" />
+    <Selection color="SystemColors.HighlightText" bgcolor="SystemColors.Highlight" />
+    <VRuler color="SystemColors.ControlLight" />
+    <InvalidLines color="Red" />
+    <CaretMarker color="Yellow" />
+    <LineNumbers color="#7A7A7A" bgcolor="#F5F5F5" />
+    <FoldLine color="#808080" bgcolor="Black" />
+    <FoldMarker color="#808080" bgcolor="White" />
+    <EOLMarkers color="#E0E0E5" />
+    <SpaceMarkers color="#E0E0E5" />
+    <TabMarkers color="#E0E0E5" />
+  </Environment>
+  <Properties>
+    <Property name="LineComment" value="--" />
+  </Properties>
+  <Digits name="Digits" bold="false" italic="false" color="DarkSeaGreen" />
+  <RuleSets>
+    <RuleSet ignorecase="true">
+      <Delimiters>=!&gt;&lt;+-/*%&amp;"|^~.}{,;][?:()@`</Delimiters>
+      <Span name="LineComment" bold="false" italic="false" color="Green" stopateol="true">
+        <Begin>--</Begin>
+      </Span>
+      <Span name="BlockComment" bold="false" italic="false" color="Green" stopateol="false">
+        <Begin>/*</Begin>
+        <End>*/</End>
+      </Span>
+      <Span name="Character" bold="false" italic="false" color="Red" stopateol="true">
+        <Begin>'</Begin>
+        <End>'</End>
+      </Span>
+      <Span name="Character" bold="false" italic="false" color="Red" stopateol="true">
+        <Begin>N'</Begin>
+        <End>'</End>
+      </Span>
+      <KeyWords name="Sql" bold="false" italic="false" color="Silver">
+        <Key word="GO" />
+        <Key word="/" />
+        <Key word="setvar" />
+        <Key word="DELIMITER" />
+        <Key word=";" />
+      </KeyWords>
+      <KeyWords name="Symbols" bold="true" italic="false" color="Silver">
+        <Key word="&lt;" />
+        <Key word="&gt;" />
+        <Key word="(" />
+        <Key word=")" />
+        <Key word="{" />
+        <Key word="}" />
+        <Key word="[" />
+        <Key word="]" />
+        <Key word="`" />
+        <Key word="&quot;" />
+        <Key word=":" />
+        <Key word="|" />
+        <Key word="*" />
+        <Key word="=" />
+        <Key word="," />
+        <Key word="." />
+        <Key word="@" />
+        <Key word="+" />
+        <Key word="-" />
+      </KeyWords>
+      <KeyWords name="SqlKeywords" bold="false" italic="false" color="Blue">
+        <Key word="from" />
+        <Key word="where" />
+        <Key word="in" />
+        <Key word="on" />
+        <Key word="exists" />
+        <Key word="or" />
+        <Key word="and" />
+        <Key word="not" />
+        <Key word="null" />
+        <Key word="having" />
+        <Key word="group" />
+        <Key word="by" />
+        <Key word="order" />
+        <Key word="into" />
+        <Key word="values" />
+        <Key word="set" />
+        <Key word="inner" />
+        <Key word="outer" />
+        <Key word="join" />
+        <Key word="union" />
+        <Key word="desc" />
+        <Key word="asc" />
+        <Key word="abort" />
+        <Key word="action" />
+        <Key word="add" />
+        <Key word="after" />
+        <Key word="all" />
+        <Key word="alter" />
+        <Key word="analyze" />
+        <Key word="and" />
+        <Key word="as" />
+        <Key word="asc" />
+        <Key word="attach" />
+        <Key word="autoincrement" />
+        <Key word="before" />
+        <Key word="begin" />
+        <Key word="between" />
+        <Key word="by" />
+        <Key word="cascade" />
+        <Key word="case" />
+        <Key word="cast" />
+        <Key word="check" />
+        <Key word="collate" />
+        <Key word="column" />
+        <Key word="commit" />
+        <Key word="conflict" />
+        <Key word="constraint" />
+        <Key word="create" />
+        <Key word="cross" />
+        <Key word="current_date" />
+        <Key word="current_time" />
+        <Key word="current_timestamp" />
+        <Key word="database" />
+        <Key word="default" />
+        <Key word="deferrable" />
+        <Key word="deferred" />
+        <Key word="delete" />
+        <Key word="desc" />
+        <Key word="detach" />
+        <Key word="distinct" />
+        <Key word="drop" />
+        <Key word="each" />
+        <Key word="else" />
+        <Key word="end" />
+        <Key word="escape" />
+        <Key word="except" />
+        <Key word="exclusive" />
+        <Key word="exists" />
+        <Key word="explain" />
+        <Key word="fail" />
+        <Key word="for" />
+        <Key word="foreign" />
+        <Key word="from" />
+        <Key word="full" />
+        <Key word="glob" />
+        <Key word="group" />
+        <Key word="having" />
+        <Key word="if" />
+        <Key word="ignore" />
+        <Key word="immediate" />
+        <Key word="in" />
+        <Key word="index" />
+        <Key word="indexed" />
+        <Key word="initially" />
+        <Key word="inner" />
+        <Key word="insert" />
+        <Key word="instead" />
+        <Key word="intersect" />
+        <Key word="into" />
+        <Key word="is" />
+        <Key word="isnull" />
+        <Key word="join" />
+        <Key word="key" />
+        <Key word="left" />
+        <Key word="like" />
+        <Key word="limit" />
+        <Key word="match" />
+        <Key word="natural" />
+        <Key word="no" />
+        <Key word="not" />
+        <Key word="notnull" />
+        <Key word="null" />
+        <Key word="of" />
+        <Key word="offset" />
+        <Key word="on" />
+        <Key word="or" />
+        <Key word="order" />
+        <Key word="outer" />
+        <Key word="plan" />
+        <Key word="pragma" />
+        <Key word="primary" />
+        <Key word="query" />
+        <Key word="raise" />
+        <Key word="recursive" />
+        <Key word="references" />
+        <Key word="regexp" />
+        <Key word="reindex" />
+        <Key word="release" />
+        <Key word="rename" />
+        <Key word="replace" />
+        <Key word="restrict" />
+        <Key word="right" />
+        <Key word="rollback" />
+        <Key word="row" />
+        <Key word="savepoint" />
+        <Key word="select" />
+        <Key word="set" />
+        <Key word="table" />
+        <Key word="temp" />
+        <Key word="temporary" />
+        <Key word="then" />
+        <Key word="to" />
+        <Key word="transaction" />
+        <Key word="trigger" />
+        <Key word="union" />
+        <Key word="unique" />
+        <Key word="update" />
+        <Key word="using" />
+        <Key word="vacuum" />
+        <Key word="values" />
+        <Key word="view" />
+        <Key word="virtual" />
+        <Key word="when" />
+        <Key word="where" />
+        <Key word="with" />
+        <Key word="without" />
+        <Key word="avg" />
+        <Key word="count" />
+        <Key word="group_concat" />
+        <Key word="max" />
+        <Key word="min" />
+        <Key word="sum" />
+        <Key word="total" />
+        <Key word="date" />
+        <Key word="datetime" />
+        <Key word="julianday" />
+        <Key word="strftime" />
+        <Key word="time" />
+        <Key word="abs" />
+        <Key word="changes" />
+        <Key word="char" />
+        <Key word="coalesce" />
+        <Key word="hex" />
+        <Key word="ifnull" />
+        <Key word="instr" />
+        <Key word="last_insert_rowid" />
+        <Key word="length" />
+        <Key word="likelihood" />
+        <Key word="likely" />
+        <Key word="load_extension" />
+        <Key word="lower" />
+        <Key word="ltrim" />
+        <Key word="nullif" />
+        <Key word="printf" />
+        <Key word="quote" />
+        <Key word="random" />
+        <Key word="randomblob" />
+        <Key word="round" />
+        <Key word="rtrim" />
+        <Key word="soundex" />
+        <Key word="sqlite_compileoption_get" />
+        <Key word="sqlite_compileoption_used" />
+        <Key word="sqlite_source_id" />
+        <Key word="sqlite_version" />
+        <Key word="substr" />
+        <Key word="total_changes" />
+        <Key word="trim" />
+        <Key word="typeof" />
+        <Key word="unicode" />
+        <Key word="unlikely" />
+        <Key word="upper" />
+        <Key word="zeroblob" />
+      </KeyWords>
+      <KeyWords name="SqlActionWords" bold="false" italic="false" color="Blue">
+        <Key word="select" />
+        <Key word="update" />
+        <Key word="use" />
+        <Key word="insert" />
+        <Key word="create" />
+        <Key word="drop" />
+        <Key word="delete" />
+        <Key word="alter" />
+        <Key word="merge" />
+      </KeyWords>
+      <KeyWords name="SqlObjects" bold="false" italic="false" color="Blue">
+        <Key word="table" />
+        <Key word="proc" />
+        <Key word="procedure" />
+        <Key word="function" />
+        <Key word="view" />
+        <Key word="trigger" />
+        <Key word="index" />
+        <Key word="database" />
+      </KeyWords>
+      <KeyWords name="TSql" bold="false" italic="false" color="Blue">
+        <Key word="IF" />
+        <Key word="ELSE" />
+        <Key word="CASE" />
+        <Key word="RETURN" />
+        <Key word="BEGIN" />
+        <Key word="END" />
+        <Key word="DECLARE" />
+        <Key word="CASE" />
+        <Key word="WHEN" />
+      </KeyWords>
+      <KeyWords name="Functions" bold="false" italic="false" color="Orchid">
+        <Key word="substring" />
+        <Key word="upper" />
+        <Key word="lower" />
+        <Key word="reverse" />
+        <Key word="avg" />
+        <Key word="min" />
+        <Key word="max" />
+        <Key word="replace" />
+        <Key word="ltrim" />
+        <Key word="rtrim" />
+        <Key word="cast" />
+      </KeyWords>
+      <KeyWords name="SqlTypes" bold="false" italic="false" color="DarkGoldenrod">
+        <Key word="bigint" />
+        <Key word="binary" />
+        <Key word="bit" />
+        <Key word="blob" />
+        <Key word="bool" />
+        <Key word="boolean" />
+        <Key word="char" />
+        <Key word="counter" />
+        <Key word="currency" />
+        <Key word="date" />
+        <Key word="datetime" />
+        <Key word="decimal" />
+        <Key word="double" />
+        <Key word="float" />
+        <Key word="general" />
+        <Key word="guid" />
+        <Key word="identity" />
+        <Key word="image" />
+        <Key word="int" />
+        <Key word="integer" />
+        <Key word="logical" />
+        <Key word="long" />
+        <Key word="longtext" />
+        <Key word="memo" />
+        <Key word="money" />
+        <Key word="nchar" />
+        <Key word="note" />
+        <Key word="ntext" />
+        <Key word="numeric" />
+        <Key word="nvarchar" />
+        <Key word="oleobject" />
+        <Key word="real" />
+        <Key word="single" />
+        <Key word="smalldate" />
+        <Key word="smallint" />
+        <Key word="string" />
+        <Key word="text" />
+        <Key word="time" />
+        <Key word="timestamp" />
+        <Key word="tinyint" />
+        <Key word="uniqueidentifier" />
+        <Key word="varbinary" />
+        <Key word="varchar" />
+        <Key word="yesno" />
+      </KeyWords>
+    </RuleSet>
+  </RuleSets>
+</SyntaxDefinition>

@@ -1,0 +1,54 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Data.dll" #>
+<#@ assembly name="System.Data.DataSetExtensions.dll" #>
+<#@ assembly name="System.Configuration.dll" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Configuration" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".txt" #>
+<#@ include file="$(ProjectDir)\DbTemplate.ttinclude"  #>
+<#DBHost dbhost=new DBHost(TableName);if(IsBuilder) {#>
+using System;
+namespace <#=NameSpace#>
+{
+	public partial class <#=TableName.Replace("T_",string.Empty)#>Entity: BaseEntity
+	{
+		/// <summary>
+		/// 构造函数
+		/// </summary>
+		public <#=TableName.Replace("T_",string.Empty)#>Entity()
+		{
+<# foreach(DbColumn column in dbhost.DbColumns){
+if(column.CSharpType.ToLower()=="string"){#>
+			<#=column.ColumnName#>=string.Empty;
+<#}
+}#>
+		}
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+		public <#= column.CSharpType#><# if(column.CommonType.IsValueType && column.IsNullable){#>?<#}#> <#=column.ColumnName#>{ get; set; }
+<#}#>
+	}
+
+	
+insert into <#=TableName#>(<#for (int i = 0; i < dbhost.DbColumns.Count; i++){var column=dbhost.DbColumns[i];if(column.ColumnName==colId) continue;#><#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?string.Empty:","#><#}#>
+) values (<#for (int i = 0; i < dbhost.DbColumns.Count; i++){var column=dbhost.DbColumns[i];if(column.ColumnName==colId) continue;#>@<#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?string.Empty:","#><#}#>
+); select @<#=colId#>=@@IDENTITY
+
+
+update <#=TableName#> set <# for (int i = 0; i < dbhost.DbColumns.Count; i++) { var column=dbhost.DbColumns[i]; if(column.ColumnName==colId) continue; #><#=column.ColumnName#>=@<#=column.ColumnName#><#=(i==dbhost.DbColumns.Count-1)?string.Empty:","#><#}#> where <#=colId#>=@<#=colId#>
+
+
+<# foreach(DbColumn column in dbhost.DbColumns){#>
+database.AddInParameter(cmd, "<#=column.ColumnName#>", DbType.<#= column.CsharpDbType#>, entity.<#=column.ColumnName#>);
+<#}#>
+
+
+<#}#>
+<#+
+public static readonly string colId="ID";
+public static readonly string TableName="Machines";
+public static readonly bool IsBuilder= true;
+public static readonly string NameSpace="CardSolutionHost.Entitys";
+#>

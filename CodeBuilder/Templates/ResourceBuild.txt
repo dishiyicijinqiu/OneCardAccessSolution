@@ -1,16 +1,30 @@
 ﻿
 
-Entity_UserInfo_UserNo	用户账号
-Entity_UserInfo_UserName	用户姓名
-Entity_UserInfo_PassWord	密码
-Entity_UserInfo_IsLock	锁定标识
-Entity_UserInfo_Remark	备注
-Entity_UserInfo_IsSuper	是否为超级管理员
-Entity_UserInfo_Creater	创建人
-Entity_UserInfo_CreateDate	创建日期
-Entity_UserInfo_LastModifyer	最后更改人
-Entity_UserInfo_LastModifyDate	最后更改日期
-Entity_UserInfo_UserGroupId	用户组Id
+Entity_Product_ProductNo	产品编号
+Entity_Product_ProductName	商品名称
+Entity_Product_ProductName1	商品名称(英文)
+Entity_Product_Spec	规格型号
+Entity_Product_Spec1	规格型号(英文)
+Entity_Product_ProductImage	产品大图
+Entity_Product_Unit	计量单位
+Entity_Product_Material	材料标识
+Entity_Product_PackQty	包装数量
+Entity_Product_ProductType	产品类型（成品，零部件）
+Entity_Product_CertType	证件类型（a证，b证）
+Entity_Product_RegisterId	产品注册证Id
+Entity_Product_Remark1	备注1
+Entity_Product_Remark2	备注2
+Entity_Product_Remark3	备注3
+Entity_Product_Remark4	备注4
+Entity_Product_TreeNo	树编号
+Entity_Product_TreeParentNo	父亲树编号
+Entity_Product_TreePath	树路径
+Entity_Product_TreeSon	儿子数量
+Entity_Product_SkuSon	Sku儿子数量
+Entity_Product_Creater	创建人
+Entity_Product_CreateDate	创建日期
+Entity_Product_LastModifyer	最后更改人
+Entity_Product_LastModifyDate	最后更改日期
 
 
 

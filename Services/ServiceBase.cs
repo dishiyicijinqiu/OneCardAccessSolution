@@ -228,6 +228,33 @@ namespace FengSharp.OneCardAccess.Services
             return results;
 
         }
+
+        public virtual List<T> GetTreeEntitys<T>(string treeparentno, string cMode = null)
+        {
+            if (cMode == null)
+                cMode = typeof(T).Name;
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_GetTreeEntitys");
+            Database.AddInParameter(cmd, "cMode", DbType.String, cMode);
+            Database.AddInParameter(cmd, "TreeParentNo", DbType.String, treeparentno);
+            //Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
+            DataSet ds = Database.ExecuteDataSet(cmd);
+            var results = new List<T>();
+            if (ds == null || ds.Tables.Count <= 0)
+                return results;
+            var ps = typeof(T).GetProperties();
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                var dr = ds.Tables[0].Rows[i];
+                T t = (T)Activator.CreateInstance(typeof(T));
+                foreach (var p in ps)
+                {
+                    if (ds.Tables[0].Columns.Contains(p.Name))
+                        p.SetValue(t, dr[p.Name], null);
+                }
+                results.Add(t);
+            }
+            return results;
+        }
         public virtual List<Foreign> GetForeignEntitys<Primary, Foreign>(Primary primary, DbTransaction transaction = null, string cMode = null)
         {
             var KeyProperty = DataBaseExtend.GetKeyProperty<Primary>();

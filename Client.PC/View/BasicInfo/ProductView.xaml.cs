@@ -18,15 +18,15 @@ using System.Windows.Shapes;
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 {
     /// <summary>
-    /// ProductCollectionView.xaml 的交互逻辑
+    /// ProductView.xaml 的交互逻辑
     /// </summary>
-    public partial class ProductCollectionView : BaseUserControl, IProductCollectionView
+    public partial class ProductView : BaseUserControl, IProductView
     {
-        public ProductCollectionView(ProductCollectionViewModel VM) : base(VM)
+        public ProductView(ProductViewModel VM) : base(VM)
         {
             InitializeComponent();
         }
-        public ProductCollectionView()
+        public ProductView()
         {
             InitializeComponent();
         }

@@ -43,6 +43,8 @@
     <Compile Include="BasicInfo\AttachmentDirEntity.cs" />
     <Compile Include="BasicInfo\AttachmentDirEntity_Auto.cs" />
     <Compile Include="BasicInfo\AttachmentInfoEntity.cs" />
+    <Compile Include="BasicInfo\ProductEntity.cs" />
+    <Compile Include="BasicInfo\ProductEntity_Auto.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity.cs" />
     <Compile Include="BasicInfo\P_CRTempEntity_Auto.cs" />
     <Compile Include="BasicInfo\P_CRTemp_To_RegisterEntity.cs" />

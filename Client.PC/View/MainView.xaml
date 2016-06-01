@@ -65,6 +65,17 @@
                                            DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IP_CRTempCollectionView"/>
                 </dxb:BarButtonItem.CommandParameter>
             </dxb:BarButtonItem>
+            <dxb:BarButtonItem x:Name="btnProductCollectionView" Content="{x:Static res:Resources.Menu_Product}"
+                         Command="{Binding ShowDocumentCommand}"
+                         Glyph="{dxc:DXImage Image=Add_16x16.png}"
+                         LargeGlyph="{dxc:DXImage Image=Add_32x32.png}">
+                <dxb:BarButtonItem.CommandParameter>
+                    <viewmodel:DocumentInfoExtension DocumentTitle="{x:Static res:Resources.View_ProductCollectionView_Title}"
+                                           DocumentName="IProductCollectionViewModel"
+                                           DocumentVMType="FengSharp.OneCardAccess.Client.PC.Interfaces.IProductCollectionViewModel"
+                                           DocumentType="FengSharp.OneCardAccess.Client.PC.Interfaces.IProductCollectionView"/>
+                </dxb:BarButtonItem.CommandParameter>
+            </dxb:BarButtonItem>
             <dxb:BarButtonItem x:Name="btnUserAndGroupManagerView" Content="{x:Static res:Resources.Menu_UserAndGroupManager}"
                          Command="{Binding ShowDocumentCommand}"
                          Glyph="{dxc:DXImage Image=UserGroup_16x16.png}"
@@ -168,6 +179,7 @@
                                     <dxb:BarButtonItemLink BarItemName="btnRegisterCollectionView" />
                                     <dxb:BarButtonItemLink BarItemName="btnP_CRTempCollectionView" />
                                     <dxb:BarButtonItemLink BarItemName="btnAttachmentDirCollectionView" />
+                                    <dxb:BarButtonItemLink BarItemName="btnProductCollectionView" />
                                 </dxr:RibbonPageGroup.ItemLinks>
                             </dxr:RibbonPageGroup>
                             <dxr:RibbonPageGroup Caption="{x:Static res:Resources.Menu_RibbonPageGroup_RBAC}" >

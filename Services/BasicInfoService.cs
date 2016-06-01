@@ -600,6 +600,131 @@ namespace FengSharp.OneCardAccess.Services
                 File.Delete(filename);
         }
         #endregion
+        #region Product
+        public List<FirstProductEntity> GetFirstProductEntitys()
+        {
+            return this.GetEntitys<FirstProductEntity>();
+        }
+
+        public void DeleteProductEntitys(List<ProductEntity> ProductEntitys)
+        {
+            UseTran((tran) =>
+            {
+                foreach (var entity in ProductEntitys)
+                {
+                    var dbentity = new T_Product();
+                    dbentity.CopyValueFrom(entity);
+                    int ReturnValue = 0;
+                    base.DeleteEntity(dbentity, ref ReturnValue, tran);
+                    switch (ReturnValue)
+                    {
+                        default:
+                            throw new Exception(Properties.Resources.Error_UnHandleException);
+                        case 0:
+                            break;
+                        case -1:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_ObjIsNotExist,
+                                string.Format("{0},{1}", entity.ProductNo, entity.ProductName)));
+                    }
+                }
+            });
+        }
+
+        public FirstProductEntity GetFirstProductEntityById(string ProductId)
+        {
+            return this.FindById<FirstProductEntity>(new FirstProductEntity()
+            {
+                ProductId = ProductId
+            });
+        }
+
+        public string SaveProductEntity(FirstProductEntity entity)
+        {
+            return UseTran((tran) =>
+            {
+                var dbproductentity = new T_Product();
+                dbproductentity.CopyValueFrom(entity);
+                if (string.IsNullOrWhiteSpace(entity.ProductId) || entity.RegisterId.Length != 36)
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.ProductNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.ProductName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Product");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, null);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.ProductNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    dbproductentity.LastModifyId = dbproductentity.CreateId = (string)Session.Current.SessionClientId;
+                    dbproductentity = CreateEntity(dbproductentity, tran, CreateEntityUnCreateFileds);
+                    result = this.SaveEntityFlow(dbproductentity, "CreateProductEntity", tran);
+                    if (result != 1)
+                    {
+                        if (result == -1)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherNotExist);
+                        }
+                        if (result == -2)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherIsUsingCanNotChild);
+                        }
+                        throw new BusinessException(string.Format(Properties.Resources.Error_AddFailed, dbproductentity.ProductName));
+                    }
+                }
+                else
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.ProductNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.ProductName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Product");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.ProductName);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.ProductNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    dbproductentity.LastModifyId = (string)Session.Current.SessionClientId;
+                    dbproductentity.LastModifyDate = System.DateTime.Now;
+                    if (!ModifyEntity(dbproductentity, tran, ModifyEntityUnChangedFileds))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_SaveFailed);
+                    }
+                }
+                return dbproductentity.RegisterId;
+            });
+        }
+
+        public List<FirstProductEntity> GetFirstProductTreeEntitysByTreeParentNo(string treeParentNo)
+        {
+            //new FirstProductEntity().TreeParentNo
+            return this.GetTreeEntitys<FirstProductEntity>(treeParentNo);
+        }
+        #endregion
         #region newmethods
         #endregion
     }

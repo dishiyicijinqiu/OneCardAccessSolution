@@ -48,4 +48,25 @@
         <ui:BaseColumn FieldName="AttachmentName" Header="{x:Static res:Resources.Entity_Attachment_AttachmentName}"/>
         <!--<ui:BaseColumn FieldName="UserName" Header="{x:Static res:Resources.Entity_UserInfo_UserName}"/>-->
     </ui:ColumnData>
+    <ui:ColumnData x:Key="productcolumnssource">
+        <ui:BaseColumn FieldName="ProductNo" Header="{x:Static res:Resources.Entity_Product_ProductNo}"/>
+        <ui:BaseColumn FieldName="ProductName" Header="{x:Static res:Resources.Entity_Product_ProductName}"/>
+        <ui:BaseColumn FieldName="ProductName1" Header="{x:Static res:Resources.Entity_Product_ProductName1}"/>
+        <ui:BaseColumn FieldName="Spec" Header="{x:Static res:Resources.Entity_Product_Spec}"/>
+        <ui:BaseColumn FieldName="Spec1" Header="{x:Static res:Resources.Entity_Product_Spec1}"/>
+        <ui:BaseColumn FieldName="ProductImage" Header="{x:Static res:Resources.Entity_Product_ProductImage}"/>
+        <ui:BaseColumn FieldName="Unit" Header="{x:Static res:Resources.Entity_Product_Unit}"/>
+        <ui:BaseColumn FieldName="Material" Header="{x:Static res:Resources.Entity_Product_Material}"/>
+        <ui:BaseColumn FieldName="PackQty" Header="{x:Static res:Resources.Entity_Product_PackQty}"/>
+        <ui:BaseColumn FieldName="ProductType" Header="{x:Static res:Resources.Entity_Product_ProductType}"/>
+        <ui:BaseColumn FieldName="CertType" Header="{x:Static res:Resources.Entity_Product_CertType}"/>
+        <ui:BaseColumn FieldName="Remark1" Header="{x:Static res:Resources.Entity_Product_Remark1}"/>
+        <ui:BaseColumn FieldName="Remark2" Header="{x:Static res:Resources.Entity_Product_Remark2}"/>
+        <ui:BaseColumn FieldName="Remark3" Header="{x:Static res:Resources.Entity_Product_Remark3}"/>
+        <ui:BaseColumn FieldName="Remark4" Header="{x:Static res:Resources.Entity_Product_Remark4}"/>
+        <ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_Product_Creater}"/>
+        <ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_Product_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_Product_LastModifyer}"/>
+        <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Product_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+    </ui:ColumnData>
 </ResourceDictionary>

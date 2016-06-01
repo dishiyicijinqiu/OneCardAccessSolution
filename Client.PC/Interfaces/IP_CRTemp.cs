@@ -15,12 +15,12 @@ namespace FengSharp.OneCardAccess.Client.PC.Interfaces
     public interface IP_CRTempCollectionViewModel : IViewModel
     {
     }
-    public interface IP_CRTempViewModel : IViewModel
-    {
-        event OnEntityViewEdited<string> OnEntityViewEdited;
-    }
     public interface IP_CRTempCollectionSelectViewModel : IViewModel
     {
         event OnSelectedItems<BusinessEntity.BasicInfo.P_CRTempEntity> OnSelectedItems;
+    }
+    public interface IP_CRTempViewModel : IViewModel
+    {
+        event OnEntityViewEdited<string> OnEntityViewEdited;
     }
 }

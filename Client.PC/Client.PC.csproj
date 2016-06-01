@@ -130,6 +130,7 @@
     <Compile Include="Interfaces\IAttachmentDir.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IProductView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
     <Compile Include="Interfaces\IUpLoad.cs" />
@@ -169,6 +170,8 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\AttachmentDirCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\AttachmentDirViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\ProductCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\ProductViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\RegisterCollectionViewModel.cs" />
@@ -194,6 +197,9 @@
     </Compile>
     <Compile Include="View\BasicInfo\ProductCollectionView.xaml.cs">
       <DependentUpon>ProductCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\ProductView.xaml.cs">
+      <DependentUpon>ProductView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BasicInfo\P_CRTempCollectionView.xaml.cs">
       <DependentUpon>P_CRTempCollectionView.xaml</DependentUpon>
@@ -282,6 +288,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\ProductCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\ProductView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

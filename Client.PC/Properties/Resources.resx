@@ -615,4 +615,70 @@
   <data name="Info_CompleteUploadIsToView" xml:space="preserve">
     <value>上传完成是否查看</value>
   </data>
+  <data name="Entity_Product_CertType" xml:space="preserve">
+    <value>证件类型</value>
+  </data>
+  <data name="Entity_Product_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Product_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Product_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Product_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Product_Material" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_Product_PackQty" xml:space="preserve">
+    <value>包装数量</value>
+  </data>
+  <data name="Entity_Product_ProductImage" xml:space="preserve">
+    <value>产品大图</value>
+  </data>
+  <data name="Entity_Product_ProductName" xml:space="preserve">
+    <value>商品名称</value>
+  </data>
+  <data name="Entity_Product_ProductName1" xml:space="preserve">
+    <value>商品名称(英文)</value>
+  </data>
+  <data name="Entity_Product_ProductNo" xml:space="preserve">
+    <value>产品编号</value>
+  </data>
+  <data name="Entity_Product_ProductType" xml:space="preserve">
+    <value>产品类型</value>
+  </data>
+  <data name="Entity_Product_Remark1" xml:space="preserve">
+    <value>备注1</value>
+  </data>
+  <data name="Entity_Product_Remark2" xml:space="preserve">
+    <value>备注2</value>
+  </data>
+  <data name="Entity_Product_Remark3" xml:space="preserve">
+    <value>备注3</value>
+  </data>
+  <data name="Entity_Product_Remark4" xml:space="preserve">
+    <value>备注4</value>
+  </data>
+  <data name="Entity_Product_Spec" xml:space="preserve">
+    <value>规格型号</value>
+  </data>
+  <data name="Entity_Product_Spec1" xml:space="preserve">
+    <value>规格型号(英文)</value>
+  </data>
+  <data name="Entity_Product_Unit" xml:space="preserve">
+    <value>计量单位</value>
+  </data>
+  <data name="Menu_Product" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="View_ProductCollectionView_Title" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="View_ProductView_Title" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
 </root>

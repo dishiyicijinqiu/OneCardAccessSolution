@@ -43,6 +43,18 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         void DeleteAttachment(AttachmentInfoEntity attachmentinfoentity);
         #endregion
+        #region Product
+        [OperationContract]
+        List<FirstProductEntity> GetFirstProductEntitys();
+        [OperationContract]
+        void DeleteProductEntitys(List<ProductEntity> list);
+        [OperationContract]
+        FirstProductEntity GetFirstProductEntityById(string ProductId);
+        [OperationContract]
+        string SaveProductEntity(FirstProductEntity entity);
+        [OperationContract]
+        List<FirstProductEntity> GetFirstProductTreeEntitysByTreeParentNo(string treeParentNo);
+        #endregion
     }
 
     //[ServiceContract]

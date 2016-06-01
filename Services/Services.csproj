@@ -58,6 +58,7 @@
     <Compile Include="RBACService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="TableEntitys\T_Attachment_Auto.cs" />
+    <Compile Include="TableEntitys\T_Product_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_To_Register.cs" />
     <Compile Include="TableEntitys\T_Register_Auto.cs" />

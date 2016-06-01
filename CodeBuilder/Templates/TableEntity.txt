@@ -3,27 +3,79 @@ using FengSharp.OneCardAccess.Common;
 namespace FengSharp.OneCardAccess.TEntity
 {
 	/// <summary>
-	/// 附件目录表
+	/// 产品表
 	/// </summary>
-	public class T_AttachmentDir
+	public class T_Product
 	{
 		/// <summary>
-		/// 附件目录I的
+		/// 
 		/// </summary>
 		[DataBaseKey(DataBaseKeyType.Guid)]
-		public string AttachmentDirId { get; set; }
+		public string ProductId { get; set; }
 		/// <summary>
-		/// 附件目录编号
+		/// 产品编号
 		/// </summary>
-		public string AttachmentDirNo { get; set; }
+		public string ProductNo { get; set; }
 		/// <summary>
-		/// 附件目录名称
+		/// 商品名称
 		/// </summary>
-		public string AttachmentDirName { get; set; }
+		public string ProductName { get; set; }
 		/// <summary>
-		/// 文件名筛选器字符串
+		/// 商品名称(英文)
 		/// </summary>
-		public string Filter { get; set; }
+		public string ProductName1 { get; set; }
+		/// <summary>
+		/// 规格型号
+		/// </summary>
+		public string Spec { get; set; }
+		/// <summary>
+		/// 规格型号(英文)
+		/// </summary>
+		public string Spec1 { get; set; }
+		/// <summary>
+		/// 产品大图
+		/// </summary>
+		public string ProductImage { get; set; }
+		/// <summary>
+		/// 计量单位
+		/// </summary>
+		public string Unit { get; set; }
+		/// <summary>
+		/// 材料标识
+		/// </summary>
+		public string Material { get; set; }
+		/// <summary>
+		/// 包装数量
+		/// </summary>
+		public int PackQty { get; set; }
+		/// <summary>
+		/// 产品类型（成品，零部件）
+		/// </summary>
+		public short ProductType { get; set; }
+		/// <summary>
+		/// 证件类型（a证，b证）
+		/// </summary>
+		public short CertType { get; set; }
+		/// <summary>
+		/// 产品注册证Id
+		/// </summary>
+		public string RegisterId { get; set; }
+		/// <summary>
+		/// 备注1
+		/// </summary>
+		public string Remark1 { get; set; }
+		/// <summary>
+		/// 备注2
+		/// </summary>
+		public string Remark2 { get; set; }
+		/// <summary>
+		/// 备注3
+		/// </summary>
+		public string Remark3 { get; set; }
+		/// <summary>
+		/// 备注4
+		/// </summary>
+		public string Remark4 { get; set; }
 		/// <summary>
 		/// 树编号
 		/// </summary>
@@ -41,13 +93,9 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public int TreeSon { get; set; }
 		/// <summary>
-		/// 子孙数量
+		/// Sku儿子数量
 		/// </summary>
-		public int TreeTotal { get; set; }
-		/// <summary>
-		/// 备注
-		/// </summary>
-		public string Remark { get; set; }
+		public int SkuSon { get; set; }
 		/// <summary>
 		/// 创建人Id
 		/// </summary>

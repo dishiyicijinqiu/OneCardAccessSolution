@@ -47,6 +47,6 @@ else if(column.ColumnName.ToLower()!="deleted" && !column.IsPrimaryKey) {#>
 
 <#}#>
 <#+
-public static readonly string TableName="T_UserInfo";
+public static readonly string TableName="T_Product";
 public static readonly bool IsBuilder= true;
 #>

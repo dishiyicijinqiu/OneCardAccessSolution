@@ -230,6 +230,21 @@
             </dxg:GridColumn>
         </ContentControl>
     </DataTemplate>
+
+    <DataTemplate x:Key="ButtonEditColumnTemplate">
+        <ContentControl>
+            <dxg:GridColumn FieldName="{Binding FieldName}" 
+                            Header="{Binding Header}" 
+                            HeaderToolTip="{Binding HeaderToolTip}"
+                            Visible="{Binding Visible}"
+                            VisibleIndex="{Binding VisibleIndex}"
+                            Width="{Binding Width}">
+                <dxg:GridColumn.EditSettings>
+                    <dxe:ButtonEditSettings DisplayFormat="{Binding DisplayFormat}" />
+                </dxg:GridColumn.EditSettings>
+            </dxg:GridColumn>
+        </ContentControl>
+    </DataTemplate>
     <DataTemplate x:Key="ComboboxColumnTemplate">
         <ContentControl>
             <dxg:GridColumn FieldName="{Binding FieldName}" 

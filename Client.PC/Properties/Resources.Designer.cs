@@ -619,6 +619,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 产品注册证 的本地化字符串。
+        /// </summary>
+        public static string Entity_Product_RegisterId {
+            get {
+                return ResourceManager.GetString("Entity_Product_RegisterId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 备注1 的本地化字符串。
         /// </summary>
         public static string Entity_Product_Remark1 {
@@ -1641,6 +1650,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_ProductView_Title {
             get {
                 return ResourceManager.GetString("View_ProductView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品信息 的本地化字符串。
+        /// </summary>
+        public static string View_ProuductView_Title {
+            get {
+                return ResourceManager.GetString("View_ProuductView_Title", resourceCulture);
             }
         }
         

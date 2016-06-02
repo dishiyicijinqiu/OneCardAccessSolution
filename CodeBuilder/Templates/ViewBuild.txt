@@ -3,46 +3,79 @@
 
 
 
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_UserGroupNo}">
-		<dxe:TextEdit EditValue="{Binding UserGroupNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductNo}">
+		<dxe:TextEdit EditValue="{Binding ProductNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_UserGroupName}">
-		<dxe:TextEdit EditValue="{Binding UserGroupName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductName}">
+		<dxe:TextEdit EditValue="{Binding ProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_IsLock}">
-		<dxe:TextEdit EditValue="{Binding IsLock, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductName1}">
+		<dxe:TextEdit EditValue="{Binding ProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_Remark}">
-		<dxe:TextEdit EditValue="{Binding Remark, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Spec}">
+		<dxe:TextEdit EditValue="{Binding Spec, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_IsSuper}">
-		<dxe:TextEdit EditValue="{Binding IsSuper, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Spec1}">
+		<dxe:TextEdit EditValue="{Binding Spec1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_TreeNo}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductImage}">
+		<dxe:TextEdit EditValue="{Binding ProductImage, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Unit}">
+		<dxe:TextEdit EditValue="{Binding Unit, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Material}">
+		<dxe:TextEdit EditValue="{Binding Material, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_PackQty}">
+		<dxe:TextEdit EditValue="{Binding PackQty, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductType}">
+		<dxe:TextEdit EditValue="{Binding ProductType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_CertType}">
+		<dxe:TextEdit EditValue="{Binding CertType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_RegisterId}">
+		<dxe:TextEdit EditValue="{Binding RegisterId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark1}">
+		<dxe:TextEdit EditValue="{Binding Remark1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark2}">
+		<dxe:TextEdit EditValue="{Binding Remark2, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark3}">
+		<dxe:TextEdit EditValue="{Binding Remark3, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark4}">
+		<dxe:TextEdit EditValue="{Binding Remark4, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeNo}">
 		<dxe:TextEdit EditValue="{Binding TreeNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_TreeParentNo}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeParentNo}">
 		<dxe:TextEdit EditValue="{Binding TreeParentNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_TreePath}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreePath}">
 		<dxe:TextEdit EditValue="{Binding TreePath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_TreeSon}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeSon}">
 		<dxe:TextEdit EditValue="{Binding TreeSon, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_TreeTotal}">
-		<dxe:TextEdit EditValue="{Binding TreeTotal, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_SkuSon}">
+		<dxe:TextEdit EditValue="{Binding SkuSon, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_Creater}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Creater}">
 		<dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_CreateDate}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_CreateDate}">
 		<dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_LastModifyer}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_LastModifyer}">
 		<dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True" />
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_UserGroup_LastModifyDate}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_LastModifyDate}">
 		<dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
 

@@ -74,14 +74,14 @@
                              >
                 <dxg:GridControl.Resources>
                     <Style TargetType="{x:Type dxg:GridControl}" x:Key="EditCommand">
-                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding EditCommand}"/>
-                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"/>
-                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.Command" Value="{Binding EditCommand}"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.HitPosition" Value="RowCell"/>
                     </Style>
                     <Style TargetType="{x:Type dxg:GridControl}" x:Key="ConfirmCommand">
-                        <Setter Property="core:MouseDoubleClick.Command" Value="{Binding ConfirmCommand}"/>
-                        <Setter Property="core:MouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItems}"/>
-                        <Setter Property="core:MouseDoubleClick.HitPosition" Value="InRow"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.Command" Value="{Binding ConfirmCommand}"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.CommandParameter" Value="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItems}"/>
+                        <Setter Property="core:GridControlMouseDoubleClick.HitPosition" Value="RowCell"/>
                     </Style>
                 </dxg:GridControl.Resources>
                 <dxg:GridControl.Style>

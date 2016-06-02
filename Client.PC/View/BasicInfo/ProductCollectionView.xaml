@@ -65,9 +65,9 @@
                              Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                              ColumnsSource="{StaticResource productcolumnssource}"
                              ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
-                             core:MouseDoubleClick.Command="{Binding EditCommand}"
-                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                             core:MouseDoubleClick.HitPosition="InRow"
+                             core:GridControlMouseDoubleClick.Command="{Binding EditCommand}"
+                             core:GridControlMouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                             core:GridControlMouseDoubleClick.HitPosition="RowCell"
                              SelectionMode="Cell"
                              ItemsSource="{Binding Items}">
             </dxg:GridControl>

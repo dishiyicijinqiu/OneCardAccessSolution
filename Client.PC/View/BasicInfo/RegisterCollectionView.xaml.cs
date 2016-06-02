@@ -1,9 +1,11 @@
-﻿using FengSharp.OneCardAccess.Client.PC.Interfaces;
+﻿using DevExpress.Xpf.Grid;
+using FengSharp.OneCardAccess.Client.PC.Interfaces;
 using FengSharp.OneCardAccess.Client.PC.UI;
 using FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo;
 using FengSharp.OneCardAccess.Core;
 using System;
 using System.Globalization;
+using System.Windows;
 using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo

@@ -35,14 +35,14 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
 
         private void TreeListView_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            ITableViewHitInfo hitInfo = this.treelist.View.CalcHitInfo(e.OriginalSource as DependencyObject);
-            if (hitInfo.InRow && hitInfo.IsRowCell)
-            {
-                var entity = this.treelist.SelectedItem as FirstAttachmentDirEntity;
-                if (entity == null) return;
-                AttachmentDirCollectionViewModel VM = this.DataContext as AttachmentDirCollectionViewModel;
-                VM.LoadAttachment(entity);
-            }
+            //var hitInfo = this.treelist.View.CalcHitInfo(e.OriginalSource as DependencyObject);
+            //if (hitInfo.InRow && hitInfo.InRowCell)
+            //{
+            //    var entity = this.treelist.SelectedItem as FirstAttachmentDirEntity;
+            //    if (entity == null) return;
+            //    AttachmentDirCollectionViewModel VM = this.DataContext as AttachmentDirCollectionViewModel;
+            //    VM.LoadAttachment(entity);
+            //}
         }
     }
 }

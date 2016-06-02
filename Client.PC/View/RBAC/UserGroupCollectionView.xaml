@@ -61,10 +61,10 @@
             <dxg:TreeListControl x:Name="treelist" Grid.Row="1"
                                 SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
                                 ItemsSource="{Binding Items}"
-                                core:MouseDoubleClick.CommandTarget="{Binding ElementName=barEdit}"
-                                core:MouseDoubleClick.Command="{Binding EditCommand}"
-                                core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                                core:MouseDoubleClick.HitPosition="InRow"
+                                core:TreeListControlMouseDoubleClick.CommandTarget="{Binding ElementName=barEdit}"
+                                core:TreeListControlMouseDoubleClick.Command="{Binding EditCommand}"
+                                core:TreeListControlMouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                core:TreeListControlMouseDoubleClick.HitPosition="RowCell"
                                 SelectionMode="Cell"
                                  >
                 <dxg:TreeListControl.Columns>

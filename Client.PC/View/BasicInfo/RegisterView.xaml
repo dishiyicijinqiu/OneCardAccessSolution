@@ -87,9 +87,9 @@
                         </dxlc:LayoutItem>
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgRegisterFile_Header}" View="GroupBox">
                             <dxg:GridControl x:Name="gridRegister_File" ItemsSource="{Binding Entity.Register_FileEntitys}"
-                                             core:MouseDoubleClick.Command="{Binding ViewRegisterFileCommand}"
-                                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                                             core:MouseDoubleClick.HitPosition="InRow"
+                                             core:GridControlMouseDoubleClick.Command="{Binding ViewRegisterFileCommand}"
+                                             core:GridControlMouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                             core:GridControlMouseDoubleClick.HitPosition="RowCell"
                                              >
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="FileName" Header="{x:Static res:Resources.Entity_Register_File_FileName}" Width="200"/>
@@ -116,9 +116,9 @@
 
                         <dxlc:LayoutGroup Header="{x:Static res:Resources.View_RegisterView_lgTemplate_Header}" View="GroupBox">
                             <dxg:GridControl x:Name="gridP_CRTemp_To_Register" ItemsSource="{Binding Entity.P_CRTemp_To_RegisterEntitys}"
-                                             core:MouseDoubleClick.Command="{Binding ViewP_CRTempCommand}"
-                                             core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
-                                             core:MouseDoubleClick.HitPosition="InRow"
+                                             core:GridControlMouseDoubleClick.Command="{Binding ViewP_CRTempCommand}"
+                                             core:GridControlMouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                                             core:GridControlMouseDoubleClick.HitPosition="RowCell"
                                              >
                                 <dxg:GridControl.Columns>
                                     <dxg:GridColumn FieldName="CRTempName" Header="{x:Static res:Resources.Entity_P_CRTemp_To_RegisterEntity_CRTempName}" Width="200"/>

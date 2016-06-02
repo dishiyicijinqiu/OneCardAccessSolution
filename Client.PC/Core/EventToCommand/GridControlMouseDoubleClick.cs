@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 
-namespace FengSharp.OneCardAccess.Client.PC.Core.EventToCommand
+namespace FengSharp.OneCardAccess.Core
 {
     public class GridControlMouseDoubleClick
     {
@@ -18,7 +18,7 @@ namespace FengSharp.OneCardAccess.Client.PC.Core.EventToCommand
         public static readonly DependencyProperty CommandParameterProperty =
             DependencyProperty.RegisterAttached("CommandParameter", typeof(object), typeof(GridControlMouseDoubleClick), new PropertyMetadata(OnSetCommandParameterCallback));
         public static readonly DependencyProperty HitPositionProperty =
-            DependencyProperty.RegisterAttached("HitPosition", typeof(GridControlHitPosition), typeof(GridControlMouseDoubleClick), new PropertyMetadata(OnSetHitPositionCallback));
+            DependencyProperty.RegisterAttached("HitPosition", typeof(string), typeof(GridControlMouseDoubleClick), new PropertyMetadata(OnSetHitPositionCallback));
         const string controlname = "GridControl";
         #region GetSet
         public static void SetCommand(GridControl ctl, ICommand command)
@@ -54,24 +54,29 @@ namespace FengSharp.OneCardAccess.Client.PC.Core.EventToCommand
         public static void SetHitPosition(GridControl ctl, string parameter)
         {
             if (ctl == null) throw new System.ArgumentNullException(controlname);
-            GridControlHitPosition hitposition = GridControlHitPosition.None;
-            if (!string.IsNullOrWhiteSpace(parameter))
-            {
-                string[] hitpositions = parameter.Split('|');
-                foreach (var item in hitpositions)
-                {
-                    var temphitposition = Enum.Parse(typeof(GridControlHitPosition), item);
-                    if (temphitposition == null)
-                        throw new System.ArgumentNullException(controlname);
-                    hitposition = hitposition | ((GridControlHitPosition)temphitposition);
-                }
-            }
-            ctl.SetValue(HitPositionProperty, hitposition);
+            ctl.SetValue(HitPositionProperty, parameter);
         }
         public static GridControlHitPosition GetHitPosition(GridControl ctl)
         {
             if (ctl == null) throw new System.ArgumentNullException(controlname);
-            return (GridControlHitPosition)ctl.GetValue(HitPositionProperty);
+            GridControlHitPosition hitposition = GridControlHitPosition.None;
+            var pvalue = ctl.GetValue(HitPositionProperty);
+            if (pvalue != null)
+            {
+                string parameter = pvalue.ToString();
+                if (!string.IsNullOrWhiteSpace(parameter))
+                {
+                    string[] hitpositions = parameter.Split('|');
+                    foreach (var item in hitpositions)
+                    {
+                        var temphitposition = Enum.Parse(typeof(GridControlHitPosition), item);
+                        if (temphitposition == null)
+                            throw new System.ArgumentNullException(controlname);
+                        hitposition = hitposition | ((GridControlHitPosition)temphitposition);
+                    }
+                }
+            }
+            return hitposition;
         }
         #endregion
         private static GridControlMouseDoubleClickCommandBehavior GetOrCreateBehavior(GridControl ctl)
@@ -117,7 +122,23 @@ namespace FengSharp.OneCardAccess.Client.PC.Core.EventToCommand
             if (ctl != null)
             {
                 GridControlMouseDoubleClickCommandBehavior behavior = GetOrCreateBehavior(ctl);
-                behavior.CommandParameter = e.NewValue;
+                GridControlHitPosition hitposition = GridControlHitPosition.None;
+                if (e.NewValue != null)
+                {
+                    string parameter = e.NewValue.ToString();
+                    if (!string.IsNullOrWhiteSpace(parameter))
+                    {
+                        string[] hitpositions = parameter.Split('|');
+                        foreach (var item in hitpositions)
+                        {
+                            var temphitposition = Enum.Parse(typeof(GridControlHitPosition), item);
+                            if (temphitposition == null)
+                                throw new System.ArgumentNullException(controlname);
+                            hitposition = hitposition | ((GridControlHitPosition)temphitposition);
+                        }
+                    }
+                }
+                behavior.HitPosition = hitposition;
             }
         }
     }
@@ -143,29 +164,58 @@ namespace FengSharp.OneCardAccess.Client.PC.Core.EventToCommand
         private void TargetObject_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             var grid = sender as GridControl;
-            ITableViewHitInfo hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject);
+            var hitInfo = ((ITableView)grid.View).CalcHitInfo(e.OriginalSource as DependencyObject) as TableViewHitInfo;
             if (hitInfo == null)
                 return;
             if (e.ChangedButton != MouseButton.Left)
                 return;
-            GridControlHitPosition nowHitPosition = GridControlHitPosition.None;
-            if (hitInfo.InColumnHeader)
-                nowHitPosition = nowHitPosition | GridControlHitPosition.InColumnHeader;
-            if (hitInfo.InGroupPanel)
-                nowHitPosition = nowHitPosition | GridControlHitPosition.InGroupPanel;
-            if (hitInfo.InRow)
-                nowHitPosition = nowHitPosition | GridControlHitPosition.InRow;
+            GridControlHitPosition nowHitPosition = (GridControlHitPosition)Enum.Parse(typeof(GridControlHitPosition), hitInfo.HitTest.ToString());
             if ((HitPosition & nowHitPosition) != GridControlHitPosition.None)
             {
                 ExecuteCommand();
             }
         }
     }
-    public enum GridControlHitPosition
+    [Flags]
+    public enum GridControlHitPosition : long
     {
         None = 0,
-        InColumnHeader = 1,
-        InGroupPanel = 2,
-        InRow = 4
+        RowCell = 2,
+        Row = 4,
+        GroupRow = 8,
+        GroupRowButton = 16,
+        GroupRowCheckBox = 32,
+        ColumnHeaderPanel = 64,
+        ColumnHeader = 128,
+        ColumnHeaderFilterButton = 256,
+        BandHeaderPanel = 512,
+        BandHeader = 1024,
+        GroupPanel = 2048,
+        GroupPanelColumnHeader = 4096,
+        GroupPanelColumnHeaderFilterButton = 8192,
+        VerticalScrollBar = 16384,
+        HorizontalScrollBar = 32768,
+        FilterPanel = 65536,
+        FilterPanelCloseButton = 131072,
+        FilterPanelCustomizeButton = 262144,
+        FilterPanelActiveButton = 524288,
+        FilterPanelText = 1048576,
+        MRUFilterListComboBox = 2097152,
+        TotalSummaryPanel = 4194304,
+        TotalSummary = 8388608,
+        FixedTotalSummary = 16777216,
+        DataArea = 33554432,
+        GroupValue = 67108864,
+        GroupSummary = 134217728,
+        ColumnButton = 268435456,
+        BandButton = 536870912,
+        ColumnEdge = 1073741824,
+        BandEdge = 2147483648,
+        FixedLeftDiv = 4294967296,
+        FixedRightDiv = 8589934592,
+        RowIndicator = 17179869184,
+        GroupFooterRow = 34359738368,
+        GroupFooterSummary = 68719476736,
+        MasterRowButton = 137438953472
     }
 }

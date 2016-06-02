@@ -74,7 +74,7 @@
                              Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
                              ColumnsSource="{StaticResource registercolumnssource}"
                              ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
-                             core:MouseDoubleClick.Command="{Binding EditCommand}"
+                             core:MouseDoubleClick.Command="{Binding EditCommand}" 
                              core:MouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
                              core:MouseDoubleClick.HitPosition="InRow"
                              SelectionMode="{Binding ViewStyle,Converter={local:RegisterCollectionViewSelectionModeConverter}}"

@@ -681,4 +681,10 @@
   <data name="View_ProductView_Title" xml:space="preserve">
     <value>产品信息</value>
   </data>
+  <data name="View_ProuductView_Title" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="Entity_Product_RegisterId" xml:space="preserve">
+    <value>产品注册证</value>
+  </data>
 </root>

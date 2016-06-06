@@ -104,3 +104,57 @@ System.Windows.Input.ComponentCommands.MoveDown
                     <!--RowIndicatorContentTemplate="{StaticResource CateRowIndicatorThemeKey}"-->
                 </dxg:GridControl.View>
             </dxg:GridControl>
+
+
+
+
+			       <!--<useRequestHeadersForMetadataAddress>
+            <defaultPorts>
+              <add scheme="http" port="8002" />
+              <add scheme="https" port="8002" />
+            </defaultPorts>
+          </useRequestHeadersForMetadataAddress>-->
+
+
+
+		        <service behaviorConfiguration="DefaultServiceBehavior" name="FengSharp.OneCardAccess.Services.BasicInfoService">
+        <endpoint address="" behaviorConfiguration="DefaultEndpointBehavior"
+          binding="netTcpBinding" bindingConfiguration="DefaultnetTcpBinding"
+          name="BasicInfoServiceEndPoint" contract="FengSharp.OneCardAccess.ServiceInterfaces.IBasicInfoService" />
+        <endpoint address="mex" binding="mexTcpBinding" bindingConfiguration=""
+          name="" contract="IMetadataExchange" />
+        <host>
+          <baseAddresses>
+            <add baseAddress="net.tcp://127.0.0.1:4502/OneCardAccessServer/" />
+          </baseAddresses>
+        </host>
+      </service>
+
+
+	   <serviceBehaviors>
+        <behavior name="DefaultServiceBehavior">
+          <serviceDebug includeExceptionDetailInFaults="true" />
+          <serviceMetadata httpGetEnabled="true" httpsGetEnabled="true" />
+          <unity containerName="ServicesContainer" />
+          <ExceptionHandling exceptionPolicy="WCFExceptionPolicy" />
+          <!--<useRequestHeadersForMetadataAddress>
+            <defaultPorts>
+              <add scheme="http" port="80" />
+              <add scheme="https" port="80" />
+              <add scheme="net.tcp" port="8086" />
+            </defaultPorts>
+          </useRequestHeadersForMetadataAddress>-->
+        </behavior>
+        <behavior name="">
+          <serviceMetadata httpGetEnabled="true" />
+          <serviceDebug includeExceptionDetailInFaults="false" />
+          <!--<useRequestHeadersForMetadataAddress>
+            <defaultPorts>
+              <add scheme="http" port="80" />
+              <add scheme="https" port="80" />
+              <add scheme="net.tcp" port="8086" />
+            </defaultPorts>
+          </useRequestHeadersForMetadataAddress>-->
+        </behavior>
+      </serviceBehaviors>
+    </behaviors>

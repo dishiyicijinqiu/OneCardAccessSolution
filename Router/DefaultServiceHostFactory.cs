@@ -1,12 +1,12 @@
-﻿using FengSharp.OneCardAccess.Common;
-using Microsoft.Practices.EnterpriseLibrary.Logging;
-using System;
-using System.Diagnostics;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.ServiceModel;
 using System.ServiceModel.Activation;
-using System.ServiceModel.Description;
+using System.ServiceModel.Routing;
+using System.Web;
 
-namespace FengSharp.OneCardAccess.Server
+namespace FengSharp.OneCardAccess.Router
 {
     public class DefaultServiceHostFactory : ServiceHostFactory
     {
@@ -29,11 +29,7 @@ namespace FengSharp.OneCardAccess.Server
 
         void host_Faulted(object sender, EventArgs e)
         {
-            var host = sender as ServiceHost;
-            if (host != null)
-                Logger.Writer.Write(string.Format("类型{0}宿主遇到错误", host.Description.ServiceType), TraceEventType.Critical);
-            else
-                Logger.Writer.Write("未知类型宿主遇到错误", TraceEventType.Critical);
+          
         }
     }
 }

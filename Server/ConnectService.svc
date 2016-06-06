@@ -1,1 +1,0 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="FengSharp.OneCardAccess.Services.ConnectService" Factory="FengSharp.OneCardAccess.Server.DefaultServiceHostFactory" %>

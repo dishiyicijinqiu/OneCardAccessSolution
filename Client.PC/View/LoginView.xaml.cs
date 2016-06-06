@@ -61,12 +61,14 @@ namespace FengSharp.OneCardAccess.Client.PC.View
                 ex.HandleException(this);
             }
         }
-
+        bool isshown = false;
         private void LoginWindow_Activated(object sender, EventArgs e)
         {
             Window loginWindow = Window.GetWindow(this);
             System.Windows.Input.FocusManager.SetFocusedElement(loginWindow, this.tbUserNo);
 #if DEBUG
+            if (isshown) return;
+            isshown = true;
             this.tbUserNo.Text = "1";
             this.tbPwd.Text = "12345";
             LoginViewModel VM = this.DataContext as LoginViewModel;

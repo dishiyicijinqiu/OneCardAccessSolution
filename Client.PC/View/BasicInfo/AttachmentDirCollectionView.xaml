@@ -30,6 +30,9 @@
             </Style>
         </ResourceDictionary>
     </ui:BaseUserControl.Resources>
+    <!--<ui:BaseUserControl.InputBindings>
+        <KeyBinding Command="{Binding BillSaveCommand}" Key="S" Modifiers="Ctrl"/>
+    </ui:BaseUserControl.InputBindings>-->
     <dxb:BarManager Name="barManager">
         <Grid>
             <Grid.RowDefinitions>
@@ -110,14 +113,14 @@
                                 <dxg:TreeListView
                         NodeImageSelector="{StaticResource treeListNodeImageSelector}"
                         ShowNodeImages="True" 
-                        KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" MouseDown="TreeListView_MouseDown" >
-                                    <i:Interaction.Triggers>
+                        KeyFieldName="TreeNo" ParentFieldName="TreeParentNo" AutoExpandAllNodes="True" >
+                                    <!--<i:Interaction.Triggers>
                                         <i:EventTrigger EventName="NodeChanged">
                                             <i:InvokeCommandAction Command="{Binding LoadAttachmentCommand, Mode=OneWay}"
                                                                    CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"
                                                                    />
                                         </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                    </i:Interaction.Triggers>-->
                                 </dxg:TreeListView>
                             </dxg:TreeListControl.View>
                             <!--<dxmvvm:Interaction.Behaviors>

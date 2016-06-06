@@ -32,17 +32,5 @@ namespace FengSharp.OneCardAccess.Client.PC.View.BasicInfo
         {
             InitializeComponent();
         }
-
-        private void TreeListView_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            //var hitInfo = this.treelist.View.CalcHitInfo(e.OriginalSource as DependencyObject);
-            //if (hitInfo.InRow && hitInfo.InRowCell)
-            //{
-            //    var entity = this.treelist.SelectedItem as FirstAttachmentDirEntity;
-            //    if (entity == null) return;
-            //    AttachmentDirCollectionViewModel VM = this.DataContext as AttachmentDirCollectionViewModel;
-            //    VM.LoadAttachment(entity);
-            //}
-        }
     }
 }

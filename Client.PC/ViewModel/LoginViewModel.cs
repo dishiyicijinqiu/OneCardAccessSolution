@@ -82,29 +82,32 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
         {
             try
             {
+                //IConnectService channelB = new System.ServiceModel.ChannelFactory<IConnectService>("ConnectService").CreateChannel();
+                //var result = channelB.Login(this.UserNo, this.Password);
+
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
                 var loginresult = ConnectService.Login(this.UserNo, this.Password);
                 switch (loginresult)
                 {
-                    case BusinessEntity.RBAC.LoginResult.Success:
+                    case LoginResult.Success:
                         DefaultEventAggregator.Current.GetEvent<NullEvent>().Publish(ServiceLoader.LoadService<IMainViewModel>().LoginSucessEventSubscriptionToken);
                         this.OKClose();
                         break;
-                    case BusinessEntity.RBAC.LoginResult.UserNotExist:
-                        ShowError(Client.PC.Properties.Resources.Error_UserNotExist);
+                    case LoginResult.UserNotExist:
+                        ShowError(Properties.Resources.Error_UserNotExist);
                         return;
-                    case BusinessEntity.RBAC.LoginResult.UserIsLocked:
-                        ShowError(Client.PC.Properties.Resources.Error_UserIsLocked);
+                    case LoginResult.UserIsLocked:
+                        ShowError(Properties.Resources.Error_UserIsLocked);
                         return;
-                    case BusinessEntity.RBAC.LoginResult.ErrorPassWord:
-                        ShowError(Client.PC.Properties.Resources.Error_PassWordIsError);
+                    case LoginResult.ErrorPassWord:
+                        ShowError(Properties.Resources.Error_PassWordIsError);
                         return;
-                    case BusinessEntity.RBAC.LoginResult.UserIsEmpty:
-                        ShowError(Client.PC.Properties.Resources.Error_UserIsEmpty);
+                    case LoginResult.UserIsEmpty:
+                        ShowError(Properties.Resources.Error_UserIsEmpty);
                         return;
                 }
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
                 ShowException(ex);
             }

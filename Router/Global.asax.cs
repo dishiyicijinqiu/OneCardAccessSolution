@@ -11,14 +11,27 @@ namespace FengSharp.OneCardAccess.Router
 
         protected void Application_Start(object sender, EventArgs e)
         {
-
             RouteTable.Routes.Add(
-                new ServiceRoute(
-                    "RoutingService",
-                    new ServiceHostFactory(),
-                    typeof(System.ServiceModel.Routing.RoutingService)
-                )
-            );
+    new ServiceRoute(
+        "RoutingService",
+        new ServiceHostFactory(),
+        typeof(System.ServiceModel.Routing.RoutingService)
+    )
+);
+            //RouteTable.Routes.Add(
+            //    new ServiceRoute(
+            //        "RoutingService",
+            //        new ServiceHostFactory(),
+            //        typeof(System.ServiceModel.Routing.RoutingService)
+            //    )
+            //);
+            //RouteTable.Routes.MapPageRoute("Connect", "RoutingService/{Service}", "~/Connect");
+            // RouteTable.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
+
 
             //var serviceactivations = ((ServiceHostingEnvironmentSection)(ConfigurationManager.GetSection("system.serviceModel/serviceHostingEnvironment"))).ServiceActivations;
             //foreach (ServiceActivationElement item in serviceactivations)

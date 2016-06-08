@@ -26,16 +26,16 @@ namespace FengSharp.OneCardAccess.Server
             //    Activator.CreateInstance(Type.GetType(item.Factory)) as ServiceHostFactoryBase,
             //    Type.GetType(item.Service)));
             //}
-            var types = new List<Type> { typeof(ConnectService), typeof(BasicInfoService), typeof(RBACService) };
-            foreach (Type type in types)
-            {
-                RouteTable.Routes.Add(
-                    new ServiceRoute(
-                        type.Name,
-                        new DefaultServiceHostFactory(),
-                        type)
-                );
-            }
+            //var types = new List<Type> { typeof(ConnectService), typeof(BasicInfoService), typeof(RBACService) };
+            //foreach (Type type in types)
+            //{
+            //    RouteTable.Routes.Add(
+            //        new ServiceRoute(
+            //            type.Name,
+            //            new DefaultServiceHostFactory(),
+            //            type)
+            //    );
+            //}
         }
 
         protected void Session_Start(object sender, EventArgs e)

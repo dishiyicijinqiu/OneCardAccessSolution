@@ -34,7 +34,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                         Entity.CopyValueFrom(copyEntity,
                             new List<string>(PCConfig.CreateAndModifyInfoColNames)
                         {
-                            "UserGroupId"
+                            "UserId"
                         });
                     }
                     break;
@@ -44,7 +44,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                         Entity.CopyValueFrom(copyEntity,
                             new List<string>(PCConfig.CreateAndModifyInfoColNames)
                         {
-                            "UserGroupId"
+                            "UserId"
                         });
                     }
                     break;

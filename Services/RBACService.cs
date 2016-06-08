@@ -314,19 +314,19 @@ namespace FengSharp.OneCardAccess.Services
         public bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree)
         {
             return UseTran((tran) =>
-             {
-                 int ReturnValue = base.MoveTree("UserGroup", sourceId, targetId, movetree, tran);
-                 switch (ReturnValue)
-                 {
-                     default:
-                         throw new BusinessException(Properties.Resources.Error_UnHandleException);
-                     case 1:
-                         break;
-                     case -200:
-                         throw new BusinessException(Properties.Resources.Error_MethodNotImplemented);
-                 }
-                 return true;
-             });
+            {
+                int ReturnValue = base.MoveTree("UserGroup", sourceId, targetId, movetree, tran);
+                switch (ReturnValue)
+                {
+                    default:
+                        throw new BusinessException(Properties.Resources.Error_UnHandleException);
+                    case 1:
+                        break;
+                    case -200:
+                        throw new BusinessException(Properties.Resources.Error_MethodNotImplemented);
+                }
+                return true;
+            });
         }
         #endregion
     }

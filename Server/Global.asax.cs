@@ -17,6 +17,7 @@ namespace FengSharp.OneCardAccess.Server
 
         protected void Application_Start(object sender, EventArgs e)
         {
+       
             //System.Diagnostics.Debugger.Break();
             //var serviceactivations = ((ServiceHostingEnvironmentSection)(ConfigurationManager.GetSection("system.serviceModel/serviceHostingEnvironment"))).ServiceActivations;
             //foreach (ServiceActivationElement item in serviceactivations)

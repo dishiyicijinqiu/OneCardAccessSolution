@@ -6,6 +6,7 @@ using System;
 
 namespace FengSharp.OneCardAccess.Services
 {
+    //[System.ServiceModel.Activation.AspNetCompatibilityRequirements(RequirementsMode = System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode.Allowed)]
     public class ConnectService : ServiceBase, IConnectService
     {
         public LoginResult Login(string UserNo, string PassWord)

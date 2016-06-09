@@ -16,13 +16,10 @@ namespace FengSharp.OneCardAccess.Router
     {
         public DefaultServiceHostFactory() : base()
         {
-
         }
         protected override ServiceHost CreateServiceHost(Type serviceType, Uri[] baseAddresses)
         {
             var host = new BaseServiceHost(serviceType, baseAddresses);
-            //if (!host.Description.Behaviors.Contains(typeof(AspNetCompatibilityRequirementsAttribute)))
-            //    host.Description.Behaviors.Add(new AspNetCompatibilityRequirementsAttribute() { RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed });
             host.Faulted += host_Faulted;
             host.Opened += Host_Opened;
             host.UnknownMessageReceived += Host_UnknownMessageReceived;

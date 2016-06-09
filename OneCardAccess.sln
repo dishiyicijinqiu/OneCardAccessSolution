@@ -100,6 +100,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService2", "WcfService2\WcfService2.csproj", "{EF4F7DF7-257E-4F33-8A5A-8096B5BFF27D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication4", "ConsoleApplication4\ConsoleApplication4.csproj", "{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService3", "WcfService3\WcfService3.csproj", "{D5EE6713-F102-4937-9293-8D5A5E6ACFF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication5", "ConsoleApplication5\ConsoleApplication5.csproj", "{5B94F172-3953-404F-9661-B46C95E0739F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4} = {D5EE6713-F102-4937-9293-8D5A5E6ACFF4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfService4", "WcfService4\WcfService4.csproj", "{2867A59C-D28A-4AE2-91BE-8C45EF38870E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -231,6 +242,22 @@ Global
 		{EF4F7DF7-257E-4F33-8A5A-8096B5BFF27D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF4F7DF7-257E-4F33-8A5A-8096B5BFF27D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF4F7DF7-257E-4F33-8A5A-8096B5BFF27D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B94F172-3953-404F-9661-B46C95E0739F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B94F172-3953-404F-9661-B46C95E0739F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B94F172-3953-404F-9661-B46C95E0739F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B94F172-3953-404F-9661-B46C95E0739F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2867A59C-D28A-4AE2-91BE-8C45EF38870E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2867A59C-D28A-4AE2-91BE-8C45EF38870E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2867A59C-D28A-4AE2-91BE-8C45EF38870E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2867A59C-D28A-4AE2-91BE-8C45EF38870E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -272,6 +299,10 @@ Global
 		{9ED350F3-D1C3-4E51-86D2-D60784A9DC9B} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
 		{402BAF22-8A1D-492A-B3AA-CD5584734F09} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
 		{EF4F7DF7-257E-4F33-8A5A-8096B5BFF27D} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
+		{0AB8FA7E-21A8-43D8-8D1D-F73E2FA71764} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
+		{D5EE6713-F102-4937-9293-8D5A5E6ACFF4} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
+		{5B94F172-3953-404F-9661-B46C95E0739F} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
+		{2867A59C-D28A-4AE2-91BE-8C45EF38870E} = {9E66D265-6212-4A48-B469-01F6C83F5A62}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.0\lib\NET35;packages\Unity.Interception.2.1.505.0\lib\NET35;packages\EnterpriseLibrary.Common.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.ExceptionHandling.Logging.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.Data.5.0.505.0\lib\NET35;packages\EnterpriseLibrary.PolicyInjection.5.0.505.0\lib\NET35

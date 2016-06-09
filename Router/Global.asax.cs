@@ -11,13 +11,13 @@ namespace FengSharp.OneCardAccess.Router
 
         protected void Application_Start(object sender, EventArgs e)
         {
-            RouteTable.Routes.Add(
-    new ServiceRoute(
-        "RoutingService",
-        new ServiceHostFactory(),
-        typeof(System.ServiceModel.Routing.RoutingService)
-    )
-);
+//            RouteTable.Routes.Add(
+//    new ServiceRoute(
+//        "RoutingService",
+//        new ServiceHostFactory(),
+//        typeof(System.ServiceModel.Routing.RoutingService)
+//    )
+//);
             //RouteTable.Routes.Add(
             //    new ServiceRoute(
             //        "RoutingService",

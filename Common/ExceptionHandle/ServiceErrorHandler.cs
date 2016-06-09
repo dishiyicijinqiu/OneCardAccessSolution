@@ -33,11 +33,10 @@ namespace FengSharp.OneCardAccess.Common
             {
                 return;
             }
-
             try
             {
                 Exception newException = null;
-                if (ExceptionPolicy.HandleException(error, this.ExceptionPolicyName, out newException))
+                if (ExceptionPolicy.HandleException(error, ExceptionPolicyName, out newException))
                 {
                     if (newException != null)
                         fault = Message.CreateMessage(version, BuildFault(newException), ServiceExceptionDetail.FaultAction);

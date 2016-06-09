@@ -11,7 +11,6 @@ using System.Security.Cryptography;
 
 namespace FengSharp.OneCardAccess.Services
 {
-    [System.ServiceModel.Activation.AspNetCompatibilityRequirements(RequirementsMode = System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode.Allowed)]
     public class RBACService : ServiceBase, IRBACService
     {
         #region User

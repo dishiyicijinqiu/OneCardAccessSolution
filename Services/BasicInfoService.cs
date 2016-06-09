@@ -11,7 +11,6 @@ using System.IO;
 
 namespace FengSharp.OneCardAccess.Services
 {
-    [System.ServiceModel.Activation.AspNetCompatibilityRequirements(RequirementsMode = System.ServiceModel.Activation.AspNetCompatibilityRequirementsMode.Allowed)]
     public class BasicInfoService : ServiceBase, IBasicInfoService
     {
         #region Register注册证

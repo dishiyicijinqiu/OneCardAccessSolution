@@ -84,7 +84,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel
             {
                 //IConnectService channelB = new System.ServiceModel.ChannelFactory<IConnectService>("ConnectService").CreateChannel();
                 //var result = channelB.Login(this.UserNo, this.Password);
-
                 IConnectService ConnectService = ServiceProxyFactory.Create<IConnectService>();
                 var loginresult = ConnectService.Login(this.UserNo, this.Password);
                 switch (loginresult)

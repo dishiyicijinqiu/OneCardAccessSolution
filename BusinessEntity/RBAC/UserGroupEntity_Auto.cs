@@ -186,22 +186,6 @@ namespace FengSharp.OneCardAccess.BusinessEntity.RBAC
                 RaisePropertyChanged("TreeSon");
             }
         }
-        private int _TreeTotal;
-        /// <summary>
-        /// 子孙数量
-        /// </summary>
-        [DataMember]
-        public int TreeTotal
-        {
-            get { return _TreeTotal; }
-            set
-            {
-                if (_TreeTotal == value)
-                    return;
-                _TreeTotal = value;
-                RaisePropertyChanged("TreeTotal");
-            }
-        }
         private string _CreateId;
         /// <summary>
         /// 创建人Id

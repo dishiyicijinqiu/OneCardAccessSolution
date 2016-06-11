@@ -687,4 +687,10 @@
   <data name="Entity_Product_RegisterId" xml:space="preserve">
     <value>产品注册证</value>
   </data>
+  <data name="BarContent_PermissionSet" xml:space="preserve">
+    <value>权限分配</value>
+  </data>
+  <data name="View_PermissionSetView_Title" xml:space="preserve">
+    <value>角色权限分配</value>
+  </data>
 </root>

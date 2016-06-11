@@ -178,6 +178,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 权限分配 的本地化字符串。
+        /// </summary>
+        public static string BarContent_PermissionSet {
+            get {
+                return ResourceManager.GetString("BarContent_PermissionSet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 返回 的本地化字符串。
         /// </summary>
         public static string BarContent_Return {
@@ -1632,6 +1641,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_P_CRTempView_Title {
             get {
                 return ResourceManager.GetString("View_P_CRTempView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 角色权限分配 的本地化字符串。
+        /// </summary>
+        public static string View_PermissionSetView_Title {
+            get {
+                return ResourceManager.GetString("View_PermissionSetView_Title", resourceCulture);
             }
         }
         

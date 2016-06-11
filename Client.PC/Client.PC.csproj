@@ -132,6 +132,7 @@
     <Compile Include="Interfaces\IAttachmentDir.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IPermissionSetView.cs" />
     <Compile Include="Interfaces\IProductView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
@@ -185,6 +186,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\RBAC\ChangePassWordViewModel.cs" />
+    <Compile Include="ViewModel\RBAC\PermissionSetViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserAndGroupManagerViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserCollectionViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserGroupCollectionViewModel.cs" />
@@ -229,6 +231,9 @@
     </Compile>
     <Compile Include="View\RBAC\ChangePassWordView.xaml.cs">
       <DependentUpon>ChangePassWordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RBAC\PermissionSetView.xaml.cs">
+      <DependentUpon>PermissionSetView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RBAC\UserAndGroupManagerView.xaml.cs">
       <DependentUpon>UserAndGroupManagerView.xaml</DependentUpon>
@@ -322,6 +327,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RBAC\ChangePassWordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RBAC\PermissionSetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

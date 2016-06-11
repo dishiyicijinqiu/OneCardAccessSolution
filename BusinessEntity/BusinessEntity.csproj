@@ -56,6 +56,7 @@
     <Compile Include="MoveTree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RBAC\LoginResult.cs" />
+    <Compile Include="RBAC\PermissionEntity.cs" />
     <Compile Include="RBAC\UserGroupEntity.cs" />
     <Compile Include="RBAC\UserGroupEntity_Auto.cs" />
     <Compile Include="RBAC\UserInfoEntity.cs" />

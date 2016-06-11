@@ -317,8 +317,15 @@ namespace FengSharp.OneCardAccess.Services
                     {
                         throw new BusinessException(string.Format(Properties.Resources.Error_PathNotFound, path));
                     }
-                    fullpath = Path.Combine(fullpath, entity.AttachmentDirName);
-                    Directory.CreateDirectory(fullpath);
+                    try
+                    {
+                        fullpath = Path.Combine(fullpath, entity.AttachmentDirName);
+                        Directory.CreateDirectory(fullpath);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new BusinessException(string.Format(Properties.Resources.Error_CreatePath, ex.Message));
+                    }
                     #endregion
                     dbattachmentdirentity.LastModifyId = dbattachmentdirentity.CreateId = (string)Session.Current.SessionClientId;
                     dbattachmentdirentity = CreateEntity(dbattachmentdirentity, tran, CreateTreeEntityUnCreateFileds);
@@ -368,13 +375,20 @@ namespace FengSharp.OneCardAccess.Services
                     string attachmentdirname = Database.GetParameterValue(cmd, "AttachmentDirName").ToString();
                     if (string.Compare(attachmentdirname, entity.AttachmentDirName, true) != 0)
                     {
-                        #region 更改目录名称
-                        string path = Database.GetParameterValue(cmd, "FullPath").ToString();
-                        string fullpath = Path.Combine(SystemServiceConfig.AttachBaseDir, path);
-                        string oldfullpath = Path.Combine(fullpath, attachmentdirname);
-                        string newfullpath = Path.Combine(fullpath, entity.AttachmentDirName);
-                        System.IO.Directory.Move(oldfullpath, newfullpath);
-                        #endregion
+                        try
+                        {
+                            #region 更改目录名称
+                            string path = Database.GetParameterValue(cmd, "FullPath").ToString();
+                            string fullpath = Path.Combine(SystemServiceConfig.AttachBaseDir, path);
+                            string oldfullpath = Path.Combine(fullpath, attachmentdirname);
+                            string newfullpath = Path.Combine(fullpath, entity.AttachmentDirName);
+                            System.IO.Directory.Move(oldfullpath, newfullpath);
+                            #endregion
+                        }
+                        catch (Exception ex)
+                        {
+                            throw new BusinessException(string.Format(Properties.Resources.Error_CreatePath, ex.Message));
+                        }
                     }
                     dbattachmentdirentity.LastModifyId = (string)Session.Current.SessionClientId;
                     dbattachmentdirentity.LastModifyDate = System.DateTime.Now;
@@ -516,7 +530,7 @@ namespace FengSharp.OneCardAccess.Services
             fullpath = Path.Combine(fullpath, attachmentdirname);
             if (!Directory.Exists(fullpath))
             {
-                throw new BusinessException(Properties.Resources.Error_PathNotFound);
+                throw new BusinessException(string.Format(Properties.Resources.Error_PathNotFound, attachmentdirname));
             }
             string filter = Database.GetParameterValue(cmd, "Filter").ToString();
             if (string.IsNullOrWhiteSpace(filter))

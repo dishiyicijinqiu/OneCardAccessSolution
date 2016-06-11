@@ -1,0 +1,110 @@
+﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.RBAC.PermissionSetView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"      
+              xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+                    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
+                    xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+            xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+            xmlns:vm="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC"
+             mc:Ignorable="d" 
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+             d:DesignHeight="505" d:DesignWidth="910">
+    <ui:BaseUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ui:BaseUserControl.Resources>
+    <dxb:BarManager>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto" Height="153">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_PermissionSetView_Title}">
+                        <dxr:RibbonPageGroup>
+                            <dxb:BarButtonItem Style="{StaticResource barSave}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barClose}" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxlc:LayoutControl Grid.Row="1" >
+                <dxlc:LayoutGroup Orientation="Vertical" Header="LayoutGroup" View="Tabs">
+                    <dxlc:LayoutGroup Orientation="Vertical" Header="Tab">
+
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        
+                    </dxlc:LayoutGroup>
+
+                    <dxlc:LayoutGroup Orientation="Vertical" Header="Tab">
+
+                        <dxlc:LayoutGroup >
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+
+                        <dxlc:LayoutGroup >
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="LayoutItem">
+                                <dxe:CheckEdit/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutControl>
+        </Grid>
+    </dxb:BarManager>
+</ui:BaseUserControl>

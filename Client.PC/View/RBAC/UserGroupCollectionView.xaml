@@ -10,6 +10,7 @@
              xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.RBAC"
             xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
             xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+                    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
             xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
@@ -22,6 +23,12 @@
                 <Setter Property="Width" Value="520"/>
                 <Setter Property="Height" Value="420"/>
                 <Setter Property="Title" Value="{x:Static res:Resources.View_UserGroupView_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="PermissionSetDialogWindowStyle">
+                <Setter Property="Width" Value="800"/>
+                <Setter Property="Height" Value="600"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_PermissionSetView_Title}"/>
                 <Setter Property="ShowInTaskbar" Value="False"/>
             </Style>
         </ResourceDictionary>
@@ -47,6 +54,11 @@
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                             <dxb:BarButtonItem Style="{StaticResource barDelete}" 
                                                CommandParameter="{Binding ElementName=treelist,Path=SelectedItems}"/>
+                            <dxb:BarButtonItem Content="{x:Static res:Resources.BarContent_PermissionSet}"
+                                               Command="{Binding PermissionSetCommand}"
+                                               Glyph="{dxc:DXImage Image=Role_16x16.png}"
+                                               LargeGlyph="{dxc:DXImage Image=Role_32x32.png}"
+                                               CommandParameter="{Binding ElementName=treelist,Path=SelectedItem}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}">

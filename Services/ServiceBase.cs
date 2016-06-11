@@ -14,10 +14,10 @@ namespace FengSharp.OneCardAccess.Services
 {
     public abstract class ServiceBase
     {
-        protected static string[] ModifyTreeEntityUnChangedFileds = { "treeno", "treeparentno", "treepath", "treeson", "treetotal", "createid", "createdate", "deleted" };
+        protected static string[] ModifyTreeEntityUnChangedFileds = { "treeno", "treeparentno", "treepath", "treeson", "createid", "createdate", "deleted" };
         protected static string[] ModifyEntityUnChangedFileds = { "createid", "createdate", "deleted" };
 
-        protected static string[] CreateTreeEntityUnCreateFileds = { "treeno", "treepath", "treeson", "treetotal", "createdate", "lastmodifydate", "deleted" };
+        protected static string[] CreateTreeEntityUnCreateFileds = { "treeno", "treepath", "treeson", "createdate", "lastmodifydate", "deleted" };
         protected static string[] CreateEntityUnCreateFileds = { "createdate", "lastmodifydate", "deleted" };
         private Database database;
         public Database Database

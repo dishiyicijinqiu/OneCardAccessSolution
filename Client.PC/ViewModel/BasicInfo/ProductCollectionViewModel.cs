@@ -27,6 +27,12 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         public ProductCollectionViewModel() : this(ViewStyle.View) { }
         public ProductCollectionViewModel(ViewStyle ViewStyle)
         {
+            //DevExpress.Xpf.Printing.PrintHelper.Print()
+            //DevExpress.XtraReports.UI.XtraReport report = new DevExpress.XtraReports.UI.XtraReport();
+            //DevExpress.Xpf.Grid.Printing.PrintHelper
+            //DevExpress.Xpf.Printing.PrintHelper
+            //DevExpress.Xpf.Printing.PrintingStringId.Copies
+            //DevExpress.Xpf.Printing.PrintHelper.Print(report);
             this.ViewStyle = ViewStyle;
             AddCommand = new DelegateCommand(Add, CanAdd);
             AddChildCommand = new DelegateCommand<FirstProductEntity>(AddChild, CanAddChild);

@@ -7,6 +7,9 @@ using System;
 using FengSharp.OneCardAccess.BusinessEntity.RBAC;
 using DevExpress.Xpf.Grid.LookUp;
 using DevExpress.Xpf.Editors;
+using System.Windows.Data;
+using System.Globalization;
+using System.Windows.Markup;
 
 namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
 {
@@ -49,4 +52,36 @@ namespace FengSharp.OneCardAccess.Client.PC.View.RBAC
             return base.GetClosePopupOnMouseUp(editor);
         }
     }
+    //public class UserGroupNameConverter : MarkupExtension, IMultiValueConverter
+    //{
+    //    //public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    //    //{
+    //    //    var entity = value as UserGroupEntity;
+    //    //    if (entity == null)
+    //    //        return null;
+    //    //    return string.Format("{0}|{1}", entity.UserGroupNo, entity.UserGroupName);
+    //    //}
+
+    //    //public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    //    //{
+    //    //    throw new NotImplementedException();
+    //    //}
+
+    //    public override object ProvideValue(IServiceProvider serviceProvider)
+    //    {
+    //        return this;
+    //    }
+    //    public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
+    //    {
+    //        var entity = values[1] as UserGroupEntity;
+    //        if (entity == null)
+    //            return null;
+    //        return string.Format("{0}|{1}", entity.UserGroupNo, entity.UserGroupName);
+    //    }
+
+    //    public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture)
+    //    {
+    //        throw new NotImplementedException();
+    //    }
+    //}
 }

@@ -35,5 +35,15 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         [OperationContract]
         bool MoveUserGroup(string sourceId, string targetId, MoveTree movetree);
         #endregion
+        #region Permission
+        [OperationContract]
+        List<PermissionCateEntity> GetPermissionCateEntitys();
+        [OperationContract]
+        List<PermissionEntity> GetPermissionEntitys();
+        [OperationContract]
+        UserGroup_PermissionEntity GetUserGroupPermissionByUserGroupId(string userGroupId);
+        [OperationContract]
+        void SaveUserGroup_PermissionEntity(UserGroup_PermissionEntity userGroup_PermissionEntity);
+        #endregion
     }
 }

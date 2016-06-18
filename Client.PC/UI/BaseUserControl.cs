@@ -193,6 +193,8 @@ namespace FengSharp.OneCardAccess.Client.PC.UI
             var window = new BaseRibbonWindow();
             if (!string.IsNullOrWhiteSpace(args.Style))
                 window.Style = FindResource(args.Style) as Style;
+            if (!string.IsNullOrWhiteSpace(args.TitleFormatString))
+                window.Title = string.Format(args.TitleFormatString, window.Title);
             window.Content = args.View;
             window.Owner = Window.GetWindow(this);
             window.WindowStartupLocation = (System.Windows.WindowStartupLocation)args.WindowStartupLocation;

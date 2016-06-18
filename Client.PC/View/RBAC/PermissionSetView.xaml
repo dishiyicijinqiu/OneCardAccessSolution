@@ -38,7 +38,6 @@
                     <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_PermissionSetView_Title}">
                         <dxr:RibbonPageGroup>
                             <dxb:BarButtonItem Style="{StaticResource barSave}"/>
-                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}"/>
                         </dxr:RibbonPageGroup>
                         <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
                             <dxb:BarButtonItem Style="{StaticResource barClose}" />
@@ -46,65 +45,57 @@
                     </dxr:RibbonPage>
                 </dxr:RibbonDefaultPageCategory>
             </dxr:RibbonControl>
-            <dxlc:LayoutControl Grid.Row="1" >
-                <dxlc:LayoutGroup Orientation="Vertical" Header="LayoutGroup" View="Tabs">
-                    <dxlc:LayoutGroup Orientation="Vertical" Header="Tab">
 
-                        <dxlc:LayoutGroup>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                        </dxlc:LayoutGroup>
 
-                        <dxlc:LayoutGroup>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                        </dxlc:LayoutGroup>
-                        
-                    </dxlc:LayoutGroup>
+            <dx:DXTabControl Grid.Row="1" ItemsSource="{Binding Items}">
+                <dx:DXTabControl.ItemHeaderTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding PermissionCateName}" FontWeight="Medium"/>
+                    </DataTemplate>
+                </dx:DXTabControl.ItemHeaderTemplate>
+                <dx:DXTabControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding V_PermissionLineHolderEntitys}">
+                            <ItemsControl.Template>
+                                <ControlTemplate>
+                                    <dxlc:ScrollBox >
+                                        <ItemsPresenter />
+                                    </dxlc:ScrollBox>
+                                </ControlTemplate>
+                            </ItemsControl.Template>
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Vertical"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
 
-                    <dxlc:LayoutGroup Orientation="Vertical" Header="Tab">
+                                    <ItemsControl ItemsSource="{Binding V_PermissionEntitys}">
+                                        <ItemsControl.Template>
+                                            <ControlTemplate>
+                                                <ItemsPresenter />
+                                            </ControlTemplate>
+                                        </ItemsControl.Template>
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <StackPanel Orientation="Horizontal"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <dxe:CheckEdit Content="{Binding PermissionName}" Width="140" EditValue="{Binding HasPermission}"/>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
 
-                        <dxlc:LayoutGroup >
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                        </dxlc:LayoutGroup>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </dx:DXTabControl.ItemTemplate>
+            </dx:DXTabControl>
 
-                        <dxlc:LayoutGroup >
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                            <dxlc:LayoutItem Label="LayoutItem">
-                                <dxe:CheckEdit/>
-                            </dxlc:LayoutItem>
-                        </dxlc:LayoutGroup>
-
-                    </dxlc:LayoutGroup>
-                </dxlc:LayoutGroup>
-            </dxlc:LayoutControl>
         </Grid>
     </dxb:BarManager>
 </ui:BaseUserControl>

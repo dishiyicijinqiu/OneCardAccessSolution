@@ -64,6 +64,7 @@
     <Compile Include="TableEntitys\T_Register_Auto.cs" />
     <Compile Include="TableEntitys\T_Register_File_Auto.cs" />
     <Compile Include="TableEntitys\T_UserGroup_Auto.cs" />
+    <Compile Include="TableEntitys\T_UserGroup_Permission_Auto.cs" />
     <Compile Include="TableEntitys\T_UserInfo_Auto.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -53,12 +53,18 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
                 if (!CanPermissionSet(entity)) return;
                 var vm = ServiceLoader.LoadService<IPermissionSetViewModel>(new ParameterOverride("userGroupEntity", entity));
                 var view = ServiceLoader.LoadService<IPermissionSetView>(new ParameterOverride("VM", vm));
-                this.CreateView(new CreateViewEventArgs(view, "DialogWindowStyle"));
+                vm.OnPermissionSeted += Vm_OnPermissionSeted;
+
+                this.CreateView(new CreateViewEventArgs(view, "PermissionSetDialogWindowStyle", TitleFormatString: string.Format("{0}:{{0}}", vm.UserGroupEntity.UserGroupName)));
             }
             catch (Exception ex)
             {
                 ShowException(ex);
             }
+        }
+
+        private void Vm_OnPermissionSeted(IViewModel vm, EditMessage<string> EditMessage)
+        {
         }
 
         public bool CanDelete(IList entitys)

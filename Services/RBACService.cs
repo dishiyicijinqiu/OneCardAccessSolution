@@ -329,5 +329,63 @@ namespace FengSharp.OneCardAccess.Services
             });
         }
         #endregion
+
+        #region Permission
+        public List<PermissionCateEntity> GetPermissionCateEntitys()
+        {
+            return this.GetEntitys<PermissionCateEntity>();
+        }
+        public List<PermissionEntity> GetPermissionEntitys()
+        {
+            return this.GetEntitys<PermissionEntity>();
+        }
+        public UserGroup_PermissionEntity GetUserGroupPermissionByUserGroupId(string userGroupId)
+        {
+            //return this.FindById<UserGroup_PermissionEntity>(new UserGroup_PermissionEntity()
+            //{
+            //    UserGroupId = userGroupId
+            //});
+
+            var result = new UserGroup_PermissionEntity() { UserGroupId = userGroupId };
+            DbCommand cmd = Database.GetStoredProcCommand("P_Glo_FindById;2");
+            Database.AddInParameter(cmd, "cMode", DbType.String, typeof(UserGroup_PermissionEntity).Name);
+            Database.AddInParameter(cmd, "EntityId", DbType.String, result.UserGroupId);
+            Database.AddInParameter(cmd, "UserId", DbType.String, (Session.Current == null ? string.Empty : (string)Session.Current.SessionClientId));
+            DataSet ds = Database.ExecuteDataSet(cmd);
+            if (ds == null || ds.Tables.Count <= 0 || ds.Tables[0].Rows.Count <= 0)
+                return default(UserGroup_PermissionEntity);
+            var dr = ds.Tables[0].Rows[0];
+            var ps = typeof(UserGroup_PermissionEntity).GetProperties();
+            foreach (var p in ps)
+            {
+                if (ds.Tables[0].Columns.Contains(p.Name))
+                    p.SetValue(result, dr[p.Name], null);
+            }
+            return result;
+        }
+        const string InsertUserGroup_PermissionEntitySql = "insert into T_UserGroup_Permission (UserGroupId,PermissionId1,PermissionId2,PermissionId3,PermissionId4,PermissionId5) values (@UserGroupId,@PermissionId1,@PermissionId2,@PermissionId3,@PermissionId4,@PermissionId5)";
+        public void SaveUserGroup_PermissionEntity(UserGroup_PermissionEntity userGroup_PermissionEntity)
+        {
+            UseTran((tran) =>
+           {
+               var dbUserGroup_Permission = new T_UserGroup_Permission();
+               dbUserGroup_Permission.CopyValueFrom(userGroup_PermissionEntity);
+               DbCommand cmd = Database.GetStoredProcCommand("P_Glo_Delete;2");
+               Database.AddInParameter(cmd, "cMode", DbType.String, typeof(T_UserGroup_Permission).Name);
+               Database.AddInParameter(cmd, "EntityId", DbType.String, userGroup_PermissionEntity.UserGroupId);
+               Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+               Database.ExecuteNonQuery(cmd, tran);
+               
+               cmd = Database.GetSqlStringCommand(InsertUserGroup_PermissionEntitySql);
+               Database.AddInParameter(cmd, "UserGroupId", DbType.String, userGroup_PermissionEntity.UserGroupId);
+               Database.AddInParameter(cmd, "PermissionId1", DbType.Int64, userGroup_PermissionEntity.PermissionId1);
+               Database.AddInParameter(cmd, "PermissionId2", DbType.Int64, userGroup_PermissionEntity.PermissionId2);
+               Database.AddInParameter(cmd, "PermissionId3", DbType.Int64, userGroup_PermissionEntity.PermissionId3);
+               Database.AddInParameter(cmd, "PermissionId4", DbType.Int64, userGroup_PermissionEntity.PermissionId4);
+               Database.AddInParameter(cmd, "PermissionId5", DbType.Int64, userGroup_PermissionEntity.PermissionId5);
+               Database.ExecuteNonQuery(cmd, tran);
+           });
+        }
+        #endregion
     }
 }

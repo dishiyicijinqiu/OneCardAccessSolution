@@ -11,16 +11,18 @@ namespace FengSharp.OneCardAccess.Core
     }
     public class CreateViewEventArgs : NullEventArgs
     {
-        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Style = null, bool IsDialog = true, WindowStartupLocation WindowStartupLocation = WindowStartupLocation.CenterOwner)
+        public CreateViewEventArgs(Client.PC.Interfaces.IView View, string Style = null, bool IsDialog = true, string TitleFormatString = null, WindowStartupLocation WindowStartupLocation = WindowStartupLocation.CenterOwner)
         {
             this.View = View;
             this.WindowStartupLocation = WindowStartupLocation;
             this.Style = Style;
+            this.TitleFormatString = TitleFormatString;
             this.IsDialog = IsDialog;
         }
         public Client.PC.Interfaces.IView View { get; set; }
         public WindowStartupLocation WindowStartupLocation { get; set; }
         public string Style { get; set; }
+        public string TitleFormatString { get; set; }
         public bool IsDialog { get; set; }
         public CreateViewCallBack CallBack { get; set; }
     }
@@ -46,7 +48,7 @@ namespace FengSharp.OneCardAccess.Core
         public T EditMessage { get; set; }
     }
 
-    public class LoginTimeOutEvent : SenderEvent<LoginTimeOutEventArgs>  { }
+    public class LoginTimeOutEvent : SenderEvent<LoginTimeOutEventArgs> { }
     public class LoginTimeOutEventArgs : NullEventArgs
     {
         public LoginTimeOutEventArgs(LoginTimeOutException loginTimeOutException)

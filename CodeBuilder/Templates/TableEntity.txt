@@ -3,39 +3,27 @@ using FengSharp.OneCardAccess.Common;
 namespace FengSharp.OneCardAccess.TEntity
 {
 	/// <summary>
-	/// 产品表
+	/// 商品表
 	/// </summary>
-	public class T_Product
+	public class T_Commodity
 	{
+		/// <summary>
+		/// 商品Id
+		/// </summary>
+		[DataBaseKey(DataBaseKeyType.Guid)]
+		public string CommodityId { get; set; }
+		/// <summary>
+		/// 商品编号
+		/// </summary>
+		public string CommodityNo { get; set; }
 		/// <summary>
 		/// 
 		/// </summary>
-		[DataBaseKey(DataBaseKeyType.Guid)]
-		public string ProductId { get; set; }
-		/// <summary>
-		/// 产品编号
-		/// </summary>
-		public string ProductNo { get; set; }
-		/// <summary>
-		/// 商品名称
-		/// </summary>
-		public string ProductName { get; set; }
-		/// <summary>
-		/// 商品名称(英文)
-		/// </summary>
-		public string ProductName1 { get; set; }
-		/// <summary>
-		/// 规格型号
-		/// </summary>
-		public string Spec { get; set; }
-		/// <summary>
-		/// 规格型号(英文)
-		/// </summary>
-		public string Spec1 { get; set; }
+		public string CommodityName { get; set; }
 		/// <summary>
 		/// 产品大图
 		/// </summary>
-		public string ProductImage { get; set; }
+		public string CommodityImage { get; set; }
 		/// <summary>
 		/// 计量单位
 		/// </summary>
@@ -53,6 +41,10 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// </summary>
 		public short ProductType { get; set; }
 		/// <summary>
+		/// 货位号
+		/// </summary>
+		public string GoodCode { get; set; }
+		/// <summary>
 		/// 证件类型（a证，b证）
 		/// </summary>
 		public short CertType { get; set; }
@@ -60,6 +52,14 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// 产品注册证Id
 		/// </summary>
 		public string RegisterId { get; set; }
+		/// <summary>
+		/// 图纸Id
+		/// </summary>
+		public string DrawingId { get; set; }
+		/// <summary>
+		/// 数量模式（0，通用模式，1严格管理序列号，2严格管理批号）
+		/// </summary>
+		public short QtyMode { get; set; }
 		/// <summary>
 		/// 备注1
 		/// </summary>
@@ -76,6 +76,22 @@ namespace FengSharp.OneCardAccess.TEntity
 		/// 备注4
 		/// </summary>
 		public string Remark4 { get; set; }
+		/// <summary>
+		/// 备注5
+		/// </summary>
+		public string Remark5 { get; set; }
+		/// <summary>
+		/// 备注6
+		/// </summary>
+		public string Remark6 { get; set; }
+		/// <summary>
+		/// 备注7
+		/// </summary>
+		public string Remark7 { get; set; }
+		/// <summary>
+		/// 备注8
+		/// </summary>
+		public string Remark8 { get; set; }
 		/// <summary>
 		/// 树编号
 		/// </summary>

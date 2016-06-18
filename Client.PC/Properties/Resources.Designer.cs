@@ -412,6 +412,222 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 证件类型 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_CertType {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_CertType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品图片 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_CommodityImage {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_CommodityImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 商品名称 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_CommodityName {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_CommodityName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 商品编号 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_CommodityNo {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_CommodityNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_CreateDate {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_CreateDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 创建人 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Creater {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 图纸Id 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_DrawingId {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_DrawingId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 货位号 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_GoodCode {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_GoodCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改日期 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_LastModifyDate {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_LastModifyDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 最后更改人 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_LastModifyer {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_LastModifyer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 材料标识 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Material {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Material", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 包装数量 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_PackQty {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_PackQty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品类型 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_ProductType {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_ProductType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 数量模式 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_QtyMode {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_QtyMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 产品注册证Id 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_RegisterId {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_RegisterId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注1 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark1 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注2 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark2 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注3 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark3 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注4 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark4 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注5 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark5 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注6 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark6 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注7 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark7 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 备注8 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Remark8 {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Remark8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 计量单位 的本地化字符串。
+        /// </summary>
+        public static string Entity_Commodity_Unit {
+            get {
+                return ResourceManager.GetString("Entity_Commodity_Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 类别号 的本地化字符串。
         /// </summary>
         public static string Entity_P_CRTemp_CateNo {
@@ -1375,6 +1591,15 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 商品信息 的本地化字符串。
+        /// </summary>
+        public static string Menu_Commodity {
+            get {
+                return ResourceManager.GetString("Menu_Commodity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 产品检验报告模板 的本地化字符串。
         /// </summary>
         public static string Menu_P_CRTemp {
@@ -1573,6 +1798,24 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         }
         
         /// <summary>
+        ///   查找类似 商品信息 的本地化字符串。
+        /// </summary>
+        public static string View_CommodityCollectionView_Title {
+            get {
+                return ResourceManager.GetString("View_CommodityCollectionView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 商品信息 的本地化字符串。
+        /// </summary>
+        public static string View_CommodityView_Title {
+            get {
+                return ResourceManager.GetString("View_CommodityView_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 取消 的本地化字符串。
         /// </summary>
         public static string View_LoginView_btnCancel_Content {
@@ -1668,15 +1911,6 @@ namespace FengSharp.OneCardAccess.Client.PC.Properties {
         public static string View_ProductView_Title {
             get {
                 return ResourceManager.GetString("View_ProductView_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 产品信息 的本地化字符串。
-        /// </summary>
-        public static string View_ProuductView_Title {
-            get {
-                return ResourceManager.GetString("View_ProuductView_Title", resourceCulture);
             }
         }
         

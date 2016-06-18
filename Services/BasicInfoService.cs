@@ -616,10 +616,6 @@ namespace FengSharp.OneCardAccess.Services
         }
         #endregion
         #region Product
-        public List<FirstProductEntity> GetFirstProductEntitys()
-        {
-            return this.GetEntitys<FirstProductEntity>();
-        }
 
         public void DeleteProductEntitys(List<ProductEntity> ProductEntitys)
         {
@@ -740,7 +736,129 @@ namespace FengSharp.OneCardAccess.Services
             return this.GetTreeEntitys<FirstProductEntity>(treeParentNo);
         }
         #endregion
+        #region Commodity
+
+        public void DeleteCommodityEntitys(List<CommodityEntity> CommodityEntitys)
+        {
+            UseTran((tran) =>
+            {
+                foreach (var entity in CommodityEntitys)
+                {
+                    var dbentity = new T_Commodity();
+                    dbentity.CopyValueFrom(entity);
+                    int ReturnValue = 0;
+                    base.DeleteEntity(dbentity, ref ReturnValue, tran);
+                    switch (ReturnValue)
+                    {
+                        default:
+                            throw new Exception(Properties.Resources.Error_UnHandleException);
+                        case 0:
+                            break;
+                        case -1:
+                            throw new BusinessException(string.Format(Properties.Resources.Error_ObjIsNotExist,
+                                string.Format("{0},{1}", entity.CommodityNo, entity.CommodityName)));
+                    }
+                }
+            });
+        }
+
+        public FirstCommodityEntity GetFirstCommodityEntityById(string CommodityId)
+        {
+            return this.FindById<FirstCommodityEntity>(new FirstCommodityEntity()
+            {
+                CommodityId = CommodityId
+            });
+        }
+
+        public string SaveCommodityEntity(FirstCommodityEntity entity)
+        {
+            return UseTran((tran) =>
+            {
+                var dbCommodityentity = new T_Commodity();
+                dbCommodityentity.CopyValueFrom(entity);
+                if (string.IsNullOrWhiteSpace(entity.CommodityId) || entity.RegisterId.Length != 36)
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.CommodityNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.CommodityName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Commodity");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "CreateEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, null);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.CommodityNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    dbCommodityentity.LastModifyId = dbCommodityentity.CreateId = (string)Session.Current.SessionClientId;
+                    dbCommodityentity = CreateEntity(dbCommodityentity, tran, CreateEntityUnCreateFileds);
+                    result = this.SaveEntityFlow(dbCommodityentity, "CreateCommodityEntity", tran);
+                    if (result != 1)
+                    {
+                        if (result == -1)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherNotExist);
+                        }
+                        if (result == -2)
+                        {
+                            throw new BusinessException(Properties.Resources.Error_FatherIsUsingCanNotChild);
+                        }
+                        throw new BusinessException(string.Format(Properties.Resources.Error_AddFailed, dbCommodityentity.CommodityName));
+                    }
+                }
+                else
+                {
+                    #region 服务端验证
+                    if (string.IsNullOrWhiteSpace(entity.CommodityNo))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoCanNotEmpty);
+                    }
+                    if (string.IsNullOrWhiteSpace(entity.CommodityName))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_RegisterNameCanNotEmpty);
+                    }
+
+                    DbCommand cmd = this.Database.GetStoredProcCommand("P_Verify_Commodity");
+                    Database.AddInParameter(cmd, "cMode", DbType.String, "ModifyEntity");
+                    Database.AddInParameter(cmd, "EntityId", DbType.String, entity.CommodityName);
+                    Database.AddInParameter(cmd, "EntityNo", DbType.String, entity.CommodityNo);
+                    Database.AddReturnParameter(cmd, "ReturnValue", DbType.Int32);
+                    this.Database.ExecuteNonQuery(cmd);
+                    int result = (int)Database.GetParameterValue(cmd, "ReturnValue");
+                    if (result == -1)
+                    {
+                        throw new BusinessException(Properties.Resources.Error_NoIsExist);
+                    }
+                    #endregion
+                    dbCommodityentity.LastModifyId = (string)Session.Current.SessionClientId;
+                    dbCommodityentity.LastModifyDate = System.DateTime.Now;
+                    if (!ModifyEntity(dbCommodityentity, tran, ModifyEntityUnChangedFileds))
+                    {
+                        throw new BusinessException(Properties.Resources.Error_SaveFailed);
+                    }
+                }
+                return dbCommodityentity.RegisterId;
+            });
+        }
+
+        public List<FirstCommodityEntity> GetFirstCommodityTreeEntitysByTreeParentNo(string treeParentNo)
+        {
+            //new FirstCommodityEntity().TreeParentNo
+            return this.GetTreeEntitys<FirstCommodityEntity>(treeParentNo);
+        }
+        #endregion
         #region newmethods
         #endregion
+
     }
 }

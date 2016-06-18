@@ -1,30 +1,34 @@
 ﻿
 
-Entity_Product_ProductNo	产品编号
-Entity_Product_ProductName	商品名称
-Entity_Product_ProductName1	商品名称(英文)
-Entity_Product_Spec	规格型号
-Entity_Product_Spec1	规格型号(英文)
-Entity_Product_ProductImage	产品大图
-Entity_Product_Unit	计量单位
-Entity_Product_Material	材料标识
-Entity_Product_PackQty	包装数量
-Entity_Product_ProductType	产品类型（成品，零部件）
-Entity_Product_CertType	证件类型（a证，b证）
-Entity_Product_RegisterId	产品注册证Id
-Entity_Product_Remark1	备注1
-Entity_Product_Remark2	备注2
-Entity_Product_Remark3	备注3
-Entity_Product_Remark4	备注4
-Entity_Product_TreeNo	树编号
-Entity_Product_TreeParentNo	父亲树编号
-Entity_Product_TreePath	树路径
-Entity_Product_TreeSon	儿子数量
-Entity_Product_SkuSon	Sku儿子数量
-Entity_Product_Creater	创建人
-Entity_Product_CreateDate	创建日期
-Entity_Product_LastModifyer	最后更改人
-Entity_Product_LastModifyDate	最后更改日期
+Entity_Commodity_CommodityNo	商品编号
+Entity_Commodity_CommodityName	
+Entity_Commodity_CommodityImage	产品大图
+Entity_Commodity_Unit	计量单位
+Entity_Commodity_Material	材料标识
+Entity_Commodity_PackQty	包装数量
+Entity_Commodity_ProductType	产品类型（成品，零部件）
+Entity_Commodity_GoodCode	货位号
+Entity_Commodity_CertType	证件类型（a证，b证）
+Entity_Commodity_RegisterId	产品注册证Id
+Entity_Commodity_DrawingId	图纸Id
+Entity_Commodity_QtyMode	数量模式（0，通用模式，1严格管理序列号，2严格管理批号）
+Entity_Commodity_Remark1	备注1
+Entity_Commodity_Remark2	备注2
+Entity_Commodity_Remark3	备注3
+Entity_Commodity_Remark4	备注4
+Entity_Commodity_Remark5	备注5
+Entity_Commodity_Remark6	备注6
+Entity_Commodity_Remark7	备注7
+Entity_Commodity_Remark8	备注8
+Entity_Commodity_TreeNo	树编号
+Entity_Commodity_TreeParentNo	父亲树编号
+Entity_Commodity_TreePath	树路径
+Entity_Commodity_TreeSon	儿子数量
+Entity_Commodity_SkuSon	Sku儿子数量
+Entity_Commodity_Creater	创建人
+Entity_Commodity_CreateDate	创建日期
+Entity_Commodity_LastModifyer	最后更改人
+Entity_Commodity_LastModifyDate	最后更改日期
 
 
 

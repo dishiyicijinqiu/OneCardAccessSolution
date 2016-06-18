@@ -130,6 +130,7 @@
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Interfaces\IAttachmentDir.cs" />
+    <Compile Include="Interfaces\ICommodityView.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
     <Compile Include="Interfaces\IPermissionSetView.cs" />
@@ -173,6 +174,8 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\AttachmentDirCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\AttachmentDirViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\CommodityCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\CommodityViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\ProductCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\ProductViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
@@ -198,6 +201,12 @@
     </Compile>
     <Compile Include="View\BasicInfo\AttachmentDirView.xaml.cs">
       <DependentUpon>AttachmentDirView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\CommodityCollectionView.xaml.cs">
+      <DependentUpon>CommodityCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\CommodityView.xaml.cs">
+      <DependentUpon>CommodityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BasicInfo\ProductCollectionView.xaml.cs">
       <DependentUpon>ProductCollectionView.xaml</DependentUpon>
@@ -291,6 +300,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\BasicInfo\AttachmentDirView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\CommodityCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\CommodityView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

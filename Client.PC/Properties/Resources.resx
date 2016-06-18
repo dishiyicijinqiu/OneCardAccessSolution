@@ -681,9 +681,6 @@
   <data name="View_ProductView_Title" xml:space="preserve">
     <value>产品信息</value>
   </data>
-  <data name="View_ProuductView_Title" xml:space="preserve">
-    <value>产品信息</value>
-  </data>
   <data name="Entity_Product_RegisterId" xml:space="preserve">
     <value>产品注册证</value>
   </data>
@@ -692,5 +689,86 @@
   </data>
   <data name="View_PermissionSetView_Title" xml:space="preserve">
     <value>角色权限分配</value>
+  </data>
+  <data name="Entity_Commodity_CertType" xml:space="preserve">
+    <value>证件类型</value>
+  </data>
+  <data name="Entity_Commodity_CommodityImage" xml:space="preserve">
+    <value>产品图片</value>
+  </data>
+  <data name="Entity_Commodity_CommodityName" xml:space="preserve">
+    <value>商品名称</value>
+  </data>
+  <data name="Entity_Commodity_CommodityNo" xml:space="preserve">
+    <value>商品编号</value>
+  </data>
+  <data name="Entity_Commodity_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Commodity_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Commodity_DrawingId" xml:space="preserve">
+    <value>图纸Id</value>
+  </data>
+  <data name="Entity_Commodity_GoodCode" xml:space="preserve">
+    <value>货位号</value>
+  </data>
+  <data name="Entity_Commodity_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Commodity_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Commodity_Material" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_Commodity_PackQty" xml:space="preserve">
+    <value>包装数量</value>
+  </data>
+  <data name="Entity_Commodity_ProductType" xml:space="preserve">
+    <value>产品类型</value>
+  </data>
+  <data name="Entity_Commodity_QtyMode" xml:space="preserve">
+    <value>数量模式</value>
+  </data>
+  <data name="Entity_Commodity_RegisterId" xml:space="preserve">
+    <value>产品注册证Id</value>
+  </data>
+  <data name="Entity_Commodity_Remark1" xml:space="preserve">
+    <value>备注1</value>
+  </data>
+  <data name="Entity_Commodity_Remark2" xml:space="preserve">
+    <value>备注2</value>
+  </data>
+  <data name="Entity_Commodity_Remark3" xml:space="preserve">
+    <value>备注3</value>
+  </data>
+  <data name="Entity_Commodity_Remark4" xml:space="preserve">
+    <value>备注4</value>
+  </data>
+  <data name="Entity_Commodity_Remark5" xml:space="preserve">
+    <value>备注5</value>
+  </data>
+  <data name="Entity_Commodity_Remark6" xml:space="preserve">
+    <value>备注6</value>
+  </data>
+  <data name="Entity_Commodity_Remark7" xml:space="preserve">
+    <value>备注7</value>
+  </data>
+  <data name="Entity_Commodity_Remark8" xml:space="preserve">
+    <value>备注8</value>
+  </data>
+  <data name="Entity_Commodity_Unit" xml:space="preserve">
+    <value>计量单位</value>
+  </data>
+  <data name="View_CommodityCollectionView_Title" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="View_CommodityView_Title" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="Menu_Commodity" xml:space="preserve">
+    <value>商品信息</value>
   </data>
 </root>

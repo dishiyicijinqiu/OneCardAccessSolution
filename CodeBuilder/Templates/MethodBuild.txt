@@ -1,32 +1,37 @@
 ﻿
---产品表
-select p.ProductId,p.ProductNo,p.ProductName,p.ProductName1,p.Spec,p.Spec1,p.ProductImage,p.Unit,p.Material,p.PackQty,
-	 p.ProductType,p.CertType,p.RegisterId,p.Remark1,p.Remark2,p.Remark3,p.Remark4,p.TreeNo,p.TreeParentNo,p.TreePath,
-	 p.TreeSon,p.SkuSon,p.CreateId,p.CreateDate,p.LastModifyId,p.LastModifyDate,p.Deleted
-from T_Product p
-where ProductId=ProductId
+--商品表
+select c.CommodityId,c.CommodityNo,c.CommodityName,c.CommodityImage,c.Unit,c.Material,c.PackQty,c.ProductType,c.GoodCode,
+	 c.CertType,c.RegisterId,c.DrawingId,c.QtyMode,c.Remark1,c.Remark2,c.Remark3,c.Remark4,c.Remark5,c.Remark6,c.Remark7,
+	 c.Remark8,c.TreeNo,c.TreeParentNo,c.TreePath,c.TreeSon,c.SkuSon,c.CreateId,c.CreateDate,c.LastModifyId,c.LastModifyDate,
+	 c.Deleted
+from T_Commodity c
+where CommodityId=CommodityId
 
-ProductId,ProductNo,ProductName,ProductName1,Spec,Spec1,ProductImage,Unit,Material,PackQty,ProductType,CertType,RegisterId,Remark1,Remark2,Remark3,Remark4,TreeNo,TreeParentNo,TreePath,TreeSon,SkuSon,CreateId,CreateDate,LastModifyId,LastModifyDate,Deleted,
-@ProductId,@ProductNo,@ProductName,@ProductName1,@Spec,@Spec1,@ProductImage,@Unit,@Material,@PackQty,@ProductType,@CertType,@RegisterId,@Remark1,@Remark2,@Remark3,@Remark4,@TreeNo,@TreeParentNo,@TreePath,@TreeSon,@SkuSon,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Deleted,
+CommodityId,CommodityNo,CommodityName,CommodityImage,Unit,Material,PackQty,ProductType,GoodCode,CertType,RegisterId,DrawingId,QtyMode,Remark1,Remark2,Remark3,Remark4,Remark5,Remark6,Remark7,Remark8,TreeNo,TreeParentNo,TreePath,TreeSon,SkuSon,CreateId,CreateDate,LastModifyId,LastModifyDate,Deleted,
+@CommodityId,@CommodityNo,@CommodityName,@CommodityImage,@Unit,@Material,@PackQty,@ProductType,@GoodCode,@CertType,@RegisterId,@DrawingId,@QtyMode,@Remark1,@Remark2,@Remark3,@Remark4,@Remark5,@Remark6,@Remark7,@Remark8,@TreeNo,@TreeParentNo,@TreePath,@TreeSon,@SkuSon,@CreateId,@CreateDate,@LastModifyId,@LastModifyDate,@Deleted,
 
 
-sbSql.Append("ProductId=@ProductId, ");
-sbSql.Append("ProductNo=@ProductNo, ");
-sbSql.Append("ProductName=@ProductName, ");
-sbSql.Append("ProductName1=@ProductName1, ");
-sbSql.Append("Spec=@Spec, ");
-sbSql.Append("Spec1=@Spec1, ");
-sbSql.Append("ProductImage=@ProductImage, ");
+sbSql.Append("CommodityId=@CommodityId, ");
+sbSql.Append("CommodityNo=@CommodityNo, ");
+sbSql.Append("CommodityName=@CommodityName, ");
+sbSql.Append("CommodityImage=@CommodityImage, ");
 sbSql.Append("Unit=@Unit, ");
 sbSql.Append("Material=@Material, ");
 sbSql.Append("PackQty=@PackQty, ");
 sbSql.Append("ProductType=@ProductType, ");
+sbSql.Append("GoodCode=@GoodCode, ");
 sbSql.Append("CertType=@CertType, ");
 sbSql.Append("RegisterId=@RegisterId, ");
+sbSql.Append("DrawingId=@DrawingId, ");
+sbSql.Append("QtyMode=@QtyMode, ");
 sbSql.Append("Remark1=@Remark1, ");
 sbSql.Append("Remark2=@Remark2, ");
 sbSql.Append("Remark3=@Remark3, ");
 sbSql.Append("Remark4=@Remark4, ");
+sbSql.Append("Remark5=@Remark5, ");
+sbSql.Append("Remark6=@Remark6, ");
+sbSql.Append("Remark7=@Remark7, ");
+sbSql.Append("Remark8=@Remark8, ");
 sbSql.Append("TreeNo=@TreeNo, ");
 sbSql.Append("TreeParentNo=@TreeParentNo, ");
 sbSql.Append("TreePath=@TreePath, ");
@@ -38,23 +43,27 @@ sbSql.Append("LastModifyId=@LastModifyId, ");
 sbSql.Append("LastModifyDate=@LastModifyDate, ");
 sbSql.Append("Deleted=@Deleted, ");
 
-Database.AddInParameter(cmd, "ProductId", DbType.string, model.ProductId);
-Database.AddInParameter(cmd, "ProductNo", DbType.string, model.ProductNo);
-Database.AddInParameter(cmd, "ProductName", DbType.string, model.ProductName);
-Database.AddInParameter(cmd, "ProductName1", DbType.string, model.ProductName1);
-Database.AddInParameter(cmd, "Spec", DbType.string, model.Spec);
-Database.AddInParameter(cmd, "Spec1", DbType.string, model.Spec1);
-Database.AddInParameter(cmd, "ProductImage", DbType.string, model.ProductImage);
+Database.AddInParameter(cmd, "CommodityId", DbType.string, model.CommodityId);
+Database.AddInParameter(cmd, "CommodityNo", DbType.string, model.CommodityNo);
+Database.AddInParameter(cmd, "CommodityName", DbType.string, model.CommodityName);
+Database.AddInParameter(cmd, "CommodityImage", DbType.string, model.CommodityImage);
 Database.AddInParameter(cmd, "Unit", DbType.string, model.Unit);
 Database.AddInParameter(cmd, "Material", DbType.string, model.Material);
 Database.AddInParameter(cmd, "PackQty", DbType.int, model.PackQty);
 Database.AddInParameter(cmd, "ProductType", DbType.short, model.ProductType);
+Database.AddInParameter(cmd, "GoodCode", DbType.string, model.GoodCode);
 Database.AddInParameter(cmd, "CertType", DbType.short, model.CertType);
 Database.AddInParameter(cmd, "RegisterId", DbType.string, model.RegisterId);
+Database.AddInParameter(cmd, "DrawingId", DbType.string, model.DrawingId);
+Database.AddInParameter(cmd, "QtyMode", DbType.short, model.QtyMode);
 Database.AddInParameter(cmd, "Remark1", DbType.string, model.Remark1);
 Database.AddInParameter(cmd, "Remark2", DbType.string, model.Remark2);
 Database.AddInParameter(cmd, "Remark3", DbType.string, model.Remark3);
 Database.AddInParameter(cmd, "Remark4", DbType.string, model.Remark4);
+Database.AddInParameter(cmd, "Remark5", DbType.string, model.Remark5);
+Database.AddInParameter(cmd, "Remark6", DbType.string, model.Remark6);
+Database.AddInParameter(cmd, "Remark7", DbType.string, model.Remark7);
+Database.AddInParameter(cmd, "Remark8", DbType.string, model.Remark8);
 Database.AddInParameter(cmd, "TreeNo", DbType.string, model.TreeNo);
 Database.AddInParameter(cmd, "TreeParentNo", DbType.string, model.TreeParentNo);
 Database.AddInParameter(cmd, "TreePath", DbType.string, model.TreePath);
@@ -67,171 +76,138 @@ Database.AddInParameter(cmd, "LastModifyDate", DbType.DateTime, model.LastModify
 Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
 
 
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductNo}">
-		<dxe:TextEdit EditValue="{Binding ProductNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityNo}">
+		<dxe:TextEdit EditValue="{Binding CommodityNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductName}">
-		<dxe:TextEdit EditValue="{Binding ProductName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityName}">
+		<dxe:TextEdit EditValue="{Binding CommodityName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductName1}">
-		<dxe:TextEdit EditValue="{Binding ProductName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityImage}">
+		<dxe:TextEdit EditValue="{Binding CommodityImage, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Spec}">
-		<dxe:TextEdit EditValue="{Binding Spec, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Spec1}">
-		<dxe:TextEdit EditValue="{Binding Spec1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductImage}">
-		<dxe:TextEdit EditValue="{Binding ProductImage, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
-	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Unit}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Unit}">
 		<dxe:TextEdit EditValue="{Binding Unit, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Material}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Material}">
 		<dxe:TextEdit EditValue="{Binding Material, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_PackQty}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_PackQty}">
 		<dxe:TextEdit EditValue="{Binding PackQty, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_ProductType}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_ProductType}">
 		<dxe:TextEdit EditValue="{Binding ProductType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_CertType}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_GoodCode}">
+		<dxe:TextEdit EditValue="{Binding GoodCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CertType}">
 		<dxe:TextEdit EditValue="{Binding CertType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_RegisterId}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_RegisterId}">
 		<dxe:TextEdit EditValue="{Binding RegisterId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark1}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_DrawingId}">
+		<dxe:TextEdit EditValue="{Binding DrawingId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_QtyMode}">
+		<dxe:TextEdit EditValue="{Binding QtyMode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark1}">
 		<dxe:TextEdit EditValue="{Binding Remark1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark2}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark2}">
 		<dxe:TextEdit EditValue="{Binding Remark2, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark3}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark3}">
 		<dxe:TextEdit EditValue="{Binding Remark3, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Remark4}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark4}">
 		<dxe:TextEdit EditValue="{Binding Remark4, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeNo}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark5}">
+		<dxe:TextEdit EditValue="{Binding Remark5, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark6}">
+		<dxe:TextEdit EditValue="{Binding Remark6, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark7}">
+		<dxe:TextEdit EditValue="{Binding Remark7, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark8}">
+		<dxe:TextEdit EditValue="{Binding Remark8, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+	</dxlc:LayoutItem>
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_TreeNo}">
 		<dxe:TextEdit EditValue="{Binding TreeNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeParentNo}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_TreeParentNo}">
 		<dxe:TextEdit EditValue="{Binding TreeParentNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreePath}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_TreePath}">
 		<dxe:TextEdit EditValue="{Binding TreePath, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_TreeSon}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_TreeSon}">
 		<dxe:TextEdit EditValue="{Binding TreeSon, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_SkuSon}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_SkuSon}">
 		<dxe:TextEdit EditValue="{Binding SkuSon, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_Creater}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Creater}">
 		<dxe:TextEdit EditValue="{Binding Creater}"  Style="{StaticResource teCreateDate}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_CreateDate}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CreateDate}">
 		<dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_LastModifyer}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_LastModifyer}">
 		<dxe:TextEdit EditValue="{Binding LastModifyer}" Style="{StaticResource teLastModifyDate}"/>
 	</dxlc:LayoutItem>
-	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Product_LastModifyDate}">
+	<dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_LastModifyDate}">
 		<dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 	</dxlc:LayoutItem>
 
 
 
-		public string ProductNo
+		public string CommodityNo
         {
             get
             {
-                return Entity.ProductNo;
+                return Entity.CommodityNo;
             }
             set
             {
-                if (Entity.ProductNo != value)
+                if (Entity.CommodityNo != value)
                 {
-                    Entity.ProductNo = value;
-                    RaisePropertyChanged("ProductNo");
+                    Entity.CommodityNo = value;
+                    RaisePropertyChanged("CommodityNo");
                 }
             }
         }
-		public string ProductName
+		public string CommodityName
         {
             get
             {
-                return Entity.ProductName;
+                return Entity.CommodityName;
             }
             set
             {
-                if (Entity.ProductName != value)
+                if (Entity.CommodityName != value)
                 {
-                    Entity.ProductName = value;
-                    RaisePropertyChanged("ProductName");
+                    Entity.CommodityName = value;
+                    RaisePropertyChanged("CommodityName");
                 }
             }
         }
-		public string ProductName1
+		public string CommodityImage
         {
             get
             {
-                return Entity.ProductName1;
+                return Entity.CommodityImage;
             }
             set
             {
-                if (Entity.ProductName1 != value)
+                if (Entity.CommodityImage != value)
                 {
-                    Entity.ProductName1 = value;
-                    RaisePropertyChanged("ProductName1");
-                }
-            }
-        }
-		public string Spec
-        {
-            get
-            {
-                return Entity.Spec;
-            }
-            set
-            {
-                if (Entity.Spec != value)
-                {
-                    Entity.Spec = value;
-                    RaisePropertyChanged("Spec");
-                }
-            }
-        }
-		public string Spec1
-        {
-            get
-            {
-                return Entity.Spec1;
-            }
-            set
-            {
-                if (Entity.Spec1 != value)
-                {
-                    Entity.Spec1 = value;
-                    RaisePropertyChanged("Spec1");
-                }
-            }
-        }
-		public string ProductImage
-        {
-            get
-            {
-                return Entity.ProductImage;
-            }
-            set
-            {
-                if (Entity.ProductImage != value)
-                {
-                    Entity.ProductImage = value;
-                    RaisePropertyChanged("ProductImage");
+                    Entity.CommodityImage = value;
+                    RaisePropertyChanged("CommodityImage");
                 }
             }
         }
@@ -295,6 +271,21 @@ Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
                 }
             }
         }
+		public string GoodCode
+        {
+            get
+            {
+                return Entity.GoodCode;
+            }
+            set
+            {
+                if (Entity.GoodCode != value)
+                {
+                    Entity.GoodCode = value;
+                    RaisePropertyChanged("GoodCode");
+                }
+            }
+        }
 		public short CertType
         {
             get
@@ -322,6 +313,36 @@ Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
                 {
                     Entity.RegisterId = value;
                     RaisePropertyChanged("RegisterId");
+                }
+            }
+        }
+		public string DrawingId
+        {
+            get
+            {
+                return Entity.DrawingId;
+            }
+            set
+            {
+                if (Entity.DrawingId != value)
+                {
+                    Entity.DrawingId = value;
+                    RaisePropertyChanged("DrawingId");
+                }
+            }
+        }
+		public short QtyMode
+        {
+            get
+            {
+                return Entity.QtyMode;
+            }
+            set
+            {
+                if (Entity.QtyMode != value)
+                {
+                    Entity.QtyMode = value;
+                    RaisePropertyChanged("QtyMode");
                 }
             }
         }
@@ -382,6 +403,66 @@ Database.AddInParameter(cmd, "Deleted", DbType.bool, model.Deleted);
                 {
                     Entity.Remark4 = value;
                     RaisePropertyChanged("Remark4");
+                }
+            }
+        }
+		public string Remark5
+        {
+            get
+            {
+                return Entity.Remark5;
+            }
+            set
+            {
+                if (Entity.Remark5 != value)
+                {
+                    Entity.Remark5 = value;
+                    RaisePropertyChanged("Remark5");
+                }
+            }
+        }
+		public string Remark6
+        {
+            get
+            {
+                return Entity.Remark6;
+            }
+            set
+            {
+                if (Entity.Remark6 != value)
+                {
+                    Entity.Remark6 = value;
+                    RaisePropertyChanged("Remark6");
+                }
+            }
+        }
+		public string Remark7
+        {
+            get
+            {
+                return Entity.Remark7;
+            }
+            set
+            {
+                if (Entity.Remark7 != value)
+                {
+                    Entity.Remark7 = value;
+                    RaisePropertyChanged("Remark7");
+                }
+            }
+        }
+		public string Remark8
+        {
+            get
+            {
+                return Entity.Remark8;
+            }
+            set
+            {
+                if (Entity.Remark8 != value)
+                {
+                    Entity.Remark8 = value;
+                    RaisePropertyChanged("Remark8");
                 }
             }
         }

@@ -45,8 +45,6 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         #endregion
         #region Product
         [OperationContract]
-        List<FirstProductEntity> GetFirstProductEntitys();
-        [OperationContract]
         void DeleteProductEntitys(List<ProductEntity> list);
         [OperationContract]
         FirstProductEntity GetFirstProductEntityById(string ProductId);
@@ -54,6 +52,17 @@ namespace FengSharp.OneCardAccess.ServiceInterfaces
         string SaveProductEntity(FirstProductEntity entity);
         [OperationContract]
         List<FirstProductEntity> GetFirstProductTreeEntitysByTreeParentNo(string treeParentNo);
+        #endregion
+
+        #region Commodity
+        [OperationContract]
+        void DeleteCommodityEntitys(List<CommodityEntity> list);
+        [OperationContract]
+        FirstCommodityEntity GetFirstCommodityEntityById(string CommodityId);
+        [OperationContract]
+        string SaveCommodityEntity(FirstCommodityEntity entity);
+        [OperationContract]
+        List<FirstCommodityEntity> GetFirstCommodityTreeEntitysByTreeParentNo(string treeParentNo);
         #endregion
     }
 

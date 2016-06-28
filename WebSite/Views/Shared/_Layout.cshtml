@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
     <title>@ViewBag.Title</title>
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/jquery-ui.min.css")" rel="stylesheet" type="text/css" />
     @Html.DevExpress().GetStyleSheets(
     new StyleSheet { ExtensionSuite = ExtensionSuite.Icons },
     new StyleSheet { ExtensionSuite = ExtensionSuite.NavigationAndLayout },
@@ -36,8 +37,9 @@
     new Script { ExtensionSuite = ExtensionSuite.Spreadsheet },
     new Script { ExtensionSuite = ExtensionSuite.SpellChecker }
 )
-
     <script type="text/javascript" src="@Url.Content("~/Scripts/OneCardAccess.js")">
+    </script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.10.3.min.js")">
     </script>
 </head>
 <body>

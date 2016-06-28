@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="FengSharp.OneCardAccess.WebSite.MvcApplication" Language="C#" %>

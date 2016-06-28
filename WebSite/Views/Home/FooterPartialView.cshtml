@@ -1,0 +1,18 @@
+@*<style type="text/css">
+    .dxeBase_Office2010Blue {
+        font: 1px Verdana, Geneva, sans-serif;
+    }
+</style>*@
+@*<div class="icp">
+    @Html.DevExpress().Label(settings =>
+{
+    settings.EncodeHtml = false;
+    settings.Text = Resources.SystemInfo_ICP;
+}).GetHtml()
+</div>*@
+<div class="copyright">
+    @Html.DevExpress().Label(settings =>
+{
+    settings.Text = Resources.SystemInfo_Copyright;
+}).GetHtml()
+</div>

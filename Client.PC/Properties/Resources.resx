@@ -771,4 +771,40 @@
   <data name="Menu_Commodity" xml:space="preserve">
     <value>商品信息</value>
   </data>
+  <data name="Entity_Commodity_RegisterName" xml:space="preserve">
+    <value>注册证名称</value>
+  </data>
+  <data name="Entity_Commodity_RegisterName1" xml:space="preserve">
+    <value>注册证名称(英文)</value>
+  </data>
+  <data name="Entity_Commodity_RegisterNo" xml:space="preserve">
+    <value>注册证编号</value>
+  </data>
+  <data name="Entity_Commodity_RegisterNo1" xml:space="preserve">
+    <value>注册证编号(英文)</value>
+  </data>
+  <data name="Entity_Commodity_StandardCode" xml:space="preserve">
+    <value>标准号</value>
+  </data>
+  <data name="Entity_Commodity_StandardCode1" xml:space="preserve">
+    <value>标准号(英文)</value>
+  </data>
+  <data name="Entity_Commodity_IsSale" xml:space="preserve">
+    <value>是否销售</value>
+  </data>
+  <data name="Entity_Commodity_SaleName" xml:space="preserve">
+    <value>销售名称</value>
+  </data>
+  <data name="Entity_Commodity_SalePrice" xml:space="preserve">
+    <value>销售价格</value>
+  </data>
+  <data name="Entity_Commodity_SaleRemark" xml:space="preserve">
+    <value>销售介绍</value>
+  </data>
+  <data name="View_CommodityView_WorkProcessSet" xml:space="preserve">
+    <value>工序设置</value>
+  </data>
+  <data name="View_CommodityView_SaleSet" xml:space="preserve">
+    <value>销售信息</value>
+  </data>
 </root>

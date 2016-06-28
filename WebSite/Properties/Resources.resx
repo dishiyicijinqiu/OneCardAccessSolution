@@ -1,0 +1,807 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="View_LoginView_btnCancel_Content" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="View_LoginView_btnLogin_Content" xml:space="preserve">
+    <value>登录</value>
+  </data>
+  <data name="SystemInfo_ICP" xml:space="preserve">
+    <value>ICP备案号:苏034334534</value>
+  </data>
+  <data name="SystemInfo_Copyright" xml:space="preserve">
+    <value>Copyright@2009 苏州市康力骨科器械有限公司 All Rights Reserved</value>
+  </data>
+  <data name="SystemInfo_SystemName" xml:space="preserve">
+    <value>一卡通管理系统</value>
+  </data>
+  <data name="CompanyRight_Title" xml:space="preserve">
+    <value>没有最好只有更好</value>
+  </data>
+  <data name="BarContent_CopyAdd" xml:space="preserve">
+    <value>复制新增</value>
+  </data>
+  <data name="BarContent_Delete" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="BarContent_Edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="Error_PassWordIsError" xml:space="preserve">
+    <value>密码错误</value>
+  </data>
+  <data name="View_MainWindow_Title" xml:space="preserve">
+    <value>一卡通管理系统</value>
+  </data>
+  <data name="Menu_Register" xml:space="preserve">
+    <value>注册证信息</value>
+  </data>
+  <data name="Menu_RibbonPageGroup_BasicInfo" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="Menu_RibbonPage_Navigate" xml:space="preserve">
+    <value>导航</value>
+  </data>
+  <data name="Error_Title" xml:space="preserve">
+    <value>错误提示</value>
+  </data>
+  <data name="Error_ParameterIsError" xml:space="preserve">
+    <value>参数错误</value>
+  </data>
+  <data name="View_LoginView_lblPassWord_Label" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="View_RegisterCollectionView_Title" xml:space="preserve">
+    <value>注册证信息</value>
+  </data>
+  <data name="BarContent_Return" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Error_UserIsLocked" xml:space="preserve">
+    <value>用户被锁定</value>
+  </data>
+  <data name="View_LoginView_lblUserNo_Label" xml:space="preserve">
+    <value>用户名</value>
+  </data>
+  <data name="Error_UserNotExist" xml:space="preserve">
+    <value>用户不存在</value>
+  </data>
+  <data name="View_LoginView_Title" xml:space="preserve">
+    <value>欢迎登录-一卡通系统</value>
+  </data>
+  <data name="Info_Title" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="Info_ConfirmToExit" xml:space="preserve">
+    <value>确实要退出吗？</value>
+  </data>
+  <data name="BarContent_Save" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="BarContent_SaveAndNew" xml:space="preserve">
+    <value>保存并继续</value>
+  </data>
+  <data name="BarContent_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="View_RegisterView_Title" xml:space="preserve">
+    <value>产品注册证编辑</value>
+  </data>
+  <data name="BarContent_Add" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="BarContent_Cate" xml:space="preserve">
+    <value>分类</value>
+  </data>
+  <data name="Info_SelectAtLeastOne" xml:space="preserve">
+    <value>至少选择一项</value>
+  </data>
+  <data name="Entity_Register_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Register_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Register_EndDate" xml:space="preserve">
+    <value>停用日期</value>
+  </data>
+  <data name="Entity_Register_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Register_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Register_RegisterNo" xml:space="preserve">
+    <value>注册证编号</value>
+  </data>
+  <data name="Entity_Register_RegisterNo1" xml:space="preserve">
+    <value>注册证编号(英文)</value>
+  </data>
+  <data name="Entity_Register_RegisterName" xml:space="preserve">
+    <value>注册证名称</value>
+  </data>
+  <data name="Entity_Register_RegisterName1" xml:space="preserve">
+    <value>注册证名称(英文)</value>
+  </data>
+  <data name="Entity_Register_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_Register_StandardCode" xml:space="preserve">
+    <value>标准号</value>
+  </data>
+  <data name="Entity_Register_StandardCode1" xml:space="preserve">
+    <value>标准号(英文)</value>
+  </data>
+  <data name="Entity_Register_StartDate" xml:space="preserve">
+    <value>启用日期</value>
+  </data>
+  <data name="Entity_Register_File_FileName" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="Entity_Register_File_FilePath" xml:space="preserve">
+    <value>保存路径</value>
+  </data>
+  <data name="Entity_Register_File_SortNo" xml:space="preserve">
+    <value>序号</value>
+  </data>
+  <data name="Error_SaveFiled" xml:space="preserve">
+    <value>保存失败</value>
+  </data>
+  <data name="Info_SaveSuccess" xml:space="preserve">
+    <value>保存成功</value>
+  </data>
+  <data name="BarContent_UpLoad" xml:space="preserve">
+    <value>上传</value>
+  </data>
+  <data name="View_RegisterView_rpgRegisterFile_Caption" xml:space="preserve">
+    <value>注册证附件操作</value>
+  </data>
+  <data name="BarContent_MoveDown" xml:space="preserve">
+    <value>下移</value>
+  </data>
+  <data name="BarContent_MoveUp" xml:space="preserve">
+    <value>上移</value>
+  </data>
+  <data name="View_RegisterView_lgRegisterFile_Header" xml:space="preserve">
+    <value>附件</value>
+  </data>
+  <data name="View_RegisterView_lgTemplate_Header" xml:space="preserve">
+    <value>检验报告模板</value>
+  </data>
+  <data name="View_RegisterView_rpgTemplate_Caption" xml:space="preserve">
+    <value>检验报告模板操作</value>
+  </data>
+  <data name="Error_ServerException" xml:space="preserve">
+    <value>服务内部出错</value>
+  </data>
+  <data name="Error_UnHandler" xml:space="preserve">
+    <value>未经处理的异常</value>
+  </data>
+  <data name="btn_Close" xml:space="preserve">
+    <value>关闭</value>
+  </data>
+  <data name="btn_CopyError" xml:space="preserve">
+    <value>复制错误</value>
+  </data>
+  <data name="Error_UnableSession" xml:space="preserve">
+    <value>无效的会话</value>
+  </data>
+  <data name="Error_ConnectionServerFailed" xml:space="preserve">
+    <value>连接服务器失败</value>
+  </data>
+  <data name="Error_UserIsEmpty" xml:space="preserve">
+    <value>用户名为空</value>
+  </data>
+  <data name="Error_LoginTimeOut" xml:space="preserve">
+    <value>登录超时</value>
+  </data>
+  <data name="Info_Loading" xml:space="preserve">
+    <value>加载中...</value>
+  </data>
+  <data name="Info_PleaseWait" xml:space="preserve">
+    <value>请稍后</value>
+  </data>
+  <data name="Info_DeleteSuccess" xml:space="preserve">
+    <value>删除成功</value>
+  </data>
+  <data name="View_P_CRTempView_Title" xml:space="preserve">
+    <value>产品检验报告模板</value>
+  </data>
+  <data name="Entity_P_CRTemp_CateNo" xml:space="preserve">
+    <value>类别号</value>
+  </data>
+  <data name="Entity_P_CRTemp_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_P_CRTemp_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_P_CRTemp_CRTempName" xml:space="preserve">
+    <value>模板名称</value>
+  </data>
+  <data name="Entity_P_CRTemp_CRTempPath" xml:space="preserve">
+    <value>路径</value>
+  </data>
+  <data name="Entity_P_CRTemp_IsEnable" xml:space="preserve">
+    <value>是否启用</value>
+  </data>
+  <data name="Entity_P_CRTemp_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_P_CRTemp_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_P_CRTemp_MaterIden" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_P_CRTemp_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Menu_P_CRTemp" xml:space="preserve">
+    <value>产品检验报告模板</value>
+  </data>
+  <data name="Info_NoNext" xml:space="preserve">
+    <value>没有下一条记录了</value>
+  </data>
+  <data name="Error_CommunicationException" xml:space="preserve">
+    <value>服务或客户端应用程序中的通信错误</value>
+  </data>
+  <data name="Info_ConfirmToDelete" xml:space="preserve">
+    <value>确实要删除吗？</value>
+  </data>
+  <data name="View_P_CRTempView_P_CRTempImage" xml:space="preserve">
+    <value>检验报告模板</value>
+  </data>
+  <data name="Error_UserConfigKey" xml:space="preserve">
+    <value>不正确的用户配置键</value>
+  </data>
+  <data name="Format_DateString" xml:space="preserve">
+    <value>yyyy年MM月dd日</value>
+  </data>
+  <data name="Format_TimeString" xml:space="preserve">
+    <value>yyyy年MM月dd日 HH:mm:ss</value>
+  </data>
+  <data name="Info_FileNotFound" xml:space="preserve">
+    <value>文件不存在</value>
+  </data>
+  <data name="Info_UploadSuccess" xml:space="preserve">
+    <value>上传成功</value>
+  </data>
+  <data name="BarContent_Confirm" xml:space="preserve">
+    <value>确定</value>
+  </data>
+  <data name="Entity_P_CRTemp_To_RegisterEntity_CRTempName" xml:space="preserve">
+    <value>模板名称</value>
+  </data>
+  <data name="Entity_P_CRTemp_To_RegisterEntity_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="View_UserGroupView_Title" xml:space="preserve">
+    <value>用户组编辑</value>
+  </data>
+  <data name="Menu_RibbonPageGroup_RBAC" xml:space="preserve">
+    <value>用户权限</value>
+  </data>
+  <data name="Menu_UserAndGroupManager" xml:space="preserve">
+    <value>用户组管理</value>
+  </data>
+  <data name="View_UserAndGroupManagerView_Title" xml:space="preserve">
+    <value>用户组管理</value>
+  </data>
+  <data name="Entity_UserGroup_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_UserGroup_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_UserGroup_IsLock" xml:space="preserve">
+    <value>锁定标识</value>
+  </data>
+  <data name="Entity_UserGroup_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_UserGroup_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_UserGroup_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_UserGroup_UserGroupName" xml:space="preserve">
+    <value>用户组名称</value>
+  </data>
+  <data name="Entity_UserGroup_UserGroupNo" xml:space="preserve">
+    <value>用户组编号</value>
+  </data>
+  <data name="Entity_UserInfo_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_UserInfo_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_UserInfo_IsLock" xml:space="preserve">
+    <value>锁定标识</value>
+  </data>
+  <data name="Entity_UserInfo_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_UserInfo_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_UserInfo_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_UserInfo_UserName" xml:space="preserve">
+    <value>用户姓名</value>
+  </data>
+  <data name="Entity_UserInfo_UserNo" xml:space="preserve">
+    <value>用户账号</value>
+  </data>
+  <data name="View_UserCollectionView_Title" xml:space="preserve">
+    <value>用户信息管理</value>
+  </data>
+  <data name="Entity_UserInfo_UserGroupName" xml:space="preserve">
+    <value>组名称</value>
+  </data>
+  <data name="Entity_UserInfo_UserGroupNo" xml:space="preserve">
+    <value>组编号</value>
+  </data>
+  <data name="Entity_UserInfo_PassWord" xml:space="preserve">
+    <value>密码</value>
+  </data>
+  <data name="View_UserGroupCollectionView_Title" xml:space="preserve">
+    <value>用户组</value>
+  </data>
+  <data name="Menu_UserCollectionView" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="Menu_UserGroupCollectionView" xml:space="preserve">
+    <value>用户组</value>
+  </data>
+  <data name="ToolBar_UserCollectionView_OP" xml:space="preserve">
+    <value>用户信息操作</value>
+  </data>
+  <data name="ToolBar_UserGroupCollectionView_OP" xml:space="preserve">
+    <value>用户组操作</value>
+  </data>
+  <data name="Entity_UserGroup_IsSuper" xml:space="preserve">
+    <value>超级管理组</value>
+  </data>
+  <data name="BarContent_AddChild" xml:space="preserve">
+    <value>新增子项</value>
+  </data>
+  <data name="Error_FatherCanNotEmpty" xml:space="preserve">
+    <value>父节点不可为空</value>
+  </data>
+  <data name="EmptyString" xml:space="preserve">
+    <value> </value>
+  </data>
+  <data name="View_UserView_Title" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="Info_ConfirmToMove" xml:space="preserve">
+    <value>确实要移动吗？</value>
+  </data>
+  <data name="View_ChangePassWordView_btnCancel_Content" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="View_ChangePassWordView_btnOK_Content" xml:space="preserve">
+    <value>保存</value>
+  </data>
+  <data name="View_ChangePassWordView_lblNewPassword_Label" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="View_ChangePassWordView_lblOldPassword_Label" xml:space="preserve">
+    <value>原密码</value>
+  </data>
+  <data name="View_ChangePassWordView_lblRNewPassword_Label" xml:space="preserve">
+    <value>重复新密码</value>
+  </data>
+  <data name="Menu_App_ChangePassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="View_ChangePassword_Title" xml:space="preserve">
+    <value>密码修改</value>
+  </data>
+  <data name="Menu_App_RecentDocuments" xml:space="preserve">
+    <value>最近打开的项目</value>
+  </data>
+  <data name="Menu_App_About" xml:space="preserve">
+    <value>关于</value>
+  </data>
+  <data name="Menu_App_Exit" xml:space="preserve">
+    <value>退出系统</value>
+  </data>
+  <data name="Entity_AttachmentDir_AttachmentDirName" xml:space="preserve">
+    <value>名称</value>
+  </data>
+  <data name="Entity_AttachmentDir_AttachmentDirNo" xml:space="preserve">
+    <value>编号</value>
+  </data>
+  <data name="ToolBar_AttachmentDirCollectionView_OP" xml:space="preserve">
+    <value>操作</value>
+  </data>
+  <data name="View_AttachmentDirView_Title" xml:space="preserve">
+    <value>附件目录</value>
+  </data>
+  <data name="Menu_AttachmentDir" xml:space="preserve">
+    <value>附件管理</value>
+  </data>
+  <data name="View_AttachmentDirCollectionView_Title" xml:space="preserve">
+    <value>附件目录管理</value>
+  </data>
+  <data name="ToolBar_AttachmentCollectionView_OP" xml:space="preserve">
+    <value>附件目录操作</value>
+  </data>
+  <data name="Entity_AttachmentDir_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_AttachmentDir_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_AttachmentDir_LastModifyDate" xml:space="preserve">
+    <value>最后修改日期</value>
+  </data>
+  <data name="Entity_AttachmentDir_LastModifyer" xml:space="preserve">
+    <value>最后修改人</value>
+  </data>
+  <data name="Entity_AttachmentDir_Remark" xml:space="preserve">
+    <value>备注</value>
+  </data>
+  <data name="Entity_AttachmentDir_Filter" xml:space="preserve">
+    <value>过滤条件</value>
+  </data>
+  <data name="Entity_Attachment_AttachmentName" xml:space="preserve">
+    <value>附件名称</value>
+  </data>
+  <data name="Error_Filter" xml:space="preserve">
+    <value>错误的过滤条件</value>
+  </data>
+  <data name="View_UpLoadView_Title" xml:space="preserve">
+    <value>附件上传</value>
+  </data>
+  <data name="BarContent_DeleteAttachment" xml:space="preserve">
+    <value>删除附件</value>
+  </data>
+  <data name="ToolBar_AttachmentCollectionView_Attachment_OP" xml:space="preserve">
+    <value>附件操作</value>
+  </data>
+  <data name="BarContent_Pause" xml:space="preserve">
+    <value>暂停</value>
+  </data>
+  <data name="BarContent_Start" xml:space="preserve">
+    <value>开始</value>
+  </data>
+  <data name="BarContent_Stop" xml:space="preserve">
+    <value>停止</value>
+  </data>
+  <data name="BarContent_Continue" xml:space="preserve">
+    <value>继续</value>
+  </data>
+  <data name="BarContent_UpLoadBackGround" xml:space="preserve">
+    <value>后台上传</value>
+  </data>
+  <data name="Entity_UpLoadAttachmentInfo_AttachmentName" xml:space="preserve">
+    <value>附件名称</value>
+  </data>
+  <data name="Entity_UpLoadAttachmentInfo_AttachmentPath" xml:space="preserve">
+    <value>上传路径</value>
+  </data>
+  <data name="Entity_UpLoadAttachmentInfo_Message" xml:space="preserve">
+    <value>上传结果</value>
+  </data>
+  <data name="BarItem_Attachment" xml:space="preserve">
+    <value>附件上传</value>
+  </data>
+  <data name="Info_CompleteUploadIsToView" xml:space="preserve">
+    <value>上传完成是否查看</value>
+  </data>
+  <data name="Entity_Product_CertType" xml:space="preserve">
+    <value>证件类型</value>
+  </data>
+  <data name="Entity_Product_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Product_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Product_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Product_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Product_Material" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_Product_PackQty" xml:space="preserve">
+    <value>包装数量</value>
+  </data>
+  <data name="Entity_Product_ProductImage" xml:space="preserve">
+    <value>产品大图</value>
+  </data>
+  <data name="Entity_Product_ProductName" xml:space="preserve">
+    <value>商品名称</value>
+  </data>
+  <data name="Entity_Product_ProductName1" xml:space="preserve">
+    <value>商品名称(英文)</value>
+  </data>
+  <data name="Entity_Product_ProductNo" xml:space="preserve">
+    <value>产品编号</value>
+  </data>
+  <data name="Entity_Product_ProductType" xml:space="preserve">
+    <value>产品类型</value>
+  </data>
+  <data name="Entity_Product_Remark1" xml:space="preserve">
+    <value>备注1</value>
+  </data>
+  <data name="Entity_Product_Remark2" xml:space="preserve">
+    <value>备注2</value>
+  </data>
+  <data name="Entity_Product_Remark3" xml:space="preserve">
+    <value>备注3</value>
+  </data>
+  <data name="Entity_Product_Remark4" xml:space="preserve">
+    <value>备注4</value>
+  </data>
+  <data name="Entity_Product_Spec" xml:space="preserve">
+    <value>规格型号</value>
+  </data>
+  <data name="Entity_Product_Spec1" xml:space="preserve">
+    <value>规格型号(英文)</value>
+  </data>
+  <data name="Entity_Product_Unit" xml:space="preserve">
+    <value>计量单位</value>
+  </data>
+  <data name="Menu_Product" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="View_ProductCollectionView_Title" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="View_ProductView_Title" xml:space="preserve">
+    <value>产品信息</value>
+  </data>
+  <data name="Entity_Product_RegisterId" xml:space="preserve">
+    <value>产品注册证</value>
+  </data>
+  <data name="BarContent_PermissionSet" xml:space="preserve">
+    <value>权限分配</value>
+  </data>
+  <data name="View_PermissionSetView_Title" xml:space="preserve">
+    <value>角色权限分配</value>
+  </data>
+  <data name="Entity_Commodity_CertType" xml:space="preserve">
+    <value>证件类型</value>
+  </data>
+  <data name="Entity_Commodity_CommodityImage" xml:space="preserve">
+    <value>产品图片</value>
+  </data>
+  <data name="Entity_Commodity_CommodityName" xml:space="preserve">
+    <value>商品名称</value>
+  </data>
+  <data name="Entity_Commodity_CommodityNo" xml:space="preserve">
+    <value>商品编号</value>
+  </data>
+  <data name="Entity_Commodity_CreateDate" xml:space="preserve">
+    <value>创建日期</value>
+  </data>
+  <data name="Entity_Commodity_Creater" xml:space="preserve">
+    <value>创建人</value>
+  </data>
+  <data name="Entity_Commodity_DrawingId" xml:space="preserve">
+    <value>图纸Id</value>
+  </data>
+  <data name="Entity_Commodity_GoodCode" xml:space="preserve">
+    <value>货位号</value>
+  </data>
+  <data name="Entity_Commodity_LastModifyDate" xml:space="preserve">
+    <value>最后更改日期</value>
+  </data>
+  <data name="Entity_Commodity_LastModifyer" xml:space="preserve">
+    <value>最后更改人</value>
+  </data>
+  <data name="Entity_Commodity_Material" xml:space="preserve">
+    <value>材料标识</value>
+  </data>
+  <data name="Entity_Commodity_PackQty" xml:space="preserve">
+    <value>包装数量</value>
+  </data>
+  <data name="Entity_Commodity_ProductType" xml:space="preserve">
+    <value>产品类型</value>
+  </data>
+  <data name="Entity_Commodity_QtyMode" xml:space="preserve">
+    <value>数量模式</value>
+  </data>
+  <data name="Entity_Commodity_RegisterId" xml:space="preserve">
+    <value>产品注册证Id</value>
+  </data>
+  <data name="Entity_Commodity_Remark1" xml:space="preserve">
+    <value>备注1</value>
+  </data>
+  <data name="Entity_Commodity_Remark2" xml:space="preserve">
+    <value>备注2</value>
+  </data>
+  <data name="Entity_Commodity_Remark3" xml:space="preserve">
+    <value>备注3</value>
+  </data>
+  <data name="Entity_Commodity_Remark4" xml:space="preserve">
+    <value>备注4</value>
+  </data>
+  <data name="Entity_Commodity_Remark5" xml:space="preserve">
+    <value>备注5</value>
+  </data>
+  <data name="Entity_Commodity_Remark6" xml:space="preserve">
+    <value>备注6</value>
+  </data>
+  <data name="Entity_Commodity_Remark7" xml:space="preserve">
+    <value>备注7</value>
+  </data>
+  <data name="Entity_Commodity_Remark8" xml:space="preserve">
+    <value>备注8</value>
+  </data>
+  <data name="Entity_Commodity_Unit" xml:space="preserve">
+    <value>计量单位</value>
+  </data>
+  <data name="View_CommodityCollectionView_Title" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="View_CommodityView_Title" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="Menu_Commodity" xml:space="preserve">
+    <value>商品信息</value>
+  </data>
+  <data name="Entity_Commodity_RegisterName" xml:space="preserve">
+    <value>注册证名称</value>
+  </data>
+  <data name="Entity_Commodity_RegisterName1" xml:space="preserve">
+    <value>注册证名称(英文)</value>
+  </data>
+  <data name="Entity_Commodity_RegisterNo" xml:space="preserve">
+    <value>注册证编号</value>
+  </data>
+  <data name="Entity_Commodity_RegisterNo1" xml:space="preserve">
+    <value>注册证编号(英文)</value>
+  </data>
+  <data name="Entity_Commodity_StandardCode" xml:space="preserve">
+    <value>标准号</value>
+  </data>
+  <data name="Entity_Commodity_StandardCode1" xml:space="preserve">
+    <value>标准号(英文)</value>
+  </data>
+  <data name="Entity_Commodity_IsSale" xml:space="preserve">
+    <value>是否销售</value>
+  </data>
+  <data name="Entity_Commodity_SaleName" xml:space="preserve">
+    <value>销售名称</value>
+  </data>
+  <data name="Entity_Commodity_SalePrice" xml:space="preserve">
+    <value>销售价格</value>
+  </data>
+  <data name="Entity_Commodity_SaleRemark" xml:space="preserve">
+    <value>销售介绍</value>
+  </data>
+  <data name="View_CommodityView_WorkProcessSet" xml:space="preserve">
+    <value>工序设置</value>
+  </data>
+  <data name="View_CommodityView_SaleSet" xml:space="preserve">
+    <value>销售信息</value>
+  </data>
+</root>

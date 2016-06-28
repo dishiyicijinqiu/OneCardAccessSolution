@@ -1,0 +1,54 @@
+@*<style type="text/css">
+    #MainSplitter {
+        border-color: #bed1e9;
+        border-width: 1px;
+        border-style:solid;
+    }
+</style>*@
+@Html.DevExpress().Splitter(settings =>
+{
+    settings.Name = "MainSplitter";
+    settings.AllowResize = false;
+    settings.Orientation = System.Web.UI.WebControls.Orientation.Vertical;
+    settings.FullscreenMode = true;
+    settings.SeparatorVisible = false;
+    settings.Styles.Pane.Border.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(1);
+    settings.Styles.Pane.Border.BorderColor = System.Drawing.Color.FromArgb(114, 142, 173);
+    settings.Styles.Pane.Paddings.Padding = System.Web.UI.WebControls.Unit.Pixel(2);
+    settings.Panes.Add(pane =>
+    {
+        pane.Name = "HeaderPane";
+        pane.AutoHeight = true;
+        pane.Size = System.Web.UI.WebControls.Unit.Percentage(20);
+        pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+        pane.PaneStyle.CssClass = "headerPane";
+        pane.SetContent(() =>
+        {
+            Html.RenderPartial("HeaderPartialView");
+        });
+    });
+
+    settings.Panes.Add(pane =>
+    {
+        pane.Name = "Content";
+        pane.PaneStyle.CssClass = "mainContentPane";
+        pane.PaneStyle.BorderBottom.BorderWidth = System.Web.UI.WebControls.Unit.Pixel(0);
+
+        pane.SetContent(() =>
+        {
+            Html.RenderPartial("ContentsPartialView");
+        });
+    });
+
+    settings.Panes.Add(pane =>
+    {
+        pane.Name = "Footer";
+        pane.Size = System.Web.UI.WebControls.Unit.Percentage(1);
+        pane.MaxSize = 26;
+        pane.PaneStyle.CssClass = "footerPane";
+        pane.SetContent(() =>
+        {
+            Html.RenderPartial("FooterPartialView");
+        });
+    });
+}).GetHtml()

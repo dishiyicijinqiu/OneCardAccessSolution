@@ -1,0 +1,53 @@
+<div class="headerTop">
+    <div class="templateTitle">
+        @*@Html.ActionLink(Resources.SystemInfo_SystemName, "Index", "Home")*@
+        @*@Resources.SystemInfo_SystemName*@
+
+        @Html.DevExpress().Label(settings =>
+{
+    settings.Text = Resources.SystemInfo_SystemName;
+}).GetHtml()
+    </div>
+</div>
+<style type="text/css">
+    .fileTabtemplateDiv {
+        width:32px;
+        height:32px;
+        background-image:url(../Content/Ribbon/home_32x32.png);
+    }
+</style>
+
+@*<link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />*@
+<div class="headerMenu">
+    @Html.DevExpress().Ribbon(settings =>
+{
+    settings.Name = "ribbon";
+    settings.SetFileTabTemplateContent(c =>
+    {
+        TabControlTemplateContainerBase container = (TabControlTemplateContainerBase)c;
+        if (!container.Active)
+        {
+            ViewContext.Writer.Write(@"<div id=""FileTabtemplateDiv"" class=""fileTabtemplateDiv""></div>");
+        }
+    });
+    var tab = settings.Tabs.Add("Home");
+    var tasksGroup = tab.Groups.Add("Tasks");
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "TasksList";
+        i.Name = "Tasks List";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID =
+            IconID.TasksTask32x32;
+    });
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "New";
+        i.Name = "NewTask";
+        i.Size = RibbonItemSize.Small;
+        ((RibbonButtonItem)i).SmallImage.IconID =
+            IconID.TasksNewtask16x16;
+    });
+    // And other groups with items
+}).GetHtml()
+</div>

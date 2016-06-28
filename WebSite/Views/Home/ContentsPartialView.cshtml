@@ -1,0 +1,77 @@
+﻿@Html.DevExpress().PageControl(
+page =>
+{
+    page.Name = "pcContentScrolling";
+    page.Width = Unit.Percentage(100);
+    page.Height = Unit.Percentage(100);
+    page.EnableTabScrolling = true;
+    page.TabAlign = TabAlign.Justify;
+    page.TabPages.Clear();
+    //page.ClientSideEvents.Init = "function(s, e) {FixedHight(s,e);}";
+    //page.ClientSideEvents.ActiveTabChanged = "function(s, e) {FixedHight(s,e);}";
+
+    //page.ClientSideEvents.ActiveTabChanged = "function(s, e) {FixedHight(s,e);}";
+    //page.ClientSideEvents.ActiveTabChanged = "function(s, e) { alert(e); }";
+    var tabpage = page.TabPages.Add("Scheduling");
+    //tabpage.SetTabTextTemplateContent("<div class=\"ContentHolder\" style=\"height:20px; width:20px;\">你好世界</div>");
+    //tabpage.SetTabTemplateContent("<div class=\"ContentHolder\" style=\"height:20px; width:20px;\">a</div>");
+    tabpage.SetContent(() =>
+    {
+        ViewContext.Writer.WriteLine("<div class=\"ContentHolder\" style=\"height:100%; width:100%;overflow-y:scroll; border:1px solid #849dbd;\">");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">你好世界</div>");
+
+        ViewContext.Writer.WriteLine("</div>");
+    });
+    page.TabPages.Add("abc").SetContent(() =>
+    {
+        ViewContext.Writer.WriteLine("<div class=\"ContentHolder\" style=\"height:700px; width:100%;overflow-y:scroll; border:1px solid #849dbd;\">");
+
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+        ViewContext.Writer.WriteLine("<div style=\"height:80px; width:100%\">cccccccc</div>");
+
+        ViewContext.Writer.WriteLine("</div>");
+    });
+}).GetHtml()
+
+<script type="text/javascript">
+    function FixedHight(s, e) {
+        alert("22");
+        var height = e.tab.tabControl.GetTab(0);
+        //var height = e.tab.tabControl.GetHeight();
+        alert(height);
+        //var dxtc = $("#pcContentScrolling .dxtc-content");
+        //var dxtcheight = parseInt(dxtc.css("height"));
+        //dxtc.find(".ContentHolder").each(function () {
+        //    $(this).css("height", height + "px");
+        //});
+    }
+</script>

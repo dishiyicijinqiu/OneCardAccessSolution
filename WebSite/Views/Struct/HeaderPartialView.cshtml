@@ -1,0 +1,106 @@
+
+<style type="text/css">
+    .ViewBody_HeaderTop {
+        position: absolute;
+        width: 120px;
+        left: 50%;
+    }
+
+        .ViewBody_HeaderTop .templateTitle {
+            margin: 0;
+        }
+
+            .ViewBody_HeaderTop .templateTitle span {
+                position: relative;
+                float: left;
+                margin: 1px 1px 1px 10px;
+                text-decoration: none;
+                font-size: 14px;
+                color: black;
+                width: 100%;
+                text-align: center;
+            }
+
+
+    .ViewBody_HeaderMenu {
+        padding:0px 2px 0px 2px;
+        border-width: 0;
+    }
+
+        .ViewBody_HeaderMenu .fileTabtemplateDiv {
+            width: 32px;
+            height: 32px;
+            background-image: url(../CSS/Ribbon/home_32x32.png);
+        }
+    /*Office2010Blue*/
+    .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
+            margin-top: 17px;
+        }
+    .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
+        border-width: 0px 0px 1px 0px;
+        background: none;
+    }
+    .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-tab:not(.dxtc-lead), .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-activeTab:not(.dxtc-lead) {
+        margin-top: 11px;
+    }
+</style>
+<div class="ViewBody_HeaderTop">
+    <div class="templateTitle">
+        @Html.DevExpress().Label(settings =>
+        {
+            settings.Text = Resources.SystemInfo_SystemName;
+        }).GetHtml()
+    </div>
+</div>
+<div class="ViewBody_HeaderMenu">
+    @Html.DevExpress().Ribbon(settings =>
+{
+    settings.Name = "ribbon";
+    settings.SetFileTabTemplateContent(c =>
+    {
+        TabControlTemplateContainerBase container = (TabControlTemplateContainerBase)c;
+        if (!container.Active)
+        {
+            ViewContext.Writer.Write(@"<div id=""FileTabtemplateDiv"" class=""fileTabtemplateDiv""></div>");
+        }
+    });
+    var tab = settings.Tabs.Add("Home");
+    var tasksGroup = tab.Groups.Add("Tasks");
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "TasksList";
+        i.Name = "Tasks List";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID =
+            IconID.TasksTask32x32;
+    });
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "New";
+        i.Name = "NewTask";
+        i.Size = RibbonItemSize.Small;
+        ((RibbonButtonItem)i).SmallImage.IconID =
+            IconID.TasksNewtask16x16;
+    });
+    // And other groups with items
+
+    var tab1 = settings.Tabs.Add("eeee");
+    var tasksGroup1 = tab1.Groups.Add("bbbb");
+    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "TasksList";
+        i.Name = "Tasks List";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID =
+            IconID.TasksTask32x32;
+    });
+    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "New";
+        i.Name = "NewTask";
+        i.Size = RibbonItemSize.Small;
+        ((RibbonButtonItem)i).SmallImage.IconID =
+            IconID.TasksNewtask16x16;
+    });
+}).GetHtml()
+</div>

@@ -1,0 +1,75 @@
+﻿
+@Html.DevExpress().PopupControl(
+settings =>
+{
+    settings.Name = "ViewBody_popup";
+    settings.PopupElementID = "ViewBody_popupContainer";
+    settings.ControlStyle.CssClass = "ViewBody_popup";
+    settings.ShowCloseButton = false;
+    //settings.ShowCollapseButton = true;
+    settings.ShowFooter = true;
+    settings.ShowHeader = false;
+    //settings.ShowMaximizeButton = true;
+    settings.ShowOnPageLoad = true;
+    //settings.ShowPageScrollbarWhenModal = true;
+    //settings.ShowPinButton = true;
+    //settings.ShowRefreshButton = true;
+    settings.ShowShadow = true;
+    settings.ShowSizeGrip = ShowSizeGrip.True;
+    settings.Maximized = true;
+
+    settings.Pinned = false;
+    settings.AllowResize = true;
+    settings.AllowDragging = false;
+    settings.CloseAction = CloseAction.None;
+    settings.PopupAction = PopupAction.None;
+    settings.PopupAlignCorrection = PopupAlignCorrection.Disabled;
+    settings.PopupAnimationType = AnimationType.None;
+    settings.ControlStyle.Border.BorderWidth = 1;
+    settings.Styles.Content.Paddings.Padding = 0;
+    settings.Styles.Footer.HorizontalAlign = HorizontalAlign.Right;
+    settings.SetFooterContentTemplateContent(footer =>
+    {
+        Html.RenderPartial("FooterPartialView");
+    });
+    settings.ClientSideEvents.AfterResizing = "function(s, e) { OnWindowResize(s,e); }";
+    settings.SetContent(() =>
+    {
+        ViewContext.Writer.Write(
+        @"<table id=""editor"" style=""width:100%;"">
+            <tr style=""height: 1px"">
+                <td>"
+        );
+        Html.RenderPartial("HeaderPartialView");
+        ViewContext.Writer.Write(
+                @"</td>
+            </tr>
+            <tr style=""height: 1px"">
+                <td>"
+        );
+        Html.RenderPartial("ContentsPartialView");
+        ViewContext.Writer.Write(
+                @"</td>
+            </tr>
+        </table>"
+        );
+    });
+}).GetHtml()
+<script type="text/javascript">
+    function OnWindowResize(s, e) {
+        ribbon.AdjustControl();
+    }
+</script>
+<style type="text/css">
+    .dxpcLite_Office2010Blue .dxpc-mainDiv, .dxpcLite_Office2010Blue.dxpc-mainDiv, .dxdpLite_Office2010Blue .dxpc-mainDiv, .dxdpLite_Office2010Blue.dxpc-mainDiv {
+        background-color: #bed1e9;
+        border: 1px solid #859ebf;
+    }
+    .ViewBody_popup {
+        padding-top:2px;
+    }
+    /*#ViewBody_popup_PW-1 {
+        background-color: #cfddee;
+        border: 1px solid #859ebf;
+    }*/
+</style>

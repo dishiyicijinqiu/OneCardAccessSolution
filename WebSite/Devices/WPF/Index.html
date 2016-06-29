@@ -1,9 +1,7 @@
 ﻿<html>
 
 <head>
-    <link href="../../Content/Site.css" rel="stylesheet" type="text/css" />
-    <script src="../../Scripts/jquery-1.10.2.min.js"></script>
-    <script type="text/javascript" src="../../Scripts/OneCardAccess.js"></script>
+    <script src="../../Scripts/jquery.min.js"></script>
     <script type="text/javascript">
 
         var params = {
@@ -121,13 +119,15 @@
     </script>
 </head>
 <body style="border:0px;margin:0;padding:0;" scroll="no">
-    <div id="divTop" style="width:100%;height:28px; position:absolute;right:-96px;top:0px;background-image:url('../../Content/Images/Transport.png'); background-repeat:repeat;">
-        <div id="divWindowStatus" style="width:100px;height:21px;position:absolute;right:100px;top:4px;background-image:url(windowstatus.png);">
+    <!--<div id="divTop" style="width:100%;height:24px; position:absolute;right:0px;top:0px;background-image:url('../../Content/Images/Transport.png'); background-repeat:repeat;">-->
+    <div id="divTop" style="width:100%;height:24px; position:absolute;right:2px;top:0px;">
+        <div id="divWindowStatus" style="width:100px;height:21px;position:absolute;right:0px;top:2px;background-image:url(windowstatus.png);">
             <div id="divMin" style="width:33px;height:21px;float:left"></div>
             <div id="divMax" style="width:33px;height:21px;float:left"></div>
             <div id="divClose" style="width:33px;height:21px;float:left"></div>
         </div>
     </div>
-    <iframe id="myiframe" src="../../Home/Index" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>
+    <iframe id="myiframe" src="../../Struct/ViewBody" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>
+    <!--<iframe id="myiframe" src="../../Home/Index" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>-->
 </body>
 </html>

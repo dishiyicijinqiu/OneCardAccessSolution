@@ -20,15 +20,34 @@ namespace WpfApplication3
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static RoutedCommand MyCmd = new RoutedCommand();
         public MainWindow()
         {
             InitializeComponent();
-            this.webKitBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webKitBrowser1_DocumentCompleted);
-            webKitBrowser1.Navigate("http://192.168.18.2/WebSite/Devices/WPF/Index.html");
+            //webKitBrowser1.Preferences.AllowPlugins =
+            webKitBrowser1.AllowCookies = webKitBrowser1.UseJavaScript = true;
+            webKitBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webKitBrowser1_DocumentCompleted);
+            webKitBrowser1.ShowJavaScriptAlertPanel += WebKitBrowser1_ShowJavaScriptAlertPanel;
+            //webKitBrowser1.Navigate("http://192.168.18.2/WebSite/Devices/WPF/Index.html");
+            webKitBrowser1.Navigate("http://dishiyicijinqiu.eicp.net:17515/WebSite/Devices/WPF/Index.html");
         }
+
+        private void WebKitBrowser1_ShowJavaScriptAlertPanel(object sender, WebKit.ShowJavaScriptAlertPanelEventArgs e)
+        {
+            System.Windows.MessageBox.Show(e.Message);
+        }
+
         void webKitBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.webKitBrowser1.GetScriptManager.ScriptObject = new MainWindowScriptProxy(this);
+        }
+
+        private void Cmd_ExecutedHandler(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (e.Source != null && sender != null)
+            {
+                this.webKitBrowser1.Reload();
+            }
         }
     }
     [System.Runtime.InteropServices.ComVisible(true)]

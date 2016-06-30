@@ -10,9 +10,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="800" 
         WindowStyle="None">
+    <Window.CommandBindings>
+        <CommandBinding Command="{x:Static local:MainWindow.MyCmd}" Executed="Cmd_ExecutedHandler" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="F5" Command="{x:Static local:MainWindow.MyCmd}"/>
+    </Window.InputBindings>
     <Grid>
         <WindowsFormsHost >
             <OpenWebKitSharp:WebKitBrowser x:Name="webKitBrowser1"/>
         </WindowsFormsHost>
+
     </Grid>
 </Window>

@@ -1,1 +1,83 @@
-﻿你好世界
+﻿<style type="text/css">
+    #tabs {
+        border: 1px solid #000000;
+        height: 100%;
+    }
+    .tab-content {
+        height: 0px;
+    }
+
+    .tab-pane {
+        height: 100%;
+    }
+</style>
+
+<div id="tabs">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" id="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="home">
+            <button type="button" class="btn btn-default" addtabs="save" id="save" url="/admin/save">
+                <i class="glyphicon glyphicon-floppy-disk"></i>
+                SAVE
+            </button>
+        </div>
+    </div>
+</div>
+
+@*<div class="topbar admin-header">
+        <div class="topbar-collapse">
+            <div class="btn-group" role="group" aria-label="...">
+                <button type="button" class="btn btn-default" data-addtab="mail" url="/admin/mail"><i class="glyphicon glyphicon-envelope"></i>我的邮件</button>
+                <button type="button" class="btn btn-default" data-addtab="profile" url="/admin/profile"><i class="glyphicon glyphicon-user"></i>我的属性</button>
+                <button type="button" class="btn btn-default" data-addtab="message" url="/admin/message" content="指定内容"><i class="glyphicon glyphicon-bullhorn"></i>指定内容</button>
+                <button type="button" class="btn btn-default" data-addtab="setting" url="/admin/setting" title="指定标题"><i class="glyphicon glyphicon-cog"></i>指定标题</button>
+                <button type="button" class="btn btn-default" data-addtab="ajax" url="/admin/profiles" ajax='true'><i class="glyphicon glyphicon-user"></i>使用AJAX</button>
+            </div>
+        </div>
+    </div>*@
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        //$('#tabs').addtabs({ monitor: '.topbar' });
+        //$('#save').click(function () {
+        //    Addtabs.add({
+        //        id: $(this).attr('addtabs'),
+        //        title: $(this).attr('title') ? $(this).attr('title') : $(this).html(),
+        //        content: Addtabs.options.content ? Addtabs.options.content : $(this).attr('content'),
+        //        url: $(this).attr('url'),
+        //        ajax: $(this).attr('ajax') ? true : false
+        //    })
+        //});
+        setTimeout(function () {
+            adjustHeight();
+        }, 10);
+        function adjustHeight() {
+            //$("#ViewBody_popup_PW-1").css("height", $(window).height() + "px");
+            var cheight = $(window).height() - $("#editor_top").height() - $("#editor_bottom").height();
+            $("#editor_content").css("height", cheight + "px");
+
+            var d = new Date(), str = '';
+            str += d.getFullYear() + '年';
+            str += d.getMonth() + 1 + '月';
+            str += d.getDate() + '日';
+            str += d.getHours() + '时';
+            str += d.getMinutes() + '分';
+            str += d.getSeconds() + '秒';
+
+            var totalheight = $("#editor_top").height() + $("#editor_content").height() + $("#editor_bottom").height();
+            $("#save").text($("#editor_top").height() + ":" + $("#editor_content").height() + ":" + $("#editor_bottom").height());
+        }
+        $(window).resize(function () {
+            adjustHeight();
+        });
+        $('#save').bind("click", function () {
+            adjustHeight();
+        });
+    });
+
+</script>

@@ -1,6 +1,11 @@
 ﻿<html>
 <head>
-    <title>JS完整获取IE浏览器信息</title>
+    <title>JS完整获取浏览器信息</title>
+    <style type="text/css">
+        body {
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
 </head>
 <body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
     <table width="435" border="1" cellspacing="3" cellpadding="0">
@@ -55,17 +60,20 @@
         <tr>
             <td>屏幕分辨率</td>
             <td>
-            <script>document.write(window.screen.width+"x"+window.screen.height)</script></td>
+                <script>document.write(window.screen.width + "x" + window.screen.height)</script>
+            </td>
         </tr>
         <tr>
             <td>颜色</td>
             <td>
-            <script>document.write(window.screen.colorDepth+"位")</script></td>
+                <script>document.write(window.screen.colorDepth + "位")</script>
+            </td>
         </tr>
         <tr>
             <td>字体平滑</td>
             <td>
-            <script>document.write(window.screen.fontSmoothingEnabled)</script></td>
+                <script>document.write(window.screen.fontSmoothingEnabled)</script>
+            </td>
         </tr>
         <tr>
             <td>appMinorVersion</td>

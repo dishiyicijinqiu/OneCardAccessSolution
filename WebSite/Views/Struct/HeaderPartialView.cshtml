@@ -13,9 +13,9 @@
             .ViewBody_HeaderTop .templateTitle span {
                 position: relative;
                 float: left;
-                margin: 1px 1px 1px 10px;
+                margin: 1px 1px 1px 1px;
                 text-decoration: none;
-                font-size: 14px;
+                font-size: 13px;
                 color: black;
                 width: 100%;
                 text-align: center;
@@ -23,7 +23,7 @@
 
 
     .ViewBody_HeaderMenu {
-        padding:0px 2px 0px 2px;
+        padding: 0px 2px 0px 2px;
         border-width: 0;
     }
 
@@ -31,17 +31,32 @@
             width: 32px;
             height: 32px;
             background-image: url(../CSS/Ribbon/home_32x32.png);
+            margin-top: 4px;
         }
-    /*Office2010Blue*/
-    .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
+        /*Office2010Blue*/
+        .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
             margin-top: 17px;
         }
+
     .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
         border-width: 0px 0px 1px 0px;
         background: none;
     }
+
     .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-tab:not(.dxtc-lead), .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-activeTab:not(.dxtc-lead) {
-        margin-top: 11px;
+        margin-top: 22px;
+    }
+
+    .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab .dxtc-link, .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-activeTab .dxtc-link {
+        padding: 0px 12px;
+    }
+
+    .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-link {
+        padding: 0px 12px;
+    }
+
+    .dxtcLite_Office2010Blue.dxtc-top > .dxtc-stripContainer {
+        padding-top: 0px;
     }
 </style>
 <div class="ViewBody_HeaderTop">
@@ -64,6 +79,8 @@
             ViewContext.Writer.Write(@"<div id=""FileTabtemplateDiv"" class=""fileTabtemplateDiv""></div>");
         }
     });
+
+    settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { MyOnWindowResize(s,e); }";
     var tab = settings.Tabs.Add("Home");
     var tasksGroup = tab.Groups.Add("Tasks");
     tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
@@ -104,3 +121,33 @@
     });
 }).GetHtml()
 </div>
+
+<script type="text/javascript">
+
+    function MyOnWindowResize(s, e) {
+        adjustHeight();
+        //alert("11");
+        $("#save").text($("#editor_top").height() + ":" + $("#editor_content").height() + ":" + $("#editor_bottom").height());
+        //if (window.applicationCache) {
+        //    alert("你的浏览器支持HTML5");
+        //} else {
+        //    alert("你的浏览器不支持HTML5");
+        //}
+    }
+    function adjustHeight() {
+        //$("#ViewBody_popup_PW-1").css("height", $(window).height() + "px");
+        var cheight = $(window).height() - $("#editor_top").height() - $("#editor_bottom").height();
+        $("#editor_content").css("height", cheight + "px");
+
+        var d = new Date(), str = '';
+        str += d.getFullYear() + '年';
+        str += d.getMonth() + 1 + '月';
+        str += d.getDate() + '日';
+        str += d.getHours() + '时';
+        str += d.getMinutes() + '分';
+        str += d.getSeconds() + '秒';
+
+        var totalheight = $("#editor_top").height() + $("#editor_content").height() + $("#editor_bottom").height();
+        $("#save").text($("#editor_top").height() + ":" + $("#editor_content").height() + ":" + $("#editor_bottom").height());
+    }
+</script>

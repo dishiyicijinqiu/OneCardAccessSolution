@@ -8,7 +8,9 @@
         //});
         //$("div").disableSelection();
         //$("a").disableSelection();
-        $("*").attr('unselectable', 'on');
-        $("input").attr('unselectable', 'off');
+        //$("*").attr('unselectable', 'on');
+        //$("input").attr('unselectable', 'off');
+        $("*").disableSelection();
+        //$("input").enableSelection();
     });
 });

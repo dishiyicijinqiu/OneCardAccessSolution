@@ -158,3 +158,15 @@ System.Windows.Input.ComponentCommands.MoveDown
         </behavior>
       </serviceBehaviors>
     </behaviors>
+
+
+
+	         browser.WebView.preferences().setStandardFontFamily("Simsun");
+
+http://192.168.18.2/WebSite/Devices/WPF/Index.html
+
+chrome://flags/
+DirectWrite
+
+
+            webKitBrowser1.Navigate("http://dishiyicijinqiu.eicp.net:17515/WebSite/Devices/WPF/Index.html");

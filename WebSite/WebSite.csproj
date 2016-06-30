@@ -249,6 +249,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Css\bootstrap-addtabs.css" />
+    <Content Include="Css\bootstrap.min.css" />
     <Content Include="Devices\test\index.html" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Css\Images\animated-overlay.gif" />
@@ -307,7 +308,7 @@
     <Content Include="Css\Ribbon\MathIcons\Zoom.png" />
     <Content Include="Css\Ribbon\TabClose.png" />
     <Content Include="Css\Site.css" />
-    <Content Include="Devices\WPF\Test.html" />
+    <Content Include="Devices\WPF\GetBrowserInfo.html" />
     <Content Include="errorpage.html" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
@@ -329,6 +330,8 @@
     <Content Include="App_Themes\RedWine\Demo.skin" />
     <Content Include="App_Themes\SoftOrange\Demo.skin" />
     <Content Include="App_Themes\Youthful\Demo.skin" />
+    <Content Include="Scripts\bootstrap-addtabs.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\OneCardAccess.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />

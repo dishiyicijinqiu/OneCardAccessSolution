@@ -1,81 +1,44 @@
-﻿<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="description" content="">
-        <meta name="keywords" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>ADBC</title>        
-        <link href="../../Css/bootstrap-theme.min.css" rel="stylesheet" />
-        <link href="../../Css/bootstrap.min.css" rel="stylesheet" />
-        <link href="../../Css/bootstrap-addtabs.css" rel="stylesheet" />
-        <!--<link rel="stylesheet" href="theme/css/bootstrap.min.css" type="text/css" media="screen" />
-        <link rel="stylesheet" href="theme/css/bootstrap-addtabs.css" type="text/css" media="screen" />-->
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../../Scripts/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>页面首页</title>
+</head>
 
-        <script src="../../Scripts/jquery.min.js"></script>
-        <script src="../../Scripts/bootstrap.min.js"></script>
-        <script src="../../Scripts/bootstrap-addtabs.js"></script>
-        <!--<script src="theme/js/jquery.min.js"></script>
-        <script src="theme/js/bootstrap.min.js"></script>
-        <script src="theme/js/bootstrap-addtabs.js"></script>-->
-
-        <!--[if lt IE 9]>
-          <script src="theme/js/html5shiv.min.js"></script>
-          <script src="theme/js/respond.min.js"></script>
-        <![endif]-->
-        <script type="text/javascript">
-            $(function(){
-                $('#tabs').addtabs({monitor:'.topbar'});
-                $('#save').click(function(){
-                    Addtabs.add({
-                       id: $(this).attr('addtabs'),
-                       title: $(this).attr('title') ? $(this).attr('title') : $(this).html(),
-                       content: Addtabs.options.content ? Addtabs.options.content : $(this).attr('content'),
-                       url: $(this).attr('url'),
-                       ajax: $(this).attr('ajax') ? true : false
-                    })
-                });
-            })
-        </script>
-    </head>
-    <body>
-        <div class="topbar admin-header">
-            <div class="brand">
-                <strong>LOGO IN HERE</strong>
-                <small></small>
-            </div>
-            <div class="topbar-collapse">
-                <!--Button group-->
-                <div class="btn-group" role="group" aria-label="...">
-                    <button type="button" class="btn btn-default" data-addtab="mail" url="/admin/mail"><i class="glyphicon glyphicon-envelope"></i>我的邮件</button>
-                    <button type="button" class="btn btn-default" data-addtab="profile" url="/admin/profile"><i class="glyphicon glyphicon-user"></i>我的属性</button>
-                    <button type="button" class="btn btn-default" data-addtab="message" url="/admin/message" content="指定内容"><i class="glyphicon glyphicon-bullhorn"></i>指定内容</button>
-                    <button type="button" class="btn btn-default" data-addtab="setting" url="/admin/setting" title="指定标题"><i class="glyphicon glyphicon-cog"></i>指定标题</button>
-                    <button type="button" class="btn btn-default" data-addtab="ajax" url="/admin/profiles" ajax='true'><i class="glyphicon glyphicon-user"></i>使用AJAX</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-md-12">
-            <div id="tabs">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>                    
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="home">
-                        <button type="button" class="btn btn-default" addtabs="save" id="save" url="#">
-                            <i class="glyphicon glyphicon-floppy-disk"></i>
-                            SAVE                            
-                        </button>
-                    </div>                    
-                </div>
-
-            </div>
-
-        </div>
-    </body>
+<body onresize="doResize()">
+    <iframe src="iframe.html" id="koyoz" height="800" width="500"></iframe>
+</body>
 </html>
+<script type="text/javascript">
+
+
+    function doResize() {
+        var el = $("#koyoz").contents().find("#mynamehello");
+        $(el).css("background-color", "red");
+    }
+
+
+
+    function bakdoResize() {
+        var ofrm1 = document.getElementById("koyoz").document;
+        if (ofrm1 == undefined) {
+            ofrm1 = document.getElementById("koyoz").contentWindow.document;
+            var el = ofrm1.getElementById("mynamehello");
+            el.style.backgroundColor = "red";
+            alert(el);
+            var ff = ofrm1.getElementById("mynamehello").value;
+            alert("firefox/chrome取值结果为:" + ff);
+        }
+        else {
+            var ie = document.frames["koyoz"].document.getElementById("test").value;
+            alert("ie取值结果为:" + ie);
+        }
+    }
+
+    //document.getElementById('koyoz').contentWindow.document.getElementById('test').style.color = 'red';
+    //alert("1");
+    //alert(document.getElementById('koyoz').contentWindow.document);
+    //alert("2");
+</script>

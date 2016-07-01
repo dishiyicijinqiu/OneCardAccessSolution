@@ -1,16 +1,16 @@
 
 <style type="text/css">
-    .ViewBody_HeaderTop {
+    /*ViewBody_HeaderTop*/
+    #ViewBody_Header .ViewBody_HeaderTop {
         position: absolute;
-        width: 120px;
-        left: 50%;
+        left: 46%;
     }
 
-        .ViewBody_HeaderTop .templateTitle {
+        #ViewBody_Header .ViewBody_HeaderTop .templateTitle {
             margin: 0;
         }
 
-            .ViewBody_HeaderTop .templateTitle span {
+            #ViewBody_Header .ViewBody_HeaderTop .templateTitle span {
                 position: relative;
                 float: left;
                 margin: 1px 1px 1px 1px;
@@ -20,44 +20,30 @@
                 width: 100%;
                 text-align: center;
             }
-
-
-    .ViewBody_HeaderMenu {
-        padding: 0px 2px 0px 2px;
+    /*ViewBody_HeaderTop*/
+    /*ViewBody_HeaderMenu*/
+    #ViewBody_Header .ViewBody_HeaderMenu {
+        padding: 0px;
         border-width: 0;
     }
-
-        .ViewBody_HeaderMenu .fileTabtemplateDiv {
+        #ViewBody_Header .ViewBody_HeaderMenu .fileTabtemplateDiv {
             width: 32px;
             height: 32px;
             background-image: url(../CSS/Ribbon/home_32x32.png);
-            margin-top: 4px;
         }
         /*Office2010Blue*/
-        .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
-            margin-top: 17px;
+        #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
+            padding-top: 10px;
         }
-
-    .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
-        border-width: 0px 0px 1px 0px;
-        background: none;
-    }
-
-    .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-tab:not(.dxtc-lead), .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-activeTab:not(.dxtc-lead) {
-        margin-top: 22px;
-    }
-
-    .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab .dxtc-link, .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-activeTab .dxtc-link {
-        padding: 0px 12px;
-    }
-
-    .dxtcLite_Office2010Blue > .dxtc-stripContainer .dxtc-link {
-        padding: 0px 12px;
-    }
-
-    .dxtcLite_Office2010Blue.dxtc-top > .dxtc-stripContainer {
-        padding-top: 0px;
-    }
+        #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
+            border-width: 0px 0px 1px 0px;
+            background: none;
+        }
+        #ViewBody_Header .ViewBody_HeaderMenu .dxtcLite_Office2010Blue > .dxtc-stripContainer li:not(.dxtc-lead){
+            margin-top: 12px;
+        }
+    /*Office2010Blue*/
+    /*ViewBody_HeaderMenu*/
 </style>
 <div class="ViewBody_HeaderTop">
     <div class="templateTitle">
@@ -67,6 +53,7 @@
         }).GetHtml()
     </div>
 </div>
+
 <div class="ViewBody_HeaderMenu">
     @Html.DevExpress().Ribbon(settings =>
 {
@@ -80,7 +67,8 @@
         }
     });
 
-    settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { MyOnWindowResize(s,e); }";
+    //settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { OnRibbonResize(s,e); }";
+    settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { ribbon; }";
     var tab = settings.Tabs.Add("Home");
     var tasksGroup = tab.Groups.Add("Tasks");
     tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
@@ -101,7 +89,7 @@
     });
     // And other groups with items
 
-    var tab1 = settings.Tabs.Add("eeee");
+    var tab1 = settings.Tabs.Add("eeeeeeeeeeeeeeeeeeeeeeee");
     var tasksGroup1 = tab1.Groups.Add("bbbb");
     tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
     {
@@ -119,35 +107,6 @@
         ((RibbonButtonItem)i).SmallImage.IconID =
             IconID.TasksNewtask16x16;
     });
+
 }).GetHtml()
 </div>
-
-<script type="text/javascript">
-
-    function MyOnWindowResize(s, e) {
-        adjustHeight();
-        //alert("11");
-        $("#save").text($("#editor_top").height() + ":" + $("#editor_content").height() + ":" + $("#editor_bottom").height());
-        //if (window.applicationCache) {
-        //    alert("你的浏览器支持HTML5");
-        //} else {
-        //    alert("你的浏览器不支持HTML5");
-        //}
-    }
-    function adjustHeight() {
-        //$("#ViewBody_popup_PW-1").css("height", $(window).height() + "px");
-        var cheight = $(window).height() - $("#editor_top").height() - $("#editor_bottom").height();
-        $("#editor_content").css("height", cheight + "px");
-
-        var d = new Date(), str = '';
-        str += d.getFullYear() + '年';
-        str += d.getMonth() + 1 + '月';
-        str += d.getDate() + '日';
-        str += d.getHours() + '时';
-        str += d.getMinutes() + '分';
-        str += d.getSeconds() + '秒';
-
-        var totalheight = $("#editor_top").height() + $("#editor_content").height() + $("#editor_bottom").height();
-        $("#save").text($("#editor_top").height() + ":" + $("#editor_content").height() + ":" + $("#editor_bottom").height());
-    }
-</script>

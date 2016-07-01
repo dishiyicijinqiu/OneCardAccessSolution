@@ -250,6 +250,7 @@
   <ItemGroup>
     <Content Include="Css\bootstrap-addtabs.css" />
     <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Devices\test\iframe.html" />
     <Content Include="Devices\test\index.html" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Css\Images\animated-overlay.gif" />
@@ -334,6 +335,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\OneCardAccess.js" />
+    <Content Include="Scripts\Struct.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />

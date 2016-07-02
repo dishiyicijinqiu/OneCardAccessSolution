@@ -1,139 +1,80 @@
 ﻿<style type="text/css">
-    #tabs {
-        border: 1px solid #000000;
-        overflow-y: auto;
-        background-color: aliceblue;
+    #ViewContent {
+        /*overflow-y: auto;*/
         table-layout: fixed;
         word-wrap: break-word;
         height: 100%;
+        width: 100%;
     }
 
-    .tab-content {
-        /*height:100%;*/
-        margin: 2px;
-        border: 5px solid #000000;
-        padding: 2px;
+    .tabclose {
+        background-image: url(../Css/Ribbon/TabClose.png);
+        background-position-x:18px;
+        float:right;
+        display: block;
+        width: 18px;
+        height: 18px;
+        position:absolute;
+        right:0px;
+        top:0px;
     }
-
-    .tab-pane {
+    .tabclose:hover {
+        background-image: url(../Css/Ribbon/TabClose.png);
+        background-position-x:0px;
+        float:right;
+        display: block;
+        width: 18px;
+        height: 18px;
+        position:absolute;
+        right:0px;
+        top:0px;
     }
 </style>
-@*<div class="topbar admin-header">
-    <div class="topbar-collapse">
-        <div class="btn-group" role="group" aria-label="...">
-            <button type="button" class="btn btn-default" data-addtab="mail" url="/admin/mail"><i class="glyphicon glyphicon-envelope"></i>我的邮件</button>
-            <button type="button" class="btn btn-default" data-addtab="profile" url="/admin/profile"><i class="glyphicon glyphicon-user"></i>我的属性</button>
-            <button type="button" class="btn btn-default" data-addtab="message" url="/admin/message" content="指定内容"><i class="glyphicon glyphicon-bullhorn"></i>指定内容</button>
-            <button type="button" class="btn btn-default" data-addtab="setting" url="/admin/setting" title="指定标题"><i class="glyphicon glyphicon-cog"></i>指定标题</button>
-            <button type="button" class="btn btn-default" data-addtab="ajax" url="/admin/profiles" ajax='true'><i class="glyphicon glyphicon-user"></i>使用AJAX</button>
-        </div>
-    </div>
-</div>*@
-<div id="tabs">
-    <!-- Nav tabs -->
-    <ul id="navmenu" class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+<div id="ViewContent">
+    <ul id="tabmenu" class="tabs">
+        <li class="tableft">
+            <span href="#" name="#tab1_1">隐藏</span>
+        </li>
+        <li class="tabTitle">
+            <span href="#" name="#tab1_1">
+                案例一案例一案例一
+                <i class="tabclose"></i>
+            </span>
+        </li>
+        <li class="tabTitle">
+            <span href="#" name="#tab1_2">
+                案例二
+                <i class="tabclose"></i>
+            </span>
+        </li>
+        <li class="tabTitle">
+            <span href="#" name="#tab1_3">
+                案例三
+                <i class="tabclose"></i>
+            </span>
+        </li>
+
+        <li class="tabright">
+            <span href="#" name="#tab1_1">
+            </span>
+        </li>
     </ul>
-    <!-- Tab panes -->
-    <div class="tab-content" id="tab-content">
-        <div role="tabpanel" class="tab-pane active" id="home">
-            <button type="button" class="btn btn-default" addtabs="save" id="save" url="/admin/save">
-                <i class="glyphicon glyphicon-floppy-disk"></i>
-                SAVE
-            </button>
+    <div id="tabcontent" class="tabcontent">
+        <div id="tab1_1">
+            TAB1_1
+        </div>
+        <div id="tab1_2">
+            TAB1_2
+        </div>
+        <div id="tab1_3">
+            TAB1_3
         </div>
     </div>
 </div>
-@*<script src="~/Scripts/bootstrap-addtabs.js"></script>
+<link href="~/Css/tabStyle.css" rel="stylesheet" />
+<script src="~/Scripts/tabScript.js"></script>
 <script type="text/javascript">
     $(function () {
-        $('#tabs').addtabs({ monitor: '.topbar' });
-        $('#save').click(function () {
-            Addtabs.add({
-                id: $(this).attr('addtabs'),
-                title: $(this).attr('title') ? $(this).attr('title') : $(this).html(),
-                content: Addtabs.options.content ? Addtabs.options.content : $(this).attr('content'),
-                url: $(this).attr('url'),
-                ajax: $(this).attr('ajax') ? true : false
-            })
-        });
+        loadTab($("#ViewContent"));
     });
 </script>
-<style type="text/css">
-    .hide {
-    display: none!important;
-}.pull-right {
-    float: right!important;
-}.dropdown, .dropup {
-    position: relative;
-}
-    .nav-tabs {
-        border-bottom: 1px solid #ddd;
-    }
-
-    .nav {
-        padding-left: 0;
-        margin-bottom: 0;
-        list-style: none;
-    }
-
-    ol, ul {
-        margin-top: 0;
-        margin-bottom: 10px;
-    }
-
-    .nav-tabs > li {
-        float: left;
-        margin-bottom: -1px;
-    }
-
-    .nav > li {
-        position: relative;
-        display: block;
-    }
-
-    .tab-content > .active {
-        display: block;
-    }
-
-    .tab-content > .tab-pane {
-        display: none;
-    }
-    .nav-tabs>li>a {
-    margin-right: 2px;
-    line-height: 1.42857143;
-    border: 1px solid transparent;
-    border-radius: 4px 4px 0 0;
-}.nav>li>a {
-    position: relative;
-    display: block;
-    padding: 10px 15px;
-}.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-    color: #555;
-    cursor: default;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-bottom-color: transparent;
-}.glyphicon {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}.close-tab {
-    font-size: 10px;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    padding-left: 25px;
-    z-index: 100;
-    cursor: hand;
-    cursor: pointer;
-    color: #94A6B0;
-    display: none;
-}
-</style>*@

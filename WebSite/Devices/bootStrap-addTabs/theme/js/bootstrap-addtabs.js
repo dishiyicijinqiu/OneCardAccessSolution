@@ -13,8 +13,7 @@ $.fn.addtabs = function (options) {
         close: true, //是否可以关闭
         monitor: 'body', //监视的区域
         iframeUse: true, //使用iframe还是ajax
-        //iframeHeight: $(document).height() - 107, //固定TAB中IFRAME高度,根据需要自己修改
-        iframeHeight: "100%", //固定TAB中IFRAME高度,根据需要自己修改
+        iframeHeight: $(document).height() - 107, //固定TAB中IFRAME高度,根据需要自己修改
         method: 'init',
         callback: function () { //关闭后回调函数
         }
@@ -37,11 +36,11 @@ $.fn.addtabs = function (options) {
     });
 
 
-    obj.on('mouseover', 'li', function () {
+    obj.on('mouseover','li',function() {
         $(this).find('.close-tab').show();
     });
 
-    obj.on('mouseleave', 'li', function () {
+    obj.on('mouseleave','li',function() {
         $(this).find('.close-tab').hide();
     });
 
@@ -53,11 +52,11 @@ $.fn.addtabs = function (options) {
 };
 
 window.Addtabs = {
-    options: {},
+    options:{},
     add: function (opts) {
         var id = 'tab_' + opts.id;
         //obj.find('.active').removeClass('active');
-        $('li[role = "presentation"].active').removeClass('active');
+        $('li[role = "presentation"].active').removeClass('active'); 
         $('div[role = "tabpanel"].active').removeClass('active');
         //如果TAB不存在，创建一个新的TAB
         if (!$("#" + id)[0]) {
@@ -78,7 +77,7 @@ window.Addtabs = {
             //是否允许关闭
             if (Addtabs.options.close) {
                 title.append(
-                    $('<i>', { class: 'close-tab glyphicon glyphicon-remove' })
+                    $('<i>',{class:'close-tab glyphicon glyphicon-remove'})
                 );
             }
             //创建新TAB的内容
@@ -139,12 +138,12 @@ window.Addtabs = {
                 'data-toggle': 'dropdown',
                 'href': '#'
             }).append(
-                $('<i>', { 'class': "glyphicon glyphicon-align-justify" })
+                $('<i>', {'class': "glyphicon glyphicon-align-justify"})
             ).append(
-                $('<b>', { 'class': 'caret' })
+                $('<b>', {'class': 'caret'})
             )
         ).append(
-            $('<ul>', { 'class': "dropdown-menu" })
+            $('<ul>', {'class': "dropdown-menu"})
         )
 
         //检测是否已增加
@@ -159,16 +158,12 @@ window.Addtabs = {
         }
         var collection = 0;
 
-        //检查超过一行的标签页.css("border-top-width")
+        //检查超过一行的标签页
         element.append(dropdown.find('li'))
             .find('>li')
             .not('.tabdrop')
             .each(function () {
-                //alert($(this).get(0).tagName);this.offsetTop > 0 || 
-                //alert(this.offsetTop);
-                var v = element.width() - $(this).position().left - $(this).width();
-                $("#mytabtest").text(v + ":" + this.offsetTop);
-                if (this.offsetTop > 10 || element.width() - $(this).position().left - $(this).width() < 53) {
+                if (this.offsetTop > 0 || element.width() - $(this).position().left - $(this).width() < 53) {
                     dropdown.find('ul').append($(this));
                     collection++;
                 }

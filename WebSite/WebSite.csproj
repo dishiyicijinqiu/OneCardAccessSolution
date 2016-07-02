@@ -248,11 +248,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Css\bootstrap-addtabs.css" />
-    <Content Include="Css\bootstrap.min.css" />
+    <Content Include="Css\tabStyle.css" />
+    <Content Include="Devices\bootStrap-addTabs\index.html" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap-addtabs.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap-theme.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap-theme.min.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap.min.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\custom.css" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\index.html" />
+    <Content Include="Devices\bootStrap-addTabs\theme\js\bootstrap-addtabs.js" />
+    <Content Include="Devices\bootStrap-addTabs\theme\js\bootstrap.js" />
+    <Content Include="Devices\bootStrap-addTabs\theme\js\bootstrap.min.js" />
+    <Content Include="Devices\bootStrap-addTabs\theme\js\jquery.min.js" />
+    <Content Include="Devices\Test1\css\tabStyle.css" />
+    <Content Include="Devices\Test1\index.html" />
+    <Content Include="Devices\Test1\js\jquery-1.8.2.min.js" />
+    <Content Include="Devices\Test1\js\tabScript.js" />
+    <Content Include="Devices\TestTab\HtmlPage1.html" />
+    <Content Include="Devices\TestTab\jquery.min.js" />
+    <Content Include="Devices\TestTab\TabClose.png" />
     <Content Include="Devices\test\iframe.html" />
     <Content Include="Devices\test\index.html" />
-    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Devices\WebFontTest\HtmlPage1.html" />
+    <Content Include="Devices\WebFontTest\TabClose.png" />
     <Content Include="Css\Images\animated-overlay.gif" />
     <Content Include="Css\Images\AquaHeader.jpg" />
     <Content Include="Css\Images\BlackGlassHeader.jpg" />
@@ -331,11 +351,10 @@
     <Content Include="App_Themes\RedWine\Demo.skin" />
     <Content Include="App_Themes\SoftOrange\Demo.skin" />
     <Content Include="App_Themes\Youthful\Demo.skin" />
-    <Content Include="Scripts\bootstrap-addtabs.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery.min.js" />
     <Content Include="Scripts\OneCardAccess.js" />
     <Content Include="Scripts\Struct.js" />
+    <Content Include="Scripts\tabScript.js" />
     <Content Include="Views\Shared\DisplayTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Boolean.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
@@ -361,11 +380,13 @@
     <Content Include="Views\Struct\HeaderPartialView.cshtml" />
     <Content Include="Views\Basic\Product.cshtml" />
     <Content Include="Views\Struct\ContentsPartialView.cshtml" />
-    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="Fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\Struct\ViewBody.cshtml" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap-theme.css.map" />
+    <Content Include="Devices\bootStrap-addTabs\theme\css\bootstrap.css.map" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Devices\bootStrap-addTabs\theme\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

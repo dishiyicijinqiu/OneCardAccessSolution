@@ -26,6 +26,7 @@
         padding: 0px;
         border-width: 0;
     }
+
         #ViewBody_Header .ViewBody_HeaderMenu .fileTabtemplateDiv {
             width: 32px;
             height: 32px;
@@ -35,11 +36,13 @@
         #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
             padding-top: 10px;
         }
+
         #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
             border-width: 0px 0px 1px 0px;
             background: none;
         }
-        #ViewBody_Header .ViewBody_HeaderMenu .dxtcLite_Office2010Blue > .dxtc-stripContainer li:not(.dxtc-lead){
+
+        #ViewBody_Header .ViewBody_HeaderMenu .dxtcLite_Office2010Blue > .dxtc-stripContainer li:not(.dxtc-lead) {
             margin-top: 12px;
         }
     /*Office2010Blue*/
@@ -48,9 +51,9 @@
 <div class="ViewBody_HeaderTop">
     <div class="templateTitle">
         @Html.DevExpress().Label(settings =>
-        {
-            settings.Text = Resources.SystemInfo_SystemName;
-        }).GetHtml()
+            {
+                settings.Text = Resources.SystemInfo_SystemName;
+            }).GetHtml()
     </div>
 </div>
 

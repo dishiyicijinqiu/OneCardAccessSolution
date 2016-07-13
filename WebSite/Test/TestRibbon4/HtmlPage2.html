@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/Bootstrap-dev-Icon.css" rel="stylesheet" />
+    <link href="css/bootstrap-ribbon.css" rel="stylesheet" />
+    <script>
+        $(function () {
+            //$(".ribbon li a").bind("click", function (e) {
+            //    if ($this.hasClass("disabled")) {
+            //        e.preventDefault();
+            //        e.stopPropagation();
+            //        e.stopImmediatePropagation();
+            //        return false;
+            //    }
+            //});
+
+
+        });
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="header row">
+            <div class="ribbon col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="ribbonfile">
+                    <a id="ribbonfileMenu" href="#" class="dropdown-toggle center-block"
+                       data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">
+                        <img class="dxIcon_navigation_home_32x32" src="./Images/point.gif" alt="">
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="ribbonfileMenu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </div>
+                <div class="ribbonnav">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content-wrapper">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="profile">
+
+                                <div class="list-group">
+                                    <div href="#" class="list-group-item">
+                                        <div class="caption groupitemcontent">
+                                            <div class="itemcontent-item dropdown">
+                                                <a class="dropdown-toggle" id="btnTask"
+                                                   data-toggle="dropdown" role="button"
+                                                   aria-haspopup="true" aria-expanded="false">
+                                                    <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                                         src="./Images/point.gif" alt="">
+                                                    <span class="center-block text-center dxr-item-text">TaskList</span>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="btnTask">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">One more separated link</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="itemcontent-item">
+                                                <a>
+                                                    <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                                         src="./Images/point.gif" alt="">
+                                                    <span class="center-block text-center dxr-item-text">TaskList</span>
+                                                    <span class="caret center-block dxr-item-caret"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <h4 class="list-group-item-heading text-center groupitemtitle">List 2group</h4>
+                                    </div>
+                                    <div href="#" class="list-group-item">
+                                        <div class="caption groupitemcontent">
+
+                                            <div class="itemcontent-item dropdown">
+                                                <a id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                                    <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                                         src="./Images/point.gif" alt="">
+                                                    <span class="center-block text-center dxr-item-text">TaskList</span>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="itemcontent-item dropdown">
+                                                <a  id="btnTask1" data-toggle="dropdown"  aria-haspopup="true"  aria-expanded="false"
+                                                    class="dropdown-toggle"
+                                                    role="button"
+                                                 >
+                                                    <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                                         src="./Images/point.gif" alt="">
+                                                    <span class="center-block text-center dxr-item-text">TaskList</span>
+                                                </a>
+                                                <ul class="dropdown-menu" aria-labelledby="btnTask1">
+                                                    <li><a href="#">Action</a></li>
+                                                    <li><a href="#">Another action</a></li>
+                                                    <li><a href="#">Something else here</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Separated link</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">One more separated link</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="itemcontent-item">
+                                                <a>
+                                                    <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                                         src="./Images/point.gif" alt="">
+                                                    <span class="center-block text-center dxr-item-text">TaskList</span>
+                                                    <span class="caret center-block dxr-item-caret"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <h4 class="list-group-item-heading text-center groupitemtitle">List 2group</h4>
+                                    </div>
+                                    <div href="#" class="list-group-item">
+                                        <p class="list-group-item-text">第3个</p>
+                                        <h4 class="list-group-item-heading">List group item heading</h4>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="messages">
+                                2
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="settings">
+                                3
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

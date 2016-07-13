@@ -4,9 +4,9 @@
     <script src="../../Scripts/jquery.min.js"></script>
 </head>
 <body style="border:0px;margin:0;padding:0;" scroll="no">
-    <div id="divTop" style="width:20px;height:14px; position:absolute;left:0px;top:1px;margin-left:36px;">
+    <div id="divTop" style="width:500px;height:16px; position:absolute;left:0px;top:1px;margin-left:36px;">
     </div>
-    <div id="divTop2" style="width:20px;height:38px; position:absolute;left:0px;top:1px;">
+    <div id="divTop2" style="width:500px;height:38px; position:absolute;left:200px;top:1px;">
     </div>
     <div id="divWindowStatus" style="width:100px;height:21px;position:absolute;right:0px;top:1px;background-image:url(windowstatus.png);">
         <div id="divMin" style="width:33px;height:21px;float:left"></div>
@@ -15,6 +15,9 @@
     </div>
     <iframe id="myiframe" src="../../Struct/ViewBody" style="width:100%; height:100%;border:0px;" frameborder="0" ></iframe>
     <!--<iframe id="myiframe" src="../../Home/Index" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>-->
+
+    <!--<iframe id="myiframe" src="http://localhost/WebSite/Devices/TestRibbon/index.html" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>-->
+    
 </body>
 </html>
 <script type="text/javascript">
@@ -145,15 +148,15 @@
             adjustcontroler();
         });
 
-        $("#divTop").css("display", "none");
-        $("#divTop2").css("display", "none");
-        $("#divWindowStatus").css("display", "none");
-        $("#myiframe").load(function () {
-            $("#divTop").css("display", "block");
-            $("#divTop2").css("display", "block");
-            $("#divWindowStatus").css("display", "block");
-            adjustcontroler();
-        });
+        //$("#divTop").css("display", "none");
+        //$("#divTop2").css("display", "none");
+        //$("#divWindowStatus").css("display", "none");
+        //$("#myiframe").load(function () {
+        //    $("#divTop").css("display", "block");
+        //    $("#divTop2").css("display", "block");
+        //    $("#divWindowStatus").css("display", "block");
+        //    adjustcontroler();
+        //});
 
     });
 </script>

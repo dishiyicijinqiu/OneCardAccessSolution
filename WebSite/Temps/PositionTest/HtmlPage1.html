@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="../../Scripts/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //$(".style2").bind("click", function () {
+            //    if ($(".style2").css("position") == "relative") {
+            //        $(".style2").css("position", "absolute");
+            //    }
+            //    else {
+            //        $(".style2").css("position", "relative");
+            //    }
+            //});
+            $(".style2").bind("click", function () {
+                $(".content").append("<br/>");
+                //$(".style2").offset({ top: 100 });
+                //alert($(".style2").offsetParent().offset().top);
+                //alert($(".style2").offsetParent().offset());
+                //alert($(".style2").offsetParent().offset());
+                //alert($(".style2").offsetParent().offset());
+                //alert($(".style2").offsetParent().offset());
+                //$(".content").append("offsettop：指的是边框顶部距离文档的距离" + $(".style2").offsetParent().offset().top);
+                //$(".content").append("<br/>");
+                //$(".content").append("scrollTop：div滚动后的顶点top-div初始时的顶点top" + $(".style2").scrollTop());
+                //$(".content").append("<br/>");
+                //$(".content").append("scrollTop：div滚动后的顶点top-div初始时的顶点top" + $(".style2").scrollTop());
+                //$(".content").append("<br/>");
+
+                $(".style2").each(function () {
+                    $(".content").text($(this).offsetParent().html());
+                    //var result = $(this).offsetParent().html().replace("/</g", "&lt;").replace("/>/g", "&gt;");
+                    var result = $(this).offsetParent().html().replace(/>/g, "&gt;").replace(new RegExp("\<", "g"), "&lt;");
+                    $(".content").append(result);
+
+                    //$(".content").append("<br/>");
+                    //$(".content").append("scrollTop：" + this.scrollTop);
+                    //$(".content").append("<br/>");
+                    //$(".content").append("scrollTop：" + this.offsetTop);
+                    //$(".content").append("<br/>");
+                    //$(".content").append("html：" + $(this).offsetParent().html());
+                });
+
+                var els = document.getElementsByClassName("style2");
+                for (var i = 0; i < els.length; i++) {
+                    $(".content").append("<br/>");
+                    $(".content").append("scrollTop：" + els[i].scrollTop);
+                    $(".content").append("<br/>");
+                    $(".content").append("scrollTop：" + els[i].offsetTop);
+                    $(".content").append("<br/>");
+                    var el = $("<div></div>").html(els[i].offsetParent.innerHTML);
+                    $(".content").append("scrollTop：" + $(el).html());
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+            overflow: scroll;
+        }
+
+        .style1 {
+            position: relative;
+            margin: 20px;
+            padding: 33px;
+            background-color: red;
+            width: 500px;
+            height: 500px;
+            border: 10px solid blue;
+        }
+
+        .style2 {
+            margin: 40px;
+            padding: 54px;
+            background-color: blue;
+            width: 200px;
+            height: 800px;
+            border: 15px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="style1">
+        <div style="width:30px;height:40px;background-color:aliceblue;"></div>
+        <div class="style2">
+            aaaa&gt;
+        </div>
+    </div>
+    <div class="content">
+    </div>
+</body>
+</html>

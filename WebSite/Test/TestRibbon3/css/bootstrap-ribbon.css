@@ -1,0 +1,236 @@
+﻿.ribbon {
+    color: #201f35;
+    background-color: #c0d1e9;
+}
+
+    .ribbon a {
+        color: #201f35;
+    }
+
+    .ribbon .dxr-block {
+        display: block;
+        float: left;
+        overflow: hidden;
+    }
+
+    .ribbon .dx-clear {
+        display: block;
+        clear: both;
+        height: 0;
+        width: 0;
+        font-size: 0;
+        line-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+    }
+
+    /*tab相关*/
+    .ribbon .nav-tabs {
+        border-bottom-color: transparent;
+        margin-bottom: -1px;
+    }
+
+        .ribbon .nav-tabs > li > a {
+            color: black;
+            border-bottom-width: 0px;
+        }
+
+        .ribbon .nav-tabs > #navfile > a {
+            border-color: transparent;
+        }
+
+        .ribbon .nav-tabs > #navfile > img {
+            margin: 0px;
+            position: absolute;
+            top: -8px;
+            left: 3px;
+            right: 0px;
+        }
+
+        .ribbon .nav-tabs > li.active > a,
+        .ribbon .nav-tabs > li.active > a:focus,
+        .ribbon .nav-tabs > li.active > a:hover {
+            border: 1px solid #859ebf;
+            color: black;
+            border-bottom-width: 0px;
+        }
+
+        .ribbon .nav-tabs > #navfile.active > a,
+        .ribbon .nav-tabs > #navfile.active > a:focus,
+        .ribbon .nav-tabs > #navfile.active > a:hover {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+
+    .ribbon .nav > #navfile > a:focus,
+    .ribbon .nav > #navfile > a:hover {
+        background-color: transparent;
+        cursor: default;
+    }
+
+    .ribbon .nav > li > a {
+        padding: 2px 15px;
+    }
+
+    .ribbon .nav > li.active > a {
+        background-color: #eef4fb;
+    }
+
+    .ribbon .nav > li > a:focus,
+    .ribbon .nav > li > a:hover {
+        background-color: #eef4fb;
+    }
+
+    .ribbon .tabWrapper {
+        height: 105px;
+    }
+
+    .ribbon .tab-content {
+        border: 1px solid #859ebf;
+        margin: 2px;
+        height: 100%;
+        margin-top: 0px;
+        background: #eff5fb url(../Images/Ribbon/Ribbon_tab-content_bg.png) repeat-x bottom;
+    }
+
+        .ribbon .tab-content .tab-pane {
+            height: 100%;
+        }
+
+    /*group dxr-Item相关*/
+    .ribbon .dxr-groupList {
+        float: left;
+        padding: 0;
+        margin: 0;
+        height: 100%;
+    }
+
+        .ribbon .dxr-groupList .dxr-group {
+            margin: 3px 3px 0 3px;
+            text-align: center;
+            float: left;
+            list-style: none;
+            height: 100%;
+        }
+
+    .ribbon .dxr-groupContent {
+        height: 75px;
+    }
+
+    .ribbon .dxr-blLrgItems .dxr-item,
+    .ribbon .dxr-blSepItems .dxr-item,
+    .ribbon.dxr-grLabelsHidden .dxr-grExpBtn {
+        text-align: center;
+        height: 73px;
+    }
+
+    .ribbon .dxr-item {
+        border: 1px solid transparent;
+    }
+
+    .ribbon .dxr-blRegItems .dxr-item,
+    .ribbon .dxr-blLrgItems .dxr-item,
+    .ribbon .dxr-blHorItems .dxr-item {
+        display: block;
+        float: left;
+        overflow: hidden;
+    }
+
+
+
+    .ribbon .dxr-blLrgItems,
+    .ribbon .dxr-blHorItems {
+        border: 1px solid transparent;
+    }
+
+        .ribbon .dxr-blLrgItems:focus, .dxr-blLrgItems:hover,
+        .ribbon .dxr-blHorItems:focus, .dxr-blHorItems:hover {
+            background: #fcf9df url(../Images/Ribbon/Ribbon_dxrItemHover_bg.png) repeat-x left top;
+            border: 1px solid #f2ca58;
+        }
+
+
+
+        .ribbon .dxr-blLrgItems .dxr-buttonItem,
+        .ribbon .dxr-grExpBtn {
+            min-width: 42px;
+        }
+
+    .ribbon .dxr-buttonItem {
+        cursor: pointer;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+
+    .ribbon .dxr-blLrgItems .dxr-item .dxr-label {
+        border-top: 1px solid transparent;
+        width: 100%;
+        display: inline-block;
+    }
+
+        .ribbon .dxr-blLrgItems .dxr-item .dxr-label .dxr-lblContent,
+        .ribbon .dxr-grExpBtn .dxr-lblContent {
+            margin-left: 3px;
+            margin-right: 3px;
+            margin-bottom: 2px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .ribbon .dxr-blLrgItems .dxr-item .dxr-label .dxr-lblContent,
+        .ribbon .dxr-grExpBtn .dxr-lblContent {
+            text-align: center;
+        }
+
+
+    .ribbon .dxr-blLrgItems .dxr-ddImageContainer {
+        width: 100%;
+    }
+
+    .ribbon .dxr-ddImageContainer {
+        display: inline-block;
+    }
+
+
+
+    .ribbon .dxr-img32, .dxrControl_Office2010Blue .dxr-blLrgItems .dxr-colorBtn .dxr-colorBtnNoImg32 {
+        width: 32px;
+        height: 32px;
+        margin: 2px auto 1px auto;
+    }
+
+    .ribbon .dxr-blLrgItems .dxr-img32 {
+        display: inline-block !important;
+    }
+
+    .ribbon img[class^="dx"] {
+        max-width: none;
+    }
+
+
+
+    .ribbon .dxr-groupLabel {
+        text-align: center;
+        color: #3c3c3c;
+        line-height: 15px;
+        padding: 0px 5px 0 5px;
+        overflow: hidden;
+        white-space: nowrap;
+        -ms-text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .ribbon .dxr-groupList .dxr-groupSep {
+        float: left;
+        height: 100%;
+        list-style: none;
+    }
+
+        .ribbon .dxr-groupList .dxr-groupSep b {
+            display: block;
+            width: 1px;
+            height: 100%;
+            background: #fcf9df url(../Images/Ribbon/Ribbon_dxr-groupSep_bg.png) repeat-x left top;
+        }

@@ -28,8 +28,9 @@ namespace WpfApplication3
             webKitBrowser1.AllowCookies = webKitBrowser1.UseJavaScript = true;
             webKitBrowser1.DocumentCompleted += new WebBrowserDocumentCompletedEventHandler(webKitBrowser1_DocumentCompleted);
             webKitBrowser1.ShowJavaScriptAlertPanel += WebKitBrowser1_ShowJavaScriptAlertPanel;
-            //webKitBrowser1.Navigate("http://192.168.18.2/WebSite/Devices/WPF/Index.html");
-            webKitBrowser1.Navigate("http://dishiyicijinqiu.eicp.net:17515/WebSite/Devices/WPF/Index.html");
+            webKitBrowser1.Navigate("http://192.168.18.2/WebSite/Devices/WPF/Index.html");
+            //webKitBrowser1.Navigate("http://dishiyicijinqiu.eicp.net:17515/WebSite/Devices/WPF/Index.html");
+
         }
 
         private void WebKitBrowser1_ShowJavaScriptAlertPanel(object sender, WebKit.ShowJavaScriptAlertPanelEventArgs e)

@@ -1,7 +1,7 @@
 ﻿$(function () {
-    $(document).contextmenu(function () {
-        return false;
-    });
+    //$(document).contextmenu(function () {
+    //    return false;
+    //});
     //$("div").select(function () {
     //    return false;
     //});

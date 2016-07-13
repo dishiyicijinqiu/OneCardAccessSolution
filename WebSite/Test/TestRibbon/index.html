@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=8" />
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <title>jQuery Ribbon</title>
+    <link href="../bootstrap-3.3.5/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="../bootstrap-3.3.5/dist/js/bootstrap.min.js"></script>
+
+    <script src="scripts/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="scripts/jquery.ribbon.js" type="text/javascript"></script>
+    <link href="Ribbon/themes/office2010blue/ribbon.css" rel="stylesheet" />
+    <script stype="text/javascript">
+        $(function () {
+            $().Ribbon({});
+
+            //$(window).bind("resize", function () {
+
+            //    $(".submenu:show").children().each(function () {
+                    
+            //        if ((this.offsetTop - parseInt($(this).css('marginTop'))) > 0) {
+            //            alert(this.offsetTop);
+            //        }
+
+            //    });
+
+            //});
+
+
+
+        });
+    </script>
+    <link href="style.css" rel="stylesheet" />
+    <style type="text/css">
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        h1 {
+            font-family: Cambria, Arial, Trebuchet MS;
+            font-size: 14pt;
+        }
+
+        h2 {
+            font-family: Cambria, Arial, Trebuchet MS;
+            font-size: 13pt;
+            color: #4E81C8;
+        }
+    </style>
+</head>
+<body>
+    <div class="ribbonContainer">
+        <ul class="ribbon">
+            <li>
+                <ul class="orb">
+                    <li>
+                        <!--<a href="javascript:void(0);" class="orbButton">&nbsp;</a>
+                        <span>Menu</span>-->
+                        <!--<div class="menubtn">
+                            <img src="ribbon/images/icon_datetime.png" alt="Date and time" />
+                            Date and time
+                        </div>-->
+                        <a href="javascript:void(0);" class="orbButton">
+                            <img src="Ribbon/themes/office2010blue/images/orb_32x32.png" alt="Paste" />
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_doc.png" alt="New" /><span>New</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_open.png" alt="Open" /><span>Open</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_save.png" alt="Save" /><span>Save</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_saveas.png" alt="Save as" /><span>Save As</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_richtext.png" alt="Rich Text" /><span>Rich Text document</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_ooxml.png" alt="OOXML" /><span>Office Open XML document</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_ooxml.png" alt="Open Document" /><span>OpenDocument text</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_plaintext.png" alt="Plain text" /><span>Plain text document</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_otherformats.png" alt="Other formats" /><span>Other formats</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_print.png" alt="Print" /><span>Print</span>
+                                </a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_print.png" alt="Print" /><span>Print</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_quickprint.png" alt="Quick print" /><span>Quick print</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="ribbon/images/icon_printpreview.png" alt="Print preview" /><span>Print preview</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_pagesetup.png" alt="Page setup" /><span>Page setup</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_sendemail.png" alt="Send in e-mail" /><span>Send in e-mail</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_about.png" alt="About" /><span>About</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <img src="ribbon/images/icon_exit.png" alt="Exit" /><span>Exit</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="menuli">
+                <ul class="menu">
+                    <li>
+                        <a href="#home">Home</a>
+                        <ul>
+                            <li>
+                                <h2>
+                                    <span>Clipboard</span>
+                                </h2>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_paste.png" alt="Paste" />
+                                    Paste
+                                </div>
+                                <div class="ribbon-list">
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_cut.png" alt="Cut" />
+                                        Cut
+                                    </div>
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_copy.png" alt="Copy" />
+                                        Copy
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2>
+                                    <span>Insert</span>
+                                </h2>
+
+                            <div>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_datetime.png" alt="Date and time" />
+                                    Date and time
+                                </div>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_picture.png" alt="Picture" />
+                                    Picture
+                                </div>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_paint.png" alt="Paint" />
+                                    Paint drawing
+                                </div>
+                            </div>
+
+                            </li>
+                            <li>
+                                <h2>
+                                    <span>Editing</span>
+                                </h2>
+                                <div class="ribbon-list">
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_find.png" alt="Find" />
+                                        Find
+                                    </div>
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_replace.png" alt="Replace" />
+                                        Replace
+                                    </div>
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_selectall.png" alt="Select all" />
+                                        Select all
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2>
+                                    Theme
+                                </h2>
+                                <div class="ribbon-list">
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_theme.png" alt="Theme" />
+                                        Ribbon theme
+                                        <ul class="ribbon-theme">
+                                            <li class="ribbon-windows7">Windows 7</li>
+                                            <li class="ribbon-simple">Simple</li>
+                                            <li class="ribbon-office2010blue">Simple</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#view">View</a>
+                        <ul>
+                            <li>
+                                <h2>
+                                    Zoom
+                                </h2>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_zoomin.png" alt="Zoom in" />
+                                    Zoom in
+                                </div>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_zoomout.png" alt="Zoom out" />
+                                    Zoom out
+                                </div>
+                                <div class="menubtn">
+                                    <img src="ribbon/images/icon_zoom100.png" alt="Zoom" />
+                                    100%
+                                </div>
+                            </li>
+                            <li>
+                                <h2>
+                                    Show or hide
+                                </h2>
+                                <div class="ribbon-list">
+                                    <div class="menubtn">
+                                        <input type="checkbox" id="chkbox1" />
+                                        <label for="chkbox1">
+                                            Ruler
+                                        </label>
+                                    </div>
+                                    <div class="menubtn">
+                                        <input type="checkbox" id="chkbox2" />
+                                        <label for="chkbox2">
+                                            Status bar
+                                        </label>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <h2>
+                                    Settings
+                                </h2>
+                                <div class="ribbon-list">
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_wordwrap.png" alt="Word wrap" />
+                                        Word wrap
+                                        <ul>
+                                            <li>No wrap</li>
+                                            <li>Wrap to window</li>
+                                            <li>Wrap to ruler</li>
+                                        </ul>
+                                    </div>
+                                    <div class="menubtn">
+                                        <img src="ribbon/images/icon_small_measurement.png" alt="Measurement" />
+                                        Measurement Units
+                                        <ul>
+                                            <li>Inches</li>
+                                            <li>Centimeters</li>
+                                            <li>Points</li>
+                                            <li>Picas</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

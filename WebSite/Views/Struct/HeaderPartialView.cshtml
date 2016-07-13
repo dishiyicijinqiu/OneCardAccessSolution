@@ -1,115 +1,128 @@
-
-<style type="text/css">
-    /*ViewBody_HeaderTop*/
-    #ViewBody_Header .ViewBody_HeaderTop {
-        position: absolute;
-        left: 46%;
-    }
-
-        #ViewBody_Header .ViewBody_HeaderTop .templateTitle {
-            margin: 0;
-        }
-
-            #ViewBody_Header .ViewBody_HeaderTop .templateTitle span {
-                position: relative;
-                float: left;
-                margin: 1px 1px 1px 1px;
-                text-decoration: none;
-                font-size: 13px;
-                color: black;
-                width: 100%;
-                text-align: center;
-            }
-    /*ViewBody_HeaderTop*/
-    /*ViewBody_HeaderMenu*/
-    #ViewBody_Header .ViewBody_HeaderMenu {
-        padding: 0px;
-        border-width: 0;
-    }
-
-        #ViewBody_Header .ViewBody_HeaderMenu .fileTabtemplateDiv {
-            width: 32px;
-            height: 32px;
-            background-image: url(../CSS/Ribbon/home_32x32.png);
-        }
-        /*Office2010Blue*/
-        #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxr-minBtn {
-            padding-top: 10px;
-        }
-
-        #ViewBody_Header .ViewBody_HeaderMenu .dxrControl_Office2010Blue .dxtcLite_Office2010Blue.dxtc-top .dxtc-tab.dxr-fileTab {
-            border-width: 0px 0px 1px 0px;
-            background: none;
-        }
-
-        #ViewBody_Header .ViewBody_HeaderMenu .dxtcLite_Office2010Blue > .dxtc-stripContainer li:not(.dxtc-lead) {
-            margin-top: 12px;
-        }
-    /*Office2010Blue*/
-    /*ViewBody_HeaderMenu*/
-</style>
-<div class="ViewBody_HeaderTop">
-    <div class="templateTitle">
-        @Html.DevExpress().Label(settings =>
-            {
-                settings.Text = Resources.SystemInfo_SystemName;
-            }).GetHtml()
+<div class="ribbon container-fluid">
+    <div class="ribbonfile">
+        <a id="ribbonfileMenu" href="#" class="dropdown-toggle center-block"
+           data-toggle="dropdown" role="button"
+           aria-haspopup="true" aria-expanded="false">
+            <img class="dxIcon_navigation_home_32x32 center-block" src="~/Images/point.gif" alt="">
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="ribbonfileMenu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+        </ul>
     </div>
-</div>
+    <div class="ribbonnav">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content-wrapper">
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="profile">
 
-<div class="ViewBody_HeaderMenu">
-    @Html.DevExpress().Ribbon(settings =>
-{
-    settings.Name = "ribbon";
-    settings.SetFileTabTemplateContent(c =>
-    {
-        TabControlTemplateContainerBase container = (TabControlTemplateContainerBase)c;
-        if (!container.Active)
-        {
-            ViewContext.Writer.Write(@"<div id=""FileTabtemplateDiv"" class=""fileTabtemplateDiv""></div>");
-        }
-    });
+                    <div class="list-group">
+                        <div href="#" class="list-group-item">
+                            <div class="caption groupitemcontent">
 
-    //settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { OnRibbonResize(s,e); }";
-    settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { ribbon; }";
-    var tab = settings.Tabs.Add("Home");
-    var tasksGroup = tab.Groups.Add("Tasks");
-    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
-    {
-        i.Text = "TasksList";
-        i.Name = "Tasks List";
-        i.Size = RibbonItemSize.Large;
-        ((RibbonButtonItem)i).LargeImage.IconID =
-            IconID.TasksTask32x32;
-    });
-    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
-    {
-        i.Text = "New";
-        i.Name = "NewTask";
-        i.Size = RibbonItemSize.Small;
-        ((RibbonButtonItem)i).SmallImage.IconID =
-            IconID.TasksNewtask16x16;
-    });
-    // And other groups with items
 
-    var tab1 = settings.Tabs.Add("eeeeeeeeeeeeeeeeeeeeeeee");
-    var tasksGroup1 = tab1.Groups.Add("bbbb");
-    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
-    {
-        i.Text = "TasksList";
-        i.Name = "Tasks List";
-        i.Size = RibbonItemSize.Large;
-        ((RibbonButtonItem)i).LargeImage.IconID =
-            IconID.TasksTask32x32;
-    });
-    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
-    {
-        i.Text = "New";
-        i.Name = "NewTask";
-        i.Size = RibbonItemSize.Small;
-        ((RibbonButtonItem)i).SmallImage.IconID =
-            IconID.TasksNewtask16x16;
-    });
+                                <div class="itemcontent-item dropdown">
+                                    <a class="dropdown-toggle" id="btnTask"
+                                       data-toggle="dropdown" role="button"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                             src="~/Images/point.gif" alt="">
+                                        <span class="center-block text-center dxr-item-text">TaskList</span>
+                                        <span class="caret center-block dxr-item-caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="btnTask">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </div>
 
-}).GetHtml()
+                                <div class="itemcontent-item ribbonbutton" data-target="Basic/P_CRTempCollection">
+                                    <a role="button">
+                                        <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                             src="~/Images/point.gif" alt="">
+                                        <span class="center-block text-center dxr-item-text">产品信息</span>
+                                    </a>
+                                </div>
+
+                            </div>
+                            <h4 class="list-group-item-heading text-center groupitemtitle">List 2group</h4>
+                        </div>
+                        <div href="#" class="list-group-item">
+                            <div class="caption groupitemcontent">
+
+                                <div class="itemcontent-item dropdown">
+                                    <a id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                        <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                             src="~/Images/point.gif" alt="">
+                                        <span class="center-block text-center dxr-item-text">TaskList</span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="itemcontent-item dropdown">
+                                    <a id="btnTask1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                                       class="dropdown-toggle"
+                                       role="button">
+                                        <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                             src="~/Images/point.gif" alt="">
+                                        <span class="center-block text-center dxr-item-text">TaskList</span>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="btnTask1">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">Separated link</a></li>
+                                        <li role="separator" class="divider"></li>
+                                        <li><a href="#">One more separated link</a></li>
+                                    </ul>
+                                </div>
+                                <div class="itemcontent-item">
+                                    <a>
+                                        <img class="dxIcon_tasks_task_32x32 center-block dxr-item-image"
+                                             src="~/Images/point.gif" alt="">
+                                        <span class="center-block text-center dxr-item-text">TaskList</span>
+                                        <span class="caret center-block dxr-item-caret"></span>
+                                    </a>
+                                </div>
+                            </div>
+                            <h4 class="list-group-item-heading text-center groupitemtitle">List 2group</h4>
+                        </div>
+                        <div href="#" class="list-group-item">
+                            <p class="list-group-item-text">第3个</p>
+                            <h4 class="list-group-item-heading">List group item heading</h4>
+                        </div>
+                    </div>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    2
+                </div>
+                <div role="tabpanel" class="tab-pane" id="settings">
+                    3
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

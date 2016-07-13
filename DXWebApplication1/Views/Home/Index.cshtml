@@ -1,0 +1,65 @@
+@Html.DevExpress().TabControl(settings =>
+{
+    settings.Name = "tcOverview";
+    settings.Tabs.Add("Home");
+    settings.Tabs.Add("Products");
+    settings.Tabs.Add("Support");
+    settings.Tabs.Add("Downloads");
+}).GetHtml()
+
+<div class="ViewBody_HeaderMenu">
+    @Html.DevExpress().Ribbon(settings =>
+{
+    settings.Name = "ribbon";
+    settings.SetFileTabTemplateContent(c =>
+    {
+        TabControlTemplateContainerBase container = (TabControlTemplateContainerBase)c;
+        if (!container.Active)
+        {
+            ViewContext.Writer.Write(@"<div id=""FileTabtemplateDiv"" class=""fileTabtemplateDiv""></div>");
+        }
+    });
+    //settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { OnRibbonResize(s,e); }";
+    settings.ClientSideEvents.MinimizationStateChanged = "function(s, e) { ribbon; }";
+    var tab = settings.Tabs.Add("Home");
+    var tasksGroup = tab.Groups.Add("Tasks");
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "TasksList";
+        i.Name = "Tasks List";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID =
+            IconID.TasksTask32x32;
+    });
+    tasksGroup.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "New";
+        i.Name = "NewTask";
+        i.Size = RibbonItemSize.Small;
+        ((RibbonButtonItem)i).SmallImage.IconID =
+            IconID.TasksNewtask16x16;
+    });
+    // And other groups with items
+
+    var tab1 = settings.Tabs.Add("eeeeeeeeeeeeeeeeeeeeeeee");
+    var tasksGroup1 = tab1.Groups.Add("bbbb");
+    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "TasksList";
+        i.Name = "Tasks List";
+        i.Size = RibbonItemSize.Large;
+        ((RibbonButtonItem)i).LargeImage.IconID =
+            IconID.TasksTask32x32;
+    });
+    tasksGroup1.Items.Add(MVCxRibbonItemType.ButtonItem, i =>
+    {
+        i.Text = "New";
+        i.Name = "NewTask";
+        i.Size = RibbonItemSize.Small;
+        ((RibbonButtonItem)i).SmallImage.IconID =
+            IconID.TasksNewtask16x16;
+    });
+
+}).GetHtml()
+</div>
+@Html.Partial("GridViewPartialView")

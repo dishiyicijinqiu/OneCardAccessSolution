@@ -1,13 +1,8 @@
-<style type="text/css">
-    #ViewBody_Footer .copyright {
-        float: right;
-        padding: 6px 20px 6px 0px;
-    }
-</style>
-<div class="copyright">
-    @Html.DevExpress().Label(settings =>
+<div class="container-fluid">
+    <div class="pull-right">
+        @Html.DevExpress().Label(settings =>
 {
     settings.Text = Resources.SystemInfo_Copyright;
 }).GetHtml()
+    </div>
 </div>
-<div style="clear:both;"></div>

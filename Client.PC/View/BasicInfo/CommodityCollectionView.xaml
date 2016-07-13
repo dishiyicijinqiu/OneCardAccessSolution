@@ -1,0 +1,75 @@
+﻿<ui:BaseUserControl x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.CommodityCollectionView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.BasicInfo"
+             mc:Ignorable="d" 
+           xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+            xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+            xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+            xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+            xmlns:dxrt="http://schemas.devexpress.com/winfx/2008/xaml/ribbon/themekeys"
+             
+             
+            xmlns:sys="clr-namespace:System;assembly=mscorlib"
+            xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+            xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+            xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+             d:DesignHeight="300" d:DesignWidth="300">
+    <ui:BaseUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="{x:Type dxr:DXRibbonWindow}" x:Key="DialogWindowStyle">
+                <Setter Property="Width" Value="658"/>
+                <Setter Property="Height" Value="544"/>
+                <Setter Property="Title" Value="{x:Static res:Resources.View_CommodityView_Title}"/>
+                <Setter Property="ShowInTaskbar" Value="False"/>
+            </Style>
+        </ResourceDictionary>
+    </ui:BaseUserControl.Resources>
+
+    <dxb:BarManager Name="barManager">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto">
+                <dxr:RibbonDefaultPageCategory x:Name="ribbonDefaultPageCategory1">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_CommodityCollectionView_Title}">
+                        <dxr:RibbonPageGroup x:Name="ribbonPageGroup1" >
+                            <dxb:BarButtonItem Style="{StaticResource barAdd}" />
+                            <dxb:BarButtonItem Style="{StaticResource barCopyAdd}" CommandParameter="{Binding ElementName=grid,Path=SelectedItem}" />
+                            <dxb:BarButtonItem Style="{StaticResource barEdit}"  CommandParameter="{Binding ElementName=grid,Path=SelectedItem}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barDelete}" 
+                                               Command="{Binding DeleteCommand}"
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}">
+                            </dxb:BarButtonItem>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barConfirm}" 
+                                               CommandParameter="{Binding ElementName=grid,Path=SelectedItems}">
+                            </dxb:BarButtonItem>
+                            <dxb:BarButtonItem Style="{StaticResource barClose}"/>
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+
+            <dxg:GridControl x:Name="grid" 
+                             Grid.Row="1" SelectedItem="{Binding SelectedEntity, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" 
+                             ColumnsSource="{StaticResource commoditycolumnssource}"
+                             ColumnGeneratorTemplateSelector="{StaticResource ColumnTemplateSelector}"
+                             core:GridControlMouseDoubleClick.Command="{Binding EditCommand}"
+                             core:GridControlMouseDoubleClick.CommandParameter="{Binding RelativeSource={RelativeSource Mode=Self},Path=SelectedItem}"
+                             core:GridControlMouseDoubleClick.HitPosition="RowCell"
+                             SelectionMode="Cell"
+                             ItemsSource="{Binding Items}">
+            </dxg:GridControl>
+        </Grid>
+    </dxb:BarManager>
+</ui:BaseUserControl>

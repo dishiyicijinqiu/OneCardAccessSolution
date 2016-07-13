@@ -1,0 +1,162 @@
+﻿<html>
+
+<head>
+    <script src="../../Scripts/jquery.min.js"></script>
+</head>
+<body style="border:0px;margin:0;padding:0;" scroll="no">
+    <div id="divTop" style="width:500px;height:16px; position:absolute;left:0px;top:1px;margin-left:36px;">
+    </div>
+    <div id="divTop2" style="width:500px;height:38px; position:absolute;left:200px;top:1px;">
+    </div>
+    <div id="divWindowStatus" style="width:100px;height:21px;position:absolute;right:0px;top:1px;background-image:url(windowstatus.png);">
+        <div id="divMin" style="width:33px;height:21px;float:left"></div>
+        <div id="divMax" style="width:33px;height:21px;float:left"></div>
+        <div id="divClose" style="width:33px;height:21px;float:left"></div>
+    </div>
+    <iframe id="myiframe" src="../../Struct/ViewBody" style="width:100%; height:100%;border:0px;" frameborder="0" ></iframe>
+    <!--<iframe id="myiframe" src="../../Home/Index" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>-->
+
+    <!--<iframe id="myiframe" src="http://localhost/WebSite/Devices/TestRibbon/index.html" style="width:100%; height:100%;border:0px;" frameborder="0"></iframe>-->
+    
+</body>
+</html>
+<script type="text/javascript">
+
+    var params = {
+        left: 0,
+        top: 0,
+        currentX: 0,
+        currentY: 0,
+        flag: false
+    };
+    //拖拽的实现
+    var startDrag = function (target) {
+        if (target.css("left") !== 'auto') {
+            params.left = target.css("left");
+        }
+        if (target.css("top") !== 'auto') {
+            params.top = target.css("top");
+        }
+        target.mousedown(function (event) {
+            params.flag = true;
+            document.onselectstart = function () { return false; };
+            params.currentX = event.clientX;
+            params.currentY = event.clientY;
+        });
+        document.onmouseup = function () {
+            params.flag = false;
+            if (target.css("left") !== 'auto') {
+                params.left = target.css("left");
+            }
+            if (target.css("top") !== 'auto') {
+                params.top = target.css("top");
+            }
+        };
+        document.onmousemove = function (event) {
+            target.css("cursor", "default");
+            var e = event ? event : window.event;
+            if (params.flag) {
+                var nowX = e.clientX, nowY = e.clientY;
+                var disX = nowX - params.currentX, disY = nowY - params.currentY;
+                window.external.SetMovePos(disX, disY);
+            }
+        }
+    };
+
+    //最小化窗体的实现
+    var minWindow = function (target) {
+        target.click(function () {
+            window.external.MinWindow();
+        });
+    };
+    //最大化窗体的实现
+    var maxWindow = function (target) {
+        target.click(function () {
+            window.external.MaxWindow();
+        });
+    };
+    //顶部最大化窗体的实现
+    var topMaxWindow = function (target) {
+        target.dblclick(function () {
+            window.external.MaxWindow();
+        });
+    };
+    //关闭窗体的实现
+    var closeWindow = function (target) {
+        target.click(function () {
+            window.external.Close();
+        });
+    };
+    //最小化滑过
+    var minHover = function (target) {
+        target.mouseover(function () {
+            $("#divWindowStatus").css("background-position", "0px 63px")
+        }).mouseleave(function () {
+            $("#divWindowStatus").css("background-position", "0px 0px")
+        });
+    };
+    //最大化滑过
+    var maxHover = function (target) {
+        target.mouseover(function () {
+            $("#divWindowStatus").css("background-position", "0px 42px")
+        }).mouseleave(function () {
+            $("#divWindowStatus").css("background-position", "0px 0px")
+        });
+    };
+    //关闭滑过
+    var closeHover = function (target) {
+        target.mouseover(function () {
+            $("#divWindowStatus").css("background-position", "0px 21px")
+        }).mouseleave(function () {
+            $("#divWindowStatus").css("background-position", "0px 0px")
+        });
+    };
+
+    function adjustcontroler() {
+        var el = $("#myiframe").contents().find("#ViewBody_Header");
+        var totalwidth = $(el).find(".dxtc-stripContainer").innerWidth();
+        var leadwidth = $(el).find(".dxtc-lead").outerWidth(true);
+        var rightwidth = $(el).find(".dxtc-rightIndent.dxtc-it").outerWidth(true);
+        var divtopwidth = totalwidth - leadwidth - rightwidth - 1;
+        $("#divTop").css("width", divtopwidth + "px");
+
+        var top2left = totalwidth - rightwidth + 2;
+        var top2width = rightwidth - 20;
+        $("#divTop2").css("left", top2left + "px");
+        $("#divTop2").css("width", top2width + "px");
+        $("#divTop2").css("height", "38px");
+    }
+
+    $(function () {
+        var eTop = $("#divTop");
+        startDrag(eTop);
+        topMaxWindow(eTop);
+        var eTop2 = $("#divTop2");
+        startDrag(eTop2);
+        topMaxWindow(eTop2);
+        var eMin = $("#divMin");
+        minHover(eMin);
+        minWindow(eMin);
+        var eMax = $("#divMax");
+        maxHover(eMax);
+        maxWindow(eMax);
+        var eClose = $("#divClose");
+        closeHover(eClose);
+        closeWindow(eClose);
+
+        $(window).bind("resize", function () {
+            adjustcontroler();
+        });
+
+        //$("#divTop").css("display", "none");
+        //$("#divTop2").css("display", "none");
+        //$("#divWindowStatus").css("display", "none");
+        //$("#myiframe").load(function () {
+        //    $("#divTop").css("display", "block");
+        //    $("#divTop2").css("display", "block");
+        //    $("#divWindowStatus").css("display", "block");
+        //    adjustcontroler();
+        //});
+
+    });
+</script>

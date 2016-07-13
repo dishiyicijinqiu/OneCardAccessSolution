@@ -1,0 +1,8 @@
+﻿body{
+    background-color: #c0d1e9;
+}
+a, a:focus, a:hover {
+    color: black;
+    text-decoration: none;
+    outline: none;
+}

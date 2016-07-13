@@ -51,7 +51,6 @@
     <Compile Include="ApplicationContext\ApplicationContextClientMessageInspector.cs" />
     <Compile Include="DataBase\DataBaseKeyAttribute.cs" />
     <Compile Include="Events\EventAggregator.cs" />
-    <Compile Include="ExceptionHandle\ExceptionHandlers\CustomerExceptionHandler.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorAttribute.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingBehaviorElement.cs" />
     <Compile Include="ExceptionHandle\ExceptionHandlingChannelFactory.cs" />

@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="../../Scripts/jquery.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>页面首页</title>
+</head>
+
+<body onresize="doResize()">
+    <iframe src="iframe.html" id="koyoz" height="800" width="500"></iframe>
+</body>
+</html>
+<script type="text/javascript">
+
+
+    function doResize() {
+        var el = $("#koyoz").contents().find("#mynamehello");
+        $(el).css("background-color", "red");
+    }
+
+
+
+    function bakdoResize() {
+        var ofrm1 = document.getElementById("koyoz").document;
+        if (ofrm1 == undefined) {
+            ofrm1 = document.getElementById("koyoz").contentWindow.document;
+            var el = ofrm1.getElementById("mynamehello");
+            el.style.backgroundColor = "red";
+            alert(el);
+            var ff = ofrm1.getElementById("mynamehello").value;
+            alert("firefox/chrome取值结果为:" + ff);
+        }
+        else {
+            var ie = document.frames["koyoz"].document.getElementById("test").value;
+            alert("ie取值结果为:" + ie);
+        }
+    }
+
+    //document.getElementById('koyoz').contentWindow.document.getElementById('test').style.color = 'red';
+    //alert("1");
+    //alert(document.getElementById('koyoz').contentWindow.document);
+    //alert("2");
+</script>

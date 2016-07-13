@@ -58,12 +58,14 @@
     <Compile Include="RBACService.cs" />
     <Compile Include="ServiceBase.cs" />
     <Compile Include="TableEntitys\T_Attachment_Auto.cs" />
+    <Compile Include="TableEntitys\T_Commodity_Auto.cs" />
     <Compile Include="TableEntitys\T_Product_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_Auto.cs" />
     <Compile Include="TableEntitys\T_P_CRTemp_To_Register.cs" />
     <Compile Include="TableEntitys\T_Register_Auto.cs" />
     <Compile Include="TableEntitys\T_Register_File_Auto.cs" />
     <Compile Include="TableEntitys\T_UserGroup_Auto.cs" />
+    <Compile Include="TableEntitys\T_UserGroup_Permission_Auto.cs" />
     <Compile Include="TableEntitys\T_UserInfo_Auto.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <link href="css/site.css" rel="stylesheet" />
+    <link href="css/Bootstrap-dev-Icon.css" rel="stylesheet" />
+    <link href="css/bootstrap-ribbon.css" rel="stylesheet" />
+    <style>
+        .site-header {
+            padding-top: 15px;
+        }
+    </style>
+    <script>
+        $(function () {
+            $(".ribbon li a").bind("click", function (e) {
+                if ($this.hasClass("disabled")) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <header class="site-header ribbon">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" id="navfile">
+                <a href="javascript:void(0)" class="disabled" aria-controls="home" role="tab" data-toggle="tab">
+                </a>
+                <img class="dxIcon_navigation_home_32x32" src="./Images/point.gif" alt="">
+            </li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li role="presentation" class="active"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tabWrapper">
+            <div class="tab-content">
+                <!--<div role="tabpanel" class="tab-pane" id="home">home</div>-->
+                <div role="tabpanel" class="tab-pane" id="profile">
+
+                    <ul class="dxr-groupList">
+                        <li class="dxr-group">
+                            <div class="dxr-groupContent">
+                                <div class="dxr-block dxr-blLrgItems">
+                                    <a class="dxr-item dxr-buttonItem">
+                                        <img class="dxIcon_tasks_task_32x32 dxr-img32" src="./Images/point.gif" alt="">
+                                        <br>
+                                        <span class="dxr-label">
+                                            <span class="dxr-lblContent">
+                                                <span class="dxr-lblText">TasksList</span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <b class="dx-clear"></b>
+                                </div>
+                                <div class="dxr-block dxr-blHorItems">
+                                    <a class="dxr-item dxr-buttonItem">
+                                        <img class="dxIcon_tasks_newtask_16x16 dxr-img16 dx-vam" src="./Images/point.gif" alt="">
+                                        <span class="dxr-label dx-vam">
+                                            <span class="dxr-lblContent">
+                                                <span class="dxr-lblText">New</span>
+                                            </span>
+                                        </span>
+                                    </a><b class="dx-clear"></b>
+                                </div>
+                                <b class="dx-clear">
+                                </b>
+                            </div>
+                            <b class="dx-clear">
+                            </b>
+                            <div class="dxr-groupLabel">
+                                bbbb
+                            </div>
+                        </li>
+                        <li class="dxr-groupSep"><b></b></li>
+                    </ul>
+
+
+                </div>
+                <div role="tabpanel" class="tab-pane active" id="messages">
+
+                    <ul class="dxr-groupList">
+                        <li class="dxr-group">
+                            <div class="dxr-groupContent">
+
+                                <div class="dxr-block dxr-blLrgItems">
+                                    <span id="dLabel" class="dxr-item dxr-buttonItem dxr-ddMode dxh0" data-toggle="dropdown">
+                                        <a class="dxr-ddImageContainer">
+                                            <img class="dxIcon_tasks_task_32x32 dxr-img32"
+                                                 src="./Images/point.gif" alt="">
+                                        </a><br>
+                                        <span class="dxr-label">
+                                            <span class="dxr-lblContent">
+                                                <a class="dxr-lblText">TasksList</a><br>
+                                                <span class="dxr-popOut dx-vam">
+                                                    <img class="dxWeb_rPopOut_Office2010Blue" src="/WebSite/DXR.axd?r=1_36-SfTXc" alt="po">
+                                                </span>
+                                            </span>
+                                        </span>
+
+                                    </span>
+
+
+
+
+
+
+
+                                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                                        <li><a href="#">Action</a></li>
+                                        <li><a href="#">Another action</a></li>
+                                        <li><a href="#">Something else here</a></li>
+                                        <li><a href="#">Separated link</a></li>
+                                    </ul>
+
+                                    <b class="dx-clear"></b>
+
+
+
+                                </div>
+
+
+
+
+                                <div class="dxr-block dxr-blHorItems">
+                                    <a class="dxr-item dxr-buttonItem">
+                                        <img class="dxIcon_tasks_newtask_16x16 dxr-img16 dx-vam" src="./Images/point.gif" alt="">
+                                        <span class="dxr-label dx-vam">
+                                            <span class="dxr-lblContent">
+                                                <span class="dxr-lblText">New</span>
+                                            </span>
+                                        </span>
+                                    </a><b class="dx-clear"></b>
+                                </div>
+                                <b class="dx-clear">
+                                </b>
+                            </div>
+                            <b class="dx-clear">
+                            </b>
+                            <div class="dxr-groupLabel">
+                                bbbb
+                            </div>
+                        </li>
+                        <li class="dxr-groupSep"><b></b></li>
+                    </ul>
+
+                </div>
+
+                <div role="tabpanel" class="tab-pane" id="settings">
+
+                    <ul class="dxr-groupList">
+                        <li class="dxr-group">
+                            <div class="dxr-groupContent">
+
+                                <div class="dxr-block dxr-blLrgItems">
+                                    <a class="dxr-item dxr-buttonItem">
+                                        <img class="dxIcon_tasks_task_32x32 dxr-img32" src="./Images/point.gif" alt=""><br>
+                                        <span class="dxr-label">
+                                            <span class="dxr-lblContent">
+                                                <span class="dxr-lblText">
+                                                    TasksList
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a><b class="dx-clear"></b>
+                                </div>
+
+
+                                <div class="dxr-block dxr-blHorItems">
+                                    <a class="dxr-item dxr-buttonItem">
+                                        <img class="dxIcon_tasks_newtask_16x16 dxr-img16 dx-vam" src="./Images/point.gif" alt="">
+                                        <span class="dxr-label dx-vam">
+                                            <span class="dxr-lblContent">
+                                                <span class="dxr-lblText">New</span>
+                                            </span>
+                                        </span>
+                                    </a><b class="dx-clear"></b>
+                                </div>
+                                <b class="dx-clear">
+                                </b>
+                            </div>
+                            <b class="dx-clear">
+                            </b>
+                            <div class="dxr-groupLabel">
+                                bbbb
+                            </div>
+                        </li>
+                        <li class="dxr-groupSep"><b></b></li>
+                    </ul>
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+</body>
+</html>

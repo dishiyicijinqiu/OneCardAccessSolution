@@ -1,0 +1,192 @@
+﻿<ui:BaseUserControl xmlns:dxre="http://schemas.devexpress.com/winfx/2008/xaml/richedit"  x:Class="FengSharp.OneCardAccess.Client.PC.View.BasicInfo.CommodityView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FengSharp.OneCardAccess.Client.PC.View.BasicInfo"
+             mc:Ignorable="d" 
+             
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol" 
+    xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+    xmlns:dxr="http://schemas.devexpress.com/winfx/2008/xaml/ribbon"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" 
+    xmlns:Serialization="clr-namespace:DevExpress.Xpf.LayoutControl.Serialization;assembly=DevExpress.Xpf.LayoutControl.v15.1"
+    xmlns:ui="clr-namespace:FengSharp.OneCardAccess.Client.PC.UI"
+    xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
+    xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
+    xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
+             d:DesignHeight="530" d:DesignWidth="790">
+
+    <ui:BaseUserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/FengSharp.OneCardAccess.Client.PC;component/Themes/Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ui:BaseUserControl.Resources>
+    <dxb:BarManager>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="0*"/>
+            </Grid.RowDefinitions>
+            <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto" Height="153">
+                <dxr:RibbonDefaultPageCategory>
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_CommodityView_Title}">
+                        <dxr:RibbonPageGroup>
+                            <dxb:BarButtonItem Style="{StaticResource barSave}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
+                            <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
+                        </dxr:RibbonPageGroup>
+                        <dxr:RibbonPageGroup ui:MyRibbonPageGroupsItemsPanel.GroupAlignment="Right">
+                            <dxb:BarButtonItem Style="{StaticResource barClose}" />
+                        </dxr:RibbonPageGroup>
+                    </dxr:RibbonPage>
+                </dxr:RibbonDefaultPageCategory>
+            </dxr:RibbonControl>
+            <dxlc:LayoutControl Grid.Row="1" Orientation="Vertical">
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityNo}">
+                        <dxe:TextEdit EditValue="{Binding CommodityNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityName}">
+                        <dxe:TextEdit EditValue="{Binding CommodityName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_RegisterNo}">
+                        <dxe:TextEdit EditValue="{Binding RegisterNo, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_RegisterName}">
+                        <dxe:TextEdit EditValue="{Binding RegisterName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_StandardCode}">
+                        <dxe:TextEdit EditValue="{Binding StandardCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_RegisterNo1}">
+                        <dxe:TextEdit EditValue="{Binding RegisterNo1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_RegisterName1}">
+                        <dxe:TextEdit EditValue="{Binding RegisterName1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_StandardCode1}">
+                        <dxe:TextEdit EditValue="{Binding StandardCode1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Unit}">
+                        <dxe:TextEdit EditValue="{Binding Unit, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_PackQty}">
+                        <dxe:TextEdit EditValue="{Binding PackQty, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Material}">
+                        <dxe:TextEdit EditValue="{Binding Material, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_ProductType}">
+                        <dxe:TextEdit EditValue="{Binding ProductType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_GoodCode}">
+                        <dxe:TextEdit EditValue="{Binding GoodCode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CertType}">
+                        <dxe:TextEdit EditValue="{Binding CertType, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_QtyMode}">
+                        <dxe:TextEdit EditValue="{Binding QtyMode, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Orientation="Vertical" Serialization:SerializableItem.TypeName="LayoutGroup">
+                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark1}">
+                                <dxe:TextEdit EditValue="{Binding Remark1, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark2}">
+                                <dxe:TextEdit EditValue="{Binding Remark2, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark3}">
+                                <dxe:TextEdit EditValue="{Binding Remark3, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark4}">
+                                <dxe:TextEdit EditValue="{Binding Remark4, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark5}">
+                                <dxe:TextEdit EditValue="{Binding Remark5, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark6}">
+                                <dxe:TextEdit EditValue="{Binding Remark6, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark7}">
+                                <dxe:TextEdit EditValue="{Binding Remark7, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Remark8}">
+                                <dxe:TextEdit EditValue="{Binding Remark8, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CommodityImage}" Width="230">
+                        <Image Stretch="None"
+                            Source="{Binding CommodityImage, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+
+                <dxlc:LayoutGroup Header="LayoutGroup" View="Tabs">
+                    <dxlc:LayoutGroup Header="{x:Static res:Resources.View_CommodityView_SaleSet}" Orientation="Vertical">
+
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_SaleName}">
+                                <dxe:TextEdit EditValue="{Binding SaleName, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_SalePrice}">
+                                <dxe:TextEdit EditValue="{Binding SalePrice, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                            </dxlc:LayoutItem>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_IsSale}">
+                                <dxe:CheckEdit EditValue="{Binding IsSale, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}" />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+                        <dxlc:LayoutGroup>
+                            <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_SaleRemark}">
+                                <dxre:RichEditControl />
+                            </dxlc:LayoutItem>
+                        </dxlc:LayoutGroup>
+
+                    </dxlc:LayoutGroup>
+                    <dxlc:LayoutGroup Header="{x:Static res:Resources.View_CommodityView_WorkProcessSet}">
+                        <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_DrawingId}">
+                            <dxe:TextEdit EditValue="{Binding DrawingId, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        </dxlc:LayoutItem>
+                    </dxlc:LayoutGroup>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_Creater}">
+                        <dxe:TextEdit EditValue="{Binding Creater}" IsReadOnly="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_CreateDate}">
+                        <dxe:TextEdit EditValue="{Binding CreateDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+                <dxlc:LayoutGroup dx:ScrollViewerTouchBehavior.IsEnabled="True" Serialization:SerializableItem.TypeName="LayoutGroup">
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_LastModifyer}">
+                        <dxe:TextEdit EditValue="{Binding LastModifyer}" IsReadOnly="True" />
+                    </dxlc:LayoutItem>
+                    <dxlc:LayoutItem Label="{x:Static res:Resources.Entity_Commodity_LastModifyDate}">
+                        <dxe:TextEdit EditValue="{Binding LastModifyDate, NotifyOnSourceUpdated=True, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </dxlc:LayoutItem>
+                </dxlc:LayoutGroup>
+            </dxlc:LayoutControl>
+        </Grid>
+    </dxb:BarManager>
+</ui:BaseUserControl>

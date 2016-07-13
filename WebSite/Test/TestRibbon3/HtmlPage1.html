@@ -1,0 +1,506 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta charset="utf-8" />
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="js/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /*// Classes .pull-left {
+            float: left !important;
+        }
+
+        .pull-right {
+            float: right !important;
+        }
+
+        // Usage as mixins .element {
+            .pull-left();
+        }
+
+        .another-element {
+            .pull-right();
+        }*/
+    </style>
+    <script>
+        $(function () {
+            $('#mybtn').tooltip();
+            $('[data-toggle="popover"]').popover({ html: true });
+
+            $('#myPopover').on('show.bs.popover', function () {
+                alert("show");
+            });
+            $('#myPopover').on('shown.bs.popover', function () {
+                alert("shown");
+            });
+            $('#myPopover').on('hide.bs.popover', function () {
+                alert("hide");
+            });
+            $('#myPopover').on('hidden.bs.popover', function () {
+                alert("hidden");
+            });
+            $('#myPopover').on('inserted.bs.popover', function () {
+                alert("inserted");
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+
+    <div class="dropdown">
+        <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Dropdown trigger
+            <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" aria-labelledby="dLabel">
+            你好世界
+        </ul>
+    </div>
+
+
+
+    <p class="text-lowercase">Lowercased text.</p>
+    <p class="text-uppercase">Uppercased text.</p>
+    <p class="text-capitalize">Capitalized text.</p>
+    <abbr title="attribute">attr</abbr>
+    <abbr title="HyperText Markup Language" class="initialism">HTML</abbr>
+    <blockquote>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+        <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+
+
+    <blockquote class="blockquote-reverse">
+        ...
+    </blockquote>
+
+
+    For example, <code>&lt;section&gt;</code> should be wrapped as inline.
+
+    <br />
+
+    To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<br>
+    To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
+
+
+
+    <pre>&lt;p&gt;Sample text here...&lt;/p&gt;</pre>
+
+    <var>y</var> = <var>m</var><var>x</var> + <var>b</var>
+
+    <br />
+    <samp>This text is meant to be treated as sample output from a computer program.</samp>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-condensed">
+            <caption>Optional table caption.</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="active">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr class="success">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Star</th>
+                    <td class="active">Larry</td>
+                    <td class="success">the Bird</td>
+                    <td class="danger">@twitter</td>
+                    <td class="active">Larry</td>
+                    <td class="success">the Bird</td>
+                    <td class="danger">@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <label class="sr-only" for="inputHelpBlock">Input with help text</label>
+    <input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
+    ...
+    <span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+
+    <div>
+        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <span class="caret"></span>
+    </div>
+
+    <div class="pull-right">我是右</div>
+    <div class="pull-left">我是左</div>
+
+
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+    <div class="center-block" style="width:300px;background-color:aquamarine;height:300px;">
+
+
+
+
+
+
+
+
+    </div>
+
+    <h1 class="text-hide">Custom heading</h1>
+
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+    </button>
+
+    <button type="button" class="btn btn-default btn-lg">
+        <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Star
+    </button>
+
+
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        <span class="sr-only">Error:</span>
+        Enter a valid email address
+    </div>
+
+
+
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+            <span class="caret"></span>
+        </button>
+
+
+
+
+
+        <table class="table table-bordered table-hover table-condensed dropdown-menu  dropdown-menu-right" aria-labelledby="dropdownMenu1">
+            <caption>Optional table caption.</caption>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="active">
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                    <td>@mdo</td>
+                </tr>
+                <tr class="success">
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row"><span class="glyphicon glyphicon-leaf" aria-hidden="true"></span> Star</th>
+                    <td class="active">Larry</td>
+                    <td class="success">the Bird</td>
+                    <td class="danger">@twitter</td>
+                    <td class="active">Larry</td>
+                    <td class="success">the Bird</td>
+                    <td class="danger">@twitter</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+
+
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+            Dropdown
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li class="dropdown-header">Dropdown header</li>
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Something else here</a></li>
+            <li><a href="#">Separated link</a></li>
+        </ul>
+    </div>
+
+    <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+    </ul>
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Brand</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="javascript:void(0)">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="javascript:void(0)">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="javascript:void(0)">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">One more separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">Separated link</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+
+
+    <div class="jumbotron">
+        <h1>Hello, world!</h1>
+        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+    </div>
+    <div class="well well-lg"> simple hero unit, a simple jumbotron-style comp</div>
+
+
+
+
+
+
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p>One fine body&hellip;</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- Large modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Large modal</button>
+    <div class="modal bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦发
+            </div>
+        </div>
+    </div>
+    <!-- Small modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+    <div class="modal bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦烦发
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".mytest">Small modal</button>
+
+    <div class="modal fade mytest" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-4">.col-md-4</div>
+                            <div class="col-md-4 col-md-offset-4">.col-md-4 .col-md-offset-4</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 col-md-offset-3">.col-md-3 .col-md-offset-3</div>
+                            <div class="col-md-2 col-md-offset-4">.col-md-2 .col-md-offset-4</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">.col-md-6 .col-md-offset-3</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-9">
+                                Level 1: .col-sm-9
+                                <div class="row">
+                                    <div class="col-xs-8 col-sm-6">
+                                        Level 2: .col-xs-8 .col-sm-6
+                                    </div>
+                                    <div class="col-xs-4 col-sm-6">
+                                        Level 2: .col-xs-4 .col-sm-6
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div>
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="home">...</div>
+            <div role="tabpanel" class="tab-pane" id="profile">...</div>
+            <div role="tabpanel" class="tab-pane" id="messages">...</div>
+            <div role="tabpanel" class="tab-pane" id="settings">...</div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <a href="javascript:void(0)" id="a_pop" class="btn btn-danger" data-placement="bottom"
+       data-content="风吹雨成花 时间追不上白马你年少掌心的梦话 依然紧握着吗       明月夜送君千里 等来年 秋风起"
+       data-original-title="时间煮雨">点击加载</a>
+
+    <button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">点我弹出/隐藏弹出框</button>
+
+    <div style="width:500px;height:600px;"></div>
+
+    <button id="myPopover" type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title"
+            data-content="<div style='width:500px;height:600px;background-color:aqua;'>你好世界</div>">
+        点我弹出/隐藏弹出框
+    </button>
+
+    <button id="mybtn" type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">Tooltip on left</button>
+
+</body>
+</html>

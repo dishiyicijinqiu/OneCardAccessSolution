@@ -28,6 +28,6 @@ Entity_<#=TableName.Replace("T_",string.Empty)#>_<#=column.ColumnName#>	<#=colum
 
 <#}#>
 <#+
-public static readonly string TableName="T_Product";
+public static readonly string TableName="T_Commodity";
 public static readonly bool IsBuilder= true;
 #>

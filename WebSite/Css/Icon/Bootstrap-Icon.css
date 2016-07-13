@@ -1,0 +1,36 @@
+﻿.dxIcon_tasks_task_32x32 {
+    background-position: -759px -891px;
+    width: 32px;
+    height: 32px;
+    background-image: url(Icon_32x32.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.dxIcon_tasks_newtask_16x16 {
+    width: 16px;
+    height: 16px;
+    background-position: -408px -51px;
+    margin: 3px;
+    background-image: url(Icon_16x16.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.dxIcon_navigation_home_32x32 {
+    background-position: -528px -99px;
+    width: 32px;
+    height: 32px;
+    background-image: url(Icon_32x32.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}
+
+.dxWeb_rPopOut_Office2010Blue {
+    background-position: -156px -159px;
+    width: 7px;
+    height: 4px;
+    background-image: url(Arrow_Icon.png);
+    background-repeat: no-repeat;
+    background-color: transparent;
+}

@@ -69,4 +69,30 @@
         <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_Product_LastModifyer}"/>
         <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Product_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
     </ui:ColumnData>
+    <ui:ColumnData x:Key="commoditycolumnssource">
+        <ui:BaseColumn FieldName="CommodityNo" Header="{x:Static res:Resources.Entity_Commodity_CommodityNo}"/>
+        <ui:BaseColumn FieldName="CommodityName" Header="{x:Static res:Resources.Entity_Commodity_CommodityName}"/>
+        <ui:BaseColumn FieldName="CommodityImage" Header="{x:Static res:Resources.Entity_Commodity_CommodityImage}"/>
+        <ui:BaseColumn FieldName="Unit" Header="{x:Static res:Resources.Entity_Commodity_Unit}"/>
+        <ui:BaseColumn FieldName="Material" Header="{x:Static res:Resources.Entity_Commodity_Material}"/>
+        <ui:BaseColumn FieldName="PackQty" Header="{x:Static res:Resources.Entity_Commodity_PackQty}"/>
+        <ui:BaseColumn FieldName="ProductType" Header="{x:Static res:Resources.Entity_Commodity_ProductType}"/>
+        <ui:BaseColumn FieldName="GoodCode" Header="{x:Static res:Resources.Entity_Commodity_GoodCode}"/>
+        <ui:BaseColumn FieldName="CertType" Header="{x:Static res:Resources.Entity_Commodity_CertType}"/>
+        <ui:BaseColumn FieldName="RegisterId" Header="{x:Static res:Resources.Entity_Commodity_RegisterId}"/>
+        <ui:BaseColumn FieldName="DrawingId" Header="{x:Static res:Resources.Entity_Commodity_DrawingId}"/>
+        <ui:BaseColumn FieldName="QtyMode" Header="{x:Static res:Resources.Entity_Commodity_QtyMode}"/>
+        <ui:BaseColumn FieldName="Remark1" Header="{x:Static res:Resources.Entity_Commodity_Remark1}"/>
+        <ui:BaseColumn FieldName="Remark2" Header="{x:Static res:Resources.Entity_Commodity_Remark2}"/>
+        <ui:BaseColumn FieldName="Remark3" Header="{x:Static res:Resources.Entity_Commodity_Remark3}"/>
+        <ui:BaseColumn FieldName="Remark4" Header="{x:Static res:Resources.Entity_Commodity_Remark4}"/>
+        <ui:BaseColumn FieldName="Remark5" Header="{x:Static res:Resources.Entity_Commodity_Remark5}"/>
+        <ui:BaseColumn FieldName="Remark6" Header="{x:Static res:Resources.Entity_Commodity_Remark6}"/>
+        <ui:BaseColumn FieldName="Remark7" Header="{x:Static res:Resources.Entity_Commodity_Remark7}"/>
+        <ui:BaseColumn FieldName="Remark8" Header="{x:Static res:Resources.Entity_Commodity_Remark8}"/>
+        <ui:BaseColumn FieldName="Creater" Header="{x:Static res:Resources.Entity_Commodity_Creater}"/>
+        <ui:BaseColumn FieldName="CreateDate" Header="{x:Static res:Resources.Entity_Commodity_CreateDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+        <ui:BaseColumn FieldName="LastModifyer" Header="{x:Static res:Resources.Entity_Commodity_LastModifyer}"/>
+        <ui:BaseColumn FieldName="LastModifyDate" Header="{x:Static res:Resources.Entity_Commodity_LastModifyDate}" Width="120" Settings="Date" DisplayFormat="{x:Static res:Resources.Format_TimeString}"/>
+    </ui:ColumnData>
 </ResourceDictionary>

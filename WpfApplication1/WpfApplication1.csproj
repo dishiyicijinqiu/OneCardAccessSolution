@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{372CFC51-900F-4851-9FCA-E0D4CA8515A5}</ProjectGuid>
+    <ProjectGuid>{BB613300-76CC-4B0D-8A2F-97C299137BDD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WpfApplication1</RootNamespace>
@@ -34,37 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DemoReports.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=4c3bc44151be4b47, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Utils.v15.1.UI, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Xpf.Core.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Printing.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.ReportDesigner.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.Ribbon.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpf.WpfReportDesigner.v15.1, Version=15.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.Xpf.WpfReportDesigner.v15.1.dll</HintPath>
-    </Reference>
-    <Reference Include="DevExpress.Xpo.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraPrinting.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraReports.v15.1.Extensions, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -76,62 +48,16 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DXRibbonWindow1.xaml.cs">
-      <DependentUpon>DXRibbonWindow1.xaml</DependentUpon>
+    <Compile Include="WebBrowserOverlay.xaml.cs">
+      <DependentUpon>WebBrowserOverlay.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DXWindow1.xaml.cs">
-      <DependentUpon>DXWindow1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport1.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport1.Designer.cs">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport2.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport2.Designer.cs">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport3.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport3.Designer.cs">
-      <DependentUpon>XtraReport3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport4.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport4.Designer.cs">
-      <DependentUpon>XtraReport4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport5.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport5.Designer.cs">
-      <DependentUpon>XtraReport5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="XtraReport6.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="XtraReport6.Designer.cs">
-      <DependentUpon>XtraReport6.cs</DependentUpon>
-    </Compile>
-    <Page Include="DXRibbonWindow1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="DXWindow1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,6 +70,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WebBrowserOverlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -159,26 +89,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="XtraReport1.resx">
-      <DependentUpon>XtraReport1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport2.resx">
-      <DependentUpon>XtraReport2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport3.resx">
-      <DependentUpon>XtraReport3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport4.resx">
-      <DependentUpon>XtraReport4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport5.resx">
-      <DependentUpon>XtraReport5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="XtraReport6.resx">
-      <DependentUpon>XtraReport6.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="app.config" />
-    <None Include="Properties\Licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -188,12 +98,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\BusinessEntity\BusinessEntity.csproj">
-      <Project>{56440098-2131-465c-87b9-6c10d2985759}</Project>
-      <Name>BusinessEntity</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -11,14 +11,57 @@ namespace FengSharp.OneCardAccess.Router
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            //RouteTable.Routes.Add(
+            //    new ServiceRoute(
+            //        "RoutingService",
+            //        new ServiceHostFactory(),
+            //        typeof(System.ServiceModel.Routing.RoutingService)
+            //    )
+            //);
+            //RouteTable.Routes.Add(
+            //    new ServiceRoute(
+            //        "RoutingService",
+            //        new ServiceHostFactory(),
+            //        typeof(System.ServiceModel.Routing.RoutingService)
+            //    )
+            //);
+            //RouteTable.Routes.MapPageRoute("Connect", "RoutingService/{Service}", "~/Connect");
+            // RouteTable.Routes.MapHttpRoute(
+            //    name: "DefaultApi",
+            //    routeTemplate: "api/{controller}/{id}",
+            //    defaults: new { id = RouteParameter.Optional }
+            //);
 
-            RouteTable.Routes.Add(
-                new ServiceRoute(
-                    "RoutingService",
-                    new ServiceHostFactory(),
-                    typeof(System.ServiceModel.Routing.RoutingService)
-                )
-            );
+
+            //RouteTable.Routes.MapPageRoute("", "", "~/RoutingService.svc");
+
+            RouteTable.Routes.MapPageRoute("WebFormRoute",
+                      "test",
+                      "~/WebForm1.aspx");
+            RouteTable.Routes.MapPageRoute("bWebFormRoute",
+             "atest",
+             "~/RoutingService.svc");
+
+
+            // RouteTable.Routes.MapPageRoute("WebFormRoute",
+            //"test",
+            //"~/RoutingService.svc");
+
+
+
+            //RouteTable.Routes.MapPageRoute("default", "test", "~/RoutingService.svc", false);
+
+
+
+            //var defaults = new RouteValueDictionary { { "areacode", "010" }, { "days", 2 } };
+            //var constaints = new RouteValueDictionary { { "areacode", @"0\d{2,3}" }, { "days", @"[1-3]{1}" } };
+            //var dataTokens = new RouteValueDictionary { { "defaultCity", "BeiJing" }, { "defaultDays", 2 } };
+            //RouteTable.Routes.MapPageRoute("default", "{areacode}/{days}", "~/weather.aspx", false, defaults, constaints, dataTokens);
+
+
+
+
+
 
             //var serviceactivations = ((ServiceHostingEnvironmentSection)(ConfigurationManager.GetSection("system.serviceModel/serviceHostingEnvironment"))).ServiceActivations;
             //foreach (ServiceActivationElement item in serviceactivations)

@@ -17,7 +17,7 @@
     xmlns:core="clr-namespace:FengSharp.OneCardAccess.Core"
     xmlns:viewmodel="clr-namespace:FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo" 
     xmlns:res="clr-namespace:FengSharp.OneCardAccess.Client.PC.Properties"
-        d:DesignWidth="380" d:DesignHeight="546"
+        d:DesignWidth="700" d:DesignHeight="545"
                     >
 
     <ui:BaseUserControl.Resources>

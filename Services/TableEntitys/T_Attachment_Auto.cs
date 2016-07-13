@@ -41,10 +41,6 @@ namespace FengSharp.OneCardAccess.TEntity
         /// </summary>
         public int TreeSon { get; set; }
         /// <summary>
-        /// 子孙数量
-        /// </summary>
-        public int TreeTotal { get; set; }
-        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }

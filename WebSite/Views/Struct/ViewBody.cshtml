@@ -1,0 +1,78 @@
+﻿<link href="@Url.Content("~/Plugins/Ribbon/bootstrap-ribbon.css")" rel="stylesheet" type="text/css" />
+<link href="@Url.Content("~/Plugins/Tabs/bootstrap-tabs.css")" rel="stylesheet" type="text/css" />
+<style>
+    /*-----------ViewBody-----------*/
+    .struct.container-fluid > .header {
+        margin-top: 5px;
+        height: 143px;
+    }
+
+    .struct.container-fluid > .footer {
+        height: 30px;
+    }
+    /*-----------ViewBody-----------*/
+    /*-----------contents-----------*/
+    .contents .container-fluid.tabs {
+        height: 100%;
+    }
+        .contents .container-fluid.tabs > .tab-content {
+            background-color: #fff;
+        }
+            .contents .container-fluid.tabs > .tab-content > .tab-pane,
+            .contents .container-fluid.tabs > .tab-content > .tab-pane > .container-fluid,
+            .contents .container-fluid.tabs > .tab-content > .tab-pane > .container-fluid > .row,
+            .contents .container-fluid.tabs > .tab-content > .tab-pane > .container-fluid > .row > iframe {
+                height: 100%;
+            }
+    /*-----------contents-----------*/
+</style>
+<div class="struct container-fluid">
+    <div class="header row">
+        @Html.Partial("HeaderPartialView")
+    </div>
+    <div class="contents row">
+        @Html.Partial("ContentsPartialView")
+    </div>
+    <div class="footer row">
+        @Html.Partial("FooterPartialView")
+    </div>
+</div>
+<script src="@Url.Content("~/Plugins/Tabs/bootstrap-tabs.js")"></script>
+<script src="@Url.Content("~/Plugins/Ribbon/bootstrap-ribbon.js")"></script>
+<script>
+    $(function () {
+
+        //调整struct自适应------------------------------------------------------------------------------------
+        var adjuststructcontents = function () {
+            var windowheight = $(window).height();
+            $(".struct.container-fluid").css("height", windowheight + "px");
+            var headerheight = $('.struct.container-fluid > .header').outerHeight(true);
+            var footerheight = $('.struct.container-fluid > .footer').outerHeight(true);
+            var contentsiospaceheight = $(".struct.container-fluid > .contents").outerHeight(true) - $(".struct.container-fluid > .contents").height();
+            var cheight = windowheight - headerheight - footerheight - contentsiospaceheight;
+            $(".struct.container-fluid > .contents").css("height", cheight + "px");
+        };
+        $(window).bind("resize", function () {
+            adjuststructcontents();
+        });
+        adjuststructcontents();
+        //调整contents自适应------------------------------------------------------------------------------------
+        var adjusttabs = function () {
+            var totalheight = $('.container-fluid.tabs').height();
+            var navtabsheight = $('.container-fluid.tabs > .nav.nav-tabs').outerHeight(true);
+            var tabpanesiospaceheight = $(".struct.container-fluid > .tab-content").outerHeight(true) - $(".struct.container-fluid > .tab-content").height();
+            var cheight = totalheight - navtabsheight - tabpanesiospaceheight;
+            $(".container-fluid.tabs > .tab-content").css("height", cheight + "px");
+        };
+        $(window).bind("resize", function () {
+            adjusttabs();
+        });
+        adjusttabs();
+
+        //点击按钮打开标签页
+        $('.header .ribbonbutton').bind('buttonclick', function (e, args) {
+            $(".contents>.tabs").addTab(args);
+        });
+
+    });
+</script>

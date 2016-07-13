@@ -17,6 +17,13 @@ namespace FengSharp.OneCardAccess.Core
                     handleException = ex.InnerException;
                 else
                     handleException = ex;
+                for (int i = 0; i < 10; i++)
+                {
+                    if (handleException is Microsoft.Practices.Unity.ResolutionFailedException && handleException.InnerException != null)
+                        handleException = handleException.InnerException;
+                    else
+                        break;
+                }
                 Exception exceptionToRethrow;
                 if (!string.IsNullOrWhiteSpace(policyName))
                 {

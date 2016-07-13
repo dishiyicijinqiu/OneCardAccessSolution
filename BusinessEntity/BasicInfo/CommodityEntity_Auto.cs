@@ -1,0 +1,523 @@
+﻿using System;
+using System.Runtime.Serialization;
+using FengSharp.OneCardAccess.Common;
+using Microsoft.Practices.Prism.ViewModel;
+namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
+{
+    /// <summary>
+    /// 商品表
+    /// </summary>
+    [DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
+    public partial class CommodityEntity : NotificationObject
+    {
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        public CommodityEntity()
+        {
+            CommodityId = string.Empty;
+            CommodityNo = string.Empty;
+            CommodityName = string.Empty;
+            CommodityImage = string.Empty;
+            Unit = string.Empty;
+            Material = string.Empty;
+            GoodCode = string.Empty;
+            RegisterId = string.Empty;
+            DrawingId = string.Empty;
+            Remark1 = string.Empty;
+            Remark2 = string.Empty;
+            Remark3 = string.Empty;
+            Remark4 = string.Empty;
+            Remark5 = string.Empty;
+            Remark6 = string.Empty;
+            Remark7 = string.Empty;
+            Remark8 = string.Empty;
+            TreeNo = string.Empty;
+            TreeParentNo = string.Empty;
+            TreePath = string.Empty;
+            CreateId = string.Empty;
+            LastModifyId = string.Empty;
+        }
+        private string _CommodityId;
+        /// <summary>
+        /// 商品Id
+        /// </summary>
+        [DataBaseKey(DataBaseKeyType.Guid)]
+        [DataMember]
+        public string CommodityId
+        {
+            get { return _CommodityId; }
+            set
+            {
+                if (_CommodityId == value)
+                    return;
+                _CommodityId = value;
+                RaisePropertyChanged("CommodityId");
+            }
+        }
+        private string _CommodityNo;
+        /// <summary>
+        /// 商品编号
+        /// </summary>
+        [DataMember]
+        public string CommodityNo
+        {
+            get { return _CommodityNo; }
+            set
+            {
+                if (_CommodityNo == value)
+                    return;
+                _CommodityNo = value;
+                RaisePropertyChanged("CommodityNo");
+            }
+        }
+        private string _CommodityName;
+        /// <summary>
+        /// 
+        /// </summary>
+        [DataMember]
+        public string CommodityName
+        {
+            get { return _CommodityName; }
+            set
+            {
+                if (_CommodityName == value)
+                    return;
+                _CommodityName = value;
+                RaisePropertyChanged("CommodityName");
+            }
+        }
+        private string _CommodityImage;
+        /// <summary>
+        /// 产品大图
+        /// </summary>
+        [DataMember]
+        public string CommodityImage
+        {
+            get { return _CommodityImage; }
+            set
+            {
+                if (_CommodityImage == value)
+                    return;
+                _CommodityImage = value;
+                RaisePropertyChanged("CommodityImage");
+            }
+        }
+        private string _Unit;
+        /// <summary>
+        /// 计量单位
+        /// </summary>
+        [DataMember]
+        public string Unit
+        {
+            get { return _Unit; }
+            set
+            {
+                if (_Unit == value)
+                    return;
+                _Unit = value;
+                RaisePropertyChanged("Unit");
+            }
+        }
+        private string _Material;
+        /// <summary>
+        /// 材料标识
+        /// </summary>
+        [DataMember]
+        public string Material
+        {
+            get { return _Material; }
+            set
+            {
+                if (_Material == value)
+                    return;
+                _Material = value;
+                RaisePropertyChanged("Material");
+            }
+        }
+        private int _PackQty;
+        /// <summary>
+        /// 包装数量
+        /// </summary>
+        [DataMember]
+        public int PackQty
+        {
+            get { return _PackQty; }
+            set
+            {
+                if (_PackQty == value)
+                    return;
+                _PackQty = value;
+                RaisePropertyChanged("PackQty");
+            }
+        }
+        private short _ProductType;
+        /// <summary>
+        /// 产品类型（成品，零部件）
+        /// </summary>
+        [DataMember]
+        public short ProductType
+        {
+            get { return _ProductType; }
+            set
+            {
+                if (_ProductType == value)
+                    return;
+                _ProductType = value;
+                RaisePropertyChanged("ProductType");
+            }
+        }
+        private string _GoodCode;
+        /// <summary>
+        /// 货位号
+        /// </summary>
+        [DataMember]
+        public string GoodCode
+        {
+            get { return _GoodCode; }
+            set
+            {
+                if (_GoodCode == value)
+                    return;
+                _GoodCode = value;
+                RaisePropertyChanged("GoodCode");
+            }
+        }
+        private short _CertType;
+        /// <summary>
+        /// 证件类型（a证，b证）
+        /// </summary>
+        [DataMember]
+        public short CertType
+        {
+            get { return _CertType; }
+            set
+            {
+                if (_CertType == value)
+                    return;
+                _CertType = value;
+                RaisePropertyChanged("CertType");
+            }
+        }
+        private string _RegisterId;
+        /// <summary>
+        /// 产品注册证Id
+        /// </summary>
+        [DataMember]
+        public string RegisterId
+        {
+            get { return _RegisterId; }
+            set
+            {
+                if (_RegisterId == value)
+                    return;
+                _RegisterId = value;
+                RaisePropertyChanged("RegisterId");
+            }
+        }
+        private string _DrawingId;
+        /// <summary>
+        /// 图纸Id
+        /// </summary>
+        [DataMember]
+        public string DrawingId
+        {
+            get { return _DrawingId; }
+            set
+            {
+                if (_DrawingId == value)
+                    return;
+                _DrawingId = value;
+                RaisePropertyChanged("DrawingId");
+            }
+        }
+        private short _QtyMode;
+        /// <summary>
+        /// 数量模式（0，通用模式，1严格管理序列号，2严格管理批号）
+        /// </summary>
+        [DataMember]
+        public short QtyMode
+        {
+            get { return _QtyMode; }
+            set
+            {
+                if (_QtyMode == value)
+                    return;
+                _QtyMode = value;
+                RaisePropertyChanged("QtyMode");
+            }
+        }
+        private string _Remark1;
+        /// <summary>
+        /// 备注1
+        /// </summary>
+        [DataMember]
+        public string Remark1
+        {
+            get { return _Remark1; }
+            set
+            {
+                if (_Remark1 == value)
+                    return;
+                _Remark1 = value;
+                RaisePropertyChanged("Remark1");
+            }
+        }
+        private string _Remark2;
+        /// <summary>
+        /// 备注2
+        /// </summary>
+        [DataMember]
+        public string Remark2
+        {
+            get { return _Remark2; }
+            set
+            {
+                if (_Remark2 == value)
+                    return;
+                _Remark2 = value;
+                RaisePropertyChanged("Remark2");
+            }
+        }
+        private string _Remark3;
+        /// <summary>
+        /// 备注3
+        /// </summary>
+        [DataMember]
+        public string Remark3
+        {
+            get { return _Remark3; }
+            set
+            {
+                if (_Remark3 == value)
+                    return;
+                _Remark3 = value;
+                RaisePropertyChanged("Remark3");
+            }
+        }
+        private string _Remark4;
+        /// <summary>
+        /// 备注4
+        /// </summary>
+        [DataMember]
+        public string Remark4
+        {
+            get { return _Remark4; }
+            set
+            {
+                if (_Remark4 == value)
+                    return;
+                _Remark4 = value;
+                RaisePropertyChanged("Remark4");
+            }
+        }
+        private string _Remark5;
+        /// <summary>
+        /// 备注5
+        /// </summary>
+        [DataMember]
+        public string Remark5
+        {
+            get { return _Remark5; }
+            set
+            {
+                if (_Remark5 == value)
+                    return;
+                _Remark5 = value;
+                RaisePropertyChanged("Remark5");
+            }
+        }
+        private string _Remark6;
+        /// <summary>
+        /// 备注6
+        /// </summary>
+        [DataMember]
+        public string Remark6
+        {
+            get { return _Remark6; }
+            set
+            {
+                if (_Remark6 == value)
+                    return;
+                _Remark6 = value;
+                RaisePropertyChanged("Remark6");
+            }
+        }
+        private string _Remark7;
+        /// <summary>
+        /// 备注7
+        /// </summary>
+        [DataMember]
+        public string Remark7
+        {
+            get { return _Remark7; }
+            set
+            {
+                if (_Remark7 == value)
+                    return;
+                _Remark7 = value;
+                RaisePropertyChanged("Remark7");
+            }
+        }
+        private string _Remark8;
+        /// <summary>
+        /// 备注8
+        /// </summary>
+        [DataMember]
+        public string Remark8
+        {
+            get { return _Remark8; }
+            set
+            {
+                if (_Remark8 == value)
+                    return;
+                _Remark8 = value;
+                RaisePropertyChanged("Remark8");
+            }
+        }
+        private string _TreeNo;
+        /// <summary>
+        /// 树编号
+        /// </summary>
+        [DataMember]
+        public string TreeNo
+        {
+            get { return _TreeNo; }
+            set
+            {
+                if (_TreeNo == value)
+                    return;
+                _TreeNo = value;
+                RaisePropertyChanged("TreeNo");
+            }
+        }
+        private string _TreeParentNo;
+        /// <summary>
+        /// 父亲树编号
+        /// </summary>
+        [DataMember]
+        public string TreeParentNo
+        {
+            get { return _TreeParentNo; }
+            set
+            {
+                if (_TreeParentNo == value)
+                    return;
+                _TreeParentNo = value;
+                RaisePropertyChanged("TreeParentNo");
+            }
+        }
+        private string _TreePath;
+        /// <summary>
+        /// 树路径
+        /// </summary>
+        [DataMember]
+        public string TreePath
+        {
+            get { return _TreePath; }
+            set
+            {
+                if (_TreePath == value)
+                    return;
+                _TreePath = value;
+                RaisePropertyChanged("TreePath");
+            }
+        }
+        private int _TreeSon;
+        /// <summary>
+        /// 儿子数量
+        /// </summary>
+        [DataMember]
+        public int TreeSon
+        {
+            get { return _TreeSon; }
+            set
+            {
+                if (_TreeSon == value)
+                    return;
+                _TreeSon = value;
+                RaisePropertyChanged("TreeSon");
+            }
+        }
+        private int _SkuSon;
+        /// <summary>
+        /// Sku儿子数量
+        /// </summary>
+        [DataMember]
+        public int SkuSon
+        {
+            get { return _SkuSon; }
+            set
+            {
+                if (_SkuSon == value)
+                    return;
+                _SkuSon = value;
+                RaisePropertyChanged("SkuSon");
+            }
+        }
+        private string _CreateId;
+        /// <summary>
+        /// 创建人Id
+        /// </summary>
+        [DataMember]
+        public string CreateId
+        {
+            get { return _CreateId; }
+            set
+            {
+                if (_CreateId == value)
+                    return;
+                _CreateId = value;
+                RaisePropertyChanged("CreateId");
+            }
+        }
+        private DateTime _CreateDate;
+        /// <summary>
+        /// 创建日期
+        /// </summary>
+        [DataMember]
+        public DateTime CreateDate
+        {
+            get { return _CreateDate; }
+            set
+            {
+                if (_CreateDate == value)
+                    return;
+                _CreateDate = value;
+                RaisePropertyChanged("CreateDate");
+            }
+        }
+        private string _LastModifyId;
+        /// <summary>
+        /// 最后更改人Id
+        /// </summary>
+        [DataMember]
+        public string LastModifyId
+        {
+            get { return _LastModifyId; }
+            set
+            {
+                if (_LastModifyId == value)
+                    return;
+                _LastModifyId = value;
+                RaisePropertyChanged("LastModifyId");
+            }
+        }
+        private DateTime _LastModifyDate;
+        /// <summary>
+        /// 最后更改日期
+        /// </summary>
+        [DataMember]
+        public DateTime LastModifyDate
+        {
+            get { return _LastModifyDate; }
+            set
+            {
+                if (_LastModifyDate == value)
+                    return;
+                _LastModifyDate = value;
+                RaisePropertyChanged("LastModifyDate");
+            }
+        }
+    }
+}

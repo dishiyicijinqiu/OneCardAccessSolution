@@ -21,6 +21,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
         public ICommand CopyAddCommand { get; private set; }
         public ICommand EditCommand { get; private set; }
         public ICommand DeleteCommand { get; set; }
+        public ICommand PermissionSetCommand { get; private set; }
 
         public UserGroupCollectionViewModel() : this(ViewStyle.View) { }
         public UserGroupCollectionViewModel(ViewStyle ViewStyle)
@@ -31,10 +32,41 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.RBAC
             CopyAddCommand = new DelegateCommand<FirstUserGroupEntity>(CopyAdd, CanCopyAdd);
             EditCommand = new DelegateCommand<FirstUserGroupEntity>(Edit, CanEdit);
             DeleteCommand = new DelegateCommand<IList>(Delete, CanDelete);
+            PermissionSetCommand = new DelegateCommand<FirstUserGroupEntity>(PermissionSet, CanPermissionSet);
             var list = ServiceProxyFactory.Create<IRBACService>().GetFirstUserGroupEntitys().
                 OrderBy(t => t.UserGroupNo).ThenBy(m => m.UserGroupName);
             Items = new ObservableCollection<FirstUserGroupEntity>(list);
         }
+
+        private bool CanPermissionSet(FirstUserGroupEntity entity)
+        {
+            if (entity == null) return false;
+            if (entity.IsSuper) return false;
+            if (entity.TreeSon > 0) return false;
+            return true;
+        }
+
+        private void PermissionSet(FirstUserGroupEntity entity)
+        {
+            try
+            {
+                if (!CanPermissionSet(entity)) return;
+                var vm = ServiceLoader.LoadService<IPermissionSetViewModel>(new ParameterOverride("userGroupEntity", entity));
+                var view = ServiceLoader.LoadService<IPermissionSetView>(new ParameterOverride("VM", vm));
+                vm.OnPermissionSeted += Vm_OnPermissionSeted;
+
+                this.CreateView(new CreateViewEventArgs(view, "PermissionSetDialogWindowStyle", TitleFormatString: string.Format("{0}:{{0}}", vm.UserGroupEntity.UserGroupName)));
+            }
+            catch (Exception ex)
+            {
+                ShowException(ex);
+            }
+        }
+
+        private void Vm_OnPermissionSeted(IViewModel vm, EditMessage<string> EditMessage)
+        {
+        }
+
         public bool CanDelete(IList entitys)
         {
             if (entitys == null) return false;

@@ -115,7 +115,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Prism\Prism.Desktop.csproj">
       <Project>{77138947-1D13-4E22-AEE0-5D0DD046CA34}</Project>
-      <Name>Composite.Desktop</Name>
+      <Name>Prism.Desktop</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

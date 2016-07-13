@@ -1,0 +1,34 @@
+﻿.tabs .nav-tabs {
+    border-color: #859ebf;
+    border-bottom-width:0px;
+}
+
+.tabs .close-tab {
+    font-size: 10px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 100;
+    cursor: pointer;
+    color: #94A6B0;
+    display: none;
+}
+
+.tabs .nav-tabs > li > a {
+    padding: 2px 15px;
+    border: 1px solid #859ebf;
+        border-bottom-color:transparent;
+}
+
+    .tabs .nav-tabs > li:hover > a,
+    .tabs .nav-tabs > li > a:focus,
+    .tabs .nav-tabs > li > a:active {
+        background-color: #fff;
+        border: 1px solid #859ebf;
+        border-bottom-color:transparent;
+    }
+
+
+.tabs .tab-content {
+        border: 1px solid #859ebf;
+}

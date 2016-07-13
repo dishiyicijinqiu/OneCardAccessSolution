@@ -35,7 +35,7 @@
             </Grid.RowDefinitions>
             <dxr:RibbonControl x:Name="ribbonControl" Grid.Row="0" RibbonTitleBarVisibility="Auto" Height="153">
                 <dxr:RibbonDefaultPageCategory>
-                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_ProuductView_Title}">
+                    <dxr:RibbonPage x:Name="ribbonPage1" Caption="{x:Static res:Resources.View_ProductView_Title}">
                         <dxr:RibbonPageGroup>
                             <dxb:BarButtonItem Style="{StaticResource barSave}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>
                             <dxb:BarButtonItem Style="{StaticResource barSaveAndNew}" IsEnabled="{Binding IsSee,Converter={core:InverseBoolConverter}}"/>

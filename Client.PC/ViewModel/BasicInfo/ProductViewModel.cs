@@ -27,16 +27,6 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
             Entity = FirstProductEntity.CreateEntity();
             switch (EditMessage.EntityEditMode)
             {
-                case EntityEditMode.Add:
-                    {
-                        var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstProductEntityById(EditMessage.CopyKey);
-                        Entity.CopyValueFrom(copyEntity,
-                            new List<string>(PCConfig.CreateAndModifyInfoColNames)
-                        {
-                            "ProductId"
-                        });
-                    }
-                    break;
                 case EntityEditMode.CopyAdd:
                     {
                         var copyEntity = ServiceProxyFactory.Create<IBasicInfoService>().GetFirstProductEntityById(EditMessage.CopyKey);

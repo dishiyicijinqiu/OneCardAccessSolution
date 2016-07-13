@@ -62,6 +62,7 @@
     <Reference Include="DevExpress.Xpf.LayoutControl.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Printing.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Ribbon.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpf.RichEdit.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.Themes.Office2010Blue.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpf.WpfReportDesigner.v15.1, Version=15.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -88,6 +89,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Printing" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
@@ -130,8 +132,10 @@
     <Compile Include="Core\TransferHelper.cs" />
     <Compile Include="Core\ValueConverter.cs" />
     <Compile Include="Interfaces\IAttachmentDir.cs" />
+    <Compile Include="Interfaces\ICommodityView.cs" />
     <Compile Include="Interfaces\ILoginView.cs" />
     <Compile Include="Interfaces\IMainView.cs" />
+    <Compile Include="Interfaces\IPermissionSetView.cs" />
     <Compile Include="Interfaces\IProductView.cs" />
     <Compile Include="Interfaces\IP_CRTemp.cs" />
     <Compile Include="Interfaces\IRegister.cs" />
@@ -172,6 +176,8 @@
     </Compile>
     <Compile Include="ViewModel\BasicInfo\AttachmentDirCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\AttachmentDirViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\CommodityCollectionViewModel.cs" />
+    <Compile Include="ViewModel\BasicInfo\CommodityViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\ProductCollectionViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\ProductViewModel.cs" />
     <Compile Include="ViewModel\BasicInfo\P_CRTempCollectionViewModel.cs" />
@@ -185,6 +191,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\RBAC\ChangePassWordViewModel.cs" />
+    <Compile Include="ViewModel\RBAC\PermissionSetViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserAndGroupManagerViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserCollectionViewModel.cs" />
     <Compile Include="ViewModel\RBAC\UserGroupCollectionViewModel.cs" />
@@ -196,6 +203,12 @@
     </Compile>
     <Compile Include="View\BasicInfo\AttachmentDirView.xaml.cs">
       <DependentUpon>AttachmentDirView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\CommodityCollectionView.xaml.cs">
+      <DependentUpon>CommodityCollectionView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BasicInfo\CommodityView.xaml.cs">
+      <DependentUpon>CommodityView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\BasicInfo\ProductCollectionView.xaml.cs">
       <DependentUpon>ProductCollectionView.xaml</DependentUpon>
@@ -229,6 +242,9 @@
     </Compile>
     <Compile Include="View\RBAC\ChangePassWordView.xaml.cs">
       <DependentUpon>ChangePassWordView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RBAC\PermissionSetView.xaml.cs">
+      <DependentUpon>PermissionSetView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\RBAC\UserAndGroupManagerView.xaml.cs">
       <DependentUpon>UserAndGroupManagerView.xaml</DependentUpon>
@@ -289,6 +305,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\BasicInfo\CommodityCollectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BasicInfo\CommodityView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\BasicInfo\ProductCollectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -322,6 +346,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RBAC\ChangePassWordView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RBAC\PermissionSetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

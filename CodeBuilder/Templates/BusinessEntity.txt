@@ -5,147 +5,102 @@ using Microsoft.Practices.Prism.ViewModel;
 namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 {
 	/// <summary>
-	/// 产品表
+	/// 商品表
 	/// </summary>
 	[DataContract(Namespace = "http://www.fengsharp.com/onecardaccess/")]
-	public partial class ProductEntity: NotificationObject
+	public partial class CommodityEntity: NotificationObject
 	{
 		/// <summary>
 		/// 构造函数
 		/// </summary>
-		public ProductEntity()
+		public CommodityEntity()
 		{
-			ProductId=string.Empty;
-			ProductNo=string.Empty;
-			ProductName=string.Empty;
-			ProductName1=string.Empty;
-			Spec=string.Empty;
-			Spec1=string.Empty;
-			ProductImage=string.Empty;
+			CommodityId=string.Empty;
+			CommodityNo=string.Empty;
+			CommodityName=string.Empty;
+			CommodityImage=string.Empty;
 			Unit=string.Empty;
 			Material=string.Empty;
+			GoodCode=string.Empty;
 			RegisterId=string.Empty;
+			DrawingId=string.Empty;
 			Remark1=string.Empty;
 			Remark2=string.Empty;
 			Remark3=string.Empty;
 			Remark4=string.Empty;
+			Remark5=string.Empty;
+			Remark6=string.Empty;
+			Remark7=string.Empty;
+			Remark8=string.Empty;
 			TreeNo=string.Empty;
 			TreeParentNo=string.Empty;
 			TreePath=string.Empty;
 			CreateId=string.Empty;
 			LastModifyId=string.Empty;
 		}
-		private string _ProductId;
+		private string _CommodityId;
 		/// <summary>
-		/// 
+		/// 商品Id
 		/// </summary>
 		[DataBaseKey(DataBaseKeyType.Guid)]
 		[DataMember]
-		public string ProductId 
+		public string CommodityId 
 		{
-            get { return _ProductId; }
+            get { return _CommodityId; }
             set
             {
-				if(_ProductId == value)
+				if(_CommodityId == value)
 					return;
-                _ProductId = value;
-                RaisePropertyChanged("ProductId");
+                _CommodityId = value;
+                RaisePropertyChanged("CommodityId");
             }
         }
-		private string _ProductNo;
+		private string _CommodityNo;
 		/// <summary>
-		/// 产品编号
+		/// 商品编号
 		/// </summary>
 		[DataMember]
-		public string ProductNo 
+		public string CommodityNo 
 		{
-            get { return _ProductNo; }
+            get { return _CommodityNo; }
             set
             {
-				if(_ProductNo == value)
+				if(_CommodityNo == value)
 					return;
-                _ProductNo = value;
-                RaisePropertyChanged("ProductNo");
+                _CommodityNo = value;
+                RaisePropertyChanged("CommodityNo");
             }
         }
-		private string _ProductName;
+		private string _CommodityName;
 		/// <summary>
-		/// 商品名称
+		/// 
 		/// </summary>
 		[DataMember]
-		public string ProductName 
+		public string CommodityName 
 		{
-            get { return _ProductName; }
+            get { return _CommodityName; }
             set
             {
-				if(_ProductName == value)
+				if(_CommodityName == value)
 					return;
-                _ProductName = value;
-                RaisePropertyChanged("ProductName");
+                _CommodityName = value;
+                RaisePropertyChanged("CommodityName");
             }
         }
-		private string _ProductName1;
-		/// <summary>
-		/// 商品名称(英文)
-		/// </summary>
-		[DataMember]
-		public string ProductName1 
-		{
-            get { return _ProductName1; }
-            set
-            {
-				if(_ProductName1 == value)
-					return;
-                _ProductName1 = value;
-                RaisePropertyChanged("ProductName1");
-            }
-        }
-		private string _Spec;
-		/// <summary>
-		/// 规格型号
-		/// </summary>
-		[DataMember]
-		public string Spec 
-		{
-            get { return _Spec; }
-            set
-            {
-				if(_Spec == value)
-					return;
-                _Spec = value;
-                RaisePropertyChanged("Spec");
-            }
-        }
-		private string _Spec1;
-		/// <summary>
-		/// 规格型号(英文)
-		/// </summary>
-		[DataMember]
-		public string Spec1 
-		{
-            get { return _Spec1; }
-            set
-            {
-				if(_Spec1 == value)
-					return;
-                _Spec1 = value;
-                RaisePropertyChanged("Spec1");
-            }
-        }
-		private string _ProductImage;
+		private string _CommodityImage;
 		/// <summary>
 		/// 产品大图
 		/// </summary>
 		[DataMember]
-		public string ProductImage 
+		public string CommodityImage 
 		{
-            get { return _ProductImage; }
+            get { return _CommodityImage; }
             set
             {
-				if(_ProductImage == value)
+				if(_CommodityImage == value)
 					return;
-                _ProductImage = value;
-                RaisePropertyChanged("ProductImage");
+                _CommodityImage = value;
+                RaisePropertyChanged("CommodityImage");
             }
         }
 		private string _Unit;
@@ -212,6 +167,22 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
                 RaisePropertyChanged("ProductType");
             }
         }
+		private string _GoodCode;
+		/// <summary>
+		/// 货位号
+		/// </summary>
+		[DataMember]
+		public string GoodCode 
+		{
+            get { return _GoodCode; }
+            set
+            {
+				if(_GoodCode == value)
+					return;
+                _GoodCode = value;
+                RaisePropertyChanged("GoodCode");
+            }
+        }
 		private short _CertType;
 		/// <summary>
 		/// 证件类型（a证，b证）
@@ -242,6 +213,38 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 					return;
                 _RegisterId = value;
                 RaisePropertyChanged("RegisterId");
+            }
+        }
+		private string _DrawingId;
+		/// <summary>
+		/// 图纸Id
+		/// </summary>
+		[DataMember]
+		public string DrawingId 
+		{
+            get { return _DrawingId; }
+            set
+            {
+				if(_DrawingId == value)
+					return;
+                _DrawingId = value;
+                RaisePropertyChanged("DrawingId");
+            }
+        }
+		private short _QtyMode;
+		/// <summary>
+		/// 数量模式（0，通用模式，1严格管理序列号，2严格管理批号）
+		/// </summary>
+		[DataMember]
+		public short QtyMode 
+		{
+            get { return _QtyMode; }
+            set
+            {
+				if(_QtyMode == value)
+					return;
+                _QtyMode = value;
+                RaisePropertyChanged("QtyMode");
             }
         }
 		private string _Remark1;
@@ -306,6 +309,70 @@ namespace FengSharp.OneCardAccess.BusinessEntity.BasicInfo
 					return;
                 _Remark4 = value;
                 RaisePropertyChanged("Remark4");
+            }
+        }
+		private string _Remark5;
+		/// <summary>
+		/// 备注5
+		/// </summary>
+		[DataMember]
+		public string Remark5 
+		{
+            get { return _Remark5; }
+            set
+            {
+				if(_Remark5 == value)
+					return;
+                _Remark5 = value;
+                RaisePropertyChanged("Remark5");
+            }
+        }
+		private string _Remark6;
+		/// <summary>
+		/// 备注6
+		/// </summary>
+		[DataMember]
+		public string Remark6 
+		{
+            get { return _Remark6; }
+            set
+            {
+				if(_Remark6 == value)
+					return;
+                _Remark6 = value;
+                RaisePropertyChanged("Remark6");
+            }
+        }
+		private string _Remark7;
+		/// <summary>
+		/// 备注7
+		/// </summary>
+		[DataMember]
+		public string Remark7 
+		{
+            get { return _Remark7; }
+            set
+            {
+				if(_Remark7 == value)
+					return;
+                _Remark7 = value;
+                RaisePropertyChanged("Remark7");
+            }
+        }
+		private string _Remark8;
+		/// <summary>
+		/// 备注8
+		/// </summary>
+		[DataMember]
+		public string Remark8 
+		{
+            get { return _Remark8; }
+            set
+            {
+				if(_Remark8 == value)
+					return;
+                _Remark8 = value;
+                RaisePropertyChanged("Remark8");
             }
         }
 		private string _TreeNo;

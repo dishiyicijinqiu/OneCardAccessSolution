@@ -183,7 +183,7 @@ namespace FengSharp.OneCardAccess.Client.PC.ViewModel.BasicInfo
         private string GetFullDir(FirstAttachmentDirEntity entity)
         {
             StringBuilder sb = new StringBuilder();
-            var results = this.Items.Where(t => entity.TreePath.StartsWith(t.TreePath)).OrderBy(t => t.TreeTotal).ToList();
+            var results = this.Items.Where(t => entity.TreePath.StartsWith(t.TreePath)).OrderBy(t => t.TreePath.Length).ToList();
             foreach (var item in results)
             {
                 if (!string.IsNullOrWhiteSpace(item.TreeParentNo))

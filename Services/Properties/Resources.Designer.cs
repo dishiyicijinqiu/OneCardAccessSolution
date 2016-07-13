@@ -97,6 +97,15 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
+        ///   查找类似 创建目录失败，失败信息为:{0} 的本地化字符串。
+        /// </summary>
+        internal static string Error_CreatePath {
+            get {
+                return ResourceManager.GetString("Error_CreatePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 检验报告模板名称不可为空 的本地化字符串。
         /// </summary>
         internal static string Error_CRTempNameCanNotEmpty {
@@ -268,7 +277,7 @@ namespace FengSharp.OneCardAccess.Services.Properties {
         }
         
         /// <summary>
-        ///   查找类似 路径{0}不存在 的本地化字符串。
+        ///   查找类似 路径&quot;{0}&quot;不存在 的本地化字符串。
         /// </summary>
         internal static string Error_PathNotFound {
             get {

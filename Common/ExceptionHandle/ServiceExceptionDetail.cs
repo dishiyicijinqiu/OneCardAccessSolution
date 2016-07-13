@@ -3,12 +3,12 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 namespace FengSharp.OneCardAccess.Common
 {
-    [DataContract(Namespace = "http://www.artech.com/")]
+    [DataContract(Namespace = "http://www.fengsharp.com/")]
     public class ServiceExceptionDetail : ExceptionDetail
     {
-        public const string FaultSubCodeNamespace = "http://www.artech.com/exceptionhandling/";
+        public const string FaultSubCodeNamespace = "http://www.fengsharp.com/exceptionhandling/";
         public const string FaultSubCodeName = "ServiceError";
-        public const string FaultAction = "http://www.artech.com/fault";
+        public const string FaultAction = "http://www.fengsharp.com/fault";
 
         [DataMember]
         public string AssemblyQualifiedName
